@@ -381,7 +381,9 @@ footer b{color:var(--ink)}
 .explain h3{margin:14px 0 6px}
 .explain h3:first-child{margin-top:0}
 /* Check my ticket: one big snap button, then score + thumb + sentence. */
-.snap-wrap{margin-top:16px}
+.ticket-step{display:flex;align-items:center;gap:8px;margin:22px 0 10px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ticket-step .n{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--accent);color:var(--bg);font-size:12px;font-weight:800;letter-spacing:0;flex:none}
+.snap-wrap{margin-top:16px;border:2px dashed var(--line);border-radius:16px;padding:20px 14px 16px;text-align:center}
 .snap-btn{display:flex;justify-content:center;width:100%;padding:18px 20px;font-size:19px;border-radius:14px}
 #ticketVerdictWrap{margin-top:16px}
 #ticketVerdictWrap .score-big{font-size:clamp(72px,18vw,104px)}
@@ -393,7 +395,7 @@ footer b{color:var(--ink)}
 /* Ticket analyzer */
 .ticket-grid{align-items:start}
 /* Parlay simulator: pick legs from the board, run the ticket 10,000 times. */
-#parlaySim{margin-top:26px}
+#parlaySim{margin-top:12px}
 #parlaySim .sim-legs{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
 #parlaySim .sim-legs:empty{display:none}
 .sim-leg{display:flex;gap:10px;align-items:center;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:14px;line-height:1.4}
@@ -866,15 +868,15 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <div class="freshness"></div>
 
     <section class="block" style="margin-top:22px" aria-label="Today's strongest picks">
-      <h2 id="homePicksHeading">Today&rsquo;s strongest picks &mdash; Wed Nov 4</h2>
+      <h2 id="homePicksHeading">Today&rsquo;s strongest picks &mdash; Thu Nov 5</h2>
       <p class="sub">NBA points. The chance is how often we think it hits.</p>
-      <div class="best">
-        <div class="pickrow"><div class="who"><b>Davion Mitchell &mdash; Over 9.5 points</b><span>MIA @ LAC &middot; 7:30pm &middot; averages 16.0</span></div><div class="chance"><div class="pct">90%</div><span>chance it hits</span></div></div>
-        <div class="pickrow"><div class="who"><b>Austin Reaves &mdash; Over 19.5 points</b><span>LAL @ SAC &middot; 7:00pm &middot; averages 23.6</span></div><div class="chance"><div class="pct">87%</div><span>chance it hits</span></div></div>
-        <div class="pickrow"><div class="who"><b>Darius Acuff Jr. &mdash; Over 19.5 points</b><span>LAL @ SAC &middot; 7:00pm &middot; averages 26.1</span></div><div class="chance"><div class="pct">74%</div><span>chance it hits</span></div></div>
-        <div class="pickrow"><div class="who"><b>Keaton Wagler &mdash; Over 11.5 points</b><span>MIA @ LAC &middot; 7:30pm &middot; averages 12.1</span></div><div class="chance"><div class="pct">68%</div><span>chance it hits</span></div></div>
+      <div class="best" id="homePicksList">
+        <div class="pickrow"><div class="who"><b>Draymond Green &mdash; Under 5.5 points</b><span>MIA @ GSW &middot; Nov 5</span></div><div class="chance"><div class="pct">68.5%</div><span>chance it hits</span></div></div>
+        <div class="pickrow"><div class="who"><b>Franz Wagner &mdash; Under 23.5 points</b><span>ORL @ PHX &middot; Nov 5</span></div><div class="chance"><div class="pct">67.5%</div><span>chance it hits</span></div></div>
+        <div class="pickrow"><div class="who"><b>Jase Richardson &mdash; Under 8.5 points</b><span>ORL @ PHX &middot; Nov 5</span></div><div class="chance"><div class="pct">66.7%</div><span>chance it hits</span></div></div>
+        <div class="pickrow"><div class="who"><b>Andrew Wiggins &mdash; Under 12.5 points</b><span>MIA @ GSW &middot; Nov 5</span></div><div class="chance"><div class="pct">62.1%</div><span>chance it hits</span></div></div>
       </div>
-      <p class="sub" style="margin-top:10px">All 4 together hit about <b>4 times out of 10</b> (39.4%). Two other picks looked strong but had mixed-up numbers, so they were left out.</p>
+      <p class="sub" id="homePicksCombo" style="margin-top:10px">All 4 together hit about <b>2 times out of 10</b> (19.2%).</p>
       <button type="button" class="btn" data-goto="pricer">Check these 4 as a ticket &rarr;</button>
     </section>
 
@@ -1088,11 +1090,14 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <section class="panel" id="panel-pricer" role="tabpanel" aria-labelledby="tab-pricer" tabindex="0" hidden>
     <h1>Check my ticket</h1>
 
+    <p class="ticket-step"><span class="n">1</span> Snap your ticket</p>
     <div class="snap-wrap">
       <label class="btn snap-btn" for="slipUpload">Snap your ticket</label>
       <input type="file" id="slipUpload" accept="image/*" hidden>
+      <p class="note" style="margin:10px 0 0">Any book works. Your photo never leaves your phone.</p>
     </div>
 
+    <p class="ticket-step"><span class="n">2</span> Your score</p>
     <div class="explain-wrap" id="ticketVerdictWrap" hidden>
       <div class="score-card wait" id="scoreCard">
         <div class="score-top">
@@ -1179,9 +1184,10 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       </div>
     </div>
 
-    <div class="rule"></div>
+    <div id="ticketSimBtnWrap" hidden style="margin-top:14px"><button type="button" class="btn" id="runTicketSim">Run this ticket 10,000 times</button><p class="note" id="ticketSimNote" aria-live="polite"></p></div>
     <section aria-label="Parlay simulator" id="parlaySim">
-      <h2>Try a ticket 10,000 times before you place it</h2>
+      <p class="ticket-step"><span class="n">3</span> Run it 10,000 times</p>
+      <h2>Before you place it, see how it plays out</h2>
       <p class="sub">The ticket checker above scores one ticket you already have. This runs a ticket 10,000 times first, so you can see how often it wins, how often you get 3 out of 4 right, and what you&rsquo;d win or lose on average. Every chance comes from our models, from the <span id="parlaySimDate">&mdash;</span> board. Nothing here places a bet.</p>
       <div class="controls">
         <div class="field wide"><label for="simGamePick">Add a game &mdash; team to win</label><select id="simGamePick"></select></div>
@@ -1438,7 +1444,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <p><b>The score.</b> The score runs from 0 to 100. A score of 50 means a fair bet &mdash; the payout matches how often it wins. The score is 50 plus the value, so a ticket worth 20% more than a fair price scores 70, and one worth 15% less scores 35, stopping at 0 and 100. Alongside the score you get the value as a percentage, and the chance the whole ticket hits written as &ldquo;1 in N&rdquo; &mdash; for example, 1 in 7 means it should hit about once in every seven tries. A thumbs up starts at 60, meaning the payout is clearly better than fair, and a thumbs down means it is not. One plain sentence sums up the verdict. Each pick also shows our chance next to what the ticket pays like, so you can see which pick is carrying the ticket. For tickets where missing one pick still pays a little, the score counts that payout too. That is an average over many repeats of the same ticket &mdash; a single ticket either wins it all or loses it all.</p>
 
     <h3 id="doc-parlay">The parlay simulator (Try a ticket 10,000 times)</h3>
-    <p>The ticket checker scores one ticket you already have. The simulator is different: pick legs from today&rsquo;s board &mdash; teams to win, plus player picks &mdash; and it runs that ticket 10,000 times before you place it once. You see the chance the whole ticket hits, how often you get 3 out of 4 right (the most common way to lose a 4-leg ticket), and what you would win or lose on average per $100 at the payout your book shows. It also shows how wild the ride is: one ticket is all or nothing, so the average only shows up over many tries.</p>
+    <p>The ticket checker scores one ticket you already have. The simulator is different: pick legs from today&rsquo;s board &mdash; teams to win, plus player picks &mdash; and it runs that ticket 10,000 times before you place it once. You see the chance the whole ticket hits, how often you get 3 out of 4 right (the most common way to lose a 4-leg ticket), and what you would win or lose on average per $100 at the payout your book shows. It also shows how wild the ride is: one ticket is all or nothing, so the average only shows up over many tries. If you snap a ticket first, one tap runs that ticket 10,000 times instead of picking legs by hand. Legs we can&rsquo;t match to today&rsquo;s board are left out and named, so the chance shown is only for the legs that ran &mdash; never the whole ticket.</p>
     <p>Game legs in the same game are run on the same simulated game, so their link is built in. Player picks in the same game as another leg are a different story &mdash; that link is not modelled here, so the simulator says so plainly and you should treat the chance as the best case. Spread and total legs are not offered on the site; the full simulator, which includes them, runs behind the scenes. Every chance comes from our models, from the board&rsquo;s date &mdash; a leg with no model chance is never offered.</p>
 
     <h3 id="doc-dfs">DFS Optimizer</h3>
@@ -2121,20 +2127,13 @@ var BANKROLL={date:"2026-11-05",start:10000,nBets:250,nSims:10000,graded:1,total
    Refresh: replace this whole block with the fresh season_site_nfl_YYYYMMDD.json
    from ~/workspace/season-simulator/data/ (the daily pipeline regenerates it). */
 var SEASON_NFL={"generated":"2026-11-05","model_as_of":"2026-11-02","n_sims":10000,"market_source":"VegasInsider NFL win totals table (BetMGM column)","market_date":"2026-10-28","teams":[{"abbr":"ARI","name":"Arizona Cardinals","conf":"NFC","div":"NFC West","w":3,"l":5,"ties":0,"left":9,"med":6.0,"p10":4.0,"p90":8.0,"mean":6.09,"po":1.1,"dv":0.0,"ts":0.0,"ti":0.0,"mkt":6.5,"gap":-0.5,"flag":false},{"abbr":"ATL","name":"Atlanta Falcons","conf":"NFC","div":"NFC South","w":3,"l":5,"ties":0,"left":9,"med":7.0,"p10":5.0,"p90":9.0,"mean":6.85,"po":18.4,"dv":17.9,"ts":0.0,"ti":0.13,"mkt":7.5,"gap":-0.5,"flag":false},{"abbr":"BAL","name":"Baltimore Ravens","conf":"AFC","div":"AFC North","w":4,"l":4,"ties":0,"left":9,"med":8.0,"p10":6.0,"p90":10.0,"mean":7.73,"po":12.9,"dv":1.1,"ts":0.0,"ti":0.07,"mkt":7.5,"gap":0.5,"flag":false},{"abbr":"BUF","name":"Buffalo Bills","conf":"AFC","div":"AFC East","w":6,"l":1,"ties":0,"left":10,"med":14.0,"p10":12.0,"p90":15.0,"mean":13.43,"po":99.5,"dv":94.3,"ts":56.2,"ti":18.66,"mkt":12.5,"gap":1.5,"flag":false},{"abbr":"CAR","name":"Carolina Panthers","conf":"NFC","div":"NFC South","w":3,"l":4,"ties":0,"left":10,"med":7.0,"p10":5.0,"p90":9.0,"mean":6.78,"po":21.2,"dv":20.6,"ts":0.0,"ti":0.07,"mkt":7.5,"gap":-0.5,"flag":false},{"abbr":"CHI","name":"Chicago Bears","conf":"NFC","div":"NFC North","w":6,"l":2,"ties":0,"left":9,"med":11.0,"p10":9.0,"p90":13.0,"mean":11.13,"po":78.8,"dv":30.2,"ts":12.2,"ti":6.33,"mkt":11.5,"gap":-0.5,"flag":false},{"abbr":"CIN","name":"Cincinnati Bengals","conf":"AFC","div":"AFC North","w":5,"l":2,"ties":0,"left":10,"med":12.0,"p10":10.0,"p90":14.0,"mean":11.74,"po":89.9,"dv":51.0,"ts":7.7,"ti":3.86,"mkt":11.5,"gap":0.5,"flag":false},{"abbr":"CLE","name":"Cleveland Browns","conf":"AFC","div":"AFC North","w":5,"l":3,"ties":0,"left":9,"med":9.0,"p10":7.0,"p90":11.0,"mean":8.94,"po":31.5,"dv":2.8,"ts":0.1,"ti":0.1,"mkt":8.5,"gap":0.5,"flag":false},{"abbr":"DAL","name":"Dallas Cowboys","conf":"NFC","div":"NFC East","w":3,"l":5,"ties":0,"left":9,"med":7.0,"p10":6.0,"p90":9.0,"mean":7.36,"po":16.5,"dv":14.4,"ts":0.0,"ti":0.23,"mkt":7.5,"gap":-0.5,"flag":false},{"abbr":"DEN","name":"Denver Broncos","conf":"AFC","div":"AFC West","w":6,"l":2,"ties":0,"left":9,"med":12.0,"p10":10.0,"p90":14.0,"mean":12.12,"po":96.8,"dv":83.9,"ts":8.1,"ti":7.87,"mkt":11.5,"gap":0.5,"flag":false},{"abbr":"DET","name":"Detroit Lions","conf":"NFC","div":"NFC North","w":5,"l":2,"ties":0,"left":10,"med":11.0,"p10":9.0,"p90":13.0,"mean":11.36,"po":84.3,"dv":35.0,"ts":15.8,"ti":9.55,"mkt":10.5,"gap":0.5,"flag":false},{"abbr":"GB","name":"Green Bay Packers","conf":"NFC","div":"NFC North","w":5,"l":3,"ties":0,"left":9,"med":10.0,"p10":8.0,"p90":11.0,"mean":9.65,"po":42.7,"dv":5.6,"ts":1.6,"ti":1.84,"mkt":9.5,"gap":0.5,"flag":false},{"abbr":"HOU","name":"Houston Texans","conf":"AFC","div":"AFC South","w":2,"l":5,"ties":0,"left":10,"med":8.0,"p10":6.0,"p90":10.0,"mean":7.82,"po":17.6,"dv":1.4,"ts":0.0,"ti":0.26,"mkt":8.5,"gap":-0.5,"flag":false},{"abbr":"IND","name":"Indianapolis Colts","conf":"AFC","div":"AFC South","w":2,"l":6,"ties":0,"left":9,"med":5.0,"p10":4.0,"p90":7.0,"mean":5.3,"po":0.4,"dv":0.1,"ts":0.0,"ti":0.0,"mkt":5.5,"gap":-0.5,"flag":false},{"abbr":"JAX","name":"Jacksonville Jaguars","conf":"AFC","div":"AFC South","w":5,"l":2,"ties":0,"left":10,"med":13.0,"p10":11.0,"p90":14.0,"mean":12.71,"po":99.3,"dv":98.6,"ts":16.8,"ti":14.69,"mkt":11.5,"gap":1.5,"flag":false},{"abbr":"KC","name":"Kansas City Chiefs","conf":"AFC","div":"AFC West","w":5,"l":2,"ties":0,"left":10,"med":11.0,"p10":9.0,"p90":12.0,"mean":10.53,"po":71.4,"dv":15.0,"ts":1.1,"ti":1.52,"mkt":11.5,"gap":-0.5,"flag":false},{"abbr":"LAC","name":"Los Angeles Chargers","conf":"AFC","div":"AFC West","w":0,"l":7,"ties":0,"left":10,"med":3.0,"p10":1.0,"p90":5.0,"mean":2.78,"po":0.0,"dv":0.0,"ts":0.0,"ti":0.0,"mkt":4.5,"gap":-1.5,"flag":false},{"abbr":"LAR","name":"Los Angeles Rams","conf":"NFC","div":"NFC West","w":4,"l":4,"ties":0,"left":9,"med":9.0,"p10":7.0,"p90":11.0,"mean":9.25,"po":46.5,"dv":4.6,"ts":0.5,"ti":2.64,"mkt":9.5,"gap":-0.5,"flag":false},{"abbr":"LV","name":"Las Vegas Raiders","conf":"AFC","div":"AFC West","w":4,"l":4,"ties":0,"left":9,"med":7.0,"p10":6.0,"p90":9.0,"mean":7.4,"po":7.4,"dv":1.1,"ts":0.0,"ti":0.01,"mkt":7.5,"gap":-0.5,"flag":false},{"abbr":"MIA","name":"Miami Dolphins","conf":"AFC","div":"AFC East","w":1,"l":6,"ties":0,"left":10,"med":4.0,"p10":2.0,"p90":5.0,"mean":3.67,"po":0.0,"dv":0.0,"ts":0.0,"ti":0.0,"mkt":3.5,"gap":0.5,"flag":false},{"abbr":"MIN","name":"Minnesota Vikings","conf":"NFC","div":"NFC North","w":6,"l":1,"ties":0,"left":10,"med":12.0,"p10":10.0,"p90":13.0,"mean":11.52,"po":87.0,"dv":29.3,"ts":16.4,"ti":4.89,"mkt":10.5,"gap":1.5,"flag":false},{"abbr":"NE","name":"New England Patriots","conf":"AFC","div":"AFC East","w":5,"l":3,"ties":0,"left":9,"med":11.0,"p10":9.0,"p90":12.0,"mean":10.66,"po":79.9,"dv":5.7,"ts":1.7,"ti":4.77,"mkt":10.5,"gap":0.5,"flag":false},{"abbr":"NO","name":"New Orleans Saints","conf":"NFC","div":"NFC South","w":2,"l":5,"ties":0,"left":10,"med":5.0,"p10":4.0,"p90":7.0,"mean":5.55,"po":8.1,"dv":8.0,"ts":0.0,"ti":0.02,"mkt":6.5,"gap":-1.5,"flag":false},{"abbr":"NYG","name":"New York Giants","conf":"NFC","div":"NFC East","w":4,"l":2,"ties":1,"left":10,"med":9.5,"p10":7.5,"p90":11.5,"mean":9.42,"po":78.1,"dv":77.3,"ts":1.2,"ti":0.77,"mkt":8.5,"gap":1.0,"flag":false},{"abbr":"NYJ","name":"New York Jets","conf":"AFC","div":"AFC East","w":2,"l":6,"ties":0,"left":9,"med":5.0,"p10":3.0,"p90":6.0,"mean":4.59,"po":0.1,"dv":0.0,"ts":0.0,"ti":0.0,"mkt":5.5,"gap":-0.5,"flag":false},{"abbr":"PHI","name":"Philadelphia Eagles","conf":"NFC","div":"NFC East","w":2,"l":6,"ties":0,"left":9,"med":5.0,"p10":3.0,"p90":7.0,"mean":5.03,"po":1.3,"dv":1.2,"ts":0.0,"ti":0.0,"mkt":4.5,"gap":0.5,"flag":false},{"abbr":"PIT","name":"Pittsburgh Steelers","conf":"AFC","div":"AFC North","w":6,"l":2,"ties":0,"left":9,"med":12.0,"p10":10.0,"p90":14.0,"mean":11.89,"po":93.2,"dv":45.1,"ts":8.4,"ti":5.89,"mkt":10.5,"gap":1.5,"flag":false},{"abbr":"SEA","name":"Seattle Seahawks","conf":"NFC","div":"NFC West","w":4,"l":4,"ties":0,"left":9,"med":10.0,"p10":8.0,"p90":11.0,"mean":9.68,"po":55.7,"dv":7.2,"ts":0.9,"ti":2.61,"mkt":10.5,"gap":-0.5,"flag":false},{"abbr":"SF","name":"San Francisco 49ers","conf":"NFC","div":"NFC West","w":6,"l":1,"ties":0,"left":10,"med":13.0,"p10":11.0,"p90":15.0,"mean":13.12,"po":97.9,"dv":88.1,"ts":51.3,"ti":12.2,"mkt":12.5,"gap":0.5,"flag":false},{"abbr":"TB","name":"Tampa Bay Buccaneers","conf":"NFC","div":"NFC South","w":3,"l":5,"ties":0,"left":9,"med":8.0,"p10":6.0,"p90":10.0,"mean":8.13,"po":54.4,"dv":53.5,"ts":0.1,"ti":0.97,"mkt":7.5,"gap":0.5,"flag":false},{"abbr":"TEN","name":"Tennessee Titans","conf":"AFC","div":"AFC South","w":1,"l":7,"ties":0,"left":9,"med":3.0,"p10":2.0,"p90":5.0,"mean":3.02,"po":0.0,"dv":0.0,"ts":0.0,"ti":0.0,"mkt":3.5,"gap":-0.5,"flag":false},{"abbr":"WAS","name":"Washington Commanders","conf":"NFC","div":"NFC East","w":2,"l":4,"ties":1,"left":10,"med":6.5,"p10":4.5,"p90":8.5,"mean":6.75,"po":8.0,"dv":7.0,"ts":0.0,"ti":0.05,"mkt":6.5,"gap":0.0,"flag":false}]};
-var LEANS=[
-  {id:"mitchell",player:"Davion Mitchell",team:"MIA",game:"MIA @ LAC",stat:"Points",line:9.5,side:"Over",bookAvg:16.0,proj:null,p:0.90,flag:""},
-  {id:"reaves",player:"Austin Reaves",team:"LAL",game:"LAL @ SAC",stat:"Points",line:19.5,side:"Over",bookAvg:23.6,proj:25.4,p:0.87,flag:""},
-  {id:"acuff",player:"Darius Acuff Jr.",team:"SAC",game:"LAL @ SAC",stat:"Points",line:19.5,side:"Over",bookAvg:26.1,proj:26.5,p:0.74,flag:""},
-  {id:"wagler",player:"Keaton Wagler",team:"LAC",game:"MIA @ LAC",stat:"Points",line:11.5,side:"Over",bookAvg:12.1,proj:null,p:0.68,flag:""},
-  {id:"giannis",player:"Giannis Antetokounmpo",team:"MIA",game:"MIA @ LAC",stat:"Points",line:24.5,side:"Over",bookAvg:28.4,proj:28.3,p:0.64,flag:"May play \u2014 sprained right (shooting) wrist. Check he is moving okay before the game."},
-  {id:"garland",player:"Darius Garland",team:"LAC",game:"MIA @ LAC",stat:"Points",line:19.5,side:"Over",bookAvg:20.1,proj:22.3,p:0.63,flag:""},
-  {id:"wiggins",player:"Andrew Wiggins",team:"MIA",game:"MIA @ LAC",stat:"Points",line:11.5,side:"Under",bookAvg:10.3,proj:null,p:0.63,flag:""},
-  {id:"adebayo",player:"Bam Adebayo",team:"MIA",game:"MIA @ LAC",stat:"Points",line:17.5,side:"Under",bookAvg:16.3,proj:null,p:0.62,flag:""},
-  {id:"lavine",player:"Zach LaVine",team:"SAC",game:"LAL @ SAC",stat:"Points",line:24.5,side:"Under",bookAvg:23.4,proj:23.7,p:0.61,flag:""},
-  {id:"hachimura",player:"Rui Hachimura",team:"LAC",game:"MIA @ LAC",stat:"Points",line:15.5,side:"Under",bookAvg:9.6,proj:null,p:0.80,flag:"Careful \u2014 book average 9.6 vs 13.4 in recent games. The direction looks right; the 80% is shaky."},
-  {id:"zwilliams",player:"Ziaire Williams",team:"LAL",game:"LAL @ SAC",stat:"Points",line:8.5,side:"Under",bookAvg:6.8,proj:null,p:0.76,flag:"Careful \u2014 book average 6.8 vs 11.2 in 4 recent games. The two sources point in different directions."},
-  {id:"luka",player:"Luka Doncic",team:"LAL",game:"LAL @ SAC",stat:"Points",line:34.5,side:"Over",bookAvg:33.5,proj:41.3,p:0.52,flag:"Skip \u2014 close to a coin flip, even though our guess is well above the line."}
-];
+/* LEANS (the ticket checker's preset picks, the parlay sim's prop
+   list, and the Home tab's strongest picks) is derived from the
+   current props board further down, right after TOP_PROPS — it used
+   to be a second hand-baked copy of the picks here, and it went
+   stale: the Nov 5 board shipped with Nov 4's leans still in it, so
+   Home kept showing last night's NBA picks. One source of truth
+   now: TOP_PROPS. */
 var NHL=[
   {player:"Philip Broberg",team:"STL",line:1.5,side:"Over",cal:0.55,outcome:"4 SOG",hit:true},
   {player:"Ryan Nugent-Hopkins",team:"EDM",line:1.5,side:"Over",cal:0.66,outcome:"1 SOG",hit:false},
@@ -3232,6 +3231,67 @@ var TOP_PROPS=[
   {player:"Filip Hronek",team:"VAN",sport:"NHL",date:"Nov 5",prop:"under 1.5 shots on goal",line:"-135",guess:58.1,tier:"lean",flag:"",value_pct:1.17,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-598d-7320-82e0-04ab421e8469"}},
   {player:"Mark Andrews",team:"BAL",sport:"NFL",date:"Nov 5",prop:"yes no line anytime TD",line:"+550",guess:15.6,tier:"lean",flag:"",value_pct:1.15,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV05JACBAL-BALMANDREWS89-1", "novig": null}}
 ];
+/* ================= LEANS — derived from TOP_PROPS =================
+   The ticket checker's preset picks and the Home tab's strongest
+   picks both read this list: the board's NBA points props, strongest
+   (highest model chance) first. It is built from TOP_PROPS at load
+   so it always matches the current board — a refreshed board can
+   never leave yesterday's picks behind here again. The matchup
+   ("ORL @ PHX") is read from the pick's own market link slug; the
+   board carries no separate game field for props. */
+var LEANS=(function(){
+  function gameFromMarkets(r){
+    var urls=r.markets?[r.markets.polymarket,r.markets.kalshi,r.markets.novig]:[];
+    for(var i=0;i<urls.length;i++){
+      var m=urls[i]&&String(urls[i]).match(/nba-([a-z]{2,4})-([a-z]{2,4})-\d{4}/);
+      if(m) return m[1].toUpperCase()+" @ "+m[2].toUpperCase();
+    }
+    return null;
+  }
+  var out=[];
+  (typeof TOP_PROPS!=="undefined"?TOP_PROPS:[]).forEach(function(r){
+    if(r.sport!=="NBA") return;
+    var m=String(r.prop||"").match(/^(over|under)\s+(\d+(?:\.\d+)?)\s+points$/i);
+    if(!m) return;
+    out.push({
+      id:String(r.player||"pick").toLowerCase().replace(/[^a-z0-9]+/g,"-")+"-"+m[2],
+      player:r.player, team:r.team, game:gameFromMarkets(r), date:r.date,
+      stat:"Points", line:parseFloat(m[2]),
+      side:m[1].toLowerCase()==="over"?"Over":"Under",
+      bookAvg:null, proj:null, p:Math.round(Number(r.guess)*10)/1000,
+      flag:r.flag||""
+    });
+  });
+  out.sort(function(a,b){return b.p-a.p;});
+  return out;
+})();
+/* Home "Today's strongest picks": the four highest-chance unflagged
+   leans, rendered from LEANS (today's board) — never baked HTML, so
+   the rows always belong to the same day as the heading above them.
+   A flagged pick that out-chances the fourth shown pick is counted
+   in the note under the rows, as before. */
+function renderHomePicks(){
+  var box=$("homePicksList"), combo=$("homePicksCombo");
+  if(!box) return;
+  var leans=(typeof LEANS!=="undefined"&&LEANS)?LEANS:[];
+  var picks=leans.filter(function(l){return !l.flag;}).slice(0,4);
+  if(!picks.length){
+    box.innerHTML='<div class="pickrow"><div class="who"><b>No picks posted yet.</b><span>See the Player picks tab for the full board.</span></div></div>';
+    if(combo) combo.textContent="";
+    return;
+  }
+  box.innerHTML=picks.map(function(l){
+    var pctTxt=(Math.round(l.p*1000)/10)+"%";
+    return '<div class="pickrow"><div class="who"><b>'+esc(l.player)+' &mdash; '+esc(l.side)+' '+esc(String(l.line))+' points</b><span>'+(l.game?esc(l.game)+' &middot; ':"")+esc(l.date||"")+'</span></div><div class="chance"><div class="pct">'+pctTxt+'</div><span>chance it hits</span></div></div>';
+  }).join("");
+  if(combo){
+    var all=1; picks.forEach(function(l){all*=l.p;});
+    var leftOut=leans.filter(function(l){return !!l.flag&&l.p>picks[picks.length-1].p;}).length;
+    combo.innerHTML='All '+picks.length+' together hit about <b>'+Math.round(all*10)+' times out of 10</b> ('+(Math.round(all*1000)/10)+'%).'
+      +(leftOut?' '+leftOut+(leftOut===1?' other pick looked':' other picks looked')+' strong but had mixed-up numbers, so '+(leftOut===1?'it was':'they were')+' left out.':"");
+  }
+}
+try{renderHomePicks();}catch(e){}
 var propSport="ALL", propDate="ALL", propView="tiles", propGame="ALL", propQuery="", propType="ALL", playerSearch="";
 /* Prop-type markets, matched against the stat embedded in r.prop
    (e.g. "over 19.5 points", "yes no line anytime TD"). Each sport only
@@ -3689,6 +3749,7 @@ function sideOptions(selected){
   return ["Over","Under","Yes","No"].map(function(s){return '<option'+(s===selected?" selected":"")+'>'+s+'</option>';}).join("");
 }
 function renderLegs(){
+  clearTicketSim();
   var wrap=$("legList");
   if(!ticketLegs.length){
     wrap.innerHTML="";
@@ -3711,6 +3772,7 @@ function renderLegs(){
   }).join("");
 }
 $("legList").addEventListener("input",function(e){
+  clearTicketSim();
   var el=e.target.closest("[data-field]"); if(!el) return;
   var i=parseInt(el.getAttribute("data-idx"),10), f=el.getAttribute("data-field"), l=ticketLegs[i];
   if(!l) return;
@@ -3723,6 +3785,7 @@ $("legList").addEventListener("input",function(e){
   computeTicket();
 });
 $("legList").addEventListener("change",function(e){
+  clearTicketSim();
   var el=e.target.closest("[data-field]"); if(!el) return;
   renderChips(); computeTicket();
 });
@@ -3816,6 +3879,7 @@ var THUMB_DOWN='<span class="thumb-circle"><svg viewBox="0 0 24 24" fill="none" 
 function computeTicket(){
   var wrap=$("ticketVerdictWrap");
   if(wrap) wrap.hidden=!hasTicket;
+  var tsbw=$("ticketSimBtnWrap"); if(tsbw) tsbw.hidden=!hasTicket;
   var legs=ticketLegs, n=legs.length;
   var stake=parseFloat($("stake").value); if(!isFinite(stake)||stake<=0) stake=10;
   var missingChance=legs.some(function(l){return l.p==null||!(l.p>0)||l.p>=1;});
@@ -4018,6 +4082,7 @@ function simPropOptions(){
   }catch(e){return [];}
 }
 var simGameOpts=[], simPropOpts=[], simLegs=[];
+var simFromTicket=false, simTicketUnmatched=[];
 function simFillPickers(){
   simGameOpts=simGameOptions();
   simPropOpts=simPropOptions();
@@ -4037,6 +4102,7 @@ function simRenderLegs(){
   }).join("");
 }
 function simAddGame(){
+  simFromTicket=false; simTicketUnmatched=[];
   var idx=parseInt($("simGamePick").value,10);
   if(!isFinite(idx)||!simGameOpts[idx]){$("simNote").textContent="No game to add — today's board has no games left to pick from.";return;}
   var o=simGameOpts[idx];
@@ -4054,6 +4120,7 @@ function simAddGame(){
   simRenderLegs();
 }
 function simAddProp(){
+  simFromTicket=false; simTicketUnmatched=[];
   var idx=parseInt($("simPropPick").value,10);
   if(!isFinite(idx)||!simPropOpts[idx]){$("simNote").textContent="No player pick to add — today's board has no player picks.";return;}
   var o=simPropOpts[idx];
@@ -4086,6 +4153,12 @@ function simParseOdds(raw){
 }
 function simRun(){
   var res=$("simResults"), corr=$("simCorr");
+  var partial=simFromTicket&&simTicketUnmatched.length>0;
+  var partialTotal=simLegs.length+simTicketUnmatched.length;
+  var partialLabels=simTicketUnmatched.map(function(u){return u.label;}).join(", ");
+  $("simNote").textContent=partial
+    ? "This ran on "+simLegs.length+" of your "+partialTotal+" legs \u2014 "+partialLabels+" weren't included."
+    : "";
   if(simLegs.length<2){
     res.innerHTML='<p class="note">Add at least 2 legs to run the simulation.</p>';
     corr.innerHTML="";
@@ -4128,7 +4201,9 @@ function simRun(){
   var naive=1; simLegs.forEach(function(l){naive*=l.p;});
   var winN=Math.round(pAll*100);
   var oneIn=pAll>0?Math.max(1,Math.round(1/pAll)):null;
-  var html='<div class="card" style="margin-top:14px"><div class="sim-big">'+pct(pAll)+'</div>'
+  var html='<div class="card" style="margin-top:14px">'
+    +(partial?'<p style="margin:0 0 8px"><b>Part of your ticket.</b> This ran on '+simLegs.length+' of your '+partialTotal+' legs \u2014 '+esc(partialLabels)+' weren\'t included, so this is not the chance for the whole ticket.</p>':'')
+    +'<div class="sim-big">'+pct(pAll)+'</div>'
     +'<p style="margin:0 0 4px"><b>Chance the whole ticket hits: '+pct(pAll)
     +(oneIn?' (about 1 in '+oneIn+')':'')+'.</b></p>'
     +'<p style="margin:0">Out of 100 tries, this ticket wins about '+winN+' times &mdash; and loses the other '+(100-winN)+'.</p>';
@@ -4142,7 +4217,9 @@ function simRun(){
   if(odds==null&&String($("simOdds").value||"").trim()!==""){
     html+='<p class="note">That payout did not look like American odds (for example +350 or -110), so the money part is skipped &mdash; the chance above still stands.</p>';
   }
-  if(odds!=null){
+  if(partial){
+    html+='<p class="note">The payout above is for the whole ticket, so we can\'t show what you\'d win or lose on average for just these legs.</p>';
+  }else if(odds!=null){
     var mult=odds>0?1+odds/100:1+100/Math.abs(odds);
     var profit100=100*(mult-1);
     var ev=pAll*profit100-(1-pAll)*100;
@@ -4154,7 +4231,8 @@ function simRun(){
   }else{
     html+='<p class="note">Add what the book pays above to see what you would win or lose on average.</p>';
   }
-  html+='<p class="note" style="margin-bottom:0">Fair payout for this chance would be '+(pAll>=0.5?Math.round(-100*pAll/(1-pAll)):('+'+Math.round(100*(1-pAll)/pAll)))+' &mdash; hold it next to what your book actually pays. Based on '+SIM_N.toLocaleString()+' simulated tickets.</p></div>';
+  if(!partial) html+='<p class="note" style="margin-bottom:0">Fair payout for this chance would be '+(pAll>=0.5?Math.round(-100*pAll/(1-pAll)):('+'+Math.round(100*(1-pAll)/pAll)))+' &mdash; hold it next to what your book actually pays. Based on '+SIM_N.toLocaleString()+' simulated tickets.</p>';
+  html+='</div>';
   res.innerHTML=html;
   /* Correlation flags: same-game game legs are modelled (shared draws);
      anything with a player pick in the same game is not. */
@@ -4178,6 +4256,7 @@ $("simAddGame").addEventListener("click",simAddGame);
 $("simAddProp").addEventListener("click",simAddProp);
 $("simLegs").addEventListener("click",function(e){
   var b=e.target.closest("[data-sim-remove]"); if(!b) return;
+  simFromTicket=false; simTicketUnmatched=[];
   simLegs.splice(parseInt(b.getAttribute("data-sim-remove"),10),1);
   simRenderLegs();
 });
@@ -4236,6 +4315,48 @@ function parseSlipText(text){
     var seg=text.slice(Math.max(0,gm.index-40),gm.index+120);
     addLeg({player:name,stat:statFromText(seg,"Points"),line:parseFloat(gm[3]),side:gm[2].toLowerCase()==="over"?"Over":"Under",p:null,game:null,team:null});
   }
+  /* Moneyline legs: a board team named on the slip counts as a "to win"
+     leg only when a moneyline marker or an odds token sits right after
+     the mention. Soccer games (pDraw set) are skipped — they are rare
+     on tickets and the 3-way math is not worth the false-positive risk.
+     The search runs on the raw lowercased text, not norm, because norm
+     strips the + and - signs the odds-token check needs. */
+  var rawLow=String(text||"").toLowerCase();
+  var NFL_NICKS={jaguars:"JAX",ravens:"BAL",bills:"BUF",dolphins:"MIA",patriots:"NE",jets:"NYJ",bengals:"CIN",browns:"CLE",steelers:"PIT",texans:"HOU",colts:"IND",titans:"TEN",broncos:"DEN",chiefs:"KC",raiders:"LV",chargers:"LAC",cowboys:"DAL",giants:"NYG",eagles:"PHI",commanders:"WSH",bears:"CHI",lions:"DET",packers:"GB",vikings:"MIN",falcons:"ATL",panthers:"CAR",saints:"NO",buccaneers:"TB",cardinals:"ARI",rams:"LA","49ers":"SF",seahawks:"SEA"};
+  var SHORT_CODES=["LA","NY","NO","UT","SA","GS","KC","GB","LV","TB","NE","SF"];
+  (typeof simGameOpts!=="undefined"?simGameOpts:[]).forEach(function(g){
+    if(g.pDraw!=null) return;
+    var hit=null;
+    [["away",g.away],["home",g.home]].forEach(function(pair){
+      if(hit) return;
+      var code=pair[1];
+      var terms=[String(code).toLowerCase()];
+      if(String(g.league||"").toLowerCase()==="nfl"){
+        Object.keys(NFL_NICKS).forEach(function(nick){if(NFL_NICKS[nick]===code) terms.push(nick);});
+      }
+      for(var ti=0;ti<terms.length&&!hit;ti++){
+        var term=terms[ti];
+        var tre=new RegExp("\\b"+term.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\b","g"), mm;
+        while((mm=tre.exec(rawLow))!==null){
+          var rest=rawLow.slice(mm.index+term.length);
+          var after=rest.slice(0,45);
+          var oddsTok=/^\s*[+-]\d{2,4}\b/.test(rest);
+          var hasMarker=/\b(moneyline|ml)\b/.test(after);
+          var hasToWin=/\bto win\b/.test(after);
+          /* Short codes are also ordinary words, so when the match is
+             the code itself, "to win" alone is not enough — require
+             the odds token or an explicit moneyline/ml marker. A full
+             nickname match ("chiefs") is unambiguous and can use it. */
+          var viaShortCode=SHORT_CODES.indexOf(code)>=0&&term===String(code).toLowerCase();
+          if(oddsTok||hasMarker||(hasToWin&&!viaShortCode)){hit=pair;break;}
+        }
+      }
+    });
+    if(hit){
+      var isHome=hit[0]==="home";
+      addLeg({player:hit[1],stat:"To win",line:null,side:"Yes",p:isHome?g.pHome:(g.pDraw!=null?1-g.pHome-g.pDraw:1-g.pHome),game:g.away+" @ "+g.home,team:hit[1],ml:true});
+    }
+  });
   /* payout + stake, only when the wording is clear */
   var pm=text.match(/payout[^0-9]{0,30}(\d+(?:\.\d+)?)\s*x/i)||text.match(/(\d+(?:\.\d+)?)\s*x[^.\n]{0,30}payout/i);
   if(pm&&parseFloat(pm[1])>1) ticketPayouts.all=parseFloat(pm[1]);
@@ -4245,7 +4366,7 @@ function parseSlipText(text){
 }
 function runOcr(file){
   setSlipStatus("Reading your screenshot\u2026 this can take a few seconds.");
-  function fallback(){setSlipStatus("We couldn\u2019t read that screenshot clearly. Tap the info circle by the score to see the slip and fix the legs by hand.");}
+  function fallback(){setSlipStatus("We couldn\u2019t read that screenshot clearly. Tap the info circle by the score to see the slip and fix the legs by hand. You can still add legs by hand below, then run the simulation.");}
   function go(){
     if(!window.Tesseract){fallback();return;}
     try{
@@ -4256,7 +4377,7 @@ function runOcr(file){
         ticketLegs=legs;
         renderLegs(); renderChips(); renderPayoutInputs(); computeTicket();
         var missing=legs.some(function(l){return l.p==null;});
-        setSlipStatus("We found "+legs.length+" leg"+(legs.length===1?"":"s")+". Tap the info circle by the score to check each one and fix anything we misread."+(missing?" For some legs we could not fill in our chance, so add it on the leg.":""));
+        setSlipStatus("We found "+legs.length+" leg"+(legs.length===1?"":"s")+". Tap the info circle by the score to check each one and fix anything we misread."+(missing?" For some legs we could not fill in our chance, so add it on the leg.":"")+" Then tap 'Run this ticket 10,000 times' below the score.");
       }).catch(function(){fallback();});
     }catch(e){fallback();}
   }
@@ -4266,6 +4387,76 @@ function runOcr(file){
   s.onload=go; s.onerror=fallback;
   document.head.appendChild(s);
 }
+function multToAmerican(mult){
+  if(!(mult>1)) return null;
+  if(mult>=2) return "+"+Math.round((mult-1)*100);
+  return "-"+Math.round(100/(mult-1));
+}
+function ticketToSimLegs(){
+  var matched=[], unmatched=[], seenM={};
+  function pushMatched(leg){
+    var k=leg.type+"|"+leg.label;
+    if(seenM[k]) return;
+    seenM[k]=true; matched.push(leg);
+  }
+  ticketLegs.forEach(function(leg,idx){
+    if(leg.ml){
+      var o=null;
+      simGameOpts.forEach(function(g){if(!o&&g.away+" @ "+g.home===leg.game) o=g;});
+      if(!o){unmatched.push({label:legLabel(leg),why:"game not on today's board"});return;}
+      var key=o.away+" @ "+o.home;
+      var side=leg.team===o.home?"home":"away";
+      pushMatched({type:"game",label:leg.team+" to win ("+key+")",league:o.league,away:o.away,home:o.home,pHome:o.pHome,pDraw:o.pDraw,side:side,p:side==="home"?o.pHome:(o.pDraw!=null?1-o.pHome-o.pDraw:1-o.pHome),game:key});
+      return;
+    }
+    if(leg.p==null||!(leg.p>0)||leg.p>=1){unmatched.push({label:legLabel(leg),why:"no chance filled in"});return;}
+    var so=null;
+    simPropOpts.forEach(function(x){if(!so&&legKey(x)===legKey(leg)) so=x;});
+    if(so){pushMatched({type:"prop",propId:so.id,label:so.label,p:leg.p,game:so.game,team:so.team});return;}
+    /* No board match (TD legs, NHL shots-on-goal legs, hand-added legs):
+       the simulator only needs the chance and the game for its
+       correlation flags, so any leg with a real model chance can run. */
+    pushMatched({type:"prop",propId:"ticket-"+idx,label:legLabel(leg),p:leg.p,game:leg.game||null,team:leg.team||null});
+  });
+  while(matched.length>8){
+    var extra=matched.pop();
+    unmatched.push({label:extra.label,why:"simulator takes 8 legs at most"});
+  }
+  return {matched:matched,unmatched:unmatched};
+}
+function runTicketSim(){
+  var note=$("ticketSimNote");
+  if(ticketLegs.length<2){note.textContent="Add at least 2 legs first \u2014 snap your ticket or tap tonight's picks below.";return;}
+  var res=ticketToSimLegs();
+  simFromTicket=true; simTicketUnmatched=res.unmatched;
+  function fmtUn(list){return list.map(function(u){return u.label+" ("+u.why+")";}).join("; ");}
+  if(res.matched.length<2){
+    note.textContent="We could only match "+res.matched.length+" of your "+ticketLegs.length+" legs to today's board, so we can't run it yet."
+      +(res.unmatched.length?" Not matched: "+fmtUn(res.unmatched)+".":"");
+    simFromTicket=false; simTicketUnmatched=[];
+    return;
+  }
+  simLegs=res.matched.slice();
+  simRenderLegs();
+  var oddsEl=$("simOdds");
+  if(oddsEl&&!String(oddsEl.value||"").trim()&&ticketPayouts.all>1){
+    var am=multToAmerican(ticketPayouts.all);
+    if(am) oddsEl.value=am;
+  }
+  note.textContent=res.unmatched.length
+    ? "Running "+res.matched.length+" of your "+ticketLegs.length+" legs \u2014 the ones below weren't included: "+fmtUn(res.unmatched)+"."
+    : "Running all "+res.matched.length+" legs from your ticket.";
+  var sec=$("parlaySim");
+  if(sec&&sec.scrollIntoView) sec.scrollIntoView({behavior:"smooth",block:"start"});
+  simRun();
+}
+function clearTicketSim(){
+  if(!simFromTicket) return;
+  simFromTicket=false; simTicketUnmatched=[];
+  $("simResults").innerHTML=""; $("simCorr").innerHTML="";
+  $("ticketSimNote").textContent="The legs changed \u2014 run it again to update the simulation.";
+}
+$("runTicketSim").addEventListener("click",runTicketSim);
 $("slipUpload").addEventListener("change",function(){
   var file=this.files&&this.files[0];
   if(!file) return;
