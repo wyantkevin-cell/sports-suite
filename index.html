@@ -655,9 +655,6 @@ html[data-theme="dark"] .beton-betonline,html[data-theme="terminal"] .beton-beto
 .prop-list-row .beton{grid-column:1 / -1;margin-top:2px}
 @media(max-width:640px){.prop-list-row .beton{flex:1 1 100%;order:6}}
 .bet-card .beton{margin-top:13px}
-.beton a.beton-signup{border:0;background:transparent;min-height:0;padding:6px 2px;color:var(--muted);text-decoration:underline;font-size:12.5px}
-.beton a.beton-signup::before{display:none}
-.beton a.beton-signup:hover{background:transparent;color:var(--ink)}
 .parlay-card{margin-top:18px;background:var(--amber-bg);border:2px solid var(--gold);border-radius:18px;padding:20px 22px;box-shadow:0 2px 14px rgba(0,0,0,.08)}
 .parlay-head{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--amber)}
 .parlay-head .parlay-trophy{font-size:20px;margin-right:6px;vertical-align:-3px}
@@ -909,6 +906,18 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       </div>
     </section>
 
+    <section class="block" aria-label="Where to bet">
+      <h2>Where to bet</h2>
+      <p>We use these books &mdash; sign up through our links if you&rsquo;re new.</p>
+      <p style="display:flex;flex-wrap:wrap;gap:8px">
+        <a class="btn" href="https://kalshi.com/t/6jdhayt9" target="_blank" rel="noopener">Sign up for Kalshi</a>
+        <a class="btn" href="https://polymarket.us/join/bigchungus04" target="_blank" rel="noopener">Sign up for Polymarket</a>
+        <a class="btn" href="https://play.underdogsports.com/vgwg/63lbpw62" target="_blank" rel="noopener">Sign up for Underdog</a>
+        <a class="btn" href="https://www.betonline.ag?RAF=HDPA3N5Z&ProdCode=SPO" target="_blank" rel="noopener">Sign up for BetOnline</a>
+      </p>
+      <p class="note">New here? Our sign-up links are referral links &mdash; if you join through one, we may earn a bonus at no extra cost to you.</p>
+    </section>
+
   </section>
 
   <!-- ============ WHO WINS ============ -->
@@ -920,7 +929,6 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 
     <div class="freshness"></div>
     <p class="note" style="margin-top:8px">Lines: DraftKings via ESPN</p>
-    <p class="note">New here? Our sign-up links are referral links &mdash; if you join through one, we may earn a bonus at no extra cost to you.</p>
     <div class="filters" role="group" aria-label="Choose a league" id="leagueFilters">
       <button type="button" aria-pressed="true" data-league="nfl">NFL</button>
       <button type="button" aria-pressed="false" data-league="cfb">CFB</button>
@@ -1017,7 +1025,6 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <div class="explain" id="explainProps" hidden><p style="margin:0">Lines from FanDuel. Our guess is what the model projects. Tomorrow&rsquo;s games are here early so you can beat line movement.</p></div>
     </div>
     <p class="note" id="propsSourceNote">Today&rsquo;s lines via SharpAPI &mdash; our usual source was unavailable</p>
-    <p class="note">New here? Our sign-up links are referral links &mdash; if you join through one, we may earn a bonus at no extra cost to you.</p>
     <div class="freshness"></div>
     <div class="prop-search">
       <div class="prop-search-wrap">
@@ -1299,10 +1306,9 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <section class="panel" id="panel-season" role="tabpanel" aria-labelledby="tab-season" tabindex="0" hidden>
     <div class="explain-wrap">
       <h1 class="explain-head"><span class="explain-title">How will the <em>season end?</em></span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainSeason" aria-label="How these numbers work">i</button></h1>
-      <div class="explain" id="explainSeason" hidden><p style="margin:0">We played the rest of the season 10,000 times on a computer. Each game used our guess for who wins that game. The numbers below are how often each ending came up. &ldquo;Most likely wins&rdquo; is the middle result; &ldquo;usually between&rdquo; covers the middle 8 times out of 10. Ties are broken by group and conference record, then chance &mdash; the league&rsquo;s real tiebreak list is longer, so close races may be off by a hair. &ldquo;Book&rdquo; is the book&rsquo;s win-total line: when we sit far from it, we say so under the number. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
+      <div class="explain" id="explainSeason" hidden><p style="margin:0">We played the rest of the season 10,000 times on a computer. Each game used our guess for who wins that game. The numbers below are how often each ending came up. &ldquo;Most likely wins&rdquo; is the middle result; &ldquo;usually between&rdquo; covers the middle 8 times out of 10. Ties are broken by group and conference record, then chance &mdash; the league&rsquo;s real tiebreak list is longer, so close races may be off by a hair. &ldquo;Book&rdquo; is the book&rsquo;s win-total line: when we sit far from it, we say so under the number. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p><p class="sub" id="seasonMeta" style="margin:8px 0 0"></p></div>
     </div>
     <p class="lede">Every team&rsquo;s most likely win total, how often they make the playoffs, and how often they win it all &mdash; from 10,000 simulated seasons.</p>
-    <p class="sub" id="seasonMeta"></p>
     <div id="seasonTables"></div>
     <section class="block" aria-label="NBA">
       <h2>NBA is coming soon</h2>
@@ -1323,7 +1329,6 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <div id="parlayWrap"></div>
     <div class="bets-grid" id="betsGrid"></div>
     <p class="note" id="betsCardNote">Day 1 of the fresh track record. Picks are the day&rsquo;s strongest calibrated leans at a $100 flat stake; the parlay is tracked separately and is not part of the straight-bet tally.</p>
-    <p class="note">New here? Our sign-up links are referral links &mdash; if you join through one, we may earn a bonus at no extra cost to you.</p>
     <p class="note">These are today&rsquo;s bets only. Once a game finishes and a pick is graded, it moves to <a href="#record" data-goto="record">Our Record</a> &mdash; pending picks never appear there.</p>
   </section>
 
@@ -2535,11 +2540,9 @@ function feedModelAForGame(g){
    platform, supplied by the daily pipeline). A missing/null markets
    field, or a null/empty/non-http value for a platform, renders no
    button for it — never a placeholder, never a dead link. */
-/* Referral sign-up links (supplied with the daily board). A platform
-   with a null URL gets no sign-up link. These URLs are used only for
-   the "New to ...? Sign up with our link" links — market button URLs
-   themselves are never modified. */
-var REFERRAL={kalshi:"https://kalshi.com/t/6jdhayt9",polymarket:"https://polymarket.us/join/bigchungus04",novig:null,underdog:"https://play.underdogsports.com/vgwg/63lbpw62",betonline:"https://www.betonline.ag?RAF=HDPA3N5Z&ProdCode=SPO"};
+/* Referral sign-up links live only on the Sportsbooks tab and in the
+   Home tab's "Where to bet" section — never next to market buttons,
+   and market button URLs themselves are never modified. */
 var MARKET_PLATFORMS=[
   {key:"polymarket",label:"Polymarket",cls:"beton-poly"},
   {key:"kalshi",label:"Kalshi",cls:"beton-kalshi"},
@@ -2557,16 +2560,8 @@ function marketsHtml(markets){
     if(!/^https?:\/\//i.test(url)) return;
     btns+='<a class="'+p.cls+'" href="'+esc(url)+'" target="_blank" rel="noopener">'+p.label+'</a>';
   });
-  var signups="";
-  MARKET_PLATFORMS.forEach(function(p){
-    var rurl=(typeof REFERRAL!=="undefined"&&REFERRAL)?REFERRAL[p.key]:null;
-    if(typeof rurl!=="string") return;
-    rurl=rurl.trim();
-    if(!/^https?:\/\//i.test(rurl)) return;
-    signups+='<a class="beton-signup" href="'+esc(rurl)+'" target="_blank" rel="noopener">New to '+p.label+'? Sign up with our link</a>';
-  });
-  if(!btns&&!signups) return "";
-  return '<div class="beton">'+(btns?'<span class="beton-label">Bet on:</span>'+btns:"")+signups+'</div>';
+  if(!btns) return "";
+  return '<div class="beton"><span class="beton-label">Bet on:</span>'+btns+'</div>';
 }
 function feedRowHtml(f){
   var pickHome=f.pHome>=0.5;
@@ -5141,7 +5136,7 @@ function renderSeason(){
       var book=t.mkt!=null?("book "+seasonWins(t.mkt)):"";
       var gapTxt="";
       if(t.gap!=null&&Math.abs(t.gap)>=1.5){
-        gapTxt='<br><span class="sub">we&rsquo;re '+Math.abs(t.gap)+' '+(t.gap>0?"above":"below")+' the book</span>';
+        gapTxt='<br><span class="sub">'+Math.abs(t.gap)+' '+(t.gap>0?"above":"below")+' book</span>';
       }
       html+='<tr><td>'+t.name+'</td><td>'+rec+'</td><td><b>'+seasonWins(t.med)+'</b>'+(book?'<br><span class="sub">'+book+'</span>':"")+gapTxt+'</td><td>'+seasonWins(t.p10)+'&ndash;'+seasonWins(t.p90)+'</td><td>'+seasonPct(t.po)+'</td><td>'+seasonPct(t.dv)+'</td><td>'+seasonPct(t.ti,true)+'</td></tr>';
     });
