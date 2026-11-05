@@ -4204,7 +4204,7 @@ function simRun(){
   var html='<div class="card" style="margin-top:14px">'
     +(partial?'<p style="margin:0 0 8px"><b>Part of your ticket.</b> This ran on '+simLegs.length+' of your '+partialTotal+' legs \u2014 '+esc(partialLabels)+' weren\'t included, so this is not the chance for the whole ticket.</p>':'')
     +'<div class="sim-big">'+pct(pAll)+'</div>'
-    +'<p style="margin:0 0 4px"><b>Chance the whole ticket hits: '+pct(pAll)
+    +'<p style="margin:0 0 4px"><b>'+(partial?'Chance these legs all hit':'Chance the whole ticket hits')+': '+pct(pAll)
     +(oneIn?' (about 1 in '+oneIn+')':'')+'.</b></p>'
     +'<p style="margin:0">Out of 100 tries, this ticket wins about '+winN+' times &mdash; and loses the other '+(100-winN)+'.</p>';
   html+='<div class="sim-bars">';
