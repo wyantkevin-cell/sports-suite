@@ -612,6 +612,20 @@ html[data-theme="minimal"] .tabbar [role="tab"][aria-selected="true"]{background
 .record-day:first-child{margin-top:18px}
 .record-day h2{margin-bottom:2px}
 .record-day .sub{margin-bottom:10px}
+/* This week / this month: period tallies under the all-time tally, and
+   the wins-losses-only period line in the Top Tier block. */
+.period-record{margin-top:16px;border-top:1px solid var(--line);padding-top:14px}
+.period-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media(max-width:640px){.period-grid{grid-template-columns:minmax(0,1fr)}}
+.period-block{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--bg)}
+.period-block h3{font-size:15px;margin-bottom:2px}
+.period-block .period-dates{margin:0 0 8px;color:var(--muted);font-size:13px}
+.period-line{margin:5px 0;font-size:14.5px;line-height:1.5}
+.period-line b{font-family:var(--mono);font-weight:700}
+.period-line .sub-label{color:var(--muted)}
+.period-note{margin:12px 0 0;color:var(--muted);font-size:14px;line-height:1.55}
+.tt-period{margin:0 0 14px;font-size:14.5px;line-height:1.6}
+.tt-period b{font-family:var(--mono);font-weight:700}
 
 /* Our Bets — today's card. Cards use the site variables, so Classic,
    Dark sportsbook, Minimal and Terminal all restyle them; Terminal's
@@ -690,7 +704,7 @@ html[data-theme="dark"] .beton-betonline,html[data-theme="terminal"] .beton-beto
 .rec-profit{font-family:var(--mono);font-weight:700;white-space:nowrap}
 .rec-profit.pos{color:var(--good)} .rec-profit.neg{color:var(--bad)}
 @media(max-width:640px){.bets-hero{padding:18px 16px}.bet-card{padding:15px 16px}.parlay-card{padding:16px 17px}.bet-prob{flex-wrap:wrap}.bet-prob-label{flex:1 1 100%}}
-html[data-theme="minimal"] .bets-hero,html[data-theme="minimal"] .bet-card,html[data-theme="minimal"] .parlay-card,html[data-theme="minimal"] .tally-block{border-radius:8px}
+html[data-theme="minimal"] .bets-hero,html[data-theme="minimal"] .bet-card,html[data-theme="minimal"] .parlay-card,html[data-theme="minimal"] .tally-block,html[data-theme="minimal"] .period-block{border-radius:8px}
 html[data-theme="terminal"] .bets-hero{background:var(--panel);color:var(--ink);border-color:var(--line)}
 html[data-theme="terminal"] .bets-hero .bets-date{background:var(--accent);color:var(--accent-ink)}
 html[data-theme="terminal"] .bet-value.lean{color:#8ab8ff;background:#17293f;border-color:#8ab8ff}
@@ -1361,6 +1375,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <div class="tally-big" id="tallyBig">No settled bets yet</div>
       <p id="tallySub">Settled bets are counted at $100 per bet, so the profit is what $100 bets would have made or lost.</p>
       <div class="tally-grid" id="tallyGrid"></div>
+      <div id="periodRecord"></div>
     </div>
 
     <div id="recordDays"></div>
@@ -5717,6 +5732,92 @@ function tallyBlockHtml(title,t){
   return '<div class="tally-block"><h3>'+esc(title)+'</h3><div class="tally-line">'+esc(record)+'</div>'
     +'<p>Profit: <b>'+esc(fmtProfit(t.profit))+'</b> &nbsp;\u00b7&nbsp; ROI: <b>'+esc(fmtRoi(t.roi_pct))+'</b> &nbsp;\u00b7&nbsp; '+t.n_graded+' settled</p></div>';
 }
+/* This week / this month, counted in the browser from the same settled
+   rows listed below — nothing is stored or sent anywhere. Weeks run
+   Monday to Sunday and are dated by each pick's own date. Only finished
+   bets count (win, loss or push); a row with no readable date is skipped
+   rather than guessed at. Top Tier rows carry no per-pick dollars, so
+   the Top Tier version of this shows wins and losses only. */
+var MONTH_FULL=["January","February","March","April","May","June","July","August","September","October","November","December"];
+function parseRowDate(v){
+  if(!v) return null;
+  var m=String(v).match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if(!m) return null;
+  var d=new Date(+m[1],+m[2]-1,+m[3]);
+  return isNaN(d.getTime())?null:d;
+}
+function periodRange(kind){
+  var now=new Date(), start, end;
+  if(kind==="week"){
+    start=new Date(now.getFullYear(),now.getMonth(),now.getDate()-((now.getDay()+6)%7));
+    end=new Date(start.getFullYear(),start.getMonth(),start.getDate()+6);
+  } else {
+    start=new Date(now.getFullYear(),now.getMonth(),1);
+    end=new Date(now.getFullYear(),now.getMonth()+1,0);
+  }
+  return {start:start,end:end};
+}
+function rowsInPeriod(rows,kind){
+  var r=periodRange(kind);
+  return (rows||[]).filter(function(row){
+    var o=String(row.outcome||"").toLowerCase();
+    if(o!=="win"&&o!=="loss"&&o!=="push") return false;
+    var d=parseRowDate(row.date);
+    return d&&d>=r.start&&d<=r.end;
+  });
+}
+function wlText(t){
+  return t.wins+" wins, "+t.losses+" losses"+(t.pushes?", "+t.pushes+" pushes":"");
+}
+function periodLineHtml(label,rows){
+  if(!rows.length) return '<p class="period-line"><span class="sub-label">'+esc(label)+':</span> nothing settled yet</p>';
+  var t=computedTally(rows);
+  return '<p class="period-line"><span class="sub-label">'+esc(label)+':</span> <b>'+esc(wlText(t))+'</b> &middot; '+esc(fmtProfit(t.profit))+'</p>';
+}
+function periodBlockHtml(title,dates,straights,parlays){
+  var props=straights.filter(function(r){return String(r.type||"").toLowerCase()==="prop";});
+  var mls=straights.filter(function(r){return String(r.type||"").toLowerCase()==="moneyline";});
+  return '<div class="period-block"><h3>'+esc(title)+'</h3><p class="period-dates">'+esc(dates)+'</p>'
+    +periodLineHtml("Straight bets",straights)
+    +periodLineHtml("Player props",props)
+    +periodLineHtml("Moneylines",mls)
+    +periodLineHtml("Parlays",parlays)
+    +'</div>';
+}
+function renderPeriodRecord(straights,parlays){
+  var el=$("periodRecord");
+  if(!el) return;
+  var all=(straights||[]).concat(parlays||[]);
+  if(!all.length){
+    el.innerHTML='<div class="period-record"><p class="period-note">Nothing has settled yet, so there is no week or month to show. Once the first bets finish, this spot shows how the current week and month are going.</p></div>';
+    return;
+  }
+  var wr=periodRange("week"), mr=periodRange("month");
+  var weekStraights=rowsInPeriod(straights,"week"), weekParlays=rowsInPeriod(parlays,"week");
+  var earliest=null;
+  all.forEach(function(r){
+    var d=parseRowDate(r.date);
+    if(d&&(!earliest||d<earliest)) earliest=d;
+  });
+  var weekDates={};
+  weekStraights.concat(weekParlays).forEach(function(r){weekDates[r.date]=true;});
+  var nDays=Object.keys(weekDates).length;
+  var note="";
+  if(earliest&&earliest>=wr.start&&nDays>0){
+    note='<p class="period-note">Early days, plainly: this record only started '+esc(shortDate(earliest))+', so &ldquo;this week&rdquo; so far is just '+nDays+(nDays===1?" day":" days")+' of settled bets. It will mean more once a few full weeks are in.</p>';
+  }
+  el.innerHTML='<div class="period-record"><div class="period-grid">'
+    +periodBlockHtml("This week",shortDate(wr.start)+" \u2013 "+shortDate(wr.end),weekStraights,weekParlays)
+    +periodBlockHtml("This month",MONTH_FULL[mr.start.getMonth()]+" "+mr.start.getFullYear(),rowsInPeriod(straights,"month"),rowsInPeriod(parlays,"month"))
+    +'</div>'+note+'</div>';
+}
+function ttPeriodLineHtml(rows){
+  function part(label,list){
+    if(!list.length) return esc(label)+": nothing settled yet";
+    return esc(label)+": <b>"+esc(wlText(computedTally(list)))+"</b>";
+  }
+  return '<p class="tt-period">'+part("This week",rowsInPeriod(rows,"week"))+' &middot; '+part("This month",rowsInPeriod(rows,"month"))+'</p>';
+}
 function renderRecord(){
   var rows=(TRACK_RECORD||[]).filter(function(r){return !isSoccerRow(r);});
   var pars=(PARLAY_RECORD||[]).filter(function(r){return !isSoccerRow(r);});
@@ -5732,6 +5833,7 @@ function renderRecord(){
   }
   var grid=$("tallyGrid");
   if(grid) grid.innerHTML=totalGraded===0?"":tallyBlockHtml("Straight bets",s)+tallyBlockHtml("Parlays",p);
+  renderPeriodRecord(rows,pars);
   var days=$("recordDays");
   if(days){
     if(!rows.length){
@@ -5791,7 +5893,8 @@ function renderTopTier(){
   var rows=(TT_RECORD||[]).filter(function(r){return !isSoccerRow(r);});
   if(!rows.length){el.innerHTML='<p class="empty-note">No Top Tier picks yet.</p>';return;}
   var t=TT_TALLY||{wins:0,losses:0,n_graded:0,win_rate:0};
-  var head='<div class="tally-block" style="margin-bottom:14px"><div class="tt-tally">'+t.wins+'-'+t.losses+' &middot; '+Math.round((t.win_rate||0)*100)+'%</div><p>'+t.n_graded+' settled picks so far</p></div>';
+  var head='<div class="tally-block" style="margin-bottom:14px"><div class="tt-tally">'+t.wins+'-'+t.losses+' &middot; '+Math.round((t.win_rate||0)*100)+'%</div><p>'+t.n_graded+' settled picks so far</p></div>'
+    +ttPeriodLineHtml(rows);
   var groups={}, order=[];
   rows.forEach(function(r){
     if(!groups[r.date]){groups[r.date]=[];order.push(r.date);}
