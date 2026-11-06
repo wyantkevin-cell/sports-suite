@@ -1108,8 +1108,8 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 
     <p class="ticket-step"><span class="n">1</span> Snap your ticket</p>
     <div class="snap-wrap">
-      <label class="btn snap-btn" for="slipUpload">Snap your ticket</label>
-      <input type="file" id="slipUpload" accept="image/*" hidden>
+      <button type="button" class="btn snap-btn" id="snapBtn">Snap your ticket</button>
+      <input type="file" id="slipUpload" accept="image/*" style="position:absolute;width:1px;height:1px;opacity:0;overflow:hidden">
       <p class="note" style="margin:10px 0 0">Any book works. Your photo never leaves your phone.</p>
     </div>
 
@@ -3808,105 +3808,106 @@ try{renderTD();}catch(e){}
 
 /* ================= PLAYER PICKS — Top props, Nov 4–5 ================= */
 var TOP_PROPS=[
+  {player:"LeQuint Allen Jr.",team:"JAX",sport:"NFL",date:"Nov 5",prop:"yes no line anytime TD",line:"+2200",guess:10.7,tier:"strong",flag:"",value_pct:146.56,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV05JACBAL-JACLALLEN5-1", "novig": null},line_move:{"from": "1600", "to": "2200", "at": "2026-11-05 18:11:31 PST"}},
   {player:"Devontez Walker",top_tier:true,team:"BAL",sport:"NFL",date:"Nov 5",prop:"yes no line anytime TD",line:"+2500",guess:9.3,tier:"strong",flag:"",value_pct:140.76,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": "2200", "to": "2500", "at": "2026-11-05 16:22:56 PST"}},
   {player:"Josh Cuevas",team:"BAL",sport:"NFL",date:"Nov 5",prop:"over 1.5 receptions",line:"+152",guess:73.3,tier:"strong",flag:"",sim_p_over:0.7895,value_pct:84.72,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLREC-26NOV05JACBAL-BALJCUEVAS85-2", "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"},line_move:{"from": 0.5, "to": 1.5, "at": "2026-11-05 16:22:56 PST"}},
-  {player:"LeQuint Allen Jr.",team:"JAX",sport:"NFL",date:"Nov 5",prop:"yes no line anytime TD",line:"+1600",guess:10.7,tier:"strong",flag:"",value_pct:82.24,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV05JACBAL-JACLALLEN5-1", "novig": null},line_move:{"from": "1100", "to": "1600", "at": "2026-11-05 16:19:17 PST"}},
   {player:"Matthew Hibner",top_tier:true,team:"BAL",sport:"NFL",date:"Nov 5",prop:"yes no line anytime TD",line:"+1800",guess:9.2,tier:"strong",flag:"",value_pct:74.42,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": "1900", "to": "1800", "at": "2026-11-05 16:19:17 PST"}},
-  {player:"Brandin Podziemski",team:"GS",sport:"NBA",date:"Nov 5",prop:"over 4.5 assists",line:"+119",guess:73.3,tier:"strong",flag:"",value_pct:60.53,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV05MIAGSW-GSWBPODZIEMSKI2-4", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"},line_move:{"from": 3.5, "to": 4.5, "at": "2026-11-05 16:22:56 PST"}},
   {player:"Rashod Bateman",top_tier:true,team:"BAL",sport:"NFL",date:"Nov 5",prop:"yes no line anytime TD",line:"+900",guess:13.8,tier:"strong",flag:"",value_pct:38.4,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV05JACBAL-BALRBATEMAN7-1", "novig": null},line_move:{"from": "950", "to": "900", "at": "2026-11-05 16:19:17 PST"}},
-  {player:"Bam Adebayo",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 9.5 rebounds",line:"+108",guess:62.2,tier:"strong",flag:"",value_pct:29.36,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05MIAGSW-MIABADEBAYO13-10", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
-  {player:"Draymond Green",team:"GS",sport:"NBA",date:"Nov 5",prop:"under 5.5 points",line:"-113",guess:68.5,tier:"strong",flag:"",value_pct:29.04,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
-  {player:"Jase Richardson",top_tier:true,team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 8.5 points",line:"-113",guess:66.7,tier:"strong",flag:"",value_pct:25.76,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV05ORLPHX-ORLJRICHARDSON11-10", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
+  {player:"Giannis Antetokounmpo",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 5.5 assists",line:"+116",guess:63.9,tier:"strong",flag:"",value_pct:38.07,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV05MIAGSW-MIAGANTETOKOUNMPO7-8", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"},line_move:{"from": 6.5, "to": 5.5, "at": "2026-11-05 18:11:31 PST"}},
+  {player:"Jase Richardson",top_tier:true,team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 7.5 points",line:"+102",guess:66.7,tier:"strong",flag:"",value_pct:34.77,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV05ORLPHX-ORLJRICHARDSON11-10", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"},line_move:{"from": 8.5, "to": 7.5, "at": "2026-11-05 18:11:31 PST"}},
   {player:"Justice Hill",team:"BAL",sport:"NFL",date:"Nov 5",prop:"under 2.5 receptions",line:"+102",guess:61.9,tier:"strong",flag:"",sim_p_over:0.232,sim_flag:"sim/model disagree by 15%",value_pct:24.98,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNFLREC-26NOV05JACBAL-BALJHILL43-3", "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"}},
+  {player:"Draymond Green",team:"GS",sport:"NBA",date:"Nov 5",prop:"under 5.5 points",line:"-122",guess:68.5,tier:"strong",flag:"",value_pct:24.57,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
   {player:"Rashod Bateman",team:"BAL",sport:"NFL",date:"Nov 5",prop:"over 13.5 receiving yards",line:"-113",guess:65.7,tier:"strong",flag:"Joe Fagnano starting at QB (3rd string, Lamar Jackson out, Tyler Huntley out (toe)) — model is blind to this",value_pct:23.84,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"},line_move:{"from": 12.5, "to": 13.5, "at": "2026-11-05 16:22:56 PST"}},
-  {player:"Franz Wagner",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 23.5 points",line:"-122",guess:67.5,tier:"strong",flag:"",value_pct:22.77,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV05ORLPHX-ORLFWAGNER22-25", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
-  {player:"Martin Necas",team:"COL",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-118",guess:66.4,tier:"strong",flag:"",value_pct:22.62,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5f1f-7af3-a025-c35d637440d3"}},
+  {player:"Franz Wagner",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 23.5 points",line:"-120",guess:67.5,tier:"strong",flag:"",value_pct:23.7,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV05ORLPHX-ORLFWAGNER22-25", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
+  {player:"Andrew Wiggins",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 10.5 points",line:"-104",guess:62.1,tier:"strong",flag:"",value_pct:21.73,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"},line_move:{"from": 12.5, "to": 10.5, "at": "2026-11-05 16:19:17 PST"}},
+  {player:"Martin Necas",team:"COL",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-120",guess:66.4,tier:"strong",flag:"",value_pct:21.68,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5f1f-7af3-a025-c35d637440d3"}},
   {player:"Anthony Cirelli",team:"TB",sport:"NHL",date:"Nov 5",prop:"under 1.5 shots on goal",line:"+130",guess:51.9,tier:"strong",flag:"",value_pct:19.47,markets:{"polymarket": null, "kalshi": null, "novig": null}},
   {player:"Jesper Bratt",team:"NJ",sport:"NHL",date:"Nov 5",prop:"under 1.5 shots on goal",line:"+135",guess:50.8,tier:"strong",flag:"",value_pct:19.45,markets:{"polymarket": null, "kalshi": null, "novig": null}},
   {player:"Josh Cameron",team:"JAX",sport:"NFL",date:"Nov 5",prop:"yes no line anytime TD",line:"+650",guess:15.9,tier:"strong",flag:"",value_pct:19.23,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV05JACBAL-JACJCAMERON19-1", "novig": null},line_move:{"from": "700", "to": "650", "at": "2026-11-05 10:24:31 PST"}},
-  {player:"Stephen Curry",team:"GS",sport:"NBA",date:"Nov 5",prop:"under 4.5 assists",line:"+104",guess:57.5,tier:"strong",flag:"",value_pct:17.3,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV05MIAGSW-GSWSCURRY30-6", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
-  {player:"Will Richard",team:"GS",sport:"NBA",date:"Nov 5",prop:"under 5.5 points",line:"+102",guess:57.4,tier:"strong",flag:"",value_pct:15.87,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
-  {player:"Georges Niang",team:"GS",sport:"NBA",date:"Nov 5",prop:"under 7.5 points",line:"-115",guess:61.9,tier:"strong",flag:"",value_pct:15.74,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
+  {player:"Desmond Bane",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 20.5 points",line:"-111",guess:60.9,tier:"strong",flag:"",value_pct:15.8,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV05ORLPHX-ORLDBANE3-20", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
+  {player:"Brandin Podziemski",team:"GS",sport:"NBA",date:"Nov 5",prop:"over 3.5 assists",line:"-174",guess:73.3,tier:"strong",flag:"",value_pct:15.43,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV05MIAGSW-GSWBPODZIEMSKI2-4", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"},line_move:{"from": 4.5, "to": 3.5, "at": "2026-11-05 18:11:31 PST"}},
   {player:"Zay Flowers",team:"BAL",sport:"NFL",date:"Nov 5",prop:"over 48.5 receiving yards",line:"-113",guess:61.1,tier:"strong",flag:"Joe Fagnano starting at QB (3rd string, Lamar Jackson out, Tyler Huntley out (toe)) — model is blind to this",value_pct:15.25,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLRECYDS-26NOV05JACBAL-BALZFLOWERS4-50", "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"}},
   {player:"Erik Karlsson",team:"PIT",sport:"NHL",date:"Nov 5",prop:"under 1.5 shots on goal",line:"+142",guess:47.6,tier:"strong",flag:"",value_pct:15.14,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5b79-7953-a135-be19e9c4c155"}},
   {player:"Brayden Point",team:"TB",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-114",guess:61.3,tier:"strong",flag:"",value_pct:15.05,markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {player:"Andrew Wiggins",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 3.5 rebounds",line:"-104",guess:58.5,tier:"strong",flag:"",value_pct:14.79,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05MIAGSW-MIAAWIGGINS22-4", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
   {player:"Justice Hill",team:"BAL",sport:"NFL",date:"Nov 5",prop:"under 15.5 receiving yards",line:"-113",guess:60.8,tier:"strong",flag:"",value_pct:14.66,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNFLRECYDS-26NOV05JACBAL-BALJHILL43-15", "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"},line_move:{"from": 14.5, "to": 15.5, "at": "2026-11-05 16:19:17 PST"}},
   {player:"Mark Andrews",team:"BAL",sport:"NFL",date:"Nov 5",prop:"over 2.5 receptions",line:"-130",guess:64.8,tier:"strong",flag:"",sim_p_over:0.6875,value_pct:14.61,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLREC-26NOV05JACBAL-BALMANDREWS89-3", "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"}},
-  {player:"Klay Thompson",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 11.5 points",line:"-101",guess:57.5,tier:"strong",flag:"",value_pct:14.51,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"},line_move:{"from": 12.5, "to": 11.5, "at": "2026-11-05 16:19:17 PST"}},
-  {player:"Desmond Bane",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 20.5 points",line:"-115",guess:60.9,tier:"strong",flag:"",value_pct:13.89,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV05ORLPHX-ORLDBANE3-20", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
-  {player:"Jase Richardson",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 2.5 rebounds",line:"-113",guess:60.4,tier:"strong",flag:"",value_pct:13.76,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05ORLPHX-ORLJRICHARDSON11-4", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
-  {player:"Andrew Wiggins",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 3.5 rebounds",line:"-106",guess:58.5,tier:"strong",flag:"",value_pct:13.73,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05MIAGSW-MIAAWIGGINS22-4", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
-  {player:"Desmond Bane",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 3.5 assists",line:"-128",guess:63.8,tier:"strong",flag:"",value_pct:13.64,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV05ORLPHX-ORLDBANE3-4", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
+  {player:"Bam Adebayo",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 18.5 points",line:"-115",guess:61.3,tier:"strong",flag:"",value_pct:14.57,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV05MIAGSW-MIABADEBAYO13-20", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"},line_move:{"from": 20.5, "to": 18.5, "at": "2026-11-05 16:19:17 PST"}},
+  {player:"Georges Niang",team:"GS",sport:"NBA",date:"Nov 5",prop:"under 7.5 points",line:"-118",guess:61.9,tier:"strong",flag:"",value_pct:14.38,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
+  {player:"Stephen Curry",team:"GS",sport:"NBA",date:"Nov 5",prop:"under 4.5 assists",line:"-102",guess:57.5,tier:"strong",flag:"",value_pct:13.87,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV05MIAGSW-GSWSCURRY30-6", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
+  {player:"Will Richard",team:"GS",sport:"NBA",date:"Nov 5",prop:"under 5.5 points",line:"-102",guess:57.4,tier:"strong",flag:"",value_pct:13.6,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
   {player:"Rashod Bateman",team:"BAL",sport:"NFL",date:"Nov 5",prop:"over 1.5 receptions",line:"+116",guess:52.6,tier:"strong",flag:"",sim_p_over:0.8195,sim_flag:"sim/model disagree by 29%",value_pct:13.55,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLREC-26NOV05JACBAL-BALRBATEMAN7-2", "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"}},
   {player:"Kasperi Kapanen",team:"EDM",sport:"NHL",date:"Nov 5",prop:"under 1.5 shots on goal",line:"+122",guess:51.1,tier:"strong",flag:"",value_pct:13.53,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5e50-72f2-96f1-9d6fc22b9424"}},
   {player:"Morgan Geekie",team:"BOS",sport:"NHL",date:"Nov 5",prop:"under 1.5 shots on goal",line:"+126",guess:50.1,tier:"strong",flag:"",value_pct:13.35,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5b79-7953-a135-be19e9c4c155"}},
-  {player:"Bam Adebayo",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 18.5 points",line:"-118",guess:61.3,tier:"strong",flag:"",value_pct:13.21,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV05MIAGSW-MIABADEBAYO13-20", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"},line_move:{"from": 20.5, "to": 18.5, "at": "2026-11-05 16:19:17 PST"}},
   {player:"Mark Andrews",team:"BAL",sport:"NFL",date:"Nov 5",prop:"over 18.5 receiving yards",line:"-113",guess:60.1,tier:"strong",flag:"Joe Fagnano starting at QB (3rd string, Lamar Jackson out, Tyler Huntley out (toe)) — model is blind to this",value_pct:13.19,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLRECYDS-26NOV05JACBAL-BALMANDREWS89-20", "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"}},
   {player:"Tommy Novak",team:"PIT",sport:"NHL",date:"Nov 5",prop:"under 1.5 shots on goal",line:"+122",guess:50.9,tier:"strong",flag:"",value_pct:13.09,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5b79-7953-a135-be19e9c4c155"}},
-  {player:"Wendell Carter Jr",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 11.5 points",line:"+104",guess:55.2,tier:"strong",flag:"",value_pct:12.57,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"},line_move:{"from": 12.5, "to": 11.5, "at": "2026-11-05 16:19:17 PST"}},
+  {player:"Stephen Curry",team:"GS",sport:"NBA",date:"Nov 5",prop:"under 3.5 rebounds",line:"-104",guess:57,tier:"strong",flag:"",value_pct:11.73,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05MIAGSW-GSWSCURRY30-4", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
   {player:"Parker Washington",team:"JAX",sport:"NFL",date:"Nov 5",prop:"under 60.5 receiving yards",line:"-113",guess:59.2,tier:"strong",flag:"",value_pct:11.68,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLRECYDS-26NOV05JACBAL-JACPWASHINGTON11-60", "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"}},
   {player:"Matthew Hibner",team:"BAL",sport:"NFL",date:"Nov 5",prop:"over 0.5 receptions",line:"+102",guess:55.2,tier:"strong",flag:"",sim_p_over:0.809,sim_flag:"sim/model disagree by 26%",value_pct:11.6,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"}},
   {player:"Alexandre Texier",team:"MTL",sport:"NHL",date:"Nov 5",prop:"over 1.5 shots on goal",line:"+145",guess:45.5,tier:"strong",flag:"",value_pct:11.51,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5a2a-7e83-8eee-b3234d35925b"}},
-  {player:"Pelle Larsson",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 10.5 points",line:"-102",guess:56.2,tier:"strong",flag:"",value_pct:11.24,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"},line_move:{"from": 12.5, "to": 10.5, "at": "2026-11-05 16:19:17 PST"}},
   {player:"Sidney Crosby",team:"PIT",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-176",guess:70.8,tier:"strong",flag:"",value_pct:11.06,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5b79-7953-a135-be19e9c4c155"}},
   {player:"Jake Debrusk",team:"VAN",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-164",guess:68.9,tier:"strong",flag:"",value_pct:10.91,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-598d-7320-82e0-04ab421e8469"}},
-  {player:"Gabriel Landeskog",team:"COL",sport:"NHL",date:"Nov 5",prop:"under 1.5 shots on goal",line:"-110",guess:58,tier:"strong",flag:"",value_pct:10.69,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5f1f-7af3-a025-c35d637440d3"}},
-  {player:"Andrew Wiggins",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 10.5 points",line:"-128",guess:62.1,tier:"strong",flag:"",value_pct:10.54,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"},line_move:{"from": 12.5, "to": 10.5, "at": "2026-11-05 16:19:17 PST"}},
-  {player:"Desmond Bane",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 4.5 rebounds",line:"-136",guess:63.2,tier:"lean",flag:"",value_pct:9.76,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05ORLPHX-ORLDBANE3-6", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
+  {player:"Pelle Larsson",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 10.5 points",line:"-104",guess:56.2,tier:"strong",flag:"",value_pct:10.18,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"},line_move:{"from": 12.5, "to": 10.5, "at": "2026-11-05 16:19:17 PST"}},
   {player:"Gabriel Vilardi",team:"WPG",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-174",guess:69.5,tier:"lean",flag:"",value_pct:9.52,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-598d-7320-82e0-04ab421e8469"}},
   {player:"Jack Eichel",team:"VGK",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-135",guess:62.9,tier:"lean",flag:"",value_pct:9.43,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-58c0-7132-adcf-3f7812b34bbb"}},
   {player:"Trevor Lawrence",team:"JAX",sport:"NFL",date:"Nov 5",prop:"under 12.5 rushing yards",line:"-113",guess:58,tier:"lean",flag:"",sim_p_over:0.472,value_pct:9.25,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"}},
+  {player:"Desmond Bane",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 3.5 assists",line:"-141",guess:63.8,tier:"lean",flag:"",value_pct:9.05,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV05ORLPHX-ORLDBANE3-4", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
   {player:"Jackson Lacombe",team:"ANA",sport:"NHL",date:"Nov 5",prop:"under 1.5 shots on goal",line:"-145",guess:64.5,tier:"lean",flag:"",value_pct:8.93,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5e50-72f2-96f1-9d6fc22b9424"}},
-  {player:"Davion Mitchell",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 2.5 rebounds",line:"-132",guess:62,tier:"lean",flag:"",value_pct:8.92,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05MIAGSW-MIADMITCHELL2-4", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
   {player:"Brian Thomas Jr.",team:"JAX",sport:"NFL",date:"Nov 5",prop:"yes no line anytime TD",line:"+550",guess:16.8,tier:"lean",flag:"",value_pct:8.88,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV05JACBAL-JACBTHOMAS7-1", "novig": null}},
-  {player:"Will Richard",team:"GS",sport:"NBA",date:"Nov 5",prop:"under 2.5 rebounds",line:"-136",guess:62.5,tier:"lean",flag:"",value_pct:8.44,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05MIAGSW-GSWWRICHARD3-4", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
   {player:"Jakobi Meyers",team:"JAX",sport:"NFL",date:"Nov 5",prop:"under 38.5 receiving yards",line:"-113",guess:57.5,tier:"lean",flag:"",value_pct:8.33,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLRECYDS-26NOV05JACBAL-JACJMEYERS3-40", "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"}},
   {player:"Jakobi Meyers",team:"JAX",sport:"NFL",date:"Nov 5",prop:"under 3.5 receptions",line:"-166",guess:67.5,tier:"lean",flag:"",sim_p_over:0.3795,value_pct:8.22,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLREC-26NOV05JACBAL-JACJMEYERS3-4", "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"}},
+  {player:"Desmond Bane",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 4.5 rebounds",line:"-141",guess:63.2,tier:"lean",flag:"",value_pct:8.11,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05ORLPHX-ORLDBANE3-6", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
   {player:"Sebastian Aho",team:"CAR",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-130",guess:61,tier:"lean",flag:"",value_pct:7.89,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5c1f-74e1-a761-7a54d286d92b"}},
-  {player:"Steven Stamkos",team:"NSH",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-140",guess:62.8,tier:"lean",flag:"",value_pct:7.67,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5f1f-7af3-a025-c35d637440d3"}},
-  {player:"Stephen Curry",team:"GS",sport:"NBA",date:"Nov 5",prop:"under 3.5 rebounds",line:"-113",guess:57,tier:"lean",flag:"",value_pct:7.37,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05MIAGSW-GSWSCURRY30-4", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
+  {player:"Wendell Carter Jr",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 11.5 points",line:"-105",guess:55.2,tier:"lean",flag:"",value_pct:7.73,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"},line_move:{"from": 12.5, "to": 11.5, "at": "2026-11-05 16:19:17 PST"}},
+  {player:"Pelle Larsson",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 3.5 rebounds",line:"-113",guess:57.1,tier:"lean",flag:"",value_pct:7.65,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05MIAGSW-MIAPLARSSON9-4", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
+  {player:"Davion Mitchell",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 2.5 rebounds",line:"-136",guess:62,tier:"lean",flag:"",value_pct:7.54,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05MIAGSW-MIADMITCHELL2-4", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
+  {player:"Jamal Cain",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 6.5 points",line:"-128",guess:60,tier:"lean",flag:"",value_pct:6.93,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
   {player:"Mika Zibanejad",team:"NYR",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-148",guess:63.7,tier:"lean",flag:"",value_pct:6.76,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5cc4-7630-991b-7c909b5b4c0b"}},
   {player:"Derrick Henry",team:"BAL",sport:"NFL",date:"Nov 5",prop:"under 7.5 receiving yards",line:"-125",guess:59.1,tier:"lean",flag:"",value_pct:6.37,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"}},
   {player:"Dawson Mercer",team:"WPG",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-170",guess:67,tier:"lean",flag:"",value_pct:6.35,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-598d-7320-82e0-04ab421e8469"}},
-  {player:"Collin Gillespie",team:"PHX",sport:"NBA",date:"Nov 5",prop:"under 2.5 3-pointers",line:"-184",guess:68.8,tier:"lean",flag:"",sim_p_over:0.2275,value_pct:6.27,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBA3PT-26NOV05ORLPHX-PHXCGILLESPIE12-3", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"},line_move:{"from": "-184", "to": 2.5, "at": "2026-11-05 16:22:56 PST"}},
+  {player:"Gabriel Landeskog",team:"COL",sport:"NHL",date:"Nov 5",prop:"under 1.5 shots on goal",line:"-120",guess:58,tier:"lean",flag:"",value_pct:6.3,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5f1f-7af3-a025-c35d637440d3"}},
   {player:"Josh Cameron",team:"JAX",sport:"NFL",date:"Nov 5",prop:"over 8.5 receiving yards",line:"-113",guess:56.4,tier:"lean",flag:"",value_pct:6.22,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLRECYDS-26NOV05JACBAL-JACJCAMERON19-10", "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"},line_move:{"from": 10.5, "to": 8.5, "at": "2026-11-05 16:19:17 PST"}},
+  {player:"Steven Stamkos",team:"NSH",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-145",guess:62.8,tier:"lean",flag:"",value_pct:6.13,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5f1f-7af3-a025-c35d637440d3"}},
   {player:"Andrei Svechnikov",team:"CAR",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-138",guess:61.5,tier:"lean",flag:"",value_pct:6.1,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5c1f-74e1-a761-7a54d286d92b"}},
   {player:"Clayton Keller",team:"UTA",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-154",guess:64.2,tier:"lean",flag:"",value_pct:5.87,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5a2a-7e83-8eee-b3234d35925b"}},
   {player:"Nate Boerkircher",team:"JAX",sport:"NFL",date:"Nov 5",prop:"over 0.5 receptions",line:"-216",guess:72.3,tier:"lean",flag:"",sim_p_over:0.752,value_pct:5.82,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLREC-26NOV05JACBAL-JACNBOERKIRCHER87-1", "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"}},
-  {player:"Giannis Antetokounmpo",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 6.5 assists",line:"-153",guess:63.9,tier:"lean",flag:"",value_pct:5.7,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV05MIAGSW-MIAGANTETOKOUNMPO7-8", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
   {player:"Brian Thomas Jr",team:"JAX",sport:"NFL",date:"Nov 5",prop:"over 15.5 receiving yards",line:"-113",guess:56,tier:"lean",flag:"",value_pct:5.61,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"},line_move:{"from": 12.5, "to": 15.5, "at": "2026-11-05 16:19:17 PST"}},
   {player:"Beckett Sennecke",team:"ANA",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-138",guess:61.2,tier:"lean",flag:"",value_pct:5.48,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5e50-72f2-96f1-9d6fc22b9424"}},
   {player:"Trevor Zegras",team:"PHI",sport:"NHL",date:"Nov 5",prop:"over 1.5 shots on goal",line:"-168",guess:66.1,tier:"lean",flag:"",value_pct:5.44,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5cc4-7630-991b-7c909b5b4c0b"}},
   {player:"Derrick Henry",team:"BAL",sport:"NFL",date:"Nov 5",prop:"yes no line anytime TD",line:"+125",guess:46.9,tier:"lean",flag:"",value_pct:5.41,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV05JACBAL-BALDHENRY22-1", "novig": null},line_move:{"from": "130", "to": "125", "at": "2026-11-05 16:19:17 PST"}},
   {player:"Matthew Schaefer",team:"NYI",sport:"NHL",date:"Nov 5",prop:"over 2.5 shots on goal",line:"-114",guess:56,tier:"lean",flag:"",value_pct:5.08,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5c1f-74e1-a761-7a54d286d92b"}},
-  {player:"Giannis Antetokounmpo",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 28.5 points",line:"-111",guess:55.2,tier:"lean",flag:"",value_pct:4.97,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV05MIAGSW-MIAGANTETOKOUNMPO7-30", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
-  {player:"Jase Richardson",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 2.5 assists",line:"-125",guess:58.1,tier:"lean",flag:"",value_pct:4.51,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV05ORLPHX-ORLJRICHARDSON11-4", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
+  {player:"Tristan Da Silva",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 4.5 rebounds",line:"-143",guess:61.8,tier:"lean",flag:"",value_pct:5.07,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05ORLPHX-ORLTDASILVA23-6", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
+  {player:"Collin Gillespie",team:"PHX",sport:"NBA",date:"Nov 5",prop:"under 2.5 3-pointers",line:"-191",guess:68.8,tier:"lean",flag:"",sim_p_over:0.2275,value_pct:4.9,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBA3PT-26NOV05ORLPHX-PHXCGILLESPIE12-3", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"},line_move:{"from": "-184", "to": 2.5, "at": "2026-11-05 16:22:56 PST"}},
+  {player:"Nazem Kadri",team:"COL",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-135",guess:60.2,tier:"lean",flag:"",value_pct:4.83,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5f1f-7af3-a025-c35d637440d3"}},
+  {player:"Bam Adebayo",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 9.5 rebounds",line:"-146",guess:62.2,tier:"lean",flag:"",value_pct:4.79,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05MIAGSW-MIABADEBAYO13-10", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
+  {player:"Klay Thompson",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 11.5 points",line:"-122",guess:57.5,tier:"lean",flag:"",value_pct:4.7,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"},line_move:{"from": 12.5, "to": 11.5, "at": "2026-11-05 16:19:17 PST"}},
   {player:"John Carlson",team:"TB",sport:"NHL",date:"Nov 5",prop:"over 1.5 shots on goal",line:"-188",guess:68.1,tier:"lean",flag:"",value_pct:4.35,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {player:"Travis Hunter",team:"JAX",sport:"NFL",date:"Nov 5",prop:"under 8.5 receiving yards",line:"-113",guess:55.2,tier:"lean",flag:"",value_pct:4.11,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNFLRECYDS-26NOV05JACBAL-JACTHUNTER12-10", "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"},line_move:{"from": 9.5, "to": 8.5, "at": "2026-11-05 16:19:17 PST"}},
   {player:"Andrew Wiggins",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 1.5 3-pointers",line:"-115",guess:55.6,tier:"lean",flag:"",sim_p_over:0.347,value_pct:3.91,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBA3PT-26NOV05MIAGSW-MIAAWIGGINS22-2", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"},line_move:{"from": "-113", "to": 1.5, "at": "2026-11-05 16:22:56 PST"}},
-  {player:"Franz Wagner",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 1.5 3-pointers",line:"-158",guess:63.6,tier:"lean",flag:"",sim_p_over:0.214,sim_flag:"sim/model disagree by 15%",value_pct:3.87,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBA3PT-26NOV05ORLPHX-ORLFWAGNER22-2", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"},line_move:{"from": "-158", "to": 1.5, "at": "2026-11-05 16:22:56 PST"}},
   {player:"Derrick Henry",team:"BAL",sport:"NFL",date:"Nov 5",prop:"under 71.5 rushing yards",line:"-113",guess:55,tier:"lean",flag:"",sim_p_over:0.5355,value_pct:3.73,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 68.5, "to": 71.5, "at": "2026-11-05 16:19:17 PST"}},
-  {player:"Jamal Cain",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 6.5 points",line:"-138",guess:60,tier:"lean",flag:"",value_pct:3.53,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
   {player:"Leo Carlsson",team:"ANA",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-170",guess:65.1,tier:"lean",flag:"",value_pct:3.43,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5e50-72f2-96f1-9d6fc22b9424"}},
-  {player:"Nazem Kadri",team:"COL",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-140",guess:60.2,tier:"lean",flag:"",value_pct:3.23,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5f1f-7af3-a025-c35d637440d3"}},
-  {player:"Pelle Larsson",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 3.5 rebounds",line:"-124",guess:57.1,tier:"lean",flag:"",value_pct:3.17,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05MIAGSW-MIAPLARSSON9-4", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
+  {player:"Franz Wagner",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 1.5 3-pointers",line:"-161",guess:63.6,tier:"lean",flag:"",sim_p_over:0.214,sim_flag:"sim/model disagree by 15%",value_pct:3.12,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBA3PT-26NOV05ORLPHX-ORLFWAGNER22-2", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"},line_move:{"from": "-158", "to": 1.5, "at": "2026-11-05 16:22:56 PST"}},
+  {player:"Will Richard",team:"GS",sport:"NBA",date:"Nov 5",prop:"under 2.5 rebounds",line:"-154",guess:62.5,tier:"lean",flag:"",value_pct:3.07,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05MIAGSW-GSWWRICHARD3-4", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
   {player:"Gabe Perreault",team:"NYR",sport:"NHL",date:"Nov 5",prop:"over 1.5 shots on goal",line:"-120",guess:56.2,tier:"lean",flag:"",value_pct:3.02,markets:{"polymarket": null, "kalshi": null, "novig": null}},
   {player:"Nikolaj Ehlers",team:"CAR",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-156",guess:62.7,tier:"lean",flag:"",value_pct:2.83,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5c1f-74e1-a761-7a54d286d92b"}},
-  {player:"Yaxel Lendeborg",team:"GS",sport:"NBA",date:"Nov 5",prop:"under 7.5 rebounds",line:"-138",guess:59.6,tier:"lean",flag:"",value_pct:2.72,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05MIAGSW-GSWYLENDEBORG1-8", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
   {player:"Arseny Gritsyuk",team:"NJ",sport:"NHL",date:"Nov 5",prop:"over 1.5 shots on goal",line:"-174",guess:65.1,tier:"lean",flag:"",value_pct:2.53,markets:{"polymarket": null, "kalshi": null, "novig": null}},
   {player:"Rickard Rakell",team:"PIT",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-130",guess:57.9,tier:"lean",flag:"",value_pct:2.51,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5b79-7953-a135-be19e9c4c155"}},
   {player:"Jimmy Snuggerud",team:"STL",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-174",guess:65.1,tier:"lean",flag:"",value_pct:2.45,markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {player:"Klay Thompson",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 2.5 rebounds",line:"-172",guess:64.7,tier:"lean",flag:"",value_pct:2.35,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05MIAGSW-MIAKTHOMPSON11-4", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
+  {player:"Jase Richardson",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 2.5 rebounds",line:"-144",guess:60.4,tier:"lean",flag:"",value_pct:2.26,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05ORLPHX-ORLJRICHARDSON11-4", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
   {player:"Justin Faulk",team:"DET",sport:"NHL",date:"Nov 5",prop:"under 1.5 shots on goal",line:"-145",guess:60.4,tier:"lean",flag:"",value_pct:2.11,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-58c0-7132-adcf-3f7812b34bbb"}},
+  {player:"Yaxel Lendeborg",team:"GS",sport:"NBA",date:"Nov 5",prop:"under 7.5 rebounds",line:"-140",guess:59.6,tier:"lean",flag:"",value_pct:2.1,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05MIAGSW-GSWYLENDEBORG1-8", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
   {player:"Emmitt Finnie",team:"DET",sport:"NHL",date:"Nov 5",prop:"over 1.5 shots on goal",line:"-144",guess:60.2,tier:"lean",flag:"",value_pct:2.09,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-58c0-7132-adcf-3f7812b34bbb"}},
-  {player:"Klay Thompson",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 2.5 rebounds",line:"-174",guess:64.7,tier:"lean",flag:"",value_pct:1.92,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05MIAGSW-MIAKTHOMPSON11-4", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
   {player:"Wyatt Johnston",team:"DAL",sport:"NHL",date:"Nov 5",prop:"under 2.5 shots on goal",line:"-140",guess:59.4,tier:"lean",flag:"",value_pct:1.88,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5d4f-7ad2-9ade-c4c1c77b177a"}},
-  {player:"Tristan Da Silva",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 4.5 rebounds",line:"-156",guess:61.8,tier:"lean",flag:"",value_pct:1.46,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05ORLPHX-ORLTDASILVA23-6", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
   {player:"Derrick Henry",team:"BAL",sport:"NFL",date:"Nov 5",prop:"under 1.5 receptions",line:"-160",guess:62.4,tier:"lean",flag:"",sim_p_over:0.463,value_pct:1.33,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNFLREC-26NOV05JACBAL-BALDHENRY22-2", "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"}},
+  {player:"Giannis Antetokounmpo",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 28.5 points",line:"-120",guess:55.2,tier:"lean",flag:"",value_pct:1.24,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV05MIAGSW-MIAGANTETOKOUNMPO7-30", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
   {player:"Filip Hronek",team:"VAN",sport:"NHL",date:"Nov 5",prop:"under 1.5 shots on goal",line:"-135",guess:58.1,tier:"lean",flag:"",value_pct:1.17,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-598d-7320-82e0-04ab421e8469"}},
   {player:"Parker Washington",team:"JAX",sport:"NFL",date:"Nov 5",prop:"under 4.5 receptions",line:"-180",guess:64.7,tier:"lean",flag:"",sim_p_over:0.4235,value_pct:0.61,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLREC-26NOV05JACBAL-JACPWASHINGTON11-5", "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"}},
-  {player:"Georges Niang",team:"GS",sport:"NBA",date:"Nov 5",prop:"under 3.5 rebounds",line:"-162",guess:61.7,tier:"lean",flag:"",value_pct:-0.23,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05MIAGSW-GSWGNIANGPF-4", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
-  {player:"Bam Adebayo",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 3.5 assists",line:"-153",guess:57.2,tier:"lean",flag:"",value_pct:-5.36,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV05MIAGSW-MIABADEBAYO13-4", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
-  {player:"Mattias Ekholm",team:"EDM",sport:"NHL",date:"Nov 5",prop:"under 1.5 shots on goal",line:"-145",guess:56,tier:"lean",flag:"",value_pct:-5.4,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5e50-72f2-96f1-9d6fc22b9424"}}
+  {player:"Jase Richardson",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 2.5 assists",line:"-141",guess:58.1,tier:"lean",flag:"",value_pct:-0.76,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV05ORLPHX-ORLJRICHARDSON11-4", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
+  {player:"Georges Niang",team:"GS",sport:"NBA",date:"Nov 5",prop:"under 3.5 rebounds",line:"-170",guess:61.7,tier:"lean",flag:"",value_pct:-2.02,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05MIAGSW-GSWGNIANGPF-4", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
+  {player:"Bam Adebayo",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 3.5 assists",line:"-148",guess:57.2,tier:"lean",flag:"",value_pct:-4.1,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV05MIAGSW-MIABADEBAYO13-4", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
+  {player:"Mattias Ekholm",team:"EDM",sport:"NHL",date:"Nov 5",prop:"under 1.5 shots on goal",line:"-145",guess:56,tier:"lean",flag:"",value_pct:-5.4,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a799-5e50-72f2-96f1-9d6fc22b9424"}},
+  {player:"Travis Hunter",team:"JAX",sport:"NFL",date:"Nov 5",prop:"under 0.5 receiving yards",line:"-180",guess:55.2,tier:"lean",flag:"",value_pct:-14.09,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNFLRECYDS-26NOV05JACBAL-JACTHUNTER12-10", "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"},line_move:{"from": 8.5, "to": 0.5, "at": "2026-11-05 18:11:31 PST"}}
+
 ];
 /* ================= LEANS — derived from TOP_PROPS =================
    The ticket checker's preset picks and the Home tab's strongest
@@ -4602,8 +4603,8 @@ function computeTicket(){
     }).join(""):'<p class="note" style="margin-top:0">No legs yet.</p>';
     $("corrNote").innerHTML="";
   }
-  if(n<2||!(ticketPayouts.all>0)){
-    setWaiting(n<2?"Not enough to score yet \u2014 tap the info circle by the score to check the legs, or snap your ticket again.":"We don\u2019t know what this ticket pays yet \u2014 tap the info circle by the score to enter it.");
+  if(n<1||!(ticketPayouts.all>0)){
+    setWaiting(n<1?"Not enough to score yet \u2014 tap the info circle by the score to check the legs, or snap your ticket again.":"We don\u2019t know what this ticket pays yet \u2014 tap the info circle by the score to enter it.");
     return;
   }
   if(missingChance){
@@ -4981,12 +4982,230 @@ function statFromText(seg,fallback){
   if(/rushing/.test(s)) return "Rushing yards";
   if(/passing/.test(s)) return "Passing yards";
   if(/touchdown|\btd\b/.test(s)) return "Touchdown";
+  if(/3\s*point|three|threes/.test(s)) return "3-pointers";
   if(/rebounds/.test(s)) return "Rebounds";
   if(/assists/.test(s)) return "Assists";
   if(/points|pts|\bpa\b/.test(s)) return "Points";
   return fallback||"Points";
 }
+function escRe(s){return String(s).replace(/[.*+?^${}()|[\]\\]/g,"\\$&");}
+function statCanonical(raw){
+  var s=String(raw||"").toLowerCase();
+  if(/anytime|touchdown/.test(s)) return "Touchdown";
+  if(/shots on goal/.test(s)) return "Shots on goal";
+  if(/receiving/.test(s)) return "Receiving yards";
+  if(/rushing/.test(s)) return "Rushing yards";
+  if(/passing/.test(s)) return "Passing yards";
+  if(/receptions/.test(s)) return "Receptions";
+  if(/3\s*-?\s*point|three|threes/.test(s)) return "3-pointers";
+  if(/rebounds/.test(s)) return "Rebounds";
+  if(/assists/.test(s)) return "Assists";
+  if(/blocks/.test(s)) return "Blocks";
+  if(/steals/.test(s)) return "Steals";
+  if(/goals/.test(s)) return "Goals";
+  if(/points/.test(s)) return "Points";
+  return "Points";
+}
+function parseTopProp(prop){
+  var s=String(prop||"").trim();
+  if(/anytime\s*td/i.test(s)) return {stat:"Touchdown",line:null,side:"Yes"};
+  var m=s.match(/^(over|under)\s+(\d+(?:\.\d+)?)\s+(.+)$/i);
+  if(m) return {stat:statCanonical(m[3]),line:parseFloat(m[2]),side:m[1].toLowerCase()==="over"?"Over":"Under"};
+  return null;
+}
+/* The known-leg list for slip matching: the WHOLE board (TOP_PROPS —
+   every sport and prop type), plus the TD and NHL lists. It used to be
+   built from LEANS, which only holds NBA points props, so assists,
+   rebounds, 3-pointers and everything else could never match. */
+function boardKnownLegs(){
+  var known=[];
+  (typeof TOP_PROPS!=="undefined"?TOP_PROPS:[]).forEach(function(r){
+    var pp=parseTopProp(r&&r.prop);
+    if(!pp||!r.player) return;
+    known.push({player:r.player,stat:pp.stat,line:pp.line,side:pp.side,p:(r.guess!=null&&isFinite(r.guess)?Number(r.guess)/100:null),game:null,team:r.team||null});
+  });
+  (typeof TD!=="undefined"?TD:[]).forEach(function(r){known.push({player:r.player,stat:"Touchdown",line:null,side:"Yes",p:r.p,game:r.game,team:r.team});});
+  (typeof NHL!=="undefined"?NHL:[]).forEach(function(r){known.push({player:r.player,stat:"Shots on goal",line:r.line,side:r.side,p:r.cal,game:null,team:r.team});});
+  return known;
+}
+/* A prediction-market Yes/No price: Kalshi-style cents ("YES 62c",
+   "No 38¢", "62 cents") or a Polymarket-style decimal ("No 0.65").
+   Returns {side, mult} — the payout multiplier the price implies. */
+function extractPmPrice(text){
+  var m=text.match(/\b(yes|no)\b\s*[:\-]?\s*\$?\s*(\d{1,3})\s*(?:c|¢|cents)\b/i);
+  if(m){var c1=parseFloat(m[2]); if(c1>0&&c1<100) return {side:m[1].toLowerCase(),mult:100/c1,kind:"cents"};}
+  m=text.match(/(\d{1,3})\s*(?:¢|cents)\b\s*(yes|no)?/i);
+  if(m){var c2=parseFloat(m[1]); if(c2>0&&c2<100) return {side:m[2]?m[2].toLowerCase():null,mult:100/c2,kind:"cents"};}
+  m=text.match(/\b(\d{1,3})c\b\s*(yes|no)\b/i);
+  if(m){var c3=parseFloat(m[1]); if(c3>0&&c3<100) return {side:m[2].toLowerCase(),mult:100/c3,kind:"cents"};}
+  m=text.match(/\b(yes|no)\b\s*[:\-]?\s*\$?\s*(0\.\d{1,2})\b/i);
+  if(m){var pr=parseFloat(m[2]); if(pr>0&&pr<1) return {side:m[1].toLowerCase(),mult:1/pr,kind:"decimal"};}
+  return null;
+}
+/* OCR drops decimal points ("$4.05" -> "405"), so a money value is
+   accepted at face value or shifted by 100 or 10 — whichever lands in
+   the sane range first. Anything else is ignored, never guessed. */
+function saneMoney(raw,min,max){
+  var v=parseFloat(String(raw).replace(",","."));
+  if(!isFinite(v)) return null;
+  if(v>=min&&v<=max) return v;
+  if(v/100>=min&&v/100<=max) return v/100;
+  if(v/10>=min&&v/10<=max) return v/10;
+  return null;
+}
+/* Prediction-market screenshots (Coinbase, Kalshi, Polymarket).
+   Returns an array of legs when the text IS a prediction-market slip
+   (even an empty array — the caller must not fall through to the
+   sportsbook parser, which would mis-read it), or null when it is not
+   one. Detection: an "N+ Market" leg line together with a Cost / Max
+   Payout pair, a Yes/No price (cents or decimal), or a "% chance"
+   line. Real OCR of Coinbase shots never reads "POSITION OPENED", so
+   that phrase is deliberately not a detector. Sets ticketPayouts (and
+   the stake, for Coinbase) as a side effect, like parseSlipText. */
+function parsePredictionSlip(text,known,NICKS){
+  var raw=String(text||"");
+  var legRe=/(\d+)\s*\+\s*(assists|points|threes|3-pointers|3 pointers|rebounds|blocks|steals|goals)\b/gi;
+  var matches=[], lm;
+  while((lm=legRe.exec(raw))!==null){ matches.push({n:parseInt(lm[1],10),market:lm[2],index:lm.index}); }
+  var hasCostPayout=/cost/i.test(raw)&&/max\s*payout/i.test(raw);
+  var priceInfo=extractPmPrice(raw);
+  var chanceM=raw.match(/(\d+(?:\.\d+)?)\s*%\s*chance/i);
+  var hasNPlusLine=matches.length>0||/\d+\s*\+\s*[A-Za-z]/.test(raw);
+  var isPM=(hasNPlusLine&&(hasCostPayout||!!priceInfo||!!chanceM))
+    ||(matches.length===0&&!!priceInfo&&/\bto win\b/i.test(raw));
+  if(!isPM) return null;
+  var legs=[], seen={};
+  function addPmLeg(leg){
+    var key=legKey(leg);
+    if(seen[key]) return;
+    seen[key]=true; legs.push(leg);
+  }
+  function surnameBefore(before){
+    var words=before.match(/[A-Za-z][A-Za-z.'-]*/g)||[];
+    var skip={no:1,yes:1,cost:1,max:1,payout:1,position:1,opened:1,chance:1,vs:1,to:1,win:1,the:1,contracts:1,bought:1,you:1};
+    for(var i=words.length-1;i>=0;i--){
+      var w=words[i].replace(/^[.'-]+|[.'-]+$/g,"");
+      if(!w||w.length===1) continue;
+      if(!/^[A-Z]/.test(w)) continue;
+      if(skip[w.toLowerCase()]) continue;
+      return w;
+    }
+    return null;
+  }
+  matches.forEach(function(mt,mi){
+    var stat=statCanonical(mt.market);
+    var impLine=mt.n-0.5;
+    var before=raw.slice(Math.max(0,mt.index-90),mt.index);
+    var surname=surnameBefore(before);
+    if(!surname) return;
+    /* The "No" side can sit before the name ("No · C. Gillespie",
+       "NO-J. Richardson") or on a price line after the leg ("No 0.65"). */
+    var sPos=before.lastIndexOf(surname);
+    var preSeg=sPos>=0?before.slice(Math.max(0,sPos-24)):"";
+    var noPrefix=/(^|[^A-Za-z])no([^A-Za-z]|$)/i.test(preSeg);
+    var nextStart=(mi+1<matches.length)?matches[mi+1].index:raw.length;
+    var after=raw.slice(mt.index,Math.min(nextStart,mt.index+160));
+    var sideM=after.match(/\b(no|yes)\b\s*[:\-]?\s*\$?\s*(0\.\d{1,2}|\d{1,3}\s*(?:c|¢|cents)\b|\d{1,3}c\b)/i);
+    var sideWord=sideM?sideM[1].toLowerCase():(noPrefix?"no":null);
+    var impSide=sideWord==="no"?"Under":"Over";
+    var ln=surname.toLowerCase();
+    var cands=known.filter(function(k){return lastNameOf(k.player)===ln&&k.stat===stat;});
+    var exact=null;
+    cands.forEach(function(k){if(!exact&&k.line===impLine&&k.side===impSide) exact=k;});
+    if(exact) addPmLeg({player:exact.player,stat:stat,line:impLine,side:impSide,p:exact.p,game:exact.game,team:exact.team});
+    else if(cands.length) addPmLeg({player:cands[0].player,stat:stat,line:impLine,side:impSide,p:null,game:cands[0].game,team:cands[0].team});
+    else addPmLeg({player:surname,stat:stat,line:impLine,side:impSide,p:null,game:null,team:null});
+  });
+  /* Moneyline prediction market: a Yes/No price with a "TEAM to win"
+     line and no N+ leg. Yes buys the team's win chance, No buys
+     1 minus it. No identifiable team -> no leg; the caller's fallback
+     message and the manual picker handle it. */
+  if(!legs.length&&priceInfo&&priceInfo.side){
+    var tw=raw.match(/([A-Za-z][A-Za-z0-9 .'-]*?)\s+to win\b/i);
+    if(tw){
+      var words=tw[1].trim().split(/\s+/);
+      var lastW=(words[words.length-1]||"").replace(/[^A-Za-z0-9]/g,"");
+      var code=null, game=null;
+      (typeof simGameOpts!=="undefined"?simGameOpts:[]).forEach(function(g){
+        if(game||!lastW) return;
+        var lw=lastW.toLowerCase();
+        if(String(g.away).toLowerCase()===lw||String(g.home).toLowerCase()===lw){ code=(lw===String(g.home).toLowerCase())?g.home:g.away; game=g; return; }
+        if(NICKS&&NICKS[lw]&&(NICKS[lw]===g.away||NICKS[lw]===g.home)){ code=NICKS[lw]; game=g; }
+      });
+      if(game&&code){
+        var isHome=code===game.home;
+        var pTeam=isHome?game.pHome:(game.pDraw!=null?1-game.pHome-game.pDraw:1-game.pHome);
+        var pBuy=priceInfo.side==="no"?1-pTeam:pTeam;
+        addPmLeg({player:code,stat:"To win",line:null,side:priceInfo.side==="no"?"No":"Yes",p:pBuy,game:game.away+" @ "+game.home,team:code,ml:true});
+      }
+    }
+  }
+  /* Payout. Coinbase first: Cost / Max Payout (amounts may sit on the
+     line after the labels, and "$" may OCR as "S"). Multiplier is
+     Max Payout / Cost and the stake is the Cost — but only when the
+     numbers pass the sanity checks; otherwise they are ignored. */
+  var multSet=false;
+  if(hasCostPayout){
+    var costIdx=raw.search(/cost/i), payIdx=raw.search(/max\s*payout/i);
+    var regionStart=Math.min(costIdx<0?1e12:costIdx,payIdx<0?1e12:payIdx);
+    var tokRe=/[s$]\s*(\d+(?:[.,]\d{1,2})?)/gi, tok, toks=[];
+    while((tok=tokRe.exec(raw))!==null){ if(tok.index>=regionStart) toks.push({v:tok[1],pos:tok.index}); }
+    if(toks.length<2){
+      toks=[];
+      var decRe=/(\d+\.\d{2})/g;
+      while((tok=decRe.exec(raw))!==null){ if(tok.index>=regionStart) toks.push({v:tok[1],pos:tok.index}); }
+    }
+    var costTok=null, payTok=null;
+    toks.forEach(function(t){ if(!costTok&&t.pos>=costIdx) costTok=t; });
+    toks.forEach(function(t){ if(!payTok&&t.pos>=payIdx) payTok=t; });
+    if(costTok&&payTok&&payTok.pos<=costTok.pos){
+      var nt=null;
+      toks.forEach(function(t){ if(!nt&&t.pos>costTok.pos) nt=t; });
+      if(nt) payTok=nt;
+    }
+    if(costTok&&payTok&&payTok.pos>costTok.pos){
+      var cost=saneMoney(costTok.v,0.5,100);
+      if(cost!=null){
+        var pv=parseFloat(String(payTok.v).replace(",","."));
+        var payout=null;
+        [pv,pv/100,pv/10].forEach(function(cand){
+          if(payout==null&&isFinite(cand)&&cand>cost&&cand<=1000&&cand/cost>=1&&cand/cost<=50) payout=cand;
+        });
+        if(payout!=null){
+          ticketPayouts.all=Math.round(payout/cost*10000)/10000;
+          try{$("stake").value=String(cost);}catch(e){}
+          multSet=true;
+        }
+      }
+    }
+  }
+  /* Kalshi (cents) / Polymarket (decimal): multiplier from the price. */
+  if(!multSet&&priceInfo&&priceInfo.mult>1){
+    ticketPayouts.all=Math.round(priceInfo.mult*10000)/10000;
+    multSet=true;
+  }
+  if(!multSet&&chanceM){
+    var cv=parseFloat(chanceM[1]);
+    if(cv>0&&cv<100){
+      /* Multiplier from the "% chance" line: 100 / chance — the
+         chance-implied payout, before fees. */
+      ticketPayouts.all=Math.round(100/cv*10000)/10000;
+      multSet=true;
+    }
+  }
+  /* Never leave the default multiplier on a prediction-market ticket:
+     0 puts the score card into its "enter what it pays" state. */
+  if(!multSet) ticketPayouts.all=0;
+  return legs;
+}
 function parseSlipText(text){
+  var NFL_NICKS={jaguars:"JAX",ravens:"BAL",bills:"BUF",dolphins:"MIA",patriots:"NE",jets:"NYJ",bengals:"CIN",browns:"CLE",steelers:"PIT",texans:"HOU",colts:"IND",titans:"TEN",broncos:"DEN",chiefs:"KC",raiders:"LV",chargers:"LAC",cowboys:"DAL",giants:"NYG",eagles:"PHI",commanders:"WSH",bears:"CHI",lions:"DET",packers:"GB",vikings:"MIN",falcons:"ATL",panthers:"CAR",saints:"NO",buccaneers:"TB",cardinals:"ARI",rams:"LA","49ers":"SF",seahawks:"SEA"};
+  var known=boardKnownLegs();
+  /* Prediction markets are tried FIRST: when the slip is one, its
+     result stands even if no leg parses — the sportsbook branch
+     below would mis-read it. */
+  var pmLegs=parsePredictionSlip(text,known,NFL_NICKS);
+  if(pmLegs!==null) return pmLegs;
   var found=[], seen={};
   function addLeg(leg){
     var key=legKey(leg);
@@ -4994,19 +5213,48 @@ function parseSlipText(text){
     seen[key]=true; found.push(leg);
   }
   var norm=normText(text);
-  var known=[];
-  LEANS.forEach(function(l){known.push({player:l.player,stat:l.stat,line:l.line,side:l.side,p:l.p,game:l.game,team:l.team});});
-  TD.forEach(function(r){known.push({player:r.player,stat:"Touchdown",line:null,side:"Yes",p:r.p,game:r.game,team:r.team});});
-  NHL.forEach(function(r){known.push({player:r.player,stat:"Shots on goal",line:r.line,side:r.side,p:r.cal,game:null,team:r.team});});
+  var raw=String(text||"");
   known.forEach(function(k){
     var ln=lastNameOf(k.player);
-    if(!ln||norm.indexOf(" "+ln+" ")<0&&norm.indexOf(ln+" ")!==0&&norm.lastIndexOf(" "+ln)!==norm.length-ln.length-1&&norm.indexOf(ln)<0) return;
-    var idx=norm.indexOf(ln); if(idx<0) return;
+    if(!ln) return;
+    /* Whole-word match only: "Richard" must not match "Richardson"
+       (that substring bug once added a false Will Richard leg). */
+    var nPos=(" "+norm+" ").indexOf(" "+ln+" ");
+    if(nPos<0) return;
+    var idx=nPos;
     var seg=norm.slice(idx,idx+160);
-    var side=k.side, line=k.line;
-    var m=seg.match(/\b(over|under)\b\s*(\d+(?:\.\d+)?)/);
-    if(m){side=m[1]==="over"?"Over":"Under"; line=parseFloat(m[2]);}
-    addLeg({player:k.player,stat:statFromText(seg,k.stat),line:line,side:side,p:k.p,game:k.game,team:k.team});
+    var side=k.side, line=k.line, pUse=k.p;
+    if(k.line!=null){
+      /* Lines are read from the RAW text: normalizing strips decimal
+         points, so "23.5" came back as "23". */
+      var rm=new RegExp("\\b"+escRe(ln)+"\\b","i").exec(raw);
+      var rawSeg=rm?raw.slice(rm.index,rm.index+220):"";
+      var nPlus=rawSeg.match(/(\d+)\s*\+/);
+      if(nPlus){
+        /* Threshold guard: an "N+" near the name is a prediction-
+           market-style threshold. If its implied line (N - 0.5) or
+           side (No -> Under, Yes -> Over) differs from the board
+           entry, keep the leg with an empty chance — never the
+           board's probability for a different line. */
+        var impLine=parseInt(nPlus[1],10)-0.5;
+        var nAt=rawSeg.indexOf(nPlus[0]);
+        var upto=rawSeg.slice(0,nAt+nPlus[0].length);
+        var afterN=rawSeg.slice(nAt,nAt+90);
+        var isNo=/\bno\b/i.test(upto)||/\bno\b\s*[:\-]?\s*\$?\s*(0\.\d+|\d+\s*(c|¢|cents))/i.test(afterN);
+        var impSide=isNo?"Under":"Over";
+        if(impLine!==k.line||impSide!==k.side){ pUse=null; line=impLine; side=impSide; }
+        else { line=impLine; side=impSide; }
+      }else{
+        var ou=rawSeg.match(/\b(over|under)\b\s*(\d+(?:\.\d+)?)/i);
+        if(ou){
+          var sSide=ou[1].toLowerCase()==="over"?"Over":"Under";
+          var sLine=parseFloat(ou[2]);
+          if(sLine!==k.line||sSide!==k.side){ pUse=null; line=sLine; side=sSide; }
+          else { line=sLine; side=sSide; }
+        }
+      }
+    }
+    addLeg({player:k.player,stat:statFromText(seg,k.stat),line:line,side:side,p:pUse,game:k.game,team:k.team});
   });
   var re=/([A-Za-z][A-Za-z.'-]+(?:\s+[A-Za-z][A-Za-z.'-]+){0,2})\s+(over|under)\s+(\d+(?:\.\d+)?)/g, gm;
   var stop=["total payout","to win","potential payout","entry fee","to pay","flex play","power play"];
@@ -5015,8 +5263,8 @@ function parseSlipText(text){
     if(name.split(" ").length<2) continue;
     if(stop.indexOf(normText(name))>=0) continue;
     if(/^(the|and|for|with|your|total|payout|win|bonus|boost)\b/i.test(name)) continue;
-    var seg=text.slice(Math.max(0,gm.index-40),gm.index+120);
-    addLeg({player:name,stat:statFromText(seg,"Points"),line:parseFloat(gm[3]),side:gm[2].toLowerCase()==="over"?"Over":"Under",p:null,game:null,team:null});
+    var seg2=text.slice(Math.max(0,gm.index-40),gm.index+120);
+    addLeg({player:name,stat:statFromText(seg2,"Points"),line:parseFloat(gm[3]),side:gm[2].toLowerCase()==="over"?"Over":"Under",p:null,game:null,team:null});
   }
   /* Moneyline legs: a board team named on the slip counts as a "to win"
      leg only when a moneyline marker or an odds token sits right after
@@ -5024,8 +5272,7 @@ function parseSlipText(text){
      on tickets and the 3-way math is not worth the false-positive risk.
      The search runs on the raw lowercased text, not norm, because norm
      strips the + and - signs the odds-token check needs. */
-  var rawLow=String(text||"").toLowerCase();
-  var NFL_NICKS={jaguars:"JAX",ravens:"BAL",bills:"BUF",dolphins:"MIA",patriots:"NE",jets:"NYJ",bengals:"CIN",browns:"CLE",steelers:"PIT",texans:"HOU",colts:"IND",titans:"TEN",broncos:"DEN",chiefs:"KC",raiders:"LV",chargers:"LAC",cowboys:"DAL",giants:"NYG",eagles:"PHI",commanders:"WSH",bears:"CHI",lions:"DET",packers:"GB",vikings:"MIN",falcons:"ATL",panthers:"CAR",saints:"NO",buccaneers:"TB",cardinals:"ARI",rams:"LA","49ers":"SF",seahawks:"SEA"};
+  var rawLow=raw.toLowerCase();
   var SHORT_CODES=["LA","NY","NO","UT","SA","GS","KC","GB","LV","TB","NE","SF"];
   (typeof simGameOpts!=="undefined"?simGameOpts:[]).forEach(function(g){
     if(g.pDraw!=null) return;
@@ -5062,7 +5309,21 @@ function parseSlipText(text){
   });
   /* payout + stake, only when the wording is clear */
   var pm=text.match(/payout[^0-9]{0,30}(\d+(?:\.\d+)?)\s*x/i)||text.match(/(\d+(?:\.\d+)?)\s*x[^.\n]{0,30}payout/i);
-  if(pm&&parseFloat(pm[1])>1) ticketPayouts.all=parseFloat(pm[1]);
+  var gotMult=false;
+  if(pm&&parseFloat(pm[1])>1){ ticketPayouts.all=parseFloat(pm[1]); gotMult=true; }
+  if(!gotMult){
+    /* FanDuel / DraftKings slips show "Wager $Y" and "To Win $X"
+       (or "Payout $X") instead of an "Nx" multiplier. */
+    var wm=text.match(/wager[^0-9$]{0,25}\$?\s*(\d+(?:\.\d+)?)/i);
+    var tm=text.match(/(?:to\s*win|payout)[^0-9$]{0,25}\$?\s*(\d+(?:\.\d+)?)/i);
+    if(wm&&tm){
+      var wy=parseFloat(wm[1]), wx=parseFloat(tm[1]);
+      if(wy>0){
+        var wMult=wx/wy;
+        if(wMult>=1&&wMult<=100) ticketPayouts.all=Math.round(wMult*10000)/10000;
+      }
+    }
+  }
   var sm=text.match(/(?:stake|wager|entry|bet amount)[^0-9$]{0,25}\$?\s*(\d+(?:\.\d+)?)/i);
   if(sm&&parseFloat(sm[1])>0) $("stake").value=sm[1];
   return found;
@@ -5070,10 +5331,20 @@ function parseSlipText(text){
 function runOcr(file){
   setSlipStatus("Reading your screenshot\u2026 this can take a few seconds.");
   function fallback(){setSlipStatus("We couldn\u2019t read that screenshot clearly. Tap the info circle by the score to see the slip and fix the legs by hand. You can still add legs by hand below, then run the simulation.");}
+  function loadFallback(){setSlipStatus("The ticket reader couldn\u2019t load. Check your connection and try again, or tap the info circle by the score to add the legs by hand.");}
   function go(){
-    if(!window.Tesseract){fallback();return;}
+    if(!window.Tesseract){loadFallback();return;}
+    /* The read must always settle with feedback: if recognize has not
+       finished in 45 seconds, say so instead of hanging silently.
+       The settled flag keeps a late result from overwriting that. */
+    var settled=false;
+    var timer=setTimeout(function(){
+      if(!settled){ settled=true; fallback(); }
+    },45000);
     try{
       window.Tesseract.recognize(file,"eng").then(function(res){
+        if(settled) return;
+        settled=true; clearTimeout(timer);
         var text=(res&&res.data&&res.data.text)||"";
         var legs=parseSlipText(text);
         if(!legs.length){fallback();return;}
@@ -5081,15 +5352,36 @@ function runOcr(file){
         renderLegs(); renderChips(); renderPayoutInputs(); computeTicket();
         var missing=legs.some(function(l){return l.p==null;});
         setSlipStatus("We found "+legs.length+" leg"+(legs.length===1?"":"s")+". Tap the info circle by the score to check each one and fix anything we misread."+(missing?" For some legs we could not fill in our chance, so add it on the leg.":"")+" Then tap 'Run this ticket 10,000 times' below the score.");
-      }).catch(function(){fallback();});
-    }catch(e){fallback();}
+      }).catch(function(){
+        if(settled) return;
+        settled=true; clearTimeout(timer);
+        fallback();
+      });
+    }catch(e){
+      if(!settled){ settled=true; clearTimeout(timer); fallback(); }
+    }
   }
   if(window.Tesseract){go();return;}
+  /* Same rule for the reader script itself: if it has not loaded (or
+     failed) within 30 seconds, tell the user instead of hanging. */
+  var loadSettled=false;
+  var loadTimer=setTimeout(function(){
+    if(!loadSettled){ loadSettled=true; loadFallback(); }
+  },30000);
   var s=document.createElement("script");
   s.src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js";
   s.integrity="sha384-GJqSu7vueQ9qN0E9yLPb3Wtpd7OrgK8KmYzC8T1IysG1bcvxvIO4qtYR/D3A991F";
   s.crossOrigin="anonymous";
-  s.onload=go; s.onerror=fallback;
+  s.onload=function(){
+    if(loadSettled) return;
+    loadSettled=true; clearTimeout(loadTimer);
+    go();
+  };
+  s.onerror=function(){
+    if(loadSettled) return;
+    loadSettled=true; clearTimeout(loadTimer);
+    loadFallback();
+  };
   document.head.appendChild(s);
 }
 function multToAmerican(mult){
@@ -5111,7 +5403,17 @@ function ticketToSimLegs(){
       if(!o){unmatched.push({label:legLabel(leg),why:"game not on today's board"});return;}
       var key=o.away+" @ "+o.home;
       var side=leg.team===o.home?"home":"away";
-      pushMatched({type:"game",label:leg.team+" to win ("+key+")",league:o.league,away:o.away,home:o.home,pHome:o.pHome,pDraw:o.pDraw,side:side,p:side==="home"?o.pHome:(o.pDraw!=null?1-o.pHome-o.pDraw:1-o.pHome),game:key});
+      var pWin=side==="home"?o.pHome:(o.pDraw!=null?1-o.pHome-o.pDraw:1-o.pHome);
+      var simSide=side;
+      if(leg.side==="No"){
+        /* Bought the "No" side (prediction markets): the leg wins when
+           this team does NOT win, so it simulates at 1 - P(team wins).
+           The sim draws game legs from side + pHome, so a two-way "No"
+           leg is pointed at the other team to carry that probability. */
+        pWin=1-pWin;
+        if(o.pDraw==null) simSide=side==="home"?"away":"home";
+      }
+      pushMatched({type:"game",label:leg.team+(leg.side==="No"?" not to win (":" to win (")+key+")",league:o.league,away:o.away,home:o.home,pHome:o.pHome,pDraw:o.pDraw,side:simSide,p:pWin,game:key});
       return;
     }
     if(leg.p==null||!(leg.p>0)||leg.p>=1){unmatched.push({label:legLabel(leg),why:"no chance filled in"});return;}
@@ -5162,6 +5464,11 @@ function clearTicketSim(){
   $("ticketSimNote").textContent="The legs changed \u2014 run it again to update the simulation.";
 }
 $("runTicketSim").addEventListener("click",runTicketSim);
+var snapBtnEl=$("snapBtn");
+if(snapBtnEl) snapBtnEl.addEventListener("click",function(){
+  try{ $("slipUpload").click(); }
+  catch(e){ setSlipStatus("Couldn\u2019t open the photo picker \u2014 try again."); }
+});
 $("slipUpload").addEventListener("change",function(){
   var file=this.files&&this.files[0];
   if(!file) return;
@@ -5549,7 +5856,7 @@ window.addEventListener("resize",closeAllInfo);
    boxes stay empty rather than showing a guessed time. Older than 18
    hours, a calm banner says so at the top of the tab — the numbers
    below still render. */
-var SNAPSHOT_UPDATED="2026-11-05T16:22:56-08:00";
+var SNAPSHOT_UPDATED="2026-11-05T18:11:31-08:00";
 function ptDateKey(d){
   try{return new Intl.DateTimeFormat("en-CA",{timeZone:"America/Los_Angeles",year:"numeric",month:"2-digit",day:"2-digit"}).format(d);}catch(e){return "";}
 }
