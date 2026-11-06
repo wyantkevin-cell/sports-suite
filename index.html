@@ -1382,8 +1382,8 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     </section>
 
     <section class="block" aria-label="Top Tier record">
-      <h2>Top Tier &#11088;<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="What Top Tier means">i</button><span class="tip">Top Tier = the 4 strongest player props each day, tracked as straights</span></span></h2>
-      <p class="sub">Top Tier record starts Nov 3 &mdash; the top 4 player props each day, tracked as straights.</p>
+      <h2>Top Tier &#11088;<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="What Top Tier means">i</button><span class="tip">Top Tier = the 4 most likely player props each day, tracked as straights</span></span></h2>
+      <p class="sub">Top Tier record starts Nov 3 &mdash; the top 4 player props each day, tracked as straights. From Nov 6, Top Tier = the 4 most likely props of the day.</p>
       <div id="ttRecord"></div>
     </section>
 
@@ -2787,7 +2787,7 @@ var TODAY_CARD_DATE="2026-11-05";
 var TRACK_RECORD=[];
 var TRACK_TALLY={straights:{wins:0,losses:0,pushes:0,profit:0,roi_pct:0,n_graded:0},parlays:{wins:0,losses:0,pushes:0,profit:0,roi_pct:0,n_graded:0}};
 var PARLAY_RECORD=[];
-/* Top Tier: the 4 strongest player props each day, tracked as straights.
+/* Top Tier: the 4 most likely player props each day, tracked as straights.
    TT_RECORD row: {date, sport, description, outcome ("win"/"loss" or
    null while the game has not been played), actual_label (what the
    player finished with, graded picks only)}. Pending picks ARE listed
@@ -4240,10 +4240,10 @@ function propTierHtml(r){
   return '<span class="picktag">Strong pick</span>';
 }
 /* Top Tier marker: a star + "Top Tier" label, with the plain-English
-   explanation behind the ⓘ next to it. Shown on the day's 4 strongest
+   explanation behind the ⓘ next to it. Shown on the day's 4 most likely
    player props, on both the Player Picks board and the Our Bets cards. */
 function ttBadgeHtml(){
-  return '<span class="tt-badge">\u2B50 Top Tier</span><span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="What Top Tier means">i</button><span class="tip">Top Tier = the 4 strongest player props each day, tracked as straights</span></span>';
+  return '<span class="tt-badge">\u2B50 Top Tier</span><span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="What Top Tier means">i</button><span class="tip">Top Tier = the 4 most likely player props each day, tracked as straights</span></span>';
 }
 function propSimHtml(r){
   if(!r) return "";
@@ -5375,7 +5375,7 @@ function renderRecord(){
     }
   }
 }
-/* Top Tier record: the running log of each day's 4 strongest player
+/* Top Tier record: the running log of each day's 4 most likely player
    props, tracked as straights. Unlike the main record above, today's
    not-yet-played picks are listed too, marked "Not played yet". No
    dollar P/L is shown for Nov 3-4: those were Underdog entries and no
