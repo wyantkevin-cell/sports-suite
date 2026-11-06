@@ -273,6 +273,10 @@ table.mini td:first-child{font-family:var(--sans);font-weight:600}
 .slate-row .match .winner{font-weight:800}
 .picktag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 9px;background:var(--good-bg);color:var(--good);border:1px solid var(--good);white-space:nowrap}
 .picktag.close{background:var(--amber-bg);color:var(--amber);border-color:var(--amber-line)}
+.tt-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 9px;background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-line);white-space:nowrap}
+.tt-wrap{margin-top:6px;display:flex;justify-content:flex-end;align-items:center}
+.tt-tally{font-family:var(--mono);font-weight:700;font-size:22px}
+.rec-outcome.pending{background:var(--panel2);color:var(--muted);border:1px solid var(--line)}
 .picklines{margin-top:6px;display:grid;gap:2px;font-size:14.5px;line-height:1.5}
 .picklines .lbl{color:var(--muted)}
 .picklines .avgline{font-size:16px}
@@ -1375,6 +1379,12 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <h2>Parlays</h2>
       <p class="sub">Parlay of the Day results, kept apart from single bets.</p>
       <div id="parlayRecordRows"></div>
+    </section>
+
+    <section class="block" aria-label="Top Tier record">
+      <h2>Top Tier &#11088;<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="What Top Tier means">i</button><span class="tip">Top Tier = the 4 strongest player props each day, tracked as straights</span></span></h2>
+      <p class="sub">Top Tier record starts Nov 3 &mdash; the top 4 player props each day, tracked as straights.</p>
+      <div id="ttRecord"></div>
     </section>
 
     <section class="block" aria-label="What happens to your money over a season">
@@ -2761,10 +2771,10 @@ var CFB=[
    PARLAY_RECORD row: {date, pick_id, description, line_odds, outcome,
    profit}. */
 var TODAY_BETS=[
-  {pick_id:"20261105-01",sport:"NFL",type:"prop",description:"Devontez Walker (BAL) yes anytime TD",player:"Devontez Walker",team:"BAL",opponent:"JAX",market:"anytime TD",side:"yes",line:null,line_odds:"+2500",model_prob:0.0926,market_prob:0.038461538461538464,value_pct:140.69,tier:"strong",game_date:"2026-11-05",markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {pick_id:"20261105-02",sport:"NFL",type:"prop",description:"Matthew Hibner (BAL) yes anytime TD",player:"Matthew Hibner",team:"BAL",opponent:"JAX",market:"anytime TD",side:"yes",line:null,line_odds:"+1900",model_prob:0.0918,market_prob:0.05,value_pct:83.57,tier:"strong",game_date:"2026-11-05",markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {pick_id:"20261105-03",sport:"NFL",type:"prop",description:"Rashod Bateman (BAL) yes anytime TD",player:"Rashod Bateman",team:"BAL",opponent:"JAX",market:"anytime TD",side:"yes",line:null,line_odds:"+950",model_prob:0.1384,market_prob:0.09523809523809523,value_pct:45.34,tier:"strong",game_date:"2026-11-05",markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": null, "novig": null}},
-  {pick_id:"20261105-04",sport:"NBA",type:"prop",description:"Jase Richardson (ORL) under 8.5 points",player:"Jase Richardson",team:"ORL",opponent:"PHX",market:"points",side:"under",line:8.5,line_odds:"-102",model_prob:0.6672,market_prob:0.504950495049505,value_pct:32.13,tier:"strong",game_date:"2026-11-05",markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
+  {pick_id:"20261105-01",sport:"NFL",type:"prop",description:"Devontez Walker (BAL) yes anytime TD",top_tier:true,player:"Devontez Walker",team:"BAL",opponent:"JAX",market:"anytime TD",side:"yes",line:null,line_odds:"+2500",model_prob:0.0926,market_prob:0.038461538461538464,value_pct:140.69,tier:"strong",game_date:"2026-11-05",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {pick_id:"20261105-02",sport:"NFL",type:"prop",description:"Matthew Hibner (BAL) yes anytime TD",top_tier:true,player:"Matthew Hibner",team:"BAL",opponent:"JAX",market:"anytime TD",side:"yes",line:null,line_odds:"+1900",model_prob:0.0918,market_prob:0.05,value_pct:83.57,tier:"strong",game_date:"2026-11-05",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {pick_id:"20261105-03",sport:"NFL",type:"prop",description:"Rashod Bateman (BAL) yes anytime TD",top_tier:true,player:"Rashod Bateman",team:"BAL",opponent:"JAX",market:"anytime TD",side:"yes",line:null,line_odds:"+950",model_prob:0.1384,market_prob:0.09523809523809523,value_pct:45.34,tier:"strong",game_date:"2026-11-05",markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": null, "novig": null}},
+  {pick_id:"20261105-04",sport:"NBA",type:"prop",description:"Jase Richardson (ORL) under 8.5 points",top_tier:true,player:"Jase Richardson",team:"ORL",opponent:"PHX",market:"points",side:"under",line:8.5,line_odds:"-102",model_prob:0.6672,market_prob:0.504950495049505,value_pct:32.13,tier:"strong",game_date:"2026-11-05",markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
   {pick_id:"20261105-05",sport:"NFL",type:"prop",description:"LeQuint Allen Jr. (JAX) yes anytime TD",player:"LeQuint Allen Jr.",team:"JAX",opponent:"BAL",market:"anytime TD",side:"yes",line:null,line_odds:"+1100",model_prob:0.1072,market_prob:0.08333333333333333,value_pct:28.59,tier:"strong",game_date:"2026-11-05",markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": null, "novig": null}},
   {pick_id:"20261105-06",sport:"NBA",type:"prop",description:"Bam Adebayo (MIA) under 9.5 rebounds",player:"Bam Adebayo",team:"MIA",opponent:"GSW",market:"rebounds",side:"under",line:9.5,line_odds:"-102",model_prob:0.6219,market_prob:0.504950495049505,value_pct:23.16,tier:"strong",game_date:"2026-11-05",markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
   {pick_id:"20261105-07",sport:"NHL",type:"prop",description:"Anthony Cirelli (TB) under 1.5 shots on goal",player:"Anthony Cirelli",team:"TB",opponent:"CHI",market:"shots on goal",side:"under",line:1.5,line_odds:"+130",model_prob:0.5194,market_prob:0.43478260869565216,value_pct:19.47,tier:"strong",game_date:"2026-11-05",markets:{"polymarket": null, "kalshi": null, "novig": null}},
@@ -2777,6 +2787,28 @@ var TODAY_CARD_DATE="2026-11-05";
 var TRACK_RECORD=[];
 var TRACK_TALLY={straights:{wins:0,losses:0,pushes:0,profit:0,roi_pct:0,n_graded:0},parlays:{wins:0,losses:0,pushes:0,profit:0,roi_pct:0,n_graded:0}};
 var PARLAY_RECORD=[];
+/* Top Tier: the 4 strongest player props each day, tracked as straights.
+   TT_RECORD row: {date, sport, description, outcome ("win"/"loss" or
+   null while the game has not been played), actual_label (what the
+   player finished with, graded picks only)}. Pending picks ARE listed
+   here — this is the running Top Tier log — unlike TRACK_RECORD above,
+   which holds graded picks only. Nov 3-4 picks were Underdog entries
+   with no per-leg odds recorded, so they carry W/L only, no dollar P/L. */
+var TT_RECORD=[
+  {date:"2026-11-03",sport:"NHL",description:"Philip Broberg (STL) over 1.5 shots on goal",outcome:"win",actual_label:"Finished with 4 shots on goal"},
+  {date:"2026-11-03",sport:"NHL",description:"Ryan Nugent-Hopkins (EDM) over 1.5 shots on goal",outcome:"loss",actual_label:"Finished with 1 shot on goal"},
+  {date:"2026-11-03",sport:"NHL",description:"Jackson LaCombe (ANA) under 1.5 shots on goal",outcome:"win",actual_label:"Finished with 0 shots on goal"},
+  {date:"2026-11-03",sport:"NHL",description:"Elias Pettersson (VAN) under 1.5 shots on goal",outcome:"win",actual_label:"Finished with 0 shots on goal"},
+  {date:"2026-11-04",sport:"NBA",description:"Davion Mitchell (MIA) over 9.5 points",outcome:"win",actual_label:"Finished with 11 points"},
+  {date:"2026-11-04",sport:"NBA",description:"Austin Reaves (LAL) over 19.5 points",outcome:"win",actual_label:"Finished with 21 points"},
+  {date:"2026-11-04",sport:"NBA",description:"Darius Acuff Jr. (SAC) over 19.5 points",outcome:"win",actual_label:"Finished with 22 points"},
+  {date:"2026-11-04",sport:"NBA",description:"Keaton Wagler (LAC) over 11.5 points",outcome:"loss",actual_label:"Finished with 11 points"},
+  {date:"2026-11-05",sport:"NFL",description:"Devontez Walker (BAL) yes anytime TD",outcome:null,actual_label:null},
+  {date:"2026-11-05",sport:"NFL",description:"Matthew Hibner (BAL) yes anytime TD",outcome:null,actual_label:null},
+  {date:"2026-11-05",sport:"NFL",description:"Rashod Bateman (BAL) yes anytime TD",outcome:null,actual_label:null},
+  {date:"2026-11-05",sport:"NBA",description:"Jase Richardson (ORL) under 8.5 points",outcome:null,actual_label:null}
+];
+var TT_TALLY={wins:6,losses:2,pushes:0,n_graded:8,win_rate:0.75};
 
 /* ================= TABS ================= */
 var tabs=Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
@@ -3772,15 +3804,15 @@ try{renderTD();}catch(e){}
 
 /* ================= PLAYER PICKS — Top props, Nov 4–5 ================= */
 var TOP_PROPS=[
-  {player:"Devontez Walker",team:"BAL",sport:"NFL",date:"Nov 5",prop:"yes no line anytime TD",line:"+2500",guess:9.3,tier:"strong",flag:"",value_pct:140.76,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": "2200", "to": "2500", "at": "2026-11-05 16:22:56 PST"}},
+  {player:"Devontez Walker",top_tier:true,team:"BAL",sport:"NFL",date:"Nov 5",prop:"yes no line anytime TD",line:"+2500",guess:9.3,tier:"strong",flag:"",value_pct:140.76,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": "2200", "to": "2500", "at": "2026-11-05 16:22:56 PST"}},
   {player:"Josh Cuevas",team:"BAL",sport:"NFL",date:"Nov 5",prop:"over 1.5 receptions",line:"+152",guess:73.3,tier:"strong",flag:"",sim_p_over:0.7895,value_pct:84.72,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLREC-26NOV05JACBAL-BALJCUEVAS85-2", "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"},line_move:{"from": 0.5, "to": 1.5, "at": "2026-11-05 16:22:56 PST"}},
   {player:"LeQuint Allen Jr.",team:"JAX",sport:"NFL",date:"Nov 5",prop:"yes no line anytime TD",line:"+1600",guess:10.7,tier:"strong",flag:"",value_pct:82.24,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV05JACBAL-JACLALLEN5-1", "novig": null},line_move:{"from": "1100", "to": "1600", "at": "2026-11-05 16:19:17 PST"}},
-  {player:"Matthew Hibner",team:"BAL",sport:"NFL",date:"Nov 5",prop:"yes no line anytime TD",line:"+1800",guess:9.2,tier:"strong",flag:"",value_pct:74.42,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": "1900", "to": "1800", "at": "2026-11-05 16:19:17 PST"}},
+  {player:"Matthew Hibner",top_tier:true,team:"BAL",sport:"NFL",date:"Nov 5",prop:"yes no line anytime TD",line:"+1800",guess:9.2,tier:"strong",flag:"",value_pct:74.42,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": "1900", "to": "1800", "at": "2026-11-05 16:19:17 PST"}},
   {player:"Brandin Podziemski",team:"GS",sport:"NBA",date:"Nov 5",prop:"over 4.5 assists",line:"+119",guess:73.3,tier:"strong",flag:"",value_pct:60.53,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV05MIAGSW-GSWBPODZIEMSKI2-4", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"},line_move:{"from": 3.5, "to": 4.5, "at": "2026-11-05 16:22:56 PST"}},
-  {player:"Rashod Bateman",team:"BAL",sport:"NFL",date:"Nov 5",prop:"yes no line anytime TD",line:"+900",guess:13.8,tier:"strong",flag:"",value_pct:38.4,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV05JACBAL-BALRBATEMAN7-1", "novig": null},line_move:{"from": "950", "to": "900", "at": "2026-11-05 16:19:17 PST"}},
+  {player:"Rashod Bateman",top_tier:true,team:"BAL",sport:"NFL",date:"Nov 5",prop:"yes no line anytime TD",line:"+900",guess:13.8,tier:"strong",flag:"",value_pct:38.4,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV05JACBAL-BALRBATEMAN7-1", "novig": null},line_move:{"from": "950", "to": "900", "at": "2026-11-05 16:19:17 PST"}},
   {player:"Bam Adebayo",team:"MIA",sport:"NBA",date:"Nov 5",prop:"under 9.5 rebounds",line:"+108",guess:62.2,tier:"strong",flag:"",value_pct:29.36,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV05MIAGSW-MIABADEBAYO13-10", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
   {player:"Draymond Green",team:"GS",sport:"NBA",date:"Nov 5",prop:"under 5.5 points",line:"-113",guess:68.5,tier:"strong",flag:"",value_pct:29.04,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
-  {player:"Jase Richardson",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 8.5 points",line:"-113",guess:66.7,tier:"strong",flag:"",value_pct:25.76,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV05ORLPHX-ORLJRICHARDSON11-10", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
+  {player:"Jase Richardson",top_tier:true,team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 8.5 points",line:"-113",guess:66.7,tier:"strong",flag:"",value_pct:25.76,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV05ORLPHX-ORLJRICHARDSON11-10", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
   {player:"Justice Hill",team:"BAL",sport:"NFL",date:"Nov 5",prop:"under 2.5 receptions",line:"+102",guess:61.9,tier:"strong",flag:"",sim_p_over:0.232,sim_flag:"sim/model disagree by 15%",value_pct:24.98,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNFLREC-26NOV05JACBAL-BALJHILL43-3", "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"}},
   {player:"Rashod Bateman",team:"BAL",sport:"NFL",date:"Nov 5",prop:"over 13.5 receiving yards",line:"-113",guess:65.7,tier:"strong",flag:"Joe Fagnano starting at QB (3rd string, Lamar Jackson out, Tyler Huntley out (toe)) — model is blind to this",value_pct:23.84,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06-player-props", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"},line_move:{"from": 12.5, "to": 13.5, "at": "2026-11-05 16:22:56 PST"}},
   {player:"Franz Wagner",team:"ORL",sport:"NBA",date:"Nov 5",prop:"under 23.5 points",line:"-122",guess:67.5,tier:"strong",flag:"",value_pct:22.77,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV05ORLPHX-ORLFWAGNER22-25", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
@@ -4207,6 +4239,12 @@ function propTierHtml(r){
   if(t.indexOf("lean")>=0) return '<span class="picktag close">Lean</span>';
   return '<span class="picktag">Strong pick</span>';
 }
+/* Top Tier marker: a star + "Top Tier" label, with the plain-English
+   explanation behind the ⓘ next to it. Shown on the day's 4 strongest
+   player props, on both the Player Picks board and the Our Bets cards. */
+function ttBadgeHtml(){
+  return '<span class="tt-badge">\u2B50 Top Tier</span><span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="What Top Tier means">i</button><span class="tip">Top Tier = the 4 strongest player props each day, tracked as straights</span></span>';
+}
 function propSimHtml(r){
   if(!r) return "";
   var hasSim=(typeof r.sim_p_over==="number"&&isFinite(r.sim_p_over));
@@ -4234,12 +4272,12 @@ function renderProps(){
   function tileRow(r){
     return '<div class="trow" style="grid-template-columns:'+cols+'"><div class="who"><b>'+esc(r.player)+'</b><span>'+esc(r.sport)+' &middot; '+esc(r.team)+' &middot; '+esc(r.prop)+'</span></div>'+
     '<span class="prop-date">'+esc(r.date)+'</span>'+
-    '<span class="num avg-val">Line: '+esc(r.line)+'</span><span class="num avg-val">Our guess: '+r.guess+'%</span><span style="text-align:right">'+propTierHtml(r)+'</span>'+lineMoveHtml(r)+(r.flag?'<div class="flag" style="grid-column:1 / -1">'+esc(r.flag)+'</div>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
+    '<span class="num avg-val">Line: '+esc(r.line)+'</span><span class="num avg-val">Our guess: '+r.guess+'%</span><span style="text-align:right">'+propTierHtml(r)+(r.top_tier?'<div class="tt-wrap">'+ttBadgeHtml()+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<div class="flag" style="grid-column:1 / -1">'+esc(r.flag)+'</div>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
   }
   function listRow(r){
     return '<div class="prop-list-row"><span class="pl-player">'+esc(r.player)+'<span class="pl-team">'+esc(r.team)+'</span></span>'+
     '<span class="pl-prop">'+esc(r.prop)+'<span class="pl-meta">'+esc(r.sport)+' &middot; '+esc(r.date)+'</span></span>'+
-    '<span class="pl-line">'+esc(r.line)+'</span><span class="pl-guess">'+r.guess+'%</span><span class="pl-tier">'+propTierHtml(r)+'</span>'+lineMoveHtml(r)+(r.flag?'<span class="flag">'+esc(r.flag)+'</span>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
+    '<span class="pl-line">'+esc(r.line)+'</span><span class="pl-guess">'+r.guess+'%</span><span class="pl-tier">'+propTierHtml(r)+(r.top_tier?'<div class="tt-wrap">'+ttBadgeHtml()+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<span class="flag">'+esc(r.flag)+'</span>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
   }
   var emptyHtml='<div class="empty-state"><p>No props available for this game &mdash; lines haven\'t been posted yet. Check back closer to tip-off.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no props yet">i</button><span class="tip">Lines come from the sportsbooks and can take a while to appear, especially for games later in the week.</span></span></p><p>Try another sport, date, game, or prop type.</p></div>';
   if(propView==="list"){
@@ -5182,7 +5220,7 @@ function betCardHtml(b){
   if(typeof b.market_prob==="number") foot.push("Book chance: <b>"+pct(b.market_prob)+"</b>");
   if(b.book) foot.push("Book: <b>"+esc(b.book)+"</b>");
   var match=betMatch(b);
-  return '<article class="bet-card"><div class="bet-top"><span class="bet-sport"><span class="bet-emoji">'+sportEmoji(b.sport)+'</span>'+esc(b.sport||"")+'</span>'+betValue(b)+'</div>'
+  return '<article class="bet-card"><div class="bet-top"><span style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="bet-sport"><span class="bet-emoji">'+sportEmoji(b.sport)+'</span>'+esc(b.sport||"")+'</span>'+(b.top_tier?ttBadgeHtml():"")+'</span>'+betValue(b)+'</div>'
     +'<h3 class="bet-name">'+esc(betName(b))+'</h3>'
     +(match?'<p class="bet-match">'+esc(match)+'</p>':"")
     +'<p class="bet-pick">'+esc(pickText(b))+'</p>'
@@ -5336,6 +5374,41 @@ function renderRecord(){
       }).join("")+'</div>';
     }
   }
+}
+/* Top Tier record: the running log of each day's 4 strongest player
+   props, tracked as straights. Unlike the main record above, today's
+   not-yet-played picks are listed too, marked "Not played yet". No
+   dollar P/L is shown for Nov 3-4: those were Underdog entries and no
+   per-leg odds were recorded, so they count toward W/L only. */
+function ttRowHtml(r){
+  var o=String(r.outcome||"").toLowerCase();
+  var right;
+  if(o==="win"||o==="loss"){
+    right='<span class="rec-outcome '+o+'">'+(o==="win"?"Win":"Loss")+'</span>'
+      +(r.actual_label?'<span class="num">'+esc(r.actual_label)+'</span>':"");
+  } else {
+    right='<span class="rec-outcome pending">Not played yet</span>';
+  }
+  return '<div class="record-row"><div class="rec-who"><b>'+esc(r.description||"Pick")+'</b><span>'+esc(r.sport||"")+'</span></div>'
+    +'<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">'+right+'</div></div>';
+}
+function renderTopTier(){
+  var el=$("ttRecord");
+  if(!el) return;
+  var rows=(TT_RECORD||[]).filter(function(r){return !isSoccerRow(r);});
+  if(!rows.length){el.innerHTML='<p class="empty-note">No Top Tier picks yet.</p>';return;}
+  var t=TT_TALLY||{wins:0,losses:0,n_graded:0,win_rate:0};
+  var head='<div class="tally-block" style="margin-bottom:14px"><div class="tt-tally">'+t.wins+'-'+t.losses+' &middot; '+Math.round((t.win_rate||0)*100)+'%</div><p>'+t.n_graded+' settled picks so far</p></div>';
+  var groups={}, order=[];
+  rows.forEach(function(r){
+    if(!groups[r.date]){groups[r.date]=[];order.push(r.date);}
+    groups[r.date].push(r);
+  });
+  order.reverse();
+  var body=order.map(function(date){
+    return '<section class="record-day"><h2>'+esc(date)+'</h2><div class="rows" role="table" aria-label="Top Tier picks for '+esc(date)+'">'+groups[date].map(ttRowHtml).join("")+'</div></section>';
+  }).join("");
+  el.innerHTML=head+body+'<p class="note" style="margin-top:12px">Dollar P/L from Nov 5 onward only &mdash; Nov 3-4 picks were Underdog entries and no per-leg odds were recorded, so they count toward W/L only.</p>';
 }
 /* Explanations behind ⓘ buttons: tap toggles the panel below the heading;
    tapping again, tapping elsewhere, switching tabs, or Escape closes it.
@@ -5984,6 +6057,7 @@ function renderSeason(){
 try{renderSeason();}catch(e){}
 try{renderBets();}catch(e){}
 try{renderRecord();}catch(e){}
+try{renderTopTier();}catch(e){}
 try{updateYesterdayRecap();}catch(e){}
 })();
 </script>
