@@ -274,7 +274,9 @@ table.mini td:first-child{font-family:var(--sans);font-weight:600}
 .picktag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 9px;background:var(--good-bg);color:var(--good);border:1px solid var(--good);white-space:nowrap}
 .picktag.close{background:var(--amber-bg);color:var(--amber);border-color:var(--amber-line)}
 .tt-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 9px;background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-line);white-space:nowrap}
-.tt-wrap{margin-top:6px;display:flex;justify-content:flex-end;align-items:center}
+.value-badge{background:var(--blue-bg);color:var(--blue);border-color:var(--blue)}
+.tt-wrap{margin-top:6px;display:flex;justify-content:flex-end;align-items:center;flex-wrap:wrap;gap:6px;max-width:100%}
+.badge-legend{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
 .tt-tally{font-family:var(--mono);font-weight:700;font-size:22px}
 .rec-outcome.pending{background:var(--panel2);color:var(--muted);border:1px solid var(--line)}
 .picklines{margin-top:6px;display:grid;gap:2px;font-size:14.5px;line-height:1.5}
@@ -1041,6 +1043,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     </div>
     <p class="note" id="propsSourceNote">Today&rsquo;s lines via SharpAPI &mdash; our usual source was unavailable</p>
     <div class="freshness"></div>
+    <p class="note badge-legend"><span class="tt-badge">&#11088; Top Tier</span><span>the 4 most likely player props of the day</span><span class="tt-badge value-badge">&#128142; Value</span><span>our number is well above the book&rsquo;s line &mdash; a pick can wear both badges</span></p>
     <div class="prop-search">
       <div class="prop-search-wrap">
         <input type="text" id="propSearch" placeholder="Search players..." aria-label="Search players" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="propSuggest" aria-autocomplete="list">
@@ -1352,6 +1355,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <h1>Today's Card</h1>
       <span class="bets-date" id="betsDate" hidden></span>
       <p>Today&rsquo;s bets, picked from the strongest player props and moneylines on the board. Each card shows our chance it hits and how it compares with the book&rsquo;s number.</p>
+      <p class="note badge-legend"><span class="tt-badge">&#11088; Top Tier</span><span>the 4 most likely player props of the day</span><span class="tt-badge value-badge">&#128142; Value</span><span>our number is well above the book&rsquo;s line &mdash; a pick can wear both badges</span></p>
       <div class="freshness"></div>
     </div>
     <div id="betsEmpty" class="empty-state bets-empty"><p>Today's card posts with the morning update — check back after 9am.</p></div>
@@ -4245,6 +4249,26 @@ function propTierHtml(r){
 function ttBadgeHtml(){
   return '<span class="tt-badge">\u2B50 Top Tier</span><span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="What Top Tier means">i</button><span class="tip">Top Tier = the 4 most likely player props each day, tracked as straights</span></span>';
 }
+/* Value play marker: a diamond + "Value" label for strong-tier picks —
+   the picks where our number sits well above the book's line. A pick
+   earns the diamond when its value number is +10 or more, the same
+   cut-off the board already uses for its strong tier; a pick with no
+   value number gets no diamond. Same badge shape and info-circle
+   pattern as the Top Tier star, so the two read as one system. */
+function isValuePlay(p){
+  return !!p&&typeof p.value_pct==="number"&&isFinite(p.value_pct)&&p.value_pct>=10;
+}
+function valueBadgeHtml(){
+  return '<span class="tt-badge value-badge">\uD83D\uDC8E Value</span><span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="What a value play means">i</button><span class="tip">\uD83D\uDC8E Value play \u2014 our number is well above the book\u2019s line</span></span>';
+}
+/* Both badges for a pick, star first then diamond. A pick can wear
+   both (Top Tier picks pass the value screen), one, or neither. */
+function pickBadgesHtml(p){
+  var h="";
+  if(p&&p.top_tier) h+=ttBadgeHtml();
+  if(isValuePlay(p)) h+=valueBadgeHtml();
+  return h;
+}
 function propSimHtml(r){
   if(!r) return "";
   var hasSim=(typeof r.sim_p_over==="number"&&isFinite(r.sim_p_over));
@@ -4272,12 +4296,12 @@ function renderProps(){
   function tileRow(r){
     return '<div class="trow" style="grid-template-columns:'+cols+'"><div class="who"><b>'+esc(r.player)+'</b><span>'+esc(r.sport)+' &middot; '+esc(r.team)+' &middot; '+esc(r.prop)+'</span></div>'+
     '<span class="prop-date">'+esc(r.date)+'</span>'+
-    '<span class="num avg-val">Line: '+esc(r.line)+'</span><span class="num avg-val">Our guess: '+r.guess+'%</span><span style="text-align:right">'+propTierHtml(r)+(r.top_tier?'<div class="tt-wrap">'+ttBadgeHtml()+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<div class="flag" style="grid-column:1 / -1">'+esc(r.flag)+'</div>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
+    '<span class="num avg-val">Line: '+esc(r.line)+'</span><span class="num avg-val">Our guess: '+r.guess+'%</span><span style="text-align:right">'+propTierHtml(r)+((r.top_tier||isValuePlay(r))?'<div class="tt-wrap">'+pickBadgesHtml(r)+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<div class="flag" style="grid-column:1 / -1">'+esc(r.flag)+'</div>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
   }
   function listRow(r){
     return '<div class="prop-list-row"><span class="pl-player">'+esc(r.player)+'<span class="pl-team">'+esc(r.team)+'</span></span>'+
     '<span class="pl-prop">'+esc(r.prop)+'<span class="pl-meta">'+esc(r.sport)+' &middot; '+esc(r.date)+'</span></span>'+
-    '<span class="pl-line">'+esc(r.line)+'</span><span class="pl-guess">'+r.guess+'%</span><span class="pl-tier">'+propTierHtml(r)+(r.top_tier?'<div class="tt-wrap">'+ttBadgeHtml()+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<span class="flag">'+esc(r.flag)+'</span>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
+    '<span class="pl-line">'+esc(r.line)+'</span><span class="pl-guess">'+r.guess+'%</span><span class="pl-tier">'+propTierHtml(r)+((r.top_tier||isValuePlay(r))?'<div class="tt-wrap">'+pickBadgesHtml(r)+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<span class="flag">'+esc(r.flag)+'</span>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
   }
   var emptyHtml='<div class="empty-state"><p>No props available for this game &mdash; lines haven\'t been posted yet. Check back closer to tip-off.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no props yet">i</button><span class="tip">Lines come from the sportsbooks and can take a while to appear, especially for games later in the week.</span></span></p><p>Try another sport, date, game, or prop type.</p></div>';
   if(propView==="list"){
@@ -5220,7 +5244,7 @@ function betCardHtml(b){
   if(typeof b.market_prob==="number") foot.push("Book chance: <b>"+pct(b.market_prob)+"</b>");
   if(b.book) foot.push("Book: <b>"+esc(b.book)+"</b>");
   var match=betMatch(b);
-  return '<article class="bet-card"><div class="bet-top"><span style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="bet-sport"><span class="bet-emoji">'+sportEmoji(b.sport)+'</span>'+esc(b.sport||"")+'</span>'+(b.top_tier?ttBadgeHtml():"")+'</span>'+betValue(b)+'</div>'
+  return '<article class="bet-card"><div class="bet-top"><span style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="bet-sport"><span class="bet-emoji">'+sportEmoji(b.sport)+'</span>'+esc(b.sport||"")+'</span>'+pickBadgesHtml(b)+'</span>'+betValue(b)+'</div>'
     +'<h3 class="bet-name">'+esc(betName(b))+'</h3>'
     +(match?'<p class="bet-match">'+esc(match)+'</p>':"")
     +'<p class="bet-pick">'+esc(pickText(b))+'</p>'
