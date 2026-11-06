@@ -959,24 +959,20 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <button type="button" aria-pressed="false" data-league="tennis">Tennis</button>
     </div>
     <div class="filters" role="group" aria-label="Choose a date" id="gameDateFilters">
-      <button type="button" aria-pressed="true" data-gdate="week">This Week (Nov 4&ndash;9)</button>
-      <button type="button" aria-pressed="false" data-gdate="today">Today Nov 4</button>
-      <button type="button" aria-pressed="false" data-gdate="tomorrow">Tomorrow Nov 5</button>
-      <button type="button" aria-pressed="false" data-gdate="fri">Fri Nov 6</button>
-      <button type="button" aria-pressed="false" data-gdate="sat">Sat Nov 7</button>
-      <button type="button" aria-pressed="false" data-gdate="sun">Sun Nov 8</button>
-      <button type="button" aria-pressed="false" data-gdate="mon">Mon Nov 9</button>
+      <button type="button" aria-pressed="true" data-gdate="week">This Week</button>
+      <button type="button" aria-pressed="false" data-gdate="today">Today</button>
+      <button type="button" aria-pressed="false" data-gdate="tomorrow">Tomorrow</button>
     </div>
     <div id="leagueCard"></div>
 
     <section class="block explain-wrap" id="gamesBlock">
-      <h2 class="explain-head"><span class="explain-title" id="slateHeading">NFL games &mdash; Nov 4&ndash;9</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainSlate" aria-label="How to read these games">i</button></h2>
+      <h2 class="explain-head"><span class="explain-title" id="slateHeading">NFL games</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainSlate" aria-label="How to read these games">i</button></h2>
       <div class="explain" id="explainSlate" hidden><p style="margin:0">The <b>bold</b> team is the pick, and the % is how often it is expected to win. Under each game, <b>Model A</b> is the other model&rsquo;s number and <b>Model B</b> is our model&rsquo;s number. A game shows only the model lines whose numbers are in this snapshot &mdash; for other sports and dates, only Model A is posted and our number is not in yet. The Nov 4 NBA headline is the average of the two models; its two numbers are not shown separately in this snapshot. Games with a posted book line show it next to our pick; games without one yet show &ldquo;Line: TBD&rdquo;. &ldquo;Close call&rdquo; means barely better than a coin flip &mdash; a lean, not a pick to trust. Check the news before using any of these: injuries and late news are invisible to old box scores.</p></div>
       <div id="slateList" style="margin-top:12px"></div>
     </section>
 
         <section class="block" id="tennisBlock" hidden>
-      <h2>Tennis &mdash; as of 2026-11-06T09:46:03-08:00</h2>
+      <h2 id="tennisHeading">Tennis &mdash; updated today at 9:46am PT</h2>
       <p class="sub">Tennis moves fast &mdash; these are from our latest update. Check back for fresh numbers.</p>
       <div class="slate" style="margin-top:12px">
         <div class="slate-row"><div class="match"><span class="n">ATP &middot; starts 10:00 AM PT Nov 6</span><div class="picklines"><div class="avgline"><b>Carlos Alcaraz</b> <span class="pickpct">74.5%</span> <span class="loser">over Taylor Fritz</span></div><div><span class="lbl">Taylor Fritz vs Carlos Alcaraz</span></div></div></div></div>
@@ -1021,8 +1017,8 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
         <span class="filter-label" id="propDateLabel">Date</span>
         <div class="filters" role="group" aria-labelledby="propDateLabel" id="propDateFilters">
           <button type="button" aria-pressed="true" data-date="ALL">All dates</button>
-          <button type="button" aria-pressed="false" data-date="Nov 4">Today Nov 4</button>
-          <button type="button" aria-pressed="false" data-date="Nov 5">Tomorrow Nov 5</button>
+          <button type="button" aria-pressed="false" data-date="Nov 4">Today</button>
+          <button type="button" aria-pressed="false" data-date="Nov 5">Tomorrow</button>
         </div>
       </div>
       <div class="filter-group">
@@ -1061,24 +1057,25 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <section id="tdBoardSection" aria-label="Touchdowns — NFL anytime TD" hidden>
       <h2 style="margin-top:26px">Touchdowns &mdash; NFL anytime TD</h2>
       <p class="sub">Who scores a touchdown? The chance for every player on the list, from how much they touch the ball near the goal line. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p>
-      <div class="model-warning" role="alert"><span class="model-warning-title">Warning &mdash; read this first</span><p>Baltimore&rsquo;s offensive players are flagged: the Ravens are on 3rd-string QB Fagnano. These TD chances assume a healthy offense and are likely overstated for BAL players.</p></div>
+      <div class="model-warning" role="alert"><span class="model-warning-title">Warning &mdash; read this first</span><p>Baltimore&rsquo;s offensive players are flagged: the Ravens are on 3rd-string QB Fagnano. These TD chances assume a healthy offense and are likely overstated for BAL players. Flagged players show no clean chance below &mdash; the number would assume a healthy offense.</p></div>
 
-          <h2 class="td-board-title">Touchdowns &mdash; JAX @ BAL, Thu Nov 5</h2>
+          <h2 class="td-board-title">Touchdowns &mdash; JAX @ BAL, Thu, Nov 5, 2026</h2>
           <p class="sub">Kickoff 5:15pm PT &middot; highest chance first.</p>
+          <p class="sub" id="tdBoardStatus"></p>
           <p class="empty-state" id="tdBoardEmpty" hidden>The next touchdown board hasn&rsquo;t been posted yet. Check back on game day.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no board yet">i</button><span class="tip">The next board is posted on game day, once the week&rsquo;s games are set.</span></span></p>
           <div class="rows td-board" id="tdBoardRows" role="table" aria-label="Touchdown chances, JAX at Baltimore, Thursday November 5">
             <div class="rowhead"><span>Player</span><span style="text-align:right">Chance</span></div>
-            <div class="trow"><div class="who"><b>Derrick Henry</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">54%</span></div>
+            <div class="trow"><div class="who"><b>Derrick Henry</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">&mdash;</span><div class="flag" style="grid-column:1 / -1">likely overstated &mdash; no clean number</div></div>
             <div class="trow"><div class="who"><b>Bhayshul Tuten</b><span>JAX</span></div><span class="pill-prob">49%</span></div>
             <div class="trow"><div class="who"><b>Parker Washington</b><span>JAX</span></div><span class="pill-prob">38%</span></div>
             <div class="trow"><div class="who"><b>Brenton Strange</b><span>JAX</span></div><span class="pill-prob">31%</span></div>
             <div class="trow"><div class="who"><b>Jakobi Meyers</b><span>JAX</span></div><span class="pill-prob">27%</span></div>
-            <div class="trow"><div class="who"><b>Zay Flowers</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">27%</span></div>
-            <div class="trow"><div class="who"><b>Mark Andrews</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">20%</span></div>
-            <div class="trow"><div class="who"><b>Rashod Bateman</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">18%</span></div>
-            <div class="trow"><div class="who"><b>Justice Hill</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">16%</span></div>
+            <div class="trow"><div class="who"><b>Zay Flowers</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">&mdash;</span><div class="flag" style="grid-column:1 / -1">likely overstated &mdash; no clean number</div></div>
+            <div class="trow"><div class="who"><b>Mark Andrews</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">&mdash;</span><div class="flag" style="grid-column:1 / -1">likely overstated &mdash; no clean number</div></div>
+            <div class="trow"><div class="who"><b>Rashod Bateman</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">&mdash;</span><div class="flag" style="grid-column:1 / -1">likely overstated &mdash; no clean number</div></div>
+            <div class="trow"><div class="who"><b>Justice Hill</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">&mdash;</span><div class="flag" style="grid-column:1 / -1">likely overstated &mdash; no clean number</div></div>
             <div class="trow"><div class="who"><b>Ameer Abdullah</b><span>JAX</span></div><span class="pill-prob">14%</span></div>
-            <div class="trow"><div class="who"><b>Devontez Walker</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">12%</span></div>
+            <div class="trow"><div class="who"><b>Devontez Walker</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">&mdash;</span><div class="flag" style="grid-column:1 / -1">likely overstated &mdash; no clean number</div></div>
             <div class="trow"><div class="who"><b>Travis Hunter</b><span>JAX</span></div><span class="pill-prob">11%</span></div>
           </div>
           <p class="note">Brian Thomas Jr not listed &mdash; no 2026 data in model.</p>
@@ -1096,6 +1093,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
           </div>
           <div class="rows" id="tdRows" role="table" aria-label="Touchdown chances, last board November 1 — graded"></div>
           <p class="note">Highest chance first. &ldquo;Break-even payout&rdquo; is the book payout at which this chance would just break even over many tries &mdash; hold it next to a real book payout. <a href="#docs" data-goto="docs">Why teammates in one ticket pay less &rarr;</a></p>
+          <p class="note">One row (Jameson Williams) was removed &mdash; wrong team and position in the Nov 1 board.</p>
     </section>
   </section>
 
@@ -1274,11 +1272,12 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 
   <!-- ============ TOTALS ============ -->
   <section class="panel" id="panel-totals" role="tabpanel" aria-labelledby="tab-totals" tabindex="0" hidden>
-    <h1>Totals &mdash; Thu Nov 5</h1>
+    <h1 id="totalsHeading">Totals &mdash; Nov 6, 2026</h1>
     <p class="lede">Our predicted total vs the book&rsquo;s number. A lean means we see it differently, not a guaranteed win.</p>
     <p class="record-line">Our record: 0–7, −$700 so far. Forecasts, not proven winners.</p>
     <div class="freshness"></div>
-    <div class="model-warning" role="alert"><span class="model-warning-title">Warning &mdash; read this first</span><p>Roster tracker adjusted: Ravens on 3rd-string QB Fagnano. Model now accounts for the QB downgrade (-9.7 points). Market moved from 49.5 to 40.5.</p></div>
+    <p id="totalsStaleBanner" class="stale-banner" hidden></p>
+    <div class="model-warning" role="alert"><span class="model-warning-title">Warning &mdash; read this first</span><p>Ravens are on 3rd-string QB Fagnano, so the total is lower than the model first said.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="More about the Ravens total">i</button><span class="tip">The roster tracker cut the total by 9.7 points for the QB downgrade (Fagnano in for Lamar Jackson). The market moved from 49.5 to 40.5.</span></span></p></div>
     <div class="filter-group" style="margin-top:16px">
       <span class="filter-label" id="totalsSportLabel">Sport</span>
       <div class="filters" role="group" aria-labelledby="totalsSportLabel" id="totalsSportFilters"></div>
@@ -1290,11 +1289,12 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 
   <!-- ============ SPREADS ============ -->
   <section class="panel" id="panel-spreads" role="tabpanel" aria-labelledby="tab-spreads" tabindex="0" hidden>
-    <h1>Spreads &mdash; Thu Nov 5</h1>
+    <h1 id="spreadsHeading">Spreads &mdash; Nov 6, 2026</h1>
     <p class="lede">Our predicted spread vs the book&rsquo;s number. A lean means we see it differently, not a guaranteed win.</p>
     <p class="record-line">Our record: 0–7, −$700 so far. Forecasts, not proven winners.</p>
     <div class="freshness"></div>
-    <div class="model-warning" role="alert"><span class="model-warning-title">Warning &mdash; read this first</span><p>Roster tracker adjusted: Ravens on 3rd-string QB Fagnano. Model now accounts for the QB downgrade. Market moved from BAL -4.5 to JAX -9.5.</p></div>
+    <p id="spreadsStaleBanner" class="stale-banner" hidden></p>
+    <div class="model-warning" role="alert"><span class="model-warning-title">Warning &mdash; read this first</span><p>Ravens are on 3rd-string QB Fagnano, so the spread moved toward Jacksonville.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="More about the Ravens spread">i</button><span class="tip">The roster tracker cut the total by 9.7 points for the QB downgrade (Fagnano in for Lamar Jackson). The market moved from BAL -4.5 to JAX -9.5.</span></span></p></div>
     <div class="filter-group" style="margin-top:16px">
       <span class="filter-label" id="spreadsSportLabel">Sport</span>
       <div class="filters" role="group" aria-labelledby="spreadsSportLabel" id="spreadsSportFilters"></div>
@@ -1579,8 +1579,16 @@ function $(id){return document.getElementById(id);}
    this page are strings like "4:30pm" (PT). A game with no usable time
    sorts after every timed game on its date — never before one on a
    guessed time. Unknown dates sort last. */
-var DATE_ORDER={"Nov 4":0,"Nov 5":1,"Nov 6":2,"Nov 7":3,"Nov 8":4,"Nov 9":5};
-function dateOrderOf(d){return DATE_ORDER[d]!=null?DATE_ORDER[d]:999;}
+/* Real-date ordering: parsed from each row's own date string (see
+   parseGameDate below) — never a baked list of dates. A row with no
+   parseable date sorts after every dated row; ties keep payload
+   order via each caller's index tiebreak. */
+function gameDateDiff(a,b){
+  var da=parseGameDate(a), db=parseGameDate(b);
+  var ta=da?da.getTime():Infinity, tb=db?db.getTime():Infinity;
+  if(ta===tb) return 0;
+  return ta<tb?-1:1;
+}
 function timeMinutes(t){
   if(!t) return null;
   var m=/^\s*(\d{1,2}):(\d{2})\s*([ap])m\s*$/i.exec(String(t));
@@ -1590,7 +1598,7 @@ function timeMinutes(t){
   return h*60+min;
 }
 function gameTimeCompare(a,b){
-  var d=dateOrderOf(a.date)-dateOrderOf(b.date);
+  var d=gameDateDiff(a.date,b.date);
   if(d) return d;
   var ta=timeMinutes(a.time), tb=timeMinutes(b.time);
   var va=ta==null?Infinity:ta, vb=tb==null?Infinity:tb;
@@ -2025,7 +2033,6 @@ var NHL_FORECASTS=[
   {g:"PIT @ ANA",date:"Nov 8",day:"Sun Nov 8",time:"5:00pm",pick:"ANA",p:54.3,markets:{"polymarket": "https://polymarket.us/event/nhl-pit-ana-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV08PITANA", "novig": null}}
 ];
 var TD=[
-  {player:"Jameson Williams",team:"DAL",game:"ARI @ DAL",pos:"RB",p:0.6145,touches:18.81,rz:4.55},
   {player:"Bijan Robinson",team:"ATL",game:"ATL @ TB",pos:"RB",p:0.6032,touches:24.59,rz:5.15},
   {player:"Bucky Irving",team:"TB",game:"ATL @ TB",pos:"RB",p:0.4852,touches:19.95,rz:4.29},
   {player:"CeeDee Lamb",team:"DAL",game:"ARI @ DAL",pos:"WR",p:0.4687,touches:10.84,rz:1.23},
@@ -2953,6 +2960,9 @@ $("leagueFilters").addEventListener("click",function(e){
 });
 try{renderLeague();}catch(e){}
 try{syncTennisVisibility();}catch(e){}
+/* Tennis freshness: the source timestamp is rendered through the same
+   "Updated ..." label as every other tab — never a raw ISO string. */
+try{(function(){var h=$("tennisHeading");if(!h)return;var d=new Date("2026-11-06T09:46:03-08:00");if(!isNaN(d.getTime()))h.textContent="Tennis \u2014 updated "+fmtUpdatedLabel(d);})();}catch(e){}
 /* Game list: re-rendered on every sport or date tap, so the sport tabs
    filter the list itself, not just the description card above it. The
    Nov 4 NBA rows keep the headline pick already on the page; every
@@ -2974,12 +2984,30 @@ function addDays(d,n){return new Date(d.getFullYear(),d.getMonth(),d.getDate()+n
    "This Week" range, and the Today/Tomorrow clamp are all driven from
    this list instead of a baked Nov 4–9 range, so a later snapshot
    re-dates the buttons from its own games. */
+/* The snapshot's year, read from SNAPSHOT_UPDATED itself — never a
+   hardcoded year. SNAPSHOT_UPDATED is assigned later in this script,
+   so before then the visitor's current year stands in. */
+function snapshotYear(){
+  try{
+    if(typeof SNAPSHOT_UPDATED!=="undefined"&&SNAPSHOT_UPDATED){
+      var y=new Date(SNAPSHOT_UPDATED).getFullYear();
+      if(isFinite(y)) return y;
+    }
+  }catch(e){}
+  return new Date().getFullYear();
+}
+/* Accepts "Nov 6" (month-abbr + day; the year is the snapshot year
+   from SNAPSHOT_UPDATED) and ISO "2026-11-06" (parsed directly).
+   Anything else returns null: no date — callers must not guess. */
 function parseGameDate(s){
-  var m=/^([A-Za-z]{3}) (\d{1,2})$/.exec(String(s||""));
+  var str=String(s||"").trim();
+  var iso=/^(\d{4})-(\d{2})-(\d{2})/.exec(str);
+  if(iso) return new Date(parseInt(iso[1],10),parseInt(iso[2],10)-1,parseInt(iso[3],10));
+  var m=/^([A-Za-z]{3}) (\d{1,2})$/.exec(str);
   if(!m) return null;
   var mo=MONTH_ABBR.indexOf(m[1]);
   if(mo<0) return null;
-  return new Date(2026,mo,parseInt(m[2],10));
+  return new Date(snapshotYear(),mo,parseInt(m[2],10));
 }
 function collectGameDates(){
   var seen={}, list=[];
@@ -3002,15 +3030,15 @@ var ACTUAL_GAME_DATES=collectGameDates();
 var ACTUAL_DATE_SET={};
 ACTUAL_GAME_DATES.forEach(function(x){ACTUAL_DATE_SET[x.date]=x.day;});
 function weekRangeLabel(){
-  if(!ACTUAL_GAME_DATES.length) return "Nov 4\u20139";
+  if(!ACTUAL_GAME_DATES.length) return "";
   var first=ACTUAL_GAME_DATES[0], last=ACTUAL_GAME_DATES[ACTUAL_GAME_DATES.length-1];
   if(first.date===last.date) return first.date;
   var fm=first.date.split(" ")[0], lm=last.date.split(" ")[0];
   if(fm===lm) return fm+" "+first.date.split(" ")[1]+"\u2013"+last.date.split(" ")[1];
   return first.date+" \u2013 "+last.date;
 }
-var SNAPSHOT_FIRST=ACTUAL_GAME_DATES.length?new Date(ACTUAL_GAME_DATES[0].when):new Date(2026,10,4);
-var SNAPSHOT_LAST=ACTUAL_GAME_DATES.length?new Date(ACTUAL_GAME_DATES[ACTUAL_GAME_DATES.length-1].when):new Date(2026,10,9);
+var SNAPSHOT_FIRST=ACTUAL_GAME_DATES.length?new Date(ACTUAL_GAME_DATES[0].when):new Date();
+var SNAPSHOT_LAST=ACTUAL_GAME_DATES.length?new Date(ACTUAL_GAME_DATES[ACTUAL_GAME_DATES.length-1].when):new Date();
 function clampToWeek(d){
   var day=new Date(d.getFullYear(),d.getMonth(),d.getDate());
   if(day<SNAPSHOT_FIRST) return new Date(SNAPSHOT_FIRST);
@@ -3066,7 +3094,7 @@ function gameDateMatch(date){
   if(gameDateState==="tomorrow") return date===shortDate(TOMORROW_DATE);
   if(gameDateState==="week"){
     if(ACTUAL_GAME_DATES.length) return !!ACTUAL_DATE_SET[date];
-    return date==="Nov 4"||date==="Nov 5"||date==="Nov 6"||date==="Nov 7"||date==="Nov 8"||date==="Nov 9";
+    return false;
   }
   return date===gameDateState;
 }
@@ -3117,7 +3145,8 @@ function modelLinesHtml(lines){
   return '<div class="model-lines">'+lines.join("")+'</div>';
 }
 function modelLineHtml(label,pickName,pctText,suffix){
-  return '<div>'+label+': <b>'+esc(pickName)+' '+pctText+'</b>'+(suffix||"")+'</div>';
+  var full=label==="Model A"?"Model A \u2014 the other model (ALL_IN)":(label==="Model B"?"Model B \u2014 our model (Muse)":label);
+  return '<div>'+full+': <b>'+esc(pickName)+' '+pctText+'</b>'+(suffix||"")+'</div>';
 }
 /* Model A extras from the v1.1 feed, rendered only when present. The
    confidence badge sits next to the headline %; the gap bubble appears
@@ -3185,7 +3214,7 @@ function feedRowHtml(f){
   return '<div class="slate-row"><div class="match"><span class="n">'+esc(f.g)+' \u00b7 '+esc(f.day)+' \u00b7 '+esc(f.time)+' PT</span><div class="picklines"><div class="avgline"><b>'+esc(pickCode)+'</b> <span class="pickpct">'+p+'%</span>'+confBadgeHtml(f.confidence_tier)+'</div>'+modelLinesHtml([modelLineHtml("Model A",pickCode,p+"%",gapInfoHtml(f.model_vs_market_pts))])+angleHtml(f.angle)+simLinesHtml(f)+'</div><div class="tagrow">'+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(f.note?' <span class="n">'+esc(f.note)+'</span>':"")+'</div>'+marketsHtml(f.markets)+'</div><button type="button" data-slate-game="'+esc(f.g)+'">Player picks for this game &rarr;</button></div>';
 }
 function forecastRowHtml(f){
-  var lineHtml=f.book?'<span class="loser">Book spread: '+esc(f.book)+'</span>':'<span class="loser">Line: TBD</span>';
+  var lineHtml=f.book?'<span class="loser">Book spread: '+esc(f.book)+'</span>':'<span class="loser">Line: TBD</span> <span class="picktag">Line not posted yet</span>';
   var lines=[];
   var a=feedModelAForGame(f.g);
   var headlinePick=f.pick, headlinePct=f.p;
@@ -3204,7 +3233,7 @@ function forecastRowHtml(f){
   }
   lines.push(modelLineHtml("Model B",f.pick,f.p.toFixed(1)+"%"));
   var close=headlinePct<=56;
-  return '<div class="slate-row"><div class="match"><span class="n">'+esc(f.g)+' \u00b7 '+esc(f.day)+' \u00b7 '+esc(f.time)+' PT</span><div class="picklines"><div class="avgline"><b>'+esc(headlinePick)+'</b> <span class="pickpct">'+headlinePct.toFixed(1)+'%</span>'+(a?confBadgeHtml(a.confidence_tier):"")+' '+lineHtml+'</div>'+modelLinesHtml(lines)+angleHtml(a?a.angle:"")+simLinesHtml(f)+'</div><div class="tagrow">'+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(f.note?' <span class="n">'+esc(f.note)+'</span>':"")+'</div>'+marketsHtml(f.markets)+'</div><button type="button" data-slate-game="'+esc(f.g)+'">Player picks for this game &rarr;</button></div>';
+  return '<div class="slate-row"><div class="match"><span class="n">'+esc(f.g)+' \u00b7 '+esc(f.day)+' \u00b7 '+esc(f.time)+' PT</span><div class="picklines"><div class="avgline"><b>'+esc(headlinePick)+'</b> <span class="pickpct">'+headlinePct.toFixed(1)+'%</span>'+(a?confBadgeHtml(a.confidence_tier):"")+' '+lineHtml+'</div>'+modelLinesHtml(lines)+angleHtml(a?a.angle:"")+simLinesHtml(f)+'</div><div class="tagrow">'+(f.book?"":'<span>forecast only \u2014 no book line to compare against</span>')+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(f.note?' <span class="n">'+esc(f.note)+'</span>':"")+'</div>'+marketsHtml(f.markets)+'</div><button type="button" data-slate-game="'+esc(f.g)+'">Player picks for this game &rarr;</button></div>';
 }
 /* Monte Carlo sim lines, shown only for games whose forecast carries
    sim data (forecast.sim, 10,000 sims). Two shapes:
@@ -3312,7 +3341,7 @@ function soccerDateParts(d){
   else{
     var p=/^([A-Za-z]{3}) (\d{1,2})$/.exec(s);
     if(!p||!SOCCER_MONTHS[p[1]]) return {label:s,key:99999999,dayLabel:s};
-    y=2026; mo=SOCCER_MONTHS[p[1]]; day=parseInt(p[2],10);
+    y=(typeof snapshotYear==="function"?snapshotYear():new Date().getFullYear()); mo=SOCCER_MONTHS[p[1]]; day=parseInt(p[2],10);
   }
   var label=SOCCER_MONTH_NAMES[mo-1]+" "+day;
   var wd=SOCCER_WEEKDAYS[new Date(y,mo-1,day).getDay()];
@@ -3359,12 +3388,12 @@ function soccerRowHtml(s){
   var favPct=(typeof s.favorite_prob!=="undefined"&&isFinite(Number(s.favorite_prob)))?Number(s.favorite_prob):(favKey==="home"?pH:(favKey==="draw"?pD:pA));
   var favPctText=soccerPctText(favPct);
   var lineHtml=(s.bookHome==null&&s.bookDraw==null&&s.bookAway==null)
-    ?'<span class="loser">Line: TBD</span>'
+    ?'<span class="loser">Line: TBD</span> <span class="picktag">Line not posted yet</span>'
     :'<span class="loser">Line: '+esc(s.home)+' '+soccerOdds(s.bookHome)+' \u00b7 Draw '+soccerOdds(s.bookDraw)+' \u00b7 '+esc(s.away)+' '+soccerOdds(s.bookAway)+'</span>';
   function col(name,p,isFav){
     return '<div class="soccer-col'+(isFav?' fav':'')+'"><span class="soccer-team">'+(isFav?'<b>'+esc(name)+'</b>':esc(name))+'</span><span class="soccer-pct">'+soccerPctText(p)+'</span></div>';
   }
-  return '<div class="slate-row soccer-row"><div class="match"><span class="n">'+esc(soccerLeagueName(s))+' \u00b7 '+esc(s.g)+' \u00b7 '+esc(d.dayLabel)+' \u00b7 '+esc(t)+' PT</span><div class="picklines"><div class="avgline"><b>'+esc(fav)+'</b> <span class="pickpct">'+favPctText+'</span>'+confBadgeHtml(s.confidence_tier)+' '+lineHtml+'</div>'+modelLinesHtml([modelLineHtml("Model B",fav,favPctText)])+'</div><div class="soccer-cols">'+col(s.home,pH,favKey==="home")+col("Draw",pD,favKey==="draw")+col(s.away,pA,favKey==="away")+'</div>'+simLinesHtml(s)+'</div></div>';
+  return '<div class="slate-row soccer-row"><div class="match"><span class="n">'+esc(soccerLeagueName(s))+' \u00b7 '+esc(s.g)+' \u00b7 '+esc(d.dayLabel)+' \u00b7 '+esc(t)+' PT</span><div class="picklines"><div class="avgline"><b>'+esc(fav)+'</b> <span class="pickpct">'+favPctText+'</span>'+confBadgeHtml(s.confidence_tier)+' '+lineHtml+'</div>'+modelLinesHtml([modelLineHtml("Model B",fav,favPctText)])+'</div>'+((s.bookHome==null&&s.bookDraw==null&&s.bookAway==null)?'<div class="tagrow"><span>forecast only \u2014 no book line to compare against</span></div>':"")+'<div class="soccer-cols">'+col(s.home,pH,favKey==="home")+col("Draw",pD,favKey==="draw")+col(s.away,pA,favKey==="away")+'</div>'+simLinesHtml(s)+'</div></div>';
 }
 function forecastHasGame(list,f){
   if(!list) return false;
@@ -3388,7 +3417,7 @@ function renderGames(){
     });
     sRows.sort(function(a,b){return a.key-b.key||a.mins-b.mins;});
     if(!sRows.length){
-      $("slateList").innerHTML='<div class="empty-state"><p>No games scheduled for this date.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no games">i</button><span class="tip">Games are grouped by date. Try This Week to see every game from Nov 4 to Nov 9.</span></span></p><p>No Soccer games posted for this date yet. Try This Week.</p></div>';
+      $("slateList").innerHTML='<div class="empty-state"><p>No games scheduled for this date.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no games">i</button><span class="tip">Games are grouped by date. Try This Week to see every game this week.</span></span></p><p>No Soccer games posted for this date yet. Try This Week.</p></div>';
       return;
     }
     var out="", curDay=null;
@@ -3422,7 +3451,7 @@ function renderGames(){
     if(leagueState==="nba"&&gameDateMatch("Nov 4")){
       (SLATE||[]).forEach(function(s){
         var close=s.avgP<=56;
-        push("Wed Nov 4","Nov 4",s.time,'<div class="slate-row"><div class="match"><span class="n">'+esc(s.g)+' \u00b7 Nov 4</span><div class="picklines"><div class="avgline"><b>'+esc(TEAM_NAMES[s.avgPick])+'</b> <span class="pickpct">'+s.avgP+'%</span></div>'+modelLinesHtml(["<div>Average of Model A and Model B</div>"])+'</div><div class="tagrow">'+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(s.note?' <span class="n">'+esc(s.note)+'</span>':"")+'</div>'+marketsHtml(s.markets)+'</div><button type="button" data-slate-game="'+esc(s.g)+'">Player picks for this game &rarr;</button></div>');
+        push("Wed Nov 4","Nov 4",s.time,'<div class="slate-row"><div class="match"><span class="n">'+esc(s.g)+' \u00b7 Nov 4</span><div class="picklines"><div class="avgline"><b>'+esc(TEAM_NAMES[s.avgPick])+'</b> <span class="pickpct">'+s.avgP+'%</span></div>'+modelLinesHtml(["<div>Average of Model A (the other model) and Model B (our model)</div>"])+'</div><div class="tagrow">'+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(s.note?' <span class="n">'+esc(s.note)+'</span>':"")+'</div>'+marketsHtml(s.markets)+'</div><button type="button" data-slate-game="'+esc(s.g)+'">Player picks for this game &rarr;</button></div>');
       });
     }
     (FEED_GAMES||[]).forEach(function(f){
@@ -3466,7 +3495,7 @@ function renderGames(){
     }
   }
   if(!groups.length){
-    $("slateList").innerHTML='<div class="empty-state"><p>No games scheduled for this date.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no games">i</button><span class="tip">Games are grouped by date. Try This Week to see every game from Nov 4 to Nov 9.</span></span></p><p>No '+esc(LEAGUES[leagueState].name)+' games on this date in the '+esc(snapshotDateLabel())+' snapshot. Try This Week.</p></div>';
+    $("slateList").innerHTML='<div class="empty-state"><p>No games scheduled for this date.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no games">i</button><span class="tip">Games are grouped by date. Try This Week to see every game this week.</span></span></p><p>No '+esc(LEAGUES[leagueState].name)+' games on this date in the '+esc(snapshotDateLabel())+' snapshot. Try This Week.</p></div>';
     return;
   }
   groups.forEach(function(day){
@@ -3474,7 +3503,7 @@ function renderGames(){
   });
   groups.sort(function(a,b){
     var ra=byDay[a][0], rb=byDay[b][0];
-    return dateOrderOf(ra.date)-dateOrderOf(rb.date)||ra.idx-rb.idx;
+    return gameDateDiff(ra.date,rb.date)||ra.idx-rb.idx;
   });
   $("slateList").innerHTML=groups.map(function(day){
     return '<h3 class="date-group">'+esc(day)+'</h3><div class="slate">'+byDay[day].map(function(r){return r.html;}).join("")+'</div>';
@@ -3725,7 +3754,36 @@ if($("spreadsSportFilters")) $("spreadsSportFilters").addEventListener("click",f
   syncTsSportFilters("spreadsSportFilters",spreadsSport);
   renderSpreads();
 });
+/* Totals/Spreads headings: dated from the board itself — the earliest
+   game_date in that tab's rows. A board dated today is headed with
+   today; any other date is headed with its own date, marked
+   "(last update)", with the stale banner — never labelled "today". */
+function tsBoardDate(rows){
+  var best=null;
+  (rows||[]).forEach(function(r){
+    if(!r||!r.game_date) return;
+    var d=parseGameDate(r.game_date);
+    if(d&&(!best||d.getTime()<best.getTime())) best=d;
+  });
+  return best;
+}
+function fmtBoardDate(d){return MONTH_ABBR[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear();}
+function renderTsHeading(headingId,staleId,label,rows){
+  var h=$(headingId); if(!h) return;
+  var d=tsBoardDate(rows); if(!d) return;
+  function pad(n){return (n<10?"0":"")+n;}
+  var key=d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+  var banner=$(staleId);
+  if(key===ptDateKey(new Date())){
+    h.textContent=label+" \u2014 "+WEEKDAY_ABBR[d.getDay()]+", "+fmtBoardDate(d);
+    if(banner){banner.hidden=true;banner.textContent="";}
+  }else{
+    h.textContent=label+" \u2014 "+fmtBoardDate(d)+" (last update)";
+    if(banner){banner.hidden=false;banner.textContent="This board is from "+fmtBoardDate(d)+", not today.";}
+  }
+}
 function renderTotals(){
+  renderTsHeading("totalsHeading","totalsStaleBanner","Totals",TOTALS);
   var el=$("totalsList"); if(!el) return;
   if(!TOTALS||!TOTALS.length){el.innerHTML='<div class="empty-state"><p>No forecasts available right now &mdash; check back soon.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no forecasts">i</button><span class="tip">New totals are posted with each day&rsquo;s board, usually in the morning.</span></span></p></div>';return;}
   /* Rows with no prediction (our === null) are skipped before any
@@ -3774,6 +3832,7 @@ function fmtSpread(v,abbr){
   return abbr[1]+" -"+Math.abs(v).toFixed(1);
 }
 function renderSpreads(){
+  renderTsHeading("spreadsHeading","spreadsStaleBanner","Spreads",SPREADS);
   var el=$("spreadsList"); if(!el) return;
   if(!SPREADS||!SPREADS.length){el.innerHTML='<div class="empty-state"><p>No spread forecasts today &mdash; check back with tomorrow&rsquo;s board.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no forecasts">i</button><span class="tip">New spreads are posted with each day&rsquo;s board, usually in the morning.</span></span></p></div>';return;}
   /* Same null-prediction guard as Totals: skip rows whose our is
@@ -3844,7 +3903,35 @@ try{renderTD();}catch(e){}
 /* Next board empty state: the static board above is the next board. If a
    future snapshot ships it with no player rows, say so plainly instead
    of leaving a bare heading. */
-(function(){var b=$("tdBoardRows"),e=$("tdBoardEmpty");if(b&&e) e.hidden=b.querySelectorAll(".trow").length>0;})();
+(function(){
+  var b=$("tdBoardRows"),e=$("tdBoardEmpty"),st=$("tdBoardStatus");
+  var hasRows=!!(b&&b.querySelectorAll(".trow").length>0);
+  var gd=(typeof parseGameDate==="function")?parseGameDate("Nov 5"):null;
+  var isPast=false,isToday=false;
+  if(gd){var gk=ptDateKey(gd),tk=ptDateKey(new Date());isPast=!!(gk&&tk&&gk<tk);isToday=!!(gk&&tk&&gk===tk);}
+  /* A past game is not a current board: the empty state fires too, so
+     the page says the next board has not been posted yet. */
+  if(e) e.hidden=hasRows&&!isPast;
+  if(st&&gd){
+    if(isPast){
+      st.className="stale-banner";
+      st.textContent="Past game \u2014 JAX won 33\u201310. This board is for the record only, not today\u2019s picks.";
+      if(b&&hasRows){
+        var det=document.createElement("details");
+        det.id="tdBoardDetails";
+        var sum=document.createElement("summary");
+        sum.textContent="Show the Nov 5 board (past game)";
+        det.appendChild(sum);
+        b.parentNode.insertBefore(det,b);
+        det.appendChild(b);
+      }
+    }else if(isToday){
+      st.textContent="Today\u2019s board \u2014 kickoff 5:15pm PT.";
+    }else{
+      st.textContent="Next board \u2014 "+MONTH_ABBR[gd.getMonth()]+" "+gd.getDate()+", "+gd.getFullYear()+".";
+    }
+  }
+})();
 
 /* ================= PLAYER PICKS — Top props, Nov 4–5 ================= */
 var TOP_PROPS=[
@@ -4293,7 +4380,7 @@ function buildGameOptions(keepMissing){
   /* Games in tip-off order: date, then time, games with no stated time
      last on their date. The time, when stated, is shown in the label. */
   list.sort(function(a,b){
-    var d=dateOrderOf(a.date)-dateOrderOf(b.date);
+    var d=gameDateDiff(a.date,b.date);
     if(d) return d;
     var ta=timeMinutes(a.time), tb=timeMinutes(b.time);
     var va=ta==null?Infinity:ta, vb=tb==null?Infinity:tb;
@@ -6678,7 +6765,7 @@ function loadScores(){
     });
     var el=$("scoresAsOf");
     if(scoresState.anyOk){
-      if(el) el.textContent="Scores as of "+fmtAsOfPT()+" PT";
+      if(el) el.textContent="Updated "+fmtUpdatedLabel(new Date());
     }else if(el){
       /* A failed refresh must not keep showing the last good time. */
       el.textContent="";
@@ -6923,11 +7010,29 @@ var dfsSlate="NBA", dfsPlatform="DK";
    #dfsAsOf line so stale projections are distinguishable from
    fresh ones; while empty the line stays hidden. */
 var DFS_AS_OF="";
+function dfsUpdatedLabel(d){
+  try{
+    var time=new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",hour:"numeric",minute:"2-digit",hour12:true}).format(d).replace(" AM","am").replace(" PM","pm");
+    var keyFmt=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Los_Angeles",year:"numeric",month:"2-digit",day:"2-digit"});
+    var todayKey=keyFmt.format(new Date()), updKey=keyFmt.format(d);
+    if(updKey&&updKey===todayKey) return "today at "+time+" PT";
+    var a=new Date(updKey+"T00:00:00Z"), b=new Date(todayKey+"T00:00:00Z");
+    if((b-a)/86400000===1) return "yesterday at "+time+" PT";
+    var datePart=new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",month:"short",day:"numeric"}).format(d);
+    return datePart+" at "+time+" PT";
+  }catch(e){ return String(DFS_AS_OF); }
+}
 (function(){
   var el=dfs$("dfsAsOf");
   if(!el) return;
-  if(DFS_AS_OF){el.textContent="Updated "+DFS_AS_OF;el.hidden=false;}
-  else{el.textContent="";el.hidden=true;}
+  if(DFS_AS_OF){
+    var d=new Date(DFS_AS_OF);
+    el.textContent="Updated "+(!isNaN(d.getTime())?dfsUpdatedLabel(d):DFS_AS_OF);
+    el.hidden=false;
+  }else{
+    el.textContent="Last update unknown";
+    el.hidden=false;
+  }
 })();
 var dfsFileText=null, dfsUsingSample=false;
 
