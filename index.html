@@ -905,6 +905,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <h1>Check the chances <em>before you bet.</em></h1>
     <p class="lede">Today&rsquo;s picks, with the chance each one hits.</p>
     <p class="record-line">Our record: 0–7, −$700 so far. Forecasts, not proven winners.</p>
+    <p class="recap-line" id="yesterdayRecap" hidden></p>
     <div class="freshness"></div>
 
     <section class="block" style="margin-top:22px" aria-label="Strongest picks">
@@ -989,7 +990,8 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 
         <section class="block" id="tennisBlock" hidden>
       <h2 id="tennisHeading">Tennis &mdash; updated today at 9:46am PT</h2>
-      <p class="sub">Tennis moves fast &mdash; these are from our latest update. Check back for fresh numbers.</p>
+      <p class="sub">Each match shows who we think wins, and how often we think they win.</p>
+      <p class="stale-banner" id="tennisStaleBanner" hidden></p>
       <div class="slate" style="margin-top:12px">
         <div class="slate-row"><div class="match"><span class="n">ATP &middot; starts 10:00 AM PT Nov 6, 2026</span><div class="picklines"><div class="avgline"><b>Carlos Alcaraz</b> <span class="pickpct">74.5%</span> <span class="loser">over Taylor Fritz</span></div><div><span class="lbl">Taylor Fritz vs Carlos Alcaraz</span></div></div></div></div>
         <div class="slate-row"><div class="match"><span class="n">ATP &middot; starts 11:30 AM PT Nov 6, 2026</span><div class="picklines"><div class="avgline"><b>Casper Ruud</b> <span class="pickpct">67.8%</span> <span class="loser">over Nuno Borges</span></div><div><span class="lbl">Casper Ruud vs Nuno Borges</span></div></div></div></div>
@@ -1004,7 +1006,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <section class="panel" id="panel-props" role="tabpanel" aria-labelledby="tab-props" tabindex="0" hidden>
     <div class="explain-wrap">
       <h1 class="explain-head"><span class="explain-title">Top props</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainProps" aria-label="About these props">i</button></h1>
-      <div class="explain" id="explainProps" hidden><p style="margin:0"><b>Line</b> is the book&rsquo;s line for the pick. <b>Our guess</b> is our chance it hits, in % &mdash; the higher the %, the more likely we think it is. <b>⭐ Top Tier</b> = the 4 most likely player props of the day. <b>💎 Value</b> = in the top 10% of today&rsquo;s value gaps &mdash; a pick can wear both badges. A row keeps its own ⓘ only when there is something specific on that pick to explain &mdash; a news note, a simulation note, or Top Tier. Lines from FanDuel. Tomorrow&rsquo;s games are here early so you can beat line movement.</p></div>
+      <div class="explain" id="explainProps" hidden><p style="margin:0"><b>Line</b> is the book&rsquo;s line for the pick (for example, under 30.5 receiving yards). <b>Book pays</b> is what the book pays on that line. <b>Our chance</b> is our chance it hits, in %. <b>⭐ Top Tier</b> = the 4 most likely player props of the day. <b>💎 Value</b> = in the top 10% of today&rsquo;s value gaps &mdash; a pick can wear both badges. A row keeps its own ⓘ only when there is something specific on that pick to explain &mdash; a news note, a simulation note, or Top Tier. Lines from FanDuel. Tomorrow&rsquo;s games are here early so you can beat line movement.</p></div>
     </div>
     <p class="record-line">Our record: 0–7, −$700 so far. Forecasts, not proven winners.</p>
     <p class="note" id="propsSourceNote">Today&rsquo;s lines via SharpAPI and The Odds API &mdash; our usual sources were unavailable</p>
@@ -1644,7 +1646,7 @@ var LEAGUES={
   mlb:{name:"MLB",games:"17,902",features:"Team strength only",verdict:"Team strength only. It is about tied with a team-strength-only guess and has no measured way to make money. Kept for team scores, not for bets.",status:"early",statusLabel:"Team strength only",scores:"17,902 past games."},
   nhl:{name:"NHL",games:"9,275",features:"Team strength only",verdict:"Team strength only, same story as MLB: about tied with a team-strength-only guess, no money-making test passed. The NHL value here is in shots-on-goal picks, not game guesses.",status:"early",statusLabel:"Team strength only",scores:"9,275 past games."},
   soccer:{name:"Soccer",games:"Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie",features:"Team strength, home game, recent form",verdict:"Soccer forecasts are early and unproven. They ship as forecasts only, with no public track record.",status:"early",statusLabel:"Early \u2014 be careful",scores:"Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie. Forecasts only \u2014 no public record is kept for soccer."},
-  tennis:{name:"Tennis",games:"11 matches in this snapshot",features:"Latest update only, 6:36pm PT Nov 5, 2026",verdict:"Tennis forecasts come from the latest update only. No past-games test is shown for tennis in this snapshot, so treat these as early and unproven like the rest of this tab.",status:"early",statusLabel:"Early \u2014 be careful",scores:"11 matches: 8 WTA and 3 ATP, starting Nov 5, 2026 evening through Nov 6, 2026 morning PT."}
+  tennis:{name:"Tennis",games:"11 matches in this snapshot",features:"Latest update only",verdict:"Tennis forecasts come from the latest update only. No past-games test is shown for tennis in this snapshot, so treat these as early and unproven like the rest of this tab.",status:"early",statusLabel:"Early \u2014 be careful",scores:"11 matches: 8 WTA and 3 ATP, starting Nov 5, 2026 evening through Nov 6, 2026 morning PT."}
 };
 var TEAM_NAMES={CHI:"Chicago Bulls",NYK:"New York Knicks",MIL:"Milwaukee Bucks",BOS:"Boston Celtics",DAL:"Dallas Mavericks",SAS:"San Antonio Spurs",UTA:"Utah Jazz",NOP:"New Orleans Pelicans",LAL:"Los Angeles Lakers",SAC:"Sacramento Kings",CLE:"Cleveland Cavaliers",OKC:"Oklahoma City Thunder",ATL:"Atlanta Hawks",WAS:"Washington Wizards",POR:"Portland Trail Blazers",PHX:"Phoenix Suns",MIA:"Miami Heat",LAC:"LA Clippers",IND:"Indiana Pacers",MEM:"Memphis Grizzlies",CHA:"Charlotte Hornets",BKN:"Brooklyn Nets",PHI:"Philadelphia 76ers",DET:"Detroit Pistons",MIN:"Minnesota Timberwolves",HOU:"Houston Rockets",TOR:"Toronto Raptors",DEN:"Denver Nuggets"};
 var SLATE=[
@@ -2981,6 +2983,8 @@ function renderLeague(){
 function syncTennisVisibility(){
   var isTennis=leagueState==="tennis";
   if($("tennisBlock")) $("tennisBlock").hidden=!isTennis;
+  var staleWrap=$("tennisStaleDetails");
+  if(staleWrap) staleWrap.hidden=!isTennis;
   if($("gamesBlock")) $("gamesBlock").hidden=isTennis;
   if($("gameDateFilters")) $("gameDateFilters").hidden=isTennis;
 }
@@ -2994,9 +2998,38 @@ var leagueFiltersEl=$("leagueFilters"); if(leagueFiltersEl) leagueFiltersEl.addE
 });
 try{renderLeague();}catch(e){}
 try{syncTennisVisibility();}catch(e){}
-/* Tennis freshness: the source timestamp is rendered through the same
-   "Updated ..." label as every other tab — never a raw ISO string. */
-try{(function(){var h=$("tennisHeading");if(!h)return;var d=new Date("2026-11-06T09:46:03-08:00");if(!isNaN(d.getTime()))h.textContent="Tennis \u2014 updated "+fmtUpdatedLabel(d);})();}catch(e){}
+/* Tennis freshness: the heading is the ONE freshness statement for
+   tennis, rendered through the same "Updated ..." label as every
+   other tab — never a raw ISO string, and no second line anywhere
+   states a different update time. Stale rule: when the snapshot's
+   PT date is not today, a banner in the block says which date the
+   numbers are from; when the snapshot is more than 24 hours old,
+   the whole block sits behind a <details> labelled with that date
+   instead of being shown as if it were current. */
+var TENNIS_UPDATED=new Date("2026-11-06T09:46:03-08:00");
+try{(function(){
+  if(!TENNIS_UPDATED||isNaN(TENNIS_UPDATED.getTime())) return;
+  var h=$("tennisHeading");
+  if(h) h.textContent="Tennis \u2014 updated "+fmtUpdatedLabel(TENNIS_UPDATED);
+  var block=$("tennisBlock");
+  if(!block) return;
+  var snapKey=ptDateKey(TENNIS_UPDATED), todayKey=ptDateKey(new Date());
+  if(snapKey&&todayKey&&snapKey!==todayKey){
+    var banner=$("tennisStaleBanner");
+    if(banner){banner.textContent="These tennis numbers are from "+fmtDateLong(TENNIS_UPDATED)+", not today.";banner.hidden=false;}
+  }
+  if(Date.now()-TENNIS_UPDATED.getTime()>24*3600*1000){
+    var det=document.createElement("details");
+    det.id="tennisStaleDetails";
+    var sum=document.createElement("summary");
+    sum.textContent="Show tennis from "+fmtDateLong(TENNIS_UPDATED);
+    sum.style.cssText="cursor:pointer;font-weight:700;padding:11px 4px;min-height:44px";
+    det.appendChild(sum);
+    block.parentNode.insertBefore(det,block);
+    det.appendChild(block);
+    try{syncTennisVisibility();}catch(e){}
+  }
+})();}catch(e){}
 /* Game list: re-rendered on every sport or date tap, so the sport tabs
    filter the list itself, not just the description card above it. The
    Nov 4 NBA rows keep the headline pick already on the page; every
@@ -4584,6 +4617,19 @@ function propBookPct(r){
   if(typeof mp==="string"&&mp.trim()!==""&&isFinite(Number(mp))){ var v=Number(mp); return Math.round(v<=1?v*100:v); }
   return null;
 }
+/* The Line cell: the row's own line, plus the book's odds shown as
+   "Book pays: <odds>" — only when the row actually carries an odds
+   field (r.odds, or r.line_odds on older rows). When there is no
+   odds field, the line shows alone: the odds are never invented,
+   and a value sitting in the line field is never moved or renamed. */
+function propLineText(r){
+  if(!r) return "";
+  var line=r.line==null?"":String(r.line);
+  var odds=r.odds;
+  if(odds==null||String(odds).trim()==="") odds=r.line_odds;
+  if(odds==null||String(odds).trim()==="") return line;
+  return line?line+", Book pays: "+String(odds):"Book pays: "+String(odds);
+}
 function propGuessHtml(r,labelled){
   var g=propGuessPct(r);
   var txt=(labelled?"Our guess: ":"")+(g!=null?g:r.guess)+"%";
@@ -4680,7 +4726,7 @@ function renderProps(){
   var el=$("propBody");
   if(!el) return;
   var cols="minmax(0,1.6fr) 72px 100px 122px 110px";
-  var head='<div class="rowhead" style="grid-template-columns:'+cols+'"><span>Player</span><span>Date</span><span style="text-align:right">Line</span><span style="text-align:right">Our guess</span><span style="text-align:right">Tier</span></div>';
+  var head='<div class="rowhead" style="grid-template-columns:'+cols+'"><span>Player</span><span>Date</span><span style="text-align:right">Line</span><span style="text-align:right">Our chance</span><span style="text-align:right">Tier</span></div>';
   var shown=[];
   (TOP_PROPS||[]).forEach(function(r,i){
     if(!propMatchesFilters(r)) return;
@@ -4698,17 +4744,17 @@ function renderProps(){
     var badges=pickBadgesPlainHtml(r), rowInfo=propRowInfoHtml(r);
     return '<div class="trow" style="grid-template-columns:'+cols+'"><div class="who"><b>'+esc(r.player)+'</b><span>'+esc(r.sport)+' &middot; '+esc(r.team)+' &middot; '+esc(r.prop)+'</span></div>'+
     '<span class="prop-date">'+esc(fmtDateLong(r.date))+'</span>'+
-    '<span class="num avg-val">Line: '+esc(r.line)+'</span><span class="num avg-val">'+propGuessHtml(r,true)+'</span><span style="text-align:right">'+propTierHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<div class="flag" style="grid-column:1 / -1">'+esc(r.flag)+'</div>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
+    '<span class="num avg-val">Line: '+esc(propLineText(r))+'</span><span class="num avg-val">'+propGuessHtml(r,true)+'</span><span style="text-align:right">'+propTierHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<div class="flag" style="grid-column:1 / -1">'+esc(r.flag)+'</div>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
   }
   function listRow(r){
     var badges=pickBadgesPlainHtml(r), rowInfo=propRowInfoHtml(r);
     return '<div class="prop-list-row"><span class="pl-player">'+esc(r.player)+'<span class="pl-team">'+esc(r.team)+'</span></span>'+
     '<span class="pl-prop">'+esc(r.prop)+'<span class="pl-meta">'+esc(r.sport)+' &middot; '+esc(fmtDateLong(r.date))+'</span></span>'+
-    '<span class="pl-line">'+esc(r.line)+'</span><span class="pl-guess">'+propGuessHtml(r,false)+'</span><span class="pl-tier">'+propTierHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<span class="flag">'+esc(r.flag)+'</span>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
+    '<span class="pl-line">'+esc(propLineText(r))+'</span><span class="pl-guess">'+propGuessHtml(r,false)+'</span><span class="pl-tier">'+propTierHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<span class="flag">'+esc(r.flag)+'</span>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
   }
   var emptyHtml='<div class="empty-state"><p>No props available for this game &mdash; lines haven\'t been posted yet. Check back closer to tip-off.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no props yet">i</button><span class="tip">Lines come from the sportsbooks and can take a while to appear, especially for games later in the week.</span></span></p><p>Try another sport, date, game, or prop type.</p></div>';
   if(propView==="list"){
-    var listHead='<div class="prop-list-head"><span>Player</span><span>Prop</span><span style="text-align:right">Line</span><span style="text-align:right">Our guess</span><span style="text-align:right">Tier</span></div>';
+    var listHead='<div class="prop-list-head"><span>Player</span><span>Prop</span><span style="text-align:right">Line</span><span style="text-align:right">Our chance</span><span style="text-align:right">Tier</span></div>';
     el.innerHTML=shown.length?'<div class="prop-list">'+listHead+visible.map(function(item){return listRow(item.r);}).join("")+'</div>':emptyHtml;
   } else {
     el.innerHTML=shown.length?'<div class="rows">'+head+visible.map(function(item){return tileRow(item.r);}).join("")+'</div>':emptyHtml;
@@ -6160,30 +6206,44 @@ function renderRecordLine(){
   Array.prototype.forEach.call(document.querySelectorAll(".record-line"),function(el){ el.textContent=txt+(el.getAttribute("data-record-suffix")||""); });
 }
 try{renderRecordLine();}catch(e){}
-/* Yesterday's recap on Home: the most recent settled day in TRACK_RECORD
-   that is not the latest day (yesterday), falling back to the latest
-   settled day. The record holds graded picks only, so every row here has
-   already finished. With no settled bets yet, the page's own empty-state
-   line is left untouched. */
+/* Recap on Home: the most recent settled day in TRACK_RECORD whose
+   date is in the past (Pacific Time). The record holds graded picks
+   only, so every row here has already finished. The line is labelled
+   with that day's actual date (fmtDateLong); the word "Yesterday" is
+   used only when that date really is yesterday (PT). When no past
+   date has rows, the recap stays hidden. This writes only to
+   #yesterdayRecap — the "Our record: ..." line above it is the
+   primary Home line and is never overwritten here. */
 function updateYesterdayRecap(){
   var el=$("yesterdayRecap");
   if(!el) return;
-  var order=[], byDate={};
-  (TRACK_RECORD||[]).filter(function(r){return !isSoccerRow(r);}).forEach(function(r){
-    if(!byDate[r.date]){byDate[r.date]=[];order.push(r.date);}
-    byDate[r.date].push(r);
-  });
-  var rows=[];
-  if(order.length>=2) rows=byDate[order[order.length-2]];
-  if(!rows.length){
-    for(var i=order.length-1;i>=0;i--){
-      rows=byDate[order[i]];
-      if(rows.length) break;
-    }
+  function dateKeyOf(v){
+    var s=String(v||"").slice(0,10);
+    if(/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
+    var pd=parseRowDate(v)||parseGameDate(v);
+    return pd?ptDateKey(pd):"";
   }
-  if(!rows.length) return;
+  var todayKey=ptDateKey(new Date());
+  var byKey={}, entries=[];
+  (TRACK_RECORD||[]).filter(function(r){return !isSoccerRow(r);}).forEach(function(r){
+    if(!r||!r.date) return;
+    var key=dateKeyOf(r.date);
+    if(!key||!todayKey||key>=todayKey) return;
+    if(!byKey[key]){byKey[key]={date:r.date,key:key,rows:[]};entries.push(byKey[key]);}
+    byKey[key].rows.push(r);
+  });
+  if(!entries.length){el.hidden=true;el.innerHTML="";return;}
+  entries.sort(function(a,b){return a.key<b.key?-1:a.key>b.key?1:0;});
+  var entry=entries[entries.length-1], rows=entry.rows;
   var wins=rows.filter(function(r){return String(r.outcome).toLowerCase()==="win";}).length;
-  el.innerHTML="Yesterday: <b>"+wins+" of "+rows.length+"</b> settled bets won.";
+  var yKey="";
+  if(todayKey){
+    var td=new Date(todayKey+"T00:00:00Z");
+    if(!isNaN(td.getTime())){td.setUTCDate(td.getUTCDate()-1);yKey=td.toISOString().slice(0,10);}
+  }
+  var label=(entry.key===yKey)?"Yesterday, "+fmtDateLong(entry.date):fmtDateLong(entry.date);
+  el.innerHTML=esc(label)+": <b>"+wins+" of "+rows.length+"</b> settled bets won.";
+  el.hidden=false;
 }
 function computedTally(rows){
   var t={wins:0,losses:0,pushes:0,profit:0,roi_pct:0,n_graded:0};
