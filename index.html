@@ -902,8 +902,8 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <div class="best" id="homePicksList">
         <div class="pickrow"><div class="who"><b>Loading today's picks…</b><span>If this stays, the morning update hasn't posted yet.</span></div></div>
       </div>
+      <p class="sub" id="homePicksVoidNote" hidden></p>
       <p class="sub" id="homePicksCombo" style="margin-top:10px"></p>
-      <button type="button" class="btn" data-goto="pricer">Check these 4 as a ticket &rarr;</button>
     </section>
 
     <section class="block" aria-label="All tools">
@@ -2694,8 +2694,8 @@ var SEASON_NFL={"generated":"2026-11-05","model_as_of":"2026-11-02","n_sims":100
    right after TOP_PROPS — it used to be a second hand-baked copy of
    the picks here, and it went stale: the Nov 5 board shipped with
    Nov 4's leans still in it, so Home kept showing last night's NBA
-   picks. One source of truth now: TOP_PROPS — Home's strongest
-   picks read it directly too. */
+   picks. One source of truth now: TOP_PROPS. (Home's strongest
+   picks are a different list: the Top Tier rows in TODAY_BETS.) */
 var NHL=[
   {player:"Philip Broberg",team:"STL",line:1.5,side:"Over",cal:0.55,outcome:"4 SOG",hit:true},
   {player:"Ryan Nugent-Hopkins",team:"EDM",line:1.5,side:"Over",cal:0.66,outcome:"1 SOG",hit:false},
@@ -3959,8 +3959,8 @@ var TOP_PROPS=[
    The ticket checker's preset picks read this list: the board's NBA
    points props, strongest (highest model chance) first. It is built
    from TOP_PROPS at load so it always matches the current board.
-   (Home's strongest picks do NOT read this subset — they read
-   TOP_PROPS directly, across every sport; see renderHomePicks.)
+   (Home's strongest picks do NOT read this subset either — they
+   read the Top Tier rows in TODAY_BETS; see renderHomePicks.)
    The matchup ("ORL @ PHX") is read from the pick's own market link
    slug; the board carries no separate game field for props. */
 var LEANS=(function(){
@@ -3989,16 +3989,17 @@ var LEANS=(function(){
   out.sort(function(a,b){return b.p-a.p;});
   return out;
 })();
-/* Home "strongest picks": the four highest-chance unflagged rows
-   read DIRECTLY from TOP_PROPS — the same ordered array the Player
-   Picks tab renders, across every sport — so Home can never drift
-   from the board or show a second, staler copy of the picks. A pick
-   marked void in the track record is also skipped: a voided pick
-   is not one of today's picks, even while its row is still on the
-   board. The void set is keyed by player + market + line, built
-   from TRACK_RECORD and TT_RECORD rows whose outcome is "void"
-   (record rows carry the pick in their description text, e.g.
-   "Chris Hunter (UTEP) under 30.5 receiving yards"). */
+/* Home "strongest picks": the Top Tier four — the TODAY_BETS rows
+   marked top_tier, in the same order the Our Bets tab shows them.
+   Home does not rank anything itself and never reads TOP_PROPS for
+   this list, so it always shows the same four picks Our Bets stars.
+   A pick marked void in the track record is also skipped: a voided
+   pick is not one of today's picks, even while its row is still on
+   the card, and the empty slot is left empty rather than filled
+   with another pick. The void set is keyed by player + market +
+   line, built from TRACK_RECORD and TT_RECORD rows whose outcome
+   is "void" (record rows carry the pick in their description text,
+   e.g. "Chris Hunter (UTEP) under 30.5 receiving yards"). */
 function homeVoidKeys(){
   var set={};
   function key(player,market,line){
@@ -4014,46 +4015,98 @@ function homeVoidKeys(){
   (typeof TT_RECORD!=="undefined"&&TT_RECORD?TT_RECORD:[]).forEach(addRow);
   return set;
 }
-function homePropParts(r){
-  var m=String((r&&r.prop)||"").match(/^(over|under)\s+(\d+(?:\.\d+)?)\s+(.+)$/i);
-  if(!m) return null;
-  return {side:m[1],line:m[2],market:m[3]};
+/* The void picks' own words from the record, keyed the same way as
+   homeVoidKeys, so Home can name a voided Top Tier pick under the
+   picks it does show. Keys and descriptions both come from the
+   record rows — nothing here is written by hand. */
+function homeVoidDescriptions(){
+  var map={};
+  function key(player,market,line){
+    return String(player||"").trim().toLowerCase()+"|"+String(market||"").trim().toLowerCase()+"|"+String(line==null?"":line);
+  }
+  function addRow(r){
+    if(!r||String(r.outcome||"").toLowerCase()!=="void") return;
+    if(r.player){ map[key(r.player,r.market,r.line)]=String(r.description||"").trim(); return; }
+    var m=String(r.description||"").match(/^(.+?)\s*\([^)]*\)\s+(?:over|under)\s+(\d+(?:\.\d+)?)\s+(.+)$/i);
+    if(m) map[key(m[1],m[3],m[2])]=String(r.description||"").trim();
+  }
+  (typeof TRACK_RECORD!=="undefined"&&TRACK_RECORD?TRACK_RECORD:[]).forEach(addRow);
+  (typeof TT_RECORD!=="undefined"&&TT_RECORD?TT_RECORD:[]).forEach(addRow);
+  return map;
+}
+/* A TODAY_BETS row already carries its pick in separate fields, so
+   there is nothing to split out of a text string. */
+function homeBetParts(b){
+  if(!b||b.side==null||b.line==null||!b.market) return null;
+  return {side:String(b.side),line:String(b.line),market:String(b.market)};
+}
+/* "2026-11-07" -> "Nov 7", read from the parts so the day never
+   shifts with the visitor's time zone. Anything else is shown as-is. */
+function homeBetDateLabel(b){
+  var m=String((b&&b.game_date)||"").match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if(!m) return String((b&&b.game_date)||"");
+  var mo=parseInt(m[2],10)-1;
+  if(mo<0||mo>11) return String(b.game_date||"");
+  return MONTH_ABBR[mo]+" "+parseInt(m[3],10);
 }
 function renderHomePicks(){
-  var box=$("homePicksList"), combo=$("homePicksCombo");
+  var box=$("homePicksList"), combo=$("homePicksCombo"), voidNote=$("homePicksVoidNote");
   if(!box) return;
-  var rows=(typeof TOP_PROPS!=="undefined"&&TOP_PROPS)?TOP_PROPS:[];
+  var rows=(typeof TODAY_BETS!=="undefined"&&TODAY_BETS)?TODAY_BETS:[];
   var voids=homeVoidKeys();
-  var pool=[];
-  rows.forEach(function(r,i){
-    if(!r||r.flag) return;
-    var parts=homePropParts(r);
-    if(!parts) return;
-    var key=String(r.player||"").trim().toLowerCase()+"|"+parts.market.trim().toLowerCase()+"|"+parts.line;
-    if(voids[key]) return;
-    pool.push({r:r,parts:parts,i:i});
+  var voidDesc=homeVoidDescriptions();
+  var picks=[], voided=[];
+  /* The Top Tier four, in the order Our Bets shows them — no
+     sorting and no second ranking here. A row Our Bets would drop
+     (a soccer row) is dropped here too, the same way. */
+  rows.forEach(function(b){
+    if(!b||!b.top_tier) return;
+    if(typeof isSoccerRow==="function"&&isSoccerRow(b)) return;
+    var parts=homeBetParts(b);
+    var key=parts?String(b.player||"").trim().toLowerCase()+"|"+parts.market.trim().toLowerCase()+"|"+parts.line:null;
+    if(key&&voids[key]){ voided.push(voidDesc[key]||b.description||""); return; }
+    picks.push({b:b,parts:parts});
   });
-  /* Highest guess (model chance) first; ties keep the board's own
-     payload order, the same order Player Picks shows. */
-  pool.sort(function(a,b){
-    var d=(Number(b.r.guess)||0)-(Number(a.r.guess)||0);
-    return d!==0?d:a.i-b.i;
-  });
-  var picks=pool.slice(0,4);
+  if(voidNote){
+    var named=voided.filter(function(d){return d;});
+    if(named.length===1){ voidNote.textContent=named[0]+" is void \u2014 there is no such game \u2014 so it is not shown above."; voidNote.hidden=false; }
+    else if(named.length>1){ voidNote.textContent="Void \u2014 no such game \u2014 so not shown above: "+named.join("; ")+"."; voidNote.hidden=false; }
+    else if(voided.length){ voidNote.textContent="One Top Tier pick is void \u2014 there is no such game \u2014 so it is not shown above."; voidNote.hidden=false; }
+    else { voidNote.textContent=""; voidNote.hidden=true; }
+  }
   if(!picks.length){
     box.innerHTML='<div class="pickrow"><div class="who"><b>No picks for today yet.</b><span>The morning update posts after 9am PT. Check back then — yesterday\'s picks are not shown as today\'s.</span></div></div>';
     if(combo) combo.textContent="";
     return;
   }
   box.innerHTML=picks.map(function(p){
-    var r=p.r;
-    var propTxt=p.parts.side.charAt(0).toUpperCase()+p.parts.side.slice(1).toLowerCase()+" "+p.parts.line+" "+p.parts.market;
-    var pctTxt=(Math.round((Number(r.guess)||0)*10)/10)+"%";
-    return '<div class="pickrow"><div class="who"><b>'+esc(r.player)+' &mdash; '+esc(propTxt)+'</b><span>'+esc(r.sport||"")+' &middot; '+esc(r.team||"")+' &middot; '+esc(r.date||"")+'</span></div><div class="chance"><div class="pct">'+pctTxt+'</div><span>chance it hits</span></div></div>';
+    var b=p.b;
+    var title;
+    if(b.player&&p.parts){
+      var propTxt=p.parts.side.charAt(0).toUpperCase()+p.parts.side.slice(1).toLowerCase()+" "+p.parts.line+" "+p.parts.market;
+      title=esc(b.player)+' &mdash; '+esc(propTxt);
+    } else {
+      title=esc(b.description||b.player||"Pick");
+    }
+    var subParts=[];
+    if(b.sport) subParts.push(b.sport);
+    if(b.team) subParts.push(b.team);
+    var dl=homeBetDateLabel(b);
+    if(dl) subParts.push(dl);
+    var prob=(typeof b.model_prob==="number"&&isFinite(b.model_prob))?b.model_prob:null;
+    var pctTxt=prob!=null?(Math.round(prob*1000)/10)+"%":"\u2014";
+    return '<div class="pickrow"><div class="who"><b>'+title+'</b><span>'+subParts.map(function(s){return esc(s);}).join(" &middot; ")+'</span></div><div class="chance"><div class="pct">'+pctTxt+'</div><span>chance it hits</span></div></div>';
   }).join("");
   if(combo){
-    var all=1; picks.forEach(function(p){all*=(Number(p.r.guess)||0)/100;});
-    combo.innerHTML='All '+picks.length+' together hit about <b>'+Math.round(all*10)+' times out of 10</b> ('+(Math.round(all*1000)/10)+'%).';
+    /* The together line is worked out from the picks just shown
+       above — the non-void Top Tier picks, and nothing else. */
+    var all=1, ok=true;
+    picks.forEach(function(p){
+      var prob=(typeof p.b.model_prob==="number"&&isFinite(p.b.model_prob))?p.b.model_prob:null;
+      if(prob==null){ ok=false; return; }
+      all*=prob;
+    });
+    combo.innerHTML=ok?'All '+picks.length+' together hit about <b>'+Math.round(all*10)+' times out of 10</b> ('+(Math.round(all*1000)/10)+'%).':"";
   }
 }
 try{renderHomePicks();}catch(e){}
@@ -6140,6 +6193,7 @@ function applyCumulativeRecord(data){
   try{renderRecordLine();}catch(e){}
   try{renderRecord();}catch(e){}
   try{renderTopTier();}catch(e){}
+  try{renderHomePicks();}catch(e){}
   return true;
 }
 function loadCumulativeRecord(){
