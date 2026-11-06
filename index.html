@@ -861,13 +861,12 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <div class="tabbar" role="tablist" aria-label="Sports tools">
     <button type="button" role="tab" id="tab-overview" aria-selected="true" aria-controls="panel-overview" data-tab="overview">Home</button>
     <button type="button" role="tab" id="tab-forecasts" aria-selected="false" aria-controls="panel-forecasts" data-tab="forecasts" tabindex="-1">Moneyline</button>
-    <button type="button" role="tab" id="tab-td" aria-selected="false" aria-controls="panel-td" data-tab="td" tabindex="-1">Touchdowns</button>
     <button type="button" role="tab" id="tab-props" aria-selected="false" aria-controls="panel-props" data-tab="props" tabindex="-1">Player picks ⭐</button>
     <button type="button" role="tab" id="tab-pricer" aria-selected="false" aria-controls="panel-pricer" data-tab="pricer" tabindex="-1">Check my ticket ⭐</button>
     <button type="button" role="tab" id="tab-dfs" aria-selected="false" aria-controls="panel-dfs" data-tab="dfs" tabindex="-1">DFS Optimizer</button>
     <button type="button" role="tab" id="tab-totals" aria-selected="false" aria-controls="panel-totals" data-tab="totals" tabindex="-1">Totals</button>
     <button type="button" role="tab" id="tab-spreads" aria-selected="false" aria-controls="panel-spreads" data-tab="spreads" tabindex="-1">Spreads</button>
-    <button type="button" role="tab" id="tab-season" aria-selected="false" aria-controls="panel-season" data-tab="season" tabindex="-1">Season outlook</button>
+    <button type="button" role="tab" id="tab-season" aria-selected="false" aria-controls="panel-season" data-tab="season" tabindex="-1">NFL Season outlook</button>
     <button type="button" role="tab" id="tab-scores" aria-selected="false" aria-controls="panel-scores" data-tab="scores" tabindex="-1">Scores</button>
     <button type="button" role="tab" id="tab-bets" aria-selected="false" aria-controls="panel-bets" data-tab="bets" tabindex="-1">Our Bets</button>
     <button type="button" role="tab" id="tab-record" aria-selected="false" aria-controls="panel-record" data-tab="record" tabindex="-1">Our record</button>
@@ -878,7 +877,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <!-- ============ HOME ============ -->
   <section class="panel active" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview" tabindex="0">
     <h1>Check the chances <em>before you bet.</em></h1>
-    <p class="lede">See how likely a pick is to hit. See what your ticket is really worth. And see how we&rsquo;ve done so far &mdash; the wins <i>and</i> the losses.</p>
+    <p class="lede">Today&rsquo;s picks, with the chance each one hits.</p>
     <p class="recap-line" id="yesterdayRecap">No settled bets yet — the record starts with the first graded picks.</p>
     <div class="freshness"></div>
 
@@ -895,22 +894,16 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <button type="button" class="btn" data-goto="pricer">Check these 4 as a ticket &rarr;</button>
     </section>
 
-    <div class="steps" aria-label="How to use this site">
-      <div class="step"><span class="n">01</span><b>Find a pick</b><p>A chance next to every line, with a warning when the numbers disagree.</p></div>
-      <div class="step"><span class="n">02</span><b>Check your ticket</b><p>Upload a screenshot of your slip from any book. We score it 0 to 100 and tell you in plain words if the payout is worth it.</p></div>
-      <div class="step"><span class="n">03</span><b>See our record</b><p>Every pick, with the result next to it. If we stop earning trust, it shows here first.</p></div>
-    </div>
-
     <section class="block" aria-label="All tools">
       <h2>Everything else</h2>
       <div class="toollist">
         <button type="button" data-goto="forecasts">Who wins? <span>Our guess for each game &rarr;</span></button>
-        <button type="button" data-goto="td">Touchdowns <span>Chance each player scores &rarr;</span></button>
+        <button type="button" data-goto="props" data-td-link="1">Touchdowns <span>NFL &middot; in Player picks &rarr;</span></button>
         <button type="button" data-goto="props">Player picks <span>Points, shots, and more &rarr;</span></button>
         <button type="button" data-goto="pricer">Check my ticket <span>Is the payout worth it? &rarr;</span></button>
         <button type="button" data-goto="totals">Totals <span>Our total vs the book&rsquo;s number &rarr;</span></button>
         <button type="button" data-goto="bets">Our Bets <span>Today&rsquo;s card &rarr;</span></button>
-        <button type="button" data-goto="season">Season outlook <span>How the season ends, 10,000 times over &rarr;</span></button>
+        <button type="button" data-goto="season">NFL Season outlook <span>How the NFL season ends, 10,000 times over &rarr;</span></button>
         <button type="button" data-goto="record">Our record <span>Settled bets, wins and losses &rarr;</span></button>
       </div>
     </section>
@@ -918,21 +911,19 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <section class="block">
       <div class="honest">
         <h2>Be careful with every number here</h2>
-        <p>Our game guesses are <strong>early and unproven</strong>. When we tested them against the bookies&rsquo; final odds, we lost money in all five leagues.</p>
-        <p><strong>Do not trust a number until our record earns it.</strong> If you disagree with a chance, the ticket checker lets you change it. <a href="#docs" data-goto="docs">How it works &rarr;</a></p>
+        <p>Our guesses are <strong>early and unproven</strong> &mdash; check <a href="#record" data-goto="record">Our record</a> before trusting one.</p>
       </div>
     </section>
 
     <section class="block" aria-label="Where to bet">
       <h2>Where to bet</h2>
-      <p>We use these books &mdash; sign up through our links if you&rsquo;re new.</p>
       <p style="display:flex;flex-wrap:wrap;gap:8px">
         <a class="btn" href="https://kalshi.com/t/6jdhayt9" target="_blank" rel="noopener">Sign up for Kalshi</a>
         <a class="btn" href="https://polymarket.us/join/bigchungus04" target="_blank" rel="noopener">Sign up for Polymarket</a>
         <a class="btn" href="https://play.underdogsports.com/vgwg/63lbpw62" target="_blank" rel="noopener">Sign up for Underdog</a>
         <a class="btn" href="https://www.betonline.ag?RAF=HDPA3N5Z&ProdCode=SPO" target="_blank" rel="noopener">Sign up for BetOnline</a>
       </p>
-      <p class="note">New here? Our sign-up links are referral links &mdash; if you join through one, we may earn a bonus at no extra cost to you.</p>
+      <p class="note">Referral links &mdash; we may earn a bonus at no cost to you.</p>
       <p><a href="#books" data-goto="books" data-goto-support>Like the site? Support it &rarr;</a></p>
     </section>
 
@@ -975,62 +966,23 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     </section>
 
         <section class="block" id="tennisBlock" hidden>
-      <h2>Tennis &mdash; as of 2026-11-06T06:13:24-08:00</h2>
+      <h2>Tennis &mdash; as of 2026-11-06T09:46:03-08:00</h2>
       <p class="sub">Tennis moves fast &mdash; these are from our latest update. Check back for fresh numbers.</p>
       <div class="slate" style="margin-top:12px">
-        <div class="slate-row"><div class="match"><span class="n">ATP &middot; starts 6:30 AM PT Nov 6</span><div class="picklines"><div class="avgline"><b>Luca Van Assche</b> <span class="pickpct">60.6%</span> <span class="loser">over Rinky Hijikata</span></div><div><span class="lbl">Luca Van Assche vs Rinky Hijikata</span></div></div></div></div>
         <div class="slate-row"><div class="match"><span class="n">ATP &middot; starts 10:00 AM PT Nov 6</span><div class="picklines"><div class="avgline"><b>Carlos Alcaraz</b> <span class="pickpct">74.5%</span> <span class="loser">over Taylor Fritz</span></div><div><span class="lbl">Taylor Fritz vs Carlos Alcaraz</span></div></div></div></div>
+        <div class="slate-row"><div class="match"><span class="n">ATP &middot; starts 11:30 AM PT Nov 6</span><div class="picklines"><div class="avgline"><b>Casper Ruud</b> <span class="pickpct">67.8%</span> <span class="loser">over Nuno Borges</span></div><div><span class="lbl">Casper Ruud vs Nuno Borges</span></div></div></div></div>
+        <div class="slate-row"><div class="match"><span class="n">WTA &middot; starts 10:00 PM PT Nov 6</span><div class="picklines"><div class="avgline"><b>Alexandra Shubladze</b> <span class="pickpct">50.7%</span> <span class="loser">over Claire Liu</span></div><div><span class="lbl">Alexandra Shubladze vs Claire Liu</span></div></div></div></div>
+        <div class="slate-row"><div class="match"><span class="n">WTA &middot; starts 12:00 AM PT Nov 7</span><div class="picklines"><div class="avgline"><b>Alexandra Eala</b> <span class="pickpct">53.0%</span> <span class="loser">over Maria Sakkari</span></div><div><span class="lbl">Maria Sakkari vs Alexandra Eala</span></div></div></div></div>
+        <div class="slate-row"><div class="match"><span class="n">WTA &middot; starts 4:30 AM PT Nov 7</span><div class="picklines"><div class="avgline"><b>Janice Tjen</b> <span class="pickpct">61.3%</span> <span class="loser">over Robin Montgomery</span></div><div><span class="lbl">Janice Tjen vs Robin Montgomery</span></div></div></div></div>
       </div>
     </section>
-  </section>
-
-  <!-- ============ TOUCHDOWNS ============ -->
-  <section class="panel" id="panel-td" role="tabpanel" aria-labelledby="tab-td" tabindex="0" hidden>
-    <h1>Who scores <em>a touchdown?</em></h1>
-    <p class="lede">The chance for every player on the list, from how much they touch the ball near the goal line. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p>
-    <div class="freshness"></div>
-    <div class="model-warning" role="alert"><span class="model-warning-title">Warning &mdash; read this first</span><p>Baltimore&rsquo;s offensive players are flagged: the Ravens are on 3rd-string QB Fagnano. These TD chances assume a healthy offense and are likely overstated for BAL players.</p></div>
-
-    <h2 class="td-board-title">Touchdowns &mdash; JAX @ BAL, Thu Nov 5</h2>
-    <p class="sub">Kickoff 5:15pm PT &middot; highest chance first.</p>
-    <p class="empty-state" id="tdBoardEmpty" hidden>The next touchdown board hasn&rsquo;t been posted yet. Check back on game day.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no board yet">i</button><span class="tip">The next board is posted on game day, once the week&rsquo;s games are set.</span></span></p>
-    <div class="rows td-board" id="tdBoardRows" role="table" aria-label="Touchdown chances, JAX at Baltimore, Thursday November 5">
-      <div class="rowhead"><span>Player</span><span style="text-align:right">Chance</span></div>
-      <div class="trow"><div class="who"><b>Derrick Henry</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">54%</span></div>
-      <div class="trow"><div class="who"><b>Bhayshul Tuten</b><span>JAX</span></div><span class="pill-prob">49%</span></div>
-      <div class="trow"><div class="who"><b>Parker Washington</b><span>JAX</span></div><span class="pill-prob">38%</span></div>
-      <div class="trow"><div class="who"><b>Brenton Strange</b><span>JAX</span></div><span class="pill-prob">31%</span></div>
-      <div class="trow"><div class="who"><b>Jakobi Meyers</b><span>JAX</span></div><span class="pill-prob">27%</span></div>
-      <div class="trow"><div class="who"><b>Zay Flowers</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">27%</span></div>
-      <div class="trow"><div class="who"><b>Mark Andrews</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">20%</span></div>
-      <div class="trow"><div class="who"><b>Rashod Bateman</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">18%</span></div>
-      <div class="trow"><div class="who"><b>Justice Hill</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">16%</span></div>
-      <div class="trow"><div class="who"><b>Ameer Abdullah</b><span>JAX</span></div><span class="pill-prob">14%</span></div>
-      <div class="trow"><div class="who"><b>Devontez Walker</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">12%</span></div>
-      <div class="trow"><div class="who"><b>Travis Hunter</b><span>JAX</span></div><span class="pill-prob">11%</span></div>
-    </div>
-    <p class="note">Brian Thomas Jr not listed &mdash; no 2026 data in model.</p>
-
-    <h2 class="board-last">Last board: Sun Nov 1 &mdash; graded</h2>
-    <div class="filters" role="group" aria-label="Filter by position" id="tdFilters">
-      <button type="button" aria-pressed="true" data-pos="ALL">All positions</button>
-      <button type="button" aria-pressed="false" data-pos="RB">RB</button>
-      <button type="button" aria-pressed="false" data-pos="WR">WR</button>
-      <button type="button" aria-pressed="false" data-pos="TE">TE</button>
-      <button type="button" aria-pressed="false" data-pos="QB">QB</button>
-    </div>
-    <div class="controls" style="margin-bottom:12px">
-      <div class="field" style="flex:1;min-width:220px"><label for="tdSearch">Search player or team</label><input type="text" id="tdSearch" placeholder="e.g. Lamb, DAL, Bijan&hellip;" autocomplete="off"></div>
-    </div>
-    <div class="rows" id="tdRows" role="table" aria-label="Touchdown chances, last board November 1 — graded"></div>
-    <p class="note">Highest chance first. &ldquo;Break-even payout&rdquo; is the book payout at which this chance would just break even over many tries &mdash; hold it next to a real book payout. <a href="#docs" data-goto="docs">Why teammates in one ticket pay less &rarr;</a></p>
   </section>
 
   <!-- ============ PLAYER PICKS ============ -->
   <section class="panel" id="panel-props" role="tabpanel" aria-labelledby="tab-props" tabindex="0" hidden>
     <div class="explain-wrap">
       <h1 class="explain-head"><span class="explain-title">Top props</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainProps" aria-label="About these props">i</button></h1>
-      <div class="explain" id="explainProps" hidden><p style="margin:0">Lines from FanDuel. Our guess is what the model projects. Tomorrow&rsquo;s games are here early so you can beat line movement.</p></div>
+      <div class="explain" id="explainProps" hidden><p style="margin:0"><b>Line</b> is the book&rsquo;s line for the pick. <b>Our guess</b> is our chance it hits, in % &mdash; the higher the %, the more likely we think it is. <b>⭐ Top Tier</b> = one of the 4 most likely props today. <b>💎 Value</b> = our number sits well above the book&rsquo;s line. A row keeps its own ⓘ only when there is something specific on that pick to explain &mdash; a news note, a simulation note, or Top Tier. Lines from FanDuel. Tomorrow&rsquo;s games are here early so you can beat line movement.</p></div>
     </div>
     <p class="note" id="propsSourceNote">Today&rsquo;s lines via SharpAPI and The Odds API &mdash; our usual sources were unavailable</p>
     <div class="freshness"></div>
@@ -1080,7 +1032,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
           <option value="receptions">Receptions</option>
           <option value="rushing yards">Rushing yards</option>
           <option value="passing yards">Passing yards</option>
-          <option value="anytime TD">Anytime TD</option>
+          <option value="anytime TD">Touchdowns (Anytime TD)</option>
           <option value="shots on goal">Shots on goal</option>
         </select>
       </div>
@@ -1091,6 +1043,49 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     </section>
     <p class="note" id="propCount" aria-live="polite"></p>
     <div id="propBody" style="margin-top:12px"></div>
+    <!-- Touchdowns (NFL anytime TD): formerly its own tab, now the
+         Touchdowns sub-category of Player Picks — shown when NFL is
+         picked and Prop type is Touchdowns (Anytime TD), or NFL with
+         All prop types. Same boards and rows as the old tab. -->
+    <section id="tdBoardSection" aria-label="Touchdowns — NFL anytime TD" hidden>
+      <h2 style="margin-top:26px">Touchdowns &mdash; NFL anytime TD</h2>
+      <p class="sub">Who scores a touchdown? The chance for every player on the list, from how much they touch the ball near the goal line. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p>
+      <div class="model-warning" role="alert"><span class="model-warning-title">Warning &mdash; read this first</span><p>Baltimore&rsquo;s offensive players are flagged: the Ravens are on 3rd-string QB Fagnano. These TD chances assume a healthy offense and are likely overstated for BAL players.</p></div>
+
+          <h2 class="td-board-title">Touchdowns &mdash; JAX @ BAL, Thu Nov 5</h2>
+          <p class="sub">Kickoff 5:15pm PT &middot; highest chance first.</p>
+          <p class="empty-state" id="tdBoardEmpty" hidden>The next touchdown board hasn&rsquo;t been posted yet. Check back on game day.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no board yet">i</button><span class="tip">The next board is posted on game day, once the week&rsquo;s games are set.</span></span></p>
+          <div class="rows td-board" id="tdBoardRows" role="table" aria-label="Touchdown chances, JAX at Baltimore, Thursday November 5">
+            <div class="rowhead"><span>Player</span><span style="text-align:right">Chance</span></div>
+            <div class="trow"><div class="who"><b>Derrick Henry</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">54%</span></div>
+            <div class="trow"><div class="who"><b>Bhayshul Tuten</b><span>JAX</span></div><span class="pill-prob">49%</span></div>
+            <div class="trow"><div class="who"><b>Parker Washington</b><span>JAX</span></div><span class="pill-prob">38%</span></div>
+            <div class="trow"><div class="who"><b>Brenton Strange</b><span>JAX</span></div><span class="pill-prob">31%</span></div>
+            <div class="trow"><div class="who"><b>Jakobi Meyers</b><span>JAX</span></div><span class="pill-prob">27%</span></div>
+            <div class="trow"><div class="who"><b>Zay Flowers</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">27%</span></div>
+            <div class="trow"><div class="who"><b>Mark Andrews</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">20%</span></div>
+            <div class="trow"><div class="who"><b>Rashod Bateman</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">18%</span></div>
+            <div class="trow"><div class="who"><b>Justice Hill</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">16%</span></div>
+            <div class="trow"><div class="who"><b>Ameer Abdullah</b><span>JAX</span></div><span class="pill-prob">14%</span></div>
+            <div class="trow"><div class="who"><b>Devontez Walker</b><span>BAL<span class="td-flag">Flagged</span></span></div><span class="pill-prob">12%</span></div>
+            <div class="trow"><div class="who"><b>Travis Hunter</b><span>JAX</span></div><span class="pill-prob">11%</span></div>
+          </div>
+          <p class="note">Brian Thomas Jr not listed &mdash; no 2026 data in model.</p>
+
+          <h2 class="board-last">Last board: Sun Nov 1 &mdash; graded</h2>
+          <div class="filters" role="group" aria-label="Filter by position" id="tdFilters">
+            <button type="button" aria-pressed="true" data-pos="ALL">All positions</button>
+            <button type="button" aria-pressed="false" data-pos="RB">RB</button>
+            <button type="button" aria-pressed="false" data-pos="WR">WR</button>
+            <button type="button" aria-pressed="false" data-pos="TE">TE</button>
+            <button type="button" aria-pressed="false" data-pos="QB">QB</button>
+          </div>
+          <div class="controls" style="margin-bottom:12px">
+            <div class="field" style="flex:1;min-width:220px"><label for="tdSearch">Search player or team</label><input type="text" id="tdSearch" placeholder="e.g. Lamb, DAL, Bijan&hellip;" autocomplete="off"></div>
+          </div>
+          <div class="rows" id="tdRows" role="table" aria-label="Touchdown chances, last board November 1 — graded"></div>
+          <p class="note">Highest chance first. &ldquo;Break-even payout&rdquo; is the book payout at which this chance would just break even over many tries &mdash; hold it next to a real book payout. <a href="#docs" data-goto="docs">Why teammates in one ticket pay less &rarr;</a></p>
+    </section>
   </section>
 
   <!-- ============ CHECK MY TICKET ============ -->
@@ -1328,10 +1323,10 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <!-- ============ SEASON OUTLOOK ============ -->
   <section class="panel" id="panel-season" role="tabpanel" aria-labelledby="tab-season" tabindex="0" hidden>
     <div class="explain-wrap">
-      <h1 class="explain-head"><span class="explain-title">How will the <em>season end?</em></span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainSeason" aria-label="How these numbers work">i</button></h1>
+      <h1 class="explain-head"><span class="explain-title">NFL Season outlook &mdash; <em>how will the season end?</em></span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainSeason" aria-label="How these numbers work">i</button></h1>
       <div class="explain" id="explainSeason" hidden><p style="margin:0">We played the rest of the season 10,000 times on a computer. Each game used our guess for who wins that game. The numbers below are how often each ending came up. &ldquo;Most likely wins&rdquo; is the middle result; &ldquo;usually between&rdquo; covers the middle 8 times out of 10. Ties are broken by group and conference record, then chance &mdash; the league&rsquo;s real tiebreak list is longer, so close races may be off by a hair. &ldquo;Book&rdquo; is the book&rsquo;s win-total line: when we sit far from it, we say so under the number. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p><p class="sub" id="seasonMeta" style="margin:8px 0 0"></p></div>
     </div>
-    <p class="lede">Every team&rsquo;s most likely win total, how often they make the playoffs, and how often they win it all &mdash; from 10,000 simulated seasons.</p>
+    <p class="lede">NFL only. Every team&rsquo;s most likely win total, how often they make the playoffs, and how often they win it all &mdash; from 10,000 simulated seasons.</p>
     <div id="seasonTables"></div>
     <section class="block" aria-label="NBA">
       <h2>NBA is coming soon</h2>
@@ -2795,11 +2790,28 @@ tabs.forEach(function(t){
 document.addEventListener("click",function(e){
   var g=e.target.closest("[data-goto]");
   if(!g) return;
+  if(g.hasAttribute("data-td-link")){
+    /* Touchdowns links land on Player Picks with NFL + Touchdowns
+       (Anytime TD) preselected, scrolled to the touchdown board. */
+    switchTab("props",false);
+    selectTouchdownsView();
+    var tdSec=$("tdBoardSection");
+    if(tdSec) tdSec.scrollIntoView({block:"start"});
+    else window.scrollTo({top:0,behavior:"auto"});
+    return;
+  }
   switchTab(g.getAttribute("data-goto"),false);
   window.scrollTo({top:0,behavior:"auto"});
 });
 var initialHash=(location.hash||"").replace("#","");
-if(tabs.some(function(t){return t.getAttribute("data-tab")===initialHash;})) switchTab(initialHash,false);
+/* Touchdowns used to be its own tab, reached as #td (and linked as
+   #touchdowns). It now lives under Player Picks (NFL, Touchdowns), so
+   old links redirect there: open Player Picks now, and flag it so the
+   props code below applies the NFL + Touchdowns filters once they
+   exist. switchTab rewrites the hash to #props. */
+var tdDeepLink=(initialHash==="td"||initialHash==="touchdowns");
+if(tdDeepLink) switchTab("props",false);
+else if(tabs.some(function(t){return t.getAttribute("data-tab")===initialHash;})) switchTab(initialHash,false);
 
 /* ================= SETTINGS PANEL ================= */
 function closeSettings(){
@@ -3940,7 +3952,7 @@ var PROP_TYPES=[
   {key:"receptions",label:"Receptions",match:"receptions"},
   {key:"rushing yards",label:"Rushing yards",match:"rushing yards"},
   {key:"passing yards",label:"Passing yards",match:"passing yards"},
-  {key:"anytime TD",label:"Anytime TD",match:"anytime td"},
+  {key:"anytime TD",label:"Touchdowns (Anytime TD)",match:"anytime td"},
   {key:"shots on goal",label:"Shots on goal",match:"shots on goal"}
 ];
 var PROP_TYPE_BY_KEY={};
@@ -4231,8 +4243,52 @@ function propSimHtml(r){
   var txt="";
   if(hasSim) txt='Sim: <b>'+Math.round(r.sim_p_over*100)+'%</b> chance over the line';
   if(r.sim_flag) txt+=(txt?' &middot; ':"")+esc(r.sim_flag);
-  var tip=hasSim?'<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="About the simulation">i</button><span class="tip">From simulated games: '+Math.round(r.sim_p_over*100)+'% went over the line. The sim is a second check, separate from our guess.</span></span>':"";
-  return '<div class="sim-lines"><div class="sim-text">'+txt+'</div>'+tip+'</div>';
+  /* No ⓘ here any more: the sim explanation rides on the row's single
+     ⓘ (propRowInfoHtml below), so a sim row shows one icon, not two. */
+  return '<div class="sim-lines"><div class="sim-text">'+txt+'</div></div>';
+}
+/* Player Picks declutter: badges on the props board render WITHOUT
+   their own ⓘ circles (the board header's ⓘ explains Line, Our guess,
+   ⭐ Top Tier and 💎 Value once, for the whole board). A row gets ONE
+   ⓘ, and only when that pick carries something specific to explain:
+   a news flag (r.flag), a simulation note (sim_p_over / sim_flag), or
+   Top Tier. Plain rows show no ⓘ at all. The Our Bets cards keep
+   using pickBadgesHtml with its per-badge ⓘ circles — untouched. */
+function pickBadgesPlainHtml(p){
+  var h="";
+  if(p&&p.top_tier) h+='<span class="tt-badge">\u2B50 Top Tier</span>';
+  if(isValuePlay(p)) h+='<span class="tt-badge value-badge">\uD83D\uDC8E Value</span>';
+  return h;
+}
+function propRowInfoHtml(r){
+  if(!r) return "";
+  var hasSim=(typeof r.sim_p_over==="number"&&isFinite(r.sim_p_over));
+  var parts=[];
+  if(r.top_tier) parts.push("Top Tier \u2014 one of the 4 most likely player props today, tracked as a straight bet.");
+  if(r.flag) parts.push("Note on this pick: "+r.flag);
+  if(hasSim) parts.push("Simulation: "+Math.round(r.sim_p_over*100)+"% went over the line in simulated games \u2014 a second check, separate from our guess.");
+  if(r.sim_flag) parts.push("Simulation note: "+r.sim_flag);
+  if(!parts.length) return "";
+  return '<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="More about this pick">i</button><span class="tip">'+esc(parts.join(" "))+'</span></span>';
+}
+/* Touchdowns sub-category: the anytime-TD boards (moved here from the
+   old Touchdowns tab, same data and rows) show inside Player Picks
+   when the Touchdowns prop type is picked (any sport selection — the
+   board itself is NFL), or when NFL is picked with All prop types. */
+function tdBoardVisible(){
+  return propType==="anytime TD"||(propSport==="NFL"&&propType==="ALL");
+}
+function syncTdBoard(){
+  var sec=$("tdBoardSection");
+  if(sec) sec.hidden=!tdBoardVisible();
+}
+function selectTouchdownsView(){
+  propSport="NFL"; propType="anytime TD"; propGame="ALL";
+  var sf=$("propSportFilters");
+  if(sf) Array.prototype.forEach.call(sf.querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x.getAttribute("data-sport")==="NFL"?"true":"false");});
+  buildPropTypeOptions();
+  buildGameOptions();
+  renderProps();
 }
 function renderProps(){
   var el=$("propBody");
@@ -4249,14 +4305,16 @@ function renderProps(){
      shown was built in above. The sport, date, game and prop-type
      filters only narrow the list; they never reorder it. */
   function tileRow(r){
+    var badges=pickBadgesPlainHtml(r), rowInfo=propRowInfoHtml(r);
     return '<div class="trow" style="grid-template-columns:'+cols+'"><div class="who"><b>'+esc(r.player)+'</b><span>'+esc(r.sport)+' &middot; '+esc(r.team)+' &middot; '+esc(r.prop)+'</span></div>'+
     '<span class="prop-date">'+esc(r.date)+'</span>'+
-    '<span class="num avg-val">Line: '+esc(r.line)+'</span><span class="num avg-val">Our guess: '+r.guess+'%</span><span style="text-align:right">'+propTierHtml(r)+((r.top_tier||isValuePlay(r))?'<div class="tt-wrap">'+pickBadgesHtml(r)+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<div class="flag" style="grid-column:1 / -1">'+esc(r.flag)+'</div>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
+    '<span class="num avg-val">Line: '+esc(r.line)+'</span><span class="num avg-val">Our guess: '+r.guess+'%</span><span style="text-align:right">'+propTierHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<div class="flag" style="grid-column:1 / -1">'+esc(r.flag)+'</div>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
   }
   function listRow(r){
+    var badges=pickBadgesPlainHtml(r), rowInfo=propRowInfoHtml(r);
     return '<div class="prop-list-row"><span class="pl-player">'+esc(r.player)+'<span class="pl-team">'+esc(r.team)+'</span></span>'+
     '<span class="pl-prop">'+esc(r.prop)+'<span class="pl-meta">'+esc(r.sport)+' &middot; '+esc(r.date)+'</span></span>'+
-    '<span class="pl-line">'+esc(r.line)+'</span><span class="pl-guess">'+r.guess+'%</span><span class="pl-tier">'+propTierHtml(r)+((r.top_tier||isValuePlay(r))?'<div class="tt-wrap">'+pickBadgesHtml(r)+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<span class="flag">'+esc(r.flag)+'</span>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
+    '<span class="pl-line">'+esc(r.line)+'</span><span class="pl-guess">'+r.guess+'%</span><span class="pl-tier">'+propTierHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<span class="flag">'+esc(r.flag)+'</span>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
   }
   var emptyHtml='<div class="empty-state"><p>No props available for this game &mdash; lines haven\'t been posted yet. Check back closer to tip-off.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no props yet">i</button><span class="tip">Lines come from the sportsbooks and can take a while to appear, especially for games later in the week.</span></span></p><p>Try another sport, date, game, or prop type.</p></div>';
   if(propView==="list"){
@@ -4265,9 +4323,16 @@ function renderProps(){
   } else {
     el.innerHTML=shown.length?'<div class="rows">'+head+shown.map(function(item){return tileRow(item.r);}).join("")+'</div>':emptyHtml;
   }
+  if(!shown.length&&propType==="anytime TD"&&tdBoardVisible()){
+    /* The props list itself carries no anytime-TD rows — the touchdown
+       board below is the content for this pick type, so point there
+       instead of claiming no lines have been posted. */
+    el.innerHTML='<div class="empty-state"><p>The touchdown board is right below &mdash; every player&rsquo;s chance to score.</p></div>';
+  }
   var countEl=$("propCount");
   if(countEl) countEl.textContent="Showing "+shown.length+" of "+(TOP_PROPS?TOP_PROPS.length:0)+" props, in ranked order.";
   renderMovers();
+  syncTdBoard();
 }
 $("propSportFilters").addEventListener("click",function(e){
   var b=e.target.closest("[data-sport]"); if(!b) return;
@@ -4378,6 +4443,13 @@ try{buildPropTypeOptions();}catch(e){}
 try{buildGameOptions();}catch(e){}
 try{renderMovers();}catch(e){}
 try{renderProps();}catch(e){}
+/* Old Touchdowns links (#td / #touchdowns) flagged at the top of this
+   script: now that the props filters exist, land on NFL + Touchdowns. */
+if(tdDeepLink){try{selectTouchdownsView();}catch(e){}}
+window.addEventListener("hashchange",function(){
+  var h=(location.hash||"").replace("#","");
+  if(h==="td"||h==="touchdowns"){switchTab("props",false);selectTouchdownsView();}
+});
 
 var MARKETS=["Points","Rebounds","Assists","Points + rebounds + assists","Shots on goal","Receiving yards","Receptions","Rushing yards","Passing yards","Touchdown","Other"];
 var ticketLegs=[];
