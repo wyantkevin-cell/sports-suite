@@ -1364,7 +1364,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <div id="betsEmpty" class="empty-state bets-empty"><p>Today's card posts with the morning update — check back after 9am.</p></div>
     <div id="parlayWrap"></div>
     <div class="bets-grid" id="betsGrid"></div>
-    <p class="note" id="betsCardNote">Day 1 of the fresh track record. Picks are the day&rsquo;s strongest calibrated leans at a $100 flat stake; the parlay is tracked separately and is not part of the straight-bet tally.</p>
+    <p class="note" id="betsCardNote">Day 2 of the fresh track record. Picks are the day&rsquo;s strongest leans at a $100 flat stake; the parlay is tracked separately and is not part of the straight-bet tally.</p>
     <p class="note">These are today&rsquo;s bets only. Once a game finishes and a pick is graded, it moves to <a href="#record" data-goto="record">Our Record</a> &mdash; pending picks never appear there.</p>
   </section>
 
@@ -1375,9 +1375,9 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     </div>
 
     <div class="card tally-card">
-      <div class="tally-big" id="tallyBig">No settled bets yet</div>
+      <div class="tally-big" id="tallyBig">0 wins, 7 losses · −$700 profit</div>
       <p id="tallySub">Settled bets are counted at $100 per bet, so the profit is what $100 bets would have made or lost.</p>
-      <div class="tally-grid" id="tallyGrid"></div>
+      <div class="tally-grid" id="tallyGrid"><div class="tally-block"><h3>Straight bets</h3><div class="tally-line">0 wins, 7 losses</div><p>Profit: <b>−$700</b> &nbsp;·&nbsp; ROI: <b>−100%</b> &nbsp;·&nbsp; 7 settled</p></div><div class="tally-block"><h3>Parlays</h3><div class="tally-line">0 wins, 1 loss</div><p>Profit: <b>−$100</b> &nbsp;·&nbsp; ROI: <b>−100%</b> &nbsp;·&nbsp; 1 settled</p></div></div>
       <div id="periodRecord"></div>
     </div>
 
@@ -1386,7 +1386,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <section class="block" aria-label="Parlay record">
       <h2>Parlays</h2>
       <p class="sub">Parlay of the Day results, kept apart from single bets.</p>
-      <div id="parlayRecordRows"></div>
+      <div id="parlayRecordRows"><p class="empty-note">1 settled parlay: Nov 5 (+423) lost, −$100. The Nov 6 parlay is void.</p></div>
     </section>
 
     <section class="block" aria-label="Top Tier record">
@@ -1409,7 +1409,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
         <div class="trow score" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>No edge at all &mdash; bet sized to the edge</b><span>With no edge showing, this way of betting places no bets at all. You keep your $10,000. Not betting beats betting when the price is not in your favor.</span></div></div>
         <div class="trow score" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Edge claimed, but not real &mdash; bet sized to the edge</b><span>Betting as if the 55-in-100 edge were real, when it is not. Middle result: $9,198 (usually $5,437&ndash;$15,561). Ahead 42 times in 100. Typical worst dip 39%. Sizing bets for an edge you do not have loses faster than flat betting &mdash; this is why we do not size bets on our chances until the record proves them.</span></div></div>
       </div>
-      <p class="sub" style="margin-top:12px"><b>Our picks, run this way:</b> not enough graded picks yet &mdash; 1 of 4 featured picks graded so far (Nov 5, 2026). We need 30 graded picks before this runs on our own record. Check back as the record grows.</p>
+      <p class="sub" style="margin-top:12px"><b>Our picks, run this way:</b> 7 graded picks so far (Nov 5, 2026). We need 30 graded picks before this runs on our own record. Check back as the record grows.</p>
       <p class="sub">Even a small real edge comes with big swings. Nothing here is a promise that any way of betting wins.</p>
     </section>
   </section>
@@ -2680,7 +2680,7 @@ var SPREADS=[
   {game:"UTA @ BTHS",league:"NCAAB",away:"UTA",home:"BTHS",our:-20.4,book:null,lean:"none",teams:["UTA","BTHS"],abbr:["UTA","BTHS"],game_date:"2026-11-09",sim:{league:"cbb",n_sims:10000,win_pct_home:3.8,margin_mean:-29.9,margin_p50:-29.8,margin_p5:-58.2,margin_p95:-1.7,total_mean:144.4,total_p5:112.5,total_p95:177.6}},
   {game:"PORT @ HAW",league:"NCAAB",away:"PORT",home:"HAW",our:9.3,book:null,lean:"none",teams:["PORT","HAW"],abbr:["PORT","HAW"],game_date:"2026-11-09",sim:{league:"cbb",n_sims:10000,win_pct_home:81.7,margin_mean:15.2,margin_p50:15.3,margin_p5:-12.4,margin_p95:43.6,total_mean:144.5,total_p5:112.7,total_p95:177.2}}
 ];
-var BANKROLL={date:"2026-11-05",start:10000,nBets:250,nSims:10000,graded:1,total:4,minGraded:30,realLedger:"not_enough",
+var BANKROLL={date:"2026-11-05",start:10000,nBets:250,nSims:10000,graded:7,total:7,minGraded:30,realLedger:"not_enough",
   withEdge:{flat:{med:11155,p10:9245,p90:13064,ahead:0.81,dd:0.11},sized:{med:12609,p10:7453,p90:21332,ahead:0.73,dd:0.31}},
   noEdge:{flat:{med:8864,p10:6955,p90:10773,ahead:0.23,dd:0.21},sized:{med:10000,p10:10000,p90:10000,ahead:0,dd:0,placed:0}},
   phantom:{sized:{med:9198,p10:5437,p90:15561,ahead:0.42,dd:0.39}}};
@@ -2742,6 +2742,10 @@ var TODAY_BETS=[
 ];
 var TODAY_PARLAY={legs:["20261106-10","20261106-01"],leg_descriptions:["ILL to win vs NEB","Chris Hunter (UTEP) under 30.5 receiving yards"],combined_odds:"+392",combined_decimal:4.9214};
 var TODAY_CARD_DATE="2026-11-06";
+/* The fresh track record started Nov 5, 2026 (Day 1). The Our Bets
+   card note counts its day number from this date so it cannot go
+   stale when a new card posts. */
+var RECORD_START_DATE="2026-11-05";
 var TRACK_RECORD=[
   {date:"2026-11-05",pick_id:"20261105-01",sport:"NFL",type:"prop",description:"Devontez Walker (BAL) yes anytime TD",line_odds:"+2500",outcome:"loss",profit:-100},
   {date:"2026-11-05",pick_id:"20261105-02",sport:"NFL",type:"prop",description:"Matthew Hibner (BAL) yes anytime TD",line_odds:"+1900",outcome:"loss",profit:-100},
@@ -2751,8 +2755,10 @@ var TRACK_RECORD=[
   {date:"2026-11-05",pick_id:"20261105-06",sport:"NBA",type:"prop",description:"Bam Adebayo (MIA) under 9.5 rebounds",line_odds:"-102",outcome:"loss",profit:-100},
   {date:"2026-11-05",pick_id:"20261105-07",sport:"NHL",type:"prop",description:"Anthony Cirelli (TB) under 1.5 shots on goal",line_odds:"+130",outcome:"loss",profit:-100}
 ];
-var TRACK_TALLY={straights:{wins:0,losses:7,pushes:0,profit:-700,roi_pct:-100,n_graded:7},parlays:{wins:0,losses:0,pushes:0,profit:0,roi_pct:0,n_graded:0}};
-var PARLAY_RECORD=[];
+var TRACK_TALLY={straights:{wins:0,losses:7,pushes:0,profit:-700,roi_pct:-100,n_graded:7},parlays:{wins:0,losses:1,pushes:0,profit:-100,roi_pct:-100,n_graded:1}};
+var PARLAY_RECORD=[
+  {date:"2026-11-05",description:"Parlay of the Day",line_odds:"+423",outcome:"loss",profit:-100}
+];
 /* Top Tier: the 4 most likely player props each day, tracked as straights.
    TT_RECORD row: {date, sport, description, outcome ("win"/"loss" or
    null while the game has not been played), actual_label (what the
@@ -2773,7 +2779,7 @@ var TT_RECORD=[
   {date:"2026-11-05",sport:"NFL",description:"Matthew Hibner (BAL) yes anytime TD",outcome:"loss",actual_label:null},
   {date:"2026-11-05",sport:"NFL",description:"Rashod Bateman (BAL) yes anytime TD",outcome:"loss",actual_label:null},
   {date:"2026-11-05",sport:"NBA",description:"Jase Richardson (ORL) under 8.5 points",outcome:"loss",actual_label:"Finished with 10 points"},
-  {date:"2026-11-06",sport:"CFB",description:"Chris Hunter (UTEP) under 30.5 receiving yards",outcome:null,actual_label:null},
+  {date:"2026-11-06",sport:"CFB",description:"Chris Hunter (UTEP) under 30.5 receiving yards",outcome:"void",actual_label:null},
   {date:"2026-11-06",sport:"CFB",description:"Tj Moore (CLEM) under 38.5 receiving yards",outcome:null,actual_label:null},
   {date:"2026-11-06",sport:"CFB",description:"Eric Singleton Jr (FLA) under 34.5 receiving yards",outcome:null,actual_label:null},
   {date:"2026-11-06",sport:"CFB",description:"Kaleb Webb (MD) under 42.5 receiving yards",outcome:null,actual_label:null}
@@ -5738,8 +5744,21 @@ function betCardHtml(b){
     +(foot.length?'<div class="bet-foot">'+foot.join(" &nbsp;\u00b7&nbsp; ")+'</div>':"")
     +'</article>';
 }
+function recordDayNumber(dateStr){
+  var m=String(dateStr||"").match(/^(\d{4})-(\d{2})-(\d{2})/);
+  var s=String(typeof RECORD_START_DATE!=="undefined"?RECORD_START_DATE:"2026-11-05").match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if(!m||!s) return null;
+  var d=Date.UTC(+m[1],+m[2]-1,+m[3]), st=Date.UTC(+s[1],+s[2]-1,+s[3]);
+  var n=Math.round((d-st)/86400000)+1;
+  return n>0?n:null;
+}
 function renderBets(){
   var bets=(TODAY_BETS||[]).filter(function(b){return !isSoccerRow(b);});
+  var noteEl=$("betsCardNote");
+  if(noteEl){
+    var dayN=recordDayNumber(TODAY_CARD_DATE);
+    if(dayN!=null) noteEl.textContent="Day "+dayN+" of the fresh track record. Picks are the day\u2019s strongest leans at a $100 flat stake; the parlay is tracked separately and is not part of the straight-bet tally.";
+  }
   var dateEl=$("betsDate");
   if(dateEl){
     if(TODAY_CARD_DATE){dateEl.textContent=TODAY_CARD_DATE;dateEl.hidden=false;}
@@ -5843,6 +5862,13 @@ function recordRowHtml(r,sub){
     +(prof!=null?'<span class="rec-profit '+(prof>0?"pos":prof<0?"neg":"")+'">'+esc(fmtProfit(prof))+'</span>':"")
     +'</div></div>';
 }
+function fmtProfitWhole(v){
+  if(v==null) return "\u2014";
+  var n=Number(v);
+  if(!isFinite(n)) return "\u2014";
+  if(Math.round(n)===n) return (n<0?"\u2212$":n>0?"+$":"$")+Math.abs(n).toLocaleString("en-US");
+  return fmtProfit(n);
+}
 function tallyBlockHtml(title,t){
   var record=t.wins+" wins, "+t.losses+" losses"+(t.pushes?", "+t.pushes+" pushes":"");
   return '<div class="tally-block"><h3>'+esc(title)+'</h3><div class="tally-line">'+esc(record)+'</div>'
@@ -5945,7 +5971,7 @@ function renderRecord(){
   var big=$("tallyBig");
   if(big){
     if(totalGraded===0) big.textContent="No settled bets yet";
-    else big.textContent=(s.wins+p.wins)+" wins, "+(s.losses+p.losses)+" losses \u00b7 "+fmtProfit(s.profit+p.profit)+" profit";
+    else big.textContent=s.wins+" wins, "+s.losses+" losses \u00b7 "+fmtProfitWhole(s.profit)+" profit";
   }
   var grid=$("tallyGrid");
   if(grid) grid.innerHTML=totalGraded===0?"":tallyBlockHtml("Straight bets",s)+tallyBlockHtml("Parlays",p);
@@ -5997,11 +6023,28 @@ function ttRowHtml(r){
   if(o==="win"||o==="loss"){
     right='<span class="rec-outcome '+o+'">'+(o==="win"?"Win":"Loss")+'</span>'
       +(r.actual_label?'<span class="num">'+esc(r.actual_label)+'</span>':"");
+  } else if(o==="void"){
+    right='<span class="rec-outcome push">Void</span>';
   } else {
     right='<span class="rec-outcome pending">Not played yet</span>';
   }
   return '<div class="record-row"><div class="rec-who"><b>'+esc(r.description||"Pick")+'</b><span>'+esc(r.sport||"")+'</span></div>'
     +'<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">'+right+'</div></div>';
+}
+function ttDayLabel(dateStr){
+  var d=parseRowDate(dateStr);
+  return d?shortDate(d):String(dateStr||"");
+}
+function ttDaySplit(dayRows){
+  var s={wins:0,losses:0,voids:0,pending:0};
+  (dayRows||[]).forEach(function(r){
+    var o=String(r.outcome||"").toLowerCase();
+    if(o==="win") s.wins++;
+    else if(o==="loss") s.losses++;
+    else if(o==="void") s.voids++;
+    else s.pending++;
+  });
+  return s;
 }
 function renderTopTier(){
   var el=$("ttRecord");
@@ -6009,18 +6052,107 @@ function renderTopTier(){
   var rows=(TT_RECORD||[]).filter(function(r){return !isSoccerRow(r);});
   if(!rows.length){el.innerHTML='<p class="empty-note">No Top Tier picks yet.</p>';return;}
   var t=TT_TALLY||{wins:0,losses:0,n_graded:0,win_rate:0};
-  var head='<div class="tally-block" style="margin-bottom:14px"><div class="tt-tally">'+t.wins+'-'+t.losses+' &middot; '+Math.round((t.win_rate||0)*100)+'%</div><p>'+t.n_graded+' settled picks so far</p></div>'
-    +ttPeriodLineHtml(rows);
   var groups={}, order=[];
   rows.forEach(function(r){
     if(!groups[r.date]){groups[r.date]=[];order.push(r.date);}
     groups[r.date].push(r);
   });
-  order.reverse();
-  var body=order.map(function(date){
-    return '<section class="record-day"><h2>'+esc(date)+'</h2><div class="rows" role="table" aria-label="Top Tier picks for '+esc(date)+'">'+groups[date].map(ttRowHtml).join("")+'</div></section>';
+  var splits={};
+  order.forEach(function(date){splits[date]=ttDaySplit(groups[date]);});
+  var voidRows=rows.filter(function(r){return String(r.outcome||"").toLowerCase()==="void";});
+  var tallyLine=t.wins+'-'+t.losses+' &middot; '+Math.round((t.win_rate||0)*100)+'%'
+    +(typeof t.profit==="number"?' &middot; '+esc(fmtProfitWhole(t.profit)):"");
+  var head='<div class="tally-block" style="margin-bottom:14px"><div class="tt-tally">'+tallyLine+'</div>'
+    +(voidRows.length?'<p>'+voidRows.length+' void ('+voidRows.map(function(r){
+        var nm=String(r.description||"Pick").split(" (")[0];
+        return esc(nm)+', '+esc(ttDayLabel(r.date))+' \u2014 no such game';
+      }).join("; ")+')</p>':"")
+    +'<p>'+t.n_graded+' settled picks so far \u2014 dollar P/L from Nov 5 onward only; Nov 3\u20134 W/L only, no $.</p>'
+    +'<p>By day: '+order.map(function(date){
+        var s=splits[date], parts=[];
+        if(s.wins||s.losses) parts.push(s.wins+'\u2013'+s.losses);
+        if(s.voids) parts.push(s.voids+' void');
+        if(s.pending) parts.push(s.pending+' pending');
+        return esc(ttDayLabel(date))+': '+esc(parts.join(", "));
+      }).join(' &middot; ')+'</p></div>'
+    +ttPeriodLineHtml(rows);
+  var body=order.slice().reverse().map(function(date){
+    var s=splits[date];
+    var summary=ttDayLabel(date)+' \u2014 '+s.wins+(s.wins===1?' win':' wins')+', '+s.losses+(s.losses===1?' loss':' losses')
+      +(s.voids?', '+s.voids+' void':"")
+      +(s.pending?', '+s.pending+' not played yet':"");
+    return '<section class="record-day"><h2>'+esc(date)+'</h2><p class="sub">'+esc(summary)+'</p><div class="rows" role="table" aria-label="Top Tier picks for '+esc(date)+'">'+groups[date].map(ttRowHtml).join("")+'</div></section>';
   }).join("");
-  el.innerHTML=head+body+'<p class="note" style="margin-top:12px">Dollar P/L from Nov 5 onward only &mdash; Nov 3-4 picks were Underdog entries and no per-leg odds were recorded, so they count toward W/L only.</p>';
+  el.innerHTML=head+body;
+}
+/* Cumulative record: the Our Record tab also tries to load
+   "track_record_cumulative.json" (same folder as this page). If that
+   file loads AND parses AND carries numeric tallies in a recognizable
+   shape — straights and parlays with wins/losses/profit numbers, plus
+   a top-tier tally when present — the record and Top Tier sections
+   re-render from it. Any failure at all (file missing, network error,
+   bad JSON, unrecognizable shape) leaves the hard-coded tallies on
+   this page exactly as they are, silently: no banner, no blank
+   record, and nothing here is allowed to throw. */
+function cumNum(v){
+  if(v==null||v==="") return null;
+  var n=Number(v);
+  return isFinite(n)?n:null;
+}
+function cumTally(raw){
+  if(!raw||typeof raw!=="object") return null;
+  var w=cumNum(raw.wins), l=cumNum(raw.losses), p=cumNum(raw.profit);
+  if(w==null||l==null||p==null) return null;
+  var pushes=cumNum(raw.pushes)||0;
+  var graded=cumNum(raw.n_graded);
+  if(graded==null) graded=w+l+pushes;
+  var roi=cumNum(raw.roi_pct);
+  if(roi==null){var staked=graded*100; roi=staked?Math.round(p/staked*1000)/10:0;}
+  return {wins:w,losses:l,pushes:pushes,profit:p,roi_pct:roi,n_graded:graded};
+}
+function cumRows(list){
+  if(!Array.isArray(list)) return null;
+  return list.filter(function(r){return r&&typeof r==="object";});
+}
+function applyCumulativeRecord(data){
+  if(!data||typeof data!=="object") return false;
+  var root=(data.tallies&&typeof data.tallies==="object")?data.tallies
+    :((data.tally&&typeof data.tally==="object")?data.tally:data);
+  var track=(data.track_tally&&typeof data.track_tally==="object")?data.track_tally:{};
+  var s=cumTally(root.straights||root.straight_bets||track.straights);
+  var p=cumTally(root.parlays||root.parlay||track.parlays);
+  if(!s||!p) return false;
+  var ttRaw=root.top_tier||root.topTier||root.top_tier_tally||data.tt_tally||data.top_tier||null;
+  var tt=ttRaw?cumTally(ttRaw):null;
+  TRACK_TALLY={straights:s,parlays:p};
+  var recRows=cumRows(data.track_record||data.record);
+  if(recRows) TRACK_RECORD=recRows;
+  var parRows=cumRows(data.parlay_record||data.parlays_record);
+  if(parRows) PARLAY_RECORD=parRows;
+  if(tt){
+    var settled=tt.wins+tt.losses;
+    TT_TALLY={wins:tt.wins,losses:tt.losses,pushes:tt.pushes,n_graded:tt.n_graded,
+      win_rate:settled?tt.wins/settled:0,profit:tt.profit,profit_partial:true,
+      profit_note:"Dollar P/L from Nov 5 onward only \u2014 Nov 3-4 picks were Underdog entries and no per-leg odds were recorded, so they count toward W/L only."};
+  }
+  var ttRows=cumRows(data.tt_record||data.top_tier_record);
+  if(ttRows&&ttRows.length) TT_RECORD=ttRows;
+  try{renderRecordLine();}catch(e){}
+  try{renderRecord();}catch(e){}
+  try{renderTopTier();}catch(e){}
+  return true;
+}
+function loadCumulativeRecord(){
+  try{
+    if(typeof fetch!=="function") return;
+    fetch("track_record_cumulative.json").then(function(res){
+      if(!res||!res.ok) return null;
+      return res.json();
+    }).then(function(data){
+      if(!data) return;
+      try{applyCumulativeRecord(data);}catch(e){}
+    }).catch(function(){});
+  }catch(e){}
 }
 /* Explanations behind ⓘ buttons: tap toggles the panel below the heading;
    tapping again, tapping elsewhere, switching tabs, or Escape closes it.
@@ -6671,6 +6803,7 @@ try{renderBets();}catch(e){}
 try{renderRecord();}catch(e){}
 try{renderTopTier();}catch(e){}
 try{updateYesterdayRecap();}catch(e){}
+try{loadCumulativeRecord();}catch(e){}
 })();
 </script>
 <script>
