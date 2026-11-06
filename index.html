@@ -682,6 +682,12 @@ html[data-theme="dark"] .beton-betonline,html[data-theme="terminal"] .beton-beto
 .prop-list-row .beton{grid-column:1 / -1;margin-top:2px}
 @media(max-width:640px){.prop-list-row .beton{flex:1 1 100%;order:6}}
 .bet-card .beton{margin-top:13px}
+.beton-empty{display:flex;align-items:center;margin-top:9px;font-size:13px;line-height:1.2;color:var(--muted)}
+.trow .beton-empty{grid-column:1 / -1;margin-top:0}
+.prop-list-row .beton-empty{grid-column:1 / -1;margin-top:2px}
+@media(max-width:640px){.prop-list-row .beton-empty{flex:1 1 100%;order:6}}
+.bet-card .beton-empty{margin-top:13px}
+.book-says{white-space:normal}
 .parlay-card{margin-top:18px;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:18px 19px;box-shadow:none}
 .parlay-head{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .parlay-void{border:1px solid var(--bad);background:var(--bad-bg);border-radius:10px;padding:11px 13px;font-size:14.5px;font-weight:600;line-height:1.55;margin-bottom:12px}
@@ -972,6 +978,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <button type="button" aria-pressed="false" data-gdate="today">Today</button>
       <button type="button" aria-pressed="false" data-gdate="tomorrow">Tomorrow</button>
     </div>
+    <p class="note">Past games are on the Scores tab.</p>
     <div id="leagueCard"></div>
 
     <section class="block explain-wrap" id="gamesBlock">
@@ -1363,7 +1370,6 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <span class="bets-date" id="betsDate" hidden></span>
       <p class="record-line">Our record: 0–7, −$700 so far. Forecasts, not proven winners.</p>
       <p>Today&rsquo;s bets, picked from the strongest player props and moneylines on the board. Each card shows our chance it hits and how it compares with the book&rsquo;s number.</p>
-      <p class="note badge-legend"><span class="tt-badge">&#11088; Top Tier</span><span>the 4 most likely player props of the day</span><span class="tt-badge value-badge">&#128142; Value</span><span>in the top 10% of today&rsquo;s value gaps &mdash; a pick can wear both badges</span></p>
       <div class="freshness"></div>
     </div>
     <div id="betsEmpty" class="empty-state bets-empty"><p>Today's card posts with the morning update — check back after 9am.</p></div>
@@ -3251,7 +3257,12 @@ function marketsHtml(markets){
     if(!/^https?:\/\//i.test(url)) return;
     btns+='<a class="'+p.cls+'" href="'+esc(url)+'" target="_blank" rel="noopener">'+p.label+'</a>';
   });
-  if(!btns) return "";
+  /* The markets dict is there but no platform has a live link (every
+     platform null): say so plainly instead of rendering nothing, so
+     the reader knows where to check. No signup link here — signups
+     live only on the Sportsbooks tab and Home's "Where to bet". A
+     missing markets field entirely (older data) still returns "". */
+  if(!btns) return '<div class="beton-empty">No live link for this pick \u2014 check FanDuel</div>';
   return '<div class="beton"><span class="beton-label">Bet on:</span>'+btns+'</div>';
 }
 function feedRowHtml(f){
@@ -3448,6 +3459,35 @@ function forecastHasGame(list,f){
   for(var i=0;i<list.length;i++){ if(list[i].g===f.g&&list[i].date===f.date) return true; }
   return false;
 }
+/* Finished games never render as live Moneyline picks: a row whose
+   game date is before today (Pacific Time) is dropped from the slate
+   list — results live on the Scores tab, this tab carries forecasts.
+   The date read is the row's own stated date (its date field, or
+   game_date when a row carries one that way); a row with no readable
+   date is kept, never dropped on a guess. No final scores are added:
+   the forecast rows carry none. */
+function ptTodayDate(){
+  try{
+    var parts=new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());
+    var y=null,mo=null,da=null;
+    parts.forEach(function(p){
+      if(p.type==="year") y=parseInt(p.value,10);
+      else if(p.type==="month") mo=parseInt(p.value,10);
+      else if(p.type==="day") da=parseInt(p.value,10);
+    });
+    if(y&&mo&&da) return new Date(y,mo-1,da);
+  }catch(e){}
+  var n=new Date();
+  return new Date(n.getFullYear(),n.getMonth(),n.getDate());
+}
+function isPastGameDate(v){
+  var s=v;
+  if(v&&typeof v==="object") s=v.game_date||v.date;
+  var d=parseGameDate(s);
+  if(!d||isNaN(d.getTime())) return false;
+  var dd=new Date(d.getFullYear(),d.getMonth(),d.getDate());
+  return dd<ptTodayDate();
+}
 function renderGames(){
   if(leagueState==="tennis"){ $("slateList").innerHTML=""; return; }
   if(leagueState==="soccer"){
@@ -3458,6 +3498,7 @@ function renderGames(){
        in that order — the same ordering rule as other sports. */
     var sRows=[];
     (SOCCER_GAMES||[]).forEach(function(s){
+      if(isPastGameDate(s.game_date||s.date)) return;
       var nd=soccerDateParts(s.date);
       if(!gameDateMatch(nd.shortLabel||nd.label)) return;
       var mins=timeMinutes(soccerNormTime(s.time));
@@ -3487,6 +3528,10 @@ function renderGames(){
      row — it does not reorder the data itself. */
   var groups=[], byDay={}, rowIdx=0;
   function push(day,date,time,html){
+    /* Past games are dropped here, at the one place every slate row
+       (feed rows, headline forecasts, and the baked Nov 4 fallback
+       rows) passes through, so no finished game renders as a pick. */
+    if(isPastGameDate(date)) return;
     if(!byDay[day]){byDay[day]=[];groups.push(day);}
     byDay[day].push({date:date,time:time,html:html,idx:rowIdx++});
   }
@@ -4509,10 +4554,42 @@ function setPropView(view){
   if(hint) hint.textContent=view==="list"?"List shows every prop as one compact row, so you can scan the whole board at a glance.":"Tiles show each prop as a card with full details.";
   renderProps();
 }
+/* Tier column: only the exceptions are labelled. A strong-tier row
+   (top 10% of today's value gaps) gets the "Strong pick" pill; every
+   other row — lean rows included — gets a blank cell, so the pill
+   actually means something when it appears. */
 function propTierHtml(r){
   var t=String((r&&r.tier)||"").toLowerCase();
-  if(t.indexOf("lean")>=0) return '<span class="picktag close">Lean</span>';
-  return '<span class="picktag">Strong pick</span>';
+  if(t.indexOf("strong")>=0) return '<span class="picktag">Strong pick</span>';
+  return "";
+}
+/* The value gap in plain words on the row: "Our guess: 74% (book
+   says 53%)". The guess is the row's own guess (its model chance);
+   the book number is the row's market_prob, the book's implied
+   chance (0-1). The parenthetical renders ONLY when both numbers
+   exist on the row — when market_prob is missing, the guess shows
+   alone exactly as before: never blank, never a guessed book
+   number. */
+function propGuessPct(r){
+  if(!r) return null;
+  if(typeof r.guess==="number"&&isFinite(r.guess)) return r.guess;
+  if(typeof r.guess==="string"&&r.guess.trim()!==""&&isFinite(Number(r.guess))) return Number(r.guess);
+  if(typeof r.model_prob==="number"&&isFinite(r.model_prob)) return Math.round(r.model_prob*1000)/10;
+  return null;
+}
+function propBookPct(r){
+  if(!r) return null;
+  var mp=r.market_prob;
+  if(typeof mp==="number"&&isFinite(mp)) return Math.round(mp<=1?mp*100:mp);
+  if(typeof mp==="string"&&mp.trim()!==""&&isFinite(Number(mp))){ var v=Number(mp); return Math.round(v<=1?v*100:v); }
+  return null;
+}
+function propGuessHtml(r,labelled){
+  var g=propGuessPct(r);
+  var txt=(labelled?"Our guess: ":"")+(g!=null?g:r.guess)+"%";
+  var b=propBookPct(r);
+  if(g!=null&&b!=null) txt+=' <span class="book-says">(book says '+b+'%)</span>';
+  return txt;
 }
 /* Top Tier marker: a star + "Top Tier" label, with the plain-English
    explanation behind the ⓘ next to it. Shown on the day's 4 most likely
@@ -4621,13 +4698,13 @@ function renderProps(){
     var badges=pickBadgesPlainHtml(r), rowInfo=propRowInfoHtml(r);
     return '<div class="trow" style="grid-template-columns:'+cols+'"><div class="who"><b>'+esc(r.player)+'</b><span>'+esc(r.sport)+' &middot; '+esc(r.team)+' &middot; '+esc(r.prop)+'</span></div>'+
     '<span class="prop-date">'+esc(fmtDateLong(r.date))+'</span>'+
-    '<span class="num avg-val">Line: '+esc(r.line)+'</span><span class="num avg-val">Our guess: '+r.guess+'%</span><span style="text-align:right">'+propTierHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<div class="flag" style="grid-column:1 / -1">'+esc(r.flag)+'</div>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
+    '<span class="num avg-val">Line: '+esc(r.line)+'</span><span class="num avg-val">'+propGuessHtml(r,true)+'</span><span style="text-align:right">'+propTierHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<div class="flag" style="grid-column:1 / -1">'+esc(r.flag)+'</div>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
   }
   function listRow(r){
     var badges=pickBadgesPlainHtml(r), rowInfo=propRowInfoHtml(r);
     return '<div class="prop-list-row"><span class="pl-player">'+esc(r.player)+'<span class="pl-team">'+esc(r.team)+'</span></span>'+
     '<span class="pl-prop">'+esc(r.prop)+'<span class="pl-meta">'+esc(r.sport)+' &middot; '+esc(fmtDateLong(r.date))+'</span></span>'+
-    '<span class="pl-line">'+esc(r.line)+'</span><span class="pl-guess">'+r.guess+'%</span><span class="pl-tier">'+propTierHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<span class="flag">'+esc(r.flag)+'</span>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
+    '<span class="pl-line">'+esc(r.line)+'</span><span class="pl-guess">'+propGuessHtml(r,false)+'</span><span class="pl-tier">'+propTierHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<span class="flag">'+esc(r.flag)+'</span>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
   }
   var emptyHtml='<div class="empty-state"><p>No props available for this game &mdash; lines haven\'t been posted yet. Check back closer to tip-off.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no props yet">i</button><span class="tip">Lines come from the sportsbooks and can take a while to appear, especially for games later in the week.</span></span></p><p>Try another sport, date, game, or prop type.</p></div>';
   if(propView==="list"){
