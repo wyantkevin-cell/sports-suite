@@ -4282,6 +4282,7 @@ function propRowInfoHtml(r){
   if(r.top_tier) parts.push("Top Tier \u2014 one of the 4 most likely player props today, tracked as a straight bet.");
   if(r.flag) parts.push("Note on this pick: "+r.flag);
   if(hasSim) parts.push("Simulation: "+Math.round(r.sim_p_over*100)+"% went over the line in simulated games \u2014 a second check, separate from our guess.");
+  if(typeof r.sim_p5==="number"&&isFinite(r.sim_p5)&&typeof r.sim_p95==="number"&&isFinite(r.sim_p95)) parts.push("In simulated games, the middle 90% of outcomes fell between "+fmtLine(r.sim_p5)+" and "+fmtLine(r.sim_p95)+".");
   if(r.sim_flag) parts.push("Simulation note: "+r.sim_flag);
   if(!parts.length) return "";
   return '<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="More about this pick">i</button><span class="tip">'+esc(parts.join(" "))+'</span></span>';
