@@ -45,8 +45,9 @@ button{cursor:pointer}
 .badge{font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:var(--bg);border-radius:999px;padding:4px 10px}
 .strip .meta{color:var(--muted)}
 .strip .meta b{color:var(--ink);font-family:var(--mono);font-weight:600}
-.tabbar{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 0;display:flex;flex-wrap:wrap;gap:7px}
-.tabbar [role="tab"]{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:8px 15px;font-weight:700;font-size:14.5px;color:var(--muted)}
+.tabbar{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 0;display:flex;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:7px}
+.tabbar::-webkit-scrollbar{display:none}
+.tabbar [role="tab"]{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:8px 15px;font-weight:700;font-size:14.5px;color:var(--muted);flex:0 0 auto;white-space:nowrap}
 .tabbar [role="tab"][aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .tabbar [role="tab"]:hover:not([aria-selected="true"]){color:var(--ink)}
 .panel{display:none;padding-top:20px}
@@ -274,6 +275,7 @@ table.mini td:first-child{font-family:var(--sans);font-weight:600}
 .slate-row .match .winner{font-weight:800}
 .picktag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 9px;background:var(--good-bg);color:var(--good);border:1px solid var(--good);white-space:nowrap}
 .picktag.close{background:var(--amber-bg);color:var(--amber);border-color:var(--amber-line)}
+.picktag.untracked,html[data-theme="terminal"] .picktag.untracked{background:var(--panel2);color:var(--muted);border-color:var(--line)}
 .tt-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 9px;background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-line);white-space:nowrap}
 .value-badge{background:var(--blue-bg);color:var(--blue);border-color:var(--blue)}
 .tt-wrap{margin-top:6px;display:flex;justify-content:flex-end;align-items:center;flex-wrap:wrap;gap:6px;max-width:100%}
@@ -988,12 +990,12 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <section class="panel" id="panel-props" role="tabpanel" aria-labelledby="tab-props" tabindex="0" hidden>
     <div class="explain-wrap">
       <h1 class="explain-head"><span class="explain-title">Top props</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainProps" aria-label="About these props">i</button></h1>
-      <div class="explain" id="explainProps" hidden><p style="margin:0"><b>Line</b> is the book&rsquo;s line for the pick. <b>Our guess</b> is our chance it hits, in % &mdash; the higher the %, the more likely we think it is. <b>⭐ Top Tier</b> = one of the 4 most likely props today. <b>💎 Value</b> = our number sits well above the book&rsquo;s line. A row keeps its own ⓘ only when there is something specific on that pick to explain &mdash; a news note, a simulation note, or Top Tier. Lines from FanDuel. Tomorrow&rsquo;s games are here early so you can beat line movement.</p></div>
+      <div class="explain" id="explainProps" hidden><p style="margin:0"><b>Line</b> is the book&rsquo;s line for the pick. <b>Our guess</b> is our chance it hits, in % &mdash; the higher the %, the more likely we think it is. <b>⭐ Top Tier</b> = the 4 most likely player props of the day. <b>💎 Value</b> = in the top 10% of today&rsquo;s value gaps &mdash; a pick can wear both badges. A row keeps its own ⓘ only when there is something specific on that pick to explain &mdash; a news note, a simulation note, or Top Tier. Lines from FanDuel. Tomorrow&rsquo;s games are here early so you can beat line movement.</p></div>
     </div>
     <p class="record-line">Our record: 0–7, −$700 so far. Forecasts, not proven winners.</p>
     <p class="note" id="propsSourceNote">Today&rsquo;s lines via SharpAPI and The Odds API &mdash; our usual sources were unavailable</p>
     <div class="freshness"></div>
-    <p class="note badge-legend"><span class="tt-badge">&#11088; Top Tier</span><span>the 4 most likely player props of the day</span><span class="tt-badge value-badge">&#128142; Value</span><span>our number is well above the book&rsquo;s line &mdash; a pick can wear both badges</span></p>
+    <p class="note badge-legend"><span class="tt-badge">&#11088; Top Tier</span><span>the 4 most likely player props of the day</span><span class="tt-badge value-badge">&#128142; Value</span><span>in the top 10% of today&rsquo;s value gaps &mdash; a pick can wear both badges</span></p>
     <div class="prop-search">
       <div class="prop-search-wrap">
         <input type="text" id="propSearch" placeholder="Search players..." aria-label="Search players" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="propSuggest" aria-autocomplete="list">
@@ -1050,6 +1052,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     </section>
     <p class="note" id="propCount" aria-live="polite"></p>
     <div id="propBody" style="margin-top:12px"></div>
+    <button type="button" class="btn secondary" id="propShowMore" style="margin-top:12px" hidden>Show more</button>
     <!-- Touchdowns (NFL anytime TD): formerly its own tab, now the
          Touchdowns sub-category of Player Picks — shown when NFL is
          picked and Prop type is Touchdowns (Anytime TD), or NFL with
@@ -1284,7 +1287,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     </div>
     <p class="note" id="totalsCount" aria-live="polite"></p>
     <div class="totals-list" id="totalsList"></div>
-    <p class="note">How these do over time will show on <a href="#record" data-goto="record">Our record</a>.</p>
+    <p class="note">Totals leans are forecasts only &mdash; they are untracked and have no record. How our tracked picks do is on <a href="#record" data-goto="record">Our record</a>.</p>
   </section>
 
   <!-- ============ SPREADS ============ -->
@@ -1301,7 +1304,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     </div>
     <p class="note" id="spreadsCount" aria-live="polite"></p>
     <div class="spreads-list" id="spreadsList"></div>
-    <p class="note">How these do over time will show on <a href="#record" data-goto="record">Our record</a>.</p>
+    <p class="note">Spreads leans are forecasts only &mdash; they are untracked and have no record. How our tracked picks do is on <a href="#record" data-goto="record">Our record</a>.</p>
   </section>
 
   <!-- ============ SCORES ============ -->
@@ -1353,7 +1356,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <span class="bets-date" id="betsDate" hidden></span>
       <p class="record-line">Our record: 0–7, −$700 so far. Forecasts, not proven winners.</p>
       <p>Today&rsquo;s bets, picked from the strongest player props and moneylines on the board. Each card shows our chance it hits and how it compares with the book&rsquo;s number.</p>
-      <p class="note badge-legend"><span class="tt-badge">&#11088; Top Tier</span><span>the 4 most likely player props of the day</span><span class="tt-badge value-badge">&#128142; Value</span><span>our number is well above the book&rsquo;s line &mdash; a pick can wear both badges</span></p>
+      <p class="note badge-legend"><span class="tt-badge">&#11088; Top Tier</span><span>the 4 most likely player props of the day</span><span class="tt-badge value-badge">&#128142; Value</span><span>in the top 10% of today&rsquo;s value gaps &mdash; a pick can wear both badges</span></p>
       <div class="freshness"></div>
     </div>
     <div id="betsEmpty" class="empty-state bets-empty"><p>Today's card posts with the morning update — check back after 9am.</p></div>
@@ -1527,15 +1530,14 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 
     <h3 id="doc-models">Our Models</h3>
     <p>These are the 30 models behind the numbers on this site &mdash; 29 Mordy models plus ALL_IN (Model A) as the 30th. Each one focuses on one job:</p>
-    <p>Model A (ALL_IN) &mdash; a second forecasting source built in-house, so the headline number is the average of two models.</p>
     <ul style="margin:0 0 10px;padding-left:20px;line-height:1.6;max-width:720px">
-      <li style="margin-bottom:6px"><b>Mordy Game (6 models: NFL, college football, NBA, MLB, NHL, college basketball)</b> &mdash; picks the winner of each game.</li>
-      <li style="margin-bottom:6px"><b>Mordy TD</b> &mdash; predicts whether an NFL player will score a touchdown.</li>
-      <li style="margin-bottom:6px"><b>Mordy Props (9 models)</b> &mdash; predicts player stats: receiving yards, receptions, rushing yards, passing yards, NBA 3-pointers, and NHL shots on goal.</li>
-      <li style="margin-bottom:6px"><b>Mordy CBB Props (3 models)</b> &mdash; predicts points, rebounds, and assists for college basketball players.</li>
-      <li style="margin-bottom:6px"><b>Mordy Totals (4 models: NFL, college football, college basketball, NBA)</b> &mdash; predicts the total points scored in a game.</li>
-      <li style="margin-bottom:6px"><b>Mordy Spreads (3 models: NFL, college football, college basketball)</b> &mdash; predicts the final score gap.</li>
-      <li style="margin-bottom:6px"><b>Mordy Soccer (6 leagues: Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie)</b> &mdash; predicts win, draw, or loss for soccer matches.</li>
+      <li style="margin-bottom:6px"><b>Game (6 models)</b> &mdash; walk-forward log loss: NFL 0.6429, CFB 0.5709, NBA 0.6260, MLB 0.6795, NHL 0.6690, CBB 0.5081. None has beaten the book&rsquo;s odds across multiple seasons.</li>
+      <li style="margin-bottom:6px"><b>Touchdowns (1)</b> &mdash; walk-forward log loss 0.4798, beats the position base rate in all 6 seasons. Probability skill only &mdash; no edge claimed.</li>
+      <li style="margin-bottom:6px"><b>Player props (9)</b> &mdash; every probability passes walk-forward recalibration before it is quoted; e.g. receiving yards R&sup2; 0.331 vs trailing-average 0.240.</li>
+      <li style="margin-bottom:6px"><b>Totals (4)</b> &mdash; walk-forward MAE: NFL 10.749, CFB 13.18, CBB 13.751, NBA 14.834 (v2, not yet wired into the board). Forecasters only.</li>
+      <li style="margin-bottom:6px"><b>Spreads (3)</b> &mdash; walk-forward MAE: NFL 10.272, CFB 13.99, CBB 10.183. Forecasters only.</li>
+      <li style="margin-bottom:6px"><b>Soccer (6)</b> &mdash; one per league; best is Eredivisie, which beat the market in 1 of 5 seasons. Forecasters only, no public track record.</li>
+      <li style="margin-bottom:6px"><b>Model A &mdash; ALL_IN (1, the 30th model)</b> &mdash; a second forecasting source; the headline number is the average of the two models where both exist.</li>
     </ul>
     <p>Every model is tested against past games before it goes live, and we keep score in Our Record so you can see how they&rsquo;ve done.</p>
     <p>Like the site? <a href="#books" data-goto="books" data-goto-support>Support it here</a> &mdash; tips are optional and never affect any pick.</p>
@@ -3584,7 +3586,7 @@ $("slateList").addEventListener("click",function(e){
     Array.prototype.forEach.call($("propSportFilters").querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x.getAttribute("data-sport")===sport?"true":"false");});
     buildPropTypeOptions();
   }
-  propGame=gameKey;
+  propGame=gameKey; propShowAll=false;
   buildGameOptions(true);
   $("propGameFilter").value=propGame;
   renderProps();
@@ -3809,6 +3811,7 @@ function renderTotals(){
       if(diff>=thr) tag='<span class="picktag">Leans over</span>';
       else if(diff<=-thr) tag='<span class="picktag">Leans under</span>';
     }
+    if(tag) tag+='<span class="picktag untracked">Untracked \u2014 no record</span>';
     var badge=t.league?'<span class="league-tag">'+esc(tsBadge(t.league))+'</span>':"";
     var bookHtml=(t.book==null)
       ? '<span class="t-none">Book total not yet posted</span>'
@@ -3859,6 +3862,7 @@ function renderSpreads(){
       if(diff<=-thr) tag='<span class="picktag">Leans '+esc(s.teams[0])+'</span>';
       else if(diff>=thr) tag='<span class="picktag">Leans '+esc(s.teams[1])+'</span>';
     }
+    if(tag) tag+='<span class="picktag untracked">Untracked \u2014 no record</span>';
     var badge=s.league?'<span class="league-tag">'+esc(tsBadge(s.league))+'</span>':"";
     var bookHtml=(s.book==null)
       ? '<span class="s-none">Book spread not yet posted</span>'
@@ -4192,7 +4196,7 @@ function renderHomePicks(){
   }
 }
 try{renderHomePicks();}catch(e){}
-var propSport="ALL", propDate="ALL", propView="tiles", propGame="ALL", propQuery="", propType="ALL", playerSearch="";
+var propSport="ALL", propDate="ALL", propView="tiles", propGame="ALL", propQuery="", propType="ALL", playerSearch="", propShowAll=false;
 /* Prop-type markets, matched against the stat embedded in r.prop
    (e.g. "over 19.5 points", "yes no line anytime TD"). Each sport only
    offers its own markets, so NBA never offers receiving yards and NFL
@@ -4472,17 +4476,21 @@ function propTierHtml(r){
 function ttBadgeHtml(){
   return '<span class="tt-badge">\u2B50 Top Tier</span><span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="What Top Tier means">i</button><span class="tip">Top Tier = the 4 most likely player props each day, tracked as straights</span></span>';
 }
-/* Value play marker: a diamond + "Value" label for strong-tier picks —
-   the picks where our number sits well above the book's line. A pick
-   earns the diamond when its value number is +10 or more, the same
-   cut-off the board already uses for its strong tier; a pick with no
-   value number gets no diamond. Same badge shape and info-circle
-   pattern as the Top Tier star, so the two read as one system. */
+/* Value play marker: a diamond + "Value" label, kept rare — a pick
+   earns the diamond only when it sits in the top decile of the day's
+   value gaps. The pipeline already marks that top decile with the
+   tier field on each board row (tier "strong" = top decile), so the
+   predicate reads tier when it is there and never invents a cutoff
+   from the day's data. Same badge shape and info-circle pattern as
+   the Top Tier star, so the two read as one system. */
 function isValuePlay(p){
-  return !!p&&typeof p.value_pct==="number"&&isFinite(p.value_pct)&&p.value_pct>=10;
+  if(!p) return false;
+  if(p.tier!=null&&p.tier!=="") return String(p.tier).toLowerCase()==="strong";
+  /* TODO(pipeline): top-decile cutoff — badge stays common until the pipeline ships value_decile */
+  return typeof p.value_pct==="number"&&isFinite(p.value_pct)&&p.value_pct>=10;
 }
 function valueBadgeHtml(){
-  return '<span class="tt-badge value-badge">\uD83D\uDC8E Value</span><span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="What a value play means">i</button><span class="tip">\uD83D\uDC8E Value play \u2014 our number is well above the book\u2019s line</span></span>';
+  return '<span class="tt-badge value-badge">\uD83D\uDC8E Value</span><span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="What a value play means">i</button><span class="tip">\uD83D\uDC8E Value play \u2014 in the top 10% of today\u2019s value gaps</span></span>';
 }
 /* Both badges for a pick, star first then diamond. A pick can wear
    both (Top Tier picks pass the value screen), one, or neither. */
@@ -4540,7 +4548,7 @@ function syncTdBoard(){
   if(sec) sec.hidden=!tdBoardVisible();
 }
 function selectTouchdownsView(){
-  propSport="NFL"; propType="anytime TD"; propGame="ALL";
+  propSport="NFL"; propType="anytime TD"; propGame="ALL"; propShowAll=false;
   var sf=$("propSportFilters");
   if(sf) Array.prototype.forEach.call(sf.querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x.getAttribute("data-sport")==="NFL"?"true":"false");});
   buildPropTypeOptions();
@@ -4557,6 +4565,10 @@ function renderProps(){
     if(!propMatchesFilters(r)) return;
     shown.push({r:r,i:i});
   });
+  /* Readable top 25: only the first 25 rows of the current filtered,
+     ranked list render until "Show more" is tapped. The cap is per
+     filtered view (sport/date/game/type/search), not global. */
+  var visible=propShowAll?shown:shown.slice(0,25);
   /* Ranked order: the board renders in the order the picks are
      supplied (payload order — pick #1 first), which is the order
      shown was built in above. The sport, date, game and prop-type
@@ -4576,9 +4588,9 @@ function renderProps(){
   var emptyHtml='<div class="empty-state"><p>No props available for this game &mdash; lines haven\'t been posted yet. Check back closer to tip-off.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no props yet">i</button><span class="tip">Lines come from the sportsbooks and can take a while to appear, especially for games later in the week.</span></span></p><p>Try another sport, date, game, or prop type.</p></div>';
   if(propView==="list"){
     var listHead='<div class="prop-list-head"><span>Player</span><span>Prop</span><span style="text-align:right">Line</span><span style="text-align:right">Our guess</span><span style="text-align:right">Tier</span></div>';
-    el.innerHTML=shown.length?'<div class="prop-list">'+listHead+shown.map(function(item){return listRow(item.r);}).join("")+'</div>':emptyHtml;
+    el.innerHTML=shown.length?'<div class="prop-list">'+listHead+visible.map(function(item){return listRow(item.r);}).join("")+'</div>':emptyHtml;
   } else {
-    el.innerHTML=shown.length?'<div class="rows">'+head+shown.map(function(item){return tileRow(item.r);}).join("")+'</div>':emptyHtml;
+    el.innerHTML=shown.length?'<div class="rows">'+head+visible.map(function(item){return tileRow(item.r);}).join("")+'</div>':emptyHtml;
   }
   if(!shown.length&&propType==="anytime TD"&&tdBoardVisible()){
     /* The props list itself carries no anytime-TD rows — the touchdown
@@ -4587,13 +4599,26 @@ function renderProps(){
     el.innerHTML='<div class="empty-state"><p>The touchdown board is right below &mdash; every player&rsquo;s chance to score.</p></div>';
   }
   var countEl=$("propCount");
-  if(countEl) countEl.textContent="Showing "+shown.length+" of "+(TOP_PROPS?TOP_PROPS.length:0)+" props, in ranked order.";
+  if(countEl) countEl.textContent="Showing "+visible.length+" of "+shown.length+" props, in ranked order.";
+  var moreBtn=$("propShowMore");
+  if(moreBtn){
+    if(shown.length>25){
+      moreBtn.hidden=false;
+      if(propShowAll) moreBtn.textContent="Show fewer";
+      else{
+        var remaining=shown.length-25;
+        moreBtn.textContent=remaining<=25?("Show all "+shown.length+" props"):("Show more ("+remaining+" more)");
+      }
+    } else moreBtn.hidden=true;
+  }
   renderMovers();
   syncTdBoard();
 }
+var propShowMoreBtn=$("propShowMore");
+if(propShowMoreBtn) propShowMoreBtn.addEventListener("click",function(){propShowAll=!propShowAll;renderProps();});
 $("propSportFilters").addEventListener("click",function(e){
   var b=e.target.closest("[data-sport]"); if(!b) return;
-  propSport=b.getAttribute("data-sport");
+  propSport=b.getAttribute("data-sport"); propShowAll=false;
   Array.prototype.forEach.call($("propSportFilters").querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x===b?"true":"false");});
   buildPropTypeOptions();
   buildGameOptions();
@@ -4601,7 +4626,7 @@ $("propSportFilters").addEventListener("click",function(e){
 });
 $("propDateFilters").addEventListener("click",function(e){
   var b=e.target.closest("[data-date]"); if(!b) return;
-  propDate=b.getAttribute("data-date");
+  propDate=b.getAttribute("data-date"); propShowAll=false;
   Array.prototype.forEach.call($("propDateFilters").querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x===b?"true":"false");});
   buildGameOptions();
   renderProps();
@@ -4609,8 +4634,8 @@ $("propDateFilters").addEventListener("click",function(e){
 Array.prototype.forEach.call(document.querySelectorAll("[data-prop-view]"),function(b){
   b.addEventListener("click",function(){setPropView(b.getAttribute("data-prop-view"));});
 });
-$("propGameFilter").addEventListener("change",function(){propGame=this.value;renderProps();});
-$("propTypeFilter").addEventListener("change",function(){propType=this.value;buildGameOptions();renderProps();});
+$("propGameFilter").addEventListener("change",function(){propGame=this.value;propShowAll=false;renderProps();});
+$("propTypeFilter").addEventListener("change",function(){propType=this.value;propShowAll=false;buildGameOptions();renderProps();});
 var propSearchEl=$("propSearch"), propSuggestEl=$("propSuggest"), propClearEl=$("propSearchClear"), sugIndex=-1;
 function propSuggestionNames(){
   var q=(propSearchEl?propSearchEl.value.trim().toLowerCase():"");
@@ -4641,21 +4666,21 @@ function renderPropSuggest(){
 }
 function selectPropPlayer(name){
   playerSearch=name.toLowerCase();
-  propQuery=playerSearch;
+  propQuery=playerSearch; propShowAll=false;
   if(propSearchEl) propSearchEl.value=name;
   if(propClearEl) propClearEl.hidden=false;
   closePropSuggest();
   buildGameOptions(); renderProps();
 }
 function clearPropSearch(){
-  playerSearch=""; propQuery="";
+  playerSearch=""; propQuery=""; propShowAll=false;
   if(propSearchEl) propSearchEl.value="";
   if(propClearEl) propClearEl.hidden=true;
   closePropSuggest(); buildGameOptions(); renderProps();
 }
 if(propSearchEl){
   propSearchEl.addEventListener("input",function(){
-    sugIndex=-1;
+    sugIndex=-1; propShowAll=false;
     if(playerSearch&&this.value.trim().toLowerCase()!==playerSearch) playerSearch="";
     propQuery=this.value.trim().toLowerCase();
     if(propClearEl) propClearEl.hidden=!this.value;
@@ -5862,10 +5887,10 @@ function betMatch(b){
   return parts.join(" \u00b7 ");
 }
 function betValue(b){
-  /* Value pill: green for a strong tier, blue for a lean. A missing tier
-     falls back to the value number (10 points or more counts as strong). */
-  var tier=String(b.tier||"").toLowerCase();
-  var strong=tier.indexOf("strong")>=0||(!tier&&typeof b.value_pct==="number"&&b.value_pct>=10);
+  /* Value pill: green for a value play, blue for a lean. Uses the same
+     predicate as the diamond badge (isValuePlay): the pipeline's tier
+     field when it is there, the value number as the fallback. */
+  var strong=isValuePlay(b);
   var label=strong?"Strong value":"Lean";
   if(typeof b.value_pct==="number"){
     var v=Math.round(b.value_pct*10)/10;
@@ -5898,6 +5923,20 @@ function recordDayNumber(dateStr){
   var n=Math.round((d-st)/86400000)+1;
   return n>0?n:null;
 }
+/* Top Tier spread line: computed at render time from today's Top Tier
+   rows in TODAY_BETS (their model_prob) — never hard-coded. With fewer
+   than 2 Top Tier picks there is no range to show, just the count. */
+function topTierSpreadText(){
+  var rows=(typeof TODAY_BETS!=="undefined"&&TODAY_BETS)?TODAY_BETS:[];
+  var probs=[];
+  rows.forEach(function(b){
+    if(b&&b.top_tier&&typeof b.model_prob==="number"&&isFinite(b.model_prob)) probs.push(b.model_prob);
+  });
+  var n=probs.length;
+  if(n<2) return "Top Tier today: "+n+(n===1?" pick.":" picks.");
+  var lo=Math.min.apply(null,probs), hi=Math.max.apply(null,probs);
+  return "Top Tier today: "+n+" picks, our chances run "+(lo*100).toFixed(1)+"\u2013"+(hi*100).toFixed(1)+"% (a "+((hi-lo)*100).toFixed(1)+"-point spread).";
+}
 function renderBets(){
   var bets=(TODAY_BETS||[]).filter(function(b){return !isSoccerRow(b);});
   var noteEl=$("betsCardNote");
@@ -5914,6 +5953,16 @@ function renderBets(){
   if(emptyEl) emptyEl.hidden=!(bets.length===0&&!TODAY_PARLAY);
   var grid=$("betsGrid");
   if(grid) grid.innerHTML=bets.map(betCardHtml).join("");
+  if(grid&&grid.parentNode){
+    var spreadEl=$("ttSpreadLine");
+    if(!spreadEl){
+      spreadEl=document.createElement("p");
+      spreadEl.className="note";
+      spreadEl.id="ttSpreadLine";
+      grid.parentNode.insertBefore(spreadEl,grid);
+    }
+    spreadEl.textContent=topTierSpreadText();
+  }
   var wrap=$("parlayWrap");
   if(wrap){
     if(!TODAY_PARLAY){wrap.innerHTML="";}
@@ -6247,6 +6296,7 @@ function renderTopTier(){
   var tallyLine=t.wins+'-'+t.losses+' &middot; '+Math.round((t.win_rate||0)*100)+'%'
     +(typeof t.profit==="number"?' &middot; '+esc(fmtProfitWhole(t.profit)):"");
   var head='<div class="tally-block" style="margin-bottom:14px"><div class="tt-tally">'+tallyLine+'</div>'
+    +'<p class="note" style="margin-top:6px">'+esc(topTierSpreadText())+'</p>'
     +(voidRows.length?'<p>'+voidRows.length+' void ('+voidRows.map(function(r){
         var nm=String(r.description||"Pick").split(" (")[0];
         return esc(nm)+', '+esc(ttDayLabel(r.date))+' \u2014 no such game';
