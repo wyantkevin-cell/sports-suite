@@ -33,21 +33,27 @@
 }
 *{box-sizing:border-box}
 html{overflow-x:clip;scroll-behavior:smooth}
-body{margin:0;overflow-x:clip;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body{margin:0;overflow-x:clip;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom,0px)}
 a{color:var(--accent)}
 button,input,select{font:inherit;color:inherit}
 button{cursor:pointer}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
-.wrap{max-width:1060px;margin:0 auto;padding:0 20px 56px}
+.wrap{max-width:1060px;margin:0 auto;padding:0 calc(20px + env(safe-area-inset-right,0px)) calc(56px + env(safe-area-inset-bottom,0px)) calc(20px + env(safe-area-inset-left,0px))}
+/* F39/F40 base: 16px form controls and 44px tap targets */
+input,select,textarea{font-size:16px}
+button,[role="tab"],.btn,a.btn{min-height:44px}
+.info-btn,.explain-btn,.settings-btn,.drawer-close,.clear-search{min-width:44px;min-height:44px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.table-scroll table.mini{min-width:520px}
 .mono{font-family:var(--mono)}
 .strip{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;padding:14px 0 10px;border-bottom:2px solid var(--ink);font-size:13.5px}
 .strip .left{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .badge{font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:var(--bg);border-radius:999px;padding:4px 10px}
 .strip .meta{color:var(--muted)}
 .strip .meta b{color:var(--ink);font-family:var(--mono);font-weight:600}
-.tabbar{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 0;display:flex;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:7px}
+.tabbar{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding:calc(10px + env(safe-area-inset-top,0px)) 0 10px;display:flex;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:7px}
 .tabbar::-webkit-scrollbar{display:none}
-.tabbar [role="tab"]{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:8px 15px;font-weight:700;font-size:14.5px;color:var(--muted);flex:0 0 auto;white-space:nowrap}
+.tabbar [role="tab"]{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:10px 15px;font-weight:700;font-size:14.5px;color:var(--muted);flex:0 0 auto;white-space:nowrap;min-height:44px}
 .tabbar [role="tab"][aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .tabbar [role="tab"]:hover:not([aria-selected="true"]){color:var(--ink)}
 .panel{display:none;padding-top:20px}
@@ -83,12 +89,12 @@ section.block{margin-top:24px}
 .filters{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0}
 .filters button{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:7px 13px;font-weight:700;font-size:14px;color:var(--muted)}
 .filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.filters select{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-weight:600;font-size:14px;max-width:100%}
+.filters select{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-weight:600;font-size:16px;max-width:100%}
 .prop-filters{display:grid;gap:10px;margin-top:16px}
 .filter-group{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px}
 .filter-group .filter-label{font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);min-width:44px}
 .filter-group .filters{margin:0}
-.filter-group select{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-weight:600;font-size:14px;min-width:0;max-width:100%;flex:1 1 200px}
+.filter-group select{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-weight:600;font-size:16px;min-width:0;max-width:100%;flex:1 1 200px}
 .prop-date{font-family:var(--mono);font-weight:600;font-size:14px;white-space:nowrap}
 .prop-empty{padding:18px 16px;font-size:15px;line-height:1.55;color:var(--muted)}
 .prop-search{margin-top:16px}
@@ -215,7 +221,7 @@ section.block{margin-top:24px}
 .slate-row:last-child{border-bottom:0}
 .slate-row .g{font-weight:700}
 .slate-row .n{color:var(--muted);font-size:13.5px}
-.slate-row button{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:6px 12px;font-weight:700;font-size:13.5px}
+.slate-row button{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:10px 14px;font-weight:700;font-size:13.5px;min-height:44px}
 .pricer-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:18px;align-items:start}
 @media(max-width:900px){.pricer-grid{grid-template-columns:minmax(0,1fr)}}
 .legpick{display:grid;gap:8px;margin-top:10px}
@@ -233,6 +239,7 @@ section.block{margin-top:24px}
 .field{display:flex;flex-direction:column;gap:5px;min-width:0}
 .field label{font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
 .field input,.field select{background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:9px 11px;width:100%;min-width:0}
+.field input,.field select,.field textarea{font-size:16px}
 .controls{display:flex;flex-wrap:wrap;gap:12px;align-items:end}
 .controls .field{flex:1;min-width:130px}
 .btn{display:inline-flex;align-items:center;gap:7px;border:0;border-radius:9px;padding:10px 16px;font-weight:700;font-size:14.5px;background:var(--accent);color:var(--accent-ink)}
@@ -428,7 +435,7 @@ footer b{color:var(--ink)}
 .legfields{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:9px}
 .legfields .wide{grid-column:1 / -1}
 .legfields label{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);min-width:0}
-.legfields input,.legfields select{background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:9px 11px;width:100%;min-width:0;font-size:15px;text-transform:none;letter-spacing:0;color:var(--ink);font-weight:500}
+.legfields input,.legfields select{background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:9px 11px;width:100%;min-width:0;font-size:16px;text-transform:none;letter-spacing:0;color:var(--ink);font-weight:500}
 .leg-compare{font-size:13.5px;color:var(--muted);line-height:1.55;margin:10px 0 0}
 .leg-compare b{color:var(--ink)}
 .legform{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;align-items:end}
@@ -453,10 +460,10 @@ footer b{color:var(--ink)}
 }
 /* Compressed layout: tighter spacing everywhere, two-column picks/props on phones */
 @media(max-width:640px){
-  .wrap{padding:0 14px 36px}
+  .wrap{padding:0 calc(14px + env(safe-area-inset-right,0px)) calc(36px + env(safe-area-inset-bottom,0px)) calc(14px + env(safe-area-inset-left,0px))}
   .strip{padding:10px 0 8px}
   .tabbar{padding:8px 0;gap:5px}
-  .tabbar [role="tab"]{padding:6px 11px;font-size:13.5px}
+  .tabbar [role="tab"]{padding:10px 15px;font-size:13.5px;min-height:44px}
   .panel{padding-top:16px}
   h1{margin:2px 0 8px}
   .lede{font-size:16px}
@@ -480,7 +487,7 @@ footer b{color:var(--ink)}
   .toollist button{padding:12px 14px}
   .slate{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;border:0;background:transparent;overflow:visible}
   .slate-row{flex-direction:column;align-items:stretch;gap:8px;padding:11px 12px;border:1px solid var(--line);border-radius:12px;min-width:0;overflow-wrap:break-word}
-  .slate-row button{width:100%;padding:7px 10px;font-size:13px;white-space:normal;line-height:1.35}
+  .slate-row button{width:100%;padding:10px 14px;font-size:13px;white-space:normal;line-height:1.35;min-height:44px}
   .slate-row .match{font-size:14.5px}
   .picklines .avgline{font-size:14.5px}
   .sim-lines,.model-lines{font-size:13.5px}
@@ -514,7 +521,7 @@ footer b{color:var(--ink)}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
 /* DFS Optimizer: pickers reuse .filters; lineup cards and rows below use
    only the site variables so every theme restyles them. */
-.dfs-textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 13px;font-size:14px;font-family:var(--mono);min-height:110px;resize:vertical;color:var(--ink)}
+.dfs-textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 13px;font-size:16px;font-family:var(--mono);min-height:110px;resize:vertical;color:var(--ink)}
 .dfs-build{width:100%;justify-content:center;padding:16px 20px;font-size:18px;border-radius:12px;margin-top:14px}
 .dfs-status{margin:12px 0 0;font-size:15px;line-height:1.55}
 .dfs-status:empty{display:none}
@@ -568,7 +575,7 @@ html[data-theme="minimal"] .card,html[data-theme="minimal"] .honest{border-radiu
 html[data-theme="minimal"] h1,html[data-theme="minimal"] h2{font-family:var(--serif);font-weight:600;letter-spacing:0}
 html[data-theme="minimal"] h1{font-size:clamp(34px,4.8vw,46px)}
 html[data-theme="minimal"] .tabbar{gap:14px}
-html[data-theme="minimal"] .tabbar [role="tab"]{background:transparent;border:0;border-bottom:2px solid transparent;border-radius:0;padding:8px 4px}
+html[data-theme="minimal"] .tabbar [role="tab"]{background:transparent;border:0;border-bottom:2px solid transparent;border-radius:0;padding:10px 4px;min-height:44px}
 html[data-theme="minimal"] .tabbar [role="tab"][aria-selected="true"]{background:transparent;color:var(--ink);border-bottom-color:var(--accent)}
 .style-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
 @media(max-width:700px){.style-grid{grid-template-columns:minmax(0,1fr)}}
@@ -658,7 +665,7 @@ html[data-theme="minimal"] .tabbar [role="tab"][aria-selected="true"]{background
    stays readable. Terminal's global rule flattens the pill radius. */
 .beton{display:flex;flex-wrap:wrap;align-items:center;gap:6px 7px;margin-top:9px}
 .beton-label{font-size:12.5px;font-weight:600;color:var(--muted)}
-.beton a{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:6px 13px;border:1.5px solid;border-radius:999px;background:var(--panel);font-size:13px;font-weight:700;line-height:1.2;text-decoration:none}
+.beton a{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:6px 13px;border:1.5px solid;border-radius:999px;background:var(--panel);font-size:13px;font-weight:700;line-height:1.2;text-decoration:none}
 .beton a::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
 .beton a:hover{background:var(--panel2)}
 .beton-poly{border-color:#2b5cff;color:#2b5cff}
@@ -895,7 +902,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <div class="freshness"></div>
 
     <section class="block" style="margin-top:22px" aria-label="Strongest picks">
-      <h2 id="homePicksHeading">Today&rsquo;s strongest picks &mdash; Thu Nov 5</h2>
+      <h2 id="homePicksHeading">Today&rsquo;s strongest picks &mdash; Fri, Nov 6, 2026</h2>
       <p class="sub" id="homePicksNote" hidden></p>
       <p class="sub">The chance is how often we think it hits.</p>
       <div class="best" id="homePicksList">
@@ -969,7 +976,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 
     <section class="block explain-wrap" id="gamesBlock">
       <h2 class="explain-head"><span class="explain-title" id="slateHeading">NFL games</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainSlate" aria-label="How to read these games">i</button></h2>
-      <div class="explain" id="explainSlate" hidden><p style="margin:0">The <b>bold</b> team is the pick, and the % is how often it is expected to win. Under each game, <b>Model A</b> is the other model&rsquo;s number and <b>Model B</b> is our model&rsquo;s number. A game shows only the model lines whose numbers are in this snapshot &mdash; for other sports and dates, only Model A is posted and our number is not in yet. The Nov 4 NBA headline is the average of the two models; its two numbers are not shown separately in this snapshot. Games with a posted book line show it next to our pick; games without one yet show &ldquo;Line: TBD&rdquo;. &ldquo;Close call&rdquo; means barely better than a coin flip &mdash; a lean, not a pick to trust. Check the news before using any of these: injuries and late news are invisible to old box scores.</p></div>
+      <div class="explain" id="explainSlate" hidden><p style="margin:0">The <b>bold</b> team is the pick, and the % is how often it is expected to win. Under each game, <b>Model A</b> is the other model&rsquo;s number and <b>Model B</b> is our model&rsquo;s number. A game shows only the model lines whose numbers are in this snapshot &mdash; for other sports and dates, only Model A is posted and our number is not in yet. The Nov 4, 2026 NBA headline is the average of the two models; its two numbers are not shown separately in this snapshot. Games with a posted book line show it next to our pick; games without one yet show &ldquo;Line: TBD&rdquo;. &ldquo;Close call&rdquo; means barely better than a coin flip &mdash; a lean, not a pick to trust. Check the news before using any of these: injuries and late news are invisible to old box scores.</p></div>
       <div id="slateList" style="margin-top:12px"></div>
     </section>
 
@@ -977,11 +984,11 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <h2 id="tennisHeading">Tennis &mdash; updated today at 9:46am PT</h2>
       <p class="sub">Tennis moves fast &mdash; these are from our latest update. Check back for fresh numbers.</p>
       <div class="slate" style="margin-top:12px">
-        <div class="slate-row"><div class="match"><span class="n">ATP &middot; starts 10:00 AM PT Nov 6</span><div class="picklines"><div class="avgline"><b>Carlos Alcaraz</b> <span class="pickpct">74.5%</span> <span class="loser">over Taylor Fritz</span></div><div><span class="lbl">Taylor Fritz vs Carlos Alcaraz</span></div></div></div></div>
-        <div class="slate-row"><div class="match"><span class="n">ATP &middot; starts 11:30 AM PT Nov 6</span><div class="picklines"><div class="avgline"><b>Casper Ruud</b> <span class="pickpct">67.8%</span> <span class="loser">over Nuno Borges</span></div><div><span class="lbl">Casper Ruud vs Nuno Borges</span></div></div></div></div>
-        <div class="slate-row"><div class="match"><span class="n">WTA &middot; starts 10:00 PM PT Nov 6</span><div class="picklines"><div class="avgline"><b>Alexandra Shubladze</b> <span class="pickpct">50.7%</span> <span class="loser">over Claire Liu</span></div><div><span class="lbl">Alexandra Shubladze vs Claire Liu</span></div></div></div></div>
-        <div class="slate-row"><div class="match"><span class="n">WTA &middot; starts 12:00 AM PT Nov 7</span><div class="picklines"><div class="avgline"><b>Alexandra Eala</b> <span class="pickpct">53.0%</span> <span class="loser">over Maria Sakkari</span></div><div><span class="lbl">Maria Sakkari vs Alexandra Eala</span></div></div></div></div>
-        <div class="slate-row"><div class="match"><span class="n">WTA &middot; starts 4:30 AM PT Nov 7</span><div class="picklines"><div class="avgline"><b>Janice Tjen</b> <span class="pickpct">61.3%</span> <span class="loser">over Robin Montgomery</span></div><div><span class="lbl">Janice Tjen vs Robin Montgomery</span></div></div></div></div>
+        <div class="slate-row"><div class="match"><span class="n">ATP &middot; starts 10:00 AM PT Nov 6, 2026</span><div class="picklines"><div class="avgline"><b>Carlos Alcaraz</b> <span class="pickpct">74.5%</span> <span class="loser">over Taylor Fritz</span></div><div><span class="lbl">Taylor Fritz vs Carlos Alcaraz</span></div></div></div></div>
+        <div class="slate-row"><div class="match"><span class="n">ATP &middot; starts 11:30 AM PT Nov 6, 2026</span><div class="picklines"><div class="avgline"><b>Casper Ruud</b> <span class="pickpct">67.8%</span> <span class="loser">over Nuno Borges</span></div><div><span class="lbl">Casper Ruud vs Nuno Borges</span></div></div></div></div>
+        <div class="slate-row"><div class="match"><span class="n">WTA &middot; starts 10:00 PM PT Nov 6, 2026</span><div class="picklines"><div class="avgline"><b>Alexandra Shubladze</b> <span class="pickpct">50.7%</span> <span class="loser">over Claire Liu</span></div><div><span class="lbl">Alexandra Shubladze vs Claire Liu</span></div></div></div></div>
+        <div class="slate-row"><div class="match"><span class="n">WTA &middot; starts 12:00 AM PT Nov 7, 2026</span><div class="picklines"><div class="avgline"><b>Alexandra Eala</b> <span class="pickpct">53.0%</span> <span class="loser">over Maria Sakkari</span></div><div><span class="lbl">Maria Sakkari vs Alexandra Eala</span></div></div></div></div>
+        <div class="slate-row"><div class="match"><span class="n">WTA &middot; starts 4:30 AM PT Nov 7, 2026</span><div class="picklines"><div class="avgline"><b>Janice Tjen</b> <span class="pickpct">61.3%</span> <span class="loser">over Robin Montgomery</span></div><div><span class="lbl">Janice Tjen vs Robin Montgomery</span></div></div></div></div>
       </div>
     </section>
   </section>
@@ -1083,7 +1090,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
           </div>
           <p class="note">Brian Thomas Jr not listed &mdash; no 2026 data in model.</p>
 
-          <h2 class="board-last">Last board: Sun Nov 1 &mdash; graded</h2>
+          <h2 class="board-last">Last board: Sun, Nov 1, 2026 &mdash; graded</h2>
           <div class="filters" role="group" aria-label="Filter by position" id="tdFilters">
             <button type="button" aria-pressed="true" data-pos="ALL">All positions</button>
             <button type="button" aria-pressed="false" data-pos="RB">RB</button>
@@ -1096,7 +1103,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
           </div>
           <div class="rows" id="tdRows" role="table" aria-label="Touchdown chances, last board November 1 — graded"></div>
           <p class="note">Highest chance first. &ldquo;Break-even payout&rdquo; is the book payout at which this chance would just break even over many tries &mdash; hold it next to a real book payout. <a href="#docs" data-goto="docs">Why teammates in one ticket pay less &rarr;</a></p>
-          <p class="note">One row (Jameson Williams) was removed &mdash; wrong team and position in the Nov 1 board.</p>
+          <p class="note">One row (Jameson Williams) was removed &mdash; wrong team and position in the Nov 1, 2026 board.</p>
     </section>
   </section>
 
@@ -1185,7 +1192,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
           <h3>Leg by leg</h3>
           <div id="legCompare"></div>
           <h3 style="margin-top:18px">Where the money comes from</h3>
-          <table class="mini" aria-label="Outcome breakdown"><thead><tr><th>What happens</th><th>How often</th><th>You get back</th></tr></thead><tbody id="breakdownBody"></tbody></table>
+          <div class="table-scroll"><table class="mini" aria-label="Outcome breakdown"><thead><tr><th>What happens</th><th>How often</th><th>You get back</th></tr></thead><tbody id="breakdownBody"></tbody></table></div>
           <div id="corrNote"></div>
           <div class="btn-row">
             <button type="button" class="btn secondary" id="copyBtn">Copy the answer</button>
@@ -1235,8 +1242,8 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <section class="block" aria-label="Pick a slate">
       <h2>1. Pick a slate</h2>
       <div class="filters" role="group" aria-label="Choose a slate" id="dfsSlateFilters">
-        <button type="button" aria-pressed="true" data-dfs-slate="NBA">NBA &mdash; Fri Nov 6</button>
-        <button type="button" aria-pressed="false" data-dfs-slate="NFL">NFL &mdash; Sun Nov 8</button>
+        <button type="button" aria-pressed="true" data-dfs-slate="NBA">NBA &mdash; Fri, Nov 6, 2026</button>
+        <button type="button" aria-pressed="false" data-dfs-slate="NFL">NFL &mdash; Sun, Nov 8, 2026</button>
       </div>
     </section>
 
@@ -1384,12 +1391,12 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <section class="block" aria-label="Parlay record">
       <h2>Parlays</h2>
       <p class="sub">Parlay of the Day results, kept apart from single bets.</p>
-      <div id="parlayRecordRows"><p class="empty-note">1 settled parlay: Nov 5 (+423) lost, −$100. The Nov 6 parlay is void.</p></div>
+      <div id="parlayRecordRows"><p class="empty-note">1 settled parlay: Nov 5, 2026 (+423) lost, −$100. The Nov 6, 2026 parlay is void.</p></div>
     </section>
 
     <section class="block" aria-label="Top Tier record">
       <h2>Top Tier &#11088;<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="What Top Tier means">i</button><span class="tip">Top Tier = the 4 most likely player props each day, tracked as straights</span></span></h2>
-      <p class="sub">Top Tier record starts Nov 3 &mdash; the top 4 player props each day, tracked as straights. From Nov 6, Top Tier = the 4 most likely props of the day.</p>
+      <p class="sub">Top Tier record starts Nov 3, 2026 &mdash; the top 4 player props each day, tracked as straights. From Nov 6, 2026, Top Tier = the 4 most likely props of the day.</p>
       <div id="ttRecord"></div>
     </section>
 
@@ -1530,6 +1537,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 
     <h3 id="doc-models">Our Models</h3>
     <p>These are the 30 models behind the numbers on this site &mdash; 29 Mordy models plus ALL_IN (Model A) as the 30th. Each one focuses on one job:</p>
+    <p>Each number below comes from testing the model on past seasons it had never seen. For the win/loss models the score is log loss &mdash; how far the model&rsquo;s chances were from what actually happened, lower is better. For totals and spreads the score is the average miss in points &mdash; lower is better. R&sup2; says how much of the result the model explains versus a simple average &mdash; higher is better. Recalibration means we adjusted the model&rsquo;s chances using past seasons so the quoted chance matches how often it actually hit.</p>
     <ul style="margin:0 0 10px;padding-left:20px;line-height:1.6;max-width:720px">
       <li style="margin-bottom:6px"><b>Game (6 models)</b> &mdash; walk-forward log loss: NFL 0.6429, CFB 0.5709, NBA 0.6260, MLB 0.6795, NHL 0.6690, CBB 0.5081. None has beaten the book&rsquo;s odds across multiple seasons.</li>
       <li style="margin-bottom:6px"><b>Touchdowns (1)</b> &mdash; walk-forward log loss 0.4798, beats the position base rate in all 6 seasons. Probability skill only &mdash; no edge claimed.</li>
@@ -1575,7 +1583,21 @@ function fairAmerican(p){
   if(p>=0.5) return "\u2212"+Math.round(p/(1-p)*100);
   return "+"+Math.round((1-p)/p*100);
 }
-function $(id){return document.getElementById(id);}
+/* F43: a missing element must never throw. When getElementById finds
+   nothing, $ returns a detached stand-in element (cached per id) that
+   safely absorbs reads, writes, class changes, listeners and queries,
+   so the rest of the script keeps running. Real elements are returned
+   exactly as before. */
+var __missingEls={};
+function makeMissingEl(id){
+  if(__missingEls[id]) return __missingEls[id];
+  var el=document.createElement("div");
+  el.id=id; el.value=""; el.checked=false;
+  __missingEls[id]=el;
+  return el;
+}
+function $(id){return document.getElementById(id)||makeMissingEl(id);}
+function $orNull(id){return document.getElementById(id);}
 
 /* Chronological game order: date first, then tip-off time. Times on
    this page are strings like "4:30pm" (PT). A game with no usable time
@@ -1616,7 +1638,7 @@ var LEAGUES={
   mlb:{name:"MLB",games:"17,902",features:"Team strength only",verdict:"Team strength only. It is about tied with a team-strength-only guess and has no measured way to make money. Kept for team scores, not for bets.",status:"early",statusLabel:"Team strength only",scores:"17,902 past games."},
   nhl:{name:"NHL",games:"9,275",features:"Team strength only",verdict:"Team strength only, same story as MLB: about tied with a team-strength-only guess, no money-making test passed. The NHL value here is in shots-on-goal picks, not game guesses.",status:"early",statusLabel:"Team strength only",scores:"9,275 past games."},
   soccer:{name:"Soccer",games:"Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie",features:"Team strength, home game, recent form",verdict:"Soccer forecasts are early and unproven. They ship as forecasts only, with no public track record.",status:"early",statusLabel:"Early \u2014 be careful",scores:"Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie. Forecasts only \u2014 no public record is kept for soccer."},
-  tennis:{name:"Tennis",games:"11 matches in this snapshot",features:"Latest update only, 6:36pm PT Nov 5",verdict:"Tennis forecasts come from the latest update only. No past-games test is shown for tennis in this snapshot, so treat these as early and unproven like the rest of this tab.",status:"early",statusLabel:"Early \u2014 be careful",scores:"11 matches: 8 WTA and 3 ATP, starting Nov 5 evening through Nov 6 morning PT."}
+  tennis:{name:"Tennis",games:"11 matches in this snapshot",features:"Latest update only, 6:36pm PT Nov 5, 2026",verdict:"Tennis forecasts come from the latest update only. No past-games test is shown for tennis in this snapshot, so treat these as early and unproven like the rest of this tab.",status:"early",statusLabel:"Early \u2014 be careful",scores:"11 matches: 8 WTA and 3 ATP, starting Nov 5, 2026 evening through Nov 6, 2026 morning PT."}
 };
 var TEAM_NAMES={CHI:"Chicago Bulls",NYK:"New York Knicks",MIL:"Milwaukee Bucks",BOS:"Boston Celtics",DAL:"Dallas Mavericks",SAS:"San Antonio Spurs",UTA:"Utah Jazz",NOP:"New Orleans Pelicans",LAL:"Los Angeles Lakers",SAC:"Sacramento Kings",CLE:"Cleveland Cavaliers",OKC:"Oklahoma City Thunder",ATL:"Atlanta Hawks",WAS:"Washington Wizards",POR:"Portland Trail Blazers",PHX:"Phoenix Suns",MIA:"Miami Heat",LAC:"LA Clippers",IND:"Indiana Pacers",MEM:"Memphis Grizzlies",CHA:"Charlotte Hornets",BKN:"Brooklyn Nets",PHI:"Philadelphia 76ers",DET:"Detroit Pistons",MIN:"Minnesota Timberwolves",HOU:"Houston Rockets",TOR:"Toronto Raptors",DEN:"Denver Nuggets"};
 var SLATE=[
@@ -2788,11 +2810,14 @@ var TT_RECORD=[
   {date:"2026-11-06",sport:"CFB",description:"Eric Singleton Jr (FLA) under 34.5 receiving yards",outcome:null,actual_label:null},
   {date:"2026-11-06",sport:"CFB",description:"Kaleb Webb (MD) under 42.5 receiving yards",outcome:null,actual_label:null}
 ];
-var TT_TALLY={wins:6,losses:6,pushes:0,n_graded:12,win_rate:0.5,profit:-400,profit_partial:true,profit_note:"Dollar P/L from Nov 5 onward only \u2014 Nov 3-4 picks were Underdog entries and no per-leg odds were recorded, so they count toward W/L only."};
+var TT_TALLY={wins:6,losses:6,pushes:0,n_graded:12,win_rate:0.5,profit:-400,profit_partial:true,profit_note:"Dollar P/L from Nov 5, 2026 onward only \u2014 Nov 3, 2026\u2013Nov 4, 2026 picks were Underdog entries and no per-leg odds were recorded, so they count toward W/L only."};
 
 /* ================= TABS ================= */
 var tabs=Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
 function switchTab(name,focusTab){
+  /* F44: leaving Scores stops its refresh timer; returning restarts it
+     once through the panel observer / tab handler below. */
+  if(name!=="scores"&&typeof stopScoresTimer==="function") stopScoresTimer();
   tabs.forEach(function(t){
     var on=t.getAttribute("data-tab")===name;
     t.setAttribute("aria-selected",on?"true":"false");
@@ -2848,9 +2873,10 @@ function closeSettings(){
   var b=$("settingsBtn");
   if(b) b.setAttribute("aria-expanded","false");
 }
-$("settingsBtn").addEventListener("click",function(e){
+var settingsBtnEl=$("settingsBtn");
+if(settingsBtnEl&&settingsBtnEl.addEventListener) settingsBtnEl.addEventListener("click",function(e){
   e.stopPropagation();
-  var p=$("settingsPanel"), open=p.hidden;
+  var p=$("settingsPanel"); if(!p||!p.classList) return; var open=p.hidden;
   p.hidden=!open;
   this.setAttribute("aria-expanded",open?"true":"false");
 });
@@ -2952,7 +2978,7 @@ function syncTennisVisibility(){
   if($("gamesBlock")) $("gamesBlock").hidden=isTennis;
   if($("gameDateFilters")) $("gameDateFilters").hidden=isTennis;
 }
-$("leagueFilters").addEventListener("click",function(e){
+var leagueFiltersEl=$("leagueFilters"); if(leagueFiltersEl) leagueFiltersEl.addEventListener("click",function(e){
   var b=e.target.closest("[data-league]"); if(!b) return;
   leagueState=b.getAttribute("data-league");
   Array.prototype.forEach.call($("leagueFilters").querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x===b?"true":"false");});
@@ -3005,11 +3031,32 @@ function parseGameDate(s){
   var str=String(s||"").trim();
   var iso=/^(\d{4})-(\d{2})-(\d{2})/.exec(str);
   if(iso) return new Date(parseInt(iso[1],10),parseInt(iso[2],10)-1,parseInt(iso[3],10));
-  var m=/^([A-Za-z]{3}) (\d{1,2})$/.exec(str);
+  /* Long form "Nov 6, 2026" (with or without a weekday prefix). */
+  var lng=/^(?:(?:Sun|Mon|Tue|Wed|Thu|Fri|Sat),?\s+)?([A-Za-z]{3}) (\d{1,2}), (\d{4})$/.exec(str);
+  if(lng){ var lmo=MONTH_ABBR.indexOf(lng[1]); if(lmo>=0) return new Date(parseInt(lng[3],10),lmo,parseInt(lng[2],10)); return null; }
+  /* Short form "Nov 6", optionally prefixed with its weekday ("Fri Nov 6"). */
+  var bare=str.replace(/^(?:Sun|Mon|Tue|Wed|Thu|Fri|Sat),?\s+/,"");
+  var m=/^([A-Za-z]{3}) (\d{1,2})$/.exec(bare);
   if(!m) return null;
   var mo=MONTH_ABBR.indexOf(m[1]);
   if(mo<0) return null;
   return new Date(snapshotYear(),mo,parseInt(m[2],10));
+}
+/* One date format everywhere in rendered text: "Nov 6, 2026", with an
+   optional weekday prefix for headings ("Fri, Nov 6, 2026"). Accepts a
+   Date, an ISO date ("2026-11-06"), a short date ("Nov 6"), a day label
+   ("Fri Nov 6") or a long date, parsing through parseGameDate above.
+   Anything unparseable is returned as-is rather than guessed. */
+function fmtDateLong(input,withWeekday){
+  var d=null;
+  if(input instanceof Date) d=input;
+  else if(input!=null&&String(input).trim()!==""){
+    d=parseGameDate(input);
+    if(!d){ var nd=new Date(input); if(!isNaN(nd.getTime())) d=nd; }
+  }
+  if(!d||isNaN(d.getTime())) return String(input==null?"":input);
+  var base=MONTH_ABBR[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear();
+  return withWeekday?WEEKDAY_ABBR[d.getDay()]+", "+base:base;
 }
 function collectGameDates(){
   var seen={}, list=[];
@@ -3034,10 +3081,8 @@ ACTUAL_GAME_DATES.forEach(function(x){ACTUAL_DATE_SET[x.date]=x.day;});
 function weekRangeLabel(){
   if(!ACTUAL_GAME_DATES.length) return "";
   var first=ACTUAL_GAME_DATES[0], last=ACTUAL_GAME_DATES[ACTUAL_GAME_DATES.length-1];
-  if(first.date===last.date) return first.date;
-  var fm=first.date.split(" ")[0], lm=last.date.split(" ")[0];
-  if(fm===lm) return fm+" "+first.date.split(" ")[1]+"\u2013"+last.date.split(" ")[1];
-  return first.date+" \u2013 "+last.date;
+  if(first.date===last.date) return fmtDateLong(first.when);
+  return fmtDateLong(first.when)+" \u2013 "+fmtDateLong(last.when);
 }
 var SNAPSHOT_FIRST=ACTUAL_GAME_DATES.length?new Date(ACTUAL_GAME_DATES[0].when):new Date();
 var SNAPSHOT_LAST=ACTUAL_GAME_DATES.length?new Date(ACTUAL_GAME_DATES[ACTUAL_GAME_DATES.length-1].when):new Date();
@@ -3061,15 +3106,15 @@ var TODAY_OUTSIDE_WEEK=(function(){var d=new Date();var day=new Date(d.getFullYe
 function snapshotDateLabel(){
   var d=(typeof SNAPSHOT_UPDATED!=="undefined"&&SNAPSHOT_UPDATED)?new Date(SNAPSHOT_UPDATED):null;
   if(d&&!isNaN(d.getTime())){
-    try{return new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",month:"short",day:"numeric"}).format(d);}catch(e){}
+    try{return new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",month:"short",day:"numeric",year:"numeric"}).format(d);}catch(e){}
   }
-  return shortDate(SNAPSHOT_FIRST);
+  return fmtDateLong(SNAPSHOT_FIRST);
 }
 function syncGameDateLabels(){
   Array.prototype.forEach.call($("gameDateFilters").querySelectorAll("button"),function(b){
     var k=b.getAttribute("data-gdate");
-    if(k==="today") b.textContent="Today "+shortDate(TODAY_DATE);
-    if(k==="tomorrow") b.textContent="Tomorrow "+shortDate(TOMORROW_DATE);
+    if(k==="today") b.textContent="Today "+fmtDateLong(TODAY_DATE);
+    if(k==="tomorrow") b.textContent="Tomorrow "+fmtDateLong(TOMORROW_DATE);
   });
 }
 /* Rebuild the Moneyline date buttons from the games' actual dates:
@@ -3081,11 +3126,11 @@ function buildGameDateFilters(){
   if(!box||!ACTUAL_GAME_DATES.length) return;
   var todayS=shortDate(TODAY_DATE), tomorrowS=shortDate(TOMORROW_DATE);
   var html='<button type="button" aria-pressed="'+(gameDateState==="week"?"true":"false")+'" data-gdate="week">This Week ('+esc(weekRangeLabel())+')</button>'
-    +'<button type="button" aria-pressed="'+(gameDateState==="today"?"true":"false")+'" data-gdate="today">Today '+esc(todayS)+'</button>'
-    +'<button type="button" aria-pressed="'+(gameDateState==="tomorrow"?"true":"false")+'" data-gdate="tomorrow">Tomorrow '+esc(tomorrowS)+'</button>';
+    +'<button type="button" aria-pressed="'+(gameDateState==="today"?"true":"false")+'" data-gdate="today">Today '+esc(fmtDateLong(TODAY_DATE))+'</button>'
+    +'<button type="button" aria-pressed="'+(gameDateState==="tomorrow"?"true":"false")+'" data-gdate="tomorrow">Tomorrow '+esc(fmtDateLong(TOMORROW_DATE))+'</button>';
   ACTUAL_GAME_DATES.forEach(function(x){
     if(x.date===todayS||x.date===tomorrowS) return;
-    html+='<button type="button" aria-pressed="'+(gameDateState===x.date?"true":"false")+'" data-gdate="'+esc(x.date)+'">'+esc(x.day)+'</button>';
+    html+='<button type="button" aria-pressed="'+(gameDateState===x.date?"true":"false")+'" data-gdate="'+esc(x.date)+'">'+esc(fmtDateLong(x.when,true))+'</button>';
   });
   box.innerHTML=html;
 }
@@ -3101,10 +3146,11 @@ function gameDateMatch(date){
   return date===gameDateState;
 }
 function gameDateLabel(){
-  if(gameDateState==="today") return "Today, "+shortDate(TODAY_DATE);
-  if(gameDateState==="tomorrow") return "Tomorrow, "+shortDate(TOMORROW_DATE);
+  if(gameDateState==="today") return "Today, "+fmtDateLong(TODAY_DATE);
+  if(gameDateState==="tomorrow") return "Tomorrow, "+fmtDateLong(TOMORROW_DATE);
   if(gameDateState==="week") return weekRangeLabel();
-  return ACTUAL_DATE_SET[gameDateState]||gameDateState;
+  var d=parseGameDate(gameDateState);
+  return d?fmtDateLong(d,true):(ACTUAL_DATE_SET[gameDateState]||gameDateState);
 }
 /* Home heading: the word "Today's" may appear only when the
    snapshot's own date (Pacific Time, from SNAPSHOT_UPDATED) IS
@@ -3123,15 +3169,15 @@ function syncHomePicksHeading(){
   var snapKey=snap?ptDateKey(snap):"", todayKey=ptDateKey(new Date());
   if(snap&&snapKey&&todayKey&&snapKey!==todayKey){
     var wd="", md="";
-    try{wd=new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",weekday:"long"}).format(snap);}catch(e){}
+    try{wd=new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",weekday:"short"}).format(snap);}catch(e){}
     try{md=new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",month:"short",day:"numeric",year:"numeric"}).format(snap);}catch(e){}
     if(!wd) wd=WEEKDAY_ABBR[snap.getDay()];
-    if(!md) md=shortDate(snap);
+    if(!md) md=fmtDateLong(snap);
     h.textContent="Strongest picks \u2014 "+wd+", "+md+" (last update)";
     if(note){ note.textContent="These are from "+md+", not today."; note.hidden=false; }
     return;
   }
-  h.textContent="Today\u2019s strongest picks \u2014 "+WEEKDAY_ABBR[TODAY_DATE.getDay()]+" "+shortDate(TODAY_DATE);
+  h.textContent="Today\u2019s strongest picks \u2014 "+fmtDateLong(TODAY_DATE,true);
   if(note){ note.textContent=""; note.hidden=true; }
 }
 try{buildGameDateFilters();}catch(e){}
@@ -3213,7 +3259,7 @@ function feedRowHtml(f){
   var pickCode=pickHome?f.home:f.away;
   var p=Math.round((pickHome?f.pHome:1-f.pHome)*100);
   var close=p<=56;
-  return '<div class="slate-row"><div class="match"><span class="n">'+esc(f.g)+' \u00b7 '+esc(f.day)+' \u00b7 '+esc(f.time)+' PT</span><div class="picklines"><div class="avgline"><b>'+esc(pickCode)+'</b> <span class="pickpct">'+p+'%</span>'+confBadgeHtml(f.confidence_tier)+'</div>'+modelLinesHtml([modelLineHtml("Model A",pickCode,p+"%",gapInfoHtml(f.model_vs_market_pts))])+angleHtml(f.angle)+simLinesHtml(f)+'</div><div class="tagrow">'+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(f.note?' <span class="n">'+esc(f.note)+'</span>':"")+'</div>'+marketsHtml(f.markets)+'</div><button type="button" data-slate-game="'+esc(f.g)+'">Player picks for this game &rarr;</button></div>';
+  return '<div class="slate-row"><div class="match"><span class="n">'+esc(f.g)+' \u00b7 '+esc(fmtDateLong(f.day,true))+' \u00b7 '+esc(f.time)+' PT</span><div class="picklines"><div class="avgline"><b>'+esc(pickCode)+'</b> <span class="pickpct">'+p+'%</span>'+confBadgeHtml(f.confidence_tier)+'</div>'+modelLinesHtml([modelLineHtml("Model A",pickCode,p+"%",gapInfoHtml(f.model_vs_market_pts))])+angleHtml(f.angle)+simLinesHtml(f)+'</div><div class="tagrow">'+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(f.note?' <span class="n">'+esc(f.note)+'</span>':"")+'</div>'+marketsHtml(f.markets)+'</div><button type="button" data-slate-game="'+esc(f.g)+'">Player picks for this game &rarr;</button></div>';
 }
 function forecastRowHtml(f){
   var lineHtml=f.book?'<span class="loser">Book spread: '+esc(f.book)+'</span>':'<span class="loser">Line: TBD</span> <span class="picktag">Line not posted yet</span>';
@@ -3235,7 +3281,7 @@ function forecastRowHtml(f){
   }
   lines.push(modelLineHtml("Model B",f.pick,f.p.toFixed(1)+"%"));
   var close=headlinePct<=56;
-  return '<div class="slate-row"><div class="match"><span class="n">'+esc(f.g)+' \u00b7 '+esc(f.day)+' \u00b7 '+esc(f.time)+' PT</span><div class="picklines"><div class="avgline"><b>'+esc(headlinePick)+'</b> <span class="pickpct">'+headlinePct.toFixed(1)+'%</span>'+(a?confBadgeHtml(a.confidence_tier):"")+' '+lineHtml+'</div>'+modelLinesHtml(lines)+angleHtml(a?a.angle:"")+simLinesHtml(f)+'</div><div class="tagrow">'+(f.book?"":'<span>forecast only \u2014 no book line to compare against</span>')+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(f.note?' <span class="n">'+esc(f.note)+'</span>':"")+'</div>'+marketsHtml(f.markets)+'</div><button type="button" data-slate-game="'+esc(f.g)+'">Player picks for this game &rarr;</button></div>';
+  return '<div class="slate-row"><div class="match"><span class="n">'+esc(f.g)+' \u00b7 '+esc(fmtDateLong(f.day,true))+' \u00b7 '+esc(f.time)+' PT</span><div class="picklines"><div class="avgline"><b>'+esc(headlinePick)+'</b> <span class="pickpct">'+headlinePct.toFixed(1)+'%</span>'+(a?confBadgeHtml(a.confidence_tier):"")+' '+lineHtml+'</div>'+modelLinesHtml(lines)+angleHtml(a?a.angle:"")+simLinesHtml(f)+'</div><div class="tagrow">'+(f.book?"":'<span>forecast only \u2014 no book line to compare against</span>')+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(f.note?' <span class="n">'+esc(f.note)+'</span>':"")+'</div>'+marketsHtml(f.markets)+'</div><button type="button" data-slate-game="'+esc(f.g)+'">Player picks for this game &rarr;</button></div>';
 }
 /* Monte Carlo sim lines, shown only for games whose forecast carries
    sim data (forecast.sim, 10,000 sims). Two shapes:
@@ -3345,9 +3391,9 @@ function soccerDateParts(d){
     if(!p||!SOCCER_MONTHS[p[1]]) return {label:s,key:99999999,dayLabel:s};
     y=(typeof snapshotYear==="function"?snapshotYear():new Date().getFullYear()); mo=SOCCER_MONTHS[p[1]]; day=parseInt(p[2],10);
   }
-  var label=SOCCER_MONTH_NAMES[mo-1]+" "+day;
+  var label=SOCCER_MONTH_NAMES[mo-1]+" "+day+", "+y;
   var wd=SOCCER_WEEKDAYS[new Date(y,mo-1,day).getDay()];
-  return {label:label,key:y*10000+mo*100+day,dayLabel:wd+" "+label};
+  return {label:label,shortLabel:SOCCER_MONTH_NAMES[mo-1]+" "+day,key:y*10000+mo*100+day,dayLabel:wd+", "+label};
 }
 function soccerNormTime(t){
   var s=String(t||"").trim();
@@ -3413,7 +3459,7 @@ function renderGames(){
     var sRows=[];
     (SOCCER_GAMES||[]).forEach(function(s){
       var nd=soccerDateParts(s.date);
-      if(!gameDateMatch(nd.label)) return;
+      if(!gameDateMatch(nd.shortLabel||nd.label)) return;
       var mins=timeMinutes(soccerNormTime(s.time));
       sRows.push({day:nd.dayLabel,key:nd.key,mins:(mins==null?Infinity:mins),html:soccerRowHtml(s)});
     });
@@ -3424,7 +3470,7 @@ function renderGames(){
     }
     var out="", curDay=null;
     sRows.forEach(function(r){
-      if(r.day!==curDay){ if(curDay!==null) out+='</div>'; out+='<h3 class="date-group">'+esc(r.day)+'</h3><div class="slate">'; curDay=r.day; }
+      if(r.day!==curDay){ if(curDay!==null) out+='</div>'; out+='<h3 class="date-group">'+esc(fmtDateLong(r.day,true))+'</h3><div class="slate">'; curDay=r.day; }
       out+=r.html;
     });
     out+='</div>';
@@ -3453,7 +3499,7 @@ function renderGames(){
     if(leagueState==="nba"&&gameDateMatch("Nov 4")){
       (SLATE||[]).forEach(function(s){
         var close=s.avgP<=56;
-        push("Wed Nov 4","Nov 4",s.time,'<div class="slate-row"><div class="match"><span class="n">'+esc(s.g)+' \u00b7 Nov 4</span><div class="picklines"><div class="avgline"><b>'+esc(TEAM_NAMES[s.avgPick])+'</b> <span class="pickpct">'+s.avgP+'%</span></div>'+modelLinesHtml(["<div>Average of Model A (the other model) and Model B (our model)</div>"])+'</div><div class="tagrow">'+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(s.note?' <span class="n">'+esc(s.note)+'</span>':"")+'</div>'+marketsHtml(s.markets)+'</div><button type="button" data-slate-game="'+esc(s.g)+'">Player picks for this game &rarr;</button></div>');
+        push("Wed, Nov 4, 2026","Nov 4",s.time,'<div class="slate-row"><div class="match"><span class="n">'+esc(s.g)+' \u00b7 Nov 4, 2026</span><div class="picklines"><div class="avgline"><b>'+esc(TEAM_NAMES[s.avgPick])+'</b> <span class="pickpct">'+s.avgP+'%</span></div>'+modelLinesHtml(["<div>Average of Model A (the other model) and Model B (our model)</div>"])+'</div><div class="tagrow">'+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(s.note?' <span class="n">'+esc(s.note)+'</span>':"")+'</div>'+marketsHtml(s.markets)+'</div><button type="button" data-slate-game="'+esc(s.g)+'">Player picks for this game &rarr;</button></div>');
       });
     }
     (FEED_GAMES||[]).forEach(function(f){
@@ -3508,10 +3554,10 @@ function renderGames(){
     return gameDateDiff(ra.date,rb.date)||ra.idx-rb.idx;
   });
   $("slateList").innerHTML=groups.map(function(day){
-    return '<h3 class="date-group">'+esc(day)+'</h3><div class="slate">'+byDay[day].map(function(r){return r.html;}).join("")+'</div>';
+    return '<h3 class="date-group">'+esc(fmtDateLong(day,true))+'</h3><div class="slate">'+byDay[day].map(function(r){return r.html;}).join("")+'</div>';
   }).join("");
 }
-$("gameDateFilters").addEventListener("click",function(e){
+var gameDateFiltersEl=$("gameDateFilters"); if(gameDateFiltersEl) gameDateFiltersEl.addEventListener("click",function(e){
   var b=e.target.closest("[data-gdate]"); if(!b) return;
   gameDateState=b.getAttribute("data-gdate");
   Array.prototype.forEach.call($("gameDateFilters").querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x===b?"true":"false");});
@@ -3519,7 +3565,7 @@ $("gameDateFilters").addEventListener("click",function(e){
 });
 try{syncGameDateLabels();}catch(e){}
 try{renderGames();}catch(e){}
-$("slateList").addEventListener("click",function(e){
+var slateListEl=$("slateList"); if(slateListEl) slateListEl.addEventListener("click",function(e){
   var b=e.target.closest("[data-slate-game]"); if(!b) return;
   var game=b.getAttribute("data-slate-game")||"";
   switchTab("props",false); window.scrollTo({top:0,behavior:"auto"});
@@ -3769,7 +3815,7 @@ function tsBoardDate(rows){
   });
   return best;
 }
-function fmtBoardDate(d){return MONTH_ABBR[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear();}
+function fmtBoardDate(d){return fmtDateLong(d);}
 function renderTsHeading(headingId,staleId,label,rows){
   var h=$(headingId); if(!h) return;
   var d=tsBoardDate(rows); if(!d) return;
@@ -3896,13 +3942,13 @@ function renderTD(){
   }
   $("tdRows").innerHTML=head+body;
 }
-$("tdFilters").addEventListener("click",function(e){
+var tdFiltersEl=$("tdFilters"); if(tdFiltersEl) tdFiltersEl.addEventListener("click",function(e){
   var b=e.target.closest("[data-pos]"); if(!b) return;
   tdPos=b.getAttribute("data-pos");
   Array.prototype.forEach.call($("tdFilters").querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x===b?"true":"false");});
   renderTD();
 });
-$("tdSearch").addEventListener("input",function(){tdQuery=this.value;renderTD();});
+var tdSearchEl=$("tdSearch"); if(tdSearchEl) tdSearchEl.addEventListener("input",function(){tdQuery=this.value;renderTD();});
 try{renderTD();}catch(e){}
 /* Next board empty state: the static board above is the next board. If a
    future snapshot ships it with no player rows, say so plainly instead
@@ -3924,7 +3970,7 @@ try{renderTD();}catch(e){}
         var det=document.createElement("details");
         det.id="tdBoardDetails";
         var sum=document.createElement("summary");
-        sum.textContent="Show the Nov 5 board (past game)";
+        sum.textContent="Show the Nov 5, 2026 board (past game)";
         det.appendChild(sum);
         b.parentNode.insertBefore(det,b);
         det.appendChild(b);
@@ -3932,7 +3978,7 @@ try{renderTD();}catch(e){}
     }else if(isToday){
       st.textContent="Today\u2019s board \u2014 kickoff 5:15pm PT.";
     }else{
-      st.textContent="Next board \u2014 "+MONTH_ABBR[gd.getMonth()]+" "+gd.getDate()+", "+gd.getFullYear()+".";
+      st.textContent="Next board \u2014 "+fmtDateLong(gd)+".";
     }
   }
 })();
@@ -4129,11 +4175,9 @@ function homeBetParts(b){
 /* "2026-11-07" -> "Nov 7", read from the parts so the day never
    shifts with the visitor's time zone. Anything else is shown as-is. */
 function homeBetDateLabel(b){
-  var m=String((b&&b.game_date)||"").match(/^(\d{4})-(\d{2})-(\d{2})/);
-  if(!m) return String((b&&b.game_date)||"");
-  var mo=parseInt(m[2],10)-1;
-  if(mo<0||mo>11) return String(b.game_date||"");
-  return MONTH_ABBR[mo]+" "+parseInt(m[3],10);
+  var gd=(b&&b.game_date)||"";
+  var d=parseGameDate(gd);
+  return d?fmtDateLong(d):String(gd||"");
 }
 function renderHomePicks(){
   var box=$("homePicksList"), combo=$("homePicksCombo"), voidNote=$("homePicksVoidNote");
@@ -4274,21 +4318,21 @@ function matchupForTeam(sport,date,team){
       parts=SLATE[i].g.split(" @ ");
       if(parts[0]===code||parts[1]===code){
         var away=TEAM_NAMES[parts[0]]||parts[0], home=TEAM_NAMES[parts[1]]||parts[1];
-        return {g:SLATE[i].g,label:away+" vs "+home+" \u00b7 Nov 4"};
+        return {g:SLATE[i].g,label:away+" vs "+home+" \u00b7 Nov 4, 2026"};
       }
     }
   }
   for(i=0;i<(FEED_GAMES?FEED_GAMES.length:0);i++){
     var f=FEED_GAMES[i];
     if(f.sport!==sport||f.date!==date) continue;
-    if(f.home===team||f.away===team||f.home===teamAlt||f.away===teamAlt) return {g:f.g,label:f.g+" \u00b7 "+date};
+    if(f.home===team||f.away===team||f.home===teamAlt||f.away===teamAlt) return {g:f.g,label:f.g+" \u00b7 "+fmtDateLong(date)};
   }
   var lists=sport==="NFL"?NFL_FORECASTS:(sport==="CFB"?CFB_FORECASTS:(sport==="CBB"?CBB_FORECASTS:(sport==="NBA"?NBA_FORECASTS:null)));
   if(lists){
     for(i=0;i<lists.length;i++){
       if(lists[i].date!==date) continue;
       parts=lists[i].g.split(" @ ");
-      if(parts[0]===team||parts[1]===team||parts[0]===teamAlt||parts[1]===teamAlt) return {g:lists[i].g,label:lists[i].g+" \u00b7 "+date};
+      if(parts[0]===team||parts[1]===team||parts[0]===teamAlt||parts[1]===teamAlt) return {g:lists[i].g,label:lists[i].g+" \u00b7 "+fmtDateLong(date)};
     }
   }
   return null;
@@ -4296,7 +4340,7 @@ function matchupForTeam(sport,date,team){
 function propGameOf(r){
   var m=matchupForTeam(r.sport,r.date,r.team);
   if(m) return {key:r.sport+"|"+r.date+"|"+m.g,label:m.label};
-  return {key:r.sport+"|"+r.date+"|"+r.team,label:r.team+" \u2014 "+r.date};
+  return {key:r.sport+"|"+r.date+"|"+r.team,label:r.team+" \u2014 "+fmtDateLong(r.date)};
 }
 /* Label/time for a game key the user explicitly picked (used when the
    picked game has no props yet, so its option must still appear in the
@@ -4311,7 +4355,7 @@ function gameOptionForKey(key){
     var teams=g.split(" @ ");
     m=matchupForTeam(sport,date,teams[0])||matchupForTeam(sport,date,teams[1]);
   }
-  return {key:key,label:m?m.label:(g+" \u2014 "+date),time:gameTimeForProp({sport:sport,date:date,team:g.indexOf(" @ ")>=0?g.split(" @ ")[0]:g}),date:date};
+  return {key:key,label:m?m.label:(g+" \u2014 "+fmtDateLong(date)),time:gameTimeForProp({sport:sport,date:date,team:g.indexOf(" @ ")>=0?g.split(" @ ")[0]:g}),date:date};
 }
 /* Tip-off time for a prop's game, taken only from a time already stated
    on this page: the NBA slate (only LAL @ SAC and MIA @ LAC state one),
@@ -4576,13 +4620,13 @@ function renderProps(){
   function tileRow(r){
     var badges=pickBadgesPlainHtml(r), rowInfo=propRowInfoHtml(r);
     return '<div class="trow" style="grid-template-columns:'+cols+'"><div class="who"><b>'+esc(r.player)+'</b><span>'+esc(r.sport)+' &middot; '+esc(r.team)+' &middot; '+esc(r.prop)+'</span></div>'+
-    '<span class="prop-date">'+esc(r.date)+'</span>'+
+    '<span class="prop-date">'+esc(fmtDateLong(r.date))+'</span>'+
     '<span class="num avg-val">Line: '+esc(r.line)+'</span><span class="num avg-val">Our guess: '+r.guess+'%</span><span style="text-align:right">'+propTierHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<div class="flag" style="grid-column:1 / -1">'+esc(r.flag)+'</div>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
   }
   function listRow(r){
     var badges=pickBadgesPlainHtml(r), rowInfo=propRowInfoHtml(r);
     return '<div class="prop-list-row"><span class="pl-player">'+esc(r.player)+'<span class="pl-team">'+esc(r.team)+'</span></span>'+
-    '<span class="pl-prop">'+esc(r.prop)+'<span class="pl-meta">'+esc(r.sport)+' &middot; '+esc(r.date)+'</span></span>'+
+    '<span class="pl-prop">'+esc(r.prop)+'<span class="pl-meta">'+esc(r.sport)+' &middot; '+esc(fmtDateLong(r.date))+'</span></span>'+
     '<span class="pl-line">'+esc(r.line)+'</span><span class="pl-guess">'+r.guess+'%</span><span class="pl-tier">'+propTierHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<span class="flag">'+esc(r.flag)+'</span>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
   }
   var emptyHtml='<div class="empty-state"><p>No props available for this game &mdash; lines haven\'t been posted yet. Check back closer to tip-off.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no props yet">i</button><span class="tip">Lines come from the sportsbooks and can take a while to appear, especially for games later in the week.</span></span></p><p>Try another sport, date, game, or prop type.</p></div>';
@@ -4717,8 +4761,8 @@ function syncPropDateLabels(){
   var box=$("propDateFilters");
   if(!box) return;
   var dated=Array.prototype.filter.call(box.querySelectorAll("button"),function(b){return b.getAttribute("data-date")!=="ALL";});
-  if(dated[0]){dated[0].textContent="Today "+shortDate(TODAY_DATE);dated[0].setAttribute("data-date",shortDate(TODAY_DATE));}
-  if(dated[1]){dated[1].textContent="Tomorrow "+shortDate(TOMORROW_DATE);dated[1].setAttribute("data-date",shortDate(TOMORROW_DATE));}
+  if(dated[0]){dated[0].textContent="Today "+fmtDateLong(TODAY_DATE);dated[0].setAttribute("data-date",shortDate(TODAY_DATE));}
+  if(dated[1]){dated[1].textContent="Tomorrow "+fmtDateLong(TOMORROW_DATE);dated[1].setAttribute("data-date",shortDate(TOMORROW_DATE));}
 }
 try{syncPropDateLabels();}catch(e){}
 try{buildPropTypeOptions();}catch(e){}
@@ -4926,15 +4970,18 @@ function fmtOneIn(x){
   return (Math.round(x*10)/10).toFixed(1);
 }
 function computeTicket(){
-  var wrap=$("ticketVerdictWrap");
+  /* Guard once at the top: collect the required elements and return
+     early if any is missing, so a missing node never throws here. */
+  var wrap=$("ticketVerdictWrap"), stakeEl=$("stake"), cardEl=$("scoreCard"), breakdownEl=$("breakdownBody");
+  if(!wrap||!stakeEl||!cardEl||!breakdownEl||!document.getElementById("ticketVerdictWrap")||!document.getElementById("stake")||!document.getElementById("scoreCard")) return;
   if(wrap) wrap.hidden=!hasTicket;
   var legs=ticketLegs, n=legs.length;
-  var stake=parseFloat($("stake").value); if(!isFinite(stake)||stake<=0) stake=10;
+  var stake=parseFloat(stakeEl.value); if(!isFinite(stake)||stake<=0) stake=10;
   /* Legs with no board chance are left out of the score and named
      below; only legs with a real model chance are scored. */
   var scored=legs.filter(function(l){return l.p!=null&&l.p>0&&l.p<1;});
   var unscored=legs.filter(function(l){return !(l.p!=null&&l.p>0&&l.p<1);});
-  var card=$("scoreCard");
+  var card=cardEl;
   function setWaiting(msg){
     card.className="score-card wait";
     $("scoreBig").textContent="\u2014";
@@ -5883,7 +5930,7 @@ function betMatch(b){
   var parts=[];
   if(b.player&&b.team) parts.push(b.team);
   if(b.opponent) parts.push("vs "+b.opponent);
-  if(b.game_date) parts.push(b.game_date);
+  if(b.game_date) parts.push(fmtDateLong(b.game_date));
   return parts.join(" \u00b7 ");
 }
 function betValue(b){
@@ -5946,7 +5993,7 @@ function renderBets(){
   }
   var dateEl=$("betsDate");
   if(dateEl){
-    if(TODAY_CARD_DATE){dateEl.textContent=TODAY_CARD_DATE;dateEl.hidden=false;}
+    if(TODAY_CARD_DATE){dateEl.textContent=fmtDateLong(TODAY_CARD_DATE);dateEl.hidden=false;}
     else dateEl.hidden=true;
   }
   var emptyEl=$("betsEmpty");
@@ -6179,10 +6226,10 @@ function renderPeriodRecord(straights,parlays){
   var nDays=Object.keys(weekDates).length;
   var note="";
   if(earliest&&earliest>=wr.start&&nDays>0){
-    note='<p class="period-note">Early days, plainly: this record only started '+esc(shortDate(earliest))+', so &ldquo;this week&rdquo; so far is just '+nDays+(nDays===1?" day":" days")+' of settled bets. It will mean more once a few full weeks are in.</p>';
+    note='<p class="period-note">Early days, plainly: this record only started '+esc(fmtDateLong(earliest))+', so &ldquo;this week&rdquo; so far is just '+nDays+(nDays===1?" day":" days")+' of settled bets. It will mean more once a few full weeks are in.</p>';
   }
   el.innerHTML='<div class="period-record"><div class="period-grid">'
-    +periodBlockHtml("This week",shortDate(wr.start)+" \u2013 "+shortDate(wr.end),weekStraights,weekParlays)
+    +periodBlockHtml("This week",fmtDateLong(wr.start)+" \u2013 "+fmtDateLong(wr.end),weekStraights,weekParlays)
     +periodBlockHtml("This month",MONTH_FULL[mr.start.getMonth()]+" "+mr.start.getFullYear(),rowsInPeriod(straights,"month"),rowsInPeriod(parlays,"month"))
     +'</div>'+note+'</div>';
 }
@@ -6230,7 +6277,8 @@ function renderRecord(){
         var body=dayRows.map(function(r){
           return recordRowHtml(r,(r.sport||"")+(r.type?" \u00b7 "+r.type:""));
         }).join("");
-        return '<section class="record-day"><h2>'+esc(date)+'</h2><p class="sub">'+esc(summary)+'</p><div class="rows" role="table" aria-label="Settled bets for '+esc(date)+'">'+body+'</div></section>';
+        var dayD=parseRowDate(date); var dayLbl=dayD?fmtDateLong(dayD,true):fmtDateLong(date,true);
+        return '<section class="record-day"><h2>'+esc(dayLbl)+'</h2><p class="sub">'+esc(summary)+'</p><div class="rows" role="table" aria-label="Settled bets for '+esc(dayLbl)+'">'+body+'</div></section>';
       }).join("");
     }
   }
@@ -6240,7 +6288,7 @@ function renderRecord(){
     else{
       var plist=pars.slice().reverse();
       parEl.innerHTML='<div class="rows" role="table" aria-label="Settled parlays">'+plist.map(function(r){
-        return recordRowHtml(r,r.date||"Parlay");
+        return recordRowHtml(r,r.date?fmtDateLong(r.date):"Parlay");
       }).join("")+'</div>';
     }
   }
@@ -6266,7 +6314,7 @@ function ttRowHtml(r){
 }
 function ttDayLabel(dateStr){
   var d=parseRowDate(dateStr);
-  return d?shortDate(d):String(dateStr||"");
+  return d?fmtDateLong(d):fmtDateLong(dateStr);
 }
 function ttDaySplit(dayRows){
   var s={wins:0,losses:0,voids:0,pending:0};
@@ -6301,7 +6349,7 @@ function renderTopTier(){
         var nm=String(r.description||"Pick").split(" (")[0];
         return esc(nm)+', '+esc(ttDayLabel(r.date))+' \u2014 no such game';
       }).join("; ")+')</p>':"")
-    +'<p>'+t.n_graded+' settled picks so far \u2014 dollar P/L from Nov 5 onward only; Nov 3\u20134 W/L only, no $.</p>'
+    +'<p>'+t.n_graded+' settled picks so far \u2014 dollar P/L from Nov 5, 2026 onward only; Nov 3, 2026\u2013Nov 4, 2026 W/L only, no $.</p>'
     +'<p>By day: '+order.map(function(date){
         var s=splits[date], parts=[];
         if(s.wins||s.losses) parts.push(s.wins+'\u2013'+s.losses);
@@ -6315,7 +6363,8 @@ function renderTopTier(){
     var summary=ttDayLabel(date)+' \u2014 '+s.wins+(s.wins===1?' win':' wins')+', '+s.losses+(s.losses===1?' loss':' losses')
       +(s.voids?', '+s.voids+' void':"")
       +(s.pending?', '+s.pending+' not played yet':"");
-    return '<section class="record-day"><h2>'+esc(date)+'</h2><p class="sub">'+esc(summary)+'</p><div class="rows" role="table" aria-label="Top Tier picks for '+esc(date)+'">'+groups[date].map(ttRowHtml).join("")+'</div></section>';
+    var ttDayD=parseRowDate(date); var ttDayLbl=ttDayD?fmtDateLong(ttDayD,true):fmtDateLong(date,true);
+    return '<section class="record-day"><h2>'+esc(ttDayLbl)+'</h2><p class="sub">'+esc(summary)+'</p><div class="rows" role="table" aria-label="Top Tier picks for '+esc(ttDayLbl)+'">'+groups[date].map(ttRowHtml).join("")+'</div></section>';
   }).join("");
   el.innerHTML=head+body;
 }
@@ -6367,7 +6416,7 @@ function applyCumulativeRecord(data){
     var settled=tt.wins+tt.losses;
     TT_TALLY={wins:tt.wins,losses:tt.losses,pushes:tt.pushes,n_graded:tt.n_graded,
       win_rate:settled?tt.wins/settled:0,profit:tt.profit,profit_partial:true,
-      profit_note:"Dollar P/L from Nov 5 onward only \u2014 Nov 3-4 picks were Underdog entries and no per-leg odds were recorded, so they count toward W/L only."};
+      profit_note:"Dollar P/L from Nov 5, 2026 onward only \u2014 Nov 3, 2026\u2013Nov 4, 2026 picks were Underdog entries and no per-leg odds were recorded, so they count toward W/L only."};
   }
   var ttRows=cumRows(data.tt_record||data.top_tier_record);
   if(ttRows&&ttRows.length) TT_RECORD=ttRows;
@@ -6960,6 +7009,9 @@ function startScoresTimer(){
     if(scoresPanelActive()&&!document.hidden) loadScores();
   },120000);
 }
+function stopScoresTimer(){
+  if(scoresTimer){clearInterval(scoresTimer);scoresTimer=null;}
+}
 var scoresTabBtn=$("tab-scores");
 if(scoresTabBtn) scoresTabBtn.addEventListener("click",function(){ensureScoresLoaded();startScoresTimer();});
 if(window.MutationObserver){
@@ -6967,6 +7019,7 @@ if(window.MutationObserver){
   if(scoresPanel){
     var scoresObserver=new MutationObserver(function(){
       if(scoresPanelActive()){ensureScoresLoaded();startScoresTimer();}
+      else stopScoresTimer();
     });
     scoresObserver.observe(scoresPanel,{attributes:true,attributeFilter:["hidden","class"]});
   }
@@ -7030,7 +7083,7 @@ function renderSeason(){
   });
   host.innerHTML=html;
   var meta=document.getElementById("seasonMeta");
-  if(meta) meta.textContent="Numbers from "+d.generated+" · season played "+d.n_sims.toLocaleString()+" times · our game guesses from "+d.model_as_of+" · book numbers: "+d.market_source+" ("+d.market_date+").";
+  if(meta) meta.textContent="Numbers from "+fmtDateLong(d.generated)+" · season played "+d.n_sims.toLocaleString()+" times · our game guesses from "+fmtDateLong(d.model_as_of)+" · book numbers: "+d.market_source+" ("+fmtDateLong(d.market_date)+").";
 }
 
 try{renderSeason();}catch(e){}
@@ -7052,7 +7105,8 @@ try{loadCumulativeRecord();}catch(e){}
 var DFS_PROJ_NBA=[["Luka Doncic","LAL",null,64.2,66.9,5],["Jayson Tatum","BOS",null,47.1,47.7,5],["Victor Wembanyama","SA",null,47.0,47.4,5],["Anthony Edwards","MIN",null,46.3,48.0,4],["Darius Acuff Jr.","SAC",null,46.2,48.0,5],["Tyrese Maxey","PHI",null,44.4,45.6,5],["Shai Gilgeous-Alexander","OKC",null,43.2,44.4,5],["Cooper Flagg","DAL",null,42.6,42.7,5],["Jalen Johnson","ATL",null,41.4,41.8,5],["Deni Avdija","POR",null,41.0,41.6,5],["Scottie Barnes","TOR",null,40.5,40.4,5],["Brandon Miller","CHA",null,39.8,40.9,5],["Trae Young","WSH",null,39.6,40.1,5],["Cameron Boozer","MEM",null,39.6,40.3,5],["Anthony Davis","WSH",null,38.0,38.1,5],["Domantas Sabonis","SAC",null,38.0,37.4,5],["Ty Jerome","MEM",null,37.7,38.6,5],["Joel Embiid","PHI",null,37.5,37.1,5],["LeBron James","PHI",null,36.5,36.6,5],["Donovan Mitchell","CLE",null,36.0,37.2,5],["RJ Barrett","TOR",null,35.9,36.9,5],["Jaylen Brown","PHI",null,35.8,36.5,5],["Evan Mobley","CLE",null,35.4,36.0,5],["Dylan Harper","SA",null,35.1,35.4,5],["Kyrie Irving","DAL",null,34.8,36.7,5],["Paul George","BOS",null,34.4,35.5,5],["Dejounte Murray","NO",null,34.3,34.4,4],["Austin Reaves","LAL",null,33.9,34.6,5],["James Harden","CLE",null,33.7,34.9,5],["Keyonte George","UTAH",null,33.4,33.9,5],["LaMelo Ball","MIN",null,32.8,34.4,5],["Tyler Herro","MIL",null,32.4,34.0,5],["Zion Williamson","NO",null,32.4,32.2,5],["Kawhi Leonard","TOR",null,32.1,32.8,2],["Jeremiah Fears","NO",null,32.0,32.3,5],["Zach LaVine","SAC",null,31.7,33.0,5],["Jaden McDaniels","MIN",null,31.5,31.8,5],["Ajay Mitchell","OKC",null,31.4,31.6,5],["Ayo Dosunmu","MIN",null,31.4,32.0,5],["Kyshawn George","WSH",null,31.1,32.2,5],["Damian Lillard","POR",null,30.7,31.6,5],["Cedric Coward","MEM",null,30.6,31.7,5],["Immanuel Quickley","TOR",null,30.3,31.6,5],["Nickeil Alexander-Walker","ATL",null,30.1,32.4,5],["De'Aaron Fox","SA",null,29.7,29.9,5],["Trey Murphy III","NO",null,29.5,30.5,5],["Onyeka Okongwu","ATL",null,29.4,29.9,5],["Jarrett Allen","CLE",null,28.8,28.4,5],["Isaiah Hartenstein","OKC",null,28.7,28.1,5],["Stephon Castle","SA",null,28.6,29.1,5],["VJ Edgecombe","PHI",null,28.4,28.8,5],["Jaime Jaquez Jr.","MIL",null,28.1,28.8,5],["Ja Morant","POR",null,28.0,28.8,4],["AJ Dybantsa","WSH",null,27.7,27.9,3],["Kel'el Ware","MIL",null,27.4,27.2,5],["Ace Bailey","UTAH",null,27.3,27.6,5],["Lauri Markkanen","UTAH",null,27.0,28.3,5],["Derik Queen","NO",null,26.9,26.8,5],["Darryn Peterson","UTAH",null,26.6,27.4,5],["Daniel Gafford","DAL",null,26.6,26.2,5],["Moussa Diabate","CHA",null,26.4,25.9,5],["Cam Spencer","MEM",null,26.2,26.8,5],["Jaren Jackson Jr.","UTAH",null,26.1,26.4,4],["Chet Holmgren","OKC",null,25.9,25.6,3],["CJ McCollum","ATL",null,25.8,26.3,5],["De'Andre Hunter","SAC",null,25.5,26.4,5],["Naz Reid","CHA",null,25.3,25.6,5],["P.J. Washington","DAL",null,25.2,26.1,5],["Jalen Williams","OKC",null,25.1,25.5,3],["Naji Marshall","DAL",null,24.9,25.3,4],["Jonathan Kuminga","MIN",null,24.7,25.6,5],["Payton Pritchard","BOS",null,24.6,24.7,5],["Walker Kessler","LAL",null,24.6,24.1,5],["Devin Vassell","SA",null,24.4,24.7,5],["Jrue Holiday","POR",null,24.2,25.5,5],["Rudy Gobert","MIN",null,24.0,23.4,5],["Saddiq Bey","NO",null,23.9,24.5,5],["Terrence Shannon Jr.","MIN",null,22.9,23.6,5],["Ryan Rollins","MIL",null,22.7,23.2,5],["Yves Missi","NO",null,22.6,22.2,2],["Donovan Clingan","POR",null,22.5,22.5,5],["Kyle Kuzma","MIL",null,22.3,22.7,5],["Peyton Watson","CLE",null,22.3,22.5,5],["Julian Champagnie","SA",null,22.1,23.4,5],["Alex Caruso","OKC",null,21.7,22.4,4],["Isaiah Stewart","MEM",null,21.7,22.0,5],["Aaron Wiggins","ATL",null,21.6,22.6,5],["Grayson Allen","CHA",null,21.3,23.0,5],["Ja'Kobe Walter","TOR",null,21.3,22.1,5],["Toumani Camara","POR",null,21.2,22.6,5],["Precious Achiuwa","SAC",null,21.1,20.8,5],["Anfernee Simons","PHI",null,20.8,22.4,5],["Derrick White","BOS",null,20.7,21.1,5],["Meleek Thomas","CLE",null,20.6,21.7,4],["Isaiah Collier","UTAH",null,20.1,19.8,5],["Jaxson Hayes","UTAH",null,19.8,19.4,5],["Mario Hezonja","CLE",null,19.8,20.4,5],["Alex Sarr","WSH",null,19.6,19.7,5],["Ziaire Williams","LAL",null,19.4,20.2,4],["Dennis Schroder","CHA",null,19.2,19.5,5],["Jared McCain","OKC",null,18.9,19.2,5],["Neemias Queta","BOS",null,18.8,18.6,5],["Sandro Mamukelashvili","LAL",null,18.8,18.9,5],["Kingston Flemings","ATL",null,18.7,19.2,5],["Justin Champagnie","WSH",null,18.7,18.5,4],["Zaccharie Risacher","DAL",null,18.7,19.0,5],["Keldon Johnson","SA",null,18.6,18.4,5],["Karlo Matkovic","NO",null,18.6,19.3,5],["Jaylen Wells","MEM",null,18.5,19.0,5],["Dyson Daniels","ATL",null,18.4,18.2,5],["Kasparas Jakucionis","MIL",null,18.4,18.6,5],["Collin Sexton","LAL",null,18.3,18.8,5],["Robert Williams III","POR",null,18.2,17.8,4],["Aday Mara","OKC",null,17.8,17.5,5],["Myles Turner","MIL",null,17.7,18.2,5],["Joan Beringer","MIN",null,17.7,17.4,5],["Zach Edey","MEM",null,17.7,17.4,5],["Brayden Burries","MIL",null,17.6,17.6,5],["Bones Hyland","MIN",null,17.5,18.7,5],["Jamal Shead","TOR",null,17.3,17.6,5],["Sam Merrill","CLE",null,17.3,18.3,5],["Brice Sensabaugh","UTAH",null,17.2,18.1,5],["Jaylon Tyson","CLE",null,17.0,17.3,5],["Walter Clayton Jr.","DAL",null,16.9,17.7,5],["Mo Bamba","UTAH",null,16.9,16.6,4],["Malik Monk","SAC",null,16.7,17.5,5],["Jerami Grant","MEM",null,16.5,17.1,5],["Javon Small","MEM",null,16.4,16.9,1],["Luguentz Dort","ATL",null,16.1,16.9,5],["Tyrese Proctor","CLE",null,15.6,16.2,5],["DeAndre Jordan","NO",null,15.6,15.3,2],["Luka Garza","BOS",null,15.1,15.8,5],["GG Jackson","MEM",null,15.1,15.7,5],["Collin Murray-Boyles","TOR",null,15.0,15.3,5],["Herbert Jones","NO",null,14.9,15.1,5],["Sidy Cissoko","POR",null,14.9,15.0,5],["AJ Green","MIL",null,14.6,15.4,5],["Sion James","CHA",null,14.6,15.0,5],["Kenrich Williams","OKC",null,14.5,15.2,5],["Scoot Henderson","POR",null,14.4,14.8,5],["Baylor Scheierman","BOS",null,14.2,14.9,5],["Tre Johnson","WSH",null,14.2,14.5,5],["Matisse Thybulle","LAL",null,14.2,15.1,5],["Quentin Grimes","LAL",null,14.2,14.4,5],["Jock Landale","ATL",null,14.0,13.9,5],["Jordan Poole","NO",null,13.4,13.7,4],["Jakob Poeltl","TOR",null,13.3,13.1,5],["Mitchell Robinson","BOS",null,13.2,13.0,5],["Bub Carrington","WSH",null,13.2,13.7,5],["Morez Johnson Jr.","DAL",null,13.2,13.1,5],["Max Christie","DAL",null,12.8,13.3,5],["Scotty Pippen Jr.","MEM",null,12.7,12.7,5],["Bennedict Mathurin","NO",null,12.7,13.0,5],["Sam Hauser","BOS",null,12.5,13.2,5],["Bilal Coulibaly","WSH",null,12.5,12.5,5],["Coby White","CHA",null,12.4,13.3,1],["Cason Wallace","OKC",null,12.2,12.5,3],["Quinten Post","MEM",null,12.2,12.4,5],["Jake LaRavia","LAL",null,12.2,12.8,5],["Trey Lyles","MIN",null,12.0,12.5,5],["Bennett Stirtz","OKC",null,11.9,13.1,5],["Dean Wade","PHI",null,11.9,12.0,5],["Leaky Black","SAC",null,11.9,12.7,2],["Keegan Murray","SAC",null,11.7,11.8,2],["Deandre Ayton","WSH",null,11.6,11.4,5],["Trendon Watford","NO",null,11.6,11.4,3],["Caleb Martin","DAL",null,11.5,11.9,3],["Jordan Walsh","BOS",null,11.4,11.8,5],["Jamison Battle","TOR",null,11.1,12.1,5],["Nate Ament","MIL",null,11.0,11.5,5],["Royce O'Neale","CHA",null,10.9,11.4,5],["Adem Bona","PHI",null,10.4,10.1,5],["Luke Kornet","SA",null,10.4,10.2,5],["Yang Hansen","POR",null,10.2,10.5,3],["Ryan Kalkbrenner","CHA",null,10.1,9.9,5],["Sergio de Larrea","DAL",null,10.1,10.5,4],["Marcus Sasser","DAL",null,10.1,10.1,5],["Kentavious Caldwell-Pope","PHI",null,10.0,10.2,5],["Josh Okogie","UTAH",null,9.9,10.0,5],["Allen Graves","TOR",null,9.8,9.9,5],["Corey Kispert","ATL",null,9.8,10.7,4],["Jarred Vanderbilt","LAL",null,9.8,9.5,3],["RayJ Dennis","ATL",null,9.6,9.6,1],["Hugo Gonzalez","BOS",null,9.4,9.4,5],["Thomas Bryant","CLE",null,9.4,10.1,2],["Jaylin Williams","OKC",null,9.3,9.4,5],["Tidjane Salaun","CHA",null,8.9,9.3,5],["Jonathan Mogbo","SAC",null,8.8,8.8,4],["Jaylen Clark","MIN",null,8.7,9.3,5],["Christian Anderson","CHA",null,8.3,8.5,5],["Asa Newell","ATL",null,8.1,8.2,4],["Trayce Jackson-Davis","TOR",null,7.9,7.8,5],["Jabari Walker","PHI",null,7.5,7.5,5],["Tarris Reed Jr.","SA",null,7.2,7.0,4],["Emanuel Sharp","SAC",null,7.0,7.4,5],["Svi Mykhailiuk","UTAH",null,6.7,7.0,5],["Vit Krejci","POR",null,6.5,6.7,5],["Alijah Martin","TOR",null,6.2,6.4,5],["Zuby Ejiofor","ATL",null,6.2,6.4,3],["Hannes Steinbach","CHA",null,6.1,6.0,3],["Micah Peavy","OKC",null,6.1,6.2,3],["Ousmane Dieng","MIL",null,5.7,5.6,5],["Craig Porter Jr.","CLE",null,5.6,5.6,5],["Josh Green","UTAH",null,5.5,5.7,5],["John Tonje","POR",null,5.2,5.5,1],["Khris Middleton","WSH",null,5.1,5.1,5],["Olivier-Maxence Prosper","MEM",null,5.1,5.2,2],["Carson Cooper","MEM",null,5.1,5.2,1],["Mike Conley","BOS",null,5.0,5.5,2],["Branden Carlson","POR",null,5.0,4.9,2],["Carter Bryant","SA",null,4.9,5.3,5],["Kevon Looney","LAL",null,4.9,4.8,4],["Micah Potter","POR",null,4.9,4.9,3],["Gary Trent Jr.","MIL",null,4.9,5.3,2],["Rayan Rupert","PHI",null,4.9,5.2,1],["Kyle Anderson","TOR",null,4.6,4.5,4],["Kris Murray","MEM",null,4.5,4.5,4],["Tony Bradley","UTAH",null,4.5,4.4,2],["Liam McNeeley","CHA",null,4.3,4.2,4],["Harrison Barnes","SA",null,4.2,4.6,5],["Daeqwon Plowden","SAC",null,4.2,4.3,5],["Labaron Philon Jr.","PHI",null,4.2,4.3,5],["Chris Cenac Jr.","BOS",null,4.0,4.1,3],["Riley Minix","CLE",null,3.9,3.8,1],["Jaden Bradley","TOR",null,3.8,3.7,5],["PJ Hall","CHA",null,3.7,3.9,2],["Jahmai Mashack","MEM",null,3.7,3.9,1],["Ja'Kobi Gillespie","SA",null,3.6,4.7,2],["Alex Karaban","SAC",null,3.6,3.8,4],["Josh Dix","OKC",null,3.6,3.7,4],["Kyle Filipowski","UTAH",null,3.5,3.6,5],["Taylor Hendricks","MEM",null,3.5,3.8,3],["Bryce McGowens","NO",null,3.5,3.5,4],["Tristan Enaruna","CLE",null,3.5,3.8,1],["Bogoljub Markovic","MIL",null,3.4,3.5,1],["Chris Youngblood","POR",null,3.4,3.8,1],["Jordan McLaughlin","SA",null,3.3,3.3,3],["Moussa Cisse","DAL",null,3.2,3.2,5],["Jaden Hardy","LAL",null,3.2,3.1,4],["Julian Reese","NO",null,3.2,3.2,1],["Brooks Barnhizer","OKC",null,2.9,2.9,5],["Tobi Lawal","DAL",null,2.9,3.0,4],["Zyon Pullin","MIN",null,2.7,2.8,2],["Dorian Finney-Smith","ATL",null,2.6,2.9,3],["Jett Howard","DAL",null,2.5,2.7,3],["Ron Harper Jr.","BOS",null,2.5,2.7,3],["Karim Lopez","MEM",null,2.2,2.2,2],["David Jones Garcia","SA",null,2.0,2.0,1],["Maliq Brown","SA",null,1.9,2.3,1],["Nique Clifford","SAC",null,1.8,1.8,5],["Justin Edwards","PHI",null,1.8,2.1,3],["Isaiah Evans","MIN",null,1.6,2.0,4],["Chris Manon","LAL",null,1.6,1.6,2],["Jayson Kent","POR",null,1.6,1.8,1],["Jericho Sims","MIL",null,1.3,1.3,3],["Felix Okpara","WSH",null,1.1,1.2,1],["Will Riley","WSH",null,1.1,1.1,5],["Bronny James","LAL",null,0.7,0.7,3],["Cameron Carr","LAL",null,0.4,0.8,1],["Caleb Love","PHI",null,0.3,0.6,1],["Cody Williams","MIN",null,0.2,0.2,5],["Anthony Gill","WSH",null,0.2,0.4,1],["Tre Mann","WSH",null,0.2,0.4,2],["Dillon Mitchell","BOS",null,0.1,0.2,1],["Reece Beekman","WSH",null,0.0,0.0,1],["AJ Johnson","NO",null,0.0,0.0,1]];
 var DFS_PROJ_NFL=[["Joe Burrow","CIN","QB",29.2,29.2,4],["Drake Maye","NE","QB",28.3,28.3,4],["Jahmyr Gibbs","DET","RB",25.3,25.3,4],["Brock Bowers","LV","TE",24.4,24.4,3],["Kenneth Walker III","KC","RB",23.0,23.0,4],["CeeDee Lamb","DAL","WR",22.9,22.9,4],["Jaxon Smith-Njigba","SEA","WR",22.4,22.4,4],["Drew Lock","SEA","QB",21.4,21.4,1],["Jordan Love","GB","QB",21.0,21.0,4],["C.J. Stroud","HOU","QB",20.9,20.9,4],["Jayden Daniels","WAS","QB",20.7,20.7,4],["Kirk Cousins","LV","QB",20.2,20.2,4],["Bijan Robinson","ATL","RB",19.5,19.5,4],["Jared Goff","DET","QB",19.1,19.1,4],["Nico Collins","HOU","WR",18.9,18.9,3],["Garrett Wilson","NYJ","WR",18.1,18.1,4],["Christian McCaffrey","SF","RB",17.9,17.9,4],["Ja'Marr Chase","CIN","WR",17.7,17.7,4],["Drake London","ATL","WR",17.7,17.7,4],["Christian Watson","GB","WR",17.7,17.7,4],["Chris Olave","NO","WR",17.6,17.6,4],["Tetairoa McMillan","CAR","WR",17.6,17.6,4],["Amon-Ra St. Brown","DET","WR",17.4,17.4,4],["Chuba Hubbard","CAR","RB",16.8,16.8,4],["Dak Prescott","DAL","QB",16.7,16.7,4],["Sam LaPorta","DET","TE",16.7,16.7,4],["Tee Higgins","CIN","WR",16.6,16.6,4],["Trey McBride","ARI","TE",16.6,16.6,4],["Brock Purdy","SF","QB",16.3,16.3,4],["DeVonta Smith","PHI","WR",16.2,16.2,3],["Geno Smith","NYJ","QB",15.9,15.9,4],["George Kittle","SF","TE",15.7,15.7,4],["George Pickens","DAL","WR",15.7,15.7,4],["Malik Willis","MIA","QB",15.5,15.5,4],["Jalen Coker","CAR","WR",15.4,15.4,3],["Malik Nabers","NYG","WR",15.2,15.2,4],["Matthew Golden","GB","WR",15.2,15.2,4],["Caleb Williams","CHI","QB",15.1,15.1,4],["Jonathan Taylor","IND","RB",15.1,15.1,4],["Javonte Williams","DAL","RB",14.9,14.9,4],["Tyler Warren","IND","TE",14.9,14.9,4],["Jonah Coleman","DEN","RB",14.8,14.8,1],["Patrick Mahomes","KC","QB",14.7,14.7,4],["Bo Nix","DEN","QB",14.5,14.5,4],["Mike Evans","SF","WR",14.4,14.4,4],["Bryce Young","CAR","QB",14.3,14.3,4],["Breece Hall","NYJ","RB",14.2,14.2,3],["Jameis Winston","NYG","QB",14.1,14.1,4],["Tyler Shough","NO","QB",14.1,14.1,4],["Michael Penix Jr.","ATL","QB",14.0,14.0,4],["Jalen Hurts","PHI","QB",13.8,13.8,4],["Michael Wilson","ARI","WR",13.3,13.3,4],["Kyle Monangai","CHI","RB",13.3,13.3,4],["Denzel Boston","CLE","WR",13.3,13.3,4],["Travis Kelce","KC","TE",13.2,13.2,4],["D'Andre Swift","CHI","RB",13.1,13.1,4],["Bucky Irving","TB","RB",13.1,13.1,4],["Jacoby Brissett","ARI","QB",13.0,13.0,4],["Mike Gesicki","CIN","TE",13.0,13.0,4],["Ashton Jeanty","LV","RB",13.0,13.0,4],["Marcus Mariota","WAS","QB",12.9,12.9,2],["Isaiah Likely","NYG","TE",12.9,12.9,4],["Deshaun Watson","CLE","QB",12.8,12.8,4],["Sam Darnold","SEA","QB",12.7,12.7,4],["Rashee Rice","KC","WR",12.7,12.7,3],["Darius Cooper","PHI","WR",12.7,12.7,3],["Quinshon Judkins","CLE","RB",12.3,12.3,4],["Jalon Daniels","TB","QB",12.1,12.1,3],["Chase Brown","CIN","RB",12.1,12.1,4],["Ollie Gordon II","MIA","RB",12.0,12.0,4],["Stefon Diggs","WAS","WR",11.8,11.8,4],["Juwan Johnson","NO","TE",11.8,11.8,4],["Tre Tucker","LV","WR",11.8,11.8,4],["Rhamondre Stevenson","NE","RB",11.6,11.6,4],["Luther Burden III","CHI","WR",11.6,11.6,4],["Dylan Laube","LV","RB",11.5,11.5,1],["RJ Harvey","DEN","RB",11.3,11.3,4],["Malik Washington","MIA","WR",11.0,11.0,4],["Jameson Williams","DET","WR",10.8,10.8,4],["Omarion Hampton","LAC","RB",10.8,10.8,4],["Emanuel Wilson","SEA","RB",10.7,10.7,4],["Adonai Mitchell","NYJ","WR",10.7,10.7,2],["J.K. Dobbins","DEN","RB",10.6,10.6,4],["Devaughn Vele","NO","WR",10.6,10.6,4],["Emeka Egbuka","TB","WR",10.5,10.5,4],["Harold Fannin Jr.","CLE","TE",10.4,10.4,4],["Nate Adkins","DEN","TE",10.3,10.3,2],["J.J. McCarthy","NYG","QB",10.2,10.2,1],["Dalton Schultz","HOU","TE",10.2,10.2,4],["Romeo Doubs","NE","WR",10.2,10.2,4],["Terry McLaurin","WAS","WR",10.1,10.1,4],["Braelon Allen","NYJ","RB",10.1,10.1,4],["Josh Downs","IND","WR",9.8,9.8,4],["Cam Skattebo","NYG","RB",9.8,9.8,4],["Demarcus Robinson","SF","WR",9.7,9.7,2],["Tyquan Thornton","KC","WR",9.7,9.7,4],["Keenan Allen","IND","WR",9.6,9.6,4],["Dallas Goedert","PHI","TE",9.6,9.6,3],["Travis Etienne","NO","RB",9.6,9.6,3],["Tucker Kraft","GB","TE",9.6,9.6,4],["Woody Marks","HOU","RB",9.6,9.6,4],["Teagan Quitoriano","ARI","TE",9.5,9.5,1],["Jeremiyah Love","ARI","RB",9.5,9.5,4],["Noah Fant","NO","TE",9.4,9.4,3],["Rome Odunze","CHI","WR",9.3,9.3,4],["Jaylin Noel","HOU","WR",9.2,9.2,4],["Caleb Douglas","MIA","WR",9.2,9.2,2],["Justin Herbert","LAC","QB",9.1,9.1,4],["Deebo Samuel Sr.","SF","WR",9.1,9.1,4],["Ryan Miller","MIA","WR",9.1,9.1,2],["Kimani Vidal","LAC","RB",9.1,9.1,3],["Ladd McConkey","LAC","WR",9.1,9.1,4],["Kalif Raymond","CHI","WR",9.0,9.0,4],["Mack Hollins","NE","WR",9.0,9.0,4],["Keaton Mitchell","LAC","RB",8.9,8.9,4],["Tanner McKee","PHI","QB",8.8,8.8,2],["Brian Robinson","ATL","RB",8.8,8.8,4],["Brycen Tremayne","CAR","WR",8.8,8.8,2],["MarShawn Lloyd","GB","RB",8.8,8.8,4],["Daniel Jones","IND","QB",8.7,8.7,4],["Kendrick Bourne","ARI","WR",8.7,8.7,4],["Jake Ferguson","DAL","TE",8.7,8.7,4],["Michael Mayer","LV","TE",8.7,8.7,4],["Darren Waller","CAR","TE",8.4,8.4,4],["Dontayvion Wicks","PHI","WR",8.4,8.4,4],["Hunter Henry","NE","TE",8.3,8.3,4],["Rachaad White","WAS","RB",8.3,8.3,4],["John Metchie III","CAR","WR",8.3,8.3,2],["Xavier Hutchinson","HOU","WR",8.3,8.3,4],["Xavier Worthy","KC","WR",8.3,8.3,4],["De'Von Achane","MIA","RB",8.2,8.2,3],["Jacory Croskey-Merritt","WAS","RB",8.1,8.1,4],["Tre Harris","LAC","WR",8.1,8.1,4],["Rashid Shaheed","SEA","WR",8.0,8.0,4],["Isaiah Williams","NYJ","WR",8.0,8.0,4],["Jordan Watkins","SF","WR",8.0,8.0,1],["Baker Mayfield","TB","QB",7.9,7.9,4],["Alvin Kamara","NO","RB",7.9,7.9,4],["Mitchell Tinsley","CIN","WR",7.9,7.9,1],["Elijah Higgins","ARI","TE",7.9,7.9,3],["Jack Bech","LV","WR",7.9,7.9,2],["Ryan Flournoy","DAL","WR",7.8,7.8,4],["Cade Otton","TB","TE",7.7,7.7,4],["Hayden Rucci","LAC","TE",7.7,7.7,1],["Cooper Kupp","SEA","WR",7.6,7.6,4],["Chris Godwin Jr.","TB","WR",7.6,7.6,4],["Cody White","LV","WR",7.5,7.5,4],["Jaylen Waddle","DEN","WR",7.5,7.5,4],["Pat Bryant","DEN","WR",7.5,7.5,4],["Devin Singletary","NYG","RB",7.4,7.4,2],["Kenyon Sadiq","NYJ","TE",7.4,7.4,4],["George Holani","SEA","RB",7.2,7.2,4],["Isaac TeSlaa","DET","WR",6.9,6.9,4],["Laquon Treadwell","IND","WR",6.7,6.7,4],["Kyle Pitts","ATL","TE",6.7,6.7,4],["DeMario Douglas","NE","WR",6.7,6.7,4],["Ted Hurst III","TB","WR",6.7,6.7,4],["Jahan Dotson","ATL","WR",6.5,6.5,4],["Kendre Miller","NO","RB",6.5,6.5,4],["Malachi Fields","NYG","WR",6.5,6.5,4],["David Njoku","LAC","TE",6.4,6.4,2],["Greg Dulcich","MIA","TE",6.4,6.4,4],["Treylon Burks","WAS","WR",6.4,6.4,4],["Tyler Allgeier","ARI","RB",6.3,6.3,4],["Jeremy Ruckert","NYJ","TE",6.3,6.3,3],["TreVeyon Henderson","NE","RB",6.3,6.3,4],["Roschon Johnson","CHI","RB",6.2,6.2,2],["Efton Chism III","NE","WR",6.2,6.2,4],["Alec Pierce","IND","WR",6.1,6.1,2],["Kyle Williams","NE","WR",6.1,6.1,4],["Dohnte Meyers","CIN","WR",6.1,6.1,4],["Kenny Gainwell","TB","RB",6.0,6.0,4],["Kayshon Boutte","HOU","WR",6.0,6.0,4],["Colston Loveland","CHI","TE",6.0,6.0,4],["Eli Raridon","NE","TE",6.0,6.0,4],["Jadarian Price","SEA","RB",6.0,6.0,3],["KC Concepcion","CLE","WR",6.0,6.0,4],["Charlie Kolar","LAC","TE",5.9,5.9,2],["AJ Barner","SEA","TE",5.9,5.9,4],["Tory Horton","SEA","WR",5.9,5.9,3],["Saquon Barkley","PHI","RB",5.8,5.8,4],["Courtland Sutton","DEN","WR",5.7,5.7,4],["Makai Lemon","PHI","WR",5.7,5.7,4],["A.J. Brown","NE","WR",5.6,5.6,1],["Samaje Perine","CIN","RB",5.5,5.5,4],["Blake Whiteheart","CLE","TE",5.5,5.5,2],["Chig Okonkwo","WAS","TE",5.4,5.4,3],["Ian Thomas","LV","TE",5.1,5.1,3],["Tyson Bagent","CHI","QB",5.0,5.0,2],["Austin Hooper","ATL","TE",5.0,5.0,3],["Tez Johnson","TB","WR",5.0,5.0,4],["Antonio Williams","WAS","WR",5.0,5.0,4],["M.Harrison","ARI","WR",4.9,4.9,4],["Mark Redman","GB","TE",4.9,4.9,1],["Reggie Virgil","ARI","WR",4.9,4.9,1],["Tommy Tremble","CAR","TE",4.8,4.8,4],["Pierre Strong","GB","RB",4.8,4.8,1],["Tank Bigsby","PHI","RB",4.8,4.8,4],["Jonathon Brooks","CAR","RB",4.7,4.7,2],["Oronde Gadsden II","LAC","TE",4.7,4.7,4]];
 function dfsEsc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
-function dfs$(id){return document.getElementById(id);}
+var __dfsMissing={};
+function dfs$(id){var el=document.getElementById(id);if(el) return el;if(!__dfsMissing[id]){var d=document.createElement("div");d.id=id;d.value="";__dfsMissing[id]=d;}return __dfsMissing[id];}
 function dfsMoney(n){return "$"+Math.round(n).toLocaleString("en-US");}
 var dfsSlate="NBA", dfsPlatform="DK";
 /* Date of the projections on this tab, set by the daily pipeline
