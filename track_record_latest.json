@@ -1,8 +1,9 @@
 {
+  "corrections": "Corrected 2026-11-06: (1) Note said 'Day 1'; this is Day 2 of the fresh track record. (2) game_date corrected from board dates to real game dates: CONN vs UNC and BC vs FSU play Sat Nov 7 (Illinois vs Nebraska Fri Nov 6 was already correct). (3) Chris Hunter (UTEP) under 30.5 receiving yards is VOID \u2014 no UTEP vs TCU game exists \u2014 and was removed from the day's Top Tier list; the void is recorded in top_tier_record.json and does not count as a loss. (4) The Nov 6 parlay is VOID because one of its legs was void.",
   "date": "2026-11-06",
   "n_moneylines": 3,
   "n_props": 7,
-  "note": "Day 1 of the fresh track record. Picks are the day's strongest calibrated leans at a $100 flat stake; the parlay is tracked separately and is not part of the straight-bet tally.",
+  "note": "Day 2 of the fresh track record. Picks are the day's strongest calibrated leans at a $100 flat stake; the parlay is tracked separately and is not part of the straight-bet tally.",
   "parlay": {
     "combined_decimal": 4.9214,
     "combined_odds": "+392",
@@ -13,7 +14,10 @@
     "legs": [
       "20261106-10",
       "20261106-01"
-    ]
+    ],
+    "note": "Void \u2014 one leg (Chris Hunter under 30.5 receiving yards) was void because no such game exists (the card listed UTEP vs TCU; UTEP plays Hawai'i on Nov 7 and TCU plays at Arizona on Nov 6). A parlay with a void leg cannot be graded as published.",
+    "outcome": "void",
+    "profit": 0.0
   },
   "selected_at_pt": "2026-11-06 09:34:58 PST",
   "straights": [
@@ -31,11 +35,12 @@
         "polymarket": null
       },
       "model_prob": 0.7402,
+      "note": "Void \u2014 no such game. The card listed UTEP vs TCU on Nov 6; UTEP plays Hawai'i on Nov 7 and TCU plays at Arizona on Nov 6. The line's event could not be verified, so the pick is void, not a loss.",
       "opponent": "TCU",
-      "outcome": null,
+      "outcome": "void",
       "pick_id": "20261106-01",
       "player": "Chris Hunter",
-      "profit": null,
+      "profit": 0.0,
       "side": "under",
       "sport": "CFB",
       "team": "UTEP",
@@ -208,7 +213,7 @@
     },
     {
       "description": "CONN to win vs UNC",
-      "game_date": "2026-11-06",
+      "game_date": "2026-11-07",
       "kind": "straight",
       "line": null,
       "line_odds": "+245",
@@ -235,7 +240,7 @@
     },
     {
       "description": "BC to win vs FSU",
-      "game_date": "2026-11-06",
+      "game_date": "2026-11-07",
       "kind": "straight",
       "line": null,
       "line_odds": "+200",
@@ -291,7 +296,6 @@
   "top_tier": [
     "20261106-02",
     "20261106-03",
-    "20261106-01",
     "20261106-04"
   ]
 }
