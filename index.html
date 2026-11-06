@@ -387,15 +387,13 @@ footer b{color:var(--ink)}
 .explain b,.explain strong{color:var(--ink)}
 .explain h3{margin:14px 0 6px}
 .explain h3:first-child{margin-top:0}
-/* Check my ticket: one big snap button, then score + thumb + sentence. */
+/* Check my ticket: one big snap button, then score + sentence. */
 .ticket-step{display:flex;align-items:center;gap:8px;margin:22px 0 10px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .ticket-step .n{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--accent);color:var(--bg);font-size:12px;font-weight:800;letter-spacing:0;flex:none}
 .snap-wrap{margin-top:16px;border:2px dashed var(--line);border-radius:16px;padding:20px 14px 16px;text-align:center}
 .snap-btn{display:flex;justify-content:center;width:100%;padding:18px 20px;font-size:19px;border-radius:14px}
 #ticketVerdictWrap{margin-top:16px}
 #ticketVerdictWrap .score-big{font-size:clamp(72px,18vw,104px)}
-#ticketVerdictWrap .thumb-circle{width:76px;height:76px}
-#ticketVerdictWrap .thumb svg{width:40px;height:40px}
 #ticketVerdictWrap .score-card{margin-top:0}
 .score-side{display:flex;align-items:center;gap:12px}
 #ticketDetails .card{background:var(--bg)}
@@ -440,11 +438,8 @@ footer b{color:var(--ink)}
 .score-big{font-size:clamp(56px,9vw,72px);font-weight:800;line-height:1;letter-spacing:-.03em;color:var(--accent)}
 .score-card.bad .score-big{color:var(--bad)}
 .score-scale{font-size:13px;color:var(--muted);margin-top:4px}
-.thumb{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;flex:none}
-.thumb .thumb-circle{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:var(--good-bg);color:var(--good);border:1px solid var(--good)}
-.thumb.down .thumb-circle{background:var(--bad-bg);color:var(--bad);border-color:var(--bad)}
-.thumb svg{width:30px;height:30px}
-.thumb .thumb-label{font-size:11.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
+.leg-chance-val{display:block;background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:9px 11px;font-size:15px;text-transform:none;letter-spacing:0;color:var(--ink);font-weight:600}
+.leg-nochance{font-size:13.5px;color:var(--bad);line-height:1.55;margin:10px 0 0}
 .compare-row{padding:10px 0;border-bottom:1px solid var(--line);font-size:14.5px;line-height:1.55}
 .compare-row:last-child{border-bottom:0}
 .compare-row b{display:block}
@@ -678,11 +673,13 @@ html[data-theme="dark"] .beton-betonline,html[data-theme="terminal"] .beton-beto
 .prop-list-row .beton{grid-column:1 / -1;margin-top:2px}
 @media(max-width:640px){.prop-list-row .beton{flex:1 1 100%;order:6}}
 .bet-card .beton{margin-top:13px}
-.parlay-card{margin-top:18px;background:var(--amber-bg);border:2px solid var(--gold);border-radius:18px;padding:20px 22px;box-shadow:0 2px 14px rgba(0,0,0,.08)}
-.parlay-head{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--amber)}
-.parlay-head .parlay-trophy{font-size:20px;margin-right:6px;vertical-align:-3px}
+.parlay-card{margin-top:18px;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:18px 19px;box-shadow:none}
+.parlay-head{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.parlay-void{border:1px solid var(--bad);background:var(--bad-bg);border-radius:10px;padding:11px 13px;font-size:14.5px;font-weight:600;line-height:1.55;margin-bottom:12px}
 .parlay-odds{font-family:var(--mono);font-weight:800;font-size:clamp(30px,5vw,40px);letter-spacing:-.02em;line-height:1.1;margin:8px 0 4px}
 .parlay-odds span{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--muted);letter-spacing:0}
+.parlay-pct{font-size:15px;line-height:1.55;margin:6px 0 0}
+.parlay-pct span{color:var(--muted)}
 .parlay-legs{margin:12px 0 0;padding-left:20px;line-height:1.6;font-size:15.5px}
 .parlay-legs li{margin-bottom:4px}
 .parlay-note{margin:10px 0 0;font-size:13.5px;color:var(--muted);line-height:1.55}
@@ -709,7 +706,7 @@ html[data-theme="minimal"] .bets-hero,html[data-theme="minimal"] .bet-card,html[
 html[data-theme="terminal"] .bets-hero{background:var(--panel);color:var(--ink);border-color:var(--line)}
 html[data-theme="terminal"] .bets-hero .bets-date{background:var(--accent);color:var(--accent-ink)}
 html[data-theme="terminal"] .bet-value.lean{color:#8ab8ff;background:#17293f;border-color:#8ab8ff}
-html[data-theme="terminal"] .parlay-card{background:var(--panel);border-color:var(--gold)}
+html[data-theme="terminal"] .parlay-card{background:var(--panel);border-color:var(--line)}
 /* Totals / spreads record tables reuse the props table format; on phones
    their rows wrap the same way as the featured-picks rows. */
 @media(max-width:640px){
@@ -1105,6 +1102,8 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <!-- ============ CHECK MY TICKET ============ -->
   <section class="panel" id="panel-pricer" role="tabpanel" aria-labelledby="tab-pricer" tabindex="0" hidden>
     <h1>Check my ticket</h1>
+    <p class="record-line" data-record-suffix=" Ticket scores have no graded record yet — the score is our model's guess, not a proven result.">Our record: 0–7, −$700 so far. Forecasts, not proven winners. Ticket scores have no graded record yet — the score is our model's guess, not a proven result.</p>
+    <p class="lede" style="margin-top:10px">One tool: score a ticket, then run the same ticket 10,000 times to see how often it wins.</p>
 
     <p class="ticket-step"><span class="n">1</span> Snap your ticket</p>
     <div class="snap-wrap">
@@ -1121,7 +1120,6 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
             <div class="score-big" id="scoreBig">&mdash;</div>
           </div>
           <div class="score-side">
-            <div class="thumb" id="thumbBox" aria-live="polite"></div>
             <button type="button" class="explain-btn" aria-expanded="false" aria-controls="ticketDetails" aria-label="Ticket details">i</button>
           </div>
         </div>
@@ -1161,7 +1159,6 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
             <div class="field"><label for="newMarket">What kind of pick</label><select id="newMarket"><option>Points</option><option>Rebounds</option><option>Assists</option><option>Points + rebounds + assists</option><option>Shots on goal</option><option>Receiving yards</option><option>Receptions</option><option>Rushing yards</option><option>Passing yards</option><option>Touchdown</option><option>Other</option></select></div>
             <div class="field"><label for="newLine">Line</label><input type="number" id="newLine" step="0.5" placeholder="19.5" inputmode="decimal"></div>
             <div class="field"><label for="newSide">Over / under</label><select id="newSide"><option>Over</option><option>Under</option><option>Yes</option><option>No</option></select></div>
-            <div class="field"><label for="newChance">Our chance, in %</label><input type="number" id="newChance" min="1" max="99" step="0.5" placeholder="55" inputmode="decimal"></div>
             <div class="field"><button type="button" class="btn secondary" id="addLeg">Add leg</button></div>
           </div>
           <p class="note" id="addLegNote"></p>
@@ -1200,11 +1197,9 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       </div>
     </div>
 
-    <div id="ticketSimBtnWrap" hidden style="margin-top:14px"><button type="button" class="btn" id="runTicketSim">Run this ticket 10,000 times</button><p class="note" id="ticketSimNote" aria-live="polite"></p></div>
-    <section aria-label="Parlay simulator" id="parlaySim">
-      <p class="ticket-step"><span class="n">3</span> Run it 10,000 times</p>
-      <h2>Before you place it, see how it plays out</h2>
-      <p class="sub">The ticket checker above scores one ticket you already have. This runs a ticket 10,000 times first, so you can see how often it wins, how often you get 3 out of 4 right, and what you&rsquo;d win or lose on average. Every chance comes from our models, from the <span id="parlaySimDate">&mdash;</span> board. Nothing here places a bet.</p>
+    <section aria-label="Run this ticket 10,000 times" id="parlaySim">
+      <p class="ticket-step"><span class="n">3</span> Run this ticket 10,000 times</p>
+      <p class="sub">Run the same ticket 10,000 times to see how often it wins, how often you get 3 out of 4 right, and what you&rsquo;d win or lose on average. Every chance comes from our models, from the <span id="parlaySimDate">&mdash;</span> board. Nothing here places a bet.</p>
       <div class="controls">
         <div class="field wide"><label for="simGamePick">Add a game &mdash; team to win</label><select id="simGamePick"></select></div>
         <div class="field"><button type="button" class="btn secondary" id="simAddGame">Add game</button></div>
@@ -1417,7 +1412,8 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <!-- ============ SPORTSBOOKS ============ -->
   <section class="panel" id="panel-books" role="tabpanel" aria-labelledby="tab-books" tabindex="0" hidden>
     <h1>Sportsbooks</h1>
-    <p class="lede">The places where you can place the bets you see on this site. Pick one, sign up, and you&rsquo;re set.</p>
+    <p class="lede">The places where you can place the bets you see on this site.</p>
+    <p class="record-line" data-record-suffix=" The links below are referral links — if you join through one, we may earn a bonus at no extra cost to you. BetOnline is an offshore sportsbook.">Our record: 0–7, −$700 so far. Forecasts, not proven winners. The links below are referral links — if you join through one, we may earn a bonus at no extra cost to you. BetOnline is an offshore sportsbook.</p>
 
     <div class="card" style="margin-bottom:12px">
       <h2>Kalshi</h2>
@@ -1443,7 +1439,6 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <p style="margin-bottom:0"><a class="btn" href="https://www.betonline.ag?RAF=HDPA3N5Z&ProdCode=SPO" target="_blank" rel="noopener">Sign up for BetOnline</a></p>
     </div>
 
-    <p class="note">New here? Our sign-up links are referral links &mdash; if you join through one, we may earn a bonus at no extra cost to you.</p>
     <section class="card" id="support" style="margin-bottom:12px">
       <h2>Support the site</h2>
       <p class="note" style="margin-top:0">How this site is funded: the site is free. We may earn a bonus if you sign up to a sportsbook through our links, at no extra cost to you. Tips are optional and never affect any pick. We are not a charity &mdash; tips are not tax-deductible.</p>
@@ -1514,11 +1509,11 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 
     <h3 id="doc-ticket">The ticket checker (Check my ticket)</h3>
     <p><b>What &ldquo;good value&rdquo; means.</b> Flip a coin with me. Heads, I pay you $2. Tails, you pay me $1. You&rsquo;d take that all day, right? That&rsquo;s a good-value bet &mdash; the price is wrong in your favor. Now flip it: heads you win $1, tails you lose $2. You&rsquo;d walk away. Same coin, different price. A good-value bet pays you more than it should for how often it wins.</p>
-    <p><b>How it works.</b> Upload a screenshot of a slip from any book. The checker lists the picks it found, and you can fix any of them by hand: player, kind of pick, line, over or under, and the chance. You can also add picks by hand or change a chance you disagree with &mdash; the score follows your number. Enter the payout exactly as shown on your slip. Your screenshot stays on your device; nothing is sent anywhere. FanDuel&rsquo;s board is used as a market-wide reference for what a fair price looks like, but you can bet wherever you want.</p>
-    <p><b>The score.</b> The score runs from 0 to 100. A score of 50 means a fair bet &mdash; the payout matches how often it wins. The score is 50 plus the value, so a ticket worth 20% more than a fair price scores 70, and one worth 15% less scores 35, stopping at 0 and 100. Alongside the score you get the value as a percentage, and the chance the whole ticket hits written as &ldquo;1 in N&rdquo; &mdash; for example, 1 in 7 means it should hit about once in every seven tries. A thumbs up starts at 60, meaning the payout is clearly better than fair, and a thumbs down means it is not. One plain sentence sums up the verdict. Each pick also shows our chance next to what the ticket pays like, so you can see which pick is carrying the ticket. For tickets where missing one pick still pays a little, the score counts that payout too. That is an average over many repeats of the same ticket &mdash; a single ticket either wins it all or loses it all.</p>
+    <p><b>How it works.</b> Upload a screenshot of a slip from any book. The checker lists the picks it found, and you can fix any of them by hand: player, kind of pick, line, and over or under. The chance for each pick comes from our board &mdash; you never type one in. A pick we have no chance for on the board is left out of the score and named. Enter the payout exactly as shown on your slip. Your screenshot stays on your device; nothing is sent anywhere. FanDuel&rsquo;s board is used as a market-wide reference for what a fair price looks like, but you can bet wherever you want.</p>
+    <p><b>The score.</b> The score runs from 0 to 100. A score of 50 means a fair bet &mdash; the payout matches how often it wins. The score is 50 plus the value, so a ticket worth 20% more than a fair price scores 70, and one worth 15% less scores 35, stopping at 0 and 100. Alongside the score you get the value as a percentage, and the chance the whole ticket hits written as &ldquo;1 in N&rdquo; &mdash; for example, 1 in 7 means it should hit about once in every seven tries. There is no thumbs-up or thumbs-down: the score has no graded record yet, so it is shown as a number only. One plain sentence sums up the verdict. Each pick also shows our chance next to what the ticket pays like, so you can see which pick is carrying the ticket. For tickets where missing one pick still pays a little, the score counts that payout too. That is an average over many repeats of the same ticket &mdash; a single ticket either wins it all or loses it all.</p>
 
     <h3 id="doc-parlay">The parlay simulator (Try a ticket 10,000 times)</h3>
-    <p>The ticket checker scores one ticket you already have. The simulator is different: pick legs from today&rsquo;s board &mdash; teams to win, plus player picks &mdash; and it runs that ticket 10,000 times before you place it once. You see the chance the whole ticket hits, how often you get 3 out of 4 right (the most common way to lose a 4-leg ticket), and what you would win or lose on average per $100 at the payout your book shows. It also shows how wild the ride is: one ticket is all or nothing, so the average only shows up over many tries. If you snap a ticket first, one tap runs that ticket 10,000 times instead of picking legs by hand. Legs we can&rsquo;t match to today&rsquo;s board are left out and named, so the chance shown is only for the legs that ran &mdash; never the whole ticket.</p>
+    <p>The ticket checker scores one ticket you already have. The simulator is different: pick legs from today&rsquo;s board &mdash; teams to win, plus player picks &mdash; and it runs that ticket 10,000 times before you place it once. You see the chance the whole ticket hits, how often you get 3 out of 4 right (the most common way to lose a 4-leg ticket), and what you would win or lose on average per $100 at the payout your book shows. It also shows how wild the ride is: one ticket is all or nothing, so the average only shows up over many tries. Legs we can&rsquo;t match to today&rsquo;s board are left out and named, so the chance shown is only for the legs that ran &mdash; never the whole ticket.</p>
     <p>Game legs in the same game are run on the same simulated game, so their link is built in. Player picks in the same game as another leg are a different story &mdash; that link is not modelled here, so the simulator says so plainly and you should treat the chance as the best case. Spread and total legs are not offered on the site; the full simulator, which includes them, runs behind the scenes. Every chance comes from our models, from the board&rsquo;s date &mdash; a leg with no model chance is never offered.</p>
 
     <h3 id="doc-dfs">DFS Optimizer</h3>
@@ -4645,6 +4640,41 @@ function legLabel(l){
   return s;
 }
 function legKey(l){return (l.player+"|"+fmtLine(l.line)+"|"+l.side+"|"+l.stat).toLowerCase();}
+/* A leg's chance comes ONLY from the board: match player + kind of
+   pick + line + over/under against LEANS and TOP_PROPS. No match
+   returns null and the leg is left out of the score. The user never
+   types a probability anywhere in the checker. */
+function normName(s){
+  return String(s||"").toLowerCase().replace(/\./g,"").replace(/\s+/g," ").trim();
+}
+function boardChanceFor(player,stat,line,side){
+  var pn=normName(player); if(!pn) return null;
+  var st=String(stat||"").toLowerCase(), sd=String(side||"").toLowerCase();
+  function nameHit(boardName){
+    var bn=normName(boardName);
+    if(bn===pn) return true;
+    var pp=pn.split(" "), bp=bn.split(" ");
+    return pp.length>1&&bp.length>1&&pp[pp.length-1]===bp[bp.length-1]&&pp[0].charAt(0)===bp[0].charAt(0);
+  }
+  function lineHit(boardLine){
+    if(line==null||boardLine==null) return false;
+    return Math.abs(Number(line)-Number(boardLine))<0.001;
+  }
+  var i, r, m;
+  var leans=(typeof LEANS!=="undefined"&&LEANS)?LEANS:[];
+  for(i=0;i<leans.length;i++){
+    r=leans[i];
+    if(nameHit(r.player)&&String(r.stat||"").toLowerCase()===st&&String(r.side||"").toLowerCase()===sd&&lineHit(r.line)) return r.p;
+  }
+  var props=(typeof TOP_PROPS!=="undefined"&&TOP_PROPS)?TOP_PROPS:[];
+  for(i=0;i<props.length;i++){
+    r=props[i];
+    m=String(r.prop||"").match(/^(over|under)\s+(\d+(?:\.\d+)?)\s+(.+)$/i);
+    if(!m) continue;
+    if(nameHit(r.player)&&m[3].toLowerCase()===st&&m[1].toLowerCase()===sd&&lineHit(parseFloat(m[2]))) return Math.round(Number(r.guess)*10)/1000;
+  }
+  return null;
+}
 function marketOptions(selected){
   var opts=MARKETS.slice();
   if(selected&&opts.indexOf(selected)<0) opts.push(selected);
@@ -4670,8 +4700,9 @@ function renderLegs(){
         '<label>What kind of pick<select data-idx="'+i+'" data-field="stat">'+marketOptions(l.stat)+'</select></label>'+
         '<label>Line<input type="number" step="0.5" inputmode="decimal" data-idx="'+i+'" data-field="line" value="'+esc(fmtLine(l.line))+'" placeholder="19.5"></label>'+
         '<label>Over / under<select data-idx="'+i+'" data-field="side">'+sideOptions(l.side)+'</select></label>'+
-        '<label>Our chance, in %<input type="number" min="1" max="99" step="0.5" inputmode="decimal" data-idx="'+i+'" data-field="p" value="'+(l.p==null?"":esc(String(Math.round(l.p*1000)/10)))+'" placeholder="55"></label>'+
+        '<label>Our chance<span class="leg-chance-val">'+(l.p!=null?esc(pct(l.p)):"No model chance")+'</span></label>'+
       '</div>'+
+      (l.p==null?'<p class="leg-nochance">No model chance for this leg \u2014 it is left out of the score and named below.</p>':"")+
       '<p class="leg-compare" data-compare="'+i+'"></p>'+
     '</div>';
   }).join("");
@@ -4685,14 +4716,16 @@ $("legList").addEventListener("input",function(e){
   else if(f==="stat") l.stat=el.value;
   else if(f==="side") l.side=el.value;
   else if(f==="line"){var v=parseFloat(el.value); l.line=isFinite(v)?v:null;}
-  else if(f==="p"){var p=parseFloat(el.value); l.p=(isFinite(p)&&p>0&&p<=100)?p/100:null;}
+  /* The chance is never typed: any edit re-fills it from the board
+     (moneyline legs keep the game chance they were snapped with). */
+  if(!l.ml) l.p=boardChanceFor(l.player,l.stat,l.line,l.side);
   renderChips();
   computeTicket();
 });
 $("legList").addEventListener("change",function(e){
   clearTicketSim();
   var el=e.target.closest("[data-field]"); if(!el) return;
-  renderChips(); computeTicket();
+  renderLegs(); renderChips(); computeTicket();
 });
 $("legList").addEventListener("click",function(e){
   var b=e.target.closest("[data-remove-leg]"); if(!b) return;
@@ -4720,13 +4753,14 @@ $("legPick").addEventListener("click",function(e){
 });
 $("addLeg").addEventListener("click",function(){
   var player=$("newPlayer").value.trim();
-  var p=parseFloat($("newChance").value);
   var line=parseFloat($("newLine").value);
   if(!player){$("addLegNote").textContent="Give the leg a player name first.";return;}
-  if(!isFinite(p)||p<=0||p>100){$("addLegNote").textContent="Give our chance as a number between 1 and 99.";return;}
-  ticketLegs.push({player:player,stat:$("newMarket").value,line:isFinite(line)?line:null,side:$("newSide").value,p:p/100,game:null,team:null});
-  $("newPlayer").value="";$("newLine").value="";$("newChance").value="";
-  $("addLegNote").textContent="";
+  var stat=$("newMarket").value, side=$("newSide").value;
+  var ln=isFinite(line)?line:null;
+  var p=boardChanceFor(player,stat,ln,side);
+  ticketLegs.push({player:player,stat:stat,line:ln,side:side,p:p,game:null,team:null});
+  $("newPlayer").value="";$("newLine").value="";
+  $("addLegNote").textContent=p==null?"No model chance for this leg \u2014 it is left out of the score and named below.":"";
   hasTicket=true;
   renderLegs(); renderChips(); renderPayoutInputs(); computeTicket();
 });
@@ -4779,27 +4813,25 @@ function fmtOneIn(x){
   if(x>=10) return String(Math.round(x));
   return (Math.round(x*10)/10).toFixed(1);
 }
-var THUMB_UP='<span class="thumb-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg></span><span class="thumb-label">Thumbs up</span>';
-var THUMB_DOWN='<span class="thumb-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H6.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg></span><span class="thumb-label">Thumbs down</span>';
 function computeTicket(){
   var wrap=$("ticketVerdictWrap");
   if(wrap) wrap.hidden=!hasTicket;
-  var tsbw=$("ticketSimBtnWrap"); if(tsbw) tsbw.hidden=!hasTicket;
   var legs=ticketLegs, n=legs.length;
   var stake=parseFloat($("stake").value); if(!isFinite(stake)||stake<=0) stake=10;
-  var missingChance=legs.some(function(l){return l.p==null||!(l.p>0)||l.p>=1;});
+  /* Legs with no board chance are left out of the score and named
+     below; only legs with a real model chance are scored. */
+  var scored=legs.filter(function(l){return l.p!=null&&l.p>0&&l.p<1;});
+  var unscored=legs.filter(function(l){return !(l.p!=null&&l.p>0&&l.p<1);});
   var card=$("scoreCard");
   function setWaiting(msg){
     card.className="score-card wait";
     $("scoreBig").textContent="\u2014";
-    $("thumbBox").innerHTML='<span class="thumb-circle" style="background:var(--panel2);color:var(--muted);border-color:var(--line)"><span style="font-size:26px;font-weight:800">?</span></span><span class="thumb-label">No verdict yet</span>';
-    $("thumbBox").className="thumb";
     $("verdictSentence").textContent=msg;
     $("statValue").textContent="\u2014";$("statHit").textContent="\u2014";$("statAvg").textContent="\u2014";
     $("scoreExplain").textContent="";
     $("breakdownBody").innerHTML='<tr><td colspan="3" style="text-align:left;font-family:var(--sans);color:var(--muted)">The breakdown appears here once the ticket can be scored.</td></tr>';
     $("legCompare").innerHTML=legs.length?legs.map(function(l){
-      var m=l.p!=null?"Our model: hits 1 in "+fmtOneIn(1/l.p)+" ("+pct(l.p)+").":"Our model: no chance entered yet \u2014 add one on the leg above.";
+      var m=l.p!=null?"Our model: hits 1 in "+fmtOneIn(1/l.p)+" ("+pct(l.p)+").":"Our model: no chance on the board for this leg \u2014 left out of the score.";
       return '<div class="compare-row"><b>'+esc(legLabel(l))+'</b><span>'+esc(m)+'</span></div>';
     }).join(""):'<p class="note" style="margin-top:0">No legs yet.</p>';
     $("corrNote").innerHTML="";
@@ -4808,10 +4840,11 @@ function computeTicket(){
     setWaiting(n<1?"Not enough to score yet \u2014 tap the info circle by the score to check the legs, or snap your ticket again.":"We don\u2019t know what this ticket pays yet \u2014 tap the info circle by the score to enter it.");
     return;
   }
-  if(missingChance){
-    setWaiting("Some legs are missing a chance \u2014 tap the info circle by the score to fill them in.");
+  if(scored.length<1){
+    setWaiting("None of these legs has a model chance on the board \u2014 they are left out of the score, so there is nothing to score yet.");
     return;
   }
+  legs=scored; n=scored.length;
   var probs=legs.map(function(l){return l.p;});
   var dp=poissonBinomial(probs);
   var pAll=dp[n], expMult=0, anyP=0;
@@ -4821,12 +4854,9 @@ function computeTicket(){
   var score=Math.max(0,Math.min(100,Math.round(50+valuePct)));
   var hitN=oneIn(pAll);
   var up=score>=60;
-  var sentence=up?"Good ticket \u2014 worth a shot.":"Bad ticket \u2014 the book wins this one.";
   card.className="score-card "+(up?"good":"bad");
   $("scoreBig").textContent=score;
-  $("thumbBox").innerHTML=up?THUMB_UP:THUMB_DOWN;
-  $("thumbBox").className="thumb"+(up?"":" down");
-  $("verdictSentence").textContent=sentence;
+  $("verdictSentence").textContent="Score "+score+" out of 100 \u2014 above 50 means the payout beats a fair price on our numbers. No graded record yet.";
   $("statValue").textContent=fmtVal(valuePct);
   $("statHit").textContent="1 in "+hitN;
   $("statAvg").textContent=money(expPayout);
@@ -4841,6 +4871,8 @@ function computeTicket(){
     else if(perLegMult<modelOneIn) note=" The ticket pays worse than our chance on this leg.";
     else note=" About even on this leg.";
     return '<div class="compare-row"><b>'+esc(legLabel(l))+'</b><span>Our model: hits <b>1 in '+fmtOneIn(modelOneIn)+'</b> ('+pct(l.p)+'). Ticket pays like <b>1 in '+ticketOneIn+'</b>.'+esc(note)+' The ticket line splits the payout evenly across the legs.</span></div>';
+  }).join("")+unscored.map(function(l){
+    return '<div class="compare-row"><b>'+esc(legLabel(l))+'</b><span>Our model: no chance on the board for this leg \u2014 left out of the score.</span></div>';
   }).join("");
   var rowsHtml="";
   for(var kk=n;kk>=0;kk--){
@@ -4860,16 +4892,17 @@ function computeTicket(){
   else $("corrNote").innerHTML="";
 }
 $("copyBtn").addEventListener("click",function(){
-  var legs=ticketLegs;
-  if(legs.length<2){$("copyNote").textContent="Add at least 2 legs first.";return;}
-  if(legs.some(function(l){return l.p==null||!(l.p>0);})){$("copyNote").textContent="Enter our chance for every leg first.";return;}
+  var legs=ticketLegs.filter(function(l){return l.p!=null&&l.p>0&&l.p<1;});
+  var leftOut=ticketLegs.filter(function(l){return !(l.p!=null&&l.p>0&&l.p<1);});
+  if(legs.length<2){$("copyNote").textContent="Add at least 2 legs with a model chance first.";return;}
   var stake=parseFloat($("stake").value)||10;
   var dp=poissonBinomial(legs.map(function(l){return l.p||0;}));
   var expMult=0; for(var k=0;k<=legs.length;k++) expMult+=dp[k]*payoutForK(k,legs.length);
   var valuePct=(stake*expMult-stake)/stake*100;
   var score=Math.max(0,Math.min(100,Math.round(50+valuePct)));
-  var lines=["Ticket check (sample, Nov 4, 2026) \u2014 score "+score+" out of 100, value "+fmtVal(valuePct)+", hits 1 in "+oneIn(dp[legs.length])+"."];
+  var lines=["Ticket check \u2014 score "+score+" out of 100, value "+fmtVal(valuePct)+", hits 1 in "+oneIn(dp[legs.length])+"."];
   legs.forEach(function(l){lines.push("\u2022 "+legLabel(l)+" \u2014 our model: hits 1 in "+fmtOneIn(1/l.p)+".");});
+  leftOut.forEach(function(l){lines.push("\u2022 "+legLabel(l)+" \u2014 no chance on the board for this leg, left out of the score.");});
   lines.push("Ticket: "+(ticketMode==="flex"?"Miss one still pays":"All must hit")+", "+money(stake)+" put in, pays back "+ticketPayouts.all+"\u00d7 if all hit.");
   lines.push(score>=60?"We like this one \u2014 it pays you meaningfully more than it should for how often it wins.":"We\u2019d pass \u2014 the payout doesn\u2019t keep up with how often this hits.");
   lines.push("Graded against our model\u2019s numbers, which are early-stage and checked in public on the Our record tab. Not betting advice. Keep it to money you would be fine losing.");
@@ -5588,7 +5621,7 @@ function runOcr(file){
         ticketLegs=legs;
         renderLegs(); renderChips(); renderPayoutInputs(); computeTicket();
         var missing=legs.some(function(l){return l.p==null;});
-        setSlipStatus("We found "+legs.length+" leg"+(legs.length===1?"":"s")+". Tap the info circle by the score to check each one and fix anything we misread."+(missing?" For some legs we could not fill in our chance, so add it on the leg.":"")+" Then tap 'Run this ticket 10,000 times' below the score.");
+        setSlipStatus("We found "+legs.length+" leg"+(legs.length===1?"":"s")+". Tap the info circle by the score to check each one and fix anything we misread."+(missing?" Some legs have no model chance on the board, so they are left out of the score.":"")+" Then use step 3 below to run it 10,000 times.");
       }).catch(function(){
         if(settled) return;
         settled=true; clearTimeout(timer);
@@ -5668,39 +5701,12 @@ function ticketToSimLegs(){
   }
   return {matched:matched,unmatched:unmatched};
 }
-function runTicketSim(){
-  var note=$("ticketSimNote");
-  if(ticketLegs.length<2){note.textContent="Add at least 2 legs first \u2014 snap your ticket or tap tonight's picks below.";return;}
-  var res=ticketToSimLegs();
-  simFromTicket=true; simTicketUnmatched=res.unmatched;
-  function fmtUn(list){return list.map(function(u){return u.label+" ("+u.why+")";}).join("; ");}
-  if(res.matched.length<2){
-    note.textContent="We could only match "+res.matched.length+" of your "+ticketLegs.length+" legs to today's board, so we can't run it yet."
-      +(res.unmatched.length?" Not matched: "+fmtUn(res.unmatched)+".":"");
-    simFromTicket=false; simTicketUnmatched=[];
-    return;
-  }
-  simLegs=res.matched.slice();
-  simRenderLegs();
-  var oddsEl=$("simOdds");
-  if(oddsEl&&!String(oddsEl.value||"").trim()&&ticketPayouts.all>1){
-    var am=multToAmerican(ticketPayouts.all);
-    if(am) oddsEl.value=am;
-  }
-  note.textContent=res.unmatched.length
-    ? "Running "+res.matched.length+" of your "+ticketLegs.length+" legs \u2014 the ones below weren't included: "+fmtUn(res.unmatched)+"."
-    : "Running all "+res.matched.length+" legs from your ticket.";
-  var sec=$("parlaySim");
-  if(sec&&sec.scrollIntoView) sec.scrollIntoView({behavior:"smooth",block:"start"});
-  simRun();
-}
 function clearTicketSim(){
   if(!simFromTicket) return;
   simFromTicket=false; simTicketUnmatched=[];
   $("simResults").innerHTML=""; $("simCorr").innerHTML="";
-  $("ticketSimNote").textContent="The legs changed \u2014 run it again to update the simulation.";
+  var sn=$("simNote"); if(sn) sn.textContent="The ticket legs changed \u2014 run the simulation again to update it.";
 }
-$("runTicketSim").addEventListener("click",runTicketSim);
 var snapBtnEl=$("snapBtn");
 if(snapBtnEl) snapBtnEl.addEventListener("click",function(){
   try{ $("slipUpload").click(); }
@@ -5834,10 +5840,48 @@ function renderBets(){
           return String(id);
         });
       }
-      wrap.innerHTML='<div class="parlay-card"><div class="parlay-head"><span class="parlay-trophy">\uD83C\uDFC6</span>Parlay of the Day</div>'
-        +'<div class="parlay-odds">'+esc(fmtOdds(TODAY_PARLAY.combined_odds))+' <span>combined odds</span></div>'
+      /* Void legs: a parlay leg whose pick is graded void in the
+         record (TRACK_RECORD / TT_RECORD row with outcome "void" and
+         the same description), or named in TODAY_PARLAY.void_legs.
+         A void parlay shows the banner, no live odds and no combined
+         chance — it does not count in the record. */
+      var voidDesc={};
+      (typeof TRACK_RECORD!=="undefined"?TRACK_RECORD:[]).concat(typeof TT_RECORD!=="undefined"?TT_RECORD:[]).forEach(function(r){
+        if(r&&String(r.outcome||"").toLowerCase()==="void"&&r.description) voidDesc[String(r.description)]=true;
+      });
+      var voidIds={};
+      (TODAY_PARLAY.void_legs||[]).forEach(function(id){ voidIds[String(id)]=true; });
+      var legBets=(TODAY_PARLAY.legs||[]).map(function(id){
+        for(var i=0;i<bets.length;i++){ if(bets[i].pick_id===id) return bets[i]; }
+        return null;
+      });
+      var voidLegs=legBets.filter(function(b){ return b&&(voidIds[String(b.pick_id)]||voidDesc[String(b.description||"")]); });
+      var isVoid=voidLegs.length>0;
+      function voidLegName(b){
+        if(b.player&&b.team&&b.market) return b.player+", "+b.team+" "+String(b.side||"")+" "+fmtLine(b.line)+" "+b.market;
+        return String(b.description||"");
+      }
+      var pctHtml="";
+      if(!isVoid){
+        var probs=legBets.map(function(b){ return b?b.model_prob:null; });
+        if(probs.some(function(p){ return p==null||!(p>0); })){
+          pctHtml='<div class="parlay-pct">Combined chance: not shown \u2014 a leg has no model number.</div>';
+        }else if(probs.length){
+          var combined=probs.reduce(function(a,p){ return a*p; },1);
+          var parts=legBets.map(function(b){
+            var nm=b.player?String(b.player).trim().split(/\s+/).pop():(b.team||"");
+            return nm+" "+Math.round(b.model_prob*100)+"%";
+          });
+          pctHtml='<div class="parlay-pct">Combined chance: <b>'+Math.round(combined*100)+'%</b> <span>\u2014 all legs must hit ('+esc(parts.join(" \u00D7 "))+', counted separately)</span></div>';
+        }
+      }
+      wrap.innerHTML='<div class="parlay-card"><div class="parlay-head">Parlay of the Day \u2014 unproven, 1 parlay graded so far (lost)</div>'
+        +(isVoid?'<div class="parlay-void" role="alert">\u26A0 This parlay is VOID \u2014 one leg ('+esc(voidLegName(voidLegs[0]))+') has no such game. It does not count in the record.</div>':"")
+        +(isVoid
+          ? '<div class="parlay-odds"><s>'+esc(fmtOdds(TODAY_PARLAY.combined_odds))+'</s> <span>combined odds \u2014 void</span></div>'
+          : '<div class="parlay-odds">'+esc(fmtOdds(TODAY_PARLAY.combined_odds))+' <span>combined odds</span></div>'+pctHtml)
         +(legs.length?'<ol class="parlay-legs">'+legs.map(function(l){return "<li>"+esc(l)+"</li>";}).join("")+'</ol>':"")
-        +'<p class="parlay-note">All legs must hit for the parlay to win.</p></div>';
+        +'<p class="parlay-note">All legs must hit for the parlay to win. One parlay has been graded on this site and it lost; our straight bets are 0\u20137, \u2212$700 so far. Treat this as a forecast, not a proven winner.</p></div>';
     }
   }
 }
@@ -5853,7 +5897,7 @@ function renderRecordLine(){
   var profit=Number(s.profit)||0;
   var money=(profit<0?"\u2212$":profit>0?"+$":"$")+Math.abs(profit).toLocaleString("en-US");
   var txt="Our record: "+(s.wins||0)+"\u2013"+(s.losses||0)+", "+money+" so far. Forecasts, not proven winners.";
-  Array.prototype.forEach.call(document.querySelectorAll(".record-line"),function(el){ el.textContent=txt; });
+  Array.prototype.forEach.call(document.querySelectorAll(".record-line"),function(el){ el.textContent=txt+(el.getAttribute("data-record-suffix")||""); });
 }
 try{renderRecordLine();}catch(e){}
 /* Yesterday's recap on Home: the most recent settled day in TRACK_RECORD
