@@ -5017,12 +5017,27 @@ function parseTopProp(prop){
    every sport and prop type), plus the TD and NHL lists. It used to be
    built from LEANS, which only holds NBA points props, so assists,
    rebounds, 3-pointers and everything else could never match. */
+function lineMoveFromOf(r,line){
+  if(line==null||!isFinite(line)) return null;
+  if(!r||!r.line_move||r.line_move.from==null) return null;
+  var v=parseFloat(r.line_move.from);
+  if(!isFinite(v)||v<=0) return null;
+  if(Math.abs(v-line)>5) return null;
+  return v;
+}
+function boardLineMatches(sLine,sSide,k){
+  if(!k) return false;
+  if(sSide!==k.side) return false;
+  if(sLine===k.line) return true;
+  if(k.lineMoveFrom!=null&&sLine===k.lineMoveFrom) return true;
+  return false;
+}
 function boardKnownLegs(){
   var known=[];
   (typeof TOP_PROPS!=="undefined"?TOP_PROPS:[]).forEach(function(r){
     var pp=parseTopProp(r&&r.prop);
     if(!pp||!r.player) return;
-    known.push({player:r.player,stat:pp.stat,line:pp.line,side:pp.side,p:(r.guess!=null&&isFinite(r.guess)?Number(r.guess)/100:null),game:null,team:r.team||null});
+    known.push({player:r.player,stat:pp.stat,line:pp.line,side:pp.side,p:(r.guess!=null&&isFinite(r.guess)?Number(r.guess)/100:null),game:null,team:r.team||null,lineMoveFrom:lineMoveFromOf(r,pp.line)});
   });
   (typeof TD!=="undefined"?TD:[]).forEach(function(r){known.push({player:r.player,stat:"Touchdown",line:null,side:"Yes",p:r.p,game:r.game,team:r.team});});
   (typeof NHL!=="undefined"?NHL:[]).forEach(function(r){known.push({player:r.player,stat:"Shots on goal",line:r.line,side:r.side,p:r.cal,game:null,team:r.team});});
@@ -5064,7 +5079,7 @@ function saneMoney(raw,min,max){
    the stake, for Coinbase) as a side effect, like parseSlipText. */
 function parsePredictionSlip(text,known,NICKS){
   var raw=String(text||"");
-  var legRe=/(\d+)\s*\+\s*(assists|points|threes|3-pointers|3 pointers|rebounds|blocks|steals|goals)\b/gi;
+  var legRe=/(\d+)\s*\+\s*(?:\S{1,3}\s+){0,2}(assists|points|threes|3-pointers|3 pointers|rebounds|blocks|steals|goals)\b/gi;
   var matches=[], lm;
   while((lm=legRe.exec(raw))!==null){ matches.push({n:parseInt(lm[1],10),market:lm[2],index:lm.index}); }
   var hasCostPayout=/cost/i.test(raw)&&/max\s*payout/i.test(raw);
@@ -5077,8 +5092,12 @@ function parsePredictionSlip(text,known,NICKS){
   var legs=[], seen={};
   function addPmLeg(leg){
     var key=legKey(leg);
-    if(seen[key]) return;
-    seen[key]=true; legs.push(leg);
+    if(seen[key]!=null){
+      var prevIdx=seen[key];
+      if(legs[prevIdx]&&legs[prevIdx].p==null&&leg.p!=null) legs[prevIdx]=leg;
+      return;
+    }
+    seen[key]=legs.length; legs.push(leg);
   }
   function surnameBefore(before){
     var words=before.match(/[A-Za-z][A-Za-z.'-]*/g)||[];
@@ -5111,7 +5130,7 @@ function parsePredictionSlip(text,known,NICKS){
     var ln=surname.toLowerCase();
     var cands=known.filter(function(k){return lastNameOf(k.player)===ln&&k.stat===stat;});
     var exact=null;
-    cands.forEach(function(k){if(!exact&&k.line===impLine&&k.side===impSide) exact=k;});
+    cands.forEach(function(k){if(!exact&&boardLineMatches(impLine,impSide,k)) exact=k;});
     if(exact) addPmLeg({player:exact.player,stat:stat,line:impLine,side:impSide,p:exact.p,game:exact.game,team:exact.team});
     else if(cands.length) addPmLeg({player:cands[0].player,stat:stat,line:impLine,side:impSide,p:null,game:cands[0].game,team:cands[0].team});
     else addPmLeg({player:surname,stat:stat,line:impLine,side:impSide,p:null,game:null,team:null});
@@ -5145,6 +5164,7 @@ function parsePredictionSlip(text,known,NICKS){
      Max Payout / Cost and the stake is the Cost — but only when the
      numbers pass the sanity checks; otherwise they are ignored. */
   var multSet=false;
+  var stakeSet=false;
   if(hasCostPayout){
     var costIdx=raw.search(/cost/i), payIdx=raw.search(/max\s*payout/i);
     var regionStart=Math.min(costIdx<0?1e12:costIdx,payIdx<0?1e12:payIdx);
@@ -5174,9 +5194,21 @@ function parsePredictionSlip(text,known,NICKS){
         if(payout!=null){
           ticketPayouts.all=Math.round(payout/cost*10000)/10000;
           try{$("stake").value=String(cost);}catch(e){}
+          stakeSet=true;
           multSet=true;
         }
       }
+    }
+  }
+  /* Polymarket shows its stake as "Total $X" — when the Coinbase Cost
+     block did not set the stake, read it from there. The "$" must sit
+     right after "Total" (only non-alphanumeric separators allowed), so
+     "Total Odds +245" is never misread as a stake. */
+  if(!stakeSet){
+    var totalStakeM=raw.match(/total[^0-9A-Za-z$]{0,3}\$\s*(\d+(?:\.\d+)?)/i);
+    if(totalStakeM&&parseFloat(totalStakeM[1])>0){
+      try{$("stake").value=totalStakeM[1];}catch(e){}
+      stakeSet=true;
     }
   }
   /* Kalshi (cents) / Polymarket (decimal): multiplier from the price. */
@@ -5209,8 +5241,12 @@ function parseSlipText(text){
   var found=[], seen={};
   function addLeg(leg){
     var key=legKey(leg);
-    if(seen[key]) return;
-    seen[key]=true; found.push(leg);
+    if(seen[key]!=null){
+      var prevIdx=seen[key];
+      if(found[prevIdx]&&found[prevIdx].p==null&&leg.p!=null) found[prevIdx]=leg;
+      return;
+    }
+    seen[key]=found.length; found.push(leg);
   }
   var norm=normText(text);
   var raw=String(text||"");
@@ -5242,14 +5278,14 @@ function parseSlipText(text){
         var afterN=rawSeg.slice(nAt,nAt+90);
         var isNo=/\bno\b/i.test(upto)||/\bno\b\s*[:\-]?\s*\$?\s*(0\.\d+|\d+\s*(c|¢|cents))/i.test(afterN);
         var impSide=isNo?"Under":"Over";
-        if(impLine!==k.line||impSide!==k.side){ pUse=null; line=impLine; side=impSide; }
+        if(!boardLineMatches(impLine,impSide,k)){ pUse=null; line=impLine; side=impSide; }
         else { line=impLine; side=impSide; }
       }else{
         var ou=rawSeg.match(/\b(over|under)\b\s*(\d+(?:\.\d+)?)/i);
         if(ou){
           var sSide=ou[1].toLowerCase()==="over"?"Over":"Under";
           var sLine=parseFloat(ou[2]);
-          if(sLine!==k.line||sSide!==k.side){ pUse=null; line=sLine; side=sSide; }
+          if(!boardLineMatches(sLine,sSide,k)){ pUse=null; line=sLine; side=sSide; }
           else { line=sLine; side=sSide; }
         }
       }
@@ -5324,7 +5360,7 @@ function parseSlipText(text){
       }
     }
   }
-  var sm=text.match(/(?:stake|wager|entry|bet amount)[^0-9$]{0,25}\$?\s*(\d+(?:\.\d+)?)/i);
+  var sm=text.match(/(?:stake|wager|entry|bet amount|total[^0-9A-Za-z$]{0,3}\$)[^0-9$]{0,25}\$?\s*(\d+(?:\.\d+)?)/i);
   if(sm&&parseFloat(sm[1])>0) $("stake").value=sm[1];
   return found;
 }
