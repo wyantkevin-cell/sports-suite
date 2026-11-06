@@ -114,16 +114,11 @@ section.block{margin-top:24px}
 .prop-suggest button:last-child{border-bottom:0}
 .prop-suggest button[aria-selected="true"],.prop-suggest button:hover{background:var(--panel)}
 .prop-suggest .sug-meta{color:var(--muted);font-weight:500;font-size:13.5px;margin-left:6px}
-.onboard-backdrop{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.55);display:grid;place-items:center;padding:20px}
-.onboard-backdrop[hidden]{display:none}
-.onboard{width:min(540px,100%);max-height:calc(100dvh - 40px);overflow-y:auto;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.3)}
-.onboard h2{font-size:26px;margin:0 0 8px}
-.onboard-mission{font-size:18px;line-height:1.5;font-weight:700;margin:0 0 10px;color:var(--ink)}
-.onboard p{margin:0 0 10px;line-height:1.6;color:var(--muted)}
-.onboard p.onboard-mission{color:var(--ink)}
-.onboard ul{margin:0 0 18px;padding-left:20px;line-height:1.6}
-.onboard li{margin-bottom:6px}
-@media(max-width:640px){.onboard{padding:18px 19px}}
+.welcome-banner{border:1.5px solid var(--accent);background:var(--accent-soft);border-radius:14px;padding:16px 18px;margin:0 0 18px}
+.welcome-banner[hidden]{display:none}
+.welcome-banner .onboard-mission{font-size:18px;line-height:1.5;font-weight:700;margin:0 0 10px;color:var(--ink)}
+.welcome-banner p{margin:0 0 10px;line-height:1.6;color:var(--muted)}
+.welcome-banner p.onboard-mission{color:var(--ink)}
 .recap-line{margin:14px 0 0;font-size:16.5px;line-height:1.5}
 .recap-line b{font-family:var(--mono)}
 .record-line{margin:10px 0 0;font-size:15px;line-height:1.5;color:var(--muted)}
@@ -609,6 +604,8 @@ html[data-theme="minimal"] .tabbar [role="tab"][aria-selected="true"]{background
 .set-style[aria-pressed="true"] .in-use{display:inline-block}
 .feedback-send{width:100%;justify-content:center;text-decoration:none}
 .feedback-email{margin:9px 0 0;text-align:center;font-size:14.5px;font-weight:600;line-height:1.45;overflow-wrap:anywhere;user-select:text;-webkit-user-select:text}
+.settings-block{margin-top:26px;border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:var(--panel)}
+.settings-block>h3{margin-top:0}
 /* Our record — featured picks tally and day groups */
 .tally-card{margin-top:18px}
 .tally-big{font-size:clamp(24px,4vw,30px);font-weight:800;letter-spacing:-.01em;line-height:1.15}
@@ -778,7 +775,7 @@ html[data-theme="terminal"] section.block{margin-top:18px}
 html[data-theme="terminal"] .tabbar{gap:4px;padding:8px 0}
 html[data-theme="terminal"] .tabbar [role="tab"]{background:transparent;border:1px solid var(--line);color:var(--muted);padding:7px 12px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
 html[data-theme="terminal"] .tabbar [role="tab"][aria-selected="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-html[data-theme="terminal"] .card,html[data-theme="terminal"] .honest,html[data-theme="terminal"] .board-next,html[data-theme="terminal"] .model-warning,html[data-theme="terminal"] .sizebox,html[data-theme="terminal"] .verdict,html[data-theme="terminal"] .score-card,html[data-theme="terminal"] .settings-panel,html[data-theme="terminal"] .onboard,html[data-theme="terminal"] .docs-drawer,html[data-theme="terminal"] .explain,html[data-theme="terminal"] .formula{padding:12px 14px;background:var(--panel);border:1px solid var(--line)}
+html[data-theme="terminal"] .card,html[data-theme="terminal"] .honest,html[data-theme="terminal"] .board-next,html[data-theme="terminal"] .model-warning,html[data-theme="terminal"] .sizebox,html[data-theme="terminal"] .verdict,html[data-theme="terminal"] .score-card,html[data-theme="terminal"] .settings-panel,html[data-theme="terminal"] .welcome-banner,html[data-theme="terminal"] .docs-drawer,html[data-theme="terminal"] .explain,html[data-theme="terminal"] .formula{padding:12px 14px;background:var(--panel);border:1px solid var(--line)}
 html[data-theme="terminal"] .board-next{border-color:#1a331a;background:var(--accent-soft)}
 html[data-theme="terminal"] .model-warning{border-color:var(--bad)}
 html[data-theme="terminal"] .verdict{background:var(--panel);color:var(--ink);border-color:#1a331a}
@@ -810,7 +807,7 @@ html[data-theme="terminal"] .legbtn[aria-pressed="true"] .tick{background:var(--
 html[data-theme="terminal"] input,html[data-theme="terminal"] select{background:var(--bg);color:var(--ink);border-color:var(--line)}
 html[data-theme="terminal"] .settings-panel{background:var(--bg)}
 html[data-theme="terminal"] .docs-drawer{background:var(--bg);border-right:1px solid var(--line)}
-html[data-theme="terminal"] .onboard{background:var(--bg)}
+html[data-theme="terminal"] .welcome-banner{background:var(--bg)}
 html[data-theme="terminal"] .tip{background:var(--accent);color:var(--accent-ink)}
 html[data-theme="terminal"] .tip::after{border-top-color:var(--accent)}
 html[data-theme="terminal"] .info.below .tip::after{border-top-color:transparent;border-bottom-color:var(--accent)}
@@ -848,43 +845,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 </head>
 <body>
 <div class="wrap">
-  <div class="topbar">
-    <div class="strip">
-      <div class="left"><span class="meta">Sports tools &middot; plain numbers, no hype</span></div>
-      <div class="strip-right">
-        <button type="button" class="settings-btn" id="settingsBtn" aria-expanded="false" aria-controls="settingsPanel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Settings</button>
-      </div>
-    </div>
-    <div class="settings-panel" id="settingsPanel" role="dialog" aria-modal="false" aria-labelledby="settingsTitle" hidden>
-      <p class="settings-title" id="settingsTitle">Settings</p>
-      <div class="settings-section">
-        <p class="settings-label" id="viewLabel">View &mdash; Player picks</p>
-        <div class="segmented" role="group" aria-labelledby="viewLabel">
-          <button type="button" data-prop-view="tiles" aria-pressed="true">Tiles</button>
-          <button type="button" data-prop-view="list" aria-pressed="false">List</button>
-        </div>
-        <p class="settings-hint" id="viewHint">Tiles show each prop as a card with full details.</p>
-      </div>
-      <div class="settings-section">
-        <p class="settings-label" id="styleLabel">Style</p>
-        <div class="set-style-list" role="group" aria-labelledby="styleLabel">
-          <button type="button" class="set-style" data-style-opt="classic" aria-pressed="true"><span>Classic</span><span class="in-use">In use</span></button>
-          <button type="button" class="set-style" data-style-opt="dark" aria-pressed="false"><span>Dark sportsbook</span><span class="in-use">In use</span></button>
-          <button type="button" class="set-style" data-style-opt="minimal" aria-pressed="false"><span>Minimal</span><span class="in-use">In use</span></button>
-          <button type="button" class="set-style" data-style-opt="terminal" aria-pressed="false"><span>Terminal</span><span class="in-use">In use</span></button>
-        </div>
-      </div>
-      <div class="settings-section">
-        <button type="button" class="btn secondary reopen-onboard" style="width:100%;justify-content:center">Show the welcome message again</button>
-      </div>
-      <div class="settings-section">
-        <button type="button" class="btn feedback-send" id="copyFeedbackEmailBtn">Copy feedback email</button>
-        <p class="feedback-email">wyantkevin@gmail.com</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="tabbar" role="tablist" aria-label="Sports tools">
+    <div class="tabbar" role="tablist" aria-label="Sports tools">
     <button type="button" role="tab" id="tab-overview" aria-selected="true" aria-controls="panel-overview" data-tab="overview">Home</button>
     <button type="button" role="tab" id="tab-forecasts" aria-selected="false" aria-controls="panel-forecasts" data-tab="forecasts" tabindex="-1">Moneyline</button>
     <button type="button" role="tab" id="tab-props" aria-selected="false" aria-controls="panel-props" data-tab="props" tabindex="-1">Player picks ⭐</button>
@@ -902,6 +863,12 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 
   <!-- ============ HOME ============ -->
   <section class="panel active" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview" tabindex="0">
+    <div class="welcome-banner" id="welcomeBanner" role="region" aria-label="Welcome" hidden>
+      <p class="onboard-mission">We can&rsquo;t stop people from betting, but we can try letting them make better informed bets.</p>
+      <p>We built our own forecasting models in-house to cover multiple sports and props.</p>
+      <p><a href="#docs" data-goto="docs">How it works</a></p>
+      <button type="button" class="btn" id="welcomeGotIt">Got it</button>
+    </div>
     <h1>Check the chances <em>before you bet.</em></h1>
     <p class="lede">Today&rsquo;s picks, with the chance each one hits.</p>
     <p class="record-line">Our record: 0–7, −$700 so far. Forecasts, not proven winners.</p>
@@ -923,7 +890,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <h2>Everything else</h2>
       <div class="toollist">
         <button type="button" data-goto="forecasts">Who wins? <span>Our guess for each game &rarr;</span></button>
-        <button type="button" data-goto="props" data-td-link="1">Touchdowns <span>NFL &middot; in Player picks &rarr;</span></button>
+        <button type="button" data-goto="props" data-td-link="1">Player Picks &mdash; including anytime-touchdown chances under NFL <span>NFL &rarr;</span></button>
         <button type="button" data-goto="props">Player picks <span>Points, shots, and more &rarr;</span></button>
         <button type="button" data-goto="pricer">Check my ticket <span>Is the payout worth it? &rarr;</span></button>
         <button type="button" data-goto="totals">Totals <span>Our total vs the book&rsquo;s number &rarr;</span></button>
@@ -1245,6 +1212,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <div class="explain" id="explainDfs" hidden><p style="margin:0">We rank players by how many points they&rsquo;ve averaged lately, then pick the best team that fits under the salary limit. You add the salaries from DraftKings or FanDuel.</p></div>
     </div>
     <p class="lede">Pick a slate and a platform, add player salaries, and we build the best lineup that fits under the limit &mdash; plus two more options.</p>
+    <p class="sub" style="margin-top:10px">This tool needs player salaries from DraftKings or FanDuel &mdash; upload the salary file they let you download, or paste the salaries in. The sample salaries are examples only, not real prices.</p>
     <div class="freshness"></div>
     <p class="updated-line" id="dfsAsOf" hidden></p>
 
@@ -1285,7 +1253,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <p class="dfs-status" id="dfsStatus" aria-live="polite"></p>
       <button type="button" class="btn dfs-build" id="dfsBuild">Build my lineup</button>
       <div id="dfsResults" aria-live="polite"></div>
-      <p class="note">Projected points are each player&rsquo;s recent average from our own game data &mdash; NBA from the last 5 games, NFL from the last 4. NFL numbers run through Week 6. Defense is set to 7 points for every team because we don&rsquo;t model defenses &mdash; swap in your own pick. These are forecasts, not guarantees.</p>
+      <p class="note">Projected points are each player&rsquo;s recent average from our own game data &mdash; NBA from the last 5 games, NFL from the last 4. NFL numbers run through Week 6 (Nov 1, 2026). Defense is set to 7 points for every team because we don&rsquo;t model defenses &mdash; swap in your own pick. These are forecasts, not guarantees.</p>
     </section>
   </section>
 
@@ -1331,6 +1299,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <div class="scores-toolbar">
       <p class="updated-line" id="scoresAsOf" aria-live="polite">Scores have not loaded yet.</p>
       <button type="button" class="btn secondary" id="scoresRefresh">Refresh</button>
+      <button type="button" class="btn secondary" id="scoresRetryBtn" data-scores-retry hidden>Try again</button>
     </div>
     <div class="filters" role="group" aria-label="Choose a sport" id="scoresFilters">
       <button type="button" aria-pressed="true" data-league="all">All</button>
@@ -1340,13 +1309,13 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <button type="button" aria-pressed="false" data-league="nhl">NHL</button>
       <button type="button" aria-pressed="false" data-league="cbb">College Basketball</button>
     </div>
-    <div id="scoresBody" aria-live="polite"></div>
+    <div id="scoresBody" aria-live="polite"><div class="empty-state"><p>Scores could not be loaded &mdash; try again.</p><p style="margin-top:10px"><button type="button" class="btn secondary" data-scores-retry>Try again</button></p></div></div>
 
     <section class="block" aria-label="Standings">
       <h2>Standings</h2>
       <p class="sub">Wins, losses and win percentage for each team, live from ESPN.</p>
       <div id="standingsBody" aria-live="polite"></div>
-      <p class="note">College standings coming soon.</p>
+      <p class="note" id="standingsNote" hidden>College standings coming soon.</p>
     </section>
   </section>
 
@@ -1357,6 +1326,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <div class="explain" id="explainSeason" hidden><p style="margin:0">We played the rest of the season 10,000 times on a computer. Each game used our guess for who wins that game. The numbers below are how often each ending came up. &ldquo;Most likely wins&rdquo; is the middle result; &ldquo;usually between&rdquo; covers the middle 8 times out of 10. Ties are broken by group and conference record, then chance &mdash; the league&rsquo;s real tiebreak list is longer, so close races may be off by a hair. &ldquo;Book&rdquo; is the book&rsquo;s win-total line: when we sit far from it, we say so under the number. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p><p class="sub" id="seasonMeta" style="margin:8px 0 0"></p></div>
     </div>
     <p class="lede">NFL only. Every team&rsquo;s most likely win total, how often they make the playoffs, and how often they win it all &mdash; from 10,000 simulated seasons.</p>
+    <p class="sub">Our NFL numbers use the same approach as the NBA ones we held back &mdash; when we sit far from the book we say so under the number, and these are forecasts, not proven winners.</p>
     <div id="seasonTables"></div>
     <section class="block" aria-label="NBA">
       <h2>NBA is coming soon</h2>
@@ -1510,6 +1480,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
         <li><a href="#doc-dfs">DFS Optimizer</a></li>
         <li><a href="#doc-record">Our record</a></li>
         <li><a href="#doc-bankroll">Your money over a season</a></li>
+        <li><a href="#settingsTitle">Settings</a></li>
       </ul>
     </nav>
     <h1>How it works, <em>in plain words.</em></h1>
@@ -1536,6 +1507,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 
     <h3 id="doc-dfs">DFS Optimizer</h3>
     <p>Pick a slate (NBA or NFL) and a platform (DraftKings or FanDuel), then add the player salaries from that platform &mdash; upload the salary file, paste the salaries, or try the sample salaries to see how it works. The optimizer ranks players by their projected points and builds the best lineup it can that fits under the salary limit, plus two more options that differ from the first. Projected points are each player&rsquo;s recent average from our own game data &mdash; NBA from the last 5 games, NFL from the last 4 &mdash; and defense is set to 7 points for every team because we don&rsquo;t model defenses. These are forecasts, not guarantees.</p>
+    <p>This tool needs player salaries from DraftKings or FanDuel &mdash; upload the salary file they let you download, or paste the salaries in. The sample salaries are examples only, not real prices.</p>
 
     <h3 id="doc-record">Our record</h3>
     <p>The <a href="#record" data-goto="record">Our record</a> tab lists only bets that have finished, with the date, the pick, the odds, the result, and the profit at $100 per bet. Today&rsquo;s bets live on <a href="#bets" data-goto="bets">Our Bets</a> until their games finish.</p>
@@ -1557,6 +1529,34 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     </ul>
     <p>Every model is tested against past games before it goes live, and we keep score in Our Record so you can see how they&rsquo;ve done.</p>
     <p>Like the site? <a href="#books" data-goto="books" data-goto-support>Support it here</a> &mdash; tips are optional and never affect any pick.</p>
+
+    <section class="settings-block" aria-labelledby="settingsTitle">
+      <h3 id="settingsTitle">Settings</h3>
+      <div class="settings-section">
+        <p class="settings-label" id="viewLabel">View &mdash; Player picks</p>
+        <div class="segmented" role="group" aria-labelledby="viewLabel">
+          <button type="button" data-prop-view="tiles" aria-pressed="true">Tiles</button>
+          <button type="button" data-prop-view="list" aria-pressed="false">List</button>
+        </div>
+        <p class="settings-hint" id="viewHint">Tiles show each prop as a card with full details.</p>
+      </div>
+      <div class="settings-section">
+        <p class="settings-label" id="styleLabel">Style</p>
+        <div class="set-style-list" role="group" aria-labelledby="styleLabel">
+          <button type="button" class="set-style" data-style-opt="classic" aria-pressed="true"><span>Classic</span><span class="in-use">In use</span></button>
+          <button type="button" class="set-style" data-style-opt="dark" aria-pressed="false"><span>Dark sportsbook</span><span class="in-use">In use</span></button>
+          <button type="button" class="set-style" data-style-opt="minimal" aria-pressed="false"><span>Minimal</span><span class="in-use">In use</span></button>
+          <button type="button" class="set-style" data-style-opt="terminal" aria-pressed="false"><span>Terminal</span><span class="in-use">In use</span></button>
+        </div>
+      </div>
+      <div class="settings-section">
+        <button type="button" class="btn secondary reopen-onboard" style="width:100%;justify-content:center">Show the welcome message again</button>
+      </div>
+      <div class="settings-section">
+        <button type="button" class="btn feedback-send" id="copyFeedbackEmailBtn">Copy feedback email</button>
+        <p class="feedback-email">wyantkevin@gmail.com</p>
+      </div>
+    </section>
   </section>
 
   <footer>
@@ -1565,21 +1565,6 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <p>Tap the &#9432; icons throughout the site for the full details behind every pick.</p>
     <p><button type="button" class="reopen-onboard" style="background:none;border:0;padding:0;color:var(--accent);font-weight:700;font-size:inherit;cursor:pointer">Show the welcome message again</button></p>
   </footer>
-</div>
-<div class="onboard-backdrop" id="onboardBackdrop" hidden>
-  <div class="onboard" role="dialog" aria-modal="true" aria-labelledby="onboardTitle">
-    <h2 id="onboardTitle">Welcome</h2>
-    <p class="onboard-mission">We can&rsquo;t stop people from betting, but we can try letting them make better informed bets.</p>
-    <p>We built our own forecasting models in-house to cover multiple sports and props.</p>
-    <p>Forecasts, not guarantees. We show our work &mdash; check Our Record to see how we do.</p>
-    <ul>
-      <li><b>Moneyline</b> &mdash; who we think wins each game</li>
-      <li><b>Player Picks</b> &mdash; the top player-prop forecasts, ranked by value</li>
-      <li><b>Touchdowns</b> &mdash; anytime-touchdown chances for NFL games</li>
-      <li><b>Check my ticket</b> &mdash; snap a photo of your bet slip for an instant 0&ndash;100 score</li>
-    </ul>
-    <button type="button" class="btn" id="onboardGotIt">Got it</button>
-  </div>
 </div>
 <script>
 (function(){
@@ -2874,27 +2859,8 @@ var tdDeepLink=(initialHash==="td"||initialHash==="touchdowns");
 if(tdDeepLink) switchTab("props",false);
 else if(tabs.some(function(t){return t.getAttribute("data-tab")===initialHash;})) switchTab(initialHash,false);
 
-/* ================= SETTINGS PANEL ================= */
-function closeSettings(){
-  var p=$("settingsPanel");
-  if(p) p.hidden=true;
-  var b=$("settingsBtn");
-  if(b) b.setAttribute("aria-expanded","false");
-}
-var settingsBtnEl=$("settingsBtn");
-if(settingsBtnEl&&settingsBtnEl.addEventListener) settingsBtnEl.addEventListener("click",function(e){
-  e.stopPropagation();
-  var p=$("settingsPanel"); if(!p||!p.classList) return; var open=p.hidden;
-  p.hidden=!open;
-  this.setAttribute("aria-expanded",open?"true":"false");
-});
-document.addEventListener("click",function(e){
-  var p=$("settingsPanel");
-  if(!p||p.hidden) return;
-  var t=e.target;
-  if(t.closest&&!t.closest("#settingsPanel")&&!t.closest("#settingsBtn")) closeSettings();
-});
-document.addEventListener("keydown",function(e){if(e.key==="Escape") closeSettings();});
+/* Settings live at the bottom of the How it works tab - there is no
+   settings button or pop-up panel in the header anymore. */
 
 /* ================= STYLE SWITCHER ================= */
 /* The chosen style persists in localStorage, so it survives a reload —
@@ -6731,23 +6697,32 @@ function fmtUpdatedLabel(d){
 /* Now that SNAPSHOT_UPDATED has been read, sync the Home picks
    heading once more so a stale snapshot is titled with its own date. */
 try{syncHomePicksHeading();}catch(e){}
-/* First-run welcome: shown once, then remembered with a single flag
-   (suite_onboarded_v1). "Show the welcome message again" in Settings
-   or the footer re-opens it; Got it dismisses it again. */
+/* Welcome banner: sits at the top of Home, in the page flow - it
+   never covers or blocks the page. Shown until "Got it" is tapped;
+   that tap is remembered with a single flag (suite_onboarded_v1)
+   when localStorage works. If localStorage throws on read and on
+   write, the banner still hides for the rest of this visit (the
+   in-memory flag below) and simply comes back on the next visit.
+   "Show the welcome message again" (in Settings, and in the
+   footer) brings it back on request. */
 (function(){
-  var KEY="suite_onboarded_v1", back=$("onboardBackdrop");
-  if(!back) return;
+  var KEY="suite_onboarded_v1", banner=$orNull("welcomeBanner");
+  if(!banner) return;
+  var dismissedThisSession=false;
   function seen(){try{return localStorage.getItem(KEY)==="1";}catch(e){return false;}}
   function markSeen(){try{localStorage.setItem(KEY,"1");}catch(e){}}
-  function show(){back.hidden=false;var b=$("onboardGotIt");if(b) b.focus();}
-  function hide(){back.hidden=true;markSeen();}
-  var got=$("onboardGotIt"); if(got) got.addEventListener("click",hide);
-  back.addEventListener("click",function(e){if(e.target===back) hide();});
-  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!back.hidden) hide();});
+  function show(){banner.hidden=false;}
+  function hide(){banner.hidden=true;dismissedThisSession=true;markSeen();}
+  var got=$orNull("welcomeGotIt"); if(got) got.addEventListener("click",hide);
   Array.prototype.forEach.call(document.querySelectorAll(".reopen-onboard"),function(b){
-    b.addEventListener("click",function(){closeSettings();show();});
+    b.addEventListener("click",function(){
+      dismissedThisSession=false;
+      switchTab("overview",false);
+      show();
+      window.scrollTo({top:0,behavior:"auto"});
+    });
   });
-  if(!seen()) show();
+  if(!seen()&&!dismissedThisSession) show(); else banner.hidden=true;
 })();
 /* ================= SCORES — live from ESPN =================
    The site's first live-data feature: scores and standings are fetched
@@ -6941,15 +6916,38 @@ function scoreRowHtml(g){
   var pickHtml=pick?'<div class="score-pick"><span class="picktag">Our pick: '+esc(pick.team)+' ('+pick.p+'%)</span></div>':"";
   return '<div class="trow"><div class="who"><b>'+matchup+'</b>'+names+'<div class="score-status-line">'+pill+'<span class="score-status-text">'+esc(statusTextFor(g))+'</span></div>'+pickHtml+'</div>'+scoreHtml+'</div>';
 }
+function syncScoresRetryBtn(){
+  var rb=document.getElementById("scoresRetryBtn");
+  if(rb) rb.hidden=!(scoresState.loaded&&!scoresState.anyOk);
+}
+function syncStandingsNote(){
+  var note=document.getElementById("standingsNote");
+  if(!note) return;
+  var f=scoresState.filter;
+  if(f==="cfb"){note.textContent="College standings coming soon.";note.hidden=false;return;}
+  if(!standState.loaded){note.hidden=true;return;}
+  var has=false;
+  if(f==="all"){
+    has=STAND_ORDER.some(function(S){var r=standState.byLeague[S.key];return !!(r&&r.ok&&r.groups&&r.groups.length);});
+  }else if(f==="nfl"||f==="nba"||f==="nhl"){
+    var rr=standState.byLeague[f];
+    has=!!(rr&&rr.ok&&rr.groups&&rr.groups.length);
+  }
+  if(has){note.hidden=true;return;}
+  note.textContent="No standings for this league from our source.";
+  note.hidden=false;
+}
 function renderScores(){
   var body=$("scoresBody");
   if(!body) return;
   if(!scoresState.loaded){
     body.innerHTML='<div class="empty-state"><p>Loading scores&hellip;</p></div>';
+    syncScoresRetryBtn();
     return;
   }
   if(!scoresState.anyOk){
     body.innerHTML='<div class="empty-state"><p>Scores could not be loaded &mdash; try again.</p><p style="margin-top:10px"><button type="button" class="btn secondary" data-scores-retry>Try again</button></p></div>';
+    syncScoresRetryBtn();
     return;
   }
   var html="";
@@ -6969,6 +6967,7 @@ function renderScores(){
     html+='</section>';
   });
   body.innerHTML=html;
+  syncScoresRetryBtn();
 }
 function loadScores(){
   if(scoresState.loading) return;
@@ -7097,6 +7096,7 @@ function renderStandings(){
     html+='</div>';
   });
   body.innerHTML=html;
+  syncStandingsNote();
 }
 function loadStandings(){
   if(standState.loading) return;
@@ -7171,6 +7171,7 @@ if(scoresFiltersEl) scoresFiltersEl.addEventListener("click",function(e){
   });
   if(scoresState.loaded) renderScores();
   else ensureScoresLoaded();
+  syncStandingsNote();
 });
 var scoresRefreshBtn=$("scoresRefresh");
 if(scoresRefreshBtn) scoresRefreshBtn.addEventListener("click",function(){scoresState.loading=false;scoresState.loaded=false;loadScores();});
@@ -7220,7 +7221,7 @@ function renderSeason(){
   });
   host.innerHTML=html;
   var meta=document.getElementById("seasonMeta");
-  if(meta) meta.textContent="Numbers from "+fmtDateLong(d.generated)+" · season played "+d.n_sims.toLocaleString()+" times · our game guesses from "+fmtDateLong(d.model_as_of)+" · book numbers: "+d.market_source+" ("+fmtDateLong(d.market_date)+").";
+  if(meta) meta.textContent="Numbers from "+fmtDateLong(d.generated)+" · we played out the rest of the season "+(d.n_sims||10000).toLocaleString()+" times · our game guesses from "+fmtDateLong(d.model_as_of)+" · book numbers: "+d.market_source+" ("+fmtDateLong(d.market_date)+").";
 }
 
 try{renderSeason();}catch(e){}
@@ -7249,7 +7250,7 @@ var dfsSlate="NBA", dfsPlatform="DK";
 /* Date of the projections on this tab, set by the daily pipeline
    edit (empty until it does). When set, it is shown on the
    #dfsAsOf line so stale projections are distinguishable from
-   fresh ones; while empty the line stays hidden. */
+   fresh ones; while empty it reads "Last update unknown". */
 var DFS_AS_OF="";
 function dfsUpdatedLabel(d){
   try{
