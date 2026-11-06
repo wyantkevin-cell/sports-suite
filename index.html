@@ -964,7 +964,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 
     <section class="block explain-wrap" id="gamesBlock">
       <h2 class="explain-head"><span class="explain-title" id="slateHeading">NFL games &mdash; Nov 4&ndash;9</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainSlate" aria-label="How to read these games">i</button></h2>
-      <div class="explain" id="explainSlate" hidden><p style="margin:0">The <b>bold</b> team is the pick, and the % is how often it is expected to win. Under each game, <b>Model A</b> is the other model&rsquo;s number and <b>Model B</b> is our model&rsquo;s number. A game shows only the model lines whose numbers are in this snapshot &mdash; for other sports and dates, only Model A is posted and our number is not in yet. The Nov 4 NBA headline is the average of the two models; its two numbers are not shown separately in this snapshot. Sunday NFL games and Saturday CFB games have no market line yet, so they show &ldquo;Line: TBD&rdquo;. &ldquo;Close call&rdquo; means barely better than a coin flip &mdash; a lean, not a pick to trust. Check the news before using any of these: injuries and late news are invisible to old box scores.</p></div>
+      <div class="explain" id="explainSlate" hidden><p style="margin:0">The <b>bold</b> team is the pick, and the % is how often it is expected to win. Under each game, <b>Model A</b> is the other model&rsquo;s number and <b>Model B</b> is our model&rsquo;s number. A game shows only the model lines whose numbers are in this snapshot &mdash; for other sports and dates, only Model A is posted and our number is not in yet. The Nov 4 NBA headline is the average of the two models; its two numbers are not shown separately in this snapshot. Games with a posted book line show it next to our pick; games without one yet show &ldquo;Line: TBD&rdquo;. &ldquo;Close call&rdquo; means barely better than a coin flip &mdash; a lean, not a pick to trust. Check the news before using any of these: injuries and late news are invisible to old box scores.</p></div>
       <div id="slateList" style="margin-top:12px"></div>
     </section>
 
@@ -1277,6 +1277,11 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <p class="lede">Our predicted total vs the book&rsquo;s number. A lean means we see it differently, not a guaranteed win.</p>
     <div class="freshness"></div>
     <div class="model-warning" role="alert"><span class="model-warning-title">Warning &mdash; read this first</span><p>Roster tracker adjusted: Ravens on 3rd-string QB Fagnano. Model now accounts for the QB downgrade (-9.7 points). Market moved from 49.5 to 40.5.</p></div>
+    <div class="filter-group" style="margin-top:16px">
+      <span class="filter-label" id="totalsSportLabel">Sport</span>
+      <div class="filters" role="group" aria-labelledby="totalsSportLabel" id="totalsSportFilters"></div>
+    </div>
+    <p class="note" id="totalsCount" aria-live="polite"></p>
     <div class="totals-list" id="totalsList"></div>
     <p class="note">How these do over time will show on <a href="#record" data-goto="record">Our record</a>.</p>
   </section>
@@ -1287,6 +1292,11 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <p class="lede">Our predicted spread vs the book&rsquo;s number. A lean means we see it differently, not a guaranteed win.</p>
     <div class="freshness"></div>
     <div class="model-warning" role="alert"><span class="model-warning-title">Warning &mdash; read this first</span><p>Roster tracker adjusted: Ravens on 3rd-string QB Fagnano. Model now accounts for the QB downgrade. Market moved from BAL -4.5 to JAX -9.5.</p></div>
+    <div class="filter-group" style="margin-top:16px">
+      <span class="filter-label" id="spreadsSportLabel">Sport</span>
+      <div class="filters" role="group" aria-labelledby="spreadsSportLabel" id="spreadsSportFilters"></div>
+    </div>
+    <p class="note" id="spreadsCount" aria-live="polite"></p>
     <div class="spreads-list" id="spreadsList"></div>
     <p class="note">How these do over time will show on <a href="#record" data-goto="record">Our record</a>.</p>
   </section>
@@ -1654,9 +1664,9 @@ var FEED_GAMES=[
 var SOCCER_GAMES=[
 ];
 /* NFL Week 9 headline forecasts, as supplied. p is the pick's chance
-   in percent. Sunday games have no market line yet, so they render
-   "Line: TBD". JAX @ BAL already has a book line, so it keeps the book
-   spread (JAX -9.5) and the Fagnano note instead. Times are PT.
+   in percent. Entries carry the book spread from DraftKings via ESPN
+   where one was posted (14 of the 15 games); a game without a posted
+   line still renders "Line: TBD". Times are PT.
    A game may also carry sim: the adjusted Monte Carlo sample for that
    game (n_sims, league, win_pct_home, margin_mean, total_mean, plus
    p_over_book and p_cover_book — the sim chance of going over the book
@@ -1665,83 +1675,83 @@ var SOCCER_GAMES=[
    a margin. Games without
    sim show no sim lines at all. Only JAX @ BAL has sim in this snapshot. */
 var NFL_FORECASTS=[
-  {g:"JAX @ BAL",date:"Nov 5",day:"Thu Nov 5",time:"5:15pm",pick:"JAX",p:79.6,markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV05JACBAL", "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"}},
-  {g:"CIN @ ATL",date:"Nov 8",day:"Sun Nov 8",time:"6:30am",pick:"CIN",p:70.4,markets:{"polymarket": "https://polymarket.us/event/nfl-cin-atl-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08CINATL", "novig": "https://app.novig.us/event-markets/01a17f1a-e8c2-7253-ab6a-aa31d5a8a1c5"}},
-  {g:"DAL @ IND",date:"Nov 8",day:"Sun Nov 8",time:"10:00am",pick:"DAL",p:70.9,markets:{"polymarket": "https://polymarket.us/event/nfl-dal-ind-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08DALIND", "novig": "https://app.novig.us/event-markets/01a17f1a-eb49-75b1-87c9-dce9271b6bab"}},
-  {g:"NYJ @ KC",date:"Nov 8",day:"Sun Nov 8",time:"10:00am",pick:"KC",p:76.1,markets:{"polymarket": "https://polymarket.us/event/nfl-nyj-kc-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08NYJKC", "novig": "https://app.novig.us/event-markets/01a17f1a-ec74-70b3-b5f0-7639783d83df"}},
-  {g:"DET @ MIA",date:"Nov 8",day:"Sun Nov 8",time:"10:00am",pick:"DET",p:84.7,markets:{"polymarket": "https://polymarket.us/event/nfl-det-mia-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08DETMIA", "novig": "https://app.novig.us/event-markets/01a17f1a-e957-77c1-816c-2d0ae98be0de"}},
-  {g:"CLE @ NO",date:"Nov 8",day:"Sun Nov 8",time:"10:00am",pick:"CLE",p:50.3,markets:{"polymarket": "https://polymarket.us/event/nfl-cle-no-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08CLENO", "novig": "https://app.novig.us/event-markets/01a17f1a-ea0b-7720-aa75-5899ba78ead0"}},
-  {g:"NYG @ PHI",date:"Nov 8",day:"Sun Nov 8",time:"10:00am",pick:"NYG",p:67.5,markets:{"polymarket": "https://polymarket.us/event/nfl-nyg-phi-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08NYGPHI", "novig": "https://app.novig.us/event-markets/01a17f1a-eacc-7fa0-856c-82ea9c7d04ee"}},
-  {g:"LAR @ WAS",date:"Nov 8",day:"Sun Nov 8",time:"10:00am",pick:"LAR",p:70.5,markets:{"polymarket": "https://polymarket.us/event/nfl-la-was-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08LARWAS", "novig": "https://app.novig.us/event-markets/01a17f1a-ed00-78e3-b4bb-fab0dfb71dc4"}},
-  {g:"DEN @ CAR",date:"Nov 8",day:"Sun Nov 8",time:"10:00am",pick:"DEN",p:72.3,markets:{"polymarket": "https://polymarket.us/event/nfl-den-car-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08DENCAR", "novig": "https://app.novig.us/event-markets/01a17f1a-ebea-7641-9bc7-f5f9e80c7946"}},
-  {g:"HOU @ LAC",date:"Nov 8",day:"Sun Nov 8",time:"1:05pm",pick:"HOU",p:75.4,markets:{"polymarket": "https://polymarket.us/event/nfl-hou-lac-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08HOULAC", "novig": "https://app.novig.us/event-markets/01a17f1a-eda7-7820-8e04-5b45d714ea91"}},
-  {g:"GB @ NE",date:"Nov 8",day:"Sun Nov 8",time:"1:25pm",pick:"NE",p:58.5,markets:{"polymarket": "https://polymarket.us/event/nfl-gb-ne-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08GBNE", "novig": "https://app.novig.us/event-markets/01a17f1a-ee65-7511-ac0e-6042805ef7c3"}},
-  {g:"LV @ SF",date:"Nov 8",day:"Sun Nov 8",time:"1:25pm",pick:"SF",p:80.5,markets:{"polymarket": "https://polymarket.us/event/nfl-lv-sf-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08LVSF", "novig": "https://app.novig.us/event-markets/01a17f1a-ef94-7a33-ac49-42d1cde2b17a"}},
-  {g:"ARI @ SEA",date:"Nov 8",day:"Sun Nov 8",time:"1:25pm",pick:"SEA",p:78.2,markets:{"polymarket": "https://polymarket.us/event/nfl-ari-sea-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08ARISEA", "novig": "https://app.novig.us/event-markets/01a17f1a-eee8-70d3-afbf-5b597b901f43"}},
-  {g:"TB @ CHI",date:"Nov 8",day:"Sun Nov 8",time:"5:20pm",pick:"CHI",p:62.3,markets:{"polymarket": "https://polymarket.us/event/nfl-tb-chi-2026-11-09", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08TBCHI", "novig": "https://app.novig.us/event-markets/01a17f1a-f02d-74e1-ba1f-5656d7500a9b"}},
+  {g:"JAX @ BAL",date:"Nov 5",day:"Thu Nov 5",time:"5:15pm",pick:"JAX",p:79.6,book:"-10",markets:{"polymarket": "https://polymarket.us/event/nfl-jax-bal-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV05JACBAL", "novig": "https://app.novig.us/event-markets/01a17f1a-e83b-7773-9d2f-61938db0999f"}},
+  {g:"CIN @ ATL",date:"Nov 8",day:"Sun Nov 8",time:"6:30am",pick:"CIN",p:70.4,book:"-3",markets:{"polymarket": "https://polymarket.us/event/nfl-cin-atl-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08CINATL", "novig": "https://app.novig.us/event-markets/01a17f1a-e8c2-7253-ab6a-aa31d5a8a1c5"}},
+  {g:"DAL @ IND",date:"Nov 8",day:"Sun Nov 8",time:"10:00am",pick:"DAL",p:70.9,book:"-5.5",markets:{"polymarket": "https://polymarket.us/event/nfl-dal-ind-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08DALIND", "novig": "https://app.novig.us/event-markets/01a17f1a-eb49-75b1-87c9-dce9271b6bab"}},
+  {g:"NYJ @ KC",date:"Nov 8",day:"Sun Nov 8",time:"10:00am",pick:"KC",p:76.1,book:"-10",markets:{"polymarket": "https://polymarket.us/event/nfl-nyj-kc-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08NYJKC", "novig": "https://app.novig.us/event-markets/01a17f1a-ec74-70b3-b5f0-7639783d83df"}},
+  {g:"DET @ MIA",date:"Nov 8",day:"Sun Nov 8",time:"10:00am",pick:"DET",p:84.7,book:"-7",markets:{"polymarket": "https://polymarket.us/event/nfl-det-mia-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08DETMIA", "novig": "https://app.novig.us/event-markets/01a17f1a-e957-77c1-816c-2d0ae98be0de"}},
+  {g:"CLE @ NO",date:"Nov 8",day:"Sun Nov 8",time:"10:00am",pick:"CLE",p:50.3,book:"+3",markets:{"polymarket": "https://polymarket.us/event/nfl-cle-no-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08CLENO", "novig": "https://app.novig.us/event-markets/01a17f1a-ea0b-7720-aa75-5899ba78ead0"}},
+  {g:"NYG @ PHI",date:"Nov 8",day:"Sun Nov 8",time:"10:00am",pick:"NYG",p:67.5,book:"-3.5",markets:{"polymarket": "https://polymarket.us/event/nfl-nyg-phi-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08NYGPHI", "novig": "https://app.novig.us/event-markets/01a17f1a-eacc-7fa0-856c-82ea9c7d04ee"}},
+  {g:"LAR @ WAS",date:"Nov 8",day:"Sun Nov 8",time:"10:00am",pick:"LAR",p:70.5,book:"-4.5",markets:{"polymarket": "https://polymarket.us/event/nfl-la-was-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08LARWAS", "novig": "https://app.novig.us/event-markets/01a17f1a-ed00-78e3-b4bb-fab0dfb71dc4"}},
+  {g:"DEN @ CAR",date:"Nov 8",day:"Sun Nov 8",time:"10:00am",pick:"DEN",p:72.3,book:"-2.5",markets:{"polymarket": "https://polymarket.us/event/nfl-den-car-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08DENCAR", "novig": "https://app.novig.us/event-markets/01a17f1a-ebea-7641-9bc7-f5f9e80c7946"}},
+  {g:"HOU @ LAC",date:"Nov 8",day:"Sun Nov 8",time:"1:05pm",pick:"HOU",p:75.4,book:"-4.5",markets:{"polymarket": "https://polymarket.us/event/nfl-hou-lac-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08HOULAC", "novig": "https://app.novig.us/event-markets/01a17f1a-eda7-7820-8e04-5b45d714ea91"}},
+  {g:"GB @ NE",date:"Nov 8",day:"Sun Nov 8",time:"1:25pm",pick:"NE",p:58.5,book:"-3",markets:{"polymarket": "https://polymarket.us/event/nfl-gb-ne-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08GBNE", "novig": "https://app.novig.us/event-markets/01a17f1a-ee65-7511-ac0e-6042805ef7c3"}},
+  {g:"LV @ SF",date:"Nov 8",day:"Sun Nov 8",time:"1:25pm",pick:"SF",p:80.5,book:"-10",markets:{"polymarket": "https://polymarket.us/event/nfl-lv-sf-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08LVSF", "novig": "https://app.novig.us/event-markets/01a17f1a-ef94-7a33-ac49-42d1cde2b17a"}},
+  {g:"ARI @ SEA",date:"Nov 8",day:"Sun Nov 8",time:"1:25pm",pick:"SEA",p:78.2,book:"-8.5",markets:{"polymarket": "https://polymarket.us/event/nfl-ari-sea-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08ARISEA", "novig": "https://app.novig.us/event-markets/01a17f1a-eee8-70d3-afbf-5b597b901f43"}},
+  {g:"TB @ CHI",date:"Nov 8",day:"Sun Nov 8",time:"5:20pm",pick:"CHI",p:62.3,book:"-6",markets:{"polymarket": "https://polymarket.us/event/nfl-tb-chi-2026-11-09", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV08TBCHI", "novig": "https://app.novig.us/event-markets/01a17f1a-f02d-74e1-ba1f-5656d7500a9b"}},
   {g:"BUF @ MIN",date:"Nov 9",day:"Mon Nov 9",time:"",pick:"BUF",p:64.2,markets:{"polymarket": "https://polymarket.us/event/nfl-buf-min-2026-11-10", "kalshi": "https://kalshi.com/markets/KXNFLGAME-26NOV09BUFMIN", "novig": "https://app.novig.us/event-markets/01a17f1a-f0e2-7e70-8389-a634f78e0796"}}
 ];
-/* CFB Saturday Nov 7 headline forecasts, as supplied. p is the pick's
-   chance in percent. Model forecasts only — no market lines yet, so
-   they render "Line: TBD". 49 games; 2 did not generate and are not
-   listed. Times are PT kickoffs, in kickoff order. */
+/* CFB headline forecasts, as supplied. p is the pick's chance in
+   percent. Entries carry the book spread from DraftKings via ESPN
+   where one was posted; games without a posted line still show
+   "Line: TBD". 56 games. Times are PT kickoffs, in kickoff order. */
 var CFB_FORECASTS=[
-  {g:"UTSA @ FAU",date:"Nov 5",day:"Thu Nov 5",time:"4:30pm",pick:"UTSA",p:62,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV05UTSAFAU", "novig": null}},
-  {g:"JMU @ USM",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"JMU",p:65.6,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV05JMUUSM", "novig": null}},
-  {g:"VT @ SMU",date:"Nov 6",day:"Fri Nov 6",time:"4:00pm",pick:"SMU",p:74,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV06VTSMU", "novig": null}},
-  {g:"USF @ ECU",date:"Nov 6",day:"Fri Nov 6",time:"4:30pm",pick:"USF",p:51.9,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV06USFECU", "novig": null}},
-  {g:"NEB @ ILL",date:"Nov 6",day:"Fri Nov 6",time:"5:00pm",pick:"ILL",p:63.9,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV06NEBILL", "novig": null}},
-  {g:"UNM @ NEV",date:"Nov 6",day:"Fri Nov 6",time:"6:00pm",pick:"UNM",p:65.7,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV06UNMNEV", "novig": null}},
-  {g:"TCU @ ARIZ",date:"Nov 6",day:"Fri Nov 6",time:"7:15pm",pick:"ARIZ",p:80.4,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV06TCUARIZ", "novig": "https://app.novig.us/event-markets/01a18ad0-83fd-7763-a48a-9d7aa81593bd"}},
-  {g:"BYU @ UTAH",date:"Nov 7",day:"Sat Nov 7",time:"9:00am",pick:"UTAH",p:79.8,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07BYUUTAH", "novig": "https://app.novig.us/event-markets/01a18dd2-74e8-7541-9ad7-a2555743b436"}},
-  {g:"TEX @ MIZ",date:"Nov 7",day:"Sat Nov 7",time:"9:00am",pick:"MIZ",p:59.9,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"UCLA @ MINN",date:"Nov 7",day:"Sat Nov 7",time:"9:00am",pick:"UCLA",p:56.9,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07UCLAMINN", "novig": null}},
-  {g:"ISU @ BAY",date:"Nov 7",day:"Sat Nov 7",time:"9:00am",pick:"BAY",p:70.6,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07ISUBAY", "novig": null}},
-  {g:"CLEM @ SYR",date:"Nov 7",day:"Sat Nov 7",time:"9:00am",pick:"SYR",p:52.8,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07CLEMSYR", "novig": "https://app.novig.us/event-markets/01a18dd2-663f-7e23-aa85-55c6578c6ce8"}},
-  {g:"FSU @ BC",date:"Nov 7",day:"Sat Nov 7",time:"9:00am",pick:"BC",p:64.7,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07FSUBC", "novig": null}},
-  {g:"UNC @ CONN",date:"Nov 7",day:"Sat Nov 7",time:"9:00am",pick:"CONN",p:65.9,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07UNCCONN", "novig": null}},
-  {g:"TLSA @ TULN",date:"Nov 7",day:"Sat Nov 7",time:"9:00am",pick:"TULN",p:72.5,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07TLSATULN", "novig": null}},
-  {g:"DUKE @ NCSU",date:"Nov 7",day:"Sat Nov 7",time:"9:30am",pick:"DUKE",p:53.2,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"MD @ PUR",date:"Nov 7",day:"Sat Nov 7",time:"9:30am",pick:"PUR",p:72.1,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07MDPUR", "novig": null}},
-  {g:"ARK @ AUB",date:"Nov 7",day:"Sat Nov 7",time:"9:45am",pick:"AUB",p:70.3,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07ARKAUB", "novig": "https://app.novig.us/event-markets/01a18ded-d773-7c62-be92-f3e485cf9c84"}},
-  {g:"OKST @ KSU",date:"Nov 7",day:"Sat Nov 7",time:"10:00am",pick:"KSU",p:54.4,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07OKSTKSU", "novig": null}},
-  {g:"ODU @ CCU",date:"Nov 7",day:"Sat Nov 7",time:"10:00am",pick:"CCU",p:66.3,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"GAST @ APP",date:"Nov 7",day:"Sat Nov 7",time:"11:30am",pick:"APP",p:68,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07GASTAPP", "novig": null}},
-  {g:"ULM @ ARST",date:"Nov 7",day:"Sat Nov 7",time:"12:00pm",pick:"ARST",p:83.1,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07ULMARST", "novig": null}},
-  {g:"DEL @ KENN",date:"Nov 7",day:"Sat Nov 7",time:"12:00pm",pick:"KENN",p:53.6,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07DELKENN", "novig": "https://app.novig.us/event-markets/01a18e7e-be77-7111-80ec-2b3d47bb4d1c"}},
-  {g:"ALA @ LSU",date:"Nov 7",day:"Sat Nov 7",time:"12:30pm",pick:"LSU",p:66.6,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07ALALSU", "novig": "https://app.novig.us/event-markets/01a18e9a-e9cc-7420-9131-ca7bc83197b7"}},
-  {g:"ORE @ OSU",date:"Nov 7",day:"Sat Nov 7",time:"12:30pm",pick:"OSU",p:79.8,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07OREOSU", "novig": null}},
-  {g:"CIN @ HOU",date:"Nov 7",day:"Sat Nov 7",time:"12:30pm",pick:"HOU",p:80.6,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07CINHOU", "novig": null}},
-  {g:"PSU @ WASH",date:"Nov 7",day:"Sat Nov 7",time:"12:30pm",pick:"WASH",p:69.5,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07PSUWASH", "novig": null}},
-  {g:"CLT @ UAB",date:"Nov 7",day:"Sat Nov 7",time:"12:30pm",pick:"UAB",p:80.9,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"TEM @ NAVY",date:"Nov 7",day:"Sat Nov 7",time:"12:30pm",pick:"NAVY",p:73,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07TEMNAVY", "novig": null}},
-  {g:"MRSH @ GASO",date:"Nov 7",day:"Sat Nov 7",time:"12:30pm",pick:"GASO",p:67.2,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07MRSHGASO", "novig": null}},
-  {g:"WKU @ MTSU",date:"Nov 7",day:"Sat Nov 7",time:"12:30pm",pick:"MTSU",p:60.4,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"UCF @ KU",date:"Nov 7",day:"Sat Nov 7",time:"12:45pm",pick:"KU",p:65.9,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07UCFKU", "novig": null}},
-  {g:"RICE @ UNT",date:"Nov 7",day:"Sat Nov 7",time:"1:00pm",pick:"UNT",p:92.3,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07RICEUNT", "novig": null}},
-  {g:"NIU @ SJSU",date:"Nov 7",day:"Sat Nov 7",time:"1:00pm",pick:"SJSU",p:77.3,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07NIUSJSU", "novig": null}},
-  {g:"MOST @ FIU",date:"Nov 7",day:"Sat Nov 7",time:"1:00pm",pick:"FIU",p:65.8,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"LT @ TROY",date:"Nov 7",day:"Sat Nov 7",time:"1:00pm",pick:"LT",p:57.6,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07LTTROY", "novig": null}},
-  {g:"VAN @ MSST",date:"Nov 7",day:"Sat Nov 7",time:"1:15pm",pick:"MSST",p:64.9,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07VANMSST", "novig": null}},
-  {g:"RUTG @ WIS",date:"Nov 7",day:"Sat Nov 7",time:"1:15pm",pick:"WIS",p:83.2,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07RUTGWIS", "novig": null}},
-  {g:"USA @ UL",date:"Nov 7",day:"Sat Nov 7",time:"2:00pm",pick:"UL",p:73.5,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"BOIS @ CSU",date:"Nov 7",day:"Sat Nov 7",time:"3:00pm",pick:"BOIS",p:80.9,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"UK @ TENN",date:"Nov 7",day:"Sat Nov 7",time:"3:15pm",pick:"TENN",p:62.7,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07UKTENN", "novig": null}},
-  {g:"SHSU @ JXST",date:"Nov 7",day:"Sat Nov 7",time:"4:00pm",pick:"JXST",p:92.1,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"MIA @ ND",date:"Nov 7",day:"Sat Nov 7",time:"4:30pm",pick:"ND",p:67.7,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07MIAND", "novig": null}},
-  {g:"UGA @ MISS",date:"Nov 7",day:"Sat Nov 7",time:"4:30pm",pick:"MISS",p:60.8,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07UGAMISS", "novig": null}},
-  {g:"IOWA @ NU",date:"Nov 7",day:"Sat Nov 7",time:"4:30pm",pick:"NU",p:64.8,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"COLO @ ASU",date:"Nov 7",day:"Sat Nov 7",time:"4:30pm",pick:"ASU",p:74.4,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07COLOASU", "novig": null}},
-  {g:"LOU @ GT",date:"Nov 7",day:"Sat Nov 7",time:"4:30pm",pick:"LOU",p:68.6,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07LOUGT", "novig": null}},
-  {g:"MSU @ MICH",date:"Nov 7",day:"Sat Nov 7",time:"4:30pm",pick:"MICH",p:82.2,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07MSUMICH", "novig": null}},
-  {g:"AFA @ ARMY",date:"Nov 7",day:"Sat Nov 7",time:"4:30pm",pick:"ARMY",p:64,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07AFAARMY", "novig": null}},
-  {g:"OU @ FLA",date:"Nov 7",day:"Sat Nov 7",time:"4:45pm",pick:"FLA",p:62.9,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"LIB @ NMSU",date:"Nov 7",day:"Sat Nov 7",time:"5:00pm",pick:"LIB",p:76.1,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07LIBNMSU", "novig": null}},
-  {g:"WVU @ TTU",date:"Nov 7",day:"Sat Nov 7",time:"6:30pm",pick:"TTU",p:86.7,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07WVUTTU", "novig": null}},
-  {g:"FRES @ USU",date:"Nov 7",day:"Sat Nov 7",time:"6:30pm",pick:"FRES",p:51.5,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07FRESUSU", "novig": null}},
-  {g:"HAW @ UTEP",date:"Nov 7",day:"Sat Nov 7",time:"6:30pm",pick:"HAW",p:72.2,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07HAWUTEP", "novig": "https://app.novig.us/event-markets/01a18fe3-7b55-77a0-bac2-67e2bedb0151"}},
-  {g:"TXST @ ORST",date:"Nov 7",day:"Sat Nov 7",time:"7:30pm",pick:"ORST",p:63.5,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07TXSTORST", "novig": null}},
-  {g:"WYO @ UNLV",date:"Nov 7",day:"Sat Nov 7",time:"7:30pm",pick:"UNLV",p:71.4,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07WYOUNLV", "novig": null}}
+  {g:"UTSA @ FAU",date:"Nov 5",day:"Thu Nov 5",time:"4:30pm",pick:"UTSA",p:62,book:"-6.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV05UTSAFAU", "novig": null}},
+  {g:"JMU @ USM",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"JMU",p:65.6,book:"-13.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV05JMUUSM", "novig": null}},
+  {g:"VT @ SMU",date:"Nov 6",day:"Fri Nov 6",time:"4:00pm",pick:"SMU",p:74,book:"-6.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV06VTSMU", "novig": null}},
+  {g:"USF @ ECU",date:"Nov 6",day:"Fri Nov 6",time:"4:30pm",pick:"USF",p:51.9,book:"+2.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV06USFECU", "novig": null}},
+  {g:"NEB @ ILL",date:"Nov 6",day:"Fri Nov 6",time:"5:00pm",pick:"ILL",p:63.9,book:"+4.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV06NEBILL", "novig": null}},
+  {g:"UNM @ NEV",date:"Nov 6",day:"Fri Nov 6",time:"6:00pm",pick:"UNM",p:65.7,book:"-10",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV06UNMNEV", "novig": null}},
+  {g:"TCU @ ARIZ",date:"Nov 6",day:"Fri Nov 6",time:"7:15pm",pick:"ARIZ",p:80.4,book:"-7.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV06TCUARIZ", "novig": "https://app.novig.us/event-markets/01a18ad0-83fd-7763-a48a-9d7aa81593bd"}},
+  {g:"BYU @ UTAH",date:"Nov 7",day:"Sat Nov 7",time:"9:00am",pick:"UTAH",p:79.8,book:"-4.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07BYUUTAH", "novig": "https://app.novig.us/event-markets/01a18dd2-74e8-7541-9ad7-a2555743b436"}},
+  {g:"TEX @ MIZ",date:"Nov 7",day:"Sat Nov 7",time:"9:00am",pick:"MIZ",p:59.9,book:"+2.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"UCLA @ MINN",date:"Nov 7",day:"Sat Nov 7",time:"9:00am",pick:"UCLA",p:56.9,book:"-5.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07UCLAMINN", "novig": null}},
+  {g:"ISU @ BAY",date:"Nov 7",day:"Sat Nov 7",time:"9:00am",pick:"BAY",p:70.6,book:"-10",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07ISUBAY", "novig": null}},
+  {g:"CLEM @ SYR",date:"Nov 7",day:"Sat Nov 7",time:"9:00am",pick:"SYR",p:52.8,book:"+2.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07CLEMSYR", "novig": "https://app.novig.us/event-markets/01a18dd2-663f-7e23-aa85-55c6578c6ce8"}},
+  {g:"FSU @ BC",date:"Nov 7",day:"Sat Nov 7",time:"9:00am",pick:"BC",p:64.7,book:"+6.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07FSUBC", "novig": null}},
+  {g:"UNC @ CONN",date:"Nov 7",day:"Sat Nov 7",time:"9:00am",pick:"CONN",p:65.9,book:"+7",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07UNCCONN", "novig": null}},
+  {g:"TLSA @ TULN",date:"Nov 7",day:"Sat Nov 7",time:"9:00am",pick:"TULN",p:72.5,book:"+2.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07TLSATULN", "novig": null}},
+  {g:"DUKE @ NCSU",date:"Nov 7",day:"Sat Nov 7",time:"9:30am",pick:"DUKE",p:53.2,book:"-4",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"MD @ PUR",date:"Nov 7",day:"Sat Nov 7",time:"9:30am",pick:"PUR",p:72.1,book:"-6",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07MDPUR", "novig": null}},
+  {g:"ARK @ AUB",date:"Nov 7",day:"Sat Nov 7",time:"9:45am",pick:"AUB",p:70.3,book:"-10",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07ARKAUB", "novig": "https://app.novig.us/event-markets/01a18ded-d773-7c62-be92-f3e485cf9c84"}},
+  {g:"OKST @ KSU",date:"Nov 7",day:"Sat Nov 7",time:"10:00am",pick:"KSU",p:54.4,book:"+6",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07OKSTKSU", "novig": null}},
+  {g:"ODU @ CCU",date:"Nov 7",day:"Sat Nov 7",time:"10:00am",pick:"CCU",p:66.3,book:"-6.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"GAST @ APP",date:"Nov 7",day:"Sat Nov 7",time:"11:30am",pick:"APP",p:68,book:"-6",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07GASTAPP", "novig": null}},
+  {g:"ULM @ ARST",date:"Nov 7",day:"Sat Nov 7",time:"12:00pm",pick:"ARST",p:83.1,book:"-14.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07ULMARST", "novig": null}},
+  {g:"DEL @ KENN",date:"Nov 7",day:"Sat Nov 7",time:"12:00pm",pick:"KENN",p:53.6,book:"+1.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07DELKENN", "novig": "https://app.novig.us/event-markets/01a18e7e-be77-7111-80ec-2b3d47bb4d1c"}},
+  {g:"ALA @ LSU",date:"Nov 7",day:"Sat Nov 7",time:"12:30pm",pick:"LSU",p:66.6,book:"-6",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07ALALSU", "novig": "https://app.novig.us/event-markets/01a18e9a-e9cc-7420-9131-ca7bc83197b7"}},
+  {g:"ORE @ OSU",date:"Nov 7",day:"Sat Nov 7",time:"12:30pm",pick:"OSU",p:79.8,book:"-7.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07OREOSU", "novig": null}},
+  {g:"CIN @ HOU",date:"Nov 7",day:"Sat Nov 7",time:"12:30pm",pick:"HOU",p:80.6,book:"-10.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07CINHOU", "novig": null}},
+  {g:"PSU @ WASH",date:"Nov 7",day:"Sat Nov 7",time:"12:30pm",pick:"WASH",p:69.5,book:"-2.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07PSUWASH", "novig": null}},
+  {g:"CLT @ UAB",date:"Nov 7",day:"Sat Nov 7",time:"12:30pm",pick:"UAB",p:80.9,book:"-8.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"TEM @ NAVY",date:"Nov 7",day:"Sat Nov 7",time:"12:30pm",pick:"NAVY",p:73,book:"-7.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07TEMNAVY", "novig": null}},
+  {g:"MRSH @ GASO",date:"Nov 7",day:"Sat Nov 7",time:"12:30pm",pick:"GASO",p:67.2,book:"-10.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07MRSHGASO", "novig": null}},
+  {g:"WKU @ MTSU",date:"Nov 7",day:"Sat Nov 7",time:"12:30pm",pick:"MTSU",p:60.4,book:"+1.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"UCF @ KU",date:"Nov 7",day:"Sat Nov 7",time:"12:45pm",pick:"KU",p:65.9,book:"-2.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07UCFKU", "novig": null}},
+  {g:"RICE @ UNT",date:"Nov 7",day:"Sat Nov 7",time:"1:00pm",pick:"UNT",p:92.3,book:"-17.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07RICEUNT", "novig": null}},
+  {g:"NIU @ SJSU",date:"Nov 7",day:"Sat Nov 7",time:"1:00pm",pick:"SJSU",p:77.3,book:"-10",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07NIUSJSU", "novig": null}},
+  {g:"MOST @ FIU",date:"Nov 7",day:"Sat Nov 7",time:"1:00pm",pick:"FIU",p:65.8,book:"-4.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"LT @ TROY",date:"Nov 7",day:"Sat Nov 7",time:"1:00pm",pick:"LT",p:57.6,book:"-5.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07LTTROY", "novig": null}},
+  {g:"VAN @ MSST",date:"Nov 7",day:"Sat Nov 7",time:"1:15pm",pick:"MSST",p:64.9,book:"-3",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07VANMSST", "novig": null}},
+  {g:"RUTG @ WIS",date:"Nov 7",day:"Sat Nov 7",time:"1:15pm",pick:"WIS",p:83.2,book:"-17.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07RUTGWIS", "novig": null}},
+  {g:"USA @ UL",date:"Nov 7",day:"Sat Nov 7",time:"2:00pm",pick:"UL",p:73.5,book:"-7.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"BOIS @ CSU",date:"Nov 7",day:"Sat Nov 7",time:"3:00pm",pick:"BOIS",p:80.9,book:"-17.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"UK @ TENN",date:"Nov 7",day:"Sat Nov 7",time:"3:15pm",pick:"TENN",p:62.7,book:"-6.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07UKTENN", "novig": null}},
+  {g:"SHSU @ JXST",date:"Nov 7",day:"Sat Nov 7",time:"4:00pm",pick:"JXST",p:92.1,book:"-17.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"MIA @ ND",date:"Nov 7",day:"Sat Nov 7",time:"4:30pm",pick:"ND",p:67.7,book:"-7.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07MIAND", "novig": null}},
+  {g:"UGA @ MISS",date:"Nov 7",day:"Sat Nov 7",time:"4:30pm",pick:"MISS",p:60.8,book:"+3.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07UGAMISS", "novig": null}},
+  {g:"IOWA @ NU",date:"Nov 7",day:"Sat Nov 7",time:"4:30pm",pick:"NU",p:64.8,book:"-2.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"COLO @ ASU",date:"Nov 7",day:"Sat Nov 7",time:"4:30pm",pick:"ASU",p:74.4,book:"-3.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07COLOASU", "novig": null}},
+  {g:"LOU @ GT",date:"Nov 7",day:"Sat Nov 7",time:"4:30pm",pick:"LOU",p:68.6,book:"-14.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07LOUGT", "novig": null}},
+  {g:"MSU @ MICH",date:"Nov 7",day:"Sat Nov 7",time:"4:30pm",pick:"MICH",p:82.2,book:"-13.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07MSUMICH", "novig": null}},
+  {g:"AFA @ ARMY",date:"Nov 7",day:"Sat Nov 7",time:"4:30pm",pick:"ARMY",p:64,book:"-3",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07AFAARMY", "novig": null}},
+  {g:"OU @ FLA",date:"Nov 7",day:"Sat Nov 7",time:"4:45pm",pick:"FLA",p:62.9,book:"-6.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"LIB @ NMSU",date:"Nov 7",day:"Sat Nov 7",time:"5:00pm",pick:"LIB",p:76.1,book:"-16.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07LIBNMSU", "novig": null}},
+  {g:"WVU @ TTU",date:"Nov 7",day:"Sat Nov 7",time:"6:30pm",pick:"TTU",p:86.7,book:"-17.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07WVUTTU", "novig": null}},
+  {g:"FRES @ USU",date:"Nov 7",day:"Sat Nov 7",time:"6:30pm",pick:"FRES",p:51.5,book:"-2.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07FRESUSU", "novig": null}},
+  {g:"HAW @ UTEP",date:"Nov 7",day:"Sat Nov 7",time:"6:30pm",pick:"HAW",p:72.2,book:"-8.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07HAWUTEP", "novig": "https://app.novig.us/event-markets/01a18fe3-7b55-77a0-bac2-67e2bedb0151"}},
+  {g:"TXST @ ORST",date:"Nov 7",day:"Sat Nov 7",time:"7:30pm",pick:"ORST",p:63.5,book:"-6.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07TXSTORST", "novig": null}},
+  {g:"WYO @ UNLV",date:"Nov 7",day:"Sat Nov 7",time:"7:30pm",pick:"UNLV",p:71.4,book:"-5.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07WYOUNLV", "novig": null}}
 ];
 /* CBB headline forecasts, same shape as NFL_FORECASTS/CFB_FORECASTS:
    entries {g:"away @ home",date,day,time,pick,p}. Model B only — there
@@ -1749,67 +1759,67 @@ var CFB_FORECASTS=[
    and the headline is the Model B number alone. Empty for now: the
    daily 9am pipeline populates it each morning from the CBB v2 model. */
 var CBB_FORECASTS=[
-  {g:"MCN @ UNT",date:"Nov 5",day:"Thu Nov 5",time:"2:00pm",pick:"MCN",p:53.1,markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"MCN @ UNT",date:"Nov 5",day:"Thu Nov 5",time:"2:00pm",pick:"MCN",p:53.1,book:"-2.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
   {g:"VUL @ MORE",date:"Nov 5",day:"Thu Nov 5",time:"2:15pm",pick:"MORE",p:99.8,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"WAKE @ VAN",date:"Nov 5",day:"Thu Nov 5",time:"3:00pm",pick:"VAN",p:94,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05WAKEVAN", "novig": "https://app.novig.us/event-markets/01a1a7eb-e36e-7650-a70f-ed61bde32ce7"}},
-  {g:"UTC @ PSU",date:"Nov 5",day:"Thu Nov 5",time:"3:00pm",pick:"PSU",p:89.2,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"BELL @ IU",date:"Nov 5",day:"Thu Nov 5",time:"3:00pm",pick:"IU",p:99.4,markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"WAKE @ VAN",date:"Nov 5",day:"Thu Nov 5",time:"3:00pm",pick:"VAN",p:94,book:"-18.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05WAKEVAN", "novig": "https://app.novig.us/event-markets/01a1a7eb-e36e-7650-a70f-ed61bde32ce7"}},
+  {g:"UTC @ PSU",date:"Nov 5",day:"Thu Nov 5",time:"3:00pm",pick:"PSU",p:89.2,book:"-12.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"BELL @ IU",date:"Nov 5",day:"Thu Nov 5",time:"3:00pm",pick:"IU",p:99.4,book:"-29.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
   {g:"MSMC @ ARMY",date:"Nov 5",day:"Thu Nov 5",time:"3:00pm",pick:"ARMY",p:99.6,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"LIU @ HALL",date:"Nov 5",day:"Thu Nov 5",time:"3:30pm",pick:"HALL",p:95.8,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05LIUHALL", "novig": null}},
+  {g:"LIU @ HALL",date:"Nov 5",day:"Thu Nov 5",time:"3:30pm",pick:"HALL",p:95.8,book:"-17.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05LIUHALL", "novig": null}},
   {g:"FVSU @ FAMU",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"FAMU",p:78.8,markets:{"polymarket": null, "kalshi": null, "novig": null}},
   {g:"HWPU @ TXST",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"TXST",p:99.7,markets:{"polymarket": null, "kalshi": null, "novig": null}},
   {g:"SOVA @ RICH",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"RICH",p:99.6,markets:{"polymarket": null, "kalshi": null, "novig": null}},
   {g:"CBS @ PV",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"PV",p:99.6,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"GAST @ CLT",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"CLT",p:87,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"HOW @ ALCN",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"HOW",p:76.5,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05HOWALCN", "novig": null}},
-  {g:"HOF @ PRIN",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"PRIN",p:59.6,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05HOFPRIN", "novig": "https://app.novig.us/event-markets/01a1a7eb-e515-7383-ba0f-c2853b080b67"}},
-  {g:"COR @ LEH",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"LEH",p:53.9,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05CORLEH", "novig": "https://app.novig.us/event-markets/01a1a91a-03ab-7ea2-bb23-d1f928319b2d"}},
+  {g:"GAST @ CLT",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"CLT",p:87,book:"-10.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"HOW @ ALCN",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"HOW",p:76.5,book:"-9.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05HOWALCN", "novig": null}},
+  {g:"HOF @ PRIN",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"PRIN",p:59.6,book:"-3.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05HOFPRIN", "novig": "https://app.novig.us/event-markets/01a1a7eb-e515-7383-ba0f-c2853b080b67"}},
+  {g:"COR @ LEH",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"LEH",p:53.9,book:"-1.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05CORLEH", "novig": "https://app.novig.us/event-markets/01a1a91a-03ab-7ea2-bb23-d1f928319b2d"}},
   {g:"OLDW @ COLU",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"COLU",p:99,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"GB @ CIN",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"CIN",p:98.4,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05GBCIN", "novig": null}},
-  {g:"ME @ SHU",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"SHU",p:72,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05MESHU", "novig": null}},
-  {g:"UNH @ RID",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"RID",p:50.4,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05UNHRID", "novig": null}},
-  {g:"BRY @ QUIN",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"QUIN",p:72,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05BRYQUIN", "novig": "https://app.novig.us/event-markets/01a1a91a-051a-7480-a813-25118bce52ad"}},
-  {g:"UML @ MRMK",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"MRMK",p:80.5,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"UALB @ MAN",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"MAN",p:61.6,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a91a-04cd-7f71-a13f-290ef7efb3c7"}},
-  {g:"DSU @ NAVY",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"NAVY",p:80.8,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05DSUNAVY", "novig": null}},
-  {g:"UMBC @ MRST",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"MRST",p:66,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05UMBCMRST", "novig": null}},
-  {g:"NJIT @ IONA",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"IONA",p:83.2,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05NJITIONA", "novig": "https://app.novig.us/event-markets/01a1a91a-0698-7b03-a254-21fbdbfd6cab"}},
-  {g:"UVM @ FAIR",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"FAIR",p:50,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05UVMFAIR", "novig": null}},
-  {g:"MER @ VT",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"VT",p:96.3,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05MERVT", "novig": null}},
-  {g:"MERC @ ND",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"ND",p:97.7,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"CHST @ UIW",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"UIW",p:78.5,markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"GB @ CIN",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"CIN",p:98.4,book:"-24.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05GBCIN", "novig": null}},
+  {g:"ME @ SHU",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"SHU",p:72,book:"-5.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05MESHU", "novig": null}},
+  {g:"UNH @ RID",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"RID",p:50.4,book:"+1.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05UNHRID", "novig": null}},
+  {g:"BRY @ QUIN",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"QUIN",p:72,book:"-6.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05BRYQUIN", "novig": "https://app.novig.us/event-markets/01a1a91a-051a-7480-a813-25118bce52ad"}},
+  {g:"UML @ MRMK",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"MRMK",p:80.5,book:"-9.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"UALB @ MAN",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"MAN",p:61.6,book:"-3.5",markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a91a-04cd-7f71-a13f-290ef7efb3c7"}},
+  {g:"DSU @ NAVY",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"NAVY",p:80.8,book:"-8.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05DSUNAVY", "novig": null}},
+  {g:"UMBC @ MRST",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"MRST",p:66,book:"-4.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05UMBCMRST", "novig": null}},
+  {g:"NJIT @ IONA",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"IONA",p:83.2,book:"-9.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05NJITIONA", "novig": "https://app.novig.us/event-markets/01a1a91a-0698-7b03-a254-21fbdbfd6cab"}},
+  {g:"UVM @ FAIR",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"FAIR",p:50,book:"+1.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05UVMFAIR", "novig": null}},
+  {g:"MER @ VT",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"VT",p:96.3,book:"-20.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05MERVT", "novig": null}},
+  {g:"MERC @ ND",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"ND",p:97.7,book:"-21.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"CHST @ UIW",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"UIW",p:78.5,book:"-8.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
   {g:"CIU @ CHSO",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"CHSO",p:98.2,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"BING @ SPU",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"SPU",p:77.8,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"CCSU @ SYR",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"SYR",p:98.6,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05CCSUSYR", "novig": null}},
-  {g:"BUF @ PITT",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"PITT",p:95.4,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a7eb-e637-7dd1-adbc-a59c9d3d4485"}},
+  {g:"BING @ SPU",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"SPU",p:77.8,book:"-7.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"CCSU @ SYR",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"SYR",p:98.6,book:"-23.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05CCSUSYR", "novig": null}},
+  {g:"BUF @ PITT",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"PITT",p:95.4,book:"-18.5",markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a7eb-e637-7dd1-adbc-a59c9d3d4485"}},
   {g:"UNTN @ UNA",date:"Nov 5",day:"Thu Nov 5",time:"4:30pm",pick:"UNA",p:78.3,markets:{"polymarket": null, "kalshi": null, "novig": null}},
   {g:"KWC @ WKU",date:"Nov 5",day:"Thu Nov 5",time:"4:30pm",pick:"WKU",p:96.3,markets:{"polymarket": null, "kalshi": null, "novig": null}},
   {g:"UAM @ LT",date:"Nov 5",day:"Thu Nov 5",time:"4:30pm",pick:"LT",p:93,markets:{"polymarket": null, "kalshi": null, "novig": null}},
   {g:"CCO @ BEL",date:"Nov 5",day:"Thu Nov 5",time:"4:30pm",pick:"BEL",p:99.5,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"JKST @ TULN",date:"Nov 5",day:"Thu Nov 5",time:"4:30pm",pick:"TULN",p:88.6,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05JKSTTULN", "novig": null}},
-  {g:"STO @ FOR",date:"Nov 5",day:"Thu Nov 5",time:"4:30pm",pick:"FOR",p:96.4,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a935-a1bd-70b0-8f16-366f1ef95dd3"}},
-  {g:"NWST @ MSST",date:"Nov 5",day:"Thu Nov 5",time:"4:30pm",pick:"MSST",p:97.9,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05NWSTMSST", "novig": null}},
-  {g:"JAX @ FLA",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"FLA",p:97.3,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05JACFLA", "novig": null}},
-  {g:"CCU @ DUKE",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"DUKE",p:98.9,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"TOL @ MSU",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"MSU",p:98.2,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05TOLMSU", "novig": null}},
-  {g:"GWEB @ TEX",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"TEX",p:95,markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"JKST @ TULN",date:"Nov 5",day:"Thu Nov 5",time:"4:30pm",pick:"TULN",p:88.6,book:"-12.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05JKSTTULN", "novig": null}},
+  {g:"STO @ FOR",date:"Nov 5",day:"Thu Nov 5",time:"4:30pm",pick:"FOR",p:96.4,book:"-20.5",markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a935-a1bd-70b0-8f16-366f1ef95dd3"}},
+  {g:"NWST @ MSST",date:"Nov 5",day:"Thu Nov 5",time:"4:30pm",pick:"MSST",p:97.9,book:"-21.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05NWSTMSST", "novig": null}},
+  {g:"JAX @ FLA",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"FLA",p:97.3,book:"-35.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05JACFLA", "novig": null}},
+  {g:"CCU @ DUKE",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"DUKE",p:98.9,book:"-41.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"TOL @ MSU",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"MSU",p:98.2,book:"-26.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05TOLMSU", "novig": null}},
+  {g:"GWEB @ TEX",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"TEX",p:95,book:"-41.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
   {g:"CNSU @ ILST",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"ILST",p:99,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"JXST @ USA",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"USA",p:66.3,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"ETAM @ RICE",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"RICE",p:64.2,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05ETAMRICE", "novig": null}},
-  {g:"NIU @ TLSA",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"TLSA",p:93,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05NIUTLSA", "novig": null}},
+  {g:"JXST @ USA",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"USA",p:66.3,book:"-5.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"ETAM @ RICE",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"RICE",p:64.2,book:"-3.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05ETAMRICE", "novig": null}},
+  {g:"NIU @ TLSA",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"TLSA",p:93,book:"-13.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05NIUTLSA", "novig": null}},
   {g:"EAWE @ TNST",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"TNST",p:99.8,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"VMI @ SMU",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"SMU",p:98.7,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05VMISMU", "novig": "https://app.novig.us/event-markets/01a1a7eb-e764-7c40-a2eb-fb34d71e7fef"}},
-  {g:"WGA @ LUC",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"LUC",p:95.9,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"LEM @ CREI",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"CREI",p:99.3,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"PENN @ ILL",date:"Nov 5",day:"Thu Nov 5",time:"5:30pm",pick:"ILL",p:99.8,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05PENNILL", "novig": "https://app.novig.us/event-markets/01a1a7eb-e967-7182-ad03-5ccba8f8e89c"}},
+  {g:"VMI @ SMU",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"SMU",p:98.7,book:"-24.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05VMISMU", "novig": "https://app.novig.us/event-markets/01a1a7eb-e764-7c40-a2eb-fb34d71e7fef"}},
+  {g:"WGA @ LUC",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"LUC",p:95.9,book:"-18.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"LEM @ CREI",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"CREI",p:99.3,book:"-29.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"PENN @ ILL",date:"Nov 5",day:"Thu Nov 5",time:"5:30pm",pick:"ILL",p:99.8,book:"-30.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05PENNILL", "novig": "https://app.novig.us/event-markets/01a1a7eb-e967-7182-ad03-5ccba8f8e89c"}},
   {g:"GRCU @ SUU",date:"Nov 5",day:"Thu Nov 5",time:"5:30pm",pick:"SUU",p:68.3,markets:{"polymarket": null, "kalshi": null, "novig": null}},
   {g:"CSJ @ AF",date:"Nov 5",day:"Thu Nov 5",time:"5:30pm",pick:"AF",p:96.2,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"USF @ DEP",date:"Nov 5",day:"Thu Nov 5",time:"5:30pm",pick:"DEP",p:70.6,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05USFDEP", "novig": null}},
-  {g:"BCU @ TTU",date:"Nov 5",day:"Thu Nov 5",time:"6:00pm",pick:"TTU",p:98.9,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"TOW @ UTAH",date:"Nov 5",day:"Thu Nov 5",time:"6:00pm",pick:"UTAH",p:80,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a7eb-ed83-72e3-bcc3-3bda755603bd"}},
+  {g:"USF @ DEP",date:"Nov 5",day:"Thu Nov 5",time:"5:30pm",pick:"DEP",p:70.6,book:"-6.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05USFDEP", "novig": null}},
+  {g:"BCU @ TTU",date:"Nov 5",day:"Thu Nov 5",time:"6:00pm",pick:"TTU",p:98.9,book:"-29.5",markets:{"polymarket": null, "kalshi": null, "novig": null}},
+  {g:"TOW @ UTAH",date:"Nov 5",day:"Thu Nov 5",time:"6:00pm",pick:"UTAH",p:80,book:"-8.5",markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1a7eb-ed83-72e3-bcc3-3bda755603bd"}},
   {g:"MNLO @ UCD",date:"Nov 5",day:"Thu Nov 5",time:"6:00pm",pick:"UCD",p:92.3,markets:{"polymarket": null, "kalshi": null, "novig": null}},
   {g:"STN @ CSUB",date:"Nov 5",day:"Thu Nov 5",time:"6:30pm",pick:"CSUB",p:80.4,markets:{"polymarket": null, "kalshi": null, "novig": null}},
-  {g:"CP @ ARIZ",date:"Nov 5",day:"Thu Nov 5",time:"7:30pm",pick:"ARIZ",p:99.8,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05CPARIZ", "novig": null}},
+  {g:"CP @ ARIZ",date:"Nov 5",day:"Thu Nov 5",time:"7:30pm",pick:"ARIZ",p:99.8,book:"-30.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV05CPARIZ", "novig": null}},
   {g:"LSIU @ PEPP",date:"Nov 5",day:"Thu Nov 5",time:"7:30pm",pick:"PEPP",p:98.2,markets:{"polymarket": null, "kalshi": null, "novig": null}},
   {g:"MASS @ BC",date:"Nov 6",day:"Fri Nov 6",time:"1:00pm",pick:"BC",p:60.8,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV06MASSBC", "novig": null}},
   {g:"NE @ UVA",date:"Nov 6",day:"Fri Nov 6",time:"2:00pm",pick:"UVA",p:95.2,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV06NEUVA", "novig": null}},
@@ -1850,7 +1860,7 @@ var CBB_FORECASTS=[
   {g:"FAU @ WRST",date:"Nov 6",day:"Fri Nov 6",time:"4:30pm",pick:"WRST",p:64.3,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV06FAUWRST", "novig": null}},
   {g:"DEL @ WIS",date:"Nov 6",day:"Fri Nov 6",time:"4:30pm",pick:"WIS",p:96.4,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV06DELWIS", "novig": null}},
   {g:"NICH @ UAB",date:"Nov 6",day:"Fri Nov 6",time:"4:30pm",pick:"UAB",p:83.6,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV06NICHUAB", "novig": null}},
-  {g:"CONN @ MICH",date:"Nov 6",day:"Fri Nov 6",time:"5:00pm",pick:"CONN",p:61.9,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV06MICHCONN", "novig": null}},
+  {g:"CONN @ MICH",date:"Nov 6",day:"Fri Nov 6",time:"5:00pm",pick:"CONN",p:61.9,book:"-5.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV06MICHCONN", "novig": null}},
   {g:"USM @ ISU",date:"Nov 6",day:"Fri Nov 6",time:"5:00pm",pick:"ISU",p:94.8,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV06USMISU", "novig": null}},
   {g:"RMU @ UIC",date:"Nov 6",day:"Fri Nov 6",time:"5:00pm",pick:"UIC",p:65.1,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAMBGAME-26NOV06RMUUIC", "novig": null}},
   {g:"TRST @ MOST",date:"Nov 6",day:"Fri Nov 6",time:"5:00pm",pick:"MOST",p:86.4,markets:{"polymarket": null, "kalshi": null, "novig": null}},
@@ -1982,8 +1992,8 @@ var CBB_FORECASTS=[
    numbers from the daily pipeline; a game also in FEED_GAMES shows the
    Model A line merged on its card, games without one show Model B only. */
 var NBA_FORECASTS=[
-  {g:"ORL @ PHX",date:"Nov 5",day:"Thu Nov 5",time:"6:00pm",pick:"PHX",p:54.8,markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAGAME-26NOV05ORLPHX", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
-  {g:"MIA @ GSW",date:"Nov 5",day:"Thu Nov 5",time:"7:00pm",pick:"GSW",p:52.1,markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAGAME-26NOV05MIAGSW", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
+  {g:"ORL @ PHX",date:"Nov 5",day:"Thu Nov 5",time:"6:00pm",pick:"PHX",p:54.8,book:"-1.5",markets:{"polymarket": "https://polymarket.us/event/nba-orl-phx-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAGAME-26NOV05ORLPHX", "novig": "https://app.novig.us/event-markets/01a1a6f4-933c-7d61-a856-b995c2ce3b17"}},
+  {g:"MIA @ GSW",date:"Nov 5",day:"Thu Nov 5",time:"7:00pm",pick:"GSW",p:52.1,book:"-6.5",markets:{"polymarket": "https://polymarket.us/event/nba-mia-gsw-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNBAGAME-26NOV05MIAGSW", "novig": "https://app.novig.us/event-markets/01a1a72b-1477-7a62-bbd5-971ee18caef0"}},
   {g:"WAS @ ATL",date:"Nov 6",day:"Fri Nov 6",time:"4:00pm",pick:"ATL",p:75.4,markets:{"polymarket": "https://polymarket.us/event/nba-was-atl-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAGAME-26NOV06WASATL", "novig": null}},
   {g:"BOS @ CHA",date:"Nov 6",day:"Fri Nov 6",time:"4:00pm",pick:"BOS",p:61,markets:{"polymarket": "https://polymarket.us/event/nba-bos-cha-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAGAME-26NOV06BOSCHA", "novig": null}},
   {g:"PHI @ CLE",date:"Nov 6",day:"Fri Nov 6",time:"4:30pm",pick:"PHI",p:57.3,markets:{"polymarket": "https://polymarket.us/event/nba-phi-cle-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAGAME-26NOV06PHICLE", "novig": null}},
@@ -2009,17 +2019,17 @@ var NBA_FORECASTS=[
   {g:"MIA @ SAC",date:"Nov 8",day:"Sun Nov 8",time:"6:00pm",pick:"MIA",p:69,markets:{"polymarket": "https://polymarket.us/event/nba-mia-sac-2026-11-08", "kalshi": "https://kalshi.com/markets/KXNBAGAME-26NOV08MIASAC", "novig": null}}
 ];
 var NHL_FORECASTS=[
-  {g:"UTA @ MTL",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"MTL",p:59.6,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV05UTAMTL", "novig": "https://app.novig.us/event-markets/01a1a799-5a2a-7e83-8eee-b3234d35925b"}},
-  {g:"VGK @ DET",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"VGK",p:52.5,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV05VGKDET", "novig": "https://app.novig.us/event-markets/01a1a799-58c0-7132-adcf-3f7812b34bbb"}},
-  {g:"CAR @ NYI",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"CAR",p:62.5,markets:{"polymarket": "https://polymarket.us/event/nhl-car-nyi-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV05CARNYI", "novig": "https://app.novig.us/event-markets/01a1a799-5c1f-74e1-a761-7a54d286d92b"}},
-  {g:"PHI @ NYR",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"NYR",p:53.2,markets:{"polymarket": "https://polymarket.us/event/nhl-phi-nyr-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV05PHINYR", "novig": "https://app.novig.us/event-markets/01a1a799-5cc4-7630-991b-7c909b5b4c0b"}},
-  {g:"BOS @ PIT",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"BOS",p:54.8,markets:{"polymarket": "https://polymarket.us/event/nhl-bos-pit-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV05BOSPIT", "novig": "https://app.novig.us/event-markets/01a1a799-5b79-7953-a135-be19e9c4c155"}},
-  {g:"DAL @ CBJ",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"DAL",p:53.3,markets:{"polymarket": "https://polymarket.us/event/nhl-dal-cbj-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV05DALCBJ", "novig": "https://app.novig.us/event-markets/01a1a799-5d4f-7ad2-9ade-c4c1c77b177a"}},
-  {g:"VAN @ WPG",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"WPG",p:62.2,markets:{"polymarket": "https://polymarket.us/event/nhl-van-wpg-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV05VANWPG", "novig": "https://app.novig.us/event-markets/01a1a799-598d-7320-82e0-04ab421e8469"}},
-  {g:"ANA @ EDM",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"EDM",p:61.2,markets:{"polymarket": "https://polymarket.us/event/nhl-ana-edm-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV05ANAEDM", "novig": "https://app.novig.us/event-markets/01a1a799-5e50-72f2-96f1-9d6fc22b9424"}},
-  {g:"NSH @ COL",date:"Nov 5",day:"Thu Nov 5",time:"6:30pm",pick:"COL",p:65.4,markets:{"polymarket": "https://polymarket.us/event/nhl-nsh-col-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV05NSHCOL", "novig": "https://app.novig.us/event-markets/01a1a799-5f1f-7af3-a025-c35d637440d3"}},
-  {g:"CBJ @ BUF",date:"Nov 6",day:"Fri Nov 6",time:"4:00pm",pick:"BUF",p:60.7,markets:{"polymarket": "https://polymarket.us/event/nhl-cbj-buf-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV06CBJBUF", "novig": null}},
-  {g:"ANA @ CGY",date:"Nov 6",day:"Fri Nov 6",time:"5:00pm",pick:"CGY",p:53.7,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV06ANACGY", "novig": null}},
+  {g:"UTA @ MTL",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"MTL",p:59.6,book:"+1.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV05UTAMTL", "novig": "https://app.novig.us/event-markets/01a1a799-5a2a-7e83-8eee-b3234d35925b"}},
+  {g:"VGK @ DET",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"VGK",p:52.5,book:"-1.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV05VGKDET", "novig": "https://app.novig.us/event-markets/01a1a799-58c0-7132-adcf-3f7812b34bbb"}},
+  {g:"CAR @ NYI",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"CAR",p:62.5,book:"-1.5",markets:{"polymarket": "https://polymarket.us/event/nhl-car-nyi-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV05CARNYI", "novig": "https://app.novig.us/event-markets/01a1a799-5c1f-74e1-a761-7a54d286d92b"}},
+  {g:"PHI @ NYR",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"NYR",p:53.2,book:"-1.5",markets:{"polymarket": "https://polymarket.us/event/nhl-phi-nyr-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV05PHINYR", "novig": "https://app.novig.us/event-markets/01a1a799-5cc4-7630-991b-7c909b5b4c0b"}},
+  {g:"BOS @ PIT",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"BOS",p:54.8,book:"-1.5",markets:{"polymarket": "https://polymarket.us/event/nhl-bos-pit-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV05BOSPIT", "novig": "https://app.novig.us/event-markets/01a1a799-5b79-7953-a135-be19e9c4c155"}},
+  {g:"DAL @ CBJ",date:"Nov 5",day:"Thu Nov 5",time:"4:00pm",pick:"DAL",p:53.3,book:"-1.5",markets:{"polymarket": "https://polymarket.us/event/nhl-dal-cbj-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV05DALCBJ", "novig": "https://app.novig.us/event-markets/01a1a799-5d4f-7ad2-9ade-c4c1c77b177a"}},
+  {g:"VAN @ WPG",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"WPG",p:62.2,book:"-1.5",markets:{"polymarket": "https://polymarket.us/event/nhl-van-wpg-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV05VANWPG", "novig": "https://app.novig.us/event-markets/01a1a799-598d-7320-82e0-04ab421e8469"}},
+  {g:"ANA @ EDM",date:"Nov 5",day:"Thu Nov 5",time:"5:00pm",pick:"EDM",p:61.2,book:"-1.5",markets:{"polymarket": "https://polymarket.us/event/nhl-ana-edm-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV05ANAEDM", "novig": "https://app.novig.us/event-markets/01a1a799-5e50-72f2-96f1-9d6fc22b9424"}},
+  {g:"NSH @ COL",date:"Nov 5",day:"Thu Nov 5",time:"6:30pm",pick:"COL",p:65.4,book:"-1.5",markets:{"polymarket": "https://polymarket.us/event/nhl-nsh-col-2026-11-05", "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV05NSHCOL", "novig": "https://app.novig.us/event-markets/01a1a799-5f1f-7af3-a025-c35d637440d3"}},
+  {g:"CBJ @ BUF",date:"Nov 6",day:"Fri Nov 6",time:"4:00pm",pick:"BUF",p:60.7,book:"-1.5",markets:{"polymarket": "https://polymarket.us/event/nhl-cbj-buf-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV06CBJBUF", "novig": null}},
+  {g:"ANA @ CGY",date:"Nov 6",day:"Fri Nov 6",time:"5:00pm",pick:"CGY",p:53.7,book:"-1.5",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV06ANACGY", "novig": null}},
   {g:"STL @ NSH",date:"Nov 7",day:"Sat Nov 7",time:"10:00am",pick:"STL",p:51.8,markets:{"polymarket": "https://polymarket.us/event/nhl-stl-nsh-2026-11-07", "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV07STLNSH", "novig": null}},
   {g:"NYR @ SEA",date:"Nov 7",day:"Sat Nov 7",time:"2:00pm",pick:"SEA",p:54.8,markets:{"polymarket": "https://polymarket.us/event/nhl-nyr-sea-2026-11-07", "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV07NYRSEA", "novig": null}},
   {g:"MTL @ TOR",date:"Nov 7",day:"Sat Nov 7",time:"4:00pm",pick:"MTL",p:58.1,markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNHLGAME-26NOV07MTLTOR", "novig": null}},
@@ -3600,6 +3610,46 @@ function tsBookFirst(rows,bookOf){
     return a.i-b.i;
   }).map(function(x){return x.r;});
 }
+/* Sport filters for Totals and Spreads, same pattern as Moneyline and
+   Player Props: one row of sport buttons, All first. The buttons are
+   built from the leagues actually on the board (in a fixed sport
+   order), so a sport with no games today gets no button, and a new
+   league the pipeline adds gets one automatically. */
+var totalsSport="ALL", spreadsSport="ALL";
+var TS_SPORT_ORDER=["NFL","NCAAF","NCAAB","NBA","NHL","MLB"];
+function tsLeaguesPresent(rows){
+  var seen={},extras=[];
+  (rows||[]).forEach(function(r){ if(r&&r.league&&!seen[r.league]){seen[r.league]=1;extras.push(r.league);} });
+  var ordered=TS_SPORT_ORDER.filter(function(lg){return !!seen[lg];});
+  extras.forEach(function(lg){ if(ordered.indexOf(lg)<0) ordered.push(lg); });
+  return ordered;
+}
+function buildTsSportFilters(containerId,rows,current){
+  var el=$(containerId); if(!el) return;
+  var html='<button type="button" aria-pressed="'+(current==="ALL"?"true":"false")+'" data-ts-sport="ALL">All</button>';
+  tsLeaguesPresent(rows).forEach(function(lg){
+    html+='<button type="button" aria-pressed="'+(current===lg?"true":"false")+'" data-ts-sport="'+esc(lg)+'">'+esc(tsBadge(lg))+'</button>';
+  });
+  el.innerHTML=html;
+}
+function syncTsSportFilters(containerId,current){
+  var el=$(containerId); if(!el) return;
+  Array.prototype.forEach.call(el.querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x.getAttribute("data-ts-sport")===current?"true":"false");});
+}
+try{buildTsSportFilters("totalsSportFilters",TOTALS,totalsSport);}catch(e){}
+try{buildTsSportFilters("spreadsSportFilters",SPREADS,spreadsSport);}catch(e){}
+if($("totalsSportFilters")) $("totalsSportFilters").addEventListener("click",function(e){
+  var b=e.target.closest("[data-ts-sport]"); if(!b) return;
+  totalsSport=b.getAttribute("data-ts-sport");
+  syncTsSportFilters("totalsSportFilters",totalsSport);
+  renderTotals();
+});
+if($("spreadsSportFilters")) $("spreadsSportFilters").addEventListener("click",function(e){
+  var b=e.target.closest("[data-ts-sport]"); if(!b) return;
+  spreadsSport=b.getAttribute("data-ts-sport");
+  syncTsSportFilters("spreadsSportFilters",spreadsSport);
+  renderSpreads();
+});
 function renderTotals(){
   var el=$("totalsList"); if(!el) return;
   if(!TOTALS||!TOTALS.length){el.innerHTML='<div class="empty-state"><p>No forecasts available right now &mdash; check back soon.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no forecasts">i</button><span class="tip">New totals are posted with each day&rsquo;s board, usually in the morning.</span></span></p></div>';return;}
@@ -3608,7 +3658,11 @@ function renderTotals(){
      and kill every render call after this one. */
   var validTotals=TOTALS.filter(function(t){return t&&t.our!=null;});
   if(!validTotals.length){el.innerHTML='<div class="empty-state"><p>No forecasts available right now &mdash; check back soon.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no forecasts">i</button><span class="tip">New totals are posted with each day&rsquo;s board, usually in the morning.</span></span></p></div>';return;}
-  var groups=tsGroups(validTotals);
+  var shownTotals=(totalsSport==="ALL")?validTotals:validTotals.filter(function(t){return t.league===totalsSport;});
+  var totalsCountEl=$("totalsCount");
+  if(totalsCountEl) totalsCountEl.textContent="Showing "+shownTotals.length+" of "+validTotals.length+" totals.";
+  if(!shownTotals.length){el.innerHTML='<div class="empty-state"><p>No '+esc(tsSection(totalsSport))+' totals on this board. Tap All to see every sport.</p></div>';return;}
+  var groups=tsGroups(shownTotals);
   var showHeads=groups.length>1;
   el.innerHTML=groups.map(function(g){
     var head=showHeads?'<div class="ts-section-head">'+esc(tsSection(g.league))+'</div>':"";
@@ -3651,7 +3705,11 @@ function renderSpreads(){
      null before grouping, sorting, or formatting. */
   var validSpreads=SPREADS.filter(function(x){return x&&x.our!=null;});
   if(!validSpreads.length){el.innerHTML='<div class="empty-state"><p>No spread forecasts today &mdash; check back with tomorrow&rsquo;s board.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no forecasts">i</button><span class="tip">New spreads are posted with each day&rsquo;s board, usually in the morning.</span></span></p></div>';return;}
-  var groups=tsGroups(validSpreads);
+  var shownSpreads=(spreadsSport==="ALL")?validSpreads:validSpreads.filter(function(x){return x.league===spreadsSport;});
+  var spreadsCountEl=$("spreadsCount");
+  if(spreadsCountEl) spreadsCountEl.textContent="Showing "+shownSpreads.length+" of "+validSpreads.length+" spreads.";
+  if(!shownSpreads.length){el.innerHTML='<div class="empty-state"><p>No '+esc(tsSection(spreadsSport))+' spreads on this board. Tap All to see every sport.</p></div>';return;}
+  var groups=tsGroups(shownSpreads);
   var showHeads=groups.length>1;
   el.innerHTML=groups.map(function(g){
     var head=showHeads?'<div class="ts-section-head">'+esc(tsSection(g.league))+'</div>':"";
