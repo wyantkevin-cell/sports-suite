@@ -968,7 +968,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 
     <section class="block explain-wrap" id="gamesBlock">
       <h2 class="explain-head"><span class="explain-title" id="slateHeading">NFL games</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainSlate" aria-label="How to read these games">i</button></h2>
-      <div class="explain" id="explainSlate" hidden><p style="margin:0">The <b>bold</b> team is the pick, and the % is how often it is expected to win. Under each game, <b>Model A</b> is the other model&rsquo;s number and <b>Model B</b> is our model&rsquo;s number. A game shows only the model lines whose numbers are in this snapshot &mdash; for other sports and dates, only Model A is posted and our number is not in yet. The Nov 4, 2026 NBA headline is the average of the two models; its two numbers are not shown separately in this snapshot. Games with a posted book line show it next to our pick; games without one yet show &ldquo;Line: TBD&rdquo;. &ldquo;Close call&rdquo; means barely better than a coin flip &mdash; a lean, not a pick to trust. Check the news before using any of these: injuries and late news are invisible to old box scores.</p></div>
+      <div class="explain" id="explainSlate" hidden><p style="margin:0">The <b>bold</b> team is the pick, and the % is how often it is expected to win. Under each game, <b>Model A</b> is the other model&rsquo;s number and <b>Model B</b> is our model&rsquo;s number. A game shows only the model lines whose numbers are in this snapshot &mdash; for other sports and dates, only Model A is posted and our number is not in yet. Today's NBA headline is the average of the two models; the two numbers are shown separately under each game. Games with a posted book line show it next to our pick; games without one yet show &ldquo;Line: TBD&rdquo;. &ldquo;Close call&rdquo; means barely better than a coin flip &mdash; a lean, not a pick to trust. Check the news before using any of these: injuries and late news are invisible to old box scores.</p></div>
       <div id="slateList" style="margin-top:12px"></div>
     </section>
 
@@ -6060,7 +6060,7 @@ function betValue(b){
   }
   return '<span class="bet-value'+(strong?"":" lean")+'">'+esc(label)+'</span>';
 }
-function betCardHtml(b){
+function betCardHtml(b,isVoid){
   var prob=typeof b.model_prob==="number"?Math.max(0,Math.min(1,b.model_prob)):null;
   var foot=[];
   if(b.line!=null) foot.push("Line: <b>"+esc(b.line)+"</b>");
@@ -6068,7 +6068,7 @@ function betCardHtml(b){
   if(typeof b.market_prob==="number") foot.push("Book chance: <b>"+pct(b.market_prob)+"</b>");
   if(b.book) foot.push("Book: <b>"+esc(b.book)+"</b>");
   var match=betMatch(b);
-  return '<article class="bet-card"><div class="bet-top"><span style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="bet-sport"><span class="bet-emoji">'+sportEmoji(b.sport)+'</span>'+esc(b.sport||"")+'</span>'+pickBadgesHtml(b)+'</span>'+betValue(b)+'</div>'
+  return '<article class="bet-card"><div class="bet-top"><span style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="bet-sport"><span class="bet-emoji">'+sportEmoji(b.sport)+'</span>'+esc(b.sport||"")+'</span>'+pickBadgesHtml(b)+(isVoid?'<span class="rec-outcome push">Void</span>':"")+'</span>'+betValue(b)+'</div>'
     +'<h3 class="bet-name">'+esc(betName(b))+'</h3>'
     +(match?'<p class="bet-match">'+esc(match)+'</p>':"")
     +'<p class="bet-pick">'+esc(pickText(b))+'</p>'
@@ -6101,6 +6101,13 @@ function topTierSpreadText(){
 }
 function renderBets(){
   var bets=(TODAY_BETS||[]).filter(function(b){return !isSoccerRow(b);});
+  var voidDesc={};
+  (typeof TRACK_RECORD!=="undefined"?TRACK_RECORD:[]).concat(typeof TT_RECORD!=="undefined"?TT_RECORD:[]).forEach(function(r){
+    if(r&&String(r.outcome||"").toLowerCase()==="void"&&r.description) voidDesc[String(r.description)]=true;
+  });
+  var voidIds={};
+  ((typeof TODAY_PARLAY!=="undefined"&&TODAY_PARLAY&&TODAY_PARLAY.void_legs)||[]).forEach(function(id){ voidIds[String(id)]=true; });
+  function isVoidBet(b){ return !!(b&&(voidIds[String(b.pick_id)]||voidDesc[String(b.description||"")])); }
   var noteEl=$("betsCardNote");
   if(noteEl){
     var dayN=recordDayNumber(TODAY_CARD_DATE);
@@ -6114,7 +6121,7 @@ function renderBets(){
   var emptyEl=$("betsEmpty");
   if(emptyEl) emptyEl.hidden=!(bets.length===0&&!TODAY_PARLAY);
   var grid=$("betsGrid");
-  if(grid) grid.innerHTML=bets.map(betCardHtml).join("");
+  if(grid) grid.innerHTML=bets.map(function(b){return betCardHtml(b, isVoidBet(b));}).join("");
   if(grid&&grid.parentNode){
     var spreadEl=$("ttSpreadLine");
     if(!spreadEl){
@@ -6143,12 +6150,6 @@ function renderBets(){
          the same description), or named in TODAY_PARLAY.void_legs.
          A void parlay shows the banner, no live odds and no combined
          chance — it does not count in the record. */
-      var voidDesc={};
-      (typeof TRACK_RECORD!=="undefined"?TRACK_RECORD:[]).concat(typeof TT_RECORD!=="undefined"?TT_RECORD:[]).forEach(function(r){
-        if(r&&String(r.outcome||"").toLowerCase()==="void"&&r.description) voidDesc[String(r.description)]=true;
-      });
-      var voidIds={};
-      (TODAY_PARLAY.void_legs||[]).forEach(function(id){ voidIds[String(id)]=true; });
       var legBets=(TODAY_PARLAY.legs||[]).map(function(id){
         for(var i=0;i<bets.length;i++){ if(bets[i].pick_id===id) return bets[i]; }
         return null;
