@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="light dark" />
 <link rel="icon" href="data:," />
-<title>Sports Tools Suite — Sample</title>
+<title>Sports Tools Suite</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&display=swap" rel="stylesheet">
@@ -119,6 +119,7 @@ section.block{margin-top:24px}
 @media(max-width:640px){.onboard{padding:18px 19px}}
 .recap-line{margin:14px 0 0;font-size:16.5px;line-height:1.5}
 .recap-line b{font-family:var(--mono)}
+.record-line{margin:10px 0 0;font-size:15px;line-height:1.5;color:var(--muted)}
 .movers-list{display:grid;gap:8px;margin-top:12px}
 .mover-row{display:flex;justify-content:space-between;gap:6px 14px;flex-wrap:wrap;align-items:baseline;border:1px solid var(--line);border-radius:12px;padding:11px 14px;background:var(--bg)}
 .mover-row .mover-who b{display:block;font-size:15.5px}
@@ -837,9 +838,8 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 <div class="wrap">
   <div class="topbar">
     <div class="strip">
-      <div class="left"><span class="badge">Sample</span><span class="meta">Sports tools &middot; plain numbers, no hype</span></div>
+      <div class="left"><span class="meta">Sports tools &middot; plain numbers, no hype</span></div>
       <div class="strip-right">
-        <div class="meta">Numbers from <b>Nov 4, 2026</b> &middot; not live</div>
         <button type="button" class="settings-btn" id="settingsBtn" aria-expanded="false" aria-controls="settingsPanel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Settings</button>
       </div>
     </div>
@@ -892,19 +892,17 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <section class="panel active" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview" tabindex="0">
     <h1>Check the chances <em>before you bet.</em></h1>
     <p class="lede">Today&rsquo;s picks, with the chance each one hits.</p>
-    <p class="recap-line" id="yesterdayRecap">No settled bets yet — the record starts with the first graded picks.</p>
+    <p class="record-line">Our record: 0–7, −$700 so far. Forecasts, not proven winners.</p>
     <div class="freshness"></div>
 
-    <section class="block" style="margin-top:22px" aria-label="Today's strongest picks">
+    <section class="block" style="margin-top:22px" aria-label="Strongest picks">
       <h2 id="homePicksHeading">Today&rsquo;s strongest picks &mdash; Thu Nov 5</h2>
-      <p class="sub">NBA points. The chance is how often we think it hits.</p>
+      <p class="sub" id="homePicksNote" hidden></p>
+      <p class="sub">The chance is how often we think it hits.</p>
       <div class="best" id="homePicksList">
-        <div class="pickrow"><div class="who"><b>Draymond Green &mdash; Under 5.5 points</b><span>MIA @ GSW &middot; Nov 5</span></div><div class="chance"><div class="pct">68.5%</div><span>chance it hits</span></div></div>
-        <div class="pickrow"><div class="who"><b>Franz Wagner &mdash; Under 23.5 points</b><span>ORL @ PHX &middot; Nov 5</span></div><div class="chance"><div class="pct">67.5%</div><span>chance it hits</span></div></div>
-        <div class="pickrow"><div class="who"><b>Jase Richardson &mdash; Under 8.5 points</b><span>ORL @ PHX &middot; Nov 5</span></div><div class="chance"><div class="pct">66.7%</div><span>chance it hits</span></div></div>
-        <div class="pickrow"><div class="who"><b>Andrew Wiggins &mdash; Under 12.5 points</b><span>MIA @ GSW &middot; Nov 5</span></div><div class="chance"><div class="pct">62.1%</div><span>chance it hits</span></div></div>
+        <div class="pickrow"><div class="who"><b>Loading today's picks…</b><span>If this stays, the morning update hasn't posted yet.</span></div></div>
       </div>
-      <p class="sub" id="homePicksCombo" style="margin-top:10px">All 4 together hit about <b>2 times out of 10</b> (19.2%).</p>
+      <p class="sub" id="homePicksCombo" style="margin-top:10px"></p>
       <button type="button" class="btn" data-goto="pricer">Check these 4 as a ticket &rarr;</button>
     </section>
 
@@ -950,6 +948,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <div class="explain" id="explainForecasts" hidden><p style="margin:0">One number per game: the team we think wins, and how often we think it wins. <b>Early and unproven</b> &mdash; the bookies&rsquo; final odds beat us in testing. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
     </div>
 
+    <p class="record-line">Our record: 0–7, −$700 so far. Forecasts, not proven winners.</p>
     <div class="freshness"></div>
     <p class="note" style="margin-top:8px">Lines: DraftKings via ESPN</p>
     <div class="filters" role="group" aria-label="Choose a league" id="leagueFilters">
@@ -998,6 +997,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <h1 class="explain-head"><span class="explain-title">Top props</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainProps" aria-label="About these props">i</button></h1>
       <div class="explain" id="explainProps" hidden><p style="margin:0"><b>Line</b> is the book&rsquo;s line for the pick. <b>Our guess</b> is our chance it hits, in % &mdash; the higher the %, the more likely we think it is. <b>⭐ Top Tier</b> = one of the 4 most likely props today. <b>💎 Value</b> = our number sits well above the book&rsquo;s line. A row keeps its own ⓘ only when there is something specific on that pick to explain &mdash; a news note, a simulation note, or Top Tier. Lines from FanDuel. Tomorrow&rsquo;s games are here early so you can beat line movement.</p></div>
     </div>
+    <p class="record-line">Our record: 0–7, −$700 so far. Forecasts, not proven winners.</p>
     <p class="note" id="propsSourceNote">Today&rsquo;s lines via SharpAPI and The Odds API &mdash; our usual sources were unavailable</p>
     <div class="freshness"></div>
     <p class="note badge-legend"><span class="tt-badge">&#11088; Top Tier</span><span>the 4 most likely player props of the day</span><span class="tt-badge value-badge">&#128142; Value</span><span>our number is well above the book&rsquo;s line &mdash; a pick can wear both badges</span></p>
@@ -1281,6 +1281,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <section class="panel" id="panel-totals" role="tabpanel" aria-labelledby="tab-totals" tabindex="0" hidden>
     <h1>Totals &mdash; Thu Nov 5</h1>
     <p class="lede">Our predicted total vs the book&rsquo;s number. A lean means we see it differently, not a guaranteed win.</p>
+    <p class="record-line">Our record: 0–7, −$700 so far. Forecasts, not proven winners.</p>
     <div class="freshness"></div>
     <div class="model-warning" role="alert"><span class="model-warning-title">Warning &mdash; read this first</span><p>Roster tracker adjusted: Ravens on 3rd-string QB Fagnano. Model now accounts for the QB downgrade (-9.7 points). Market moved from 49.5 to 40.5.</p></div>
     <div class="filter-group" style="margin-top:16px">
@@ -1296,6 +1297,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <section class="panel" id="panel-spreads" role="tabpanel" aria-labelledby="tab-spreads" tabindex="0" hidden>
     <h1>Spreads &mdash; Thu Nov 5</h1>
     <p class="lede">Our predicted spread vs the book&rsquo;s number. A lean means we see it differently, not a guaranteed win.</p>
+    <p class="record-line">Our record: 0–7, −$700 so far. Forecasts, not proven winners.</p>
     <div class="freshness"></div>
     <div class="model-warning" role="alert"><span class="model-warning-title">Warning &mdash; read this first</span><p>Roster tracker adjusted: Ravens on 3rd-string QB Fagnano. Model now accounts for the QB downgrade. Market moved from BAL -4.5 to JAX -9.5.</p></div>
     <div class="filter-group" style="margin-top:16px">
@@ -1354,6 +1356,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <div class="bets-hero">
       <h1>Today's Card</h1>
       <span class="bets-date" id="betsDate" hidden></span>
+      <p class="record-line">Our record: 0–7, −$700 so far. Forecasts, not proven winners.</p>
       <p>Today&rsquo;s bets, picked from the strongest player props and moneylines on the board. Each card shows our chance it hits and how it compares with the book&rsquo;s number.</p>
       <p class="note badge-legend"><span class="tt-badge">&#11088; Top Tier</span><span>the 4 most likely player props of the day</span><span class="tt-badge value-badge">&#128142; Value</span><span>our number is well above the book&rsquo;s line &mdash; a pick can wear both badges</span></p>
       <div class="freshness"></div>
@@ -1544,7 +1547,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   </section>
 
   <footer>
-    <p><b>Be careful.</b> This is a sample built from the Nov 4, 2026 sheets. Our guesses are early and have not been shown to make money; treat every number with care. Nothing here places bets, takes money, or updates itself &mdash; new data comes as a new snapshot. &ldquo;Good value&rdquo; on paper is not a promise, and most tickets with several picks lose all the money put in.</p>
+    <p><b>Be careful.</b> Our guesses are early and have not been shown to make money; treat every number with care. Nothing here places bets or takes money. New numbers arrive with the morning update &mdash; check the &ldquo;Updated &hellip;&rdquo; line at the top of each tab for the latest. &ldquo;Good value&rdquo; on paper is not a promise, and most tickets with several picks lose all the money put in.</p>
     <p>Chances shown are our best guesses from past games, or recent averages plus judgment, labeled as such on each tab. Check every line, injury report, and payout on your own ticket before you act on anything. <a href="#docs" data-goto="docs">How it works</a></p>
     <p>Tap the &#9432; icons throughout the site for the full details behind every pick.</p>
     <p><button type="button" class="reopen-onboard" style="background:none;border:0;padding:0;color:var(--accent);font-weight:700;font-size:inherit;cursor:pointer">Show the welcome message again</button></p>
@@ -2686,13 +2689,13 @@ var BANKROLL={date:"2026-11-05",start:10000,nBets:250,nSims:10000,graded:1,total
    Refresh: replace this whole block with the fresh season_site_nfl_YYYYMMDD.json
    from ~/workspace/season-simulator/data/ (the daily pipeline regenerates it). */
 var SEASON_NFL={"generated":"2026-11-05","model_as_of":"2026-11-02","n_sims":10000,"market_source":"VegasInsider NFL win totals table (BetMGM column)","market_date":"2026-10-28","teams":[{"abbr":"ARI","name":"Arizona Cardinals","conf":"NFC","div":"NFC West","w":3,"l":5,"ties":0,"left":9,"med":6.0,"p10":4.0,"p90":8.0,"mean":6.09,"po":1.1,"dv":0.0,"ts":0.0,"ti":0.0,"mkt":6.5,"gap":-0.5,"flag":false},{"abbr":"ATL","name":"Atlanta Falcons","conf":"NFC","div":"NFC South","w":3,"l":5,"ties":0,"left":9,"med":7.0,"p10":5.0,"p90":9.0,"mean":6.85,"po":18.4,"dv":17.9,"ts":0.0,"ti":0.13,"mkt":7.5,"gap":-0.5,"flag":false},{"abbr":"BAL","name":"Baltimore Ravens","conf":"AFC","div":"AFC North","w":4,"l":4,"ties":0,"left":9,"med":8.0,"p10":6.0,"p90":10.0,"mean":7.73,"po":12.9,"dv":1.1,"ts":0.0,"ti":0.07,"mkt":7.5,"gap":0.5,"flag":false},{"abbr":"BUF","name":"Buffalo Bills","conf":"AFC","div":"AFC East","w":6,"l":1,"ties":0,"left":10,"med":14.0,"p10":12.0,"p90":15.0,"mean":13.43,"po":99.5,"dv":94.3,"ts":56.2,"ti":18.66,"mkt":12.5,"gap":1.5,"flag":false},{"abbr":"CAR","name":"Carolina Panthers","conf":"NFC","div":"NFC South","w":3,"l":4,"ties":0,"left":10,"med":7.0,"p10":5.0,"p90":9.0,"mean":6.78,"po":21.2,"dv":20.6,"ts":0.0,"ti":0.07,"mkt":7.5,"gap":-0.5,"flag":false},{"abbr":"CHI","name":"Chicago Bears","conf":"NFC","div":"NFC North","w":6,"l":2,"ties":0,"left":9,"med":11.0,"p10":9.0,"p90":13.0,"mean":11.13,"po":78.8,"dv":30.2,"ts":12.2,"ti":6.33,"mkt":11.5,"gap":-0.5,"flag":false},{"abbr":"CIN","name":"Cincinnati Bengals","conf":"AFC","div":"AFC North","w":5,"l":2,"ties":0,"left":10,"med":12.0,"p10":10.0,"p90":14.0,"mean":11.74,"po":89.9,"dv":51.0,"ts":7.7,"ti":3.86,"mkt":11.5,"gap":0.5,"flag":false},{"abbr":"CLE","name":"Cleveland Browns","conf":"AFC","div":"AFC North","w":5,"l":3,"ties":0,"left":9,"med":9.0,"p10":7.0,"p90":11.0,"mean":8.94,"po":31.5,"dv":2.8,"ts":0.1,"ti":0.1,"mkt":8.5,"gap":0.5,"flag":false},{"abbr":"DAL","name":"Dallas Cowboys","conf":"NFC","div":"NFC East","w":3,"l":5,"ties":0,"left":9,"med":7.0,"p10":6.0,"p90":9.0,"mean":7.36,"po":16.5,"dv":14.4,"ts":0.0,"ti":0.23,"mkt":7.5,"gap":-0.5,"flag":false},{"abbr":"DEN","name":"Denver Broncos","conf":"AFC","div":"AFC West","w":6,"l":2,"ties":0,"left":9,"med":12.0,"p10":10.0,"p90":14.0,"mean":12.12,"po":96.8,"dv":83.9,"ts":8.1,"ti":7.87,"mkt":11.5,"gap":0.5,"flag":false},{"abbr":"DET","name":"Detroit Lions","conf":"NFC","div":"NFC North","w":5,"l":2,"ties":0,"left":10,"med":11.0,"p10":9.0,"p90":13.0,"mean":11.36,"po":84.3,"dv":35.0,"ts":15.8,"ti":9.55,"mkt":10.5,"gap":0.5,"flag":false},{"abbr":"GB","name":"Green Bay Packers","conf":"NFC","div":"NFC North","w":5,"l":3,"ties":0,"left":9,"med":10.0,"p10":8.0,"p90":11.0,"mean":9.65,"po":42.7,"dv":5.6,"ts":1.6,"ti":1.84,"mkt":9.5,"gap":0.5,"flag":false},{"abbr":"HOU","name":"Houston Texans","conf":"AFC","div":"AFC South","w":2,"l":5,"ties":0,"left":10,"med":8.0,"p10":6.0,"p90":10.0,"mean":7.82,"po":17.6,"dv":1.4,"ts":0.0,"ti":0.26,"mkt":8.5,"gap":-0.5,"flag":false},{"abbr":"IND","name":"Indianapolis Colts","conf":"AFC","div":"AFC South","w":2,"l":6,"ties":0,"left":9,"med":5.0,"p10":4.0,"p90":7.0,"mean":5.3,"po":0.4,"dv":0.1,"ts":0.0,"ti":0.0,"mkt":5.5,"gap":-0.5,"flag":false},{"abbr":"JAX","name":"Jacksonville Jaguars","conf":"AFC","div":"AFC South","w":5,"l":2,"ties":0,"left":10,"med":13.0,"p10":11.0,"p90":14.0,"mean":12.71,"po":99.3,"dv":98.6,"ts":16.8,"ti":14.69,"mkt":11.5,"gap":1.5,"flag":false},{"abbr":"KC","name":"Kansas City Chiefs","conf":"AFC","div":"AFC West","w":5,"l":2,"ties":0,"left":10,"med":11.0,"p10":9.0,"p90":12.0,"mean":10.53,"po":71.4,"dv":15.0,"ts":1.1,"ti":1.52,"mkt":11.5,"gap":-0.5,"flag":false},{"abbr":"LAC","name":"Los Angeles Chargers","conf":"AFC","div":"AFC West","w":0,"l":7,"ties":0,"left":10,"med":3.0,"p10":1.0,"p90":5.0,"mean":2.78,"po":0.0,"dv":0.0,"ts":0.0,"ti":0.0,"mkt":4.5,"gap":-1.5,"flag":false},{"abbr":"LAR","name":"Los Angeles Rams","conf":"NFC","div":"NFC West","w":4,"l":4,"ties":0,"left":9,"med":9.0,"p10":7.0,"p90":11.0,"mean":9.25,"po":46.5,"dv":4.6,"ts":0.5,"ti":2.64,"mkt":9.5,"gap":-0.5,"flag":false},{"abbr":"LV","name":"Las Vegas Raiders","conf":"AFC","div":"AFC West","w":4,"l":4,"ties":0,"left":9,"med":7.0,"p10":6.0,"p90":9.0,"mean":7.4,"po":7.4,"dv":1.1,"ts":0.0,"ti":0.01,"mkt":7.5,"gap":-0.5,"flag":false},{"abbr":"MIA","name":"Miami Dolphins","conf":"AFC","div":"AFC East","w":1,"l":6,"ties":0,"left":10,"med":4.0,"p10":2.0,"p90":5.0,"mean":3.67,"po":0.0,"dv":0.0,"ts":0.0,"ti":0.0,"mkt":3.5,"gap":0.5,"flag":false},{"abbr":"MIN","name":"Minnesota Vikings","conf":"NFC","div":"NFC North","w":6,"l":1,"ties":0,"left":10,"med":12.0,"p10":10.0,"p90":13.0,"mean":11.52,"po":87.0,"dv":29.3,"ts":16.4,"ti":4.89,"mkt":10.5,"gap":1.5,"flag":false},{"abbr":"NE","name":"New England Patriots","conf":"AFC","div":"AFC East","w":5,"l":3,"ties":0,"left":9,"med":11.0,"p10":9.0,"p90":12.0,"mean":10.66,"po":79.9,"dv":5.7,"ts":1.7,"ti":4.77,"mkt":10.5,"gap":0.5,"flag":false},{"abbr":"NO","name":"New Orleans Saints","conf":"NFC","div":"NFC South","w":2,"l":5,"ties":0,"left":10,"med":5.0,"p10":4.0,"p90":7.0,"mean":5.55,"po":8.1,"dv":8.0,"ts":0.0,"ti":0.02,"mkt":6.5,"gap":-1.5,"flag":false},{"abbr":"NYG","name":"New York Giants","conf":"NFC","div":"NFC East","w":4,"l":2,"ties":1,"left":10,"med":9.5,"p10":7.5,"p90":11.5,"mean":9.42,"po":78.1,"dv":77.3,"ts":1.2,"ti":0.77,"mkt":8.5,"gap":1.0,"flag":false},{"abbr":"NYJ","name":"New York Jets","conf":"AFC","div":"AFC East","w":2,"l":6,"ties":0,"left":9,"med":5.0,"p10":3.0,"p90":6.0,"mean":4.59,"po":0.1,"dv":0.0,"ts":0.0,"ti":0.0,"mkt":5.5,"gap":-0.5,"flag":false},{"abbr":"PHI","name":"Philadelphia Eagles","conf":"NFC","div":"NFC East","w":2,"l":6,"ties":0,"left":9,"med":5.0,"p10":3.0,"p90":7.0,"mean":5.03,"po":1.3,"dv":1.2,"ts":0.0,"ti":0.0,"mkt":4.5,"gap":0.5,"flag":false},{"abbr":"PIT","name":"Pittsburgh Steelers","conf":"AFC","div":"AFC North","w":6,"l":2,"ties":0,"left":9,"med":12.0,"p10":10.0,"p90":14.0,"mean":11.89,"po":93.2,"dv":45.1,"ts":8.4,"ti":5.89,"mkt":10.5,"gap":1.5,"flag":false},{"abbr":"SEA","name":"Seattle Seahawks","conf":"NFC","div":"NFC West","w":4,"l":4,"ties":0,"left":9,"med":10.0,"p10":8.0,"p90":11.0,"mean":9.68,"po":55.7,"dv":7.2,"ts":0.9,"ti":2.61,"mkt":10.5,"gap":-0.5,"flag":false},{"abbr":"SF","name":"San Francisco 49ers","conf":"NFC","div":"NFC West","w":6,"l":1,"ties":0,"left":10,"med":13.0,"p10":11.0,"p90":15.0,"mean":13.12,"po":97.9,"dv":88.1,"ts":51.3,"ti":12.2,"mkt":12.5,"gap":0.5,"flag":false},{"abbr":"TB","name":"Tampa Bay Buccaneers","conf":"NFC","div":"NFC South","w":3,"l":5,"ties":0,"left":9,"med":8.0,"p10":6.0,"p90":10.0,"mean":8.13,"po":54.4,"dv":53.5,"ts":0.1,"ti":0.97,"mkt":7.5,"gap":0.5,"flag":false},{"abbr":"TEN","name":"Tennessee Titans","conf":"AFC","div":"AFC South","w":1,"l":7,"ties":0,"left":9,"med":3.0,"p10":2.0,"p90":5.0,"mean":3.02,"po":0.0,"dv":0.0,"ts":0.0,"ti":0.0,"mkt":3.5,"gap":-0.5,"flag":false},{"abbr":"WAS","name":"Washington Commanders","conf":"NFC","div":"NFC East","w":2,"l":4,"ties":1,"left":10,"med":6.5,"p10":4.5,"p90":8.5,"mean":6.75,"po":8.0,"dv":7.0,"ts":0.0,"ti":0.05,"mkt":6.5,"gap":0.0,"flag":false}]};
-/* LEANS (the ticket checker's preset picks, the parlay sim's prop
-   list, and the Home tab's strongest picks) is derived from the
-   current props board further down, right after TOP_PROPS — it used
-   to be a second hand-baked copy of the picks here, and it went
-   stale: the Nov 5 board shipped with Nov 4's leans still in it, so
-   Home kept showing last night's NBA picks. One source of truth
-   now: TOP_PROPS. */
+/* LEANS (the ticket checker's preset picks and the parlay sim's
+   prop list) is derived from the current props board further down,
+   right after TOP_PROPS — it used to be a second hand-baked copy of
+   the picks here, and it went stale: the Nov 5 board shipped with
+   Nov 4's leans still in it, so Home kept showing last night's NBA
+   picks. One source of truth now: TOP_PROPS — Home's strongest
+   picks read it directly too. */
 var NHL=[
   {player:"Philip Broberg",team:"STL",line:1.5,side:"Over",cal:0.55,outcome:"4 SOG",hit:true},
   {player:"Ryan Nugent-Hopkins",team:"EDM",line:1.5,side:"Over",cal:0.66,outcome:"1 SOG",hit:false},
@@ -3072,32 +3075,33 @@ function gameDateLabel(){
   if(gameDateState==="week") return weekRangeLabel();
   return ACTUAL_DATE_SET[gameDateState]||gameDateState;
 }
-/* Home heading: "Today's strongest picks" carries the same derived
-   today as the Moneyline buttons, so it moves with the snapshot
-   instead of staying baked to Wed Nov 4. */
+/* Home heading: the word "Today's" may appear only when the
+   snapshot's own date (Pacific Time, from SNAPSHOT_UPDATED) IS
+   today. Any other day, the heading carries the snapshot's own
+   date, marked "(last update)", and a note under it says plainly
+   that the picks are from that date, not today. SNAPSHOT_UPDATED
+   is assigned later in this script than this first call runs, so
+   until then the snapshot's first game date stands in for it; the
+   heading is synced again once the freshness block below has run. */
 function syncHomePicksHeading(){
   var h=$("homePicksHeading");
   if(!h) return;
-  /* The 4 pick rows under this heading are static snapshot HTML, so
-     they must never be labelled "Today's" when the snapshot's date
-     (Pacific Time) is older than today: retitle to the snapshot's
-     own date, marked "(last update)". SNAPSHOT_UPDATED is assigned
-     later in this script than this first call runs, so until then
-     the snapshot's first game date stands in for it; the heading
-     is synced again once the freshness block below has run. */
+  var note=$("homePicksNote");
   var snap=(typeof SNAPSHOT_UPDATED!=="undefined"&&SNAPSHOT_UPDATED)?new Date(SNAPSHOT_UPDATED):null;
   if(!snap||isNaN(snap.getTime())) snap=(typeof SNAPSHOT_FIRST!=="undefined"&&SNAPSHOT_FIRST)?new Date(SNAPSHOT_FIRST):null;
   var snapKey=snap?ptDateKey(snap):"", todayKey=ptDateKey(new Date());
-  if(snap&&snapKey&&todayKey&&snapKey<todayKey){
+  if(snap&&snapKey&&todayKey&&snapKey!==todayKey){
     var wd="", md="";
-    try{wd=new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",weekday:"short"}).format(snap);}catch(e){}
-    try{md=new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",month:"short",day:"numeric"}).format(snap);}catch(e){}
+    try{wd=new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",weekday:"long"}).format(snap);}catch(e){}
+    try{md=new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",month:"short",day:"numeric",year:"numeric"}).format(snap);}catch(e){}
     if(!wd) wd=WEEKDAY_ABBR[snap.getDay()];
     if(!md) md=shortDate(snap);
-    h.textContent="Strongest picks \u2014 "+wd+" "+md+" (last update)";
+    h.textContent="Strongest picks \u2014 "+wd+", "+md+" (last update)";
+    if(note){ note.textContent="These are from "+md+", not today."; note.hidden=false; }
     return;
   }
   h.textContent="Today\u2019s strongest picks \u2014 "+WEEKDAY_ABBR[TODAY_DATE.getDay()]+" "+shortDate(TODAY_DATE);
+  if(note){ note.textContent=""; note.hidden=true; }
 }
 try{buildGameDateFilters();}catch(e){}
 try{syncHomePicksHeading();}catch(e){}
@@ -3946,13 +3950,13 @@ var TOP_PROPS=[
 
 ];
 /* ================= LEANS — derived from TOP_PROPS =================
-   The ticket checker's preset picks and the Home tab's strongest
-   picks both read this list: the board's NBA points props, strongest
-   (highest model chance) first. It is built from TOP_PROPS at load
-   so it always matches the current board — a refreshed board can
-   never leave yesterday's picks behind here again. The matchup
-   ("ORL @ PHX") is read from the pick's own market link slug; the
-   board carries no separate game field for props. */
+   The ticket checker's preset picks read this list: the board's NBA
+   points props, strongest (highest model chance) first. It is built
+   from TOP_PROPS at load so it always matches the current board.
+   (Home's strongest picks do NOT read this subset — they read
+   TOP_PROPS directly, across every sport; see renderHomePicks.)
+   The matchup ("ORL @ PHX") is read from the pick's own market link
+   slug; the board carries no separate game field for props. */
 var LEANS=(function(){
   function gameFromMarkets(r){
     var urls=r.markets?[r.markets.polymarket,r.markets.kalshi,r.markets.novig]:[];
@@ -3979,30 +3983,71 @@ var LEANS=(function(){
   out.sort(function(a,b){return b.p-a.p;});
   return out;
 })();
-/* Home "Today's strongest picks": the four highest-chance unflagged
-   leans, rendered from LEANS (today's board) — never baked HTML, so
-   the rows always belong to the same day as the heading above them.
-   A flagged pick that out-chances the fourth shown pick is counted
-   in the note under the rows, as before. */
+/* Home "strongest picks": the four highest-chance unflagged rows
+   read DIRECTLY from TOP_PROPS — the same ordered array the Player
+   Picks tab renders, across every sport — so Home can never drift
+   from the board or show a second, staler copy of the picks. A pick
+   marked void in the track record is also skipped: a voided pick
+   is not one of today's picks, even while its row is still on the
+   board. The void set is keyed by player + market + line, built
+   from TRACK_RECORD and TT_RECORD rows whose outcome is "void"
+   (record rows carry the pick in their description text, e.g.
+   "Chris Hunter (UTEP) under 30.5 receiving yards"). */
+function homeVoidKeys(){
+  var set={};
+  function key(player,market,line){
+    return String(player||"").trim().toLowerCase()+"|"+String(market||"").trim().toLowerCase()+"|"+String(line==null?"":line);
+  }
+  function addRow(r){
+    if(!r||String(r.outcome||"").toLowerCase()!=="void") return;
+    if(r.player){ set[key(r.player,r.market,r.line)]=true; return; }
+    var m=String(r.description||"").match(/^(.+?)\s*\([^)]*\)\s+(?:over|under)\s+(\d+(?:\.\d+)?)\s+(.+)$/i);
+    if(m) set[key(m[1],m[3],m[2])]=true;
+  }
+  (typeof TRACK_RECORD!=="undefined"&&TRACK_RECORD?TRACK_RECORD:[]).forEach(addRow);
+  (typeof TT_RECORD!=="undefined"&&TT_RECORD?TT_RECORD:[]).forEach(addRow);
+  return set;
+}
+function homePropParts(r){
+  var m=String((r&&r.prop)||"").match(/^(over|under)\s+(\d+(?:\.\d+)?)\s+(.+)$/i);
+  if(!m) return null;
+  return {side:m[1],line:m[2],market:m[3]};
+}
 function renderHomePicks(){
   var box=$("homePicksList"), combo=$("homePicksCombo");
   if(!box) return;
-  var leans=(typeof LEANS!=="undefined"&&LEANS)?LEANS:[];
-  var picks=leans.filter(function(l){return !l.flag;}).slice(0,4);
+  var rows=(typeof TOP_PROPS!=="undefined"&&TOP_PROPS)?TOP_PROPS:[];
+  var voids=homeVoidKeys();
+  var pool=[];
+  rows.forEach(function(r,i){
+    if(!r||r.flag) return;
+    var parts=homePropParts(r);
+    if(!parts) return;
+    var key=String(r.player||"").trim().toLowerCase()+"|"+parts.market.trim().toLowerCase()+"|"+parts.line;
+    if(voids[key]) return;
+    pool.push({r:r,parts:parts,i:i});
+  });
+  /* Highest guess (model chance) first; ties keep the board's own
+     payload order, the same order Player Picks shows. */
+  pool.sort(function(a,b){
+    var d=(Number(b.r.guess)||0)-(Number(a.r.guess)||0);
+    return d!==0?d:a.i-b.i;
+  });
+  var picks=pool.slice(0,4);
   if(!picks.length){
-    box.innerHTML='<div class="pickrow"><div class="who"><b>No picks posted yet.</b><span>See the Player picks tab for the full board.</span></div></div>';
+    box.innerHTML='<div class="pickrow"><div class="who"><b>No picks for today yet.</b><span>The morning update posts after 9am PT. Check back then — yesterday\'s picks are not shown as today\'s.</span></div></div>';
     if(combo) combo.textContent="";
     return;
   }
-  box.innerHTML=picks.map(function(l){
-    var pctTxt=(Math.round(l.p*1000)/10)+"%";
-    return '<div class="pickrow"><div class="who"><b>'+esc(l.player)+' &mdash; '+esc(l.side)+' '+esc(String(l.line))+' points</b><span>'+(l.game?esc(l.game)+' &middot; ':"")+esc(l.date||"")+'</span></div><div class="chance"><div class="pct">'+pctTxt+'</div><span>chance it hits</span></div></div>';
+  box.innerHTML=picks.map(function(p){
+    var r=p.r;
+    var propTxt=p.parts.side.charAt(0).toUpperCase()+p.parts.side.slice(1).toLowerCase()+" "+p.parts.line+" "+p.parts.market;
+    var pctTxt=(Math.round((Number(r.guess)||0)*10)/10)+"%";
+    return '<div class="pickrow"><div class="who"><b>'+esc(r.player)+' &mdash; '+esc(propTxt)+'</b><span>'+esc(r.sport||"")+' &middot; '+esc(r.team||"")+' &middot; '+esc(r.date||"")+'</span></div><div class="chance"><div class="pct">'+pctTxt+'</div><span>chance it hits</span></div></div>';
   }).join("");
   if(combo){
-    var all=1; picks.forEach(function(l){all*=l.p;});
-    var leftOut=leans.filter(function(l){return !!l.flag&&l.p>picks[picks.length-1].p;}).length;
-    combo.innerHTML='All '+picks.length+' together hit about <b>'+Math.round(all*10)+' times out of 10</b> ('+(Math.round(all*1000)/10)+'%).'
-      +(leftOut?' '+leftOut+(leftOut===1?' other pick looked':' other picks looked')+' strong but had mixed-up numbers, so '+(leftOut===1?'it was':'they were')+' left out.':"");
+    var all=1; picks.forEach(function(p){all*=(Number(p.r.guess)||0)/100;});
+    combo.innerHTML='All '+picks.length+' together hit about <b>'+Math.round(all*10)+' times out of 10</b> ('+(Math.round(all*1000)/10)+'%).';
   }
 }
 try{renderHomePicks();}catch(e){}
@@ -5724,6 +5769,21 @@ function renderBets(){
     }
   }
 }
+/* The one-line record at the top of every picks tab (Home,
+   Moneyline, Player Picks, Totals, Spreads, Our Bets), rendered
+   from the same tally the Our Record tab uses — TRACK_TALLY
+   straights — so every tab states the record the same way and the
+   line updates when the tally data updates. The static HTML in
+   each panel already carries the current line, so it reads right
+   even before this runs. */
+function renderRecordLine(){
+  var s=(typeof TRACK_TALLY!=="undefined"&&TRACK_TALLY&&TRACK_TALLY.straights)||{wins:0,losses:0,profit:0};
+  var profit=Number(s.profit)||0;
+  var money=(profit<0?"\u2212$":profit>0?"+$":"$")+Math.abs(profit).toLocaleString("en-US");
+  var txt="Our record: "+(s.wins||0)+"\u2013"+(s.losses||0)+", "+money+" so far. Forecasts, not proven winners.";
+  Array.prototype.forEach.call(document.querySelectorAll(".record-line"),function(el){ el.textContent=txt; });
+}
+try{renderRecordLine();}catch(e){}
 /* Yesterday's recap on Home: the most recent settled day in TRACK_RECORD
    that is not the latest day (yesterday), falling back to the latest
    settled day. The record holds graded picks only, so every row here has
