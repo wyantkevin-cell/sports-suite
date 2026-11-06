@@ -3218,23 +3218,67 @@ function simCountText(sim){
   if(!isFinite(n)||n<=0) n=10000;
   return n.toLocaleString("en-US");
 }
+/* Middle-90% game-sim bands, in the same plain-language pattern as the
+   props board ("In simulated games, the middle 90% of outcomes fell
+   between X and Y."). These describe the range of outcomes the sim
+   produced — NOT a confidence interval on the probability. The margin
+   is home minus away, so each end names the team that wins by that
+   much and the sign never has to be guessed. */
+function simMarginEnd(v, away, home){
+  return v>=0?home+" by "+fmtLine(v):away+" by "+fmtLine(-v);
+}
+function simTotalBandText(sim){
+  var lo=Number(sim.total_p5), hi=Number(sim.total_p95);
+  if(!isFinite(lo)||!isFinite(hi)) return "";
+  return "In simulated games, the middle 90% of totals fell between "+fmtLine(lo)+" and "+fmtLine(hi)+".";
+}
+function simMarginBandText(sim, away, home){
+  var lo=Number(sim.margin_p5), hi=Number(sim.margin_p95);
+  if(!isFinite(lo)||!isFinite(hi)||!away||!home) return "";
+  return "In simulated games, the middle 90% of margins fell between "+simMarginEnd(lo, away, home)+" and "+simMarginEnd(hi, away, home)+".";
+}
+function simGameBandText(sim, away, home){
+  var mLo=Number(sim.margin_p5), mHi=Number(sim.margin_p95);
+  var tLo=Number(sim.total_p5), tHi=Number(sim.total_p95);
+  var hasM=isFinite(mLo)&&isFinite(mHi)&&away&&home;
+  var hasT=isFinite(tLo)&&isFinite(tHi);
+  if(!hasM&&!hasT) return "";
+  var s="In simulated games, the middle 90% of ";
+  if(hasM){
+    s+="margins fell between "+simMarginEnd(mLo, away, home)+" and "+simMarginEnd(mHi, away, home);
+    if(hasT) s+=", and totals fell between "+fmtLine(tLo)+" and "+fmtLine(tHi);
+  }else{
+    s+="totals fell between "+fmtLine(tLo)+" and "+fmtLine(tHi);
+  }
+  return s+".";
+}
+function simBandOnlyHtml(sim, band){
+  var nTxt=simCountText(sim);
+  return '<div class="sim-lines"><span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="About the simulation">i</button><span class="tip">Based on '+nTxt+' simulated games. '+band+'</span></span></div>';
+}
 function simLinesHtml(f){
   var sim=f.sim||(f.forecast&&f.forecast.sim);
   if(!sim) return "";
   var nTxt=simCountText(sim);
+  var parts=String(f.g||"").split(" @ ");
+  var away=parts.length===2?parts[0]:null, home=parts.length===2?parts[1]:null;
+  var band=simGameBandText(sim, away, home);
   /* Soccer: 3-way percentages, no margin line. */
   if(isFinite(Number(sim.draw_pct))){
     var hP=Number(sim.win_pct_home), dP=Number(sim.draw_pct), aP=Number(sim.win_pct_away);
-    if(!isFinite(hP)||!isFinite(dP)||!isFinite(aP)) return "";
+    if(!isFinite(hP)||!isFinite(dP)||!isFinite(aP)){
+      return band?simBandOnlyHtml(sim, band):"";
+    }
     var sparts=String(f.g||"").split(" @ ");
     var homeName=sparts.length===2?sparts[1]:null, awayName=sparts.length===2?sparts[0]:null;
     var line='In '+nTxt+' sims: '+(homeName?esc(homeName):'Home')+' <b>'+Math.round(hP)+'%</b> · Draw <b>'+Math.round(dP)+'%</b> · '+(awayName?esc(awayName):'Away')+' <b>'+Math.round(aP)+'%</b>';
-    return '<div class="sim-lines"><div class="sim-text"><div>'+line+'</div></div><span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="About the simulation">i</button><span class="tip">Based on '+nTxt+' simulated games. The sim runs the matchup thousands of times to show the range of likely outcomes.</span></span></div>';
+    var tip='Based on '+nTxt+' simulated games. '+(band?band+' ':'')+'The sim runs the matchup thousands of times to show the range of likely outcomes.';
+    return '<div class="sim-lines"><div class="sim-text"><div>'+line+'</div></div><span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="About the simulation">i</button><span class="tip">'+tip+'</span></span></div>';
   }
   var margin=Number(sim.margin_mean), total=Number(sim.total_mean);
-  if(!isFinite(margin)||!isFinite(total)||margin===0) return "";
-  var parts=String(f.g||"").split(" @ ");
-  if(parts.length!==2) return "";
+  if(!isFinite(margin)||!isFinite(total)||margin===0){
+    return band?simBandOnlyHtml(sim, band):"";
+  }
   var winnerCode=margin>0?parts[1]:parts[0];
   var winnerName=NFL_TEAM_NAMES[winnerCode]||winnerCode;
   var unit=(isFinite(Number(total))&&Number(total)<10)?"goals":"pts";
@@ -3244,6 +3288,7 @@ function simLinesHtml(f){
   if(isFinite(winPct)) tip+=esc(winnerName)+' won '+Math.round(winPct)+'% of the time. ';
   if(isFinite(Number(sim.p_cover_book))) tip+='Covered the spread '+Math.round(Number(sim.p_cover_book))+'% of the time. ';
   if(isFinite(Number(sim.p_over_book))) tip+='Went over the total '+Math.round(Number(sim.p_over_book))+'% of the time.';
+  if(band) tip+=' '+band;
   return '<div class="sim-lines"><div class="sim-text"><div>Sim says: <b>'+esc(winnerName)+'</b> by ~'+marginTxt+' '+unit+'</div><div>Total: ~'+Math.round(total)+' '+unit+'</div></div><span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="About the simulation">i</button><span class="tip">'+tip+' The sim runs the matchup thousands of times to show the range of likely outcomes.</span></span></div>';
 }
 /* Soccer 3-way cards: home win / draw / away win, full team names,
@@ -3543,16 +3588,21 @@ function forecastSimForRow(row){
   }
   return null;
 }
-function simInfoHtml(sim){
+function simInfoHtml(sim, extra){
   var n=sim?simCountText(sim):'10,000';
-  return '<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="About the simulation">i</button><span class="tip">From '+n+' simulated games.</span></span>';
+  var tip='From '+n+' simulated games.'+(extra?' '+extra:'');
+  return '<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="About the simulation">i</button><span class="tip">'+tip+'</span></span>';
 }
 function simTotalHtml(t){
   var sim=forecastSimForRow(t);
   if(!sim) return "";
+  var band=simTotalBandText(sim);
   var p=Number(sim.p_over_book);
-  if(!isFinite(p)||p<0||p>100||t.book==null) return "";
-  return '<div class="sim-lines"><div class="sim-text">Sim: <b>'+Math.round(p)+'%</b> chance of over '+t.book.toFixed(1)+'</div>'+simInfoHtml(sim)+'</div>';
+  if(!isFinite(p)||p<0||p>100||t.book==null){
+    /* Bands only: no visible sim line, just the ⓘ carrying the band. */
+    return band?'<div class="sim-lines">'+simInfoHtml(sim, band)+'</div>':"";
+  }
+  return '<div class="sim-lines"><div class="sim-text">Sim: <b>'+Math.round(p)+'%</b> chance of over '+t.book.toFixed(1)+'</div>'+simInfoHtml(sim, band)+'</div>';
 }
 function fmtSignedSpread(v){
   if(v===0) return "0";
@@ -3561,15 +3611,20 @@ function fmtSignedSpread(v){
 function simSpreadHtml(s){
   var sim=forecastSimForRow(s);
   if(!sim) return "";
+  var away=(s.abbr&&s.abbr[0])||s.away, home=(s.abbr&&s.abbr[1])||s.home;
+  var band=simMarginBandText(sim, away, home);
   var p=Number(sim.p_cover_book);
-  if(!isFinite(p)||p<0||p>100||s.book==null) return "";
-  if(!s.teams||s.teams.length<2) return "";
+  if(!isFinite(p)||p<0||p>100||s.book==null){
+    /* Bands only: no visible sim line, just the ⓘ carrying the band. */
+    return band?'<div class="sim-lines">'+simInfoHtml(sim, band)+'</div>':"";
+  }
+  if(!s.teams||s.teams.length<2) return band?'<div class="sim-lines">'+simInfoHtml(sim, band)+'</div>':"";
   var homeCovers=p>=50;
   var idx=homeCovers?1:0;
   var team=s.teams[idx]||(s.abbr&&NFL_TEAM_NAMES[s.abbr[idx]])||(s.abbr&&s.abbr[idx])||"";
   var spread=homeCovers?fmtSignedSpread(-s.book):fmtSignedSpread(s.book);
   var pct=Math.round(homeCovers?p:100-p);
-  return '<div class="sim-lines"><div class="sim-text">Sim: <b>'+pct+'%</b> chance '+esc(team)+' cover '+esc(spread)+'</div>'+simInfoHtml(sim)+'</div>';
+  return '<div class="sim-lines"><div class="sim-text">Sim: <b>'+pct+'%</b> chance '+esc(team)+' cover '+esc(spread)+'</div>'+simInfoHtml(sim, band)+'</div>';
 }
 
 /* ================= TOTALS ================= */
