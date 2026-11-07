@@ -62,7 +62,11 @@ button,[role="tab"],.btn,a.btn{min-height:44px}
 .badge{font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:var(--bg);border-radius:999px;padding:4px 10px}
 .strip .meta{color:var(--muted)}
 .strip .meta b{color:var(--ink);font-family:var(--mono);font-weight:600}
-.tabbar{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding:calc(10px + env(safe-area-inset-top,0px)) 0 10px;display:flex;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:7px;overscroll-behavior-x:contain;-webkit-mask-image:linear-gradient(to right,#000 0,#000 calc(100% - 32px),transparent 100%);mask-image:linear-gradient(to right,#000 0,#000 calc(100% - 32px),transparent 100%)}
+.tabbar-nav{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px}
+.tabbar{flex:1;min-width:0;padding:calc(10px + env(safe-area-inset-top,0px)) 0 10px;display:flex;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:7px;overscroll-behavior-x:contain;-webkit-mask-image:linear-gradient(to right,#000 0,#000 calc(100% - 32px),transparent 100%);mask-image:linear-gradient(to right,#000 0,#000 calc(100% - 32px),transparent 100%)}
+.tabbar-arrow{display:none;flex:0 0 auto;width:36px;height:36px;min-width:36px;min-height:36px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-size:22px;line-height:1;padding:0;place-items:center}
+.tabbar-nav.has-overflow .tabbar-arrow{display:grid}
+.tabbar-arrow:disabled{opacity:.35;cursor:default;pointer-events:none}
 .tabbar::-webkit-scrollbar{display:none}
 .tabbar [role="tab"]{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:10px 15px;font-weight:700;font-size:14.5px;color:var(--muted);flex:0 0 auto;white-space:nowrap;min-height:44px}
 .tabbar [role="tab"][aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
@@ -872,6 +876,8 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <div class="left"><span class="badge">Sports Tools Suite</span></div>
     <div class="strip-right"><span class="meta" id="stripUpdated">Updated today at 2:11pm PT</span></div>
   </div>
+  <div class="tabbar-nav" id="tabbarNav">
+    <button type="button" class="tabbar-arrow" id="tabScrollLeft" aria-label="Scroll tabs left">&#8249;</button>
     <div class="tabbar" role="tablist" aria-label="Sports tools">
     <button type="button" role="tab" id="tab-overview" aria-selected="true" aria-controls="panel-overview" data-tab="overview">Home</button>
     <button type="button" role="tab" id="tab-props" aria-selected="false" aria-controls="panel-props" data-tab="props" tabindex="-1">Player picks ⭐</button>
@@ -883,6 +889,8 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <button type="button" role="tab" id="tab-record" aria-selected="false" aria-controls="panel-record" data-tab="record" tabindex="-1">Our record</button>
     <button type="button" role="tab" id="tab-books" aria-selected="false" aria-controls="panel-books" data-tab="books" tabindex="-1">Sportsbooks</button>
     <button type="button" role="tab" id="tab-docs" aria-selected="false" aria-controls="panel-docs" data-tab="docs" tabindex="-1">How it works</button>
+  </div>
+    <button type="button" class="tabbar-arrow" id="tabScrollRight" aria-label="Scroll tabs right">&#8250;</button>
   </div>
 
   <!-- ============ HOME ============ -->
@@ -2840,6 +2848,33 @@ tabs.forEach(function(t){
     if(n!==null){e.preventDefault();switchTab(tabs[n].getAttribute("data-tab"),true);}
   });
 });
+/* Desktop tab-bar scroll arrows: the tab row scrolls by touch, but a
+   mouse user has no visible scrollbar and the wheel scrolls the page,
+   so the last tabs were unreachable. The arrows show only while the
+   row actually overflows, and each disables at its end of the row. */
+var tabbarEl=document.querySelector(".tabbar");
+var tabbarNav=document.getElementById("tabbarNav");
+var tabScrollLeft=document.getElementById("tabScrollLeft");
+var tabScrollRight=document.getElementById("tabScrollRight");
+function updateTabArrows(){
+  if(!tabbarEl||!tabbarNav) return;
+  var overflow=tabbarEl.scrollWidth>tabbarEl.clientWidth+1;
+  tabbarNav.classList.toggle("has-overflow",overflow);
+  if(tabScrollLeft) tabScrollLeft.disabled=tabbarEl.scrollLeft<=1;
+  if(tabScrollRight) tabScrollRight.disabled=tabbarEl.scrollLeft+tabbarEl.clientWidth>=tabbarEl.scrollWidth-1;
+}
+function scrollTabsBy(dir){
+  if(!tabbarEl) return;
+  tabbarEl.scrollBy({left:dir*Math.round(tabbarEl.clientWidth*0.8),behavior:"smooth"});
+}
+if(tabScrollLeft) tabScrollLeft.addEventListener("click",function(){scrollTabsBy(-1);});
+if(tabScrollRight) tabScrollRight.addEventListener("click",function(){scrollTabsBy(1);});
+if(tabbarEl){
+  tabbarEl.addEventListener("scroll",updateTabArrows,{passive:true});
+  window.addEventListener("resize",updateTabArrows);
+  window.addEventListener("load",updateTabArrows);
+  updateTabArrows();
+}
 /* Game forecasts fold: Moneyline, Totals, Spreads and the NFL Season
    outlook now live as sections inside the one Game forecasts tab.
    Old tab names and hashes (#moneyline, #totals, #spreads, #season)
