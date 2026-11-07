@@ -997,7 +997,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 
     <section class="block explain-wrap" id="gamesBlock">
       <h2 class="explain-head"><span class="explain-title" id="slateHeading">NFL games</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainSlate" aria-label="How to read these games">i</button></h2>
-      <div class="explain" id="explainSlate" hidden><p style="margin:0">The <b>bold</b> team is the pick, and the % is how often it is expected to win. Under each game, <b>Model A</b> is the other model&rsquo;s number and <b>Model B</b> is our model&rsquo;s number. A game shows only the model lines whose numbers are in this snapshot &mdash; for other sports and dates, only Model A is posted and our number is not in yet. Today's NBA headline is the average of the two models; the two numbers are shown separately under each game. Games with a posted book line show it next to our pick; games without one yet show &ldquo;Line: TBD&rdquo;. &ldquo;Close call&rdquo; means barely better than a coin flip &mdash; a lean, not a pick to trust. Check the news before using any of these: injuries and late news are invisible to old box scores.</p></div>
+      <div class="explain" id="explainSlate" hidden><p style="margin:0">The <b>bold</b> team is the pick, and the % is how often it is expected to win. Under each game, <b>Model A (ALL_IN)</b> shows the number built by Grok, and <b>Model B (FULL_SLATE)</b> shows the number built by Muse. A game shows only the model lines whose numbers are in this snapshot &mdash; for other sports and dates, only Model A is posted and our number is not in yet. Today's NBA headline is the average of the two models; the two numbers are shown separately under each game. Games with a posted book line show it next to our pick; games without one yet show &ldquo;Line: TBD&rdquo;. &ldquo;Close call&rdquo; means barely better than a coin flip &mdash; a lean, not a pick to trust. Check the news before using any of these: injuries and late news are invisible to old box scores.</p></div>
       <div id="slateList" style="margin-top:12px"></div>
     </section>
 
@@ -1075,12 +1075,11 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <section class="panel" id="panel-props" role="tabpanel" aria-labelledby="tab-props" tabindex="0" hidden>
     <div class="explain-wrap">
       <h1 class="explain-head"><span class="explain-title">Top props</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainProps" aria-label="About these props">i</button></h1>
-      <div class="explain" id="explainProps" hidden><p style="margin:0"><b>Line</b> is the book&rsquo;s line for the pick (for example, under 30.5 receiving yards). <b>Book pays</b> is what the book pays on that line. <b>Our chance</b> is our chance it hits, in %. <b>⭐ Top Tier</b> = up to 4 of the most likely props from today&rsquo;s card &mdash; the same bets, just starred. <b>💎 Value</b> = in the top 10% of today&rsquo;s value gaps &mdash; a pick can wear both badges. A row keeps its own ⓘ only when there is something specific on that pick to explain &mdash; a news note, a simulation note, or Top Tier. Lines from FanDuel. Tomorrow&rsquo;s games are here early so you can beat line movement.</p></div>
+      <div class="explain" id="explainProps" hidden><p style="margin:0"><b>Line</b> is the book&rsquo;s line for the pick (for example, under 30.5 receiving yards). <b>Book pays</b> is what the book pays on that line. <b>Our chance</b> is our chance it hits, in %. <b>&#128170; Strong pick</b> = the strongest picks (top ten percent of the day&rsquo;s value). <b>&#129450; Lean</b> = a smaller edge, still above the value screen. A row keeps its own ⓘ only when there is something specific on that pick to explain &mdash; a news note or a simulation note. Lines from FanDuel. Tomorrow&rsquo;s games are here early so you can beat line movement.</p></div>
     </div>
     <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not proven winners.</p>
     <p class="note" id="propsSourceNote">Today&rsquo;s lines via SharpAPI and The Odds API &mdash; our usual sources were unavailable</p>
     <div class="freshness"></div>
-    <p class="note badge-legend"><span class="tt-badge">&#11088; Top Tier</span><span>up to 4 of the most likely props from today&rsquo;s card</span><span class="tt-badge value-badge">&#128142; Value</span><span>in the top 10% of today&rsquo;s value gaps &mdash; a pick can wear both badges</span></p>
     <div class="prop-search">
       <div class="prop-search-wrap">
         <input type="text" id="propSearch" placeholder="Search players..." aria-label="Search players" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="propSuggest" aria-autocomplete="list">
@@ -1394,20 +1393,20 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <h1>Today's Card</h1>
       <span class="bets-date" id="betsDate" hidden></span>
       <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not proven winners.</p>
-      <p>Today&rsquo;s bets &mdash; the main tracked record: 1&ndash;4 best bets plus 1 Parlay of the Day. Each card shows our chance it hits and how it compares with the book&rsquo;s number. The &#11088; Top Tier picks are the most likely props from this card &mdash; the same bets, just starred.</p>
+      <p>Today&rsquo;s bets &mdash; the main tracked record: 1&ndash;4 best bets plus 1 Parlay of the Day. Each card shows our chance it hits and how it compares with the book&rsquo;s number.</p>
       <div class="freshness"></div>
     </div>
     <div id="betsEmpty" class="empty-state bets-empty"><p>Today's card posts with the morning update — check back after 9am.</p></div>
     <div id="parlayWrap"></div>
     <div class="bets-grid" id="betsGrid"></div>
-    <p class="note" id="betsCardNote">Day 1 of the fresh track record. Picks are the day&rsquo;s strongest calibrated leans at a $100 flat stake; the parlay is tracked separately and is not part of the straight-bet tally. The &#11088; Top Tier picks are the most likely props from this card &mdash; the same bets, just starred.</p>
+    <p class="note" id="betsCardNote">Day 1 of the fresh track record. Picks are the day&rsquo;s strongest calibrated leans at a $100 flat stake; the parlay is tracked separately and is not part of the straight-bet tally.</p>
     <p class="note">These are today&rsquo;s bets only. Once a game finishes and a pick is graded, it moves to <a href="#record" data-goto="record">Our Record</a> &mdash; pending picks never appear there.</p>
   </section>
 
   <section class="panel" id="panel-record" role="tabpanel" aria-labelledby="tab-record" tabindex="0" hidden>
     <div class="explain-wrap">
       <h1 class="explain-head"><span class="explain-title">How have <em>we done?</em></span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainRecord" aria-label="About this record">i</button></h1>
-      <div class="explain" id="explainRecord" hidden><p style="margin:0">Only bets that have finished appear here, with the result next to each one. Today&rsquo;s bets live on <a class="doclink" href="#bets" data-goto="bets">Our Bets</a> until their games finish. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
+      <div class="explain" id="explainRecord" hidden><p style="margin:0">Only bets that have finished appear here, with the result next to each one. Today&rsquo;s bets live on <a class="doclink" href="#bets" data-goto="bets">Our Bets</a> until their games finish. The record started fresh on Nov 6, 2026. The card only includes games dated that day. When a rule changes, the old card is archived and the change is noted here. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
     </div>
 
     <div class="card tally-card">
@@ -1425,11 +1424,6 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <div id="parlayRecordRows"><p class="empty-note">No settled parlays yet.</p></div>
     </section>
 
-    <section class="block" aria-label="Top Tier record">
-      <h2>Top Tier &#11088;<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="What Top Tier means">i</button><span class="tip">Top Tier = up to 4 of the most likely props from today&rsquo;s card, tracked as straights &mdash; the same bets as the card, just starred, not extra bets</span></span></h2>
-      <p class="sub">Top Tier record starts Nov 6, 2026. Top Tier picks are the most likely props from today&rsquo;s card &mdash; the same bets as the card, just starred. They are not extra bets. Up to 4 a day.</p>
-      <div id="ttRecord"></div>
-    </section>
 
     <section class="block" aria-label="What happens to your money over a season">
       <h2>What happens to your money over a season?</h2>
@@ -1529,7 +1523,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <p class="lede" style="margin-top:10px">The numbers behind the picks are early-stage and still proving themselves, so the <a href="#record" data-goto="record">Our record</a> tab shows every settled pick with its result and date &mdash; look there before you trust any number here.</p>
 
     <h3 id="doc-games">Game forecasts (Who wins?)</h3>
-    <p>Each game gets one headline number: the team we think wins, and how often we think it wins &mdash; for example, &ldquo;Knicks 87%&rdquo;. Under it, Model A (the other model) and Model B (our model) show the two numbers behind it, where their numbers are in this snapshot. A game close to 50-50 is marked as a close call &mdash; a lean, not a pick to lean on.</p>
+    <p>Each game gets one headline number: the team we think wins, and how often we think it wins &mdash; for example, &ldquo;Knicks 87%&rdquo;. Under it, Model A (ALL_IN) and Model B (FULL_SLATE) show the two numbers behind it, where their numbers are in this snapshot. Model A is built by Grok and Model B is built by Muse. A game close to 50-50 is marked as a close call &mdash; a lean, not a pick to lean on.</p>
     <p>A chance is built from past games: how well teams score and stop the other team, recent form, rest, and playing at home, with recent games counting most. News that comes after the numbers are made &mdash; injuries and late lineup changes &mdash; is not in them, so check the news before you use a pick. Every number carries its date.</p>
 
     <h3 id="doc-props">Player picks</h3>
@@ -1551,13 +1545,13 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <p>This tool needs player salaries from DraftKings or FanDuel &mdash; upload the salary file they let you download, or paste the salaries in. The sample salaries are examples only, not real prices.</p>
 
     <h3 id="doc-record">Our record</h3>
-    <p>The <a href="#record" data-goto="record">Our record</a> tab lists only bets that have finished, with the date, the pick, the odds, the result, and the profit at $100 per bet. Today&rsquo;s bets live on <a href="#bets" data-goto="bets">Our Bets</a> until their games finish.</p>
+    <p>The <a href="#record" data-goto="record">Our record</a> tab lists only bets that have finished, with the date, the pick, the odds, the result, and the profit at $100 per bet. Today&rsquo;s bets live on <a href="#bets" data-goto="bets">Our Bets</a> until their games finish. The record started fresh on Nov 6, 2026. The card only includes games dated that day. When a rule changes, the old card is archived and the change is noted here.</p>
 
     <h3 id="doc-bankroll">Your money over a season</h3>
     <p>The <a href="#record" data-goto="record">Our record</a> tab also shows what happens to $10,000 over a season of 250 bets, played 10,000 times on a computer. Two ways of betting are shown: the same $100 on every bet, and a bet sized to the edge &mdash; bigger when the edge is bigger, smaller when it is smaller, never more than 10% of what you have (a standard sizing rule called half-Kelly). The numbers are a teaching example, not our record: one row shows what a real edge looks like (winning 55 times in 100 at &minus;110 odds), one row shows the same bets with no edge at all, and one row shows what happens when you size bets for an edge you do not have. Our own picks will run through the same simulation once 30 of them have been graded &mdash; until then that part of the page says so plainly. No way of betting shown here is a promise that it wins: even with a real edge, the sized bets end higher in the middle but finish ahead less often and dip further along the way.</p>
 
     <h3 id="doc-models">Our Models</h3>
-    <p>These are the 30 models behind the numbers on this site &mdash; 29 Mordy models plus ALL_IN (Model A) as the 30th. Each one focuses on one job:</p>
+    <p>These are the 30 models behind the numbers on this site &mdash; 29 Mordy models (together, Model B &mdash; FULL_SLATE) plus ALL_IN (Model A) as the 30th. Each one focuses on one job:</p>
     <p>Each number below comes from testing the model on past seasons it had never seen. For the win/loss models the score is log loss &mdash; how far the model&rsquo;s chances were from what actually happened, lower is better. For totals and spreads the score is the average miss in points &mdash; lower is better. R&sup2; says how much of the result the model explains versus a simple average &mdash; higher is better. Recalibration means we adjusted the model&rsquo;s chances using past seasons so the quoted chance matches how often it actually hit.</p>
     <ul style="margin:0 0 10px;padding-left:20px;line-height:1.6;max-width:720px">
       <li style="margin-bottom:6px"><b>Game (6 models)</b> &mdash; walk-forward log loss: NFL 0.6429, CFB 0.5709, NBA 0.6260, MLB 0.6795, NHL 0.6690, CBB 0.5081. None has beaten the book&rsquo;s odds across multiple seasons.</li>
@@ -3670,7 +3664,7 @@ function renderGames(){
     if(leagueState==="nba"&&gameDateMatch("Nov 4")){
       (SLATE||[]).forEach(function(s){
         var close=s.avgP<=56;
-        push("Wed, Nov 4, 2026","Nov 4",s.time,'<div class="slate-row"><div class="match"><span class="n">'+esc(s.g)+' \u00b7 Nov 4, 2026</span><div class="picklines"><div class="avgline"><b>'+esc(TEAM_NAMES[s.avgPick])+'</b> <span class="pickpct">'+s.avgP+'%</span></div>'+modelLinesHtml(["<div>Average of Model A (the other model) and Model B (our model)</div>"])+'</div><div class="tagrow">'+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(s.note?' <span class="n">'+esc(s.note)+'</span>':"")+'</div>'+marketsHtml(s.markets)+'</div><button type="button" data-slate-game="'+esc(s.g)+'">Player picks for this game &rarr;</button></div>');
+        push("Wed, Nov 4, 2026","Nov 4",s.time,'<div class="slate-row"><div class="match"><span class="n">'+esc(s.g)+' \u00b7 Nov 4, 2026</span><div class="picklines"><div class="avgline"><b>'+esc(TEAM_NAMES[s.avgPick])+'</b> <span class="pickpct">'+s.avgP+'%</span></div>'+modelLinesHtml(["<div>Average of Model A (ALL_IN) and Model B (FULL_SLATE)</div>"])+'</div><div class="tagrow">'+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(s.note?' <span class="n">'+esc(s.note)+'</span>':"")+'</div>'+marketsHtml(s.markets)+'</div><button type="button" data-slate-game="'+esc(s.g)+'">Player picks for this game &rarr;</button></div>');
       });
     }
     (FEED_GAMES||[]).forEach(function(f){
@@ -4156,113 +4150,113 @@ try{renderTD();}catch(e){}
 
 /* ================= PLAYER PICKS — Top props, Nov 4–5 ================= */
 var TOP_PROPS=[
-  {player:"Eric Singleton Jr",team:"FLA",sport:"CFB",date:"Nov 7",prop:"under 30.5 receiving yards",line:"-114",guess:74,tier:"strong",flag:"",value_pct:38.96,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.248,sim_p5:0,sim_p95:44.59,sim_std:15.21},
-  {player:"Kaleb Webb",team:"MD",sport:"CFB",date:"Nov 7",prop:"under 42.5 receiving yards",line:"-114",guess:74,tier:"strong",flag:"",value_pct:38.95,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.2535,sim_p5:0,sim_p95:59.66,sim_std:18.32},
-  {player:"Xavier Townsend",team:"PUR",sport:"CFB",date:"Nov 7",prop:"under 41.5 receiving yards",line:"-112",guess:73.4,tier:"strong",flag:"",value_pct:38.94,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.2745,sim_p5:0,sim_p95:62.71,sim_std:19.99},
-  {player:"Jaron Tibbs",team:"KSU",sport:"CFB",date:"Nov 7",prop:"under 57.5 receiving yards",line:"-114",guess:74,tier:"strong",flag:"",value_pct:38.92,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.257,sim_p5:1.9,sim_p95:82.81,sim_std:24.2},
-  {player:"Svi Mykhailiuk",team:"UTA",sport:"NBA",date:"Nov 6",prop:"under 2.5 points",line:"118",guess:63.5,tier:"strong",flag:"",value_pct:38.34,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 5.5, "to": 2.5, "at": "2026-11-06 18:11:30 PST"},sim_p_over:0.313,sim_p5:0,sim_p95:9.35,sim_std:3.27},
-  {player:"Keshaun Singleton",team:"AUB",sport:"CFB",date:"Nov 7",prop:"under 53.5 receiving yards",line:"-114",guess:73.6,tier:"strong",flag:"",value_pct:38.1,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.294,sim_p5:3.66,sim_p95:79.53,sim_std:23.21},
-  {player:"Jasen Lopez",team:"FSU",sport:"CFB",date:"Nov 7",prop:"under 35.5 receiving yards",line:"-114",guess:73.5,tier:"strong",flag:"",value_pct:37.95,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.2775,sim_p5:0,sim_p95:61.41,sim_std:23.46},
-  {player:"Tj Moore",top_tier:true,team:"CLEM",sport:"CFB",date:"Nov 7",prop:"under 44.5 receiving yards",line:"-118",guess:74.1,tier:"strong",flag:"",value_pct:36.92,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 40.5, "to": 44.5, "at": "2026-11-06 18:11:30 PST"},sim_p_over:0.1155,sim_p5:7.5,sim_p95:46.04,sim_std:11.84},
-  {player:"Tama Uiliata",team:"HAW",sport:"CFB",date:"Nov 7",prop:"under 29.5 receiving yards",line:"-114",guess:72.7,tier:"strong",flag:"",value_pct:36.39,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.317,sim_p5:0,sim_p95:46.8,sim_std:14.68},
-  {player:"Chris Dawn Jr",team:"TXST",sport:"CFB",date:"Nov 7",prop:"under 58.5 receiving yards",line:"-114",guess:72.3,tier:"strong",flag:"",value_pct:35.8,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.322,sim_p5:35.18,sim_p95:71.71,sim_std:11.2},
-  {player:"Josh Manning",team:"KSU",sport:"CFB",date:"Nov 7",prop:"under 50.5 receiving yards",line:"-114",guess:72,tier:"lean",flag:"",value_pct:35.23,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.331,sim_p5:0,sim_p95:78.91,sim_std:24.67},
-  {player:"Rj Barrett",team:"TOR",sport:"NBA",date:"Nov 6",prop:"under 26.5 points",line:"-108",guess:68.9,tier:"lean",flag:"",value_pct:32.71,markets:{"polymarket": "https://polymarket.us/event/nba-tor-mil-2026-11-06", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1abe1-09a0-7791-baf6-f9fee03ca4db"},line_move:{"from": 25.5, "to": 26.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.118,sim_p5:10.7,sim_p95:29.35,sim_std:5.73},
-  {player:"Chas Nimrod",team:"AUB",sport:"CFB",date:"Nov 7",prop:"under 51.5 receiving yards",line:"-114",guess:70.5,tier:"lean",flag:"",value_pct:32.32,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.342,sim_p5:5.98,sim_p95:80.4,sim_std:22.97},
-  {player:"Deandre Ayton",team:"WAS",sport:"NBA",date:"Nov 6",prop:"under 9.5 points",line:"-112",guess:69.8,tier:"lean",flag:"",value_pct:32.14,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.1365,sim_p5:0,sim_p95:11.75,sim_std:3.84},
-  {player:"Dawson Pough",team:"BC",sport:"CFB",date:"Nov 7",prop:"under 20.5 receiving yards",line:"-114",guess:70.4,tier:"lean",flag:"",value_pct:32.08,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 22.5, "to": 20.5, "at": "2026-11-06 18:11:30 PST"},sim_p_over:0.351,sim_p5:6.72,sim_p95:32.77,sim_std:7.85},
-  {player:"Drew Mestemaker",team:"OKST",sport:"CFB",date:"Nov 7",prop:"over 284.5 passing yards",line:"-114",guess:70.2,tier:"lean",flag:"",value_pct:31.81,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.9625,sim_p5:288.75,sim_p95:415.86,sim_std:37.61},
-  {player:"Fame Ijeboi",team:"PUR",sport:"CFB",date:"Nov 7",prop:"under 14.5 receiving yards",line:"-112",guess:69.5,tier:"lean",flag:"",value_pct:31.52,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.3605,sim_p5:0,sim_p95:28.32,sim_std:10.59},
-  {player:"Jamal Shead",team:"TOR",sport:"NBA",date:"Nov 6",prop:"under 11.5 points",line:"-120",guess:71,tier:"lean",flag:"",value_pct:30.21,markets:{"polymarket": "https://polymarket.us/event/nba-tor-mil-2026-11-06", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1abe1-09a0-7791-baf6-f9fee03ca4db"},line_move:{"from": 7.5, "to": 11.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.1,sim_p5:0,sim_p95:12.79,sim_std:4.33},
-  {player:"Darian Mensah",team:"MIA",sport:"CFB",date:"Nov 7",prop:"over 223.5 passing yards",line:"-114",guess:69.3,tier:"lean",flag:"",value_pct:30.17,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.9225,sim_p5:212.06,sim_p95:417.09,sim_std:62.41},
-  {player:"Deandre Ayton",team:"WAS",sport:"NBA",date:"Nov 6",prop:"under 6.5 rebounds",line:"104",guess:63.2,tier:"lean",flag:"",value_pct:28.85,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.178,sim_p5:1.43,sim_p95:7.88,sim_std:1.98},
-  {player:"Toumani Camara",team:"POR",sport:"NBA",date:"Nov 6",prop:"under 3.5 rebounds",line:"118",guess:59.1,tier:"lean",flag:"",value_pct:28.75,markets:{"polymarket": "https://polymarket.us/event/nba-por-lal-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV06PORLAL-PORTCAMARA33-4", "novig": "https://app.novig.us/event-markets/01a1ac4f-4378-74b0-a42c-cbe75ee35cfd"},sim_p_over:0.2565,sim_p5:0,sim_p95:5.53,sim_std:2.03},
-  {player:"Joshua Porter",team:"USF",sport:"CFB",date:"Nov 6",prop:"under 22.5 receiving yards",line:"-112",guess:67.8,tier:"lean",flag:"",value_pct:28.35,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.398,sim_p5:0,sim_p95:47.08,sim_std:18.27},
-  {player:"Nyziah Hunter",team:"NEB",sport:"CFB",date:"Nov 6",prop:"under 28.5 receiving yards",line:"-112",guess:67.5,tier:"lean",flag:"",value_pct:27.82,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4115,sim_p5:2.81,sim_p95:49.09,sim_std:14.18},
-  {player:"Noah Jennings",team:"MINN",sport:"CFB",date:"Nov 7",prop:"under 42.5 receiving yards",line:"-114",guess:68.1,tier:"lean",flag:"",value_pct:27.77,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.409,sim_p5:0,sim_p95:82.46,sim_std:27.72},
-  {player:"Ryan Kalkbrenner",team:"CHA",sport:"NBA",date:"Nov 6",prop:"under 6.5 points",line:"-136",guess:73.6,tier:"lean",flag:"",value_pct:27.68,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.125,sim_p5:1.11,sim_p95:7.47,sim_std:1.93},
-  {player:"Noah Fifita",team:"ARIZ",sport:"CFB",date:"Nov 6",prop:"over 274.5 passing yards",line:"-112",guess:67.3,tier:"lean",flag:"",value_pct:27.41,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.854,sim_p5:245.65,sim_p95:419.93,sim_std:53.76},
-  {player:"Jaylen Clark",team:"MIN",sport:"NBA",date:"Nov 6",prop:"under 6.5 points",line:"-115",guess:68.1,tier:"lean",flag:"",value_pct:27.27,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.192,sim_p5:0,sim_p95:9.02,sim_std:3.27},
-  {player:"Raleek Brown",team:"TEX",sport:"CFB",date:"Nov 7",prop:"under 9.5 receiving yards",line:"-118",guess:68.8,tier:"lean",flag:"",value_pct:27.11,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.415,sim_p5:0,sim_p95:25.83,sim_std:12.04},
-  {player:"Kenrich Williams",team:"OKC",sport:"NBA",date:"Nov 6",prop:"under 8.5 points",line:"100",guess:63.3,tier:"lean",flag:"",value_pct:26.66,markets:{"polymarket": "https://polymarket.us/event/nba-okc-mem-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06OKCMEM-OKCKWILLIAMSSF-10", "novig": "https://app.novig.us/event-markets/01a1abe1-0ba7-7b11-86bb-e6a0b4a64be7"},line_move:{"from": 9.5, "to": 8.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.262,sim_p5:0,sim_p95:12.89,sim_std:4.09},
-  {player:"Bo Jackson",team:"OSU",sport:"CFB",date:"Nov 7",prop:"under 13.5 receiving yards",line:"-114",guess:67.3,tier:"lean",flag:"",value_pct:26.34,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.438,sim_p5:0,sim_p95:32.67,sim_std:13.29},
-  {player:"Javon Tracy",team:"MINN",sport:"CFB",date:"Nov 7",prop:"under 48.5 receiving yards",line:"-112",guess:66.6,tier:"lean",flag:"",value_pct:26.1,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.41,sim_p5:11.49,sim_p95:77.6,sim_std:20.08},
-  {player:"Donovan Mitchell",team:"CLE",sport:"NBA",date:"Nov 6",prop:"under 22.5 points",line:"100",guess:63,tier:"lean",flag:"",value_pct:26.04,markets:{"polymarket": "https://polymarket.us/event/nba-phi-cle-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06PHICLE-CLEDMITCHELL45-25", "novig": "https://app.novig.us/event-markets/01a1abc5-9370-7011-a5bc-72ae075ec46c"},line_move:{"from": 24.5, "to": 22.5, "at": "2026-11-06 18:11:30 PST"},sim_p_over:0.321,sim_p5:11.96,sim_p95:31.31,sim_std:5.87},
-  {player:"Bryson Rodgers",team:"USF",sport:"CFB",date:"Nov 6",prop:"under 38.5 receiving yards",line:"-116",guess:67.6,tier:"lean",flag:"",value_pct:25.96,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4345,sim_p5:0,sim_p95:75.07,sim_std:23.83},
-  {player:"Evan Mobley",team:"CLE",sport:"NBA",date:"Nov 6",prop:"under 6.5 rebounds",line:"106",guess:61.1,tier:"lean",flag:"",value_pct:25.95,markets:{"polymarket": "https://polymarket.us/event/nba-phi-cle-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV06PHICLE-CLEEMOBLEY4-10", "novig": "https://app.novig.us/event-markets/01a1abc5-9370-7011-a5bc-72ae075ec46c"},line_move:{"from": 9.5, "to": 6.5, "at": "2026-11-06 18:11:30 PST"},sim_p_over:0.2845,sim_p5:3.18,sim_p95:12.61,sim_std:2.87},
-  {player:"Cj Mccollum",team:"ATL",sport:"NBA",date:"Nov 6",prop:"under 17.5 points",line:"-115",guess:67.3,tier:"lean",flag:"",value_pct:25.83,markets:{"polymarket": "https://polymarket.us/event/nba-was-atl-2026-11-06", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1abaa-76e6-7202-97fc-fd67811f5e2e"},line_move:{"from": 16.5, "to": 17.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.233,sim_p5:6.48,sim_p95:21.72,sim_std:4.66},
-  {player:"Jake Wilson",team:"WYO",sport:"CFB",date:"Nov 7",prop:"under 27.5 receiving yards",line:"-114",guess:66.8,tier:"lean",flag:"",value_pct:25.39,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.42,sim_p5:3.79,sim_p95:47.81,sim_std:13.18},
-  {player:"Braylon Staley",team:"TENN",sport:"CFB",date:"Nov 7",prop:"under 38.5 receiving yards",line:"-114",guess:66.5,tier:"lean",flag:"",value_pct:24.82,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.446,sim_p5:0,sim_p95:73.19,sim_std:23.62},
-  {player:"Jakob Poeltl",team:"TOR",sport:"NBA",date:"Nov 6",prop:"under 9.5 points",line:"-118",guess:67.4,tier:"lean",flag:"",value_pct:24.55,markets:{"polymarket": "https://polymarket.us/event/nba-tor-mil-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06TORMIL-TORJPOELTL19-10", "novig": "https://app.novig.us/event-markets/01a1abe1-09a0-7791-baf6-f9fee03ca4db"},line_move:{"from": 6.5, "to": 9.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.1515,sim_p5:0,sim_p95:12.23,sim_std:4.78},
-  {player:"Landon Sides",team:"ECU",sport:"CFB",date:"Nov 6",prop:"under 53.5 receiving yards",line:"-116",guess:66.7,tier:"lean",flag:"",value_pct:24.26,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 49.5, "to": 53.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.4285,sim_p5:0,sim_p95:128.84,sim_std:51.35},
-  {player:"Collin Dixon",team:"ILL",sport:"CFB",date:"Nov 6",prop:"under 84.5 receiving yards",line:"-112",guess:65.5,tier:"lean",flag:"",value_pct:24.06,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4725,sim_p5:38.65,sim_p95:123.87,sim_std:25.68},
-  {player:"Jamal Shead",team:"TOR",sport:"NBA",date:"Nov 6",prop:"under 8.5 assists",line:"-126",guess:69.1,tier:"lean",flag:"",value_pct:23.86,markets:{"polymarket": "https://polymarket.us/event/nba-tor-mil-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV06TORMIL-TORJSHEAD1-8", "novig": "https://app.novig.us/event-markets/01a1abe1-09a0-7791-baf6-f9fee03ca4db"},line_move:{"from": 5.5, "to": 8.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.118,sim_p5:0.68,sim_p95:9.8,sim_std:2.75},
-  {player:"Nolan James Jr",team:"ND",sport:"CFB",date:"Nov 7",prop:"under 7.5 receiving yards",line:"-114",guess:66,tier:"lean",flag:"",value_pct:23.85,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.437,sim_p5:0,sim_p95:18.8,sim_std:7.48},
-  {player:"Jamal Shead",team:"TOR",sport:"NBA",date:"Nov 6",prop:"under 1.5 3-pointers",line:"-115",guess:66.2,tier:"lean",flag:"",value_pct:23.83,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.1065,sim_p5:0,sim_p95:2,sim_std:0.77},
-  {player:"Lamelo Ball",team:"MIN",sport:"NBA",date:"Nov 6",prop:"under 3.5 3-pointers",line:"-102",guess:62.5,tier:"lean",flag:"",value_pct:23.77,markets:{"polymarket": "https://polymarket.us/event/nba-min-nop-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBA3PT-26NOV06MINNOP-MINLBALL1-4", "novig": "https://app.novig.us/event-markets/01a1abe1-0a12-70a3-92b3-56c61de360ee"},sim_p_over:0.3515,sim_p5:0,sim_p95:8,sim_std:2.54},
-  {player:"Dyson Daniels",team:"ATL",sport:"NBA",date:"Nov 6",prop:"under 12.5 points",line:"100",guess:61.7,tier:"lean",flag:"",value_pct:23.41,markets:{"polymarket": "https://polymarket.us/event/nba-was-atl-2026-11-06", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1abaa-76e6-7202-97fc-fd67811f5e2e"},sim_p_over:0.3295,sim_p5:0,sim_p95:19.98,sim_std:6.23},
-  {player:"Junior Sherrill",team:"VAN",sport:"CFB",date:"Nov 7",prop:"under 89.5 receiving yards",line:"-114",guess:65.6,tier:"lean",flag:"",value_pct:23.16,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4495,sim_p5:53.22,sim_p95:121.28,sim_std:20.58},
-  {player:"John Mateer",team:"OU",sport:"CFB",date:"Nov 7",prop:"over 194.5 passing yards",line:"-114",guess:65.6,tier:"lean",flag:"",value_pct:23.11,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.797,sim_p5:153.59,sim_p95:319.33,sim_std:50.42},
-  {player:"Desirrio Riles",team:"FSU",sport:"CFB",date:"Nov 7",prop:"under 14.5 receiving yards",line:"-112",guess:65,tier:"lean",flag:"",value_pct:23.04,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4375,sim_p5:0,sim_p95:33.92,sim_std:13},
-  {player:"Daylyn Upshaw",team:"MIA",sport:"CFB",date:"Nov 7",prop:"under 40.5 receiving yards",line:"-114",guess:65.5,tier:"lean",flag:"",value_pct:22.92,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 44.5, "to": 40.5, "at": "2026-11-06 18:11:30 PST"},sim_p_over:0.442,sim_p5:0,sim_p95:86.92,sim_std:28.69},
-  {player:"Kevin Roche Jr",team:"GT",sport:"CFB",date:"Nov 7",prop:"under 33.5 receiving yards",line:"-114",guess:65.4,tier:"lean",flag:"",value_pct:22.84,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.443,sim_p5:2.81,sim_p95:59.11,sim_std:17.34},
-  {player:"Dyson Daniels",team:"ATL",sport:"NBA",date:"Nov 6",prop:"under 6.5 assists",line:"-152",guess:74.1,tier:"lean",flag:"",value_pct:22.77,markets:{"polymarket": "https://polymarket.us/event/nba-was-atl-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV06WASATL-ATLDDANIELS5-8", "novig": "https://app.novig.us/event-markets/01a1abaa-76e6-7202-97fc-fd67811f5e2e"},line_move:{"from": 5.5, "to": 6.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.1285,sim_p5:1.07,sim_p95:7.59,sim_std:1.96},
-  {player:"Onyeka Okongwu",team:"ATL",sport:"NBA",date:"Nov 6",prop:"under 15.5 points",line:"-106",guess:63,tier:"lean",flag:"",value_pct:22.52,markets:{"polymarket": "https://polymarket.us/event/nba-was-atl-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06WASATL-ATLOOKONGWU17-15", "novig": "https://app.novig.us/event-markets/01a1abaa-76e6-7202-97fc-fd67811f5e2e"},line_move:{"from": 14.5, "to": 15.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.3255,sim_p5:0.15,sim_p95:23.58,sim_std:7.13},
-  {player:"Trae Young",team:"WAS",sport:"NBA",date:"Nov 6",prop:"under 22.5 points",line:"-119",guess:66.4,tier:"lean",flag:"",value_pct:22.28,markets:{"polymarket": "https://polymarket.us/event/nba-was-atl-2026-11-06", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1abaa-76e6-7202-97fc-fd67811f5e2e"},line_move:{"from": 20.5, "to": 22.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.2485,sim_p5:13.23,sim_p95:26.77,sim_std:4.03},
-  {player:"Braden Pegan",team:"UTAH",sport:"CFB",date:"Nov 7",prop:"under 56.5 receiving yards",line:"-114",guess:65.1,tier:"lean",flag:"",value_pct:22.14,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4535,sim_p5:13.67,sim_p95:93.75,sim_std:24.43},
-  {player:"Jordan Faison",team:"ND",sport:"CFB",date:"Nov 7",prop:"under 69.5 receiving yards",line:"-112",guess:64.3,tier:"lean",flag:"",value_pct:21.75,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 61.5, "to": 69.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.4415,sim_p5:0,sim_p95:134.45,sim_std:42.88},
-  {player:"Cooper Flagg",team:"DAL",sport:"NBA",date:"Nov 6",prop:"under 6.5 rebounds",line:"104",guess:59.6,tier:"lean",flag:"",value_pct:21.63,markets:{"polymarket": "https://polymarket.us/event/nba-uta-dal-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV06UTADAL-DALCFLAGG32-8", "novig": "https://app.novig.us/event-markets/01a1abe1-0b16-7f72-a9ae-12bac68757a3"},sim_p_over:0.3485,sim_p5:2.34,sim_p95:8.89,sim_std:1.99},
-  {player:"Lamelo Ball",team:"MIN",sport:"NBA",date:"Nov 6",prop:"under 21.5 points",line:"-111",guess:63.9,tier:"lean",flag:"",value_pct:21.53,markets:{"polymarket": "https://polymarket.us/event/nba-min-nop-2026-11-06", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1abe1-0a12-70a3-92b3-56c61de360ee"},sim_p_over:0.2975,sim_p5:2.19,sim_p95:31.48,sim_std:8.99},
-  {player:"Desean Bishop",team:"TENN",sport:"CFB",date:"Nov 7",prop:"under 7.5 receiving yards",line:"-112",guess:64.2,tier:"lean",flag:"",value_pct:21.42,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4815,sim_p5:0,sim_p95:17.92,sim_std:6.9},
-  {player:"Sion James",team:"CHA",sport:"NBA",date:"Nov 6",prop:"under 5.5 points",line:"109",guess:57.9,tier:"lean",flag:"",value_pct:21.04,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1abaa-7659-71d2-b1d9-95bf8a8ab2ab"},sim_p_over:0.3865,sim_p5:0,sim_p95:9.87,sim_std:3.24},
-  {player:"Rudy Gobert",team:"MIN",sport:"NBA",date:"Nov 6",prop:"under 10.5 points",line:"-128",guess:68,tier:"lean",flag:"",value_pct:21.04,markets:{"polymarket": "https://polymarket.us/event/nba-min-nop-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06MINNOP-MINRGOBERT27-10", "novig": "https://app.novig.us/event-markets/01a1abe1-0a12-70a3-92b3-56c61de360ee"},sim_p_over:0.235,sim_p5:0.31,sim_p95:14.16,sim_std:4.23},
-  {player:"Jamal Shead",team:"TOR",sport:"NBA",date:"Nov 6",prop:"under 2.5 rebounds",line:"108",guess:58.2,tier:"lean",flag:"",value_pct:20.98,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.42,sim_p5:0,sim_p95:5.36,sim_std:2.02},
-  {player:"Neemias Queta",team:"BOS",sport:"NBA",date:"Nov 6",prop:"under 6.5 rebounds",line:"-102",guess:61,tier:"lean",flag:"",value_pct:20.76,markets:{"polymarket": "https://polymarket.us/event/nba-bos-cha-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV06BOSCHA-BOSNQUETA88-8", "novig": "https://app.novig.us/event-markets/01a1abaa-7659-71d2-b1d9-95bf8a8ab2ab"},line_move:{"from": 7.5, "to": 6.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.2935,sim_p5:2.05,sim_p95:8.69,sim_std:2.02},
-  {player:"Dalen Penson",team:"GT",sport:"CFB",date:"Nov 7",prop:"under 51.5 receiving yards",line:"-114",guess:64.3,tier:"lean",flag:"",value_pct:20.63,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.467,sim_p5:0,sim_p95:111.16,sim_std:38.81},
-  {player:"Jayson Tatum",team:"BOS",sport:"NBA",date:"Nov 6",prop:"under 3.5 3-pointers",line:"-152",guess:72.6,tier:"lean",flag:"",value_pct:20.44,markets:{"polymarket": "https://polymarket.us/event/nba-bos-cha-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBA3PT-26NOV06BOSCHA-BOSJTATUM0-4", "novig": "https://app.novig.us/event-markets/01a1abaa-7659-71d2-b1d9-95bf8a8ab2ab"},line_move:{"from": 2.5, "to": 3.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.1895,sim_p5:0,sim_p95:6,sim_std:1.86},
-  {player:"Zaccharie Risacher",team:"DAL",sport:"NBA",date:"Nov 6",prop:"over 3.5 rebounds",line:"-112",guess:63.6,tier:"lean",flag:"",value_pct:20.3,markets:{"polymarket": "https://polymarket.us/event/nba-uta-dal-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV06UTADAL-DALZRISACHER10-4", "novig": "https://app.novig.us/event-markets/01a1abe1-0b16-7f72-a9ae-12bac68757a3"},sim_p_over:0.884,sim_p5:2.39,sim_p95:9.09,sim_std:1.99},
-  {player:"Craig Dandridge",team:"UGA",sport:"CFB",date:"Nov 7",prop:"under 38.5 receiving yards",line:"-114",guess:64.1,tier:"lean",flag:"",value_pct:20.3,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.488,sim_p5:0,sim_p95:93.16,sim_std:34.08},
-  {player:"Ayo Dosunmu",team:"MIN",sport:"NBA",date:"Nov 6",prop:"under 4.5 assists",line:"116",guess:55.7,tier:"lean",flag:"",value_pct:20.21,markets:{"polymarket": "https://polymarket.us/event/nba-min-nop-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV06MINNOP-MINADOSUNMU13-6", "novig": "https://app.novig.us/event-markets/01a1abe1-0a12-70a3-92b3-56c61de360ee"},sim_p_over:0.46,sim_p5:0,sim_p95:9.59,sim_std:3.24},
-  {player:"Ayo Dosunmu",team:"MIN",sport:"NBA",date:"Nov 6",prop:"under 18.5 points",line:"-113",guess:63.7,tier:"lean",flag:"",value_pct:20.06,markets:{"polymarket": "https://polymarket.us/event/nba-min-nop-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06MINNOP-MINADOSUNMU13-20", "novig": "https://app.novig.us/event-markets/01a1abe1-0a12-70a3-92b3-56c61de360ee"},line_move:{"from": 17.5, "to": 18.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.3075,sim_p5:6.71,sim_p95:25.39,sim_std:5.64},
-  {player:"Malik Monk",team:"SAC",sport:"NBA",date:"Nov 6",prop:"under 12.5 points",line:"-120",guess:65.3,tier:"lean",flag:"",value_pct:19.74,markets:{"polymarket": "https://polymarket.us/event/nba-sas-sac-2026-11-06", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1ac4f-430c-7603-af94-12fc3e0f1fb0"},sim_p_over:0.275,sim_p5:0,sim_p95:21.93,sim_std:8.75},
-  {player:"Aday Mara",team:"OKC",sport:"NBA",date:"Nov 6",prop:"under 8.5 points",line:"-122",guess:65.8,tier:"lean",flag:"",value_pct:19.65,markets:{"polymarket": "https://polymarket.us/event/nba-okc-mem-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06OKCMEM-OKCAMARA15-10", "novig": "https://app.novig.us/event-markets/01a1abe1-0ba7-7b11-86bb-e6a0b4a64be7"},line_move:{"from": 7.5, "to": 8.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.2785,sim_p5:0.78,sim_p95:12.25,sim_std:3.48},
-  {player:"Jakob Poeltl",team:"TOR",sport:"NBA",date:"Nov 6",prop:"under 6.5 rebounds",line:"110",guess:56.9,tier:"lean",flag:"",value_pct:19.53,markets:{"polymarket": "https://polymarket.us/event/nba-tor-mil-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV06TORMIL-TORJPOELTL19-8", "novig": "https://app.novig.us/event-markets/01a1abe1-09a0-7791-baf6-f9fee03ca4db"},line_move:{"from": 5.5, "to": 6.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.431,sim_p5:0,sim_p95:12.94,sim_std:4.44},
-  {player:"Chris Durr Jr",team:"MD",sport:"CFB",date:"Nov 7",prop:"under 79.5 receiving yards",line:"-118",guess:64.6,tier:"lean",flag:"",value_pct:19.41,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4785,sim_p5:0,sim_p95:159.57,sim_std:50.77},
-  {player:"Horatio Fields",team:"MISS",sport:"CFB",date:"Nov 7",prop:"under 39.5 receiving yards",line:"-112",guess:63.1,tier:"lean",flag:"",value_pct:19.37,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.464,sim_p5:0,sim_p95:82.31,sim_std:27.03},
-  {player:"Silas Demary",team:"CONN",sport:"CBB",date:"Nov 6",prop:"under 11.5 points",line:"100",guess:59.7,tier:"lean",flag:"",value_pct:19.33,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.054,sim_p5:0,sim_p95:11.65,sim_std:3.61},
-  {player:"Calvin Russell Iii",team:"SYR",sport:"CFB",date:"Nov 7",prop:"under 48.5 receiving yards",line:"-114",guess:63.5,tier:"lean",flag:"",value_pct:19.24,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 51.5, "to": 48.5, "at": "2026-11-06 18:11:30 PST"},sim_p_over:0.447,sim_p5:0,sim_p95:98.2,sim_std:30.37},
-  {player:"Derrick White",team:"BOS",sport:"NBA",date:"Nov 6",prop:"under 13.5 points",line:"-118",guess:64.5,tier:"lean",flag:"",value_pct:19.21,markets:{"polymarket": "https://polymarket.us/event/nba-bos-cha-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06BOSCHA-BOSDWHITE9-15", "novig": "https://app.novig.us/event-markets/01a1abaa-7659-71d2-b1d9-95bf8a8ab2ab"},sim_p_over:0.284,sim_p5:4.05,sim_p95:18.21,sim_std:4.42},
-  {player:"Donovan Clingan",team:"POR",sport:"NBA",date:"Nov 6",prop:"under 10.5 points",line:"-115",guess:63.7,tier:"lean",flag:"",value_pct:19.03,markets:{"polymarket": "https://polymarket.us/event/nba-por-lal-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06PORLAL-PORDCLINGAN23-10", "novig": "https://app.novig.us/event-markets/01a1ac4f-4378-74b0-a42c-cbe75ee35cfd"},sim_p_over:0.2545,sim_p5:3.79,sim_p95:13.38,sim_std:2.89},
-  {player:"Derek Eusebio",team:"ASU",sport:"CFB",date:"Nov 7",prop:"under 41.5 receiving yards",line:"-114",guess:63.4,tier:"lean",flag:"",value_pct:19.01,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.496,sim_p5:0,sim_p95:104.53,sim_std:38.07},
-  {player:"Jacory Barney Jr",team:"NEB",sport:"CFB",date:"Nov 6",prop:"under 45.5 receiving yards",line:"-112",guess:62.9,tier:"lean",flag:"",value_pct:18.96,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.5265,sim_p5:0,sim_p95:115.03,sim_std:41.22},
-  {player:"Cole Spence",team:"VAN",sport:"CFB",date:"Nov 7",prop:"under 24.5 receiving yards",line:"-114",guess:63.4,tier:"lean",flag:"",value_pct:18.93,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.498,sim_p5:0,sim_p95:49.37,sim_std:15.15},
-  {player:"Devon Dampier",team:"UTAH",sport:"CFB",date:"Nov 7",prop:"over 216.5 passing yards",line:"-114",guess:63.3,tier:"lean",flag:"",value_pct:18.9,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.7395,sim_p5:182.92,sim_p95:289.76,sim_std:32.43},
-  {player:"Austin Simmons",team:"MIZ",sport:"CFB",date:"Nov 7",prop:"over 202.5 passing yards",line:"-114",guess:63.3,tier:"lean",flag:"",value_pct:18.83,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.7385,sim_p5:113.06,sim_p95:408.29,sim_std:91.42},
-  {player:"Bryant Wesco Jr",team:"CLEM",sport:"CFB",date:"Nov 7",prop:"under 56.5 receiving yards",line:"-114",guess:63.1,tier:"lean",flag:"",value_pct:18.51,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 54.5, "to": 56.5, "at": "2026-11-06 18:11:30 PST"},sim_p_over:0.493,sim_p5:0,sim_p95:140.3,sim_std:54.7},
-  {player:"Jonathan Kuminga",team:"MIN",sport:"NBA",date:"Nov 6",prop:"under 14.5 points",line:"-115",guess:63.4,tier:"lean",flag:"",value_pct:18.47,markets:{"polymarket": "https://polymarket.us/event/nba-min-nop-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06MINNOP-MINJKUMINGA0-15", "novig": "https://app.novig.us/event-markets/01a1abe1-0a12-70a3-92b3-56c61de360ee"},sim_p_over:0.335,sim_p5:3.64,sim_p95:20.14,sim_std:5.07},
-  {player:"Jakobe Walter",team:"TOR",sport:"NBA",date:"Nov 6",prop:"under 14.5 points",line:"-102",guess:59.8,tier:"lean",flag:"",value_pct:18.39,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 11.5, "to": 14.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.3345,sim_p5:3.23,sim_p95:21.03,sim_std:5.39},
-  {player:"Eugene Wilson Iii",team:"LSU",sport:"CFB",date:"Nov 7",prop:"under 30.5 receiving yards",line:"-114",guess:63.1,tier:"lean",flag:"",value_pct:18.36,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4755,sim_p5:0,sim_p95:61.23,sim_std:19.99},
-  {player:"Gary Givens Iii",team:"NEV",sport:"CFB",date:"Nov 6",prop:"under 36.5 receiving yards",line:"-116",guess:63.6,tier:"lean",flag:"",value_pct:18.36,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.505,sim_p5:1.96,sim_p95:71.48,sim_std:20.78},
-  {player:"Andrew Marsh",team:"MICH",sport:"CFB",date:"Nov 7",prop:"under 45.5 receiving yards",line:"-114",guess:63,tier:"lean",flag:"",value_pct:18.27,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4995,sim_p5:0,sim_p95:106.63,sim_std:36.35},
-  {player:"Lamelo Ball",team:"MIN",sport:"NBA",date:"Nov 6",prop:"under 6.5 assists",line:"-102",guess:59.7,tier:"lean",flag:"",value_pct:18.23,markets:{"polymarket": "https://polymarket.us/event/nba-min-nop-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV06MINNOP-MINLBALL1-8", "novig": "https://app.novig.us/event-markets/01a1abe1-0a12-70a3-92b3-56c61de360ee"},sim_p_over:0.381,sim_p5:2.62,sim_p95:9.19,sim_std:2.01},
-  {player:"Donovan Clingan",team:"POR",sport:"NBA",date:"Nov 6",prop:"under 10.5 rebounds",line:"-111",guess:62.2,tier:"lean",flag:"",value_pct:18.22,markets:{"polymarket": "https://polymarket.us/event/nba-por-lal-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV06PORLAL-PORDCLINGAN23-12", "novig": "https://app.novig.us/event-markets/01a1ac4f-4378-74b0-a42c-cbe75ee35cfd"},sim_p_over:0.2275,sim_p5:5.74,sim_p95:12.45,sim_std:2.02},
-  {player:"Kenny Johnson",team:"TTU",sport:"CFB",date:"Nov 7",prop:"under 63.5 receiving yards",line:"-114",guess:62.9,tier:"lean",flag:"",value_pct:18.07,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4895,sim_p5:0,sim_p95:129.75,sim_std:41.57},
-  {player:"Jelani Thurman",team:"UNC",sport:"CFB",date:"Nov 7",prop:"under 55.5 receiving yards",line:"-114",guess:62.8,tier:"lean",flag:"",value_pct:17.96,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.508,sim_p5:24.84,sim_p95:86.98,sim_std:18.76},
-  {player:"Patrick Overmyer",team:"HOU",sport:"CFB",date:"Nov 7",prop:"under 51.5 receiving yards",line:"-114",guess:62.8,tier:"lean",flag:"",value_pct:17.83,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.505,sim_p5:0,sim_p95:111.43,sim_std:34.93},
-  {player:"Tre Richardson",team:"LOU",sport:"CFB",date:"Nov 7",prop:"under 77.5 receiving yards",line:"-114",guess:62.8,tier:"lean",flag:"",value_pct:17.82,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.502,sim_p5:0,sim_p95:168.98,sim_std:56.06},
-  {player:"Kalieb Osborne",team:"CONN",sport:"CFB",date:"Nov 7",prop:"over 213.5 passing yards",line:"-114",guess:62.7,tier:"lean",flag:"",value_pct:17.72,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.7225,sim_p5:161.06,sim_p95:334.06,sim_std:52.56},
-  {player:"Pj Washington",team:"DAL",sport:"NBA",date:"Nov 6",prop:"under 1.5 assists",line:"-101",guess:59.2,tier:"lean",flag:"",value_pct:17.71,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1abe1-0b16-7f72-a9ae-12bac68757a3"},sim_p_over:0.444,sim_p5:0,sim_p95:4.23,sim_std:1.98},
-  {player:"Jamal Polite Jr",team:"ISU",sport:"CFB",date:"Nov 7",prop:"under 45.5 receiving yards",line:"-114",guess:62.7,tier:"lean",flag:"",value_pct:17.67,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.5075,sim_p5:0,sim_p95:161.31,sim_std:69.81},
-  {player:"Terrance Carter Jr",team:"TTU",sport:"CFB",date:"Nov 7",prop:"under 32.5 receiving yards",line:"-114",guess:62.5,tier:"lean",flag:"",value_pct:17.35,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.5165,sim_p5:0,sim_p95:71.35,sim_std:23.3},
-  {player:"Sam Merrill",team:"CLE",sport:"NBA",date:"Nov 6",prop:"under 10.5 points",line:"-130",guess:66.2,tier:"lean",flag:"",value_pct:17.19,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 9.5, "to": 10.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.272,sim_p5:2.32,sim_p95:14.49,sim_std:3.63},
-  {player:"James Harden",team:"CLE",sport:"NBA",date:"Nov 6",prop:"under 17.5 points",line:"-138",guess:64.7,tier:"lean",flag:"",value_pct:11.5,markets:{"polymarket": "https://polymarket.us/event/nba-phi-cle-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06PHICLE-CLEJHARDEN1-20", "novig": "https://app.novig.us/event-markets/01a1abc5-9370-7011-a5bc-72ae075ec46c"},line_move:{"from": 18.5, "to": 17.5, "at": "2026-11-06 18:11:30 PST"},sim_p_over:0.3015,sim_p5:9.7,sim_p95:23,sim_std:4.08}
+  {player:"Eric Singleton Jr",top_tier:false,team:"FLA",sport:"CFB",date:"Nov 7",prop:"under 30.5 receiving yards",line:"-114",guess:74,tier:"strong",flag:"",value_pct:38.96,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.248,sim_p5:0,sim_p95:44.59,sim_std:15.21},
+  {player:"Kaleb Webb",top_tier:false,team:"MD",sport:"CFB",date:"Nov 7",prop:"under 42.5 receiving yards",line:"-114",guess:74,tier:"strong",flag:"",value_pct:38.95,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.2535,sim_p5:0,sim_p95:59.66,sim_std:18.32},
+  {player:"Xavier Townsend",top_tier:false,team:"PUR",sport:"CFB",date:"Nov 7",prop:"under 41.5 receiving yards",line:"-112",guess:73.4,tier:"strong",flag:"",value_pct:38.94,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.2745,sim_p5:0,sim_p95:62.71,sim_std:19.99},
+  {player:"Jaron Tibbs",top_tier:false,team:"KSU",sport:"CFB",date:"Nov 7",prop:"under 57.5 receiving yards",line:"-114",guess:74,tier:"strong",flag:"",value_pct:38.92,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.257,sim_p5:1.9,sim_p95:82.81,sim_std:24.2},
+  {player:"Svi Mykhailiuk",top_tier:false,team:"UTA",sport:"NBA",date:"Nov 6",prop:"under 2.5 points",line:"118",guess:63.5,tier:"strong",flag:"",value_pct:38.34,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 5.5, "to": 2.5, "at": "2026-11-06 18:11:30 PST"},sim_p_over:0.313,sim_p5:0,sim_p95:9.35,sim_std:3.27},
+  {player:"Keshaun Singleton",top_tier:false,team:"AUB",sport:"CFB",date:"Nov 7",prop:"under 53.5 receiving yards",line:"-114",guess:73.6,tier:"strong",flag:"",value_pct:38.1,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.294,sim_p5:3.66,sim_p95:79.53,sim_std:23.21},
+  {player:"Jasen Lopez",top_tier:false,team:"FSU",sport:"CFB",date:"Nov 7",prop:"under 35.5 receiving yards",line:"-114",guess:73.5,tier:"strong",flag:"",value_pct:37.95,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.2775,sim_p5:0,sim_p95:61.41,sim_std:23.46},
+  {player:"Tj Moore",top_tier:false,team:"CLEM",sport:"CFB",date:"Nov 7",prop:"under 44.5 receiving yards",line:"-118",guess:74.1,tier:"strong",flag:"",value_pct:36.92,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 40.5, "to": 44.5, "at": "2026-11-06 18:11:30 PST"},sim_p_over:0.1155,sim_p5:7.5,sim_p95:46.04,sim_std:11.84},
+  {player:"Tama Uiliata",top_tier:false,team:"HAW",sport:"CFB",date:"Nov 7",prop:"under 29.5 receiving yards",line:"-114",guess:72.7,tier:"strong",flag:"",value_pct:36.39,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.317,sim_p5:0,sim_p95:46.8,sim_std:14.68},
+  {player:"Chris Dawn Jr",top_tier:false,team:"TXST",sport:"CFB",date:"Nov 7",prop:"under 58.5 receiving yards",line:"-114",guess:72.3,tier:"strong",flag:"",value_pct:35.8,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.322,sim_p5:35.18,sim_p95:71.71,sim_std:11.2},
+  {player:"Josh Manning",top_tier:false,team:"KSU",sport:"CFB",date:"Nov 7",prop:"under 50.5 receiving yards",line:"-114",guess:72,tier:"lean",flag:"",value_pct:35.23,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.331,sim_p5:0,sim_p95:78.91,sim_std:24.67},
+  {player:"Rj Barrett",top_tier:false,team:"TOR",sport:"NBA",date:"Nov 6",prop:"under 26.5 points",line:"-108",guess:68.9,tier:"lean",flag:"",value_pct:32.71,markets:{"polymarket": "https://polymarket.us/event/nba-tor-mil-2026-11-06", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1abe1-09a0-7791-baf6-f9fee03ca4db"},line_move:{"from": 25.5, "to": 26.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.118,sim_p5:10.7,sim_p95:29.35,sim_std:5.73},
+  {player:"Chas Nimrod",top_tier:false,team:"AUB",sport:"CFB",date:"Nov 7",prop:"under 51.5 receiving yards",line:"-114",guess:70.5,tier:"lean",flag:"",value_pct:32.32,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.342,sim_p5:5.98,sim_p95:80.4,sim_std:22.97},
+  {player:"Deandre Ayton",top_tier:false,team:"WAS",sport:"NBA",date:"Nov 6",prop:"under 9.5 points",line:"-112",guess:69.8,tier:"lean",flag:"",value_pct:32.14,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.1365,sim_p5:0,sim_p95:11.75,sim_std:3.84},
+  {player:"Dawson Pough",top_tier:false,team:"BC",sport:"CFB",date:"Nov 7",prop:"under 20.5 receiving yards",line:"-114",guess:70.4,tier:"lean",flag:"",value_pct:32.08,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 22.5, "to": 20.5, "at": "2026-11-06 18:11:30 PST"},sim_p_over:0.351,sim_p5:6.72,sim_p95:32.77,sim_std:7.85},
+  {player:"Drew Mestemaker",top_tier:false,team:"OKST",sport:"CFB",date:"Nov 7",prop:"over 284.5 passing yards",line:"-114",guess:70.2,tier:"lean",flag:"",value_pct:31.81,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.9625,sim_p5:288.75,sim_p95:415.86,sim_std:37.61},
+  {player:"Fame Ijeboi",top_tier:false,team:"PUR",sport:"CFB",date:"Nov 7",prop:"under 14.5 receiving yards",line:"-112",guess:69.5,tier:"lean",flag:"",value_pct:31.52,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.3605,sim_p5:0,sim_p95:28.32,sim_std:10.59},
+  {player:"Jamal Shead",top_tier:false,team:"TOR",sport:"NBA",date:"Nov 6",prop:"under 11.5 points",line:"-120",guess:71,tier:"lean",flag:"",value_pct:30.21,markets:{"polymarket": "https://polymarket.us/event/nba-tor-mil-2026-11-06", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1abe1-09a0-7791-baf6-f9fee03ca4db"},line_move:{"from": 7.5, "to": 11.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.1,sim_p5:0,sim_p95:12.79,sim_std:4.33},
+  {player:"Darian Mensah",top_tier:false,team:"MIA",sport:"CFB",date:"Nov 7",prop:"over 223.5 passing yards",line:"-114",guess:69.3,tier:"lean",flag:"",value_pct:30.17,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.9225,sim_p5:212.06,sim_p95:417.09,sim_std:62.41},
+  {player:"Deandre Ayton",top_tier:false,team:"WAS",sport:"NBA",date:"Nov 6",prop:"under 6.5 rebounds",line:"104",guess:63.2,tier:"lean",flag:"",value_pct:28.85,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.178,sim_p5:1.43,sim_p95:7.88,sim_std:1.98},
+  {player:"Toumani Camara",top_tier:false,team:"POR",sport:"NBA",date:"Nov 6",prop:"under 3.5 rebounds",line:"118",guess:59.1,tier:"lean",flag:"",value_pct:28.75,markets:{"polymarket": "https://polymarket.us/event/nba-por-lal-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV06PORLAL-PORTCAMARA33-4", "novig": "https://app.novig.us/event-markets/01a1ac4f-4378-74b0-a42c-cbe75ee35cfd"},sim_p_over:0.2565,sim_p5:0,sim_p95:5.53,sim_std:2.03},
+  {player:"Joshua Porter",top_tier:false,team:"USF",sport:"CFB",date:"Nov 6",prop:"under 22.5 receiving yards",line:"-112",guess:67.8,tier:"lean",flag:"",value_pct:28.35,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.398,sim_p5:0,sim_p95:47.08,sim_std:18.27},
+  {player:"Nyziah Hunter",top_tier:false,team:"NEB",sport:"CFB",date:"Nov 6",prop:"under 28.5 receiving yards",line:"-112",guess:67.5,tier:"lean",flag:"",value_pct:27.82,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4115,sim_p5:2.81,sim_p95:49.09,sim_std:14.18},
+  {player:"Noah Jennings",top_tier:false,team:"MINN",sport:"CFB",date:"Nov 7",prop:"under 42.5 receiving yards",line:"-114",guess:68.1,tier:"lean",flag:"",value_pct:27.77,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.409,sim_p5:0,sim_p95:82.46,sim_std:27.72},
+  {player:"Ryan Kalkbrenner",top_tier:false,team:"CHA",sport:"NBA",date:"Nov 6",prop:"under 6.5 points",line:"-136",guess:73.6,tier:"lean",flag:"",value_pct:27.68,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.125,sim_p5:1.11,sim_p95:7.47,sim_std:1.93},
+  {player:"Noah Fifita",top_tier:false,team:"ARIZ",sport:"CFB",date:"Nov 6",prop:"over 274.5 passing yards",line:"-112",guess:67.3,tier:"lean",flag:"",value_pct:27.41,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.854,sim_p5:245.65,sim_p95:419.93,sim_std:53.76},
+  {player:"Jaylen Clark",top_tier:false,team:"MIN",sport:"NBA",date:"Nov 6",prop:"under 6.5 points",line:"-115",guess:68.1,tier:"lean",flag:"",value_pct:27.27,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.192,sim_p5:0,sim_p95:9.02,sim_std:3.27},
+  {player:"Raleek Brown",top_tier:false,team:"TEX",sport:"CFB",date:"Nov 7",prop:"under 9.5 receiving yards",line:"-118",guess:68.8,tier:"lean",flag:"",value_pct:27.11,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.415,sim_p5:0,sim_p95:25.83,sim_std:12.04},
+  {player:"Kenrich Williams",top_tier:false,team:"OKC",sport:"NBA",date:"Nov 6",prop:"under 8.5 points",line:"100",guess:63.3,tier:"lean",flag:"",value_pct:26.66,markets:{"polymarket": "https://polymarket.us/event/nba-okc-mem-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06OKCMEM-OKCKWILLIAMSSF-10", "novig": "https://app.novig.us/event-markets/01a1abe1-0ba7-7b11-86bb-e6a0b4a64be7"},line_move:{"from": 9.5, "to": 8.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.262,sim_p5:0,sim_p95:12.89,sim_std:4.09},
+  {player:"Bo Jackson",top_tier:false,team:"OSU",sport:"CFB",date:"Nov 7",prop:"under 13.5 receiving yards",line:"-114",guess:67.3,tier:"lean",flag:"",value_pct:26.34,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.438,sim_p5:0,sim_p95:32.67,sim_std:13.29},
+  {player:"Javon Tracy",top_tier:false,team:"MINN",sport:"CFB",date:"Nov 7",prop:"under 48.5 receiving yards",line:"-112",guess:66.6,tier:"lean",flag:"",value_pct:26.1,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.41,sim_p5:11.49,sim_p95:77.6,sim_std:20.08},
+  {player:"Donovan Mitchell",top_tier:false,team:"CLE",sport:"NBA",date:"Nov 6",prop:"under 22.5 points",line:"100",guess:63,tier:"lean",flag:"",value_pct:26.04,markets:{"polymarket": "https://polymarket.us/event/nba-phi-cle-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06PHICLE-CLEDMITCHELL45-25", "novig": "https://app.novig.us/event-markets/01a1abc5-9370-7011-a5bc-72ae075ec46c"},line_move:{"from": 24.5, "to": 22.5, "at": "2026-11-06 18:11:30 PST"},sim_p_over:0.321,sim_p5:11.96,sim_p95:31.31,sim_std:5.87},
+  {player:"Bryson Rodgers",top_tier:false,team:"USF",sport:"CFB",date:"Nov 6",prop:"under 38.5 receiving yards",line:"-116",guess:67.6,tier:"lean",flag:"",value_pct:25.96,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4345,sim_p5:0,sim_p95:75.07,sim_std:23.83},
+  {player:"Evan Mobley",top_tier:false,team:"CLE",sport:"NBA",date:"Nov 6",prop:"under 6.5 rebounds",line:"106",guess:61.1,tier:"lean",flag:"",value_pct:25.95,markets:{"polymarket": "https://polymarket.us/event/nba-phi-cle-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV06PHICLE-CLEEMOBLEY4-10", "novig": "https://app.novig.us/event-markets/01a1abc5-9370-7011-a5bc-72ae075ec46c"},line_move:{"from": 9.5, "to": 6.5, "at": "2026-11-06 18:11:30 PST"},sim_p_over:0.2845,sim_p5:3.18,sim_p95:12.61,sim_std:2.87},
+  {player:"Cj Mccollum",top_tier:false,team:"ATL",sport:"NBA",date:"Nov 6",prop:"under 17.5 points",line:"-115",guess:67.3,tier:"lean",flag:"",value_pct:25.83,markets:{"polymarket": "https://polymarket.us/event/nba-was-atl-2026-11-06", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1abaa-76e6-7202-97fc-fd67811f5e2e"},line_move:{"from": 16.5, "to": 17.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.233,sim_p5:6.48,sim_p95:21.72,sim_std:4.66},
+  {player:"Jake Wilson",top_tier:false,team:"WYO",sport:"CFB",date:"Nov 7",prop:"under 27.5 receiving yards",line:"-114",guess:66.8,tier:"lean",flag:"",value_pct:25.39,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.42,sim_p5:3.79,sim_p95:47.81,sim_std:13.18},
+  {player:"Braylon Staley",top_tier:false,team:"TENN",sport:"CFB",date:"Nov 7",prop:"under 38.5 receiving yards",line:"-114",guess:66.5,tier:"lean",flag:"",value_pct:24.82,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.446,sim_p5:0,sim_p95:73.19,sim_std:23.62},
+  {player:"Jakob Poeltl",top_tier:false,team:"TOR",sport:"NBA",date:"Nov 6",prop:"under 9.5 points",line:"-118",guess:67.4,tier:"lean",flag:"",value_pct:24.55,markets:{"polymarket": "https://polymarket.us/event/nba-tor-mil-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06TORMIL-TORJPOELTL19-10", "novig": "https://app.novig.us/event-markets/01a1abe1-09a0-7791-baf6-f9fee03ca4db"},line_move:{"from": 6.5, "to": 9.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.1515,sim_p5:0,sim_p95:12.23,sim_std:4.78},
+  {player:"Landon Sides",top_tier:false,team:"ECU",sport:"CFB",date:"Nov 6",prop:"under 53.5 receiving yards",line:"-116",guess:66.7,tier:"lean",flag:"",value_pct:24.26,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 49.5, "to": 53.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.4285,sim_p5:0,sim_p95:128.84,sim_std:51.35},
+  {player:"Collin Dixon",top_tier:false,team:"ILL",sport:"CFB",date:"Nov 6",prop:"under 84.5 receiving yards",line:"-112",guess:65.5,tier:"lean",flag:"",value_pct:24.06,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4725,sim_p5:38.65,sim_p95:123.87,sim_std:25.68},
+  {player:"Jamal Shead",top_tier:false,team:"TOR",sport:"NBA",date:"Nov 6",prop:"under 8.5 assists",line:"-126",guess:69.1,tier:"lean",flag:"",value_pct:23.86,markets:{"polymarket": "https://polymarket.us/event/nba-tor-mil-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV06TORMIL-TORJSHEAD1-8", "novig": "https://app.novig.us/event-markets/01a1abe1-09a0-7791-baf6-f9fee03ca4db"},line_move:{"from": 5.5, "to": 8.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.118,sim_p5:0.68,sim_p95:9.8,sim_std:2.75},
+  {player:"Nolan James Jr",top_tier:false,team:"ND",sport:"CFB",date:"Nov 7",prop:"under 7.5 receiving yards",line:"-114",guess:66,tier:"lean",flag:"",value_pct:23.85,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.437,sim_p5:0,sim_p95:18.8,sim_std:7.48},
+  {player:"Jamal Shead",top_tier:false,team:"TOR",sport:"NBA",date:"Nov 6",prop:"under 1.5 3-pointers",line:"-115",guess:66.2,tier:"lean",flag:"",value_pct:23.83,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.1065,sim_p5:0,sim_p95:2,sim_std:0.77},
+  {player:"Lamelo Ball",top_tier:false,team:"MIN",sport:"NBA",date:"Nov 6",prop:"under 3.5 3-pointers",line:"-102",guess:62.5,tier:"lean",flag:"",value_pct:23.77,markets:{"polymarket": "https://polymarket.us/event/nba-min-nop-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBA3PT-26NOV06MINNOP-MINLBALL1-4", "novig": "https://app.novig.us/event-markets/01a1abe1-0a12-70a3-92b3-56c61de360ee"},sim_p_over:0.3515,sim_p5:0,sim_p95:8,sim_std:2.54},
+  {player:"Dyson Daniels",top_tier:false,team:"ATL",sport:"NBA",date:"Nov 6",prop:"under 12.5 points",line:"100",guess:61.7,tier:"lean",flag:"",value_pct:23.41,markets:{"polymarket": "https://polymarket.us/event/nba-was-atl-2026-11-06", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1abaa-76e6-7202-97fc-fd67811f5e2e"},sim_p_over:0.3295,sim_p5:0,sim_p95:19.98,sim_std:6.23},
+  {player:"Junior Sherrill",top_tier:false,team:"VAN",sport:"CFB",date:"Nov 7",prop:"under 89.5 receiving yards",line:"-114",guess:65.6,tier:"lean",flag:"",value_pct:23.16,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4495,sim_p5:53.22,sim_p95:121.28,sim_std:20.58},
+  {player:"John Mateer",top_tier:false,team:"OU",sport:"CFB",date:"Nov 7",prop:"over 194.5 passing yards",line:"-114",guess:65.6,tier:"lean",flag:"",value_pct:23.11,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.797,sim_p5:153.59,sim_p95:319.33,sim_std:50.42},
+  {player:"Desirrio Riles",top_tier:false,team:"FSU",sport:"CFB",date:"Nov 7",prop:"under 14.5 receiving yards",line:"-112",guess:65,tier:"lean",flag:"",value_pct:23.04,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4375,sim_p5:0,sim_p95:33.92,sim_std:13},
+  {player:"Daylyn Upshaw",top_tier:false,team:"MIA",sport:"CFB",date:"Nov 7",prop:"under 40.5 receiving yards",line:"-114",guess:65.5,tier:"lean",flag:"",value_pct:22.92,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 44.5, "to": 40.5, "at": "2026-11-06 18:11:30 PST"},sim_p_over:0.442,sim_p5:0,sim_p95:86.92,sim_std:28.69},
+  {player:"Kevin Roche Jr",top_tier:false,team:"GT",sport:"CFB",date:"Nov 7",prop:"under 33.5 receiving yards",line:"-114",guess:65.4,tier:"lean",flag:"",value_pct:22.84,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.443,sim_p5:2.81,sim_p95:59.11,sim_std:17.34},
+  {player:"Dyson Daniels",top_tier:false,team:"ATL",sport:"NBA",date:"Nov 6",prop:"under 6.5 assists",line:"-152",guess:74.1,tier:"lean",flag:"",value_pct:22.77,markets:{"polymarket": "https://polymarket.us/event/nba-was-atl-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV06WASATL-ATLDDANIELS5-8", "novig": "https://app.novig.us/event-markets/01a1abaa-76e6-7202-97fc-fd67811f5e2e"},line_move:{"from": 5.5, "to": 6.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.1285,sim_p5:1.07,sim_p95:7.59,sim_std:1.96},
+  {player:"Onyeka Okongwu",top_tier:false,team:"ATL",sport:"NBA",date:"Nov 6",prop:"under 15.5 points",line:"-106",guess:63,tier:"lean",flag:"",value_pct:22.52,markets:{"polymarket": "https://polymarket.us/event/nba-was-atl-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06WASATL-ATLOOKONGWU17-15", "novig": "https://app.novig.us/event-markets/01a1abaa-76e6-7202-97fc-fd67811f5e2e"},line_move:{"from": 14.5, "to": 15.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.3255,sim_p5:0.15,sim_p95:23.58,sim_std:7.13},
+  {player:"Trae Young",top_tier:false,team:"WAS",sport:"NBA",date:"Nov 6",prop:"under 22.5 points",line:"-119",guess:66.4,tier:"lean",flag:"",value_pct:22.28,markets:{"polymarket": "https://polymarket.us/event/nba-was-atl-2026-11-06", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1abaa-76e6-7202-97fc-fd67811f5e2e"},line_move:{"from": 20.5, "to": 22.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.2485,sim_p5:13.23,sim_p95:26.77,sim_std:4.03},
+  {player:"Braden Pegan",top_tier:false,team:"UTAH",sport:"CFB",date:"Nov 7",prop:"under 56.5 receiving yards",line:"-114",guess:65.1,tier:"lean",flag:"",value_pct:22.14,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4535,sim_p5:13.67,sim_p95:93.75,sim_std:24.43},
+  {player:"Jordan Faison",top_tier:false,team:"ND",sport:"CFB",date:"Nov 7",prop:"under 69.5 receiving yards",line:"-112",guess:64.3,tier:"lean",flag:"",value_pct:21.75,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 61.5, "to": 69.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.4415,sim_p5:0,sim_p95:134.45,sim_std:42.88},
+  {player:"Cooper Flagg",top_tier:false,team:"DAL",sport:"NBA",date:"Nov 6",prop:"under 6.5 rebounds",line:"104",guess:59.6,tier:"lean",flag:"",value_pct:21.63,markets:{"polymarket": "https://polymarket.us/event/nba-uta-dal-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV06UTADAL-DALCFLAGG32-8", "novig": "https://app.novig.us/event-markets/01a1abe1-0b16-7f72-a9ae-12bac68757a3"},sim_p_over:0.3485,sim_p5:2.34,sim_p95:8.89,sim_std:1.99},
+  {player:"Lamelo Ball",top_tier:false,team:"MIN",sport:"NBA",date:"Nov 6",prop:"under 21.5 points",line:"-111",guess:63.9,tier:"lean",flag:"",value_pct:21.53,markets:{"polymarket": "https://polymarket.us/event/nba-min-nop-2026-11-06", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1abe1-0a12-70a3-92b3-56c61de360ee"},sim_p_over:0.2975,sim_p5:2.19,sim_p95:31.48,sim_std:8.99},
+  {player:"Desean Bishop",top_tier:false,team:"TENN",sport:"CFB",date:"Nov 7",prop:"under 7.5 receiving yards",line:"-112",guess:64.2,tier:"lean",flag:"",value_pct:21.42,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4815,sim_p5:0,sim_p95:17.92,sim_std:6.9},
+  {player:"Sion James",top_tier:false,team:"CHA",sport:"NBA",date:"Nov 6",prop:"under 5.5 points",line:"109",guess:57.9,tier:"lean",flag:"",value_pct:21.04,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1abaa-7659-71d2-b1d9-95bf8a8ab2ab"},sim_p_over:0.3865,sim_p5:0,sim_p95:9.87,sim_std:3.24},
+  {player:"Rudy Gobert",top_tier:false,team:"MIN",sport:"NBA",date:"Nov 6",prop:"under 10.5 points",line:"-128",guess:68,tier:"lean",flag:"",value_pct:21.04,markets:{"polymarket": "https://polymarket.us/event/nba-min-nop-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06MINNOP-MINRGOBERT27-10", "novig": "https://app.novig.us/event-markets/01a1abe1-0a12-70a3-92b3-56c61de360ee"},sim_p_over:0.235,sim_p5:0.31,sim_p95:14.16,sim_std:4.23},
+  {player:"Jamal Shead",top_tier:false,team:"TOR",sport:"NBA",date:"Nov 6",prop:"under 2.5 rebounds",line:"108",guess:58.2,tier:"lean",flag:"",value_pct:20.98,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.42,sim_p5:0,sim_p95:5.36,sim_std:2.02},
+  {player:"Neemias Queta",top_tier:false,team:"BOS",sport:"NBA",date:"Nov 6",prop:"under 6.5 rebounds",line:"-102",guess:61,tier:"lean",flag:"",value_pct:20.76,markets:{"polymarket": "https://polymarket.us/event/nba-bos-cha-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV06BOSCHA-BOSNQUETA88-8", "novig": "https://app.novig.us/event-markets/01a1abaa-7659-71d2-b1d9-95bf8a8ab2ab"},line_move:{"from": 7.5, "to": 6.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.2935,sim_p5:2.05,sim_p95:8.69,sim_std:2.02},
+  {player:"Dalen Penson",top_tier:false,team:"GT",sport:"CFB",date:"Nov 7",prop:"under 51.5 receiving yards",line:"-114",guess:64.3,tier:"lean",flag:"",value_pct:20.63,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.467,sim_p5:0,sim_p95:111.16,sim_std:38.81},
+  {player:"Jayson Tatum",top_tier:false,team:"BOS",sport:"NBA",date:"Nov 6",prop:"under 3.5 3-pointers",line:"-152",guess:72.6,tier:"lean",flag:"",value_pct:20.44,markets:{"polymarket": "https://polymarket.us/event/nba-bos-cha-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBA3PT-26NOV06BOSCHA-BOSJTATUM0-4", "novig": "https://app.novig.us/event-markets/01a1abaa-7659-71d2-b1d9-95bf8a8ab2ab"},line_move:{"from": 2.5, "to": 3.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.1895,sim_p5:0,sim_p95:6,sim_std:1.86},
+  {player:"Zaccharie Risacher",top_tier:false,team:"DAL",sport:"NBA",date:"Nov 6",prop:"over 3.5 rebounds",line:"-112",guess:63.6,tier:"lean",flag:"",value_pct:20.3,markets:{"polymarket": "https://polymarket.us/event/nba-uta-dal-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV06UTADAL-DALZRISACHER10-4", "novig": "https://app.novig.us/event-markets/01a1abe1-0b16-7f72-a9ae-12bac68757a3"},sim_p_over:0.884,sim_p5:2.39,sim_p95:9.09,sim_std:1.99},
+  {player:"Craig Dandridge",top_tier:false,team:"UGA",sport:"CFB",date:"Nov 7",prop:"under 38.5 receiving yards",line:"-114",guess:64.1,tier:"lean",flag:"",value_pct:20.3,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.488,sim_p5:0,sim_p95:93.16,sim_std:34.08},
+  {player:"Ayo Dosunmu",top_tier:false,team:"MIN",sport:"NBA",date:"Nov 6",prop:"under 4.5 assists",line:"116",guess:55.7,tier:"lean",flag:"",value_pct:20.21,markets:{"polymarket": "https://polymarket.us/event/nba-min-nop-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV06MINNOP-MINADOSUNMU13-6", "novig": "https://app.novig.us/event-markets/01a1abe1-0a12-70a3-92b3-56c61de360ee"},sim_p_over:0.46,sim_p5:0,sim_p95:9.59,sim_std:3.24},
+  {player:"Ayo Dosunmu",top_tier:false,team:"MIN",sport:"NBA",date:"Nov 6",prop:"under 18.5 points",line:"-113",guess:63.7,tier:"lean",flag:"",value_pct:20.06,markets:{"polymarket": "https://polymarket.us/event/nba-min-nop-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06MINNOP-MINADOSUNMU13-20", "novig": "https://app.novig.us/event-markets/01a1abe1-0a12-70a3-92b3-56c61de360ee"},line_move:{"from": 17.5, "to": 18.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.3075,sim_p5:6.71,sim_p95:25.39,sim_std:5.64},
+  {player:"Malik Monk",top_tier:false,team:"SAC",sport:"NBA",date:"Nov 6",prop:"under 12.5 points",line:"-120",guess:65.3,tier:"lean",flag:"",value_pct:19.74,markets:{"polymarket": "https://polymarket.us/event/nba-sas-sac-2026-11-06", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1ac4f-430c-7603-af94-12fc3e0f1fb0"},sim_p_over:0.275,sim_p5:0,sim_p95:21.93,sim_std:8.75},
+  {player:"Aday Mara",top_tier:false,team:"OKC",sport:"NBA",date:"Nov 6",prop:"under 8.5 points",line:"-122",guess:65.8,tier:"lean",flag:"",value_pct:19.65,markets:{"polymarket": "https://polymarket.us/event/nba-okc-mem-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06OKCMEM-OKCAMARA15-10", "novig": "https://app.novig.us/event-markets/01a1abe1-0ba7-7b11-86bb-e6a0b4a64be7"},line_move:{"from": 7.5, "to": 8.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.2785,sim_p5:0.78,sim_p95:12.25,sim_std:3.48},
+  {player:"Jakob Poeltl",top_tier:false,team:"TOR",sport:"NBA",date:"Nov 6",prop:"under 6.5 rebounds",line:"110",guess:56.9,tier:"lean",flag:"",value_pct:19.53,markets:{"polymarket": "https://polymarket.us/event/nba-tor-mil-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV06TORMIL-TORJPOELTL19-8", "novig": "https://app.novig.us/event-markets/01a1abe1-09a0-7791-baf6-f9fee03ca4db"},line_move:{"from": 5.5, "to": 6.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.431,sim_p5:0,sim_p95:12.94,sim_std:4.44},
+  {player:"Chris Durr Jr",top_tier:false,team:"MD",sport:"CFB",date:"Nov 7",prop:"under 79.5 receiving yards",line:"-118",guess:64.6,tier:"lean",flag:"",value_pct:19.41,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4785,sim_p5:0,sim_p95:159.57,sim_std:50.77},
+  {player:"Horatio Fields",top_tier:false,team:"MISS",sport:"CFB",date:"Nov 7",prop:"under 39.5 receiving yards",line:"-112",guess:63.1,tier:"lean",flag:"",value_pct:19.37,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.464,sim_p5:0,sim_p95:82.31,sim_std:27.03},
+  {player:"Silas Demary",top_tier:false,team:"CONN",sport:"CBB",date:"Nov 6",prop:"under 11.5 points",line:"100",guess:59.7,tier:"lean",flag:"",value_pct:19.33,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.054,sim_p5:0,sim_p95:11.65,sim_std:3.61},
+  {player:"Calvin Russell Iii",top_tier:false,team:"SYR",sport:"CFB",date:"Nov 7",prop:"under 48.5 receiving yards",line:"-114",guess:63.5,tier:"lean",flag:"",value_pct:19.24,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 51.5, "to": 48.5, "at": "2026-11-06 18:11:30 PST"},sim_p_over:0.447,sim_p5:0,sim_p95:98.2,sim_std:30.37},
+  {player:"Derrick White",top_tier:false,team:"BOS",sport:"NBA",date:"Nov 6",prop:"under 13.5 points",line:"-118",guess:64.5,tier:"lean",flag:"",value_pct:19.21,markets:{"polymarket": "https://polymarket.us/event/nba-bos-cha-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06BOSCHA-BOSDWHITE9-15", "novig": "https://app.novig.us/event-markets/01a1abaa-7659-71d2-b1d9-95bf8a8ab2ab"},sim_p_over:0.284,sim_p5:4.05,sim_p95:18.21,sim_std:4.42},
+  {player:"Donovan Clingan",top_tier:false,team:"POR",sport:"NBA",date:"Nov 6",prop:"under 10.5 points",line:"-115",guess:63.7,tier:"lean",flag:"",value_pct:19.03,markets:{"polymarket": "https://polymarket.us/event/nba-por-lal-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06PORLAL-PORDCLINGAN23-10", "novig": "https://app.novig.us/event-markets/01a1ac4f-4378-74b0-a42c-cbe75ee35cfd"},sim_p_over:0.2545,sim_p5:3.79,sim_p95:13.38,sim_std:2.89},
+  {player:"Derek Eusebio",top_tier:false,team:"ASU",sport:"CFB",date:"Nov 7",prop:"under 41.5 receiving yards",line:"-114",guess:63.4,tier:"lean",flag:"",value_pct:19.01,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.496,sim_p5:0,sim_p95:104.53,sim_std:38.07},
+  {player:"Jacory Barney Jr",top_tier:false,team:"NEB",sport:"CFB",date:"Nov 6",prop:"under 45.5 receiving yards",line:"-112",guess:62.9,tier:"lean",flag:"",value_pct:18.96,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.5265,sim_p5:0,sim_p95:115.03,sim_std:41.22},
+  {player:"Cole Spence",top_tier:false,team:"VAN",sport:"CFB",date:"Nov 7",prop:"under 24.5 receiving yards",line:"-114",guess:63.4,tier:"lean",flag:"",value_pct:18.93,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.498,sim_p5:0,sim_p95:49.37,sim_std:15.15},
+  {player:"Devon Dampier",top_tier:false,team:"UTAH",sport:"CFB",date:"Nov 7",prop:"over 216.5 passing yards",line:"-114",guess:63.3,tier:"lean",flag:"",value_pct:18.9,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.7395,sim_p5:182.92,sim_p95:289.76,sim_std:32.43},
+  {player:"Austin Simmons",top_tier:false,team:"MIZ",sport:"CFB",date:"Nov 7",prop:"over 202.5 passing yards",line:"-114",guess:63.3,tier:"lean",flag:"",value_pct:18.83,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.7385,sim_p5:113.06,sim_p95:408.29,sim_std:91.42},
+  {player:"Bryant Wesco Jr",top_tier:false,team:"CLEM",sport:"CFB",date:"Nov 7",prop:"under 56.5 receiving yards",line:"-114",guess:63.1,tier:"lean",flag:"",value_pct:18.51,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 54.5, "to": 56.5, "at": "2026-11-06 18:11:30 PST"},sim_p_over:0.493,sim_p5:0,sim_p95:140.3,sim_std:54.7},
+  {player:"Jonathan Kuminga",top_tier:false,team:"MIN",sport:"NBA",date:"Nov 6",prop:"under 14.5 points",line:"-115",guess:63.4,tier:"lean",flag:"",value_pct:18.47,markets:{"polymarket": "https://polymarket.us/event/nba-min-nop-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06MINNOP-MINJKUMINGA0-15", "novig": "https://app.novig.us/event-markets/01a1abe1-0a12-70a3-92b3-56c61de360ee"},sim_p_over:0.335,sim_p5:3.64,sim_p95:20.14,sim_std:5.07},
+  {player:"Jakobe Walter",top_tier:false,team:"TOR",sport:"NBA",date:"Nov 6",prop:"under 14.5 points",line:"-102",guess:59.8,tier:"lean",flag:"",value_pct:18.39,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 11.5, "to": 14.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.3345,sim_p5:3.23,sim_p95:21.03,sim_std:5.39},
+  {player:"Eugene Wilson Iii",top_tier:false,team:"LSU",sport:"CFB",date:"Nov 7",prop:"under 30.5 receiving yards",line:"-114",guess:63.1,tier:"lean",flag:"",value_pct:18.36,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4755,sim_p5:0,sim_p95:61.23,sim_std:19.99},
+  {player:"Gary Givens Iii",top_tier:false,team:"NEV",sport:"CFB",date:"Nov 6",prop:"under 36.5 receiving yards",line:"-116",guess:63.6,tier:"lean",flag:"",value_pct:18.36,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.505,sim_p5:1.96,sim_p95:71.48,sim_std:20.78},
+  {player:"Andrew Marsh",top_tier:false,team:"MICH",sport:"CFB",date:"Nov 7",prop:"under 45.5 receiving yards",line:"-114",guess:63,tier:"lean",flag:"",value_pct:18.27,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4995,sim_p5:0,sim_p95:106.63,sim_std:36.35},
+  {player:"Lamelo Ball",top_tier:false,team:"MIN",sport:"NBA",date:"Nov 6",prop:"under 6.5 assists",line:"-102",guess:59.7,tier:"lean",flag:"",value_pct:18.23,markets:{"polymarket": "https://polymarket.us/event/nba-min-nop-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV06MINNOP-MINLBALL1-8", "novig": "https://app.novig.us/event-markets/01a1abe1-0a12-70a3-92b3-56c61de360ee"},sim_p_over:0.381,sim_p5:2.62,sim_p95:9.19,sim_std:2.01},
+  {player:"Donovan Clingan",top_tier:false,team:"POR",sport:"NBA",date:"Nov 6",prop:"under 10.5 rebounds",line:"-111",guess:62.2,tier:"lean",flag:"",value_pct:18.22,markets:{"polymarket": "https://polymarket.us/event/nba-por-lal-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV06PORLAL-PORDCLINGAN23-12", "novig": "https://app.novig.us/event-markets/01a1ac4f-4378-74b0-a42c-cbe75ee35cfd"},sim_p_over:0.2275,sim_p5:5.74,sim_p95:12.45,sim_std:2.02},
+  {player:"Kenny Johnson",top_tier:false,team:"TTU",sport:"CFB",date:"Nov 7",prop:"under 63.5 receiving yards",line:"-114",guess:62.9,tier:"lean",flag:"",value_pct:18.07,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4895,sim_p5:0,sim_p95:129.75,sim_std:41.57},
+  {player:"Jelani Thurman",top_tier:false,team:"UNC",sport:"CFB",date:"Nov 7",prop:"under 55.5 receiving yards",line:"-114",guess:62.8,tier:"lean",flag:"",value_pct:17.96,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.508,sim_p5:24.84,sim_p95:86.98,sim_std:18.76},
+  {player:"Patrick Overmyer",top_tier:false,team:"HOU",sport:"CFB",date:"Nov 7",prop:"under 51.5 receiving yards",line:"-114",guess:62.8,tier:"lean",flag:"",value_pct:17.83,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.505,sim_p5:0,sim_p95:111.43,sim_std:34.93},
+  {player:"Tre Richardson",top_tier:false,team:"LOU",sport:"CFB",date:"Nov 7",prop:"under 77.5 receiving yards",line:"-114",guess:62.8,tier:"lean",flag:"",value_pct:17.82,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.502,sim_p5:0,sim_p95:168.98,sim_std:56.06},
+  {player:"Kalieb Osborne",top_tier:false,team:"CONN",sport:"CFB",date:"Nov 7",prop:"over 213.5 passing yards",line:"-114",guess:62.7,tier:"lean",flag:"",value_pct:17.72,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.7225,sim_p5:161.06,sim_p95:334.06,sim_std:52.56},
+  {player:"Pj Washington",top_tier:false,team:"DAL",sport:"NBA",date:"Nov 6",prop:"under 1.5 assists",line:"-101",guess:59.2,tier:"lean",flag:"",value_pct:17.71,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1abe1-0b16-7f72-a9ae-12bac68757a3"},sim_p_over:0.444,sim_p5:0,sim_p95:4.23,sim_std:1.98},
+  {player:"Jamal Polite Jr",top_tier:false,team:"ISU",sport:"CFB",date:"Nov 7",prop:"under 45.5 receiving yards",line:"-114",guess:62.7,tier:"lean",flag:"",value_pct:17.67,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.5075,sim_p5:0,sim_p95:161.31,sim_std:69.81},
+  {player:"Terrance Carter Jr",top_tier:false,team:"TTU",sport:"CFB",date:"Nov 7",prop:"under 32.5 receiving yards",line:"-114",guess:62.5,tier:"lean",flag:"",value_pct:17.35,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.5165,sim_p5:0,sim_p95:71.35,sim_std:23.3},
+  {player:"Sam Merrill",top_tier:false,team:"CLE",sport:"NBA",date:"Nov 6",prop:"under 10.5 points",line:"-130",guess:66.2,tier:"lean",flag:"",value_pct:17.19,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 9.5, "to": 10.5, "at": "2026-11-06 16:11:39 PST"},sim_p_over:0.272,sim_p5:2.32,sim_p95:14.49,sim_std:3.63},
+  {player:"James Harden",top_tier:false,team:"CLE",sport:"NBA",date:"Nov 6",prop:"under 17.5 points",line:"-138",guess:64.7,tier:"lean",flag:"",value_pct:11.5,markets:{"polymarket": "https://polymarket.us/event/nba-phi-cle-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV06PHICLE-CLEJHARDEN1-20", "novig": "https://app.novig.us/event-markets/01a1abc5-9370-7011-a5bc-72ae075ec46c"},line_move:{"from": 18.5, "to": 17.5, "at": "2026-11-06 18:11:30 PST"},sim_p_over:0.3015,sim_p5:9.7,sim_p95:23,sim_std:4.08}
 ];
 /* ================= LEANS — derived from TOP_PROPS =================
    The ticket checker's preset picks read this list: the board's NBA
    points props, strongest (highest model chance) first. It is built
    from TOP_PROPS at load so it always matches the current board.
    (Home's strongest picks do NOT read this subset either — they
-   read the Top Tier rows in TODAY_BETS; see renderHomePicks.)
+   read the card's straights in TODAY_BETS; see renderHomePicks.)
    The matchup ("ORL @ PHX") is read from the pick's own market link
    slug; the board carries no separate game field for props. */
 var LEANS=(function(){
@@ -4291,10 +4285,10 @@ var LEANS=(function(){
   out.sort(function(a,b){return b.p-a.p;});
   return out;
 })();
-/* Home "strongest picks": the Top Tier four — the TODAY_BETS rows
-   marked top_tier, in the same order the Our Bets tab shows them.
-   Home does not rank anything itself and never reads TOP_PROPS for
-   this list, so it always shows the same four picks Our Bets stars.
+/* Home "strongest picks": the card's straights — the TODAY_BETS rows,
+   in the same order the Our Bets tab shows them. Home does not rank
+   anything itself and never reads TOP_PROPS for this list, so it
+   always shows the same picks Our Bets shows.
    A pick marked void in the track record is also skipped: a voided
    pick is not one of today's picks, even while its row is still on
    the card, and the empty slot is left empty rather than filled
@@ -4356,11 +4350,11 @@ function renderHomePicks(){
   var voids=homeVoidKeys();
   var voidDesc=homeVoidDescriptions();
   var picks=[], voided=[];
-  /* The Top Tier four, in the order Our Bets shows them — no
+  /* The card's straights, in the order Our Bets shows them — no
      sorting and no second ranking here. A row Our Bets would drop
      (a soccer row) is dropped here too, the same way. */
   rows.forEach(function(b){
-    if(!b||!b.top_tier) return;
+    if(!b) return;
     if(typeof isSoccerRow==="function"&&isSoccerRow(b)) return;
     var parts=homeBetParts(b);
     var key=parts?String(b.player||"").trim().toLowerCase()+"|"+parts.market.trim().toLowerCase()+"|"+parts.line:null;
@@ -4371,7 +4365,7 @@ function renderHomePicks(){
     var named=voided.filter(function(d){return d;});
     if(named.length===1){ voidNote.textContent=named[0]+" is void \u2014 there is no such game \u2014 so it is not shown above."; voidNote.hidden=false; }
     else if(named.length>1){ voidNote.textContent="Void \u2014 no such game \u2014 so not shown above: "+named.join("; ")+"."; voidNote.hidden=false; }
-    else if(voided.length){ voidNote.textContent="One Top Tier pick is void \u2014 there is no such game \u2014 so it is not shown above."; voidNote.hidden=false; }
+    else if(voided.length){ voidNote.textContent="One pick is void \u2014 there is no such game \u2014 so it is not shown above."; voidNote.hidden=false; }
     else { voidNote.textContent=""; voidNote.hidden=true; }
   }
   if(!picks.length){
@@ -4399,7 +4393,7 @@ function renderHomePicks(){
   }).join("");
   if(combo){
     /* The together line is worked out from the picks just shown
-       above — the non-void Top Tier picks, and nothing else. */
+       above — the non-void card picks, and nothing else. */
     var all=1, ok=true;
     picks.forEach(function(p){
       var prob=(typeof p.b.model_prob==="number"&&isFinite(p.b.model_prob))?p.b.model_prob:null;
@@ -4682,13 +4676,14 @@ function setPropView(view){
      flipping Tiles/List updates the card without a reload. */
   try{renderBets();}catch(e){}
 }
-/* Tier column: only the exceptions are labelled. A strong-tier row
-   (top 10% of today's value gaps) gets the "Strong pick" pill; every
-   other row — lean rows included — gets a blank cell, so the pill
-   actually means something when it appears. */
+/* Tier column: every row carries its tier as a pill. A strong-tier row
+   (top 10% of today's value gaps) gets "💪 Strong pick"; a lean row
+   gets "🤏 Lean" (a smaller edge, still above the value screen). The
+   emoji is part of the tier label itself, not a separate badge. */
 function propTierHtml(r){
   var t=String((r&&r.tier)||"").toLowerCase();
-  if(t.indexOf("strong")>=0) return '<span class="picktag">Strong pick</span>';
+  if(t.indexOf("strong")>=0) return '<span class="picktag">\uD83D\uDCAA Strong pick</span>';
+  if(t.indexOf("lean")>=0) return '<span class="picktag">\uD83E\uDD0F Lean</span>';
   return "";
 }
 /* The value gap in plain words on the row: "Our guess: 74% (book
@@ -4732,36 +4727,21 @@ function propGuessHtml(r,labelled){
   if(g!=null&&b!=null) txt+=' <span class="book-says">(book says '+b+'%)</span>';
   return txt;
 }
-/* Top Tier marker: a star + "Top Tier" label, with the plain-English
-   explanation behind the ⓘ next to it. Shown on up to 4 of the most
-   likely props from today's card, on both the Player Picks board and
-   the Our Bets cards — the same bets as the card, just starred. */
-function ttBadgeHtml(){
-  return '<span class="tt-badge">\u2B50 Top Tier</span><span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="What Top Tier means">i</button><span class="tip">Top Tier = up to 4 of the most likely props from today&rsquo;s card, tracked as straights &mdash; the same bets as the card, just starred, not extra bets</span></span>';
-}
-/* Value play marker: a diamond + "Value" label, kept rare — a pick
-   earns the diamond only when it sits in the top decile of the day's
-   value gaps. The pipeline already marks that top decile with the
-   tier field on each board row (tier "strong" = top decile), so the
-   predicate reads tier when it is there and never invents a cutoff
-   from the day's data. Same badge shape and info-circle pattern as
-   the Top Tier star, so the two read as one system. */
+/* Strong-tier predicate: a pick is strong when the pipeline marks it
+   tier "strong" (top decile of the day's value gaps), falling back to
+   value_pct >= 10 when no tier is on the row. Used by the tier label
+   on the Our Bets card. */
 function isValuePlay(p){
   if(!p) return false;
   if(p.tier!=null&&p.tier!=="") return String(p.tier).toLowerCase()==="strong";
   /* TODO(pipeline): top-decile cutoff — badge stays common until the pipeline ships value_decile */
   return typeof p.value_pct==="number"&&isFinite(p.value_pct)&&p.value_pct>=10;
 }
-function valueBadgeHtml(){
-  return '<span class="tt-badge value-badge">\uD83D\uDC8E Value</span><span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="What a value play means">i</button><span class="tip">\uD83D\uDC8E Value play \u2014 in the top 10% of today\u2019s value gaps</span></span>';
-}
-/* Both badges for a pick, star first then diamond. A pick can wear
-   both (Top Tier picks pass the value screen), one, or neither. */
+/* Badges were removed (Top Tier and Value, Nov 6): the tier label on
+   the row/card carries the meaning now. Kept as a no-op so call sites
+   need no change. */
 function pickBadgesHtml(p){
-  var h="";
-  if(p&&p.top_tier) h+=ttBadgeHtml();
-  if(isValuePlay(p)) h+=valueBadgeHtml();
-  return h;
+  return "";
 }
 function propSimHtml(r){
   if(!r) return "";
@@ -4774,24 +4754,19 @@ function propSimHtml(r){
      ⓘ (propRowInfoHtml below), so a sim row shows one icon, not two. */
   return '<div class="sim-lines"><div class="sim-text">'+txt+'</div></div>';
 }
-/* Player Picks declutter: badges on the props board render WITHOUT
-   their own ⓘ circles (the board header's ⓘ explains Line, Our guess,
-   ⭐ Top Tier and 💎 Value once, for the whole board). A row gets ONE
-   ⓘ, and only when that pick carries something specific to explain:
-   a news flag (r.flag), a simulation note (sim_p_over / sim_flag), or
-   Top Tier. Plain rows show no ⓘ at all. The Our Bets cards keep
-   using pickBadgesHtml with its per-badge ⓘ circles — untouched. */
+/* Player Picks declutter: the board header's ⓘ explains the columns
+   (Line, Our chance, the tier labels). A row gets ONE ⓘ, and only
+   when that pick carries something specific to explain: a news flag
+   (r.flag) or a simulation note (sim_p_over / sim_flag). Plain rows
+   show no ⓘ at all. Badges were removed (Top Tier and Value, Nov 6)
+   — this now returns "" so call sites need no change. */
 function pickBadgesPlainHtml(p){
-  var h="";
-  if(p&&p.top_tier) h+='<span class="tt-badge">\u2B50 Top Tier</span>';
-  if(isValuePlay(p)) h+='<span class="tt-badge value-badge">\uD83D\uDC8E Value</span>';
-  return h;
+  return "";
 }
 function propRowInfoHtml(r){
   if(!r) return "";
   var hasSim=(typeof r.sim_p_over==="number"&&isFinite(r.sim_p_over));
   var parts=[];
-  if(r.top_tier) parts.push("Top Tier \u2014 one of the most likely props from today's card, tracked as a straight bet. The same bet as the card, just starred.");
   if(r.flag) parts.push("Note on this pick: "+r.flag);
   if(hasSim) parts.push("Simulation: "+Math.round(r.sim_p_over*100)+"% went over the line in simulated games \u2014 a second check, separate from our guess.");
   if(typeof r.sim_p5==="number"&&isFinite(r.sim_p5)&&typeof r.sim_p95==="number"&&isFinite(r.sim_p95)) parts.push("In simulated games, the middle 90% of outcomes fell between "+fmtLine(r.sim_p5)+" and "+fmtLine(r.sim_p95)+".");
@@ -6157,11 +6132,12 @@ function betMatch(b){
   return parts.join(" \u00b7 ");
 }
 function betValue(b){
-  /* Value pill: green for a value play, blue for a lean. Uses the same
-     predicate as the diamond badge (isValuePlay): the pipeline's tier
-     field when it is there, the value number as the fallback. */
+  /* Tier pill on the card: 💪 Strong value for a strong pick, 🤏 Lean
+     for a lean. The emoji is part of the tier label. Uses the
+     pipeline's tier field (isValuePlay) when it is there, the value
+     number as the fallback. */
   var strong=isValuePlay(b);
-  var label=strong?"Strong value":"Lean";
+  var label=strong?"\uD83D\uDCAA Strong value":"\uD83E\uDD0F Lean";
   if(typeof b.value_pct==="number"){
     var v=Math.round(b.value_pct*10)/10;
     label+=" \u00b7 "+(v>=0?"+":"")+v+"%";
@@ -6211,20 +6187,6 @@ function recordDayNumber(dateStr){
   var n=Math.round((d-st)/86400000)+1;
   return n>0?n:null;
 }
-/* Top Tier spread line: computed at render time from today's Top Tier
-   rows in TODAY_BETS (their model_prob) — never hard-coded. With fewer
-   than 2 Top Tier picks there is no range to show, just the count. */
-function topTierSpreadText(){
-  var rows=(typeof TODAY_BETS!=="undefined"&&TODAY_BETS)?TODAY_BETS:[];
-  var probs=[];
-  rows.forEach(function(b){
-    if(b&&b.top_tier&&typeof b.model_prob==="number"&&isFinite(b.model_prob)) probs.push(b.model_prob);
-  });
-  var n=probs.length;
-  if(n<2) return "Top Tier today: "+n+(n===1?" pick.":" picks.");
-  var lo=Math.min.apply(null,probs), hi=Math.max.apply(null,probs);
-  return "Top Tier today: "+n+" picks, our chances run "+(lo*100).toFixed(1)+"\u2013"+(hi*100).toFixed(1)+"% (a "+((hi-lo)*100).toFixed(1)+"-point spread).";
-}
 function renderBets(){
   var bets=(TODAY_BETS||[]).filter(function(b){return !isSoccerRow(b);});
   var voidDesc={};
@@ -6237,7 +6199,7 @@ function renderBets(){
   var noteEl=$("betsCardNote");
   if(noteEl){
     var dayN=recordDayNumber(TODAY_CARD_DATE);
-    if(dayN!=null) noteEl.textContent="Day "+dayN+" of the fresh track record. Picks are the day\u2019s strongest calibrated leans at a $100 flat stake; the parlay is tracked separately and is not part of the straight-bet tally. The \u2B50 Top Tier picks are the most likely props from this card \u2014 the same bets, just starred.";
+    if(dayN!=null) noteEl.textContent="Day "+dayN+" of the fresh track record. Picks are the day\u2019s strongest calibrated leans at a $100 flat stake; the parlay is tracked separately and is not part of the straight-bet tally.";
   }
   var dateEl=$("betsDate");
   if(dateEl){
@@ -6255,16 +6217,6 @@ function renderBets(){
       grid.className="bets-grid";
       grid.innerHTML=bets.map(function(b){return betCardHtml(b, isVoidBet(b));}).join("");
     }
-  }
-  if(grid&&grid.parentNode){
-    var spreadEl=$("ttSpreadLine");
-    if(!spreadEl){
-      spreadEl=document.createElement("p");
-      spreadEl.className="note";
-      spreadEl.id="ttSpreadLine";
-      grid.parentNode.insertBefore(spreadEl,grid);
-    }
-    spreadEl.textContent=topTierSpreadText();
   }
   var wrap=$("parlayWrap");
   if(wrap){
@@ -6422,8 +6374,7 @@ function tallyBlockHtml(title,t){
    rows listed below — nothing is stored or sent anywhere. Weeks run
    Monday to Sunday and are dated by each pick's own date. Only finished
    bets count (win, loss or push); a row with no readable date is skipped
-   rather than guessed at. Top Tier rows carry no per-pick dollars, so
-   the Top Tier version of this shows wins and losses only. */
+   rather than guessed at. */
 var MONTH_FULL=["January","February","March","April","May","June","July","August","September","October","November","December"];
 function parseRowDate(v){
   if(!v) return null;
@@ -6497,13 +6448,6 @@ function renderPeriodRecord(straights,parlays){
     +periodBlockHtml("This month",MONTH_FULL[mr.start.getMonth()]+" "+mr.start.getFullYear(),rowsInPeriod(straights,"month"),rowsInPeriod(parlays,"month"))
     +'</div>'+note+'</div>';
 }
-function ttPeriodLineHtml(rows){
-  function part(label,list){
-    if(!list.length) return esc(label)+": nothing settled yet";
-    return esc(label)+": <b>"+esc(wlText(computedTally(list)))+"</b>";
-  }
-  return '<p class="tt-period">'+part("This week",rowsInPeriod(rows,"week"))+' &middot; '+part("This month",rowsInPeriod(rows,"month"))+'</p>';
-}
 function renderRecord(){
   var rows=(TRACK_RECORD||[]).filter(function(r){return !isSoccerRow(r);});
   var pars=(PARLAY_RECORD||[]).filter(function(r){return !isSoccerRow(r);});
@@ -6562,101 +6506,11 @@ function renderRecord(){
     }
   }
 }
-/* Top Tier record: the running log of up to 4 of the most likely props
-   from each day's card, tracked as straights. Unlike the main record above, today's
-   not-yet-played picks are listed too, marked "Not played yet". No
-   dollar P/L is shown for Nov 3-4: those were Underdog entries and no
-   per-leg odds were recorded, so they count toward W/L only. */
-/* Game date for a Top Tier row. The baked TT_RECORD row carries
-   game_date; the fallback matches today's card picks by description,
-   for rows exported without it. */
-function ttGameDate(r){
-  if(r&&r.game_date) return r.game_date;
-  if(typeof TODAY_BETS!=="undefined"&&TODAY_BETS){
-    for(var i=0;i<TODAY_BETS.length;i++){
-      var b=TODAY_BETS[i];
-      if(b&&b.description===r.description&&b.game_date) return b.game_date;
-    }
-  }
-  return null;
-}
-function ttRowHtml(r){
-  var o=String(r.outcome||"").toLowerCase();
-  var right;
-  if(o==="win"||o==="loss"){
-    right='<span class="rec-outcome '+o+'">'+(o==="win"?"Win":"Loss")+'</span>'
-      +(r.actual_label?'<span class="num">'+esc(r.actual_label)+'</span>':"");
-  } else if(o==="void"){
-    right='<span class="rec-outcome push">Void</span>';
-  } else {
-    right='<span class="rec-outcome pending">Not played yet</span>';
-  }
-  var gd=ttGameDate(r);
-  return '<div class="record-row"><div class="rec-who"><b>'+esc(r.description||"Pick")+'</b><span>'+esc((r.sport||"")+(gd?" \u00b7 "+fmtGameDate(gd):""))+'</span></div>'
-    +'<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">'+right+'</div></div>';
-}
-function ttDayLabel(dateStr){
-  var d=parseRowDate(dateStr);
-  return d?fmtDateLong(d):fmtDateLong(dateStr);
-}
-function ttDaySplit(dayRows){
-  var s={wins:0,losses:0,voids:0,pending:0};
-  (dayRows||[]).forEach(function(r){
-    var o=String(r.outcome||"").toLowerCase();
-    if(o==="win") s.wins++;
-    else if(o==="loss") s.losses++;
-    else if(o==="void") s.voids++;
-    else s.pending++;
-  });
-  return s;
-}
-function renderTopTier(){
-  var el=$("ttRecord");
-  if(!el) return;
-  var rows=(TT_RECORD||[]).filter(function(r){return !isSoccerRow(r);});
-  if(!rows.length){el.innerHTML='<p class="empty-note">No Top Tier picks yet.</p>';return;}
-  var t=TT_TALLY||{wins:0,losses:0,n_graded:0,win_rate:0};
-  var groups={}, order=[];
-  rows.forEach(function(r){
-    if(!groups[r.date]){groups[r.date]=[];order.push(r.date);}
-    groups[r.date].push(r);
-  });
-  var splits={};
-  order.forEach(function(date){splits[date]=ttDaySplit(groups[date]);});
-  var voidRows=rows.filter(function(r){return String(r.outcome||"").toLowerCase()==="void";});
-  var tallyLine=t.wins+'-'+t.losses+' &middot; '+Math.round((t.win_rate||0)*100)+'%'
-    +(typeof t.profit==="number"?' &middot; '+esc(fmtProfitWhole(t.profit)):"");
-  var head='<div class="tally-block" style="margin-bottom:14px"><div class="tt-tally">'+tallyLine+'</div>'
-    +'<p class="note" style="margin-top:6px">'+esc(topTierSpreadText())+'</p>'
-    +(voidRows.length?'<p>'+voidRows.length+' void ('+voidRows.map(function(r){
-        var nm=String(r.description||"Pick").split(" (")[0];
-        return esc(nm)+', '+esc(ttDayLabel(r.date))+' \u2014 no such game';
-      }).join("; ")+')</p>':"")
-    +'<p>'+t.n_graded+' settled picks so far \u2014 dollar P/L from Nov 6, 2026 onward only; Nov 3\u2013Nov 5, 2026 history is archived, not counted.</p>'
-    +'<p>By day: '+order.map(function(date){
-        var s=splits[date], parts=[];
-        if(s.wins||s.losses) parts.push(s.wins+'\u2013'+s.losses);
-        if(s.voids) parts.push(s.voids+' void');
-        if(s.pending) parts.push(s.pending+' pending');
-        return esc(ttDayLabel(date))+': '+esc(parts.join(", "));
-      }).join(' &middot; ')+'</p></div>'
-    +ttPeriodLineHtml(rows);
-  var body=order.slice().reverse().map(function(date){
-    var s=splits[date];
-    var summary=ttDayLabel(date)+' \u2014 '+s.wins+(s.wins===1?' win':' wins')+', '+s.losses+(s.losses===1?' loss':' losses')
-      +(s.voids?', '+s.voids+' void':"")
-      +(s.pending?', '+s.pending+' not played yet':"");
-    var ttDayD=parseRowDate(date); var ttDayLbl=ttDayD?fmtDateLong(ttDayD,true):fmtDateLong(date,true);
-    return '<section class="record-day"><h2>'+esc(ttDayLbl)+'</h2><p class="sub">'+esc(summary)+'</p><div class="rows" role="table" aria-label="Top Tier picks for '+esc(ttDayLbl)+'">'+groups[date].map(ttRowHtml).join("")+'</div></section>';
-  }).join("");
-  el.innerHTML=head+body;
-}
 /* Cumulative record: the Our Record tab also tries to load
    "track_record_cumulative.json" (same folder as this page). If that
    file loads AND parses AND carries numeric tallies in a recognizable
-   shape — straights and parlays with wins/losses/profit numbers, plus
-   a top-tier tally when present — the record and Top Tier sections
-   re-render from it. Any failure at all (file missing, network error,
+   shape — straights and parlays with wins/losses/profit numbers — the
+   record re-renders from it. Any failure at all (file missing, network error,
    bad JSON, unrecognizable shape) leaves the hard-coded tallies on
    this page exactly as they are, silently: no banner, no blank
    record, and nothing here is allowed to throw. */
@@ -6688,24 +6542,13 @@ function applyCumulativeRecord(data){
   var s=cumTally(root.straights||root.straight_bets||track.straights);
   var p=cumTally(root.parlays||root.parlay||track.parlays);
   if(!s||!p) return false;
-  var ttRaw=root.top_tier||root.topTier||root.top_tier_tally||data.tt_tally||data.top_tier||null;
-  var tt=ttRaw?cumTally(ttRaw):null;
   TRACK_TALLY={straights:s,parlays:p};
   var recRows=cumRows(data.track_record||data.record);
   if(recRows) TRACK_RECORD=recRows;
   var parRows=cumRows(data.parlay_record||data.parlays_record);
   if(parRows) PARLAY_RECORD=parRows;
-  if(tt){
-    var settled=tt.wins+tt.losses;
-    TT_TALLY={wins:tt.wins,losses:tt.losses,pushes:tt.pushes,n_graded:tt.n_graded,
-      win_rate:settled?tt.wins/settled:0,profit:tt.profit,profit_partial:true,
-      profit_note:"Dollar P/L from Nov 6, 2026 onward only \u2014 Nov 3\u20135 history is archived, not counted."};
-  }
-  var ttRows=cumRows(data.tt_record||data.top_tier_record);
-  if(ttRows&&ttRows.length) TT_RECORD=ttRows;
   try{renderRecordLine();}catch(e){}
   try{renderRecord();}catch(e){}
-  try{renderTopTier();}catch(e){}
   try{renderHomePicks();}catch(e){}
   return true;
 }
@@ -7441,7 +7284,6 @@ function renderSeason(){
 try{renderSeason();}catch(e){}
 try{renderBets();}catch(e){}
 try{renderRecord();}catch(e){}
-try{renderTopTier();}catch(e){}
 try{updateYesterdayRecap();}catch(e){}
 try{loadCumulativeRecord();}catch(e){}
 })();
