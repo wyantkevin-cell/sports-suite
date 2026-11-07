@@ -897,20 +897,20 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <section class="panel active" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview" tabindex="0">
     <div class="welcome-banner" id="welcomeBanner" role="region" aria-label="Welcome" hidden>
       <p class="onboard-mission">We can&rsquo;t stop people from betting, but we can try letting them make better informed bets.</p>
-      <p>We built our own forecasting models in-house to cover multiple sports and props.</p>
+      <p>We built two models ourselves. They cover a bunch of sports and player props.</p>
       <p><a href="#docs" data-goto="docs">How it works</a></p>
       <button type="button" class="btn" id="welcomeGotIt">Got it</button>
     </div>
     <h1>Check the chances <em>before you bet.</em></h1>
-    <p class="lede">Today&rsquo;s picks, with the chance each one hits.</p>
-    <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not proven winners.</p>
+    <p class="lede">Today's picks. Each one shows how often we think it hits.</p>
+    <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not winners yet.</p>
     <p class="recap-line" id="yesterdayRecap" hidden></p>
     <div class="freshness"></div>
 
     <section class="block" style="margin-top:22px" aria-label="Strongest picks">
       <h2 id="homePicksHeading">Today&rsquo;s strongest picks &mdash; Fri, Nov 6, 2026</h2>
       <p class="sub" id="homePicksNote" hidden></p>
-      <p class="sub">The chance is how often we think it hits.</p>
+      <p class="sub">The % next to each pick is how often we think it hits.</p>
       <div class="best" id="homePicksList">
         <div class="pickrow"><div class="who"><b>Loading today's picks…</b><span>If this stays, the morning update hasn't posted yet.</span></div></div>
       </div>
@@ -921,20 +921,20 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <section class="block" aria-label="All tools">
       <h2>Everything else</h2>
       <div class="toollist">
-        <button type="button" data-goto="gameforecasts" data-gf-section="gf-moneyline">Who wins? <span>Our guess for each game &rarr;</span></button>
-        <button type="button" data-goto="props">Player picks <span>Points, shots, touchdowns, and more &rarr;</span></button>
-        <button type="button" data-goto="pricer">Check my ticket <span>Is the payout worth it? &rarr;</span></button>
-        <button type="button" data-goto="gameforecasts" data-gf-section="gf-totals">Totals <span>Our total vs the book&rsquo;s number &rarr;</span></button>
+        <button type="button" data-goto="gameforecasts" data-gf-section="gf-moneyline">Who wins? <span>Who we think wins each game &rarr;</span></button>
+        <button type="button" data-goto="props">Player picks <span>Points, shots, touchdowns, all of it &rarr;</span></button>
+        <button type="button" data-goto="pricer">Check my ticket <span>Is this ticket worth it? &rarr;</span></button>
+        <button type="button" data-goto="gameforecasts" data-gf-section="gf-totals">Totals <span>Our total next to the book&rsquo;s &rarr;</span></button>
         <button type="button" data-goto="bets">Our Bets <span>Today&rsquo;s card &rarr;</span></button>
-        <button type="button" data-goto="gameforecasts" data-gf-section="gf-season">NFL Season outlook <span>How the NFL season ends, 10,000 times over &rarr;</span></button>
-        <button type="button" data-goto="record">Our record <span>Settled bets, wins and losses &rarr;</span></button>
+        <button type="button" data-goto="gameforecasts" data-gf-section="gf-season">NFL Season outlook <span>We ran the season 10,000 times. Here&rsquo;s how it ends. &rarr;</span></button>
+        <button type="button" data-goto="record">Our record <span>Finished bets. Wins and losses. &rarr;</span></button>
       </div>
     </section>
 
     <section class="block">
       <div class="honest">
         <h2>Be careful with every number here</h2>
-        <p>Our guesses are <strong>early and unproven</strong> &mdash; check <a href="#record" data-goto="record">Our record</a> before trusting one.</p>
+        <p>Our guesses are early and unproven. Check <a href="#record" data-goto="record">Our record</a> before you trust any of them.</p>
       </div>
     </section>
 
@@ -946,8 +946,8 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
         <a class="btn" href="https://play.underdogsports.com/vgwg/63lbpw62" target="_blank" rel="noopener">Sign up for Underdog</a>
         <a class="btn" href="https://www.betonline.ag?RAF=HDPA3N5Z&ProdCode=SPO" target="_blank" rel="noopener">Sign up for BetOnline</a>
       </p>
-      <p class="note">Referral links &mdash; we may earn a bonus at no cost to you.</p>
-      <p><a href="#books" data-goto="books" data-goto-support>Like the site? Support it &rarr;</a></p>
+      <p class="note">These are referral links. If you sign up through one, we might earn a bonus. It costs you nothing.</p>
+      <p><a href="#books" data-goto="books" data-goto-support>Like the site? Chip in →</a></p>
     </section>
 
   </section>
@@ -955,15 +955,15 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <!-- ============ GAME FORECASTS ============ -->
   <section class="panel" id="panel-gameforecasts" role="tabpanel" aria-labelledby="tab-gameforecasts" tabindex="0" hidden>
     <h1>Game forecasts</h1>
-    <p class="gf-honest">These are forecasts, not proven winners &mdash; none of these models has beaten the book&rsquo;s odds in testing.</p>
+    <p class="gf-honest">These are forecasts, not proven winners. None of our models has beaten the book's odds in testing.</p>
   <!-- ============ WHO WINS ============ -->
   <section class="gf-section" id="gf-moneyline" aria-label="Moneyline">
     <div class="explain-wrap">
       <h1 class="explain-head"><span class="explain-title">Who wins <em>this game?</em></span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainForecasts" aria-label="About these forecasts">i</button></h1>
-      <div class="explain" id="explainForecasts" hidden><p style="margin:0">One number per game: the team we think wins, and how often we think it wins. <b>Early and unproven</b> &mdash; the bookies&rsquo; final odds beat us in testing. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
+      <div class="explain" id="explainForecasts" hidden><p style="margin:0">One number per game. The team we think wins, and how often. Early and unproven — the book's final odds beat us in testing. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
     </div>
 
-    <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not proven winners.</p>
+    <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not winners yet.</p>
     <div class="freshness"></div>
     <p class="note" style="margin-top:8px">Lines: DraftKings via ESPN</p>
     <div class="filters" role="group" aria-label="Choose a league" id="leagueFilters">
@@ -986,7 +986,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 
     <section class="block explain-wrap" id="gamesBlock">
       <h2 class="explain-head"><span class="explain-title" id="slateHeading">NFL games</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainSlate" aria-label="How to read these games">i</button></h2>
-      <div class="explain" id="explainSlate" hidden><p style="margin:0">The <b>bold</b> team is the pick, and the % is how often it is expected to win. Under each game, <b>Model A</b> is the other model&rsquo;s number and <b>Model B</b> is our model&rsquo;s number. A game shows only the model lines whose numbers are in this snapshot &mdash; for other sports and dates, only Model A is posted and our number is not in yet. Today's NBA headline is the average of the two models; the two numbers are shown separately under each game. Games with a posted book line show it next to our pick; games without one yet show &ldquo;Line: TBD&rdquo;. &ldquo;Close call&rdquo; means barely better than a coin flip &mdash; a lean, not a pick to trust. Check the news before using any of these: injuries and late news are invisible to old box scores.</p></div>
+      <div class="explain" id="explainSlate" hidden><p style="margin:0">The <b>bold</b> team is the pick, and the % is how often it is expected to win. Under each game, <b>Model A (ALL_IN)</b> shows the number built by Grok, and <b>Model B (FULL_SLATE)</b> shows the number built by Muse. A game shows only the model lines whose numbers are in this snapshot &mdash; for other sports and dates, only Model A is posted and our number is not in yet. Today's NBA headline is the average of the two models; the two numbers are shown separately under each game. Games with a posted book line show it next to our pick; games without one yet show &ldquo;Line: TBD&rdquo;. &ldquo;Close call&rdquo; means barely better than a coin flip &mdash; a lean, not a pick to trust. Check the news before using any of these: injuries and late news are invisible to old box scores.</p></div>
       <div id="slateList" style="margin-top:12px"></div>
     </section>
 
@@ -1013,8 +1013,8 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <!-- ============ TOTALS ============ -->
   <section class="gf-section" id="gf-totals" aria-label="Totals">
     <h1 id="totalsHeading">Totals &mdash; Nov 6, 2026</h1>
-    <p class="lede">Our predicted total vs the book&rsquo;s number. A lean means we see it differently, not a guaranteed win.</p>
-    <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not proven winners.</p>
+    <p class="lede">Our total next to the book's number. A lean just means we see it differently. Not a guaranteed win.</p>
+    <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not winners yet.</p>
     <div class="freshness"></div>
     <p id="totalsStaleBanner" class="stale-banner" hidden></p>
     <div class="model-warning" role="alert"><span class="model-warning-title">Warning &mdash; read this first</span><p>Ravens are on 3rd-string QB Fagnano, so the total is lower than the model first said.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="More about the Ravens total">i</button><span class="tip">The roster tracker cut the total by 9.7 points for the QB downgrade (Fagnano in for Lamar Jackson). The market moved from 49.5 to 40.5.</span></span></p></div>
@@ -1024,14 +1024,14 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     </div>
     <p class="note" id="totalsCount" aria-live="polite"></p>
     <div class="totals-list" id="totalsList"></div>
-    <p class="note">Totals leans are forecasts only &mdash; they are untracked and have no record. How our tracked picks do is on <a href="#record" data-goto="record">Our record</a>.</p>
+    <p class="note">Totals leans are just forecasts. We don’t track them, so there’s no record for them. Our tracked picks are on <a href="#record" data-goto="record">Our record</a>.</p>
   </section>
 
   <!-- ============ SPREADS ============ -->
   <section class="gf-section" id="gf-spreads" aria-label="Spreads">
     <h1 id="spreadsHeading">Spreads &mdash; Nov 6, 2026</h1>
-    <p class="lede">Our predicted spread vs the book&rsquo;s number. A lean means we see it differently, not a guaranteed win.</p>
-    <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not proven winners.</p>
+    <p class="lede">Our spread next to the book's number. A lean just means we see it differently. Not a guaranteed win.</p>
+    <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not winners yet.</p>
     <div class="freshness"></div>
     <p id="spreadsStaleBanner" class="stale-banner" hidden></p>
     <div class="model-warning" role="alert"><span class="model-warning-title">Warning &mdash; read this first</span><p>Ravens are on 3rd-string QB Fagnano, so the spread moved toward Jacksonville.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="More about the Ravens spread">i</button><span class="tip">The roster tracker cut the total by 9.7 points for the QB downgrade (Fagnano in for Lamar Jackson). The market moved from BAL -4.5 to JAX -9.5.</span></span></p></div>
@@ -1041,7 +1041,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     </div>
     <p class="note" id="spreadsCount" aria-live="polite"></p>
     <div class="spreads-list" id="spreadsList"></div>
-    <p class="note">Spreads leans are forecasts only &mdash; they are untracked and have no record. How our tracked picks do is on <a href="#record" data-goto="record">Our record</a>.</p>
+    <p class="note">Spreads leans are just forecasts. We don’t track them, so there’s no record for them. Our tracked picks are on <a href="#record" data-goto="record">Our record</a>.</p>
   </section>
 
   <!-- ============ SEASON OUTLOOK ============ -->
@@ -1050,12 +1050,12 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <h1 class="explain-head"><span class="explain-title">NFL Season outlook &mdash; <em>how will the season end?</em></span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainSeason" aria-label="How these numbers work">i</button></h1>
       <div class="explain" id="explainSeason" hidden><p style="margin:0">We played the rest of the season 10,000 times on a computer. Each game used our guess for who wins that game. The numbers below are how often each ending came up. &ldquo;Most likely wins&rdquo; is the middle result; &ldquo;usually between&rdquo; covers the middle 8 times out of 10. Ties are broken by group and conference record, then chance &mdash; the league&rsquo;s real tiebreak list is longer, so close races may be off by a hair. &ldquo;Book&rdquo; is the book&rsquo;s win-total line: when we sit far from it, we say so under the number. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p><p class="sub" id="seasonMeta" style="margin:8px 0 0"></p></div>
     </div>
-    <p class="lede">NFL only. Every team&rsquo;s most likely win total, how often they make the playoffs, and how often they win it all &mdash; from 10,000 simulated seasons.</p>
+    <p class="lede">NFL only. Every team's most likely win total, how often they make the playoffs, and how often they win it all. We ran 10,000 seasons to get these.</p>
     <p class="sub">Our NFL numbers use the same approach as the NBA ones we held back &mdash; when we sit far from the book we say so under the number, and these are forecasts, not proven winners.</p>
     <div id="seasonTables"></div>
     <section class="block" aria-label="NBA">
       <h2>NBA is coming soon</h2>
-      <p>Right now our NBA numbers sit too far from the book&rsquo;s numbers &mdash; for example, our model has Indiana winning about 24 games and the book says about 42 &mdash; so we&rsquo;re holding the NBA back until the numbers line up. We&rsquo;ll check again as the season goes on.</p>
+      <p>Our NBA numbers are too far from the book's right now. Our model has Indiana at about 24 wins. The book says about 42. So we're holding the NBA back until the numbers line up. We'll check again as the season goes on.</p>
     </section>
   </section>
   </section>
@@ -1064,9 +1064,9 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <section class="panel" id="panel-props" role="tabpanel" aria-labelledby="tab-props" tabindex="0" hidden>
     <div class="explain-wrap">
       <h1 class="explain-head"><span class="explain-title">Top props</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainProps" aria-label="About these props">i</button></h1>
-      <div class="explain" id="explainProps" hidden><p style="margin:0"><b>Line</b> is the book&rsquo;s line for the pick (for example, under 30.5 receiving yards). <b>Book pays</b> is what the book pays on that line. <b>Our chance</b> is our chance it hits, in %. <b>⭐ Top Tier</b> = the 4 most likely player props of the day. <b>💎 Value</b> = in the top 10% of today&rsquo;s value gaps &mdash; a pick can wear both badges. A row keeps its own ⓘ only when there is something specific on that pick to explain &mdash; a news note, a simulation note, or Top Tier. Lines from FanDuel. Tomorrow&rsquo;s games are here early so you can beat line movement.</p></div>
+      <div class="explain" id="explainProps" hidden><p style="margin:0"><b>Line</b> is the book&rsquo;s line. Like under 30.5 receiving yards. <b>Book pays</b> is what the book pays on it. <b>Our chance</b> is how often we think it hits, in %. <b>&#128170; Strong pick</b> = the strongest picks (top ten percent of the day&rsquo;s value). <b>&#129450; Lean</b> = a smaller edge, still above the value screen. A row keeps its own ⓘ only when there is something specific on that pick to explain &mdash; a news note or a simulation note. Lines from FanDuel. Tomorrow&rsquo;s games are here early so you can beat line movement.</p></div>
     </div>
-    <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not proven winners.</p>
+    <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not winners yet.</p>
     <p class="note" id="propsSourceNote">Today&rsquo;s lines via SharpAPI and The Odds API &mdash; our usual sources were unavailable</p>
     <div class="freshness"></div>
     <p class="note badge-legend"><span class="tt-badge">&#11088; Top Tier</span><span>the 4 most likely player props of the day</span><span class="tt-badge value-badge">&#128142; Value</span><span>in the top 10% of today&rsquo;s value gaps &mdash; a pick can wear both badges</span></p>
@@ -1177,8 +1177,8 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <!-- ============ CHECK MY TICKET ============ -->
   <section class="panel" id="panel-pricer" role="tabpanel" aria-labelledby="tab-pricer" tabindex="0" hidden>
     <h1>Check my ticket</h1>
-    <p class="record-line" data-record-suffix=" Ticket scores have no graded record yet — the score is our model's guess, not a proven result.">Our record: 0–0, $0 so far. Forecasts, not proven winners. Ticket scores have no graded record yet — the score is our model's guess, not a proven result.</p>
-    <p class="lede" style="margin-top:10px">One tool: score a ticket, then run the same ticket 10,000 times to see how often it wins.</p>
+    <p class="record-line" data-record-suffix=" Ticket scores have no graded record yet — the score is our model's guess, not a proven result.">Our record: 0–0, $0 so far. Forecasts, not winners yet. Ticket scores have no graded record yet — the score is our model's guess, not a proven result.</p>
+    <p class="lede" style="margin-top:10px">Score a ticket. Then run it 10,000 times and see how often it wins.</p>
 
     <p class="ticket-step"><span class="n">1</span> Snap your ticket</p>
     <div class="snap-wrap">
@@ -1198,7 +1198,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
             <button type="button" class="explain-btn" aria-expanded="false" aria-controls="ticketDetails" aria-label="Ticket details">i</button>
           </div>
         </div>
-        <div class="v-sub" id="verdictSentence">Snap your ticket to get a verdict.</div>
+        <div class="v-sub" id="verdictSentence">Snap your ticket to see the score.</div>
       </div>
 
       <div class="explain" id="ticketDetails" hidden>
@@ -1213,7 +1213,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
           <img id="slipPreview" alt="Your uploaded bet slip screenshot">
           <button type="button" class="btn ghost" id="removeSlip">Remove screenshot</button>
         </div>
-        <p class="note">Your screenshot stays on your device &mdash; nothing is sent anywhere.</p>
+        <p class="note">Your screenshot stays on your phone. Nothing gets sent anywhere.</p>
 
         <div class="pricer-grid ticket-grid" style="margin-top:14px">
           <section aria-label="Your ticket">
@@ -1303,7 +1303,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <div class="explain" id="explainDfs" hidden><p style="margin:0">We rank players by how many points they&rsquo;ve averaged lately, then pick the best team that fits under the salary limit. You add the salaries from DraftKings or FanDuel.</p></div>
     </div>
     <p class="lede">Pick a slate and a platform, add player salaries, and we build the best lineup that fits under the limit &mdash; plus two more options.</p>
-    <p class="sub" style="margin-top:10px">This tool needs player salaries from DraftKings or FanDuel &mdash; upload the salary file they let you download, or paste the salaries in. The sample salaries are examples only, not real prices.</p>
+    <p class="sub" style="margin-top:10px">This tool needs player salaries from DraftKings or FanDuel. Upload the salary file they let you download, or paste the salaries in. The sample salaries are examples only, not real prices.</p>
     <div class="freshness"></div>
     <p class="updated-line" id="dfsAsOf" hidden></p>
 
@@ -1382,26 +1382,26 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <div class="bets-hero">
       <h1>Today's Card</h1>
       <span class="bets-date" id="betsDate" hidden></span>
-      <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not proven winners.</p>
-      <p>Today&rsquo;s bets, picked from the strongest player props and moneylines on the board. Each card shows our chance it hits and how it compares with the book&rsquo;s number.</p>
+      <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not winners yet.</p>
+      <p>Today&rsquo;s bets &mdash; the main tracked record: 1&ndash;4 best bets plus 1 Parlay of the Day. Each card shows our chance it hits, and how it stacks up against the book&rsquo;s number.</p>
       <div class="freshness"></div>
     </div>
     <div id="betsEmpty" class="empty-state bets-empty"><p>Today's card posts with the morning update — check back after 9am.</p></div>
     <div id="parlayWrap"></div>
     <div class="bets-grid" id="betsGrid"></div>
-    <p class="note" id="betsCardNote">Day 1 of the fresh track record. Picks are the day&rsquo;s strongest calibrated leans at a $100 flat stake; the parlay is tracked separately and is not part of the straight-bet tally.</p>
-    <p class="note">These are today&rsquo;s bets only. Once a game finishes and a pick is graded, it moves to <a href="#record" data-goto="record">Our Record</a> &mdash; pending picks never appear there.</p>
+    <p class="note" id="betsCardNote">Day 1 of the fresh record. These are the day's strongest picks, $100 flat on each. The parlay is tracked on its own — it's not part of the straight-bet tally.</p>
+    <p class="note">Today’s bets only. Once a game finishes and a pick is graded, it moves to <a href="#record" data-goto="record">Our Record</a>. Pending picks never show up there.</p>
   </section>
 
   <section class="panel" id="panel-record" role="tabpanel" aria-labelledby="tab-record" tabindex="0" hidden>
     <div class="explain-wrap">
       <h1 class="explain-head"><span class="explain-title">How have <em>we done?</em></span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainRecord" aria-label="About this record">i</button></h1>
-      <div class="explain" id="explainRecord" hidden><p style="margin:0">Only bets that have finished appear here, with the result next to each one. Today&rsquo;s bets live on <a class="doclink" href="#bets" data-goto="bets">Our Bets</a> until their games finish. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
+      <div class="explain" id="explainRecord" hidden><p style="margin:0">Only finished bets show up here, with the result next to each one. Today’s bets stay on <a class="doclink" href="#bets" data-goto="bets">Our Bets</a> until their games finish. The record started fresh on Nov 6, 2026. The card only includes games dated that day. When a rule changes, the old card is archived and the change is noted here. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
     </div>
 
     <div class="card tally-card">
       <div class="tally-big" id="tallyBig">No settled bets yet</div>
-      <p id="tallySub">Settled bets are counted at $100 per bet, so the profit is what $100 bets would have made or lost.</p>
+      <p id="tallySub">Every settled bet counts at $100. So the profit is what $100 bets would have made or lost.</p>
       <div class="tally-grid" id="tallyGrid"></div>
       <div id="periodRecord"></div>
     </div>
@@ -1410,7 +1410,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 
     <section class="block" aria-label="Parlay record">
       <h2>Parlays</h2>
-      <p class="sub">Parlay of the Day results, kept apart from single bets.</p>
+      <p class="sub">Parlay of the Day results. Kept apart from single bets.</p>
       <div id="parlayRecordRows"><p class="empty-note">No settled parlays yet.</p></div>
     </section>
 
@@ -1442,37 +1442,37 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <!-- ============ SPORTSBOOKS ============ -->
   <section class="panel" id="panel-books" role="tabpanel" aria-labelledby="tab-books" tabindex="0" hidden>
     <h1>Sportsbooks</h1>
-    <p class="lede">The places where you can place the bets you see on this site.</p>
-    <p class="record-line" data-record-suffix=" The links below are referral links — if you join through one, we may earn a bonus at no extra cost to you. BetOnline is an offshore sportsbook.">Our record: 0–0, $0 so far. Forecasts, not proven winners. The links below are referral links — if you join through one, we may earn a bonus at no extra cost to you. BetOnline is an offshore sportsbook.</p>
+    <p class="lede">Where you can place the bets you see here.</p>
+    <p class="record-line" data-record-suffix=" The links below are referral links. If you join through one, we might earn a bonus. It costs you nothing. BetOnline is an offshore sportsbook.">Our record: 0–0, $0 so far. Forecasts, not winners yet. The links below are referral links. If you join through one, we might earn a bonus. It costs you nothing. BetOnline is an offshore sportsbook.</p>
 
     <div class="card" style="margin-bottom:12px">
       <h2>Kalshi</h2>
-      <p>Kalshi is a regulated exchange where you trade on event outcomes &mdash; pick a side, like a team to win, and you get paid if you&rsquo;re right.</p>
+      <p>Kalshi is a regulated exchange. You trade on what happens — pick a side, like a team to win, and you get paid if you're right.</p>
       <p style="margin-bottom:0"><a class="btn" href="https://kalshi.com/t/6jdhayt9" target="_blank" rel="noopener">Sign up for Kalshi</a></p>
     </div>
 
     <div class="card" style="margin-bottom:12px">
       <h2>Polymarket</h2>
-      <p>Polymarket is a prediction market where you buy shares on outcomes &mdash; if your side wins, each share pays out a dollar.</p>
+      <p>Polymarket is a prediction market. You buy shares on an outcome. If your side wins, each share pays a dollar.</p>
       <p style="margin-bottom:0"><a class="btn" href="https://polymarket.us/join/bigchungus04" target="_blank" rel="noopener">Sign up for Polymarket</a></p>
     </div>
 
     <div class="card" style="margin-bottom:12px">
       <h2>Underdog</h2>
-      <p>Underdog is a fantasy sports app where you pick players to go over or under their numbers &mdash; string a few picks together to win more.</p>
+      <p>Underdog is a fantasy app. You pick players to go over or under their numbers. String a few together to win more.</p>
       <p style="margin-bottom:0"><a class="btn" href="https://play.underdogsports.com/vgwg/63lbpw62" target="_blank" rel="noopener">Sign up for Underdog</a></p>
     </div>
 
     <div class="card" style="margin-bottom:12px">
       <h2>BetOnline</h2>
-      <p>BetOnline is an offshore sportsbook where you can bet on games and player props.</p>
+      <p>BetOnline is an offshore sportsbook. Bet on games and player props.</p>
       <p style="margin-bottom:0"><a class="btn" href="https://www.betonline.ag?RAF=HDPA3N5Z&ProdCode=SPO" target="_blank" rel="noopener">Sign up for BetOnline</a></p>
     </div>
 
     <section class="card" id="support" style="margin-bottom:12px">
       <h2>Support the site</h2>
-      <p class="note" style="margin-top:0">How this site is funded: the site is free. We may earn a bonus if you sign up to a sportsbook through our links, at no extra cost to you. Tips are optional and never affect any pick. We are not a charity &mdash; tips are not tax-deductible.</p>
-      <p>This site is free and stays free. If it helps you, a tip keeps the lights on &mdash; it never buys better picks.</p>
+      <p class="note" style="margin-top:0">How this site is funded: it's free. We might earn a bonus if you sign up through our links. It costs you nothing. Tips are optional and never change a pick. We're not a charity — tips aren't tax-deductible.</p>
+      <p>This site is free and stays free. If it helps you, a tip keeps the lights on. It never buys better picks.</p>
 
       <div class="support-row">
         <div class="support-head"><span class="support-icon" aria-hidden="true">&#9670;</span><b>EVM</b><span class="support-addr">0x8817&hellip;81cFF</span><button type="button" class="btn support-copy" data-copy="0x8817732f5599B48e0Fe536AFB67D1d4b48681cFF">Copy</button></div>
@@ -1504,7 +1504,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
         <p class="note">Solana (SOL / Solana tokens) only &mdash; don&rsquo;t send other chains here.</p>
       </div>
 
-      <p class="note">Only ever use the addresses on this page. We will never email or message you a different address. Crypto can&rsquo;t be undone &mdash; double-check the first and last characters before you send, and try a small amount first.</p>
+      <p class="note">Only use the addresses on this page. We'll never email or message you a different one. Crypto can't be undone. Double-check the first and last characters before you send, and try a small amount first.</p>
     </section>
   </section>
 
@@ -1526,40 +1526,40 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       </ul>
     </nav>
     <h1>How it works, <em>in plain words.</em></h1>
-    <p class="lede">This site helps you judge a sports bet before you place it. It gives a chance for each game and each player pick, scores a whole ticket from any book, runs a ticket 10,000 times to show how often it wins, and keeps a public record of how its picks did.</p>
-    <p class="lede" style="margin-top:10px">The numbers behind the picks are early-stage and still proving themselves, so the <a href="#record" data-goto="record">Our record</a> tab shows every settled pick with its result and date &mdash; look there before you trust any number here.</p>
+    <p class="lede">This site helps you judge a bet before you place it. It gives a chance for every game and every player pick. It scores a whole ticket from any book. It runs a ticket 10,000 times to show how often it wins. And it keeps a public record of how its picks did.</p>
+    <p class="lede" style="margin-top:10px">The numbers are early. They’re still proving themselves. So <a href="#record" data-goto="record">Our record</a> shows every settled pick with its result and date. Look there before you trust any number here.</p>
 
     <h3 id="doc-games">Game forecasts (Who wins?)</h3>
-    <p>Each game gets one headline number: the team we think wins, and how often we think it wins &mdash; for example, &ldquo;Knicks 87%&rdquo;. Under it, Model A (the other model) and Model B (our model) show the two numbers behind it, where their numbers are in this snapshot. A game close to 50-50 is marked as a close call &mdash; a lean, not a pick to lean on.</p>
-    <p>A chance is built from past games: how well teams score and stop the other team, recent form, rest, and playing at home, with recent games counting most. News that comes after the numbers are made &mdash; injuries and late lineup changes &mdash; is not in them, so check the news before you use a pick. Every number carries its date.</p>
+    <p>Each game gets one headline number: the team we think wins, and how often we think it wins &mdash; for example, &ldquo;Knicks 87%&rdquo;. Under it, Model A (ALL_IN) and Model B (FULL_SLATE) show the two numbers behind it, where their numbers are in this snapshot. Model A is built by Grok and Model B is built by Muse. A game close to 50-50 is marked as a close call &mdash; a lean, not a pick to lean on.</p>
+    <p>A chance comes from past games. How well teams score and stop the other team. Recent form. Rest. Playing at home. Recent games count most. News that comes after the numbers are made — injuries, late lineup changes — isn't in them. So check the news before you use a pick. Every number carries its date.</p>
 
     <h3 id="doc-props">Player picks</h3>
-    <p>Player picks give a chance that a player goes over or under a line &mdash; points, shots on goal, catches and yards, and more. The chance comes from recent games, with the most recent games counting most, and takes into account how strong the other team&rsquo;s defense is against that kind of player. Warnings flag injuries and other reasons to be careful.</p>
-    <p>Touchdown picks work the same way, from how often a player gets the ball near the goal line, plus the weather and how the game is expected to play out. The chance shown is our guess, not a book&rsquo;s price &mdash; hold it next to a real payout to see if the payout is worth it.</p>
-    <p>Picks in the same game can affect each other. When teammates are on the same ticket, one scoring can make another scoring less likely, so the real chance of the whole ticket is lower than simply combining the single chances. The ticket checker flags this when it happens.</p>
+    <p>Player picks give a chance a player goes over or under a line. Points, shots on goal, catches and yards, and more. The chance comes from recent games — the most recent ones count most. It also looks at how good the other team's defense is against that kind of player. Warnings flag injuries and other reasons to be careful.</p>
+    <p>Touchdown picks work the same way. How often a player gets the ball near the goal line. Plus the weather and how the game should play out. The chance shown is our guess, not a book's price. Hold it next to a real payout and see if the payout is worth it.</p>
+    <p>Picks in the same game can affect each other. If teammates are on the same ticket, one scoring can make the other less likely. So the real chance of the whole ticket is lower than just combining the single chances. The ticket checker flags it when that happens.</p>
 
     <h3 id="doc-ticket">The ticket checker (Check my ticket)</h3>
-    <p><b>What &ldquo;good value&rdquo; means.</b> Flip a coin with me. Heads, I pay you $2. Tails, you pay me $1. You&rsquo;d take that all day, right? That&rsquo;s a good-value bet &mdash; the price is wrong in your favor. Now flip it: heads you win $1, tails you lose $2. You&rsquo;d walk away. Same coin, different price. A good-value bet pays you more than it should for how often it wins.</p>
-    <p><b>How it works.</b> Upload a screenshot of a slip from any book. The checker lists the picks it found, and you can fix any of them by hand: player, kind of pick, line, and over or under. The chance for each pick comes from our board &mdash; you never type one in. A pick we have no chance for on the board is left out of the score and named. Enter the payout exactly as shown on your slip. Your screenshot stays on your device; nothing is sent anywhere. FanDuel&rsquo;s board is used as a market-wide reference for what a fair price looks like, but you can bet wherever you want.</p>
-    <p><b>The score.</b> The score runs from 0 to 100. A score of 50 means a fair bet &mdash; the payout matches how often it wins. The score is 50 plus the value, so a ticket worth 20% more than a fair price scores 70, and one worth 15% less scores 35, stopping at 0 and 100. Alongside the score you get the value as a percentage, and the chance the whole ticket hits written as &ldquo;1 in N&rdquo; &mdash; for example, 1 in 7 means it should hit about once in every seven tries. There is no thumbs-up or thumbs-down: the score has no graded record yet, so it is shown as a number only. One plain sentence sums up the verdict. Each pick also shows our chance next to what the ticket pays like, so you can see which pick is carrying the ticket. For tickets where missing one pick still pays a little, the score counts that payout too. That is an average over many repeats of the same ticket &mdash; a single ticket either wins it all or loses it all.</p>
+    <p><b>What &ldquo;good value&rdquo; means.</b> Flip a coin with me. Heads, I pay you $2. Tails, you pay me $1. You'd take that all day, right? That's a good-value bet. The price is wrong in your favor. Now flip it. Heads you win $1, tails you lose $2. You'd walk away. Same coin, different price. A good-value bet pays you more than it should for how often it wins.</p>
+    <p><b>How it works.</b> Upload a screenshot of a slip from any book. The checker lists the picks it found. You can fix any of them by hand: player, kind of pick, line, over or under. The chance for each pick comes from our board — you never type one in. A pick we have no chance for is left out of the score, and named. Enter the payout exactly as shown on your slip. Your screenshot stays on your phone. Nothing gets sent anywhere. FanDuel's board is the reference for what a fair price looks like. But you can bet wherever you want.</p>
+    <p><b>The score.</b> The score runs 0 to 100. A 50 means a fair bet — the payout matches how often it wins. The score is 50 plus the value. A ticket worth 20% more than a fair price scores 70. One worth 15% less scores 35. It stops at 0 and 100. Next to the score you get the value as a percentage, and the chance the whole ticket hits as "1 in N". Like 1 in 7 — it should hit about once in every seven tries. There's no thumbs-up or thumbs-down. The score has no graded record yet, so it's just a number. One plain sentence sums up the verdict. Each pick shows our chance next to what the ticket pays like, so you can see which pick is carrying the ticket. If missing one pick still pays a little, the score counts that too. That's an average over many repeats of the same ticket. A single ticket either wins it all or loses it all.</p>
 
     <h3 id="doc-parlay">The parlay simulator (Try a ticket 10,000 times)</h3>
-    <p>The ticket checker scores one ticket you already have. The simulator is different: pick legs from today&rsquo;s board &mdash; teams to win, plus player picks &mdash; and it runs that ticket 10,000 times before you place it once. You see the chance the whole ticket hits, how often you get 3 out of 4 right (the most common way to lose a 4-leg ticket), and what you would win or lose on average per $100 at the payout your book shows. It also shows how wild the ride is: one ticket is all or nothing, so the average only shows up over many tries. Legs we can&rsquo;t match to today&rsquo;s board are left out and named, so the chance shown is only for the legs that ran &mdash; never the whole ticket.</p>
-    <p>Game legs in the same game are run on the same simulated game, so their link is built in. Player picks in the same game as another leg are a different story &mdash; that link is not modelled here, so the simulator says so plainly and you should treat the chance as the best case. Spread and total legs are not offered on the site; the full simulator, which includes them, runs behind the scenes. Every chance comes from our models, from the board&rsquo;s date &mdash; a leg with no model chance is never offered.</p>
+    <p>The ticket checker scores a ticket you already have. The simulator is different. Pick legs from today's board — teams to win, plus player picks — and it runs that ticket 10,000 times before you place it once. You see the chance the whole ticket hits. How often you get 3 out of 4 right — the most common way to lose a 4-leg ticket. And what you'd win or lose on average per $100 at the payout your book shows. It also shows how wild the ride is. One ticket is all or nothing, so the average only shows up over many tries. Legs we can't match to today's board are left out and named. So the chance shown is only for the legs that ran. Never the whole ticket.</p>
+    <p>Game legs in the same game run on the same simulated game, so their link is built in. Player picks in the same game as another leg are different. That link isn't modelled here. The simulator says so plainly, and you should treat the chance as the best case. Spread and total legs aren't offered on the site. The full simulator, which includes them, runs behind the scenes. Every chance comes from our models, from the board's date. A leg with no model chance is never offered.</p>
 
     <h3 id="doc-dfs">DFS Optimizer</h3>
-    <p>Pick a slate (NBA or NFL) and a platform (DraftKings or FanDuel), then add the player salaries from that platform &mdash; upload the salary file, paste the salaries, or try the sample salaries to see how it works. The optimizer ranks players by their projected points and builds the best lineup it can that fits under the salary limit, plus two more options that differ from the first. Projected points are each player&rsquo;s recent average from our own game data &mdash; NBA from the last 5 games, NFL from the last 4 &mdash; and defense is set to 7 points for every team because we don&rsquo;t model defenses. These are forecasts, not guarantees.</p>
-    <p>This tool needs player salaries from DraftKings or FanDuel &mdash; upload the salary file they let you download, or paste the salaries in. The sample salaries are examples only, not real prices.</p>
+    <p>Pick a slate (NBA or NFL) and a platform (DraftKings or FanDuel). Then add the player salaries from that platform. Upload the salary file, paste the salaries, or try the sample salaries to see how it works. The optimizer ranks players by projected points and builds the best lineup it can under the salary limit, plus two more that differ from the first. Projected points are each player's recent average from our own game data. NBA from the last 5 games, NFL from the last 4. Defense is set to 7 points for every team because we don't model defenses. These are forecasts, not guarantees.</p>
+    <p>This tool needs player salaries from DraftKings or FanDuel. Upload the salary file they let you download, or paste the salaries in. The sample salaries are examples only, not real prices.</p>
 
     <h3 id="doc-record">Our record</h3>
-    <p>The <a href="#record" data-goto="record">Our record</a> tab lists only bets that have finished, with the date, the pick, the odds, the result, and the profit at $100 per bet. Today&rsquo;s bets live on <a href="#bets" data-goto="bets">Our Bets</a> until their games finish.</p>
+    <p><a href="#record" data-goto="record">Our record</a> lists only bets that have finished. Date, pick, odds, result, and the profit at $100 per bet. Today’s bets stay on <a href="#bets" data-goto="bets">Our Bets</a> until their games finish. The record started fresh on Nov 6, 2026. The card only includes games dated that day. When a rule changes, the old card is archived and the change is noted here.</p>
 
     <h3 id="doc-bankroll">Your money over a season</h3>
-    <p>The <a href="#record" data-goto="record">Our record</a> tab also shows what happens to $10,000 over a season of 250 bets, played 10,000 times on a computer. Two ways of betting are shown: the same $100 on every bet, and a bet sized to the edge &mdash; bigger when the edge is bigger, smaller when it is smaller, never more than 10% of what you have (a standard sizing rule called half-Kelly). The numbers are a teaching example, not our record: one row shows what a real edge looks like (winning 55 times in 100 at &minus;110 odds), one row shows the same bets with no edge at all, and one row shows what happens when you size bets for an edge you do not have. Our own picks will run through the same simulation once 30 of them have been graded &mdash; until then that part of the page says so plainly. No way of betting shown here is a promise that it wins: even with a real edge, the sized bets end higher in the middle but finish ahead less often and dip further along the way.</p>
+    <p><a href="#record" data-goto="record">Our record</a> also shows what happens to $10,000 over a season of 250 bets, played 10,000 times on a computer. Two ways of betting: the same $100 on every bet, and a bet sized to the edge. Bigger when the edge is bigger, smaller when it’s smaller, never more than 10% of what you have. That’s a standard sizing rule called half-Kelly. These numbers are a teaching example, not our record. One row shows a real edge (winning 55 times in 100 at &minus;110 odds). One row shows the same bets with no edge at all. One row shows what happens when you size bets for an edge you don’t have. Our own picks will run through the same simulation once 30 of them are graded. Until then that part of the page says so plainly. No way of betting shown here is a promise it wins. Even with a real edge, the sized bets end higher in the middle but finish ahead less often and dip further along the way.</p>
 
     <h3 id="doc-models">Our Models</h3>
-    <p>These are the 30 models behind the numbers on this site &mdash; 29 Mordy models plus ALL_IN (Model A) as the 30th. Each one focuses on one job:</p>
-    <p>Each number below comes from testing the model on past seasons it had never seen. For the win/loss models the score is log loss &mdash; how far the model&rsquo;s chances were from what actually happened, lower is better. For totals and spreads the score is the average miss in points &mdash; lower is better. R&sup2; says how much of the result the model explains versus a simple average &mdash; higher is better. Recalibration means we adjusted the model&rsquo;s chances using past seasons so the quoted chance matches how often it actually hit.</p>
+    <p>These are the 30 models behind the numbers on this site &mdash; 29 Mordy models (together, Model B &mdash; FULL_SLATE) plus ALL_IN (Model A) as the 30th. Each one focuses on one job:</p>
+    <p>Each number below comes from testing the model on past seasons it had never seen. For win/loss models, the score is log loss. That's how far the model's chances were from what actually happened. Lower is better. For totals and spreads, the score is the average miss in points. Lower is better. R² says how much of the result the model explains versus a simple average. Higher is better. Recalibration means we adjusted the model's chances using past seasons, so the quoted chance matches how often it actually hit.</p>
     <ul style="margin:0 0 10px;padding-left:20px;line-height:1.6;max-width:720px">
       <li style="margin-bottom:6px"><b>Game (6 models)</b> &mdash; walk-forward log loss: NFL 0.6429, CFB 0.5709, NBA 0.6260, MLB 0.6795, NHL 0.6690, CBB 0.5081. None has beaten the book&rsquo;s odds across multiple seasons.</li>
       <li style="margin-bottom:6px"><b>Touchdowns (1)</b> &mdash; walk-forward log loss 0.4798, beats the position base rate in all 6 seasons. Probability skill only &mdash; no edge claimed.</li>
@@ -1569,7 +1569,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <li style="margin-bottom:6px"><b>Soccer (6)</b> &mdash; one per league; best is Eredivisie, which beat the market in 1 of 5 seasons. Forecasters only, no public track record.</li>
       <li style="margin-bottom:6px"><b>Model A &mdash; ALL_IN (1, the 30th model)</b> &mdash; a second forecasting source; the headline number is the average of the two models where both exist.</li>
     </ul>
-    <p>Every model is tested against past games before it goes live, and we keep score in Our Record so you can see how they&rsquo;ve done.</p>
+    <p>Every model gets tested on past games before it goes live. And we keep score in Our Record, so you can see how they've done.</p>
     <p>Like the site? <a href="#books" data-goto="books" data-goto-support>Support it here</a> &mdash; tips are optional and never affect any pick.</p>
 
     <section class="settings-block" aria-labelledby="settingsTitle">
@@ -1602,9 +1602,9 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   </section>
 
   <footer>
-    <p><b>Be careful.</b> Our guesses are early and have not been shown to make money; treat every number with care. Nothing here places bets or takes money. New numbers arrive with the morning update &mdash; check the &ldquo;Updated &hellip;&rdquo; line at the top of each tab for the latest. &ldquo;Good value&rdquo; on paper is not a promise, and most tickets with several picks lose all the money put in.</p>
-    <p>Chances shown are our best guesses from past games, or recent averages plus judgment, labeled as such on each tab. Check every line, injury report, and payout on your own ticket before you act on anything. <a href="#docs" data-goto="docs">How it works</a></p>
-    <p>Tap the &#9432; icons throughout the site for the full details behind every pick.</p>
+    <p>**Be careful.** Our guesses are early. They haven't been shown to make money. Treat every number with care. Nothing here places bets or takes money. New numbers come with the morning update. Check the "Updated …" line at the top of each tab for the latest. "Good value" on paper isn't a promise. And most tickets with several picks lose all the money put in.</p>
+    <p>The chances here are our best guesses from past games, or recent averages plus judgment. Each tab says which. Check every line, injury report, and payout on your own ticket before you act on anything. <a href="#docs" data-goto="docs">How it works</a></p>
+    <p>Tap the ⓘ icons for the full details behind every pick.</p>
     <p><button type="button" class="reopen-onboard" style="background:none;border:0;padding:0;color:var(--accent);font-weight:700;font-size:inherit;cursor:pointer">Show the welcome message again</button></p>
   </footer>
 </div>
@@ -5165,11 +5165,11 @@ function computeTicket(){
     $("corrNote").innerHTML="";
   }
   if(n<1||!(ticketPayouts.all>0)){
-    setWaiting(n<1?"Not enough to score yet \u2014 tap the info circle by the score to check the legs, or snap your ticket again.":"We don\u2019t know what this ticket pays yet \u2014 tap the info circle by the score to enter it.");
+    setWaiting(n<1?"Not enough to score yet. Tap the \u24D8 by the score to check the legs, or snap your ticket again.":"We don\u2019t know what this ticket pays yet. Tap the \u24D8 by the score and enter it.");
     return;
   }
   if(scored.length<1){
-    setWaiting("None of these legs has a model chance on the board \u2014 they are left out of the score, so there is nothing to score yet.");
+    setWaiting("None of these legs has a model chance on the board. They\u2019re left out of the score, so there\u2019s nothing to score yet.");
     return;
   }
   legs=scored; n=scored.length;
@@ -5184,11 +5184,11 @@ function computeTicket(){
   var up=score>=60;
   card.className="score-card "+(up?"good":"bad");
   $("scoreBig").textContent=score;
-  $("verdictSentence").textContent="Score "+score+" out of 100 \u2014 above 50 means the payout beats a fair price on our numbers. No graded record yet.";
+  $("verdictSentence").textContent="Score "+score+" out of 100. Above 50 means the payout beats a fair price on our numbers. No graded record yet.";
   $("statValue").textContent=fmtVal(valuePct);
   $("statHit").textContent="1 in "+hitN;
   $("statAvg").textContent=money(expPayout);
-  $("scoreExplain").textContent="50 is a fair bet. This ticket pays back "+money(expPayout)+" on average for every "+money(stake)+" put in, if you made the same ticket over and over, and hits about 1 time in "+hitN+" ("+pct(pAll)+"). One ticket either wins or loses it all \u2014 the average is not a promise.";
+  $("scoreExplain").textContent="50 is a fair bet. This ticket pays back about "+money(expPayout)+" on average for every "+money(stake)+" you put in, if you made the same ticket over and over. It hits about 1 time in "+hitN+" ("+pct(pAll)+"). One ticket either wins it all or loses it all. The average isn\u2019t a promise.";
   /* per-leg comparison: split the payout evenly across the legs */
   var mEff=(pAll>0&&expMult>0)?expMult/pAll:0;
   var perLegMult=mEff>0?Math.pow(mEff,1/n):0;
@@ -6275,7 +6275,7 @@ function renderRecordLine(){
   var s=(typeof TRACK_TALLY!=="undefined"&&TRACK_TALLY&&TRACK_TALLY.straights)||{wins:0,losses:0,profit:0};
   var profit=Number(s.profit)||0;
   var money=(profit<0?"\u2212$":profit>0?"+$":"$")+Math.abs(profit).toLocaleString("en-US");
-  var txt="Our record: "+(s.wins||0)+"\u2013"+(s.losses||0)+", "+money+" so far. Forecasts, not proven winners.";
+  var txt="Our record: "+(s.wins||0)+"\u2013"+(s.losses||0)+", "+money+" so far. Forecasts, not winners yet.";
   Array.prototype.forEach.call(document.querySelectorAll(".record-line"),function(el){ el.textContent=txt+(el.getAttribute("data-record-suffix")||""); });
 }
 try{renderRecordLine();}catch(e){}
