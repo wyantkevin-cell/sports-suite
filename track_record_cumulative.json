@@ -28,10 +28,9 @@
       "line_odds": "+168",
       "market_prob": null,
       "model_prob": null,
-      "note": "Pending \u2014 both legs ungraded.",
-      "outcome": null,
+      "outcome": "loss",
       "pick_id": "20261106-P",
-      "profit": null,
+      "profit": -100.0,
       "sport": "multi",
       "type": "parlay",
       "value_pct": null
@@ -55,10 +54,10 @@
       },
       "model_prob": 0.7652,
       "opponent": "MIL",
-      "outcome": null,
+      "outcome": "win",
       "pick_id": "20261106-01",
       "player": null,
-      "profit": null,
+      "profit": 61.73,
       "side": "away",
       "sport": "NBA",
       "team": "TOR",
@@ -69,6 +68,7 @@
       "value_pct": 23.75
     },
     {
+      "actual": 12.0,
       "date": "2026-11-06",
       "description": "Dyson Daniels (ATL) under 6.5 assists",
       "game_date": "2026-11-06",
@@ -84,10 +84,10 @@
       },
       "model_prob": 0.7405,
       "opponent": "WAS",
-      "outcome": null,
+      "outcome": "loss",
       "pick_id": "20261106-02",
       "player": "Dyson Daniels",
-      "profit": null,
+      "profit": -100.0,
       "side": "under",
       "sport": "NBA",
       "team": "ATL",
@@ -98,6 +98,7 @@
       "value_pct": 22.77
     },
     {
+      "actual": 5.0,
       "date": "2026-11-06",
       "description": "Jayson Tatum (BOS) under 3.5 3-pointers",
       "game_date": "2026-11-06",
@@ -113,10 +114,10 @@
       },
       "model_prob": 0.7264,
       "opponent": "CHA",
-      "outcome": null,
+      "outcome": "loss",
       "pick_id": "20261106-03",
       "player": "Jayson Tatum",
-      "profit": null,
+      "profit": -100.0,
       "side": "under",
       "sport": "NBA",
       "team": "BOS",
@@ -127,6 +128,7 @@
       "value_pct": 20.44
     },
     {
+      "actual": 10.0,
       "date": "2026-11-06",
       "description": "Jamal Shead (TOR) under 11.5 points",
       "game_date": "2026-11-06",
@@ -142,10 +144,10 @@
       },
       "model_prob": 0.7102,
       "opponent": "MIL",
-      "outcome": null,
+      "outcome": "win",
       "pick_id": "20261106-04",
       "player": "Jamal Shead",
-      "profit": null,
+      "profit": 83.33,
       "side": "under",
       "sport": "NBA",
       "team": "TOR",
@@ -158,22 +160,22 @@
   ],
   "tally": {
     "parlays": {
-      "losses": 0,
-      "n_graded": 0,
-      "profit": 0.0,
+      "losses": 1,
+      "n_graded": 1,
+      "profit": -100.0,
       "pushes": 0,
-      "roi_pct": 0,
+      "roi_pct": -100.0,
       "voids": 0,
       "wins": 0
     },
     "straights": {
-      "losses": 0,
-      "n_graded": 0,
-      "profit": 0.0,
+      "losses": 2,
+      "n_graded": 4,
+      "profit": -54.94,
       "pushes": 0,
-      "roi_pct": 0,
+      "roi_pct": -13.73,
       "voids": 0,
-      "wins": 0
+      "wins": 2
     },
     "top_tier": {
       "losses": 0,
@@ -187,5 +189,5 @@
       "wins": 0
     }
   },
-  "updated_pt": "2026-11-06 20:00:03 PST"
+  "updated_pt": "2026-11-07 09:43:21 PST"
 }
