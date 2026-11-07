@@ -1084,13 +1084,12 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     </section>
 
         <section class="block" id="tennisBlock" hidden>
-      <h2 id="tennisHeading">Tennis — as of 2026-11-07T06:10:32-08:00</h2>
+      <h2 id="tennisHeading">Tennis — as of 2026-11-07T09:46:35-08:00</h2>
       <p class="sub">Each match shows who we think wins, and how often we think they win.</p>
       <p class="note">Tennis moves fast &mdash; these are from our latest update. Check back for fresh numbers.</p>
       <p class="stale-banner" id="tennisStaleBanner" hidden></p>
       <div class="slate" style="margin-top:12px">
-        <div class="slate-row"><div class="match"><span class="n">ATP &middot; starts 6:30 AM PT Nov 7, 2026</span><div class="picklines"><div class="avgline"><b>Jacob Fearnley</b> <span class="pickpct">92.2%</span> <span class="loser">over Arthur Nagel</span></div><div><span class="lbl">Jacob Fearnley vs Arthur Nagel</span></div></div></div></div>
-        <div class="slate-row"><div class="match"><span class="n">ATP &middot; starts 8:00 AM PT Nov 7, 2026</span><div class="picklines"><div class="avgline"><b>Carlos Alcaraz</b> <span class="pickpct">82.3%</span> <span class="loser">over Casper Ruud</span></div><div><span class="lbl">Casper Ruud vs Carlos Alcaraz</span></div></div></div></div>
+        <div class="slate-row"><div class="match"><span class="n">WTA &middot; starts 12:00 AM PT Nov 8, 2026</span><div class="picklines"><div class="avgline"><b>Alexandra Eala</b> <span class="pickpct">68.5%</span> <span class="loser">over Claire Liu</span></div><div><span class="lbl">Claire Liu vs Alexandra Eala</span></div></div></div></div>
       </div>
     </section>
   </section>
@@ -1684,7 +1683,7 @@ var LEAGUES={
   mlb:{name:"MLB",games:"17,902",features:"Team strength only",verdict:"Team strength only. It is about tied with a team-strength-only guess and has no measured way to make money. Kept for team scores, not for bets.",status:"early",statusLabel:"Team strength only",scores:"17,902 past games."},
   nhl:{name:"NHL",games:"9,275",features:"Team strength only",verdict:"Team strength only, same story as MLB: about tied with a team-strength-only guess, no money-making test passed. The NHL value here is in shots-on-goal picks, not game guesses.",status:"early",statusLabel:"Team strength only",scores:"9,275 past games."},
   soccer:{name:"Soccer",games:"Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie",features:"Team strength, home game, recent form",verdict:"Soccer forecasts are early and unproven. They ship as forecasts only, with no public track record.",status:"early",statusLabel:"Early \u2014 be careful",scores:"Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie. Forecasts only \u2014 no public record is kept for soccer."},
-  tennis:{name:"Tennis",games:"2 matches in this snapshot",features:"Latest update only",verdict:"Tennis forecasts come from the latest update only. No past-games test is shown for tennis in this snapshot, so treat these as early and unproven like the rest of this tab.",status:"early",statusLabel:"Early \u2014 be careful",scores:"2 matches: 2 ATP, starting Nov 7, 2026 morning PT."}
+  tennis:{name:"Tennis",games:"1 match in this snapshot",features:"Latest update only",verdict:"Tennis forecasts come from the latest update only. No past-games test is shown for tennis in this snapshot, so treat these as early and unproven like the rest of this tab.",status:"early",statusLabel:"Early \u2014 be careful",scores:"1 match: 1 WTA, starting Nov 8, 2026 at 12:00 AM PT."}
 };
 var TEAM_NAMES={CHI:"Chicago Bulls",NYK:"New York Knicks",MIL:"Milwaukee Bucks",BOS:"Boston Celtics",DAL:"Dallas Mavericks",SAS:"San Antonio Spurs",UTA:"Utah Jazz",NOP:"New Orleans Pelicans",LAL:"Los Angeles Lakers",SAC:"Sacramento Kings",CLE:"Cleveland Cavaliers",OKC:"Oklahoma City Thunder",ATL:"Atlanta Hawks",WAS:"Washington Wizards",POR:"Portland Trail Blazers",PHX:"Phoenix Suns",MIA:"Miami Heat",LAC:"LA Clippers",IND:"Indiana Pacers",MEM:"Memphis Grizzlies",CHA:"Charlotte Hornets",BKN:"Brooklyn Nets",PHI:"Philadelphia 76ers",DET:"Detroit Pistons",MIN:"Minnesota Timberwolves",HOU:"Houston Rockets",TOR:"Toronto Raptors",DEN:"Denver Nuggets"};
 var SLATE=[
@@ -2682,11 +2681,11 @@ try{syncTennisVisibility();}catch(e){}
    numbers are from; when the snapshot is more than 24 hours old,
    the whole block sits behind a <details> labelled with that date
    instead of being shown as if it were current. */
-var TENNIS_UPDATED=new Date("2026-11-07T06:10:32-08:00");
+var TENNIS_UPDATED=new Date("2026-11-07T09:46:35-08:00");
 try{(function(){
   if(!TENNIS_UPDATED||isNaN(TENNIS_UPDATED.getTime())) return;
   var h=$("tennisHeading");
-  if(h) h.textContent="Tennis — as of 2026-11-07T06:10:32-08:00";
+  if(h) h.textContent="Tennis — as of 2026-11-07T09:46:35-08:00";
   var block=$("tennisBlock");
   if(!block) return;
   var snapKey=ptDateKey(TENNIS_UPDATED), todayKey=ptDateKey(new Date());
