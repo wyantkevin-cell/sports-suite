@@ -7162,6 +7162,33 @@ function parseStandings(data){
   if(!groups.length) collectStandingGroups(data,groups);
   return groups;
 }
+/* Standings must never depend on the order ESPN returns entries:
+   its NBA feed arrives worst-first while NFL/NHL arrive best-first.
+   Sort every group by the league's own ranking before rendering. */
+function effWinPct(en){
+  var wp=statNum(en,"winPercent");
+  if(wp!=null) return wp;
+  var w=statNum(en,"wins"), l=statNum(en,"losses");
+  if(w!=null&&l!=null&&(w+l)>0) return w/(w+l);
+  var gp=statNum(en,"gamesPlayed");
+  if(w!=null&&gp) return w/gp;
+  return null;
+}
+function sortStandingEntries(entries,leagueKey){
+  entries.sort(function(a,b){
+    if(leagueKey==="nhl"){
+      var pa=statNum(a,"points"), pb=statNum(b,"points");
+      if(pa!=null&&pb!=null&&pa!==pb) return pb-pa;
+    }
+    var wa=effWinPct(a), wb=effWinPct(b);
+    if(wa!=null&&wb!=null&&wa!==wb) return wb-wa;
+    var winsA=statNum(a,"wins"), winsB=statNum(b,"wins");
+    if(winsA!=null&&winsB!=null&&winsA!==winsB) return winsB-winsA;
+    var lossesA=statNum(a,"losses"), lossesB=statNum(b,"losses");
+    if(lossesA!=null&&lossesB!=null&&lossesA!==lossesB) return lossesA-lossesB;
+    return 0;
+  });
+}
 function renderStandings(){
   var body=$("standingsBody");
   if(!body) return;
@@ -7185,6 +7212,7 @@ function renderStandings(){
     if(S.key==="nhl") extraLabel="Points";
     else if(S.key==="nba") extraLabel="Games behind";
     r.groups.forEach(function(gr){
+      sortStandingEntries(gr.entries,S.key);
       html+='<div class="rows stand-rows'+(extraLabel?" has-extra":"")+'" role="table" aria-label="'+esc(S.label)+' standings" style="margin-top:10px">';
       if(gr.name) html+='<div class="ts-section-head">'+esc(gr.name)+'</div>';
       html+='<div class="rowhead"><span>Team</span><span>Wins</span><span>Losses</span><span>Win %</span>'+(extraLabel?'<span>'+esc(extraLabel)+'</span>':"")+'</div>';
