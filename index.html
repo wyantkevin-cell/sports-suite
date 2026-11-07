@@ -93,9 +93,8 @@ button,[role="tab"],.btn,a.btn{min-height:44px}
 .gf-subnav button{flex:0 0 auto;white-space:nowrap;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:9px 16px;font-weight:700;font-size:14.5px;color:var(--muted);min-height:44px;cursor:pointer}
 .gf-subnav button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .gf-subnav button:hover:not([aria-pressed="true"]){color:var(--ink)}
-.gf-filter-strip{display:flex;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:7px;align-items:stretch;margin:14px 0 4px;overscroll-behavior-x:contain}
-.gf-filter-strip::-webkit-scrollbar{display:none}
-.gf-filter-strip .filters{display:flex;flex-wrap:nowrap;flex:0 0 auto;gap:7px;margin:0}
+.gf-filter-strip{display:flex;flex-wrap:wrap;gap:7px;align-items:stretch;margin:14px 0 4px}
+.gf-filter-strip .filters{display:flex;flex-wrap:wrap;flex:0 1 auto;gap:7px;margin:0}
 .gf-filter-strip .filters button{flex:0 0 auto;white-space:nowrap}
 .gf-filter-strip .filters[hidden]{display:none}
 .gf-filter-sep{flex:0 0 auto;width:1px;background:var(--line)}
