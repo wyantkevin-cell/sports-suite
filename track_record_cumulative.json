@@ -5,62 +5,40 @@
   "name": "Track record \u2014 cumulative",
   "notes": [
     "Fresh record from Nov 6, 2026 \u2014 Day 1. Nov 3\u20135 history is archived (record_archive_pre_20261106/), not counted. Voids count as neither wins nor losses; void stakes are returned (profit 0).",
-    "The refreshed Nov 6 card contains no re-picked games \u2014 the double-count guard dropped 11 candidates already picked on earlier cards, so every pick here is a fresh game.",
-    "Top Tier dollar P/L covers graded picks from Nov 6 onward (see top_tier_record.json)."
+    "Rebuilt to today-only on Nov 6 evening on the founder's say-so (tuning phase \u2014 the record is honest and still being fine-tuned). The card now only includes games dated that day. The 3 Nov 7 picks (UTAH, ASU, Moore) and the UTAH+TOR parlay were removed; they may be re-selected, or not, by the Nov 7 9am run under the today-only rule.",
+    "Top Tier dollar P/L covers graded picks from Nov 6 onward (see top_tier_record.json). Nov 6 Top Tier = the 3 props on the rebuilt card (Daniels, Tatum, Shead), all Nov 6 games."
   ],
   "parlays": [
     {
-      "combined_cash_pct": 61.0,
-      "combined_decimal": 2.4915,
-      "combined_odds": "+149",
-      "combined_prob": 0.6102,
+      "combined_cash_pct": 56.7,
+      "combined_decimal": 2.6813,
+      "combined_prob": 0.5666,
       "date": "2026-11-06",
+      "description": "Parlay of the Day: TOR to win vs MIL + Dyson Daniels (ATL) under 6.5 assists",
+      "game_date": "2026-11-06",
       "kind": "parlay",
       "leg_descriptions": [
-        "UTAH to win vs BYU",
-        "TOR to win vs MIL"
+        "TOR to win vs MIL",
+        "Dyson Daniels (ATL) under 6.5 assists"
       ],
       "legs": [
         "20261106-01",
         "20261106-02"
       ],
+      "line_odds": "+168",
+      "market_prob": null,
+      "model_prob": null,
       "note": "Pending \u2014 both legs ungraded.",
       "outcome": null,
       "pick_id": "20261106-P",
-      "profit": null
+      "profit": null,
+      "sport": "multi",
+      "type": "parlay",
+      "value_pct": null
     }
   ],
   "start_date": "2026-11-06",
   "straights": [
-    {
-      "date": "2026-11-06",
-      "description": "UTAH to win vs BYU",
-      "game_date": "2026-11-07",
-      "kind": "straight",
-      "line": null,
-      "line_odds": "-185",
-      "market": "moneyline",
-      "market_prob": 0.6491,
-      "markets": {
-        "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07BYUUTAH",
-        "novig": "https://app.novig.us/event-markets/01a18dd2-74e8-7541-9ad7-a2555743b436",
-        "polymarket": null
-      },
-      "model_prob": 0.7975,
-      "opponent": "BYU",
-      "outcome": null,
-      "pick_id": "20261106-01",
-      "player": null,
-      "profit": null,
-      "side": "home",
-      "sport": "NCAAF",
-      "team": "UTAH",
-      "tier": null,
-      "top_tier": false,
-      "type": "moneyline",
-      "value_flag": null,
-      "value_pct": 22.86
-    },
     {
       "date": "2026-11-06",
       "description": "TOR to win vs MIL",
@@ -78,7 +56,7 @@
       "model_prob": 0.7652,
       "opponent": "MIL",
       "outcome": null,
-      "pick_id": "20261106-02",
+      "pick_id": "20261106-01",
       "player": null,
       "profit": null,
       "side": "away",
@@ -92,61 +70,90 @@
     },
     {
       "date": "2026-11-06",
-      "description": "ASU to win vs COLO",
-      "game_date": "2026-11-07",
+      "description": "Dyson Daniels (ATL) under 6.5 assists",
+      "game_date": "2026-11-06",
       "kind": "straight",
-      "line": null,
-      "line_odds": "-162",
-      "market": "moneyline",
-      "market_prob": 0.6183,
+      "line": 6.5,
+      "line_odds": "-152",
+      "market": "assists",
+      "market_prob": 0.6031746031746031,
       "markets": {
-        "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07COLOASU",
-        "novig": null,
-        "polymarket": null
+        "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV06WASATL-ATLDDANIELS5-8",
+        "novig": "https://app.novig.us/event-markets/01a1abaa-76e6-7202-97fc-fd67811f5e2e",
+        "polymarket": "https://polymarket.us/event/nba-was-atl-2026-11-06"
       },
-      "model_prob": 0.7435,
-      "opponent": "COLO",
+      "model_prob": 0.7405,
+      "opponent": "WAS",
       "outcome": null,
-      "pick_id": "20261106-03",
-      "player": null,
-      "profit": null,
-      "side": "home",
-      "sport": "NCAAF",
-      "team": "ASU",
-      "tier": null,
-      "top_tier": false,
-      "type": "moneyline",
-      "value_flag": null,
-      "value_pct": 20.25
-    },
-    {
-      "date": "2026-11-06",
-      "description": "Tj Moore (CLEM) under 40.5 receiving yards",
-      "game_date": "2026-11-07",
-      "kind": "straight",
-      "line": 40.5,
-      "line_odds": "-118",
-      "market": "receiving yards",
-      "market_prob": 0.5412844036697247,
-      "markets": {
-        "kalshi": null,
-        "novig": null,
-        "polymarket": null
-      },
-      "model_prob": 0.7411,
-      "opponent": "SYR",
-      "outcome": null,
-      "pick_id": "20261106-04",
-      "player": "Tj Moore",
+      "pick_id": "20261106-02",
+      "player": "Dyson Daniels",
       "profit": null,
       "side": "under",
-      "sport": "CFB",
-      "team": "CLEM",
-      "tier": "strong",
+      "sport": "NBA",
+      "team": "ATL",
+      "tier": "lean",
       "top_tier": true,
       "type": "prop",
       "value_flag": null,
-      "value_pct": 36.91
+      "value_pct": 22.77
+    },
+    {
+      "date": "2026-11-06",
+      "description": "Jayson Tatum (BOS) under 3.5 3-pointers",
+      "game_date": "2026-11-06",
+      "kind": "straight",
+      "line": 3.5,
+      "line_odds": "-152",
+      "market": "3-pointers",
+      "market_prob": 0.6031746031746031,
+      "markets": {
+        "kalshi": "https://kalshi.com/markets/KXNBA3PT-26NOV06BOSCHA-BOSJTATUM0-4",
+        "novig": "https://app.novig.us/event-markets/01a1abaa-7659-71d2-b1d9-95bf8a8ab2ab",
+        "polymarket": "https://polymarket.us/event/nba-bos-cha-2026-11-06"
+      },
+      "model_prob": 0.7264,
+      "opponent": "CHA",
+      "outcome": null,
+      "pick_id": "20261106-03",
+      "player": "Jayson Tatum",
+      "profit": null,
+      "side": "under",
+      "sport": "NBA",
+      "team": "BOS",
+      "tier": "lean",
+      "top_tier": true,
+      "type": "prop",
+      "value_flag": null,
+      "value_pct": 20.44
+    },
+    {
+      "date": "2026-11-06",
+      "description": "Jamal Shead (TOR) under 11.5 points",
+      "game_date": "2026-11-06",
+      "kind": "straight",
+      "line": 11.5,
+      "line_odds": "-120",
+      "market": "points",
+      "market_prob": 0.5454545454545454,
+      "markets": {
+        "kalshi": null,
+        "novig": "https://app.novig.us/event-markets/01a1abe1-09a0-7791-baf6-f9fee03ca4db",
+        "polymarket": "https://polymarket.us/event/nba-tor-mil-2026-11-06"
+      },
+      "model_prob": 0.7102,
+      "opponent": "MIL",
+      "outcome": null,
+      "pick_id": "20261106-04",
+      "player": "Jamal Shead",
+      "profit": null,
+      "side": "under",
+      "sport": "NBA",
+      "team": "TOR",
+      "tier": "lean",
+      "top_tier": true,
+      "type": "prop",
+      "value_flag": null,
+      "value_pct": 30.21
     }
   ],
   "tally": {
@@ -174,10 +181,11 @@
       "profit": 0.0,
       "profit_partial": false,
       "pushes": 0,
+      "roi_pct": 0,
       "voids": 0,
       "win_rate": 0,
       "wins": 0
     }
   },
-  "updated_pt": "2026-11-06 16:47:27 PST"
+  "updated_pt": "2026-11-06 20:00:03 PST"
 }
