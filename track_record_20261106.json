@@ -1,0 +1,139 @@
+{
+  "date": "2026-11-06",
+  "n_moneylines": 3,
+  "n_props": 1,
+  "note": "Day 1 of the fresh track record. Picks are the day's strongest calibrated leans at a $100 flat stake; the parlay is tracked separately and is not part of the straight-bet tally.",
+  "parlay": {
+    "combined_cash_pct": 61.0,
+    "combined_decimal": 2.4915,
+    "combined_odds": "+149",
+    "combined_prob": 0.6102,
+    "leg_descriptions": [
+      "UTAH to win vs BYU",
+      "TOR to win vs MIL"
+    ],
+    "legs": [
+      "20261106-01",
+      "20261106-02"
+    ]
+  },
+  "parlay_leg_entries": [],
+  "selected_at_pt": "2026-11-06 16:39:46 PST",
+  "straights": [
+    {
+      "description": "UTAH to win vs BYU",
+      "game_date": "2026-11-07",
+      "kind": "straight",
+      "line": null,
+      "line_odds": "-185",
+      "market": "moneyline",
+      "market_prob": 0.6491,
+      "markets": {
+        "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07BYUUTAH",
+        "novig": "https://app.novig.us/event-markets/01a18dd2-74e8-7541-9ad7-a2555743b436",
+        "polymarket": null
+      },
+      "model_prob": 0.7975,
+      "opponent": "BYU",
+      "outcome": null,
+      "pick_id": "20261106-01",
+      "player": null,
+      "profit": null,
+      "side": "home",
+      "sport": "NCAAF",
+      "team": "UTAH",
+      "tier": null,
+      "top_tier": false,
+      "type": "moneyline",
+      "value_flag": null,
+      "value_pct": 22.86
+    },
+    {
+      "description": "TOR to win vs MIL",
+      "game_date": "2026-11-06",
+      "kind": "straight",
+      "line": null,
+      "line_odds": "-162",
+      "market": "moneyline",
+      "market_prob": 0.6183,
+      "markets": {
+        "kalshi": "https://kalshi.com/markets/KXNBAGAME-26NOV06TORMIL",
+        "novig": "https://app.novig.us/event-markets/01a1abe1-09a0-7791-baf6-f9fee03ca4db",
+        "polymarket": "https://polymarket.us/event/nba-tor-mil-2026-11-06"
+      },
+      "model_prob": 0.7652,
+      "opponent": "MIL",
+      "outcome": null,
+      "pick_id": "20261106-02",
+      "player": null,
+      "profit": null,
+      "side": "away",
+      "sport": "NBA",
+      "team": "TOR",
+      "tier": "strong",
+      "top_tier": false,
+      "type": "moneyline",
+      "value_flag": null,
+      "value_pct": 23.75
+    },
+    {
+      "description": "ASU to win vs COLO",
+      "game_date": "2026-11-07",
+      "kind": "straight",
+      "line": null,
+      "line_odds": "-162",
+      "market": "moneyline",
+      "market_prob": 0.6183,
+      "markets": {
+        "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07COLOASU",
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.7435,
+      "opponent": "COLO",
+      "outcome": null,
+      "pick_id": "20261106-03",
+      "player": null,
+      "profit": null,
+      "side": "home",
+      "sport": "NCAAF",
+      "team": "ASU",
+      "tier": null,
+      "top_tier": false,
+      "type": "moneyline",
+      "value_flag": null,
+      "value_pct": 20.25
+    },
+    {
+      "description": "Tj Moore (CLEM) under 40.5 receiving yards",
+      "game_date": "2026-11-07",
+      "kind": "straight",
+      "line": 40.5,
+      "line_odds": "-118",
+      "market": "receiving yards",
+      "market_prob": 0.5412844036697247,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.7411,
+      "opponent": "SYR",
+      "outcome": null,
+      "pick_id": "20261106-04",
+      "player": "Tj Moore",
+      "profit": null,
+      "side": "under",
+      "sport": "CFB",
+      "team": "CLEM",
+      "tier": "strong",
+      "top_tier": true,
+      "type": "prop",
+      "value_flag": null,
+      "value_pct": 36.91
+    }
+  ],
+  "top_tier": [
+    "20261106-04"
+  ]
+}
