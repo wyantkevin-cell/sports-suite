@@ -80,6 +80,37 @@ button,[role="tab"],.btn,a.btn{min-height:44px}
 .gf-honest{margin:10px 0 0;font-size:15px;line-height:1.5;color:var(--muted)}
 .gf-section{margin-top:34px}
 .gf-section:first-of-type{margin-top:20px}
+/* Game forecasts rework: one section at a time behind the sub-navigation,
+   league + date chips in a single scrollable strip, model lines on one
+   quiet line, and the angle / sim / Bet-on detail behind a Details tap.
+   Everything uses the site variables, so Classic, Dark sportsbook,
+   Minimal and Terminal all restyle it. The sub-nav and the strip follow
+   the .tabbar scrolling pattern: one row, swipe/scroll sideways on
+   mobile, vertical page scroll untouched. */
+.gf-section[hidden]{display:none}
+.gf-subnav{display:flex;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:7px;margin:16px 0 2px;overscroll-behavior-x:contain}
+.gf-subnav::-webkit-scrollbar{display:none}
+.gf-subnav button{flex:0 0 auto;white-space:nowrap;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:9px 16px;font-weight:700;font-size:14.5px;color:var(--muted);min-height:44px;cursor:pointer}
+.gf-subnav button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.gf-subnav button:hover:not([aria-pressed="true"]){color:var(--ink)}
+.gf-filter-strip{display:flex;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:7px;align-items:stretch;margin:14px 0 4px;overscroll-behavior-x:contain}
+.gf-filter-strip::-webkit-scrollbar{display:none}
+.gf-filter-strip .filters{display:flex;flex-wrap:nowrap;flex:0 0 auto;gap:7px;margin:0}
+.gf-filter-strip .filters button{flex:0 0 auto;white-space:nowrap}
+.gf-filter-strip .filters[hidden]{display:none}
+.gf-filter-sep{flex:0 0 auto;width:1px;background:var(--line)}
+.gf-filter-sep[hidden]{display:none}
+#panel-gameforecasts .model-lines{display:block;font-size:13.5px;margin-top:3px}
+#panel-gameforecasts .model-lines>div{display:inline}
+#panel-gameforecasts .model-lines>div+div::before{content:" \u00b7 "}
+.gf-details{display:block;margin-top:8px}
+.gf-details summary{display:inline-flex;align-items:center;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:7px 14px;font-weight:700;font-size:13.5px;color:var(--ink);cursor:pointer;list-style:none;min-height:36px}
+.gf-details summary::-webkit-details-marker{display:none}
+.gf-details summary::after{content:"\u25be";margin-left:6px;font-size:12px;color:var(--muted)}
+.gf-details[open ] summary::after{content:"\u25b4"}
+.gf-details-body{padding-top:8px}
+.gf-details-body .game-angle{margin-top:0}
+.gf-details-body .beton{margin-top:8px}
 /* Our Bets in List view reuses the Player Picks list, with roomier
    Book pays / Tier columns for odds and badges */
 .prop-list-bets .prop-list-head,.prop-list-bets .prop-list-row{grid-template-columns:minmax(150px,1.35fr) minmax(0,1.8fr) 78px 86px 128px}
@@ -279,7 +310,10 @@ section.block{margin-top:24px}
 .btn.signup-underdog:hover{background:var(--panel2)}
 .btn.signup-betonline{background:var(--panel);color:var(--ink);border:1.5px solid var(--line)}
 .btn.signup-betonline:hover{background:var(--panel2)}
-.signup-logo{display:block;height:40px;width:auto;flex:none;border-radius:6px;box-shadow:0 0 0 1px rgba(128,128,128,0.25)}
+.signup-logo{display:block;height:60px;width:auto;flex:none;border-radius:8px;box-shadow:0 0 0 1px rgba(128,128,128,0.25)}
+/* Signup buttons: the logo is the main visual — big on top, with the
+   "Sign up for X" call to action smaller underneath it. */
+.btn.signup-poly,.btn.signup-kalshi,.btn.signup-underdog,.btn.signup-betonline{flex-direction:column;align-items:flex-start;gap:9px;padding:13px 15px;font-size:13.5px}
 .verdict{border-radius:14px;padding:18px 20px;border:1px solid var(--line);background:var(--ink);color:var(--bg)}
 .verdict .v-label{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
 .verdict .v-word{font-size:clamp(36px,5.5vw,48px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:8px 0 6px}
@@ -702,7 +736,7 @@ html[data-theme="minimal"] .tabbar [role="tab"][aria-selected="true"]{background
    stays readable. Terminal's global rule flattens the pill radius. */
 .beton{display:flex;flex-wrap:wrap;align-items:center;gap:6px 7px;margin-top:9px}
 .beton-label{font-size:12.5px;font-weight:600;color:var(--muted)}
-.beton a{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:6px 13px;border:1.5px solid;border-radius:999px;background:var(--panel);font-size:13px;font-weight:700;line-height:1.2;text-decoration:none}
+.beton a{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:4px 11px;border:1.5px solid;border-radius:999px;background:var(--panel);font-size:13px;font-weight:700;line-height:1.2;text-decoration:none}
 .beton a::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
 .beton a:hover{background:var(--panel2)}
 .beton-poly{border-color:#2b5cff;color:#2b5cff}
@@ -730,7 +764,9 @@ html[data-theme="dark"] .beton a.beton-novig,html[data-theme="terminal"] .beton 
 .beton a.beton-kalshi:hover{background:var(--panel2)}
 .beton a.beton-novig:hover{background:var(--panel2)}
 .beton a.beton-poly::before,.beton a.beton-kalshi::before,.beton a.beton-novig::before{display:none}
-.beton-logo{display:block;height:22px;width:auto;flex:none;border-radius:4px}
+.beton-logo{display:block;height:17px;width:auto;flex:none;border-radius:4px}
+/* Novig's black logo block reads heavier than Polymarket/Kalshi at the same height, so it sits a few px shorter to balance the row. */
+.beton a.beton-novig .beton-logo{height:14px}
 .trow .beton{grid-column:1 / -1;margin-top:0}
 .prop-list-row .beton{grid-column:1 / -1;margin-top:2px}
 @media(max-width:640px){.prop-list-row .beton{flex:1 1 100%;order:6}}
@@ -998,6 +1034,13 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <section class="panel" id="panel-gameforecasts" role="tabpanel" aria-labelledby="tab-gameforecasts" tabindex="0" hidden>
     <h1>Game forecasts</h1>
     <p class="gf-honest">These are forecasts, not proven winners. None of our models has beaten the book's odds in testing.</p>
+    <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not winners yet.</p>
+    <div class="gf-subnav" role="group" aria-label="Forecast sections" id="gfSubnav">
+      <button type="button" data-gf-nav="gf-moneyline" aria-pressed="true">Who wins</button>
+      <button type="button" data-gf-nav="gf-totals" aria-pressed="false">Totals</button>
+      <button type="button" data-gf-nav="gf-spreads" aria-pressed="false">Spreads</button>
+      <button type="button" data-gf-nav="gf-season" aria-pressed="false">Season</button>
+    </div>
   <!-- ============ WHO WINS ============ -->
   <section class="gf-section" id="gf-moneyline" aria-label="Moneyline">
     <div class="explain-wrap">
@@ -1005,9 +1048,9 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <div class="explain" id="explainForecasts" hidden><p style="margin:0">One number per game. The team we think wins, and how often. Early and unproven — the book's final odds beat us in testing. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
     </div>
 
-    <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not winners yet.</p>
     <div class="freshness"></div>
     <p class="note" style="margin-top:8px">Lines: DraftKings via ESPN</p>
+    <div class="gf-filter-strip" id="gfFilterStrip">
     <div class="filters" role="group" aria-label="Choose a league" id="leagueFilters">
       <button type="button" aria-pressed="true" data-league="nfl">NFL</button>
       <button type="button" aria-pressed="false" data-league="cfb">CFB</button>
@@ -1018,10 +1061,12 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <button type="button" aria-pressed="false" data-league="soccer">Soccer</button>
       <button type="button" aria-pressed="false" data-league="tennis">Tennis</button>
     </div>
+    <span class="gf-filter-sep" id="gfFilterSep" aria-hidden="true"></span>
     <div class="filters" role="group" aria-label="Choose a date" id="gameDateFilters">
       <button type="button" aria-pressed="true" data-gdate="week">This Week</button>
       <button type="button" aria-pressed="false" data-gdate="today">Today</button>
       <button type="button" aria-pressed="false" data-gdate="tomorrow">Tomorrow</button>
+    </div>
     </div>
     <p class="note">Past games are on the Scores tab.</p>
     <div id="leagueCard"></div>
@@ -1053,10 +1098,9 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   </section>
 
   <!-- ============ TOTALS ============ -->
-  <section class="gf-section" id="gf-totals" aria-label="Totals">
+  <section class="gf-section" id="gf-totals" aria-label="Totals" hidden>
     <h1 id="totalsHeading">Totals &mdash; Nov 6, 2026</h1>
     <p class="lede">Our total next to the book's number. A lean just means we see it differently. Not a guaranteed win.</p>
-    <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not winners yet.</p>
     <div class="freshness"></div>
     <p id="totalsStaleBanner" class="stale-banner" hidden></p>
     <div class="filter-group" style="margin-top:16px">
@@ -1069,10 +1113,9 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   </section>
 
   <!-- ============ SPREADS ============ -->
-  <section class="gf-section" id="gf-spreads" aria-label="Spreads">
+  <section class="gf-section" id="gf-spreads" aria-label="Spreads" hidden>
     <h1 id="spreadsHeading">Spreads &mdash; Nov 6, 2026</h1>
     <p class="lede">Our spread next to the book's number. A lean just means we see it differently. Not a guaranteed win.</p>
-    <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not winners yet.</p>
     <div class="freshness"></div>
     <p id="spreadsStaleBanner" class="stale-banner" hidden></p>
     <div class="filter-group" style="margin-top:16px">
@@ -1085,7 +1128,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   </section>
 
   <!-- ============ SEASON OUTLOOK ============ -->
-  <section class="gf-section" id="gf-season" aria-label="NFL Season outlook">
+  <section class="gf-section" id="gf-season" aria-label="NFL Season outlook" hidden>
     <div class="explain-wrap">
       <h1 class="explain-head"><span class="explain-title">NFL Season outlook &mdash; <em>how will the season end?</em></span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainSeason" aria-label="How these numbers work">i</button></h1>
       <div class="explain" id="explainSeason" hidden><p style="margin:0">We played the rest of the season 10,000 times on a computer. Each game used our guess for who wins that game. The numbers below are how often each ending came up. &ldquo;Most likely wins&rdquo; is the middle result; &ldquo;usually between&rdquo; covers the middle 8 times out of 10. Ties are broken by group and conference record, then chance &mdash; the league&rsquo;s real tiebreak list is longer, so close races may be off by a hair. &ldquo;Book&rdquo; is the book&rsquo;s win-total line: when we sit far from it, we say so under the number. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p><p class="sub" id="seasonMeta" style="margin:8px 0 0"></p></div>
@@ -2857,12 +2900,33 @@ if(tabbarEl){
    land on the tab scrolled to the matching section — the same
    redirect pattern as the Touchdowns fold below. */
 var GF_SECTIONS={forecasts:"gf-moneyline",moneyline:"gf-moneyline",totals:"gf-totals",spreads:"gf-spreads",season:"gf-season","season-outlook":"gf-season"};
+/* Sub-navigation (Who wins / Totals / Spreads / Season): one section
+   at a time. showGfSection is the single switch point, so the sub-nav
+   buttons, the Home deep links (data-gf-section) and the old hashes
+   (#totals, #spreads, #season) all land on the same state. */
+function showGfSection(sectionId){
+  var ids=["gf-moneyline","gf-totals","gf-spreads","gf-season"];
+  if(ids.indexOf(sectionId)===-1) sectionId="gf-moneyline";
+  ids.forEach(function(id){
+    var el=$(id);
+    if(el) el.hidden=id!==sectionId;
+  });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-gf-nav]"),function(b){
+    b.setAttribute("aria-pressed",b.getAttribute("data-gf-nav")===sectionId?"true":"false");
+  });
+  return $(sectionId);
+}
 function gotoGameForecasts(sectionId){
   switchTab("gameforecasts",false);
-  var el=sectionId?$(sectionId):null;
+  var el=showGfSection(sectionId||"gf-moneyline");
   if(el) el.scrollIntoView({block:"start"});
   else window.scrollTo({top:0,behavior:"auto"});
 }
+var gfSubnavEl=$("gfSubnav"); if(gfSubnavEl) gfSubnavEl.addEventListener("click",function(e){
+  var b=e.target.closest("[data-gf-nav]"); if(!b) return;
+  var el=showGfSection(b.getAttribute("data-gf-nav"));
+  if(el) el.scrollIntoView({block:"start"});
+});
 document.addEventListener("click",function(e){
   var g=e.target.closest("[data-goto]");
   if(!g) return;
@@ -3035,6 +3099,7 @@ function syncTennisVisibility(){
   if(staleWrap) staleWrap.hidden=!isTennis;
   if($("gamesBlock")) $("gamesBlock").hidden=isTennis;
   if($("gameDateFilters")) $("gameDateFilters").hidden=isTennis;
+  if($("gfFilterSep")) $("gfFilterSep").hidden=isTennis;
 }
 var leagueFiltersEl=$("leagueFilters"); if(leagueFiltersEl) leagueFiltersEl.addEventListener("click",function(e){
   var b=e.target.closest("[data-league]"); if(!b) return;
@@ -3350,7 +3415,9 @@ function feedRowHtml(f){
   var pickCode=pickHome?f.home:f.away;
   var p=Math.round((pickHome?f.pHome:1-f.pHome)*100);
   var close=p<=56;
-  return '<div class="slate-row"><div class="match"><span class="n">'+esc(f.g)+' \u00b7 '+esc(fmtDateLong(f.day,true))+' \u00b7 '+esc(f.time)+' PT</span><div class="picklines"><div class="avgline"><b>'+esc(pickCode)+'</b> <span class="pickpct">'+p+'%</span>'+confBadgeHtml(f.confidence_tier)+'</div>'+modelLinesHtml([modelLineHtml("Model A",pickCode,p+"%",gapInfoHtml(f.model_vs_market_pts))])+angleHtml(f.angle)+simLinesHtml(f)+'</div><div class="tagrow">'+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(f.note?' <span class="n">'+esc(f.note)+'</span>':"")+'</div>'+marketsHtml(f.markets)+'</div><button type="button" data-slate-game="'+esc(f.g)+'">Player picks for this game &rarr;</button></div>';
+  var feedDetailBits=angleHtml(f.angle)+simLinesHtml(f)+marketsHtml(f.markets);
+  var feedDetailsHtml=feedDetailBits?'<details class="gf-details"><summary>Details</summary><div class="gf-details-body">'+feedDetailBits+'</div></details>':"";
+  return '<div class="slate-row"><div class="match"><span class="n">'+esc(f.g)+' \u00b7 '+esc(fmtDateLong(f.day,true))+' \u00b7 '+esc(f.time)+' PT</span><div class="picklines"><div class="avgline"><b>'+esc(pickCode)+'</b> <span class="pickpct">'+p+'%</span>'+confBadgeHtml(f.confidence_tier)+'</div>'+modelLinesHtml([modelLineHtml("Model A",pickCode,p+"%",gapInfoHtml(f.model_vs_market_pts))])+'</div><div class="tagrow">'+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(f.note?' <span class="n">'+esc(f.note)+'</span>':"")+'</div>'+feedDetailsHtml+'</div><button type="button" data-slate-game="'+esc(f.g)+'">Player picks for this game &rarr;</button></div>';
 }
 function forecastRowHtml(f){
   var lineHtml=f.book?'<span class="loser">Book spread: '+esc(f.book)+'</span>':'<span class="loser">Line: TBD</span> <span class="picktag">Line not posted yet</span>';
@@ -3372,7 +3439,10 @@ function forecastRowHtml(f){
   }
   lines.push(modelLineHtml("Model B",f.pick,f.p.toFixed(1)+"%"));
   var close=headlinePct<=56;
-  return '<div class="slate-row"><div class="match"><span class="n">'+esc(f.g)+' \u00b7 '+esc(fmtDateLong(f.day,true))+' \u00b7 '+esc(f.time)+' PT</span><div class="picklines"><div class="avgline"><b>'+esc(headlinePick)+'</b> <span class="pickpct">'+headlinePct.toFixed(1)+'%</span>'+(a?confBadgeHtml(a.confidence_tier):"")+' '+lineHtml+'</div>'+modelLinesHtml(lines)+angleHtml(a?a.angle:"")+simLinesHtml(f)+'</div><div class="tagrow">'+(f.book?"":'<span>forecast only \u2014 no book line to compare against</span>')+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(f.note?' <span class="n">'+esc(f.note)+'</span>':"")+'</div>'+marketsHtml(f.markets)+'</div><button type="button" data-slate-game="'+esc(f.g)+'">Player picks for this game &rarr;</button></div>';
+  var agreeTag=a?'<span class="picktag'+(a.pick===f.pick?"":" close")+'">'+(a.pick===f.pick?"Models agree":"Models split")+'</span>':"";
+  var fcDetailBits=angleHtml(a?a.angle:"")+simLinesHtml(f)+marketsHtml(f.markets);
+  var fcDetailsHtml=fcDetailBits?'<details class="gf-details"><summary>Details</summary><div class="gf-details-body">'+fcDetailBits+'</div></details>':"";
+  return '<div class="slate-row"><div class="match"><span class="n">'+esc(f.g)+' \u00b7 '+esc(fmtDateLong(f.day,true))+' \u00b7 '+esc(f.time)+' PT</span><div class="picklines"><div class="avgline"><b>'+esc(headlinePick)+'</b> <span class="pickpct">'+headlinePct.toFixed(1)+'%</span>'+(a?confBadgeHtml(a.confidence_tier):"")+' '+lineHtml+'</div>'+modelLinesHtml(lines)+'</div><div class="tagrow">'+(f.book?"":'<span>forecast only \u2014 no book line to compare against</span>')+agreeTag+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(f.note?' <span class="n">'+esc(f.note)+'</span>':"")+'</div>'+fcDetailsHtml+'</div><button type="button" data-slate-game="'+esc(f.g)+'">Player picks for this game &rarr;</button></div>';
 }
 /* Monte Carlo sim lines, shown only for games whose forecast carries
    sim data (forecast.sim, 10,000 sims). Two shapes:
@@ -3529,6 +3599,8 @@ function soccerLeagueName(s){
 }
 function soccerRowHtml(s){
   var d=soccerDateParts(s.date), t=soccerNormTime(s.time);
+  var socSimHtml=simLinesHtml(s);
+  var socDetailsHtml=socSimHtml?'<details class="gf-details"><summary>Details</summary><div class="gf-details-body">'+socSimHtml+'</div></details>':"";
   var pH=Number(s.pHome), pD=Number(s.pDraw), pA=Number(s.pAway);
   var fav=String(s.favorite||"");
   var favKey=fav.toLowerCase()==="draw"?"draw":fav===s.home?"home":fav===s.away?"away":"";
@@ -3544,7 +3616,7 @@ function soccerRowHtml(s){
   function col(name,p,isFav){
     return '<div class="soccer-col'+(isFav?' fav':'')+'"><span class="soccer-team">'+(isFav?'<b>'+esc(name)+'</b>':esc(name))+'</span><span class="soccer-pct">'+soccerPctText(p)+'</span></div>';
   }
-  return '<div class="slate-row soccer-row"><div class="match"><span class="n">'+esc(soccerLeagueName(s))+' \u00b7 '+esc(s.g)+' \u00b7 '+esc(d.dayLabel)+' \u00b7 '+esc(t)+' PT</span><div class="picklines"><div class="avgline"><b>'+esc(fav)+'</b> <span class="pickpct">'+favPctText+'</span>'+confBadgeHtml(s.confidence_tier)+' '+lineHtml+'</div>'+modelLinesHtml([modelLineHtml("Model B",fav,favPctText)])+'</div>'+((s.bookHome==null&&s.bookDraw==null&&s.bookAway==null)?'<div class="tagrow"><span>forecast only \u2014 no book line to compare against</span></div>':"")+'<div class="soccer-cols">'+col(s.home,pH,favKey==="home")+col("Draw",pD,favKey==="draw")+col(s.away,pA,favKey==="away")+'</div>'+simLinesHtml(s)+'</div></div>';
+  return '<div class="slate-row soccer-row"><div class="match"><span class="n">'+esc(soccerLeagueName(s))+' \u00b7 '+esc(s.g)+' \u00b7 '+esc(d.dayLabel)+' \u00b7 '+esc(t)+' PT</span><div class="picklines"><div class="avgline"><b>'+esc(fav)+'</b> <span class="pickpct">'+favPctText+'</span>'+confBadgeHtml(s.confidence_tier)+' '+lineHtml+'</div>'+modelLinesHtml([modelLineHtml("Model B",fav,favPctText)])+'</div>'+((s.bookHome==null&&s.bookDraw==null&&s.bookAway==null)?'<div class="tagrow"><span>forecast only \u2014 no book line to compare against</span></div>':"")+'<div class="soccer-cols">'+col(s.home,pH,favKey==="home")+col("Draw",pD,favKey==="draw")+col(s.away,pA,favKey==="away")+'</div>'+socDetailsHtml+'</div></div>';
 }
 function forecastHasGame(list,f){
   if(!list) return false;
@@ -3644,7 +3716,7 @@ function renderGames(){
     if(leagueState==="nba"&&gameDateMatch("Nov 4")){
       (SLATE||[]).forEach(function(s){
         var close=s.avgP<=56;
-        push("Wed, Nov 4, 2026","Nov 4",s.time,'<div class="slate-row"><div class="match"><span class="n">'+esc(s.g)+' \u00b7 Nov 4, 2026</span><div class="picklines"><div class="avgline"><b>'+esc(TEAM_NAMES[s.avgPick])+'</b> <span class="pickpct">'+s.avgP+'%</span></div>'+modelLinesHtml(["<div>Average of Model A and Model B</div>"])+'</div><div class="tagrow">'+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(s.note?' <span class="n">'+esc(s.note)+'</span>':"")+'</div>'+marketsHtml(s.markets)+'</div><button type="button" data-slate-game="'+esc(s.g)+'">Player picks for this game &rarr;</button></div>');
+        push("Wed, Nov 4, 2026","Nov 4",s.time,'<div class="slate-row"><div class="match"><span class="n">'+esc(s.g)+' \u00b7 Nov 4, 2026</span><div class="picklines"><div class="avgline"><b>'+esc(TEAM_NAMES[s.avgPick])+'</b> <span class="pickpct">'+s.avgP+'%</span></div>'+modelLinesHtml(["<div>Average of Model A and Model B</div>"])+'</div><div class="tagrow">'+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(s.note?' <span class="n">'+esc(s.note)+'</span>':"")+'</div>'+(marketsHtml(s.markets)?'<details class="gf-details"><summary>Details</summary><div class="gf-details-body">'+marketsHtml(s.markets)+'</div></details>':"")+'</div><button type="button" data-slate-game="'+esc(s.g)+'">Player picks for this game &rarr;</button></div>');
       });
     }
     (FEED_GAMES||[]).forEach(function(f){
@@ -4011,7 +4083,6 @@ function renderTotals(){
       if(diff>=thr) tag='<span class="picktag">Leans over</span>';
       else if(diff<=-thr) tag='<span class="picktag">Leans under</span>';
     }
-    if(tag) tag+='<span class="picktag untracked">Untracked \u2014 no record</span>';
     var badge=t.league?'<span class="league-tag">'+esc(tsBadge(t.league))+'</span>':"";
     var bookHtml=(t.book==null)
       ? '<span class="t-none">Book total not yet posted</span>'
@@ -4062,7 +4133,6 @@ function renderSpreads(){
       if(diff<=-thr) tag='<span class="picktag">Leans '+esc(s.teams[0])+'</span>';
       else if(diff>=thr) tag='<span class="picktag">Leans '+esc(s.teams[1])+'</span>';
     }
-    if(tag) tag+='<span class="picktag untracked">Untracked \u2014 no record</span>';
     var badge=s.league?'<span class="league-tag">'+esc(tsBadge(s.league))+'</span>':"";
     var bookHtml=(s.book==null)
       ? '<span class="s-none">Book spread not yet posted</span>'
@@ -4913,7 +4983,7 @@ try{renderProps();}catch(e){}
 /* Old Touchdowns links (#td / #touchdowns) flagged at the top of this
    script: now that the props filters exist, land on NFL + Touchdowns. */
 if(tdDeepLink){try{selectTouchdownsView();}catch(e){}}
-if(gfDeepLink){var gfEl=$(gfDeepLink);if(gfEl)gfEl.scrollIntoView({block:"start"});}
+if(gfDeepLink){try{showGfSection(gfDeepLink);}catch(e){} var gfEl=$(gfDeepLink);if(gfEl)gfEl.scrollIntoView({block:"start"});}
 window.addEventListener("hashchange",function(){
   var h=(location.hash||"").replace("#","");
   if(h==="td"||h==="touchdowns"){switchTab("props",false);selectTouchdownsView();}
