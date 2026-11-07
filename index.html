@@ -874,7 +874,19 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 <div class="wrap">
   <div class="strip">
     <div class="left"><span class="badge">Sports Tools Suite</span></div>
-    <div class="strip-right"><span class="meta" id="stripUpdated">Updated today at 2:11pm PT</span></div>
+    <div class="strip-right"><span class="meta" id="stripUpdated">Updated today at 2:11pm PT</span><div style="position:relative">
+      <button type="button" class="settings-btn" id="settingsBtn" aria-expanded="false" aria-controls="settingsPanel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Settings
+      </button>
+      <div class="settings-panel" id="settingsPanel" hidden>
+        <p class="settings-title">Settings</p>
+        <div class="settings-section"><p class="settings-label" id="viewLabel">View &mdash; Player picks</p><div class="segmented" role="group" aria-labelledby="viewLabel"><button type="button" data-prop-view="tiles" aria-pressed="true">Tiles</button><button type="button" data-prop-view="list" aria-pressed="false">List</button></div><p class="settings-hint" id="viewHint">Tiles show each prop as a card with full details.</p></div>
+        <div class="settings-section"><p class="settings-label" id="styleLabel">Style</p><div class="set-style-list" role="group" aria-labelledby="styleLabel"><button type="button" class="set-style" data-style-opt="classic" aria-pressed="true"><span>Classic</span><span class="in-use">In use</span></button><button type="button" class="set-style" data-style-opt="dark" aria-pressed="false"><span>Dark sportsbook</span><span class="in-use">In use</span></button><button type="button" class="set-style" data-style-opt="minimal" aria-pressed="false"><span>Minimal</span><span class="in-use">In use</span></button><button type="button" class="set-style" data-style-opt="terminal" aria-pressed="false"><span>Terminal</span><span class="in-use">In use</span></button></div></div>
+        <div class="settings-section"><button type="button" class="btn secondary reopen-onboard" style="width:100%;justify-content:center">Show the welcome message again</button></div>
+        <div class="settings-section"><button type="button" class="btn feedback-send" id="copyFeedbackEmailBtn">Copy feedback email</button><p class="feedback-email">wyantkevin@gmail.com</p></div>
+      </div>
+    </div></div>
   </div>
   <div class="tabbar-nav" id="tabbarNav">
     <button type="button" class="tabbar-arrow" id="tabScrollLeft" aria-label="Scroll tabs left">&#8249;</button>
@@ -1522,7 +1534,6 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
         <li><a href="#doc-dfs">DFS Optimizer</a></li>
         <li><a href="#doc-record">Our record</a></li>
         <li><a href="#doc-bankroll">Your money over a season</a></li>
-        <li><a href="#settingsTitle">Settings</a></li>
       </ul>
     </nav>
     <h1>How it works, <em>in plain words.</em></h1>
@@ -1572,33 +1583,6 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <p>Every model gets tested on past games before it goes live. And we keep score in Our Record, so you can see how they've done.</p>
     <p>Like the site? <a href="#books" data-goto="books" data-goto-support>Support it here</a> &mdash; tips are optional and never affect any pick.</p>
 
-    <section class="settings-block" aria-labelledby="settingsTitle">
-      <h3 id="settingsTitle">Settings</h3>
-      <div class="settings-section">
-        <p class="settings-label" id="viewLabel">View &mdash; Player picks</p>
-        <div class="segmented" role="group" aria-labelledby="viewLabel">
-          <button type="button" data-prop-view="tiles" aria-pressed="true">Tiles</button>
-          <button type="button" data-prop-view="list" aria-pressed="false">List</button>
-        </div>
-        <p class="settings-hint" id="viewHint">Tiles show each prop as a card with full details.</p>
-      </div>
-      <div class="settings-section">
-        <p class="settings-label" id="styleLabel">Style</p>
-        <div class="set-style-list" role="group" aria-labelledby="styleLabel">
-          <button type="button" class="set-style" data-style-opt="classic" aria-pressed="true"><span>Classic</span><span class="in-use">In use</span></button>
-          <button type="button" class="set-style" data-style-opt="dark" aria-pressed="false"><span>Dark sportsbook</span><span class="in-use">In use</span></button>
-          <button type="button" class="set-style" data-style-opt="minimal" aria-pressed="false"><span>Minimal</span><span class="in-use">In use</span></button>
-          <button type="button" class="set-style" data-style-opt="terminal" aria-pressed="false"><span>Terminal</span><span class="in-use">In use</span></button>
-        </div>
-      </div>
-      <div class="settings-section">
-        <button type="button" class="btn secondary reopen-onboard" style="width:100%;justify-content:center">Show the welcome message again</button>
-      </div>
-      <div class="settings-section">
-        <button type="button" class="btn feedback-send" id="copyFeedbackEmailBtn">Copy feedback email</button>
-        <p class="feedback-email">wyantkevin@gmail.com</p>
-      </div>
-    </section>
   </section>
 
   <footer>
@@ -3001,6 +2985,36 @@ try{
       navigator.clipboard.writeText(EMAIL).then(function(){showLabel("Copied!",2000);},fallbackCopy);
     }else{
       fallbackCopy();
+    }
+  });
+})();
+
+/* ================= SETTINGS PANEL ================= */
+/* Header Settings button toggles the dropdown panel. The controls inside
+   (view, style, welcome, feedback email) keep their existing handlers —
+   they are bound document-wide, so they work from the panel's new home. */
+(function(){
+  var btn=$orNull("settingsBtn");
+  var panel=$orNull("settingsPanel");
+  if(!btn||!panel) return;
+  function close(){
+    panel.hidden=true;
+    btn.setAttribute("aria-expanded","false");
+  }
+  btn.addEventListener("click",function(){
+    var open=panel.hidden;
+    panel.hidden=!open;
+    btn.setAttribute("aria-expanded",open?"true":"false");
+  });
+  document.addEventListener("click",function(e){
+    if(panel.hidden) return;
+    if(btn.contains(e.target)||panel.contains(e.target)) return;
+    close();
+  });
+  document.addEventListener("keydown",function(e){
+    if(e.key==="Escape"&&!panel.hidden){
+      close();
+      btn.focus();
     }
   });
 })();
