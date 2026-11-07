@@ -3384,6 +3384,16 @@ function forecastRowHtml(f){
    points otherwise. No percentiles or exact scores are shown here —
    this is extra detail under the headline pick, not a second forecast. */
 var NFL_TEAM_NAMES={JAX:"Jaguars",BAL:"Ravens",CIN:"Bengals",ATL:"Falcons",DEN:"Broncos",CAR:"Panthers",DAL:"Cowboys",IND:"Colts",NYJ:"Jets",KC:"Chiefs",DET:"Lions",MIA:"Dolphins",CLE:"Browns",NO:"Saints",NYG:"Giants",PHI:"Eagles",LAR:"Rams",WAS:"Commanders",HOU:"Texans",LAC:"Chargers",LV:"Raiders",SF:"49ers",GB:"Packers",NE:"Patriots",ARI:"Cardinals",SEA:"Seahawks",TB:"Buccaneers",CHI:"Bears",BUF:"Bills",MIN:"Vikings"};
+var NHL_TEAM_NAMES={ANA:"Ducks",ARI:"Coyotes",BOS:"Bruins",BUF:"Sabres",CAR:"Hurricanes",CBJ:"Blue Jackets",CGY:"Flames",CHI:"Blackhawks",COL:"Avalanche",DAL:"Stars",DET:"Red Wings",EDM:"Oilers",FLA:"Panthers",LA:"Kings",MIN:"Wild",MTL:"Canadiens",NJ:"Devils",NSH:"Predators",NYI:"Islanders",NYR:"Rangers",OTT:"Senators",PHI:"Flyers",PIT:"Penguins",SJ:"Sharks",SEA:"Kraken",STL:"Blues",TB:"Lightning",TOR:"Maple Leafs",UTA:"Mammoth",VAN:"Canucks",VGK:"Golden Knights",WAS:"Capitals",WIN:"Jets",WPG:"Jets"};
+/* Sport-aware team nickname. Never resolve a non-NFL code through the NFL lookup: BUF is the Sabres in hockey and the Bills in football, CAR is the Hurricanes in hockey and the Panthers in football, and so on. NHL uses NHL_TEAM_NAMES (nicknames); NBA uses TEAM_NAMES (full names, defined above); NFL uses NFL_TEAM_NAMES. CFB/CBB have no lookup, so they fall back to the raw code rather than an NFL nickname. Unknown sport also falls back to the code. */
+function teamNickname(code, sport){
+  if(!code) return code;
+  var s=String(sport||"").toUpperCase();
+  if(s==="NHL") return NHL_TEAM_NAMES[code]||code;
+  if(s==="NBA") return TEAM_NAMES[code]||code;
+  if(s==="NFL") return NFL_TEAM_NAMES[code]||code;
+  return code;
+}
 function simCountText(sim){
   var n=Number(sim.n_sims);
   if(!isFinite(n)||n<=0) n=10000;
@@ -3451,8 +3461,9 @@ function simLinesHtml(f){
     return band?simBandOnlyHtml(sim, band):"";
   }
   var winnerCode=margin>0?parts[1]:parts[0];
-  var winnerName=NFL_TEAM_NAMES[winnerCode]||winnerCode;
-  var homeName=home?(NFL_TEAM_NAMES[home]||home):null;
+  var sport=(f.sport||"")||(sim&&sim.league)||"";
+  var winnerName=teamNickname(winnerCode, sport);
+  var homeName=home?teamNickname(home, sport):null;
   var unit=(isFinite(Number(total))&&Number(total)<10)?"goals":"pts";
   var marginTxt=Math.abs(margin)<1?(Math.round(Math.abs(margin)*10)/10):Math.round(Math.abs(margin));
   var winPct=margin>0?Number(sim.win_pct_home):100-Number(sim.win_pct_home);
@@ -3775,8 +3786,17 @@ var slateListEl=$("slateList"); if(slateListEl) slateListEl.addEventListener("cl
    a totals/spreads row may also carry sim / forecast.sim directly. A row
    without either shows no sim line. Spreads are on the first-named
    (away) team's axis, so the home team's spread is -book. */
-function teamCodeForName(name){
-  for(var code in NFL_TEAM_NAMES){if(NFL_TEAM_NAMES[code]===name) return code;}
+function teamCodeForName(name, sport){
+  var s=String(sport||"").toUpperCase();
+  var lookup=null;
+  if(s==="NHL") lookup=NHL_TEAM_NAMES;
+  else if(s==="NBA") lookup=TEAM_NAMES;
+  else if(s==="NFL") lookup=NFL_TEAM_NAMES;
+  else if(s==="CFB"||s==="CBB"||s==="NCAAF"||s==="NCAAB") return null;
+  else if(!s) lookup=NFL_TEAM_NAMES;
+  else return null;
+  if(!lookup) return null;
+  for(var code in lookup){if(lookup[code]===name) return code;}
   return null;
 }
 function forecastSimForRow(row){
@@ -3787,7 +3807,7 @@ function forecastSimForRow(row){
   else if(typeof row.game==="string"){
     var parts=row.game.split(" vs ");
     if(parts.length===2){
-      var away=teamCodeForName(parts[0].trim()), home=teamCodeForName(parts[1].trim());
+      var away=teamCodeForName(parts[0].trim(), row.league), home=teamCodeForName(parts[1].trim(), row.league);
       if(away&&home) codes=[away,home];
     }
   }
@@ -3835,7 +3855,7 @@ function simSpreadHtml(s){
   if(!s.teams||s.teams.length<2) return band?'<div class="sim-lines">'+simInfoHtml(sim, band)+'</div>':"";
   var homeCovers=p>=50;
   var idx=homeCovers?1:0;
-  var team=s.teams[idx]||(s.abbr&&NFL_TEAM_NAMES[s.abbr[idx]])||(s.abbr&&s.abbr[idx])||"";
+  var team=s.teams[idx]||(s.abbr&&teamNickname(s.abbr[idx], s.league||(s.sim&&s.sim.league)))||(s.abbr&&s.abbr[idx])||"";
   var spread=homeCovers?fmtSignedSpread(-s.book):fmtSignedSpread(s.book);
   var pct=Math.round(homeCovers?p:100-p);
   return '<div class="sim-lines"><div class="sim-text">Sim: <b>'+pct+'%</b> chance '+esc(team)+' cover '+esc(spread)+'</div>'+simInfoHtml(sim, band)+'</div>';
