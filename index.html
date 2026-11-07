@@ -1057,7 +1057,6 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not winners yet.</p>
     <div class="freshness"></div>
     <p id="totalsStaleBanner" class="stale-banner" hidden></p>
-    <div class="model-warning" role="alert"><span class="model-warning-title">Warning &mdash; read this first</span><p>Ravens are on 3rd-string QB Fagnano, so the total is lower than the model first said.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="More about the Ravens total">i</button><span class="tip">The roster tracker cut the total by 9.7 points for the QB downgrade (Fagnano in for Lamar Jackson). The market moved from 49.5 to 40.5.</span></span></p></div>
     <div class="filter-group" style="margin-top:16px">
       <span class="filter-label" id="totalsSportLabel">Sport</span>
       <div class="filters" role="group" aria-labelledby="totalsSportLabel" id="totalsSportFilters"></div>
@@ -1074,7 +1073,6 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not winners yet.</p>
     <div class="freshness"></div>
     <p id="spreadsStaleBanner" class="stale-banner" hidden></p>
-    <div class="model-warning" role="alert"><span class="model-warning-title">Warning &mdash; read this first</span><p>Ravens are on 3rd-string QB Fagnano, so the spread moved toward Jacksonville.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="More about the Ravens spread">i</button><span class="tip">The roster tracker cut the total by 9.7 points for the QB downgrade (Fagnano in for Lamar Jackson). The market moved from BAL -4.5 to JAX -9.5.</span></span></p></div>
     <div class="filter-group" style="margin-top:16px">
       <span class="filter-label" id="spreadsSportLabel">Sport</span>
       <div class="filters" role="group" aria-labelledby="spreadsSportLabel" id="spreadsSportFilters"></div>
@@ -2769,12 +2767,12 @@ var CFB=[
    PARLAY_RECORD row: {date, pick_id, description, line_odds, outcome,
    profit}. */
 var TODAY_BETS=[
-  {pick_id:"20261106-01",sport:"NCAAF",type:"moneyline",description:"UTAH to win vs BYU",player:null,team:"UTAH",opponent:"BYU",market:"moneyline",side:"home",line:null,line_odds:"-185",model_prob:0.7975,market_prob:0.6491,value_pct:22.86,tier:null,game_date:"2026-11-07",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07BYUUTAH", "novig": "https://app.novig.us/event-markets/01a18dd2-74e8-7541-9ad7-a2555743b436"}},
-  {pick_id:"20261106-02",sport:"NBA",type:"moneyline",description:"TOR to win vs MIL",player:null,team:"TOR",opponent:"MIL",market:"moneyline",side:"away",line:null,line_odds:"-162",model_prob:0.7652,market_prob:0.6183,value_pct:23.75,tier:"strong",game_date:"2026-11-06",markets:{"polymarket": "https://polymarket.us/event/nba-tor-mil-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAGAME-26NOV06TORMIL", "novig": "https://app.novig.us/event-markets/01a1abe1-09a0-7791-baf6-f9fee03ca4db"}},
-  {pick_id:"20261106-03",sport:"NCAAF",type:"moneyline",description:"ASU to win vs COLO",player:null,team:"ASU",opponent:"COLO",market:"moneyline",side:"home",line:null,line_odds:"-162",model_prob:0.7435,market_prob:0.6183,value_pct:20.25,tier:null,game_date:"2026-11-07",markets:{"polymarket": null, "kalshi": "https://kalshi.com/markets/KXNCAAFGAME-26NOV07COLOASU", "novig": null}},
-  {pick_id:"20261106-04",sport:"CFB",type:"prop",description:"Tj Moore (CLEM) under 40.5 receiving yards",top_tier:true,player:"Tj Moore",team:"CLEM",opponent:"SYR",market:"receiving yards",side:"under",line:40.5,line_odds:"-118",model_prob:0.7411,market_prob:0.5412844036697247,value_pct:36.91,tier:"strong",game_date:"2026-11-07",markets:{"polymarket": null, "kalshi": null, "novig": null}}
+  {pick_id:"20261106-01",sport:"NBA",type:"moneyline",description:"TOR to win vs MIL",player:null,team:"TOR",opponent:"MIL",market:"moneyline",side:"away",line:null,line_odds:"-162",model_prob:0.7652,market_prob:0.6183,value_pct:23.75,tier:"strong",game_date:"2026-11-06",markets:{"polymarket": "https://polymarket.us/event/nba-tor-mil-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAGAME-26NOV06TORMIL", "novig": "https://app.novig.us/event-markets/01a1abe1-09a0-7791-baf6-f9fee03ca4db"}},
+  {pick_id:"20261106-02",sport:"NBA",type:"prop",description:"Dyson Daniels (ATL) under 6.5 assists",top_tier:true,player:"Dyson Daniels",team:"ATL",opponent:"WAS",market:"assists",side:"under",line:6.5,line_odds:"-152",model_prob:0.7405,market_prob:0.6031746031746031,value_pct:22.77,tier:"lean",game_date:"2026-11-06",markets:{"polymarket": "https://polymarket.us/event/nba-was-atl-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV06WASATL-ATLDDANIELS5-8", "novig": "https://app.novig.us/event-markets/01a1abaa-76e6-7202-97fc-fd67811f5e2e"}},
+  {pick_id:"20261106-03",sport:"NBA",type:"prop",description:"Jayson Tatum (BOS) under 3.5 3-pointers",top_tier:true,player:"Jayson Tatum",team:"BOS",opponent:"CHA",market:"3-pointers",side:"under",line:3.5,line_odds:"-152",model_prob:0.7264,market_prob:0.6031746031746031,value_pct:20.44,tier:"lean",game_date:"2026-11-06",markets:{"polymarket": "https://polymarket.us/event/nba-bos-cha-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBA3PT-26NOV06BOSCHA-BOSJTATUM0-4", "novig": "https://app.novig.us/event-markets/01a1abaa-7659-71d2-b1d9-95bf8a8ab2ab"}},
+  {pick_id:"20261106-04",sport:"NBA",type:"prop",description:"Jamal Shead (TOR) under 11.5 points",top_tier:true,player:"Jamal Shead",team:"TOR",opponent:"MIL",market:"points",side:"under",line:11.5,line_odds:"-120",model_prob:0.7102,market_prob:0.5454545454545454,value_pct:30.21,tier:"lean",game_date:"2026-11-06",markets:{"polymarket": "https://polymarket.us/event/nba-tor-mil-2026-11-06", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1abe1-09a0-7791-baf6-f9fee03ca4db"}}
 ];
-var TODAY_PARLAY={legs:["20261106-01","20261106-02"],leg_descriptions:["UTAH to win vs BYU","TOR to win vs MIL"],combined_odds:"+149",combined_decimal:2.4915,combined_prob:0.6102,combined_cash_pct:61};
+var TODAY_PARLAY={legs:["20261106-01","20261106-02"],leg_descriptions:["TOR to win vs MIL","Dyson Daniels (ATL) under 6.5 assists"],combined_odds:"+168",combined_decimal:2.6813,combined_prob:0.5666,combined_cash_pct:56.7};
 var TODAY_CARD_DATE="2026-11-06";
 /* The fresh track record started Nov 6, 2026 (Day 1). The Our Bets
    card note counts its day number from this date so it cannot go
@@ -3569,6 +3567,14 @@ function isPastGameDate(v){
   var dd=new Date(d.getFullYear(),d.getMonth(),d.getDate());
   return dd<ptTodayDate();
 }
+/* Game-specific warnings must expire: any future game-specific warning must carry a data-game-date attribute so it expires automatically when that game is past. This block removes any .model-warning[data-game-date] whose date is past. */
+(function(){
+  try{
+    document.querySelectorAll(".model-warning[data-game-date]").forEach(function(el){
+      if(isPastGameDate(el.getAttribute("data-game-date"))) el.remove();
+    });
+  }catch(e){}
+})();
 function renderGames(){
   if(leagueState==="tennis"){ $("slateList").innerHTML=""; return; }
   if(leagueState==="soccer"){
@@ -3963,7 +3969,7 @@ function renderTotals(){
   /* Rows with no prediction (our === null) are skipped before any
      grouping or sorting: rendering one would throw on .toFixed(1)
      and kill every render call after this one. */
-  var validTotals=TOTALS.filter(function(t){return t&&t.our!=null;});
+  var validTotals=TOTALS.filter(function(t){return t&&t.our!=null&&!isPastGameDate(t.game_date);});
   if(!validTotals.length){el.innerHTML='<div class="empty-state"><p>No forecasts available right now &mdash; check back soon.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no forecasts">i</button><span class="tip">New totals are posted with each day&rsquo;s board, usually in the morning.</span></span></p></div>';return;}
   var shownTotals=(totalsSport==="ALL")?validTotals:validTotals.filter(function(t){return t.league===totalsSport;});
   var totalsCountEl=$("totalsCount");
@@ -4012,7 +4018,7 @@ function renderSpreads(){
   if(!SPREADS||!SPREADS.length){el.innerHTML='<div class="empty-state"><p>No spread forecasts today &mdash; check back with tomorrow&rsquo;s board.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no forecasts">i</button><span class="tip">New spreads are posted with each day&rsquo;s board, usually in the morning.</span></span></p></div>';return;}
   /* Same null-prediction guard as Totals: skip rows whose our is
      null before grouping, sorting, or formatting. */
-  var validSpreads=SPREADS.filter(function(x){return x&&x.our!=null;});
+  var validSpreads=SPREADS.filter(function(x){return x&&x.our!=null&&!isPastGameDate(x.game_date);});
   if(!validSpreads.length){el.innerHTML='<div class="empty-state"><p>No spread forecasts today &mdash; check back with tomorrow&rsquo;s board.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no forecasts">i</button><span class="tip">New spreads are posted with each day&rsquo;s board, usually in the morning.</span></span></p></div>';return;}
   var shownSpreads=(spreadsSport==="ALL")?validSpreads:validSpreads.filter(function(x){return x.league===spreadsSport;});
   var spreadsCountEl=$("spreadsCount");
@@ -4456,6 +4462,8 @@ function gameTimeForProp(r){
    game left by the other filters instead of narrowing to its own
    selection. */
 function propMatchesFilters(r,ignoreGame,ignoreSearch){
+  if(!r) return false;
+  if(isPastGameDate(r.date)) return false;
   if(propSport!=="ALL"&&r.sport!==propSport) return false;
   if(propDate!=="ALL"&&r.date!==propDate) return false;
   if(!ignoreGame&&propGame!=="ALL"&&propGameOf(r).key!==propGame) return false;
