@@ -6175,9 +6175,9 @@ function applyCumulativeRecord(data){
   var p=cumTally(root.parlays||root.parlay||track.parlays);
   if(!s||!p) return false;
   TRACK_TALLY={straights:s,parlays:p};
-  var recRows=cumRows(data.track_record||data.record);
+  var recRows=cumRows(data.track_record||data.record||data.straights);
   if(recRows) TRACK_RECORD=recRows;
-  var parRows=cumRows(data.parlay_record||data.parlays_record);
+  var parRows=cumRows(data.parlay_record||data.parlays_record||data.parlays);
   if(parRows) PARLAY_RECORD=parRows;
   /* Any tt_record / top-tier tally in the file is ignored: Top Tier
      was retired on Nov 6, 2026, so its rows (e.g. the Nov 6 Tj Moore
