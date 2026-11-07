@@ -306,6 +306,12 @@ table.mini td:first-child{font-family:var(--sans);font-weight:600}
 .tt-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 9px;background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-line);white-space:nowrap}
 .value-badge{background:var(--blue-bg);color:var(--blue);border-color:var(--blue)}
 .tt-wrap{margin-top:6px;display:flex;justify-content:flex-end;align-items:center;flex-wrap:wrap;gap:6px;max-width:100%}
+/* Props rows: the Tier column is narrow, so the badges stack and inflate
+   the whole row. Keep the badges but make them fit: a smaller ⓘ and
+   tighter gaps, so Strong pick + Value + ⓘ sit on two short lines
+   instead of a tall stack. Scoped to the props board only. */
+#propBody .rows .trow .tt-wrap{margin-top:3px;gap:4px}
+#propBody .rows .trow .tt-wrap .info-btn{min-width:28px;min-height:28px}
 .badge-legend{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
 .tt-tally{font-family:var(--mono);font-weight:700;font-size:22px}
 .rec-outcome.pending{background:var(--panel2);color:var(--muted);border:1px solid var(--line)}
@@ -512,12 +518,14 @@ footer b{color:var(--ink)}
   .picklines .avgline{font-size:14.5px}
   .sim-lines,.model-lines{font-size:13.5px}
   .line-fresh{font-size:12px}
-  #tdRows,#tdBoardRows,#propBody .rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;border:0;background:transparent;overflow:visible}
+  #tdRows,#tdBoardRows,#propBody .rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;border:0;background:transparent;overflow:visible;align-items:start}
   #tdRows .trow,#tdBoardRows .trow,#propBody .rows .trow{display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline;padding:11px 12px;border:1px solid var(--line);border-radius:12px;font-size:14px;min-width:0;overflow-wrap:break-word}
   #tdRows .trow .who,#tdBoardRows .trow .who,#propBody .rows .trow .who{flex:1 1 100%;min-width:0}
   #propBody .rows .trow .who span{display:block;line-height:1.45}
   #tdRows .trow .flag,#propBody .rows .trow .flag{flex:1 1 100%}
   #propBody .rows .trow .line-move{flex:1 1 100%}
+  #propBody .rows .trow .beton,#propBody .rows .trow .sim-lines{flex:1 1 100%}
+  #propBody .rows .trow .who{border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:2px}
   .trow .num,.pill-prob{text-align:left}
   .legpick{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
   .legbtn{padding:9px 10px;gap:8px;min-width:0}
@@ -689,6 +697,9 @@ html[data-theme="minimal"] .tabbar [role="tab"][aria-selected="true"]{background
 .beton{display:flex;flex-wrap:wrap;align-items:center;gap:6px 7px;margin-top:9px}
 .beton-label{font-size:12.5px;font-weight:600;color:var(--muted)}
 .beton a{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:6px 13px;border:1.5px solid;border-radius:999px;background:var(--panel);font-size:13px;font-weight:700;line-height:1.2;text-decoration:none}
+/* Props rows: the Bet-on buttons are the tallest thing in a tile, so
+   keep them but make them more compact here (still tappable). */
+#propBody .rows .trow .beton a{min-height:36px;padding:5px 11px;font-size:12.5px}
 .beton a::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
 .beton a:hover{background:var(--panel2)}
 .beton-poly{border-color:#2b5cff;color:#2b5cff}
@@ -3139,6 +3150,20 @@ function fmtDateLong(input,withWeekday){
   var base=MONTH_ABBR[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear();
   return withWeekday?WEEKDAY_ABBR[d.getDay()]+", "+base:base;
 }
+/* Short date for the Player Picks tile rows only: "11/06/26". The
+   long form ("Nov 6, 2026") is too wide for the 72px Date column and
+   wraps; the short form fits. fmtDateLong is untouched elsewhere. */
+function fmtDateShort(input){
+  var d=null;
+  if(input instanceof Date) d=input;
+  else if(input!=null&&String(input).trim()!==""){
+    d=parseGameDate(input);
+    if(!d){ var nd=new Date(input); if(!isNaN(nd.getTime())) d=nd; }
+  }
+  if(!d||isNaN(d.getTime())) return String(input==null?"":input);
+  function p2(n){ return (n<10?"0":"")+n; }
+  return p2(d.getMonth()+1)+"/"+p2(d.getDate())+"/"+String(d.getFullYear()).slice(2);
+}
 function collectGameDates(){
   var seen={}, list=[];
   function add(date,day){
@@ -4769,7 +4794,7 @@ function selectTouchdownsView(){
 function renderProps(){
   var el=$("propBody");
   if(!el) return;
-  var cols="minmax(0,1.6fr) 72px 100px 122px 110px";
+  var cols="minmax(0,1.6fr) 72px 100px 122px 150px";
   var head='<div class="rowhead" style="grid-template-columns:'+cols+'"><span>Player</span><span>Date</span><span style="text-align:right">Line</span><span style="text-align:right">Our chance</span><span style="text-align:right">Tier</span></div>';
   var shown=[];
   (TOP_PROPS||[]).forEach(function(r,i){
@@ -4787,8 +4812,8 @@ function renderProps(){
   function tileRow(r){
     var badges=pickBadgesPlainHtml(r), rowInfo=propRowInfoHtml(r);
     return '<div class="trow" style="grid-template-columns:'+cols+'"><div class="who"><b>'+esc(r.player)+'</b><span>'+esc(r.sport)+' &middot; '+esc(r.team)+' &middot; '+esc(r.prop)+'</span></div>'+
-    '<span class="prop-date">'+esc(fmtDateLong(r.date))+'</span>'+
-    '<span class="num avg-val">Line: '+esc(propLineText(r))+'</span><span class="num avg-val">'+propGuessHtml(r,true)+'</span><span style="text-align:right">'+propTierHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<div class="flag" style="grid-column:1 / -1">'+esc(r.flag)+'</div>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
+    '<span class="prop-date">'+esc(fmtDateShort(r.date))+'</span>'+
+    '<span class="num avg-val">'+esc(propLineText(r))+'</span><span class="num avg-val">'+propGuessHtml(r,false)+'</span><span style="text-align:right">'+propTierHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<div class="flag" style="grid-column:1 / -1">'+esc(r.flag)+'</div>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
   }
   function listRow(r){
     var badges=pickBadgesPlainHtml(r), rowInfo=propRowInfoHtml(r);
@@ -7162,6 +7187,33 @@ function parseStandings(data){
   if(!groups.length) collectStandingGroups(data,groups);
   return groups;
 }
+/* Standings must never depend on the order ESPN returns entries:
+   its NBA feed arrives worst-first while NFL/NHL arrive best-first.
+   Sort every group by the league's own ranking before rendering. */
+function effWinPct(en){
+  var wp=statNum(en,"winPercent");
+  if(wp!=null) return wp;
+  var w=statNum(en,"wins"), l=statNum(en,"losses");
+  if(w!=null&&l!=null&&(w+l)>0) return w/(w+l);
+  var gp=statNum(en,"gamesPlayed");
+  if(w!=null&&gp) return w/gp;
+  return null;
+}
+function sortStandingEntries(entries,leagueKey){
+  entries.sort(function(a,b){
+    if(leagueKey==="nhl"){
+      var pa=statNum(a,"points"), pb=statNum(b,"points");
+      if(pa!=null&&pb!=null&&pa!==pb) return pb-pa;
+    }
+    var wa=effWinPct(a), wb=effWinPct(b);
+    if(wa!=null&&wb!=null&&wa!==wb) return wb-wa;
+    var winsA=statNum(a,"wins"), winsB=statNum(b,"wins");
+    if(winsA!=null&&winsB!=null&&winsA!==winsB) return winsB-winsA;
+    var lossesA=statNum(a,"losses"), lossesB=statNum(b,"losses");
+    if(lossesA!=null&&lossesB!=null&&lossesA!==lossesB) return lossesA-lossesB;
+    return 0;
+  });
+}
 function renderStandings(){
   var body=$("standingsBody");
   if(!body) return;
@@ -7185,6 +7237,7 @@ function renderStandings(){
     if(S.key==="nhl") extraLabel="Points";
     else if(S.key==="nba") extraLabel="Games behind";
     r.groups.forEach(function(gr){
+      sortStandingEntries(gr.entries,S.key);
       html+='<div class="rows stand-rows'+(extraLabel?" has-extra":"")+'" role="table" aria-label="'+esc(S.label)+' standings" style="margin-top:10px">';
       if(gr.name) html+='<div class="ts-section-head">'+esc(gr.name)+'</div>';
       html+='<div class="rowhead"><span>Team</span><span>Wins</span><span>Losses</span><span>Win %</span>'+(extraLabel?'<span>'+esc(extraLabel)+'</span>':"")+'</div>';
