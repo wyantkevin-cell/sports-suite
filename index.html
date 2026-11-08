@@ -3040,7 +3040,7 @@ function marketsHtml(markets){
      the reader knows where to check. No signup link here — signups
      live only on the Sportsbooks tab and Home's "Where to bet". A
      missing markets field entirely (older data) still returns "". */
-  if(!btns) return '<div class="beton-empty">No live link for this pick \u2014 check FanDuel</div>';
+  if(!btns) return ""; /* Nov 7, 2026 (Kevin): if there is no live link, just don't include it — no placeholder text. */
   return '<div class="beton"><span class="beton-label">Bet on:</span>'+btns+'</div>';
 }
 function feedRowHtml(f){
@@ -3546,7 +3546,7 @@ function simTotalHtml(t){
     /* Bands only: no visible sim line, just the ⓘ carrying the band. */
     return band?'<div class="sim-lines">'+simInfoHtml(sim, band)+'</div>':"";
   }
-  return '<div class="sim-lines"><div class="sim-text">Sim: <b>'+Math.round(p)+'%</b> chance of over '+t.book.toFixed(1)+'</div>'+simInfoHtml(sim, band)+'</div>';
+  return '<div class="sim-lines"><div class="sim-text">Simulation: <b>'+Math.round(p)+'%</b> chance it goes over '+t.book.toFixed(1)+'</div>'+simInfoHtml(sim, band)+'</div>';
 }
 function fmtSignedSpread(v){
   if(v===0) return "0";
@@ -3568,7 +3568,7 @@ function simSpreadHtml(s){
   var team=s.teams[idx]||(s.abbr&&teamNickname(s.abbr[idx], s.league||(s.sim&&s.sim.league)))||(s.abbr&&s.abbr[idx])||"";
   var spread=homeCovers?fmtSignedSpread(-s.book):fmtSignedSpread(s.book);
   var pct=Math.round(homeCovers?p:100-p);
-  return '<div class="sim-lines"><div class="sim-text">Sim: <b>'+pct+'%</b> chance '+esc(team)+' cover '+esc(spread)+'</div>'+simInfoHtml(sim, band)+'</div>';
+  return '<div class="sim-lines"><div class="sim-text">Simulation: <b>'+pct+'%</b> chance '+esc(team)+' covers '+esc(spread)+'</div>'+simInfoHtml(sim, band)+'</div>';
 }
 
 /* ================= TOTALS ================= */
@@ -4393,8 +4393,8 @@ function propSimHtml(r){
   var hasSim=(typeof r.sim_p_over==="number"&&isFinite(r.sim_p_over));
   if(!hasSim&&!r.sim_flag) return "";
   var txt="";
-  if(hasSim) txt='Sim: <b>'+Math.round(r.sim_p_over*100)+'%</b> chance over the line';
-  if(r.sim_flag) txt+=(txt?' &middot; ':"")+esc(r.sim_flag);
+  if(hasSim) txt='Simulation: <b>'+Math.round(r.sim_p_over*100)+'%</b> chance it goes over the line';
+  if(r.sim_flag) txt+=(txt?' &middot; ':"")+esc(String(r.sim_flag).replace(/sim\/model/i,"Our model and the simulation"));
   /* No ⓘ here any more: the sim explanation rides on the row's single
      ⓘ (propRowInfoHtml below), so a sim row shows one icon, not two. */
   return '<div class="sim-lines"><div class="sim-text">'+txt+'</div></div>';
@@ -4415,7 +4415,7 @@ function propRowInfoHtml(r){
   if(r.flag) parts.push("Note on this pick: "+r.flag);
   if(hasSim) parts.push("Simulation: "+Math.round(r.sim_p_over*100)+"% went over the line in simulated games \u2014 a second check, separate from our guess.");
   if(typeof r.sim_p5==="number"&&isFinite(r.sim_p5)&&typeof r.sim_p95==="number"&&isFinite(r.sim_p95)) parts.push("In simulated games, the middle 90% of outcomes fell between "+fmtLine(r.sim_p5)+" and "+fmtLine(r.sim_p95)+".");
-  if(r.sim_flag) parts.push("Simulation note: "+r.sim_flag);
+  if(r.sim_flag) parts.push("Simulation note: "+String(r.sim_flag).replace(/sim\/model/i,"Our model and the simulation"));
   if(!parts.length) return "";
   return '<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="More about this pick">i</button><span class="tip">'+esc(parts.join(" "))+'</span></span>';
 }
@@ -6184,9 +6184,9 @@ function applyCumulativeRecord(data){
   var p=cumTally(root.parlays||root.parlay||track.parlays);
   if(!s||!p) return false;
   TRACK_TALLY={straights:s,parlays:p};
-  var recRows=cumRows(data.track_record||data.record);
+  var recRows=cumRows(data.track_record||data.record||data.straights);
   if(recRows) TRACK_RECORD=recRows;
-  var parRows=cumRows(data.parlay_record||data.parlays_record);
+  var parRows=cumRows(data.parlay_record||data.parlays_record||data.parlays);
   if(parRows) PARLAY_RECORD=parRows;
   /* Any tt_record / top-tier tally in the file is ignored: Top Tier
      was retired on Nov 6, 2026, so its rows (e.g. the Nov 6 Tj Moore
