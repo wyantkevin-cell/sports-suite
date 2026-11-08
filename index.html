@@ -1087,7 +1087,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     </section>
 
         <section class="block" id="tennisBlock" hidden>
-      <h2 id="tennisHeading">Tennis — as of 2026-11-07T15:43:34-08:00</h2>
+      <h2 id="tennisHeading">Tennis — as of 2026-11-07T16:40:03-08:00</h2>
       <p class="sub">Each match shows who we think wins, and how often we think they win.</p>
       <p class="note">Tennis moves fast &mdash; these are from our latest update. Check back for fresh numbers.</p>
       <p class="stale-banner" id="tennisStaleBanner" hidden></p>
@@ -1233,14 +1233,13 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <section class="panel" id="panel-pricer" role="tabpanel" aria-labelledby="tab-pricer" tabindex="0" hidden>
     <h1>Check my ticket</h1>
     <p class="record-line" data-record-suffix=" Ticket scores have no graded record yet — the score is our model's guess, not a proven result.">Our record: 0–0, $0 so far. Forecasts, not winners yet. Ticket scores have no graded record yet — the score is our model's guess, not a proven result.</p>
-    <p class="lede" style="margin-top:10px">Score a ticket — one pick or a whole parlay. Upload a screenshot and see what it&rsquo;s worth.</p>
+    <p class="lede" style="margin-top:10px">Score a ticket — one pick or a whole parlay. Upload a screenshot and see what it's worth.</p>
 
     <p class="ticket-step"><span class="n">1</span> Snap your ticket</p>
     <div class="snap-wrap">
       <button type="button" class="btn snap-btn" id="snapBtn">Snap your ticket</button>
       <input type="file" id="slipUpload" accept="image/*" style="position:absolute;width:1px;height:1px;opacity:0;overflow:hidden">
-      <p class="note" style="margin:10px 0 0">Any book works. Your photo never leaves your phone.</p>
-      <p class="note" style="margin:6px 0 0">Player picks, moneylines, spreads and totals for NFL, NBA, NHL, CFB and CBB &mdash; plus soccer moneylines. Tennis isn&rsquo;t scored yet.</p>
+      <p class="note" style="margin:10px 0 0">Any book works. Your photo never leaves your phone. Tennis tickets aren&rsquo;t supported yet &mdash; there&rsquo;s no tennis moneyline source here. Soccer moneylines are read as straight win picks.</p>
     </div>
 
     <p class="ticket-step"><span class="n">2</span> Your score</p>
@@ -1271,25 +1270,24 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
         </div>
         <p class="note">Your screenshot stays on your phone. Nothing gets sent anywhere.</p>
 
+        <div id="legListReadOnly" style="margin-top:14px"></div>
         <div class="pricer-grid ticket-grid" style="margin-top:14px">
           <section aria-label="Your ticket">
             <div class="card">
-              <h2>Legs on this ticket</h2>
-              <div id="legListReadOnly"></div>
-              <p class="empty-note" id="noLegsNote" hidden>No legs yet. Snap a ticket, or open &ldquo;Fix or add legs&rdquo; below to add one by hand.</p>
+          <details class="gf-details">
+            <summary>Fix or add legs</summary>
+            <div class="gf-details-body">
+              <h3 style="margin-top:4px">Check the legs</h3>
+              <p class="sub">Tap a leg to fix it if we misread it.</p>
+          <div id="legList"></div>
+          <p class="empty-note" id="noLegsNote" hidden>No legs yet. Add one below, or tap one of tonight&rsquo;s picks.</p>
 
-          <details style="margin-top:16px">
-            <summary style="cursor:pointer;font-weight:700;font-size:15px">Fix or add legs</summary>
-            <h2 style="margin-top:12px">Check the legs</h2>
-            <p class="sub">Tap a leg to fix it if we misread it.</p>
-            <div id="legList"></div>
+          <h3 style="margin-top:16px">Tonight&rsquo;s picks</h3>
+          <div class="legpick" id="legPick"></div>
+          <p class="note">Tap to add or remove. Our chance is filled in for these.</p>
 
-            <h3 style="margin-top:12px">Tonight&rsquo;s picks</h3>
-            <div class="legpick" id="legPick"></div>
-            <p class="note">Tap to add or remove. Our chance is filled in for these.</p>
-
-            <div class="rule"></div>
-            <h3>Add a leg by hand</h3>
+          <div class="rule"></div>
+          <h3>Add a leg by hand</h3>
           <div class="legform">
             <div class="field wide"><label for="newPlayer">Player</label><input type="text" id="newPlayer" placeholder="e.g. J. Allen" autocomplete="off"></div>
             <div class="field"><label for="newMarket">What kind of pick</label><select id="newMarket"><option>Points</option><option>Rebounds</option><option>Assists</option><option>Points + rebounds + assists</option><option>Shots on goal</option><option>Receiving yards</option><option>Receptions</option><option>Rushing yards</option><option>Passing yards</option><option>Touchdown</option><option>Other</option></select></div>
@@ -1298,6 +1296,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
             <div class="field"><button type="button" class="btn secondary" id="addLeg">Add leg</button></div>
           </div>
           <p class="note" id="addLegNote"></p>
+            </div>
           </details>
 
           <div class="rule"></div>
@@ -1580,7 +1579,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <h3 id="doc-ticket">The ticket checker (Check my ticket)</h3>
     <p><b>What &ldquo;good value&rdquo; means.</b> Flip a coin with me. Heads, I pay you $2. Tails, you pay me $1. You'd take that all day, right? That's a good-value bet. The price is wrong in your favor. Now flip it. Heads you win $1, tails you lose $2. You'd walk away. Same coin, different price. A good-value bet pays you more than it should for how often it wins.</p>
     <p><b>How it works.</b> Upload a screenshot of a slip from any book. The checker lists the picks it found. It works for a single pick (a straight bet) as well as a multi-pick ticket. You can fix any of them by hand: player, kind of pick, line, over or under. The chance for each pick comes from our board — you never type one in. A pick we have no chance for is left out of the score, and named. Enter the payout exactly as shown on your slip. Your screenshot stays on your phone. Nothing gets sent anywhere. FanDuel's board is the reference for what a fair price looks like. But you can bet wherever you want.</p>
-    <p><b>The score.</b> The score is a letter grade, A to F. A is great value, B good, C fair, D poor, F bad. Under the grade you get the number, 0 to 100. A 50 means a fair bet — the payout matches how often it wins. The number is 50 plus the value. A ticket worth 20% more than a fair price scores 70. One worth 15% less scores 35. It stops at 0 and 100. Next to the score you get the value as a percentage, and the chance the whole ticket hits as "1 in N". Like 1 in 7 — it should hit about once in every seven tries. There's no thumbs-up or thumbs-down. The score has no graded record yet, so it's just a number. One plain sentence sums up the verdict. Each pick shows our chance next to what the ticket pays like, so you can see which pick is carrying the ticket. If missing one pick still pays a little, the score counts that too. That's an average over many repeats of the same ticket. A single ticket either wins it all or loses it all.</p>
+    <p><b>The score.</b> The score is a letter grade, A to F. A is great value, B good, C fair, D poor, F bad. Under the grade you get the number, 0 to 100. A 50 means a fair bet — the payout matches how often it wins. The score is 50 plus the value. A ticket worth 20% more than a fair price scores 70. One worth 15% less scores 35. It stops at 0 and 100. Next to the score you get the value as a percentage, and the chance the whole ticket hits as "1 in N". Like 1 in 7 — it should hit about once in every seven tries. There's no thumbs-up or thumbs-down. The score has no graded record yet, so it's just a number. One plain sentence sums up the verdict. Each pick shows our chance next to what the ticket pays like, so you can see which pick is carrying the ticket. If missing one pick still pays a little, the score counts that too. That's an average over many repeats of the same ticket. A single ticket either wins it all or loses it all.</p>
 
     <h3 id="doc-dfs">DFS Optimizer</h3>
     <p>Pick a slate (NBA or NFL) and a platform (DraftKings or FanDuel). Then add the player salaries from that platform. Upload the salary file, paste the salaries, or try the sample salaries to see how it works. The optimizer ranks players by projected points and builds the best lineup it can under the salary limit, plus two more that differ from the first. Projected points are each player's recent average from our own game data. NBA from the last 5 games, NFL from the last 4. Defense is set to 7 points for every team because we don't model defenses. These are forecasts, not guarantees.</p>
@@ -2458,10 +2457,10 @@ function switchTab(name,focusTab){
   /* F44: leaving Scores stops its refresh timer; returning restarts it
      once through the panel observer / tab handler below. */
   if(name!=="scores"&&typeof stopScoresTimer==="function") stopScoresTimer();
-  /* Preload the ticket reader so the first upload works: the script
-     used to load only on upload, so a slow first fetch failed and
-     the user had to upload twice. */
-  if(name==="pricer"&&typeof preloadTesseract==="function") preloadTesseract();
+  /* Warm up the ticket reader as soon as Check my ticket is opened,
+     so it is ready before the user uploads instead of loading on the
+     first upload. */
+  if(name==="pricer"&&typeof preloadTesseract==="function"){try{preloadTesseract();}catch(e){}}
   tabs.forEach(function(t){
     var on=t.getAttribute("data-tab")===name;
     t.setAttribute("aria-selected",on?"true":"false");
@@ -2736,11 +2735,11 @@ try{syncTennisVisibility();}catch(e){}
    numbers are from; when the snapshot is more than 24 hours old,
    the whole block sits behind a <details> labelled with that date
    instead of being shown as if it were current. */
-var TENNIS_UPDATED=new Date("2026-11-07T15:43:34-08:00");
+var TENNIS_UPDATED=new Date("2026-11-07T16:40:03-08:00");
 try{(function(){
   if(!TENNIS_UPDATED||isNaN(TENNIS_UPDATED.getTime())) return;
   var h=$("tennisHeading");
-  if(h) h.textContent="Tennis — as of 2026-11-07T15:43:34-08:00";
+  if(h) h.textContent="Tennis — as of 2026-11-07T16:40:03-08:00";
   var block=$("tennisBlock");
   if(!block) return;
   var snapKey=ptDateKey(TENNIS_UPDATED), todayKey=ptDateKey(new Date());
@@ -3020,11 +3019,11 @@ function marketsHtml(markets){
     btns+='<a class="'+p.cls+'" href="'+esc(url)+'" target="_blank" rel="noopener" aria-label="'+p.label+'">'+(p.icon?'<img class="beton-icon" src="'+p.icon+'" alt="">'+'<span class="beton-name">'+p.label+'</span>':(p.badge?'<span class="beton-badge">'+p.badge+'</span>':p.label))+'</a>';
   });
   /* The markets dict is there but no platform has a live link (every
-     platform null): say so plainly instead of rendering nothing, so
-     the reader knows where to check. No signup link here — signups
-     live only on the Sportsbooks tab and Home's "Where to bet". A
-     missing markets field entirely (older data) still returns "". */
-  if(!btns) return ""; /* Nov 7, 2026 (Kevin): if there is no live link, just don't include it — no placeholder text. */
+     platform null): render nothing at all, no placeholder text
+     (Kevin, Nov 7). Signup links live only on the Sportsbooks tab
+     and Home's "Where to bet". A missing markets field entirely
+     (older data) also returns "". */
+  if(!btns) return "";
   return '<div class="beton"><span class="beton-label">Bet on:</span>'+btns+'</div>';
 }
 function feedRowHtml(f){
@@ -3869,58 +3868,74 @@ var TOP_PROPS=[
   {player:"Michael Porter Jr",team:"BKN",sport:"NBA",date:"Nov 7",prop:"under 7.5 rebounds",line:"-148",guess:60.9,tier:"lean",flag:"",value_pct:2,markets:{"polymarket": "https://polymarket.us/event/nba-bkn-atl-2026-11-07", "kalshi": "https://kalshi.com/markets/KXNBAREB-26NOV07BKNATL-BKNMPORTER17-8", "novig": "https://app.novig.us/event-markets/01a1b0ec-54af-73f2-bf3d-5bc992c26e25"},sim_p_over:0.46,sim_flag:"",sim_p5:0.79,sim_p95:13.32,sim_std:3.87}
 ];
 /* ================= LEANS — derived from TOP_PROPS =================
-   The ticket checker's preset picks read this list: the whole board
-   (TOP_PROPS — every sport and prop type), plus the anytime-TD and
-   NHL shots lists, strongest (highest model chance) first. It is
-   built from TOP_PROPS at load so it always matches the current
-   board. (Home's strongest picks do NOT read this subset either —
-   they read the Top Tier rows in TODAY_BETS; see renderHomePicks.)
-   The matchup ("ORL @ PHX") is read from the pick's own market
-   link slug when one carries it; otherwise the team code stands in,
-   so the picker never shows a blank game. */
+   The ticket checker's preset picks read this list: the WHOLE board
+   (TOP_PROPS — every sport and prop type), plus the TD and NHL lists,
+   strongest (highest model chance) first. It is built at load so it
+   always matches the current board.
+   (Home's strongest picks do NOT read this list either — they
+   read the Top Tier rows in TODAY_BETS; see renderHomePicks.)
+   The matchup ("ORL @ PHX") is read from the pick's own market link
+   slug; the board carries no separate game field for props. */
 var LEANS=(function(){
   function gameFromMarkets(r){
     var urls=r.markets?[r.markets.polymarket,r.markets.kalshi,r.markets.novig]:[];
     for(var i=0;i<urls.length;i++){
-      var m=urls[i]&&String(urls[i]).match(/[a-z]+-([a-z]{2,4})-([a-z]{2,4})-\d{4}/);
+      var m=urls[i]&&String(urls[i]).match(/(?:nba|nfl|ncaaf|ncaab|nhl|mlb)-([a-z]{2,4})-([a-z]{2,4})-\d{4}/i);
       if(m) return m[1].toUpperCase()+" @ "+m[2].toUpperCase();
     }
     return null;
   }
-  function slug(s){return String(s||"").toLowerCase().replace(/[^a-z0-9]+/g,"-");}
+  function statName(raw){
+    var s=String(raw||"").toLowerCase();
+    if(/anytime|touchdown/.test(s)) return "Touchdown";
+    if(/shots on goal/.test(s)) return "Shots on goal";
+    if(/receiving/.test(s)) return "Receiving yards";
+    if(/rushing/.test(s)) return "Rushing yards";
+    if(/passing/.test(s)) return "Passing yards";
+    if(/receptions/.test(s)) return "Receptions";
+    if(/3\s*-?\s*point|three|threes/.test(s)) return "3-pointers";
+    if(/rebounds/.test(s)) return "Rebounds";
+    if(/assists/.test(s)) return "Assists";
+    if(/blocks/.test(s)) return "Blocks";
+    if(/steals/.test(s)) return "Steals";
+    if(/goals/.test(s)) return "Goals";
+    return "Points";
+  }
   var out=[], seen={};
-  function pushLean(o){
-    var k=(o.player+"|"+o.stat+"|"+o.line+"|"+o.side).toLowerCase();
-    if(seen[k]) return; seen[k]=1;
-    out.push(o);
+  function push(e){
+    if(!(e.p>0&&e.p<1)) return;
+    var key=(e.player+"|"+e.stat+"|"+(e.line==null?"":e.line)+"|"+e.side).toLowerCase();
+    if(seen[key]) return; seen[key]=true;
+    out.push(e);
   }
   (typeof TOP_PROPS!=="undefined"?TOP_PROPS:[]).forEach(function(r){
-    var pp=parseTopProp(r&&r.prop);
-    if(!pp||!r.player) return;
-    var p=(r.guess!=null&&isFinite(r.guess))?Math.round(Number(r.guess)*10)/1000:null;
-    if(!(p>0&&p<1)) return;
-    pushLean({
-      id:slug(r.player)+"-"+slug(pp.stat)+"-"+(pp.line==null?"td":pp.line),
-      player:r.player, team:r.team||null, game:gameFromMarkets(r)||r.team||null, date:r.date,
-      stat:pp.stat, line:pp.line, side:pp.side,
-      bookAvg:null, proj:null, p:p,
+    if(!r||!r.player) return;
+    var s=String(r.prop||"").trim(), parsed=null, m=null;
+    if(/anytime\s*td/i.test(s)) parsed={stat:"Touchdown",line:null,side:"Yes"};
+    else if((m=s.match(/^(over|under)\s+(\d+(?:\.\d+)?)\s+(.+)$/i))) parsed={stat:statName(m[3]),line:parseFloat(m[2]),side:m[1].toLowerCase()==="over"?"Over":"Under"};
+    if(!parsed) return;
+    push({
+      id:String(r.player||"pick").toLowerCase().replace(/[^a-z0-9]+/g,"-")+"-"+parsed.stat.toLowerCase().replace(/[^a-z0-9]+/g,"-")+"-"+(parsed.line==null?"td":parsed.line)+"-"+parsed.side.toLowerCase(),
+      player:r.player, team:r.team, game:gameFromMarkets(r), date:r.date,
+      stat:parsed.stat, line:parsed.line, side:parsed.side,
+      bookAvg:null, proj:null, p:Math.round(Number(r.guess)*10)/1000,
       flag:r.flag||""
     });
   });
   (typeof TD!=="undefined"?TD:[]).forEach(function(r){
-    if(!r.player||!(r.p>0&&r.p<1)) return;
-    pushLean({
-      id:slug(r.player)+"-touchdown-td",
-      player:r.player, team:r.team||null, game:r.game||r.team||null, date:null,
+    if(!r||!r.player) return;
+    push({
+      id:String(r.player).toLowerCase().replace(/[^a-z0-9]+/g,"-")+"-touchdown-yes",
+      player:r.player, team:r.team, game:r.game||null, date:null,
       stat:"Touchdown", line:null, side:"Yes",
       bookAvg:null, proj:null, p:r.p, flag:""
     });
   });
   (typeof NHL!=="undefined"?NHL:[]).forEach(function(r){
-    if(!r.player||!(r.cal>0&&r.cal<1)) return;
-    pushLean({
-      id:slug(r.player)+"-shots-on-goal-"+r.line,
-      player:r.player, team:r.team||null, game:r.team||null, date:null,
+    if(!r||!r.player||r.line==null) return;
+    push({
+      id:String(r.player).toLowerCase().replace(/[^a-z0-9]+/g,"-")+"-shots-on-goal-"+r.line+"-"+String(r.side||"").toLowerCase(),
+      player:r.player, team:r.team, game:null, date:null,
       stat:"Shots on goal", line:r.line, side:r.side,
       bookAvg:null, proj:null, p:r.cal, flag:""
     });
@@ -4398,13 +4413,19 @@ function isValuePlay(p){
 function pickBadgesHtml(p){
   return "";
 }
+/* Plain-words rendering of a sim flag: the data says "sim/model
+   disagree by N%"; on screen it reads "Our model and the simulation
+   disagree by N%" (Kevin, Nov 7). The data itself is untouched. */
+function simFlagText(flag){
+  return String(flag||"").replace(/^sim\/model disagree by /,"Our model and the simulation disagree by ");
+}
 function propSimHtml(r){
   if(!r) return "";
   var hasSim=(typeof r.sim_p_over==="number"&&isFinite(r.sim_p_over));
   if(!hasSim&&!r.sim_flag) return "";
   var txt="";
   if(hasSim) txt='Simulation: <b>'+Math.round(r.sim_p_over*100)+'%</b> chance it goes over the line';
-  if(r.sim_flag) txt+=(txt?' &middot; ':"")+esc(String(r.sim_flag).replace(/sim\/model/i,"Our model and the simulation"));
+  if(r.sim_flag) txt+=(txt?' &middot; ':"")+esc(simFlagText(r.sim_flag));
   /* No ⓘ here any more: the sim explanation rides on the row's single
      ⓘ (propRowInfoHtml below), so a sim row shows one icon, not two. */
   return '<div class="sim-lines"><div class="sim-text">'+txt+'</div></div>';
@@ -4425,7 +4446,7 @@ function propRowInfoHtml(r){
   if(r.flag) parts.push("Note on this pick: "+r.flag);
   if(hasSim) parts.push("Simulation: "+Math.round(r.sim_p_over*100)+"% went over the line in simulated games \u2014 a second check, separate from our guess.");
   if(typeof r.sim_p5==="number"&&isFinite(r.sim_p5)&&typeof r.sim_p95==="number"&&isFinite(r.sim_p95)) parts.push("In simulated games, the middle 90% of outcomes fell between "+fmtLine(r.sim_p5)+" and "+fmtLine(r.sim_p95)+".");
-  if(r.sim_flag) parts.push("Simulation note: "+String(r.sim_flag).replace(/sim\/model/i,"Our model and the simulation"));
+  if(r.sim_flag) parts.push("Simulation note: "+simFlagText(r.sim_flag));
   if(!parts.length) return "";
   return '<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="More about this pick">i</button><span class="tip">'+esc(parts.join(" "))+'</span></span>';
 }
@@ -4647,22 +4668,6 @@ function legLabel(l){
   return s;
 }
 function legKey(l){return (l.player+"|"+fmtLine(l.line)+"|"+l.side+"|"+l.stat).toLowerCase();}
-/* Duplicate legs survive when the board loop and the generic regex
-   disagree on the stat (or one of them has no chance): collapse by
-   full player name + line + side, keeping the leg with a model
-   chance — and the board's stat — over a chance-less duplicate.
-   The full name (not just the surname) is the key, so two different
-   players who share a surname are never collapsed into one leg. */
-function dedupeLegs(legs){
-  var best={}, order=[];
-  legs.forEach(function(l){
-    var k=(String(l.player||"").toLowerCase().replace(/\s+/g," ").trim()+"|"+fmtLine(l.line)+"|"+String(l.side||"").toLowerCase());
-    if(best[k]==null){best[k]=l;order.push(k);return;}
-    var cur=best[k];
-    if(cur.p==null&&l.p!=null) best[k]=l;
-  });
-  return order.map(function(k){return best[k];});
-}
 /* A leg's chance comes ONLY from the board: match player + kind of
    pick + line + over/under against LEANS and TOP_PROPS. No match
    returns null and the leg is left out of the score. The user never
@@ -4680,6 +4685,7 @@ function boardChanceFor(player,stat,line,side){
     return pp.length>1&&bp.length>1&&pp[pp.length-1]===bp[bp.length-1]&&pp[0].charAt(0)===bp[0].charAt(0);
   }
   function lineHit(boardLine){
+    if(line==null&&boardLine==null) return true;
     if(line==null||boardLine==null) return false;
     return Math.abs(Number(line)-Number(boardLine))<0.001;
   }
@@ -4704,20 +4710,19 @@ function marketOptions(selected){
   return opts.map(function(m){return '<option'+(m===selected?" selected":"")+'>'+esc(m)+'</option>';}).join("");
 }
 function sideOptions(selected){
-  return ["Over","Under","Yes","No","Cover"].map(function(s){return '<option'+(s===selected?" selected":"")+'>'+s+'</option>';}).join("");
+  return ["Over","Under","Yes","No"].map(function(s){return '<option'+(s===selected?" selected":"")+'>'+s+'</option>';}).join("");
 }
 function renderLegs(){
   clearTicketSim();
-  var wrap=$("legList");
-  /* The read-only list is what the ticket shows by default — player,
-     pick, line and our chance, no editing. The editable cards live
-     behind the "Fix or add legs" toggle. */
   var ro=$("legListReadOnly");
   if(ro){
-    ro.innerHTML=ticketLegs.length?ticketLegs.map(function(l){
-      return '<div class="compare-row"><b>'+esc(legLabel(l))+'</b><span>'+(l.p!=null?("Our chance: "+pct(l.p)):("No model chance"))+'</span></div>';
-    }).join(""):"";
+    ro.innerHTML=ticketLegs.length
+      ? ticketLegs.map(function(l){
+          return '<div class="compare-row"><b>'+esc(legLabel(l))+'</b><span>Our chance: '+(l.p!=null?esc(pct(l.p)):"no model chance \u2014 left out of the score")+'</span></div>';
+        }).join("")
+      : '<p class="note" style="margin-top:0">No legs yet.</p>';
   }
+  var wrap=$("legList");
   if(!ticketLegs.length){
     wrap.innerHTML="";
     $("noLegsNote").hidden=false;
@@ -4768,9 +4773,8 @@ function renderChips(){
   $("legPick").innerHTML=LEANS.map(function(l){
     var probe={player:l.player,stat:l.stat,line:l.line,side:l.side,p:l.p};
     var on=ticketLegs.some(function(t){return legKey(t)===legKey(probe);});
-    var pickTxt=l.line==null?l.stat:(l.side+" "+l.line+" "+l.stat);
-    var gameTxt=l.game||l.team||"";
-    return '<button type="button" class="legbtn" data-chip="'+l.id+'" aria-pressed="'+(on?"true":"false")+'"><span class="tick" aria-hidden="true">\u2713</span><span class="nm"><b>'+esc(l.player)+'</b><span>'+esc(pickTxt)+(gameTxt?" &middot; "+esc(gameTxt):"")+'</span></span><span class="pp">'+pct(l.p)+'</span></button>';
+    var pickTxt=esc(l.side)+(l.line!=null?" "+fmtLine(l.line):"")+" "+esc(l.stat)+(l.game?' &middot; '+esc(l.game):"");
+    return '<button type="button" class="legbtn" data-chip="'+l.id+'" aria-pressed="'+(on?"true":"false")+'"><span class="tick" aria-hidden="true">\u2713</span><span class="nm"><b>'+esc(l.player)+'</b><span>'+pickTxt+'</span></span><span class="pp">'+pct(l.p)+'</span></button>';
   }).join("");
 }
 $("legPick").addEventListener("click",function(e){
@@ -4802,8 +4806,9 @@ function renderPayoutInputs(){
   var n=ticketLegs.length, html="";
   function inp(key,label,val){return '<div class="field"><label for="pay-'+key+'">'+label+'</label><input type="number" id="pay-'+key+'" data-pay="'+key+'" value="'+val+'" min="0" step="0.01" inputmode="decimal"></div>';}
   if(n===0){html=inp("all","Add a leg to see your payout",ticketPayouts.all);}
-  else if(ticketMode==="standard"){html=inp("all",n===1?"Pays back if it hits (\u00d7)":"Pays back if all "+n+" hit (\u00d7)",ticketPayouts.all);}
-  else{html=inp("all",n===1?"Pays back if it hits (\u00d7)":"Pays back if all "+n+" hit (\u00d7)",ticketPayouts.all)+inp("minus1","Pays back if you miss one (\u00d7)",ticketPayouts.minus1);}
+  else if(n===1){html=inp("all","Pays back if it hits (\u00d7)",ticketPayouts.all);}
+  else if(ticketMode==="standard"){html=inp("all","Pays back if all "+n+" hit (\u00d7)",ticketPayouts.all);}
+  else{html=inp("all","Pays back if all "+n+" hit (\u00d7)",ticketPayouts.all)+inp("minus1","Pays back if you miss one (\u00d7)",ticketPayouts.minus1);}
   $("payoutControls").innerHTML=html;
   Array.prototype.forEach.call($("payoutControls").querySelectorAll("[data-pay]"),function(inpEl){
     inpEl.addEventListener("input",function(){
@@ -4847,16 +4852,12 @@ function fmtOneIn(x){
   if(x>=10) return String(Math.round(x));
   return (Math.round(x*10)/10).toFixed(1);
 }
-/* Letter grade for the ticket score (50 + value%): the big display
-   shows the grade, the number stays as a secondary detail. A is a
-   +20% edge or better, B +10% to +19%, C a fair bet (0% to +9%),
-   D -10% to -1%, F worse than -10%. */
 function ticketGrade(score){
-  if(score>=70) return {grade:"A",desc:"Great value"};
-  if(score>=60) return {grade:"B",desc:"Good value"};
-  if(score>=50) return {grade:"C",desc:"Fair"};
-  if(score>=40) return {grade:"D",desc:"Poor value"};
-  return {grade:"F",desc:"Bad value"};
+  if(score>=70) return {letter:"A",label:"Great value"};
+  if(score>=60) return {letter:"B",label:"Good value"};
+  if(score>=50) return {letter:"C",label:"Fair"};
+  if(score>=40) return {letter:"D",label:"Poor value"};
+  return {letter:"F",label:"Bad value"};
 }
 function computeTicket(){
   /* Guard once at the top: collect the required elements and return
@@ -4885,7 +4886,7 @@ function computeTicket(){
     $("corrNote").innerHTML="";
   }
   if(n<1||!(ticketPayouts.all>0)){
-    setWaiting(n<1?"Not enough to score yet. Tap the \u24D8 by the score to check the legs, or snap your ticket again.":"We don\u2019t know what this ticket pays yet. Tap the \u24D8 by the score and enter it.");
+    setWaiting(n<1?"Not enough to score yet. Open \u201CFix or add legs\u201D below to check the legs, or snap your ticket again.":"We don\u2019t know what this ticket pays yet. Open \u201CFix or add legs\u201D below and enter it.");
     return;
   }
   if(scored.length<1){
@@ -4903,13 +4904,13 @@ function computeTicket(){
   var hitN=oneIn(pAll);
   var up=score>=60;
   card.className="score-card "+(up?"good":"bad");
-  var tg=ticketGrade(score);
-  $("scoreBig").textContent=tg.grade;
-  $("verdictSentence").textContent=tg.desc+". Score "+score+" out of 100. No graded record yet.";
+  var grade=ticketGrade(score);
+  $("scoreBig").textContent=grade.letter;
+  $("verdictSentence").textContent=grade.label+". Score "+score+" out of 100. No graded record yet.";
   $("statValue").textContent=fmtVal(valuePct);
   $("statHit").textContent="1 in "+hitN;
   $("statAvg").textContent=money(expPayout);
-  $("scoreExplain").textContent="50 is a fair bet. This ticket pays back about "+money(expPayout)+" on average for every "+money(stake)+" you put in, if you made the same ticket over and over. It hits about 1 time in "+hitN+" ("+pct(pAll)+"). One ticket either wins it all or loses it all. The average isn\u2019t a promise."+(n>8?" The simulator below only runs 8 legs at most, so extra legs are left out there.":"");
+  $("scoreExplain").textContent="50 is a fair bet. This ticket pays back about "+money(expPayout)+" on average for every "+money(stake)+" you put in, if you made the same ticket over and over. It hits about 1 time in "+hitN+" ("+pct(pAll)+"). One ticket either wins it all or loses it all. The average isn\u2019t a promise.";
   /* per-leg comparison: split the payout evenly across the legs */
   var mEff=(pAll>0&&expMult>0)?expMult/pAll:0;
   var perLegMult=mEff>0?Math.pow(mEff,1/n):0;
@@ -5018,17 +5019,7 @@ function simGameOptions(){
   var opts=[], seen={};
   function push(o){
     var k=o.away+" @ "+o.home;
-    if(seen[k]){
-      /* Same game from a second source (FEED_GAMES first, then the
-         headline lists): fill in the sim and book line the first
-         source did not carry, so the ticket checker can price
-         spreads and totals from the sim. */
-      var ex=opts[seen[k]];
-      if(ex&&ex.sim==null&&o.sim!=null) ex.sim=o.sim;
-      if(ex&&ex.book==null&&o.book!=null) ex.book=o.book;
-      return;
-    }
-    seen[k]=opts.length;
+    if(seen[k]) return; seen[k]=true;
     if(!simDateNotPast(o.date)) return;
     opts.push(o);
   }
@@ -5038,8 +5029,7 @@ function simGameOptions(){
       var lg=String(g.sport||"").toLowerCase();
       var fav=g.pHome>=0.5?g.home:g.away;
       push({league:lg,away:g.away,home:g.home,pHome:g.pHome,side:g.pHome>=0.5?"home":"away",
-            label:fav+" to win ("+g.g+", "+g.sport+")",date:g.date,p:g.pHome>=0.5?g.pHome:1-g.pHome,
-            sim:g.sim||null,book:null});
+            label:fav+" to win ("+g.g+", "+g.sport+")",date:g.date,p:g.pHome>=0.5?g.pHome:1-g.pHome,sim:g.sim||null,book:(g.book!=null?g.book:null)});
     });
   }catch(e){}
   [["nfl",NFL_FORECASTS],["cfb",CFB_FORECASTS],["cbb",CBB_FORECASTS]].forEach(function(pair){
@@ -5052,8 +5042,7 @@ function simGameOptions(){
         var side=f.pick===home?"home":"away";
         var pHome=side==="home"?pPick:1-pPick;
         push({league:pair[0],away:away,home:home,pHome:pHome,side:side,
-              label:f.pick+" to win ("+f.g+", "+pair[0].toUpperCase()+")",date:f.date,p:pPick,
-              sim:f.sim||null,book:f.book||null});
+              label:f.pick+" to win ("+f.g+", "+pair[0].toUpperCase()+")",date:f.date,p:pPick,sim:f.sim||null,book:(f.book!=null?f.book:null)});
       });
     }catch(e){}
   });
@@ -5067,8 +5056,7 @@ function simGameOptions(){
       var pPick=side==="home"?g.pHome:g.pAway;
       push({league:String(g.league||"epl").toLowerCase(),away:parts[0],home:parts[1],
             pHome:g.pHome,pDraw:g.pDraw,side:side,
-            label:g.favorite+" to win ("+g.g+", "+(g.league||"Soccer")+")",date:g.date,p:pPick,
-            sim:g.sim||null,book:null});
+            label:g.favorite+" to win ("+g.g+", "+(g.league||"Soccer")+")",date:g.date,p:pPick,sim:g.sim||null,book:null});
     });
   }catch(e){}
   return opts;
@@ -5076,20 +5064,15 @@ function simGameOptions(){
 function simPropOptions(){
   try{
     return (typeof LEANS!=="undefined"?LEANS:[]).filter(function(l){return l.p>0&&l.p<1;}).map(function(l){
-      var pick=l.line==null?l.player+" "+l.stat:l.player+" "+l.side+" "+l.line+" "+l.stat;
       return {id:l.id,player:l.player,team:l.team,game:l.game,stat:l.stat,line:l.line,side:l.side,p:l.p,
-              label:pick+" ("+(l.game||l.team||"")+")"};
+              label:l.player+" "+l.side+(l.line!=null?" "+fmtLine(l.line):"")+" "+l.stat+(l.game?" ("+l.game+")":"")};
     });
   }catch(e){return [];}
 }
 var simGameOpts=[], simPropOpts=[], simLegs=[];
 var simFromTicket=false, simTicketUnmatched=[];
 function simFillPickers(){
-  /* The simulator section was removed from the Check My Ticket tab
-     (redundant once the checker itself reports value, chance and
-     average). If its elements are gone, do nothing instead of
-     throwing on a missing node. */
-  if(!$("simGamePick")||!$("simPropPick")) return;
+  if(!$orNull("simGamePick")||!$orNull("simPropPick")) return;
   simGameOpts=simGameOptions();
   simPropOpts=simPropOptions();
   $("simGamePick").innerHTML=simGameOpts.length
@@ -5258,18 +5241,20 @@ function simRun(){
   else if(modelled) corr.innerHTML='<div class="callout" style="margin-top:12px"><b>Legs from the same game.</b> The simulation runs those legs on the same simulated game, so their link is built in.</div>';
   else corr.innerHTML="";
 }
-/* Simulator controls were removed with the Step 3 section; only
-   wire them up if the elements exist. */
 (function(){
-  var a=$("simAddGame"); if(a) a.addEventListener("click",simAddGame);
-  var p=$("simAddProp"); if(p) p.addEventListener("click",simAddProp);
-  var l=$("simLegs"); if(l) l.addEventListener("click",function(e){
+  var simAddGameEl=$orNull("simAddGame");
+  if(simAddGameEl) simAddGameEl.addEventListener("click",simAddGame);
+  var simAddPropEl=$orNull("simAddProp");
+  if(simAddPropEl) simAddPropEl.addEventListener("click",simAddProp);
+  var simLegsEl=$orNull("simLegs");
+  if(simLegsEl) simLegsEl.addEventListener("click",function(e){
     var b=e.target.closest("[data-sim-remove]"); if(!b) return;
     simFromTicket=false; simTicketUnmatched=[];
     simLegs.splice(parseInt(b.getAttribute("data-sim-remove"),10),1);
     simRenderLegs();
   });
-  var r=$("simRun"); if(r) r.addEventListener("click",simRun);
+  var simRunEl=$orNull("simRun");
+  if(simRunEl) simRunEl.addEventListener("click",simRun);
 })();
 try{simFillPickers();}catch(e){}
 simRenderLegs();
@@ -5277,9 +5262,6 @@ simRenderLegs();
 function setSlipStatus(msg){$("slipStatus").textContent=msg;}
 function normText(s){return String(s||"").toLowerCase().replace(/[^a-z0-9 ]/g," ").replace(/\s+/g," ").trim();}
 function lastNameOf(name){
-  /* Hyphens become spaces first (the same way normText treats them),
-     so "Gilgeous-Alexander" yields "alexander", which is what the
-     normalized slip text contains. */
   var parts=String(name).replace(/\./g,"").replace(/-/g," ").split(/\s+/).filter(function(w){return w&&["Jr","Sr","II","III","IV"].indexOf(w)<0;});
   return parts.length?parts[parts.length-1].toLowerCase():"";
 }
@@ -5296,27 +5278,6 @@ function statFromText(seg,fallback){
   if(/assists/.test(s)) return "Assists";
   if(/points|pts|\bpa\b/.test(s)) return "Points";
   return fallback||"Points";
-}
-/* The stat word a board leg needs near the player's name before the
-   mention counts as that leg: one mention of a player must not spawn
-   a leg for every prop that player has on the board. */
-function statEvidenceRe(stat){
-  switch(String(stat||"")){
-    case "Points": return /points|\bpts\b|\bpa\b/;
-    case "Rebounds": return /rebounds/;
-    case "Assists": return /assists/;
-    case "3-pointers": return /3\s*point|three|threes/;
-    case "Receiving yards": return /receiving/;
-    case "Receptions": return /receptions/;
-    case "Rushing yards": return /rushing/;
-    case "Passing yards": return /passing/;
-    case "Shots on goal": return /shots|sog/;
-    case "Touchdown": return /touchdown|\btd\b|anytime/;
-    case "Blocks": return /blocks/;
-    case "Steals": return /steals/;
-    case "Goals": return /goals/;
-    default: return null;
-  }
 }
 function escRe(s){return String(s).replace(/[.*+?^${}()|[\]\\]/g,"\\$&");}
 function statCanonical(raw){
@@ -5373,6 +5334,44 @@ function boardKnownLegs(){
   (typeof NHL!=="undefined"?NHL:[]).forEach(function(r){known.push({player:r.player,stat:"Shots on goal",line:r.line,side:r.side,p:r.cal,game:null,team:r.team});});
   return known;
 }
+/* The stat word a slip must actually show near a player's name before
+   a board entry for that player becomes a leg (H3): one mention of a
+   player must not spawn every board prop for that player. */
+function statEvidenceRe(stat){
+  var s=String(stat||"").toLowerCase();
+  if(/touchdown/.test(s)) return /touchdown|anytime\s*td|\btd\b/i;
+  if(/shots/.test(s)) return /shots on goal|shots|\bsog\b/i;
+  if(/receiving/.test(s)) return /receiving/i;
+  if(/receptions/.test(s)) return /receptions|catches/i;
+  if(/rushing/.test(s)) return /rushing/i;
+  if(/passing/.test(s)) return /passing/i;
+  if(/3-point/.test(s)) return /3\s*-?\s*point|threes|three/i;
+  if(/rebounds/.test(s)) return /rebounds|\breb\b/i;
+  if(/assists/.test(s)) return /assists|\bast\b/i;
+  if(/blocks/.test(s)) return /blocks/i;
+  if(/steals/.test(s)) return /steals/i;
+  if(/goals/.test(s)) return /goals/i;
+  if(/points/.test(s)) return /points|\bpts\b/i;
+  var w=normText(stat);
+  return w?new RegExp("\\b"+escRe(w)+"\\b","i"):/$^/;
+}
+/* Collapse duplicate legs (same player + line + side + stat), keeping
+   the copy that carries a model chance. The key uses the FULL
+   normalized player name, never just the surname, so two different
+   players who share a surname are never collapsed. */
+function dedupeLegs(legs){
+  var out=[], idx={};
+  (legs||[]).forEach(function(l){
+    var key=normName(l.player)+"|"+(l.line==null?"":l.line)+"|"+String(l.side||"").toLowerCase()+"|"+String(l.stat||"").toLowerCase();
+    if(idx[key]!=null){
+      var prev=out[idx[key]];
+      if(prev&&prev.p==null&&l.p!=null) out[idx[key]]=l;
+      return;
+    }
+    idx[key]=out.length; out.push(l);
+  });
+  return out;
+}
 /* A prediction-market Yes/No price: Kalshi-style cents ("YES 62c",
    "No 38¢", "62 cents") or a Polymarket-style decimal ("No 0.65").
    Returns {side, mult} — the payout multiplier the price implies. */
@@ -5415,8 +5414,8 @@ function parsePredictionSlip(text,known,NICKS,NBA_NICKS){
   var hasCostPayout=/cost/i.test(raw)&&/max\s*payout/i.test(raw);
   var priceInfo=extractPmPrice(raw);
   var chanceM=raw.match(/(\d+(?:\.\d+)?)\s*%\s*chance/i);
-  var hasNPlusLine=matches.length>0||/\d+\s*\+\s*[A-Za-z]/.test(raw);
   var comboM=raw.match(/(\d+)-way combo/i);
+  var hasNPlusLine=matches.length>0||/\d+\s*\+\s*[A-Za-z]/.test(raw);
   var isPM=(hasNPlusLine&&(hasCostPayout||!!priceInfo||!!chanceM))
     ||(matches.length===0&&!!priceInfo&&/\bto win\b/i.test(raw))
     ||(!!comboM&&hasCostPayout);
@@ -5431,68 +5430,86 @@ function parsePredictionSlip(text,known,NICKS,NBA_NICKS){
     }
     seen[key]=legs.length; legs.push(leg);
   }
-  /* Prediction-market team combo (e.g. Coinbase "4-way combo"): a
-     "N-way combo" header, then one "X vs Y" matchup per leg with the
-     picked team's code on the next line, and Cost / Max Payout at the
-     bottom. There is no odds token, no "moneyline" text and no "to
-     win" near the teams, so the sportsbook moneyline loop cannot see
-     these legs at all. Each matchup + code pair is a moneyline leg
-     for the picked team, matched to the board game for the chance. */
+  /* Coinbase team combos ("4-way combo"): one "X vs Y" matchup per
+     leg, with the picked team's code alone on the next line — no odds
+     token, no "moneyline" text and no "to win" near the teams, so the
+     other moneyline paths cannot see these legs at all. Both matchup
+     teams must resolve to board teams and the picked code must be one
+     of them; the leg then carries the board's win chance for the
+     picked team. */
   if(comboM){
-    var allNicks={};
-    Object.keys(NICKS||{}).forEach(function(k){allNicks[k]=NICKS[k];});
-    Object.keys(NBA_NICKS||{}).forEach(function(k){allNicks[k]=NBA_NICKS[k];});
-    var codeSet={};
-    (typeof simGameOpts!=="undefined"?simGameOpts:[]).forEach(function(g){codeSet[String(g.away).toUpperCase()]=1;codeSet[String(g.home).toUpperCase()]=1;});
+    var ALL_NICKS={};
+    if(NICKS) Object.keys(NICKS).forEach(function(nk){ALL_NICKS[nk]=NICKS[nk];});
+    if(NBA_NICKS) Object.keys(NBA_NICKS).forEach(function(nk){ALL_NICKS[nk]=NBA_NICKS[nk];});
+    var boardGames=(typeof simGameOpts!=="undefined"?simGameOpts:[]);
+    var boardCodeByUpper={};
+    boardGames.forEach(function(g){
+      if(g.away) boardCodeByUpper[String(g.away).toUpperCase()]=g.away;
+      if(g.home) boardCodeByUpper[String(g.home).toUpperCase()]=g.home;
+    });
     function resolveTeam(name){
-      var s=String(name||"").trim().toLowerCase().replace(/\s+/g," ");
-      if(!s) return null;
-      var up=s.toUpperCase();
-      if(codeSet[up]) return up;
-      if(allNicks[s]) return allNicks[s];
-      /* Last word is often the nickname ("Oklahoma City Thunder" ->
-         "thunder"); try it when the full name did not resolve. */
-      var parts=s.split(" ");
-      if(parts.length>1&&allNicks[parts[parts.length-1]]) return allNicks[parts[parts.length-1]];
+      var clean=String(name||"").trim().replace(/\s+/g," ");
+      if(!clean) return null;
+      var up=clean.toUpperCase();
+      if(boardCodeByUpper[up]) return boardCodeByUpper[up];
+      var low=clean.toLowerCase();
+      if(ALL_NICKS[low]){
+        var mapped=ALL_NICKS[low];
+        return boardCodeByUpper[String(mapped).toUpperCase()]||mapped;
+      }
+      var words=low.split(" ");
+      var last=words[words.length-1]||"";
+      if(last&&ALL_NICKS[last]){
+        var mappedLast=ALL_NICKS[last];
+        return boardCodeByUpper[String(mappedLast).toUpperCase()]||mappedLast;
+      }
+      if(last&&boardCodeByUpper[last.toUpperCase()]) return boardCodeByUpper[last.toUpperCase()];
       return null;
     }
-    var comboPicks={};
+    var comboPicks=new Set();
     var comboRe=/([A-Za-z][A-Za-z .'-]*?)\s+vs\s+([A-Za-z][A-Za-z .'-]*?)\s*\r?\n\s*([A-Za-z]{2,3})\b/g, cm;
     while((cm=comboRe.exec(raw))!==null){
-      var cA=resolveTeam(cm[1]), cB=resolveTeam(cm[2]);
-      var pick=String(cm[3]||"").toUpperCase();
-      if(!cA||!cB||!codeSet[pick]) continue;
-      if(pick!==cA&&pick!==cB) continue;
-      var game=null;
-      (typeof simGameOpts!=="undefined"?simGameOpts:[]).forEach(function(g){
-        if(game) return;
-        var a=String(g.away).toUpperCase(), h=String(g.home).toUpperCase();
-        if((a===cA&&h===cB)||(a===cB&&h===cA)) game=g;
+      var codeA=resolveTeam(cm[1]), codeB=resolveTeam(cm[2]);
+      if(!codeA||!codeB) continue;
+      var pickedUp=String(cm[3]||"").toUpperCase();
+      var picked=null;
+      if(pickedUp===String(codeA).toUpperCase()) picked=codeA;
+      else if(pickedUp===String(codeB).toUpperCase()) picked=codeB;
+      else continue;
+      var comboGame=null;
+      boardGames.forEach(function(g){
+        if(comboGame) return;
+        var awayUp=String(g.away).toUpperCase(), homeUp=String(g.home).toUpperCase();
+        var aUp=String(codeA).toUpperCase(), bUp=String(codeB).toUpperCase();
+        if((awayUp===aUp&&homeUp===bUp)||(awayUp===bUp&&homeUp===aUp)) comboGame=g;
       });
-      if(!game) continue;
-      var isHome=pick===String(game.home).toUpperCase();
-      var pTeam=isHome?game.pHome:(game.pDraw!=null?1-game.pHome-game.pDraw:1-game.pHome);
-      comboPicks[pick]=1;
-      addPmLeg({player:pick,stat:"To win",line:null,side:"Yes",p:pTeam,game:game.away+" @ "+game.home,team:pick,ml:true});
+      if(!comboGame) continue;
+      var isHomePick=String(picked).toUpperCase()===String(comboGame.home).toUpperCase();
+      var pPick=isHomePick?comboGame.pHome:(comboGame.pDraw!=null?1-comboGame.pHome-comboGame.pDraw:1-comboGame.pHome);
+      comboPicks.add(String(picked).toUpperCase());
+      addPmLeg({player:picked,stat:"To win",line:null,side:"Yes",p:pPick,game:comboGame.away+" @ "+comboGame.home,team:picked,ml:true});
     }
-    /* Fallback: a picked code anywhere in the text is enough, even
-       when the "X vs Y" line above it did not parse (OCR can split a
-       multi-word city such as "Oklahoma City" across lines, or put
-       the code on the same line as the team name, which breaks the
-       matchup regex). Each code appears once per day, so it
-       identifies exactly one board game. Only codes not already
-       added above are picked up here. Whole-word match only, so
-       "ATL" never fires inside "Atlanta". */
-    (typeof simGameOpts!=="undefined"?simGameOpts:[]).forEach(function(g){
-      [String(g.away).toUpperCase(),String(g.home).toUpperCase()].forEach(function(code){
-        if(!code||comboPicks[code]) return;
-        var re=new RegExp("\\b"+code+"\\b");
-        if(!re.test(raw)) return;
-        var isHome=code===String(g.home).toUpperCase();
-        var pTeam=isHome?g.pHome:(g.pDraw!=null?1-g.pHome-g.pDraw:1-g.pHome);
-        comboPicks[code]=1;
-        addPmLeg({player:code,stat:"To win",line:null,side:"Yes",p:pTeam,game:g.away+" @ "+g.home,team:code,ml:true});
+    /* Fallback: OCR can split a multi-word city such as "Oklahoma
+       City" across two lines, so that matchup never matches the
+       "X vs Y" regex above. The picked team's code still sits alone
+       on its own line, so scan line by line for a standalone 2-3
+       letter code and recover any board team not already added. */
+    String(raw||"").split(/\r?\n/).forEach(function(line){
+      var code=String(line||"").trim().toUpperCase();
+      if(!/^[A-Z]{2,3}$/.test(code)) return;
+      if(comboPicks.has(code)) return;
+      var boardCode=boardCodeByUpper[code];
+      if(!boardCode) return;
+      var fallbackGame=null;
+      boardGames.forEach(function(g){
+        if(fallbackGame) return;
+        if(String(g.away).toUpperCase()===code||String(g.home).toUpperCase()===code) fallbackGame=g;
       });
+      if(!fallbackGame) return;
+      var isHomeFallback=String(boardCode).toUpperCase()===String(fallbackGame.home).toUpperCase();
+      var pFallback=isHomeFallback?fallbackGame.pHome:(fallbackGame.pDraw!=null?1-fallbackGame.pHome-fallbackGame.pDraw:1-fallbackGame.pHome);
+      comboPicks.add(code);
+      addPmLeg({player:boardCode,stat:"To win",line:null,side:"Yes",p:pFallback,game:fallbackGame.away+" @ "+fallbackGame.home,team:boardCode,ml:true});
     });
   }
   function surnameBefore(before){
@@ -5525,18 +5542,19 @@ function parsePredictionSlip(text,known,NICKS,NBA_NICKS){
     var impSide=sideWord==="no"?"Under":"Over";
     var ln=surname.toLowerCase();
     var cands=known.filter(function(k){return lastNameOf(k.player)===ln&&k.stat===stat;});
-    var exact=null, oppExact=null;
-    cands.forEach(function(k){
-      if(!exact&&boardLineMatches(impLine,impSide,k)) exact=k;
-      if(!oppExact&&boardLineMatches(impLine,impSide==="Over"?"Under":"Over",k)) oppExact=k;
-    });
+    var exact=null;
+    cands.forEach(function(k){if(!exact&&boardLineMatches(impLine,impSide,k)) exact=k;});
     if(exact) addPmLeg({player:exact.player,stat:stat,line:impLine,side:impSide,p:exact.p,game:exact.game,team:exact.team});
-    /* A "No" buy on the Over line is the Under at the same line:
-       when the board only carries the other side, its chance is
-       the complement — not a blank. Same the other way round. */
-    else if(oppExact&&oppExact.p!=null) addPmLeg({player:oppExact.player,stat:stat,line:impLine,side:impSide,p:1-oppExact.p,game:oppExact.game,team:oppExact.team});
-    else if(cands.length) addPmLeg({player:cands[0].player,stat:stat,line:impLine,side:impSide,p:null,game:cands[0].game,team:cands[0].team});
-    else addPmLeg({player:surname,stat:stat,line:impLine,side:impSide,p:null,game:null,team:null});
+    else {
+      /* No exact match on the implied side: if the opposite side has
+         an exact match at the same line, the chance is its complement
+         (a "No" on an Over-only board entry prices at 1 - P(Over)). */
+      var oppSide=impSide==="Under"?"Over":"Under", oppExact=null;
+      cands.forEach(function(k){if(!oppExact&&boardLineMatches(impLine,oppSide,k)) oppExact=k;});
+      if(oppExact&&oppExact.p!=null) addPmLeg({player:oppExact.player,stat:stat,line:impLine,side:impSide,p:1-oppExact.p,game:oppExact.game,team:oppExact.team});
+      else if(cands.length) addPmLeg({player:cands[0].player,stat:stat,line:impLine,side:impSide,p:null,game:cands[0].game,team:cands[0].team});
+      else addPmLeg({player:surname,stat:stat,line:impLine,side:impSide,p:null,game:null,team:null});
+    }
   });
   /* Moneyline prediction market: a Yes/No price with a "TEAM to win"
      line and no N+ leg. Yes buys the team's win chance, No buys
@@ -5548,17 +5566,14 @@ function parsePredictionSlip(text,known,NICKS,NBA_NICKS){
       var words=tw[1].trim().split(/\s+/);
       var lastW=(words[words.length-1]||"").replace(/[^A-Za-z0-9]/g,"");
       var code=null, game=null;
-      /* The team can be an NFL or an NBA name ("Denver Nuggets to
-         win"): resolve against the merged nickname map, the same
-         one the combo branch builds. */
-      var allNicks2={};
-      Object.keys(NICKS||{}).forEach(function(k){allNicks2[k]=NICKS[k];});
-      Object.keys(NBA_NICKS||{}).forEach(function(k){allNicks2[k]=NBA_NICKS[k];});
+      var allNicks={};
+      if(NICKS) Object.keys(NICKS).forEach(function(nk){allNicks[nk]=NICKS[nk];});
+      if(NBA_NICKS) Object.keys(NBA_NICKS).forEach(function(nk){allNicks[nk]=NBA_NICKS[nk];});
       (typeof simGameOpts!=="undefined"?simGameOpts:[]).forEach(function(g){
         if(game||!lastW) return;
         var lw=lastW.toLowerCase();
         if(String(g.away).toLowerCase()===lw||String(g.home).toLowerCase()===lw){ code=(lw===String(g.home).toLowerCase())?g.home:g.away; game=g; return; }
-        if(allNicks2[lw]&&(allNicks2[lw]===g.away||allNicks2[lw]===g.home)){ code=allNicks2[lw]; game=g; }
+        if(allNicks[lw]&&(allNicks[lw]===g.away||allNicks[lw]===g.home)){ code=allNicks[lw]; game=g; }
       });
       if(game&&code){
         var isHome=code===game.home;
@@ -5641,17 +5656,24 @@ function parsePredictionSlip(text,known,NICKS,NBA_NICKS){
 }
 function parseSlipText(text){
   var NFL_NICKS={jaguars:"JAX",ravens:"BAL",bills:"BUF",dolphins:"MIA",patriots:"NE",jets:"NYJ",bengals:"CIN",browns:"CLE",steelers:"PIT",texans:"HOU",colts:"IND",titans:"TEN",broncos:"DEN",chiefs:"KC",raiders:"LV",chargers:"LAC",cowboys:"DAL",giants:"NYG",eagles:"PHI",commanders:"WSH",bears:"CHI",lions:"DET",packers:"GB",vikings:"MIN",falcons:"ATL",panthers:"CAR",saints:"NO",buccaneers:"TB",cardinals:"ARI",rams:"LA","49ers":"SF",seahawks:"SEA"};
-  /* NBA team names: city + nickname, so a slip that says "Denver Nuggets"
-     (or just "Denver" or just "Nuggets") matches the same way the NFL
-     nicknames do. Without these, only the 3-letter code matched, so a
-     plain slip listing full team names found no moneyline legs at all. */
-  var NBA_NICKS={hawks:"ATL",atlanta:"ATL",celtics:"BOS",boston:"BOS",nets:"BKN",brooklyn:"BKN",hornets:"CHA",charlotte:"CHA",bulls:"CHI",chicago:"CHI",cavaliers:"CLE",cavs:"CLE",cleveland:"CLE",mavericks:"DAL",mavs:"DAL",dallas:"DAL",nuggets:"DEN",denver:"DEN",pistons:"DET",detroit:"DET",warriors:"GSW","golden state":"GSW",rockets:"HOU",houston:"HOU",pacers:"IND",indiana:"IND",clippers:"LAC",lakers:"LAL",grizzlies:"MEM",memphis:"MEM",heat:"MIA",miami:"MIA",bucks:"MIL",milwaukee:"MIL",timberwolves:"MIN",wolves:"MIN",minnesota:"MIN",pelicans:"NOP","new orleans":"NOP",knicks:"NYK","new york":"NYK",thunder:"OKC","oklahoma city":"OKC",magic:"ORL",orlando:"ORL","76ers":"PHI",sixers:"PHI",philadelphia:"PHI",suns:"PHX",phoenix:"PHX",blazers:"POR","trail blazers":"POR",portland:"POR",kings:"SAC",sacramento:"SAC",spurs:"SAS","san antonio":"SAS",raptors:"TOR",toronto:"TOR",jazz:"UTA",utah:"UTA",wizards:"WAS",washington:"WAS"};
+  var NBA_NICKS={celtics:"BOS",boston:"BOS",nets:"BKN",brooklyn:"BKN",hornets:"CHA",charlotte:"CHA",bulls:"CHI",chicago:"CHI",cavaliers:"CLE",cleveland:"CLE",mavericks:"DAL",dallas:"DAL",nuggets:"DEN",denver:"DEN",pistons:"DET",detroit:"DET",warriors:"GSW","golden state":"GSW",rockets:"HOU",houston:"HOU",pacers:"IND",indiana:"IND",clippers:"LAC",lakers:"LAL","los angeles":"LAL",grizzlies:"MEM",memphis:"MEM",heat:"MIA",miami:"MIA",bucks:"MIL",milwaukee:"MIL",timberwolves:"MIN",minnesota:"MIN",pelicans:"NOP","new orleans":"NOP",knicks:"NYK","new york":"NYK",thunder:"OKC","oklahoma city":"OKC",magic:"ORL",orlando:"ORL","76ers":"PHI",philadelphia:"PHI",suns:"PHX",phoenix:"PHX","trail blazers":"POR",blazers:"POR",portland:"POR",kings:"SAC",sacramento:"SAC",spurs:"SAS","san antonio":"SAS",raptors:"TOR",toronto:"TOR",jazz:"UTA",utah:"UTA",wizards:"WAS",washington:"WAS",hawks:"ATL",atlanta:"ATL"};
   var known=boardKnownLegs();
   /* Prediction markets are tried FIRST: when the slip is one, its
      result stands even if no leg parses — the sportsbook branch
      below would mis-read it. */
+  /* Flex slips (Underdog / Dabble): "Miss 1: 1.8x" is the miss-one
+     payout, and any flex slip puts the ticket in flex mode. */
+  var flexM=text.match(/miss\s*(?:1|one)\s*[:\-]?\s*(\d+(?:\.\d+)?)\s*x/i);
+  if(flexM){
+    var flexV=parseFloat(flexM[1]);
+    if(flexV>0&&flexV<100) ticketPayouts.minus1=Math.round(flexV*10000)/10000;
+  }
+  if(flexM||/\bflex\b/i.test(text)){
+    ticketMode="flex";
+    try{ $("btnFlex").setAttribute("aria-pressed","true"); $("btnStandard").setAttribute("aria-pressed","false"); }catch(e){}
+  }
   var pmLegs=parsePredictionSlip(text,known,NFL_NICKS,NBA_NICKS);
-  if(pmLegs!==null) return pmLegs;
+  if(pmLegs!==null) return dedupeLegs(pmLegs);
   var found=[], seen={};
   function addLeg(leg){
     var key=legKey(leg);
@@ -5664,25 +5686,8 @@ function parseSlipText(text){
   }
   var norm=normText(text);
   var raw=String(text||"");
-  var rawLow=raw.toLowerCase();
-  /* The next player's surname ends the current leg's segment: the
-     window must not run on into the following leg and pick up its
-     stat word or its line. (A newline cap would break slips that put
-     the line on the line after the name, so the boundary is the next
-     known surname instead.) */
-  var capNames={};
-  known.forEach(function(k){var l2=lastNameOf(k.player); if(l2) capNames[l2]=1;});
-  var capRe=null;
-  try{
-    var capList=Object.keys(capNames);
-    if(capList.length) capRe=new RegExp("\\b("+capList.map(escRe).join("|")+")\\b","gi");
-  }catch(e){capRe=null;}
-  function segEnd(hay,from,limit){
-    if(!capRe) return limit;
-    capRe.lastIndex=from;
-    var m=capRe.exec(hay);
-    return m?Math.min(limit,m.index):limit;
-  }
+  var knownSurnames={};
+  known.forEach(function(k){ var s0=lastNameOf(k.player); if(s0) knownSurnames[s0]=true; });
   known.forEach(function(k){
     var ln=lastNameOf(k.player);
     if(!ln) return;
@@ -5691,18 +5696,27 @@ function parseSlipText(text){
     var nPos=(" "+norm+" ").indexOf(" "+ln+" ");
     if(nPos<0) return;
     var idx=nPos;
-    var seg=norm.slice(idx,segEnd(norm,idx+ln.length+1,idx+160));
-    /* One mention of a player is not that player's every board prop:
-       the board leg's stat word has to show up near the name, or the
-       leg is not added at all. */
-    var evRe=statEvidenceRe(k.stat);
-    if(evRe&&!evRe.test(seg)) return;
+    /* Narrow the segment to THIS leg: it ends where the next known
+       player's surname starts, so a neighbouring leg's stat word is
+       never read as this leg's stat. */
+    var segEnd=idx+160;
+    Object.keys(knownSurnames).forEach(function(sn){
+      if(sn===ln) return;
+      var np=(" "+norm+" ").indexOf(" "+sn+" ",idx+ln.length);
+      if(np>=0&&np<segEnd) segEnd=np;
+    });
+    var seg=norm.slice(idx,segEnd);
+    /* Phantom-leg guard: a board entry becomes a leg only when the
+       slip itself names that stat near the player's name. One mention
+       of a player must not spawn every board prop for that player,
+       and a bare mention with no stat word yields no leg at all. */
+    if(!statEvidenceRe(k.stat).test(seg)) return;
     var side=k.side, line=k.line, pUse=k.p;
     if(k.line!=null){
       /* Lines are read from the RAW text: normalizing strips decimal
          points, so "23.5" came back as "23". */
       var rm=new RegExp("\\b"+escRe(ln)+"\\b","i").exec(raw);
-      var rawSeg=rm?raw.slice(rm.index,segEnd(rawLow,rm.index+ln.length+1,rm.index+220)):"";
+      var rawSeg=rm?raw.slice(rm.index,rm.index+220):"";
       var nPlus=rawSeg.match(/(\d+)\s*\+/);
       if(nPlus){
         /* Threshold guard: an "N+" near the name is a prediction-
@@ -5728,67 +5742,54 @@ function parseSlipText(text){
         }
       }
     }
-    /* A touchdown leg keeps the board's stat: the segment can hold a
-       later leg's stat word ("points"), which statFromText would
-       otherwise prefer over the touchdown. */
-    addLeg({player:k.player,stat:k.stat==="Touchdown"?k.stat:statFromText(seg,k.stat),line:line,side:side,p:pUse,game:k.game,team:k.team});
+    addLeg({player:k.player,stat:(k.line==null&&k.stat==="Touchdown")?"Touchdown":statFromText(seg,k.stat),line:line,side:side,p:pUse,game:k.game,team:k.team});
   });
   var re=/([A-Za-z][A-Za-z.'-]+(?:\s+[A-Za-z][A-Za-z.'-]+){0,2})\s+(over|under)\s+(\d+(?:\.\d+)?)/g, gm;
   var stop=["total payout","to win","potential payout","entry fee","to pay","flex play","power play"];
-  /* A captured "name" that is really a team ("Denver Nuggets Over
-     225.5") is a total, not a player prop — the total loop below
-     handles it, so the generic regex must not mint a phantom player
-     leg from it. The check is phrase-aware: a player surnamed
-     Washington (PJ Washington, Duane Washington) must still match,
-     so a single team word inside a longer name is not enough — the
-     whole name has to be team words, or contain a multi-word team
-     phrase like "oklahoma city". */
-  var teamPhraseSet={}, teamSingleSet={};
-  Object.keys(NFL_NICKS).concat(Object.keys(NBA_NICKS)).forEach(function(w){
-    if(w.indexOf(" ")>=0) teamPhraseSet[w]=1; else teamSingleSet[w]=1;
-  });
-  (typeof simGameOpts!=="undefined"?simGameOpts:[]).forEach(function(g){
-    [g.away,g.home].forEach(function(c){
-      var t=String(c||"").toLowerCase().trim();
-      if(!t) return;
-      if(t.indexOf(" ")>=0) teamPhraseSet[t]=1; else teamSingleSet[t]=1;
+  var BOOK_HEADS={fanduel:1,draftkings:1,betmgm:1,caesars:1,underdog:1,dabble:1,prizepicks:1,sleeper:1,bet365:1,betonline:1,kalshi:1,polymarket:1,novig:1,coinbase:1,espn:1,espnbet:1,fliff:1};
+  var STAT_WORDS={points:1,point:1,rebounds:1,rebound:1,assists:1,assist:1,yards:1,receptions:1,reception:1,catches:1,touchdowns:1,touchdown:1,shots:1,goals:1,threes:1,steals:1,blocks:1};
+  var TEAM_PHRASES={};
+  [NFL_NICKS,NBA_NICKS].forEach(function(mp){
+    var ks=Object.keys(mp);
+    ks.forEach(function(k1){
+      if(k1.indexOf(" ")>=0) TEAM_PHRASES[k1]=true;
+      ks.forEach(function(k2){ if(mp[k1]===mp[k2]) TEAM_PHRASES[k1+" "+k2]=true; });
     });
   });
-  function isTeamName(nm){
-    var nn=normText(nm);
-    if(teamPhraseSet[nn]) return true;
-    var hitPhrase=false;
-    Object.keys(teamPhraseSet).forEach(function(ph){if(nn.indexOf(ph)>=0) hitPhrase=true;});
-    if(hitPhrase) return true;
-    var words=nn.split(" ");
-    return words.length>0&&words.every(function(w){return !!teamSingleSet[w];});
-  }
   while((gm=re.exec(text))!==null){
     var name=gm[1].replace(/\s+/g," ").trim();
-    /* A book or header word leading the name ("FanDuel Nikola
-       Jokic") is not part of the player: strip it before the leg
-       is built, and drop the match if what is left is a single
-       stat word ("Points Over 23.5" is a header, not a player). */
-    name=name.replace(/^(fanduel|draftkings|betonline|novig|parlay|flex|underdog|bet365|play|points?|pointers|threes?)\s+/i,"").trim();
     if(name.split(" ").length<2) continue;
     if(stop.indexOf(normText(name))>=0) continue;
     if(/^(the|and|for|with|your|total|payout|win|bonus|boost)\b/i.test(name)) continue;
-    if(isTeamName(name)) continue;
+    /* Strip a leading book / header word: "FanDuel Nikola Jokic" is
+       Nikola Jokic, not a player called FanDuel Nikola Jokic. */
+    var nameWords=name.split(" ");
+    if(nameWords.length>1&&BOOK_HEADS[nameWords[0].toLowerCase().replace(/[^a-z0-9]/g,"")]){
+      nameWords.shift(); name=nameWords.join(" ");
+    }
+    if(name.split(" ").length<2) continue;
+    /* A "name" made only of stat words is a market header, not a player. */
+    if(nameWords.every(function(w){return !!STAT_WORDS[w.toLowerCase().replace(/[^a-z]/g,"")];})) continue;
+    /* Team names are not players. Phrase-aware: only a full team
+       phrase is skipped, so PJ Washington and Duane Washington —
+       whose surnames are also team cities — still match. */
+    if(TEAM_PHRASES[normText(name)]) continue;
+    if(/\btotal\b/i.test(name)) continue;
     var seg2=text.slice(Math.max(0,gm.index-40),gm.index+120);
     addLeg({player:name,stat:statFromText(seg2,"Points"),line:parseFloat(gm[3]),side:gm[2].toLowerCase()==="over"?"Over":"Under",p:null,game:null,team:null});
   }
   /* Moneyline legs: a board team named on the slip counts as a "to win"
      leg only when a moneyline marker or an odds token sits right after
-     the mention. Soccer games (pDraw set) use the 3-way chance — the
-     team's win chance, not the draw — so they are read the same way.
+     the mention. Soccer games (pDraw set) are included: the 3-way win
+     chance was already computed (away = 1 - pHome - pDraw).
      The search runs on the raw lowercased text, not norm, because norm
      strips the + and - signs the odds-token check needs. */
+  var rawLow=raw.toLowerCase();
   var SHORT_CODES=["LA","NY","NO","UT","SA","GS","KC","GB","LV","TB","NE","SF"];
-  /* The payout block ("Wager $10 / To Win $15") also contains the
-     words "to win" — a team named just above it must not be read as
-     a moneyline leg off the payout line. "To win" only counts when
-     it sits before the payout block starts. */
-  var payIdx=rawLow.search(/\bwager\b|\bto win\s*\$|\bpayout\b/i);
+  /* The payout block starts at the first Wager / To Win $ / Payout
+     label; a "to win" at or after it is the payout, not a moneyline
+     marker (H8). */
+  var payoutBlockAt=rawLow.search(/\bwager\b|\bto\s+win\s*\$|\bpayout\b/);
   (typeof simGameOpts!=="undefined"?simGameOpts:[]).forEach(function(g){
     var hit=null;
     [["away",g.away],["home",g.home]].forEach(function(pair){
@@ -5809,8 +5810,8 @@ function parseSlipText(text){
           var after=rest.slice(0,45);
           var oddsTok=/^\s*[+-]\d{2,4}\b/.test(rest);
           var hasMarker=/\b(moneyline|ml)\b/.test(after);
-          var twPos=after.search(/\bto win\b/);
-          var hasToWin=twPos>=0&&(payIdx<0||mm.index+term.length+twPos<payIdx);
+          var twAt=after.search(/\bto win\b/);
+          var hasToWin=twAt>=0&&(payoutBlockAt<0||(mm.index+term.length+twAt)<payoutBlockAt);
           /* Short codes are also ordinary words, so when the match is
              the code itself, "to win" alone is not enough — require
              the odds token or an explicit moneyline/ml marker. A full
@@ -5825,66 +5826,78 @@ function parseSlipText(text){
       addLeg({player:hit[1],stat:"To win",line:null,side:"Yes",p:isHome?g.pHome:(g.pDraw!=null?1-g.pHome-g.pDraw:1-g.pHome),game:g.away+" @ "+g.home,team:hit[1],ml:true});
     }
   });
-  /* Spread and total legs. A board team followed by a signed number
-     ("DEN -5.5", "Celtics +3.5") is a spread; "Over/Under N" next to
-     a game mention is a total. The chance comes from the sim:
-     p_cover_book for the spread, p_over_book for the total (both
-     0-100 on the game's sim). A signed number of 100 or more is
-     American odds, not a spread, so it is never read as one. The
-     sim's cover/over chance is priced at the book's line, so when
-     the slip's line differs it is an estimate, not an exact read.
-     Soccer games have no spread/total sims and are skipped here. */
-  function teamTermsFor(g,code){
-    var terms=[String(code).toLowerCase()];
-    var lg=String(g.league||"").toLowerCase();
-    if(lg==="nfl") Object.keys(NFL_NICKS).forEach(function(nk){if(NFL_NICKS[nk]===code) terms.push(nk);});
-    if(lg==="nba") Object.keys(NBA_NICKS).forEach(function(nk){if(NBA_NICKS[nk]===code) terms.push(nk);});
-    return terms;
-  }
-  var STAT_WORD_AFTER=/\b(points|rebounds|assists|threes|goals|shots|receiving|receptions|rushing|passing|yards)\b/i;
-  (typeof simGameOpts!=="undefined"?simGameOpts:[]).forEach(function(g){
-    if(g.pDraw!=null||!g.sim) return;
-    var pCover=(g.sim.p_cover_book!=null&&isFinite(g.sim.p_cover_book))?Number(g.sim.p_cover_book)/100:null;
-    if(pCover==null) return;
+  /* Spread and total legs, priced from the sim each simGameOpts entry
+     now carries (p_cover_book / p_over_book, both 0-100 against the
+     book line). A signed number with |n| >= 100 is odds, never a
+     spread. A total is an Over/Under N next to a game mention; when a
+     stat word follows the number it is a player prop, not a total. */
+  var gameOpts=(typeof simGameOpts!=="undefined"?simGameOpts:[]);
+  function optGameStr(g){return g.away+" @ "+g.home;}
+  var spreadSeen={};
+  gameOpts.forEach(function(g){
+    if(!g.sim) return;
+    var pc=g.sim.p_cover_book;
     [["away",g.away],["home",g.home]].forEach(function(pair){
       var code=pair[1], isHome=pair[0]==="home";
-      teamTermsFor(g,code).forEach(function(term){
-        var tre=new RegExp("\\b"+escRe(term)+"\\b","g"), mm;
-        while((mm=tre.exec(rawLow))!==null){
-          var rest2=rawLow.slice(mm.index+term.length,mm.index+term.length+30);
-          var sm=rest2.match(/^\s*\(?\s*([+-]\d+(?:\.\d+)?)\b/);
-          if(!sm) continue;
-          var num=parseFloat(sm[1]);
-          if(!isFinite(num)||Math.abs(num)>=100) continue;
-          addLeg({player:code,stat:"Spread",line:num,side:"Cover",p:isHome?pCover:1-pCover,game:g.away+" @ "+g.home,team:code});
-          break;
+      var lgLow=String(g.league||"").toLowerCase();
+      var terms=[String(code).toLowerCase()];
+      var mp=lgLow==="nfl"?NFL_NICKS:(lgLow==="nba"?NBA_NICKS:null);
+      if(mp) Object.keys(mp).forEach(function(nick){if(mp[nick]===code) terms.push(nick);});
+      terms.sort(function(a,b){return b.length-a.length;});
+      for(var ti=0;ti<terms.length;ti++){
+        var tre2=new RegExp("\\b"+escRe(terms[ti])+"\\b\\s*([+-]\\d+(?:\\.\\d+)?)\\b","i");
+        var sm2=tre2.exec(rawLow);
+        if(!sm2) continue;
+        var n=parseFloat(sm2[1]);
+        if(!isFinite(n)||n===0||Math.abs(n)>=100) continue;
+        var gk=optGameStr(g)+"|"+code;
+        if(spreadSeen[gk]) return;
+        spreadSeen[gk]=true;
+        var pSpread=null;
+        if(pc!=null){
+          var bookHome=null;
+          if(g.book!=null&&g.book!==""){ var bv=parseFloat(g.book); if(isFinite(bv)) bookHome=bv; }
+          var matchesBook=bookHome==null||(isHome?n===bookHome:n===-bookHome);
+          if(matchesBook) pSpread=isHome?pc/100:1-pc/100;
         }
-      });
+        addLeg({player:code,stat:"Spread",line:null,side:(n>0?"+":"")+n,p:pSpread,game:optGameStr(g),team:code,ml:true});
+        return;
+      }
     });
   });
-  /* Totals: one leg per Over/Under + number — the game whose team is
-     named closest before it. A stat word right after the number
-     ("Over 23.5 Points") means it is a player prop, not a total. */
-  var totalRe=/\b(over|under)\s+(\d+(?:\.\d+)?)/gi, tm2;
-  while((tm2=totalRe.exec(raw))!==null){
-    var tNum=parseFloat(tm2[2]);
-    if(!isFinite(tNum)||tNum<3||tNum>300) continue;
-    var afterNum=raw.slice(tm2.index+tm2[0].length,tm2.index+tm2[0].length+20);
-    if(STAT_WORD_AFTER.test(afterNum)) continue;
-    var before=rawLow.slice(Math.max(0,tm2.index-80),tm2.index);
-    var bestG=null, bestIdx=-1, bestPOver=null;
-    (typeof simGameOpts!=="undefined"?simGameOpts:[]).forEach(function(g){
-      if(g.pDraw!=null||!g.sim||g.sim.p_over_book==null||!isFinite(g.sim.p_over_book)) return;
-      [["away",g.away],["home",g.home]].forEach(function(pair){
-        teamTermsFor(g,pair[1]).forEach(function(term){
-          var m2=new RegExp("\\b"+escRe(term)+"\\b").exec(before);
-          if(m2&&m2.index>bestIdx){bestIdx=m2.index;bestG=g;bestPOver=Number(g.sim.p_over_book)/100;}
-        });
-      });
+  var totRe=/\b(over|under)\s+(\d+(?:\.\d+)?)/gi, tm2;
+  var totalSeen={};
+  while((tm2=totRe.exec(raw))!==null){
+    var afterTxt=raw.slice(tm2.index+tm2[0].length,tm2.index+tm2[0].length+30);
+    if(/^\s*(points|rebounds|assists|yards|receptions|catches|goals|shots|threes|steals|blocks)\b/i.test(afterTxt)) continue;
+    var beforeTxt=raw.slice(Math.max(0,tm2.index-50),tm2.index);
+    var isProp=false;
+    Object.keys(knownSurnames).forEach(function(sn){ if((" "+normText(beforeTxt)+" ").indexOf(" "+sn+" ")>=0) isProp=true; });
+    if(isProp) continue;
+    var winLow=raw.slice(Math.max(0,tm2.index-90),tm2.index+90).toLowerCase();
+    var gHit=null;
+    gameOpts.forEach(function(g){
+      if(gHit) return;
+      var a=String(g.away).toLowerCase(), h=String(g.home).toLowerCase();
+      if(winLow.indexOf(a+" @ "+h)>=0||winLow.indexOf(a+" vs "+h)>=0||winLow.indexOf(h+" vs "+a)>=0||winLow.indexOf(a+" at "+h)>=0) gHit=g;
     });
-    if(!bestG) continue;
-    var tSide=tm2[1].toLowerCase()==="over"?"Over":"Under";
-    addLeg({player:bestG.away+" @ "+bestG.home,stat:"Total",line:tNum,side:tSide,p:tSide==="Over"?bestPOver:1-bestPOver,game:bestG.away+" @ "+bestG.home,team:null});
+    if(!gHit){
+      gameOpts.forEach(function(g){
+        if(gHit) return;
+        [g.away,g.home].forEach(function(cd){ if(!gHit&&new RegExp("\\b"+escRe(String(cd).toLowerCase())+"\\b").test(winLow)) gHit=g; });
+      });
+    }
+    if(!gHit||!gHit.sim||gHit.sim.p_over_book==null) continue;
+    var gs=optGameStr(gHit);
+    if(totalSeen[gs]) continue;
+    totalSeen[gs]=true;
+    var tLine=parseFloat(tm2[2]);
+    var pOver=gHit.sim.p_over_book/100;
+    var tRow=null;
+    (typeof TOTALS!=="undefined"?TOTALS:[]).forEach(function(r){ if(!tRow&&r.game===gs) tRow=r; });
+    var pTot=null;
+    if(!tRow||tRow.book==null||Math.abs(Number(tRow.book)-tLine)<0.01) pTot=tm2[1].toLowerCase()==="over"?pOver:1-pOver;
+    addLeg({player:gs,stat:"Total",line:tLine,side:tm2[1].toLowerCase()==="over"?"Over":"Under",p:pTot,game:gs,team:null,ml:true});
   }
   /* payout + stake, only when the wording is clear */
   var pm=text.match(/payout[^0-9]{0,30}(\d+(?:\.\d+)?)\s*x/i)||text.match(/(\d+(?:\.\d+)?)\s*x[^.\n]{0,30}payout/i);
@@ -5892,148 +5905,153 @@ function parseSlipText(text){
   if(pm&&parseFloat(pm[1])>1){ ticketPayouts.all=parseFloat(pm[1]); gotMult=true; }
   if(!gotMult){
     /* FanDuel / DraftKings slips show "Wager $Y" and "To Win $X"
-       instead of an "Nx" multiplier. "To Win" is the profit, so the
-       total return is (wager + win) / wager; a "Payout $X" line is
-       already the total return, so its multiplier is X / wager.
-       The "$" is mandatory: without it, a team line like "Thunder
-       to win -180" would capture 180 as the payout. */
+       (or "Payout $X") instead of an "Nx" multiplier. "To Win" is
+       profit only, so the total-return multiplier is (X+Y)/Y; a
+       "Payout $X" line is already the total return, so it is X/Y.
+       The $ is required, so a team line like "Thunder to win -180"
+       is never captured as a payout. */
     var wm=text.match(/wager[^0-9$]{0,25}\$?\s*(\d+(?:\.\d+)?)/i);
-    var tm=text.match(/(to\s*win|payout)[^0-9$]{0,25}\$\s*(\d+(?:\.\d+)?)/i);
+    var tm=text.match(/(to\s*win|payout)\b[^0-9$]{0,25}\$\s*(\d+(?:\.\d+)?)/i);
     if(wm&&tm){
       var wy=parseFloat(wm[1]), wx=parseFloat(tm[2]);
       if(wy>0){
-        var wMult=/payout/i.test(tm[1])?wx/wy:(wy+wx)/wy;
+        var wMult=/payout/i.test(tm[1])?wx/wy:(wx+wy)/wy;
         if(wMult>=1&&wMult<=100){ ticketPayouts.all=Math.round(wMult*10000)/10000; gotMult=true; }
       }
     }
   }
   if(!gotMult){
-    /* Decimal-odds books show "Stake $X" and "Payout $Y" (or "Total
-       Payout $Y"): the multiplier is the total payout over the stake. */
-    var stakeM=text.match(/stake[^0-9$]{0,25}\$\s*(\d+(?:\.\d+)?)/i);
-    var payM=text.match(/(?:total\s+)?payout[^0-9$]{0,25}\$\s*(\d+(?:\.\d+)?)/i);
-    if(stakeM&&payM){
-      var sx=parseFloat(stakeM[1]), py=parseFloat(payM[1]);
+    /* Decimal-style slips: "Stake $X" together with a "Payout $Y" (or
+       "Total Payout $Y") total return — the multiplier is Y/X. */
+    var stkM=text.match(/stake[^0-9$]{0,25}\$\s*(\d+(?:\.\d+)?)/i);
+    var payM=text.match(/(?:total\s+)?payout\b[^0-9$]{0,25}\$\s*(\d+(?:\.\d+)?)/i);
+    if(stkM&&payM){
+      var sx=parseFloat(stkM[1]), sy=parseFloat(payM[1]);
       if(sx>0){
-        var dMult=py/sx;
-        if(dMult>=1&&dMult<=100){ ticketPayouts.all=Math.round(dMult*10000)/10000; gotMult=true; }
+        var dMult=sy/sx;
+        if(dMult>=1&&dMult<=100) ticketPayouts.all=Math.round(dMult*10000)/10000;
       }
     }
-  }
-  /* Flex tickets (Underdog): the "miss one" payout, when the slip
-     states it — "Miss 1: 1.8x" and the like. When it is not stated,
-     the payout box still shows the 1.8x assumption, so the
-     consolation is never silently invented. A slip that says flex
-     is scored as a flex ticket. */
-  var flexM=text.match(/miss\s+(?:one|1)\b[^0-9]{0,40}(\d+(?:\.\d+)?)\s*x/i);
-  if(flexM){
-    var fv=parseFloat(flexM[1]);
-    if(fv>0&&fv<=100) ticketPayouts.minus1=fv;
-  }
-  if(/\bflex\b/i.test(text)||/\bmiss\s+(?:one|1)\b/i.test(text)){
-    ticketMode="flex";
-    try{$("btnFlex").setAttribute("aria-pressed","true");$("btnStandard").setAttribute("aria-pressed","false");}catch(e){}
   }
   var sm=text.match(/(?:stake|wager|entry|bet amount|total[^0-9A-Za-z$]{0,3}\$)[^0-9$]{0,25}\$?\s*(\d+(?:\.\d+)?)/i);
   if(sm&&parseFloat(sm[1])>0) $("stake").value=sm[1];
   return dedupeLegs(found);
 }
-/* The ticket reader (Tesseract.js) is fetched from a CDN. It used to
-   load only on the first upload, so a slow first fetch meant the first
-   upload failed and the user had to upload twice. Now the script is
-   preloaded when the Check My Ticket tab opens, and uploads share one
-   loader so a second upload never re-fetches it. */
-var tessLoading=false;
+/* Shared ticket-reader loader: Tesseract.js is fetched from the CDN
+   only once. If a load is already in flight, callers wait on the same
+   load instead of creating a duplicate script tag. The state lives on
+   window so an early preload (from switchTab, before this part of the
+   script has run) and a later upload share the one load. A load that
+   has not finished within 30 seconds settles its waiters as failed,
+   so nobody hangs silently; a failed load can be tried again. */
 function loadTesseract(cb){
-  if(window.Tesseract){cb(true);return;}
-  if(tessLoading){
-    var waited=0;
-    var iv=setInterval(function(){
-      waited+=200;
-      if(window.Tesseract){clearInterval(iv);cb(true);}
-      else if(waited>=30000){clearInterval(iv);cb(false);}
-    },200);
-    return;
+  var done=typeof cb==="function"?cb:function(){};
+  if(window.Tesseract){done(true);return;}
+  var st=window.__tessLoadState;
+  if(!st){st=window.__tessLoadState={loading:false,callbacks:[]};}
+  if(st.loading){st.callbacks.push(done);return;}
+  st.loading=true;
+  st.callbacks.push(done);
+  var settled=false;
+  function settle(ok){
+    if(settled) return;
+    settled=true;
+    clearTimeout(timer);
+    st.loading=false;
+    var cbs=st.callbacks.slice();
+    st.callbacks.length=0;
+    cbs.forEach(function(f){try{f(ok&&!!window.Tesseract);}catch(e){}});
   }
-  tessLoading=true;
+  var timer=setTimeout(function(){settle(false);},30000);
   var s=document.createElement("script");
   s.src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js";
   s.integrity="sha384-GJqSu7vueQ9qN0E9yLPb3Wtpd7OrgK8KmYzC8T1IysG1bcvxvIO4qtYR/D3A991F";
   s.crossOrigin="anonymous";
-  s.onload=function(){tessLoading=false;cb(true);};
-  s.onerror=function(){tessLoading=false;cb(false);};
+  s.setAttribute("data-tesseract-loader","1");
+  s.onload=function(){settle(true);};
+  s.onerror=function(){settle(false);};
   document.head.appendChild(s);
 }
-var tessWarmed=false;
 function preloadTesseract(){
   loadTesseract(function(ok){
-    if(!ok||tessWarmed||!window.Tesseract) return;
-    tessWarmed=true;
+    if(!ok||!window.Tesseract||window.__tessWarmed) return;
+    window.__tessWarmed=true;
+    /* Warm the worker and the language data with a tiny blank-image
+       recognize, so the first real upload does not pay the cold
+       start (and does not fail and need a second upload). */
     try{
-      /* Warm the worker and the language data with a tiny blank
-         image, so the first real upload does not pay the cold-start
-         cost of fetching them. The result is thrown away; any
-         failure here is silent — the real upload retries on its own. */
-      var cv=document.createElement("canvas"); cv.width=8; cv.height=8;
-      var ctx=cv.getContext("2d"); if(ctx){ctx.fillStyle="#fff";ctx.fillRect(0,0,8,8);}
-      window.Tesseract.recognize(cv.toDataURL("image/png"),"eng").catch(function(){});
+      var c=document.createElement("canvas");
+      c.width=8; c.height=8;
+      var ctx=c.getContext("2d");
+      if(ctx){ ctx.fillStyle="#ffffff"; ctx.fillRect(0,0,8,8); }
+      var pr=window.Tesseract.recognize(c.toDataURL("image/png"),"eng");
+      if(pr&&typeof pr.catch==="function") pr.catch(function(){});
     }catch(e){}
   });
 }
 function runOcr(file){
   setSlipStatus("Reading your screenshot\u2026 this can take a few seconds.");
-  function fallback(){setSlipStatus("We couldn\u2019t read that screenshot clearly. Open \u201cFix or add legs\u201d below to add the legs by hand, then run the simulation.");}
-  function loadFallback(){setSlipStatus("The ticket reader couldn\u2019t load. Check your connection and try again, or open \u201cFix or add legs\u201d below to add the legs by hand.");}
+  function fallback(){setSlipStatus("We couldn\u2019t read that screenshot clearly. Open \u201CFix or add legs\u201D below the score to see the slip and fix the legs by hand, then run the simulation.");}
+  function loadFallback(){setSlipStatus("The ticket reader couldn\u2019t load. Check your connection and try again, or open \u201CFix or add legs\u201D below the score to add the legs by hand.");}
   function go(){
     if(!window.Tesseract){loadFallback();return;}
     /* The read must always settle with feedback: if recognize has not
        finished in 45 seconds, say so instead of hanging silently.
        The settled flag keeps a late result from overwriting that.
-       A failed first read is retried once automatically — the
-       worker is often still warming up on the first attempt, and a
-       retry with the same file usually succeeds, so the user should
-       not have to upload twice. A slow first read gets the same one
-       retry: the 45-second timer re-arms it instead of giving up. */
+       A failed recognize is retried once automatically before the
+       fallback — the first read can fail while the worker is still
+       warming up, and the retry with the same file succeeds. */
     var settled=false;
     var timer=null;
-    var attempts=0;
+    var timeoutRetried=false;
     function armTimer(){
-      clearTimeout(timer);
+      if(timer) clearTimeout(timer);
       timer=setTimeout(function(){
         if(settled) return;
-        if(attempts<2){ attempt(); }
-        else { settled=true; fallback(); }
+        /* A 45-second timeout triggers one retry (the timer re-arms)
+           instead of going straight to the fallback: the first read
+           can stall while the worker is still warming up. */
+        if(!timeoutRetried){ timeoutRetried=true; attempt(true); return; }
+        settled=true; fallback();
       },45000);
     }
-    function attempt(){
-      attempts++;
+    function succeed(res){
+      if(settled) return;
+      settled=true; if(timer) clearTimeout(timer);
+      var text=(res&&res.data&&res.data.text)||"";
+      var legs=parseSlipText(text);
+      if(!legs.length){fallback();return;}
+      ticketLegs=legs;
+      renderLegs(); renderChips(); renderPayoutInputs(); computeTicket();
+      var missing=legs.some(function(l){return l.p==null;});
+      setSlipStatus("We found "+legs.length+" leg"+(legs.length===1?"":"s")+". Open \u201CFix or add legs\u201D below the score to check each one and fix anything we misread."+(missing?" Some legs have no model chance on the board, so they are left out of the score.":""));
+    }
+    function fail(retried){
+      if(settled) return;
+      if(!retried){attempt(true);return;}
+      settled=true; if(timer) clearTimeout(timer);
+      fallback();
+    }
+    function attempt(retried){
       armTimer();
       try{
-        window.Tesseract.recognize(file,"eng").then(function(res){
-          if(settled) return;
-          settled=true; clearTimeout(timer);
-          var text=(res&&res.data&&res.data.text)||"";
-          var legs=parseSlipText(text);
-          if(!legs.length){fallback();return;}
-          ticketLegs=legs;
-          renderLegs(); renderChips(); renderPayoutInputs(); computeTicket();
-          var missing=legs.some(function(l){return l.p==null;});
-          setSlipStatus("We found "+legs.length+" leg"+(legs.length===1?"":"s")+". Open \u201cFix or add legs\u201d below if we misread anything."+(missing?" Some legs have no model chance on the board, so they are left out of the score.":""));
-        }).catch(function(){
-          if(settled) return;
-          if(attempts<2){ attempt(); return; }
-          settled=true; clearTimeout(timer);
-          fallback();
-        });
+        var pr=window.Tesseract.recognize(file,"eng");
+        if(pr&&typeof pr.then==="function"){
+          pr.then(function(res){succeed(res);}).catch(function(){fail(retried);});
+        }else{
+          fail(retried);
+        }
       }catch(e){
-        if(settled) return;
-        if(attempts<2){ attempt(); return; }
-        settled=true; clearTimeout(timer); fallback();
+        fail(retried);
       }
     }
-    attempt();
+    attempt(false);
   }
-  loadTesseract(function(ok){ if(ok) go(); else loadFallback(); });
+  if(window.Tesseract){go();return;}
+  loadTesseract(function(ok){
+    if(ok&&window.Tesseract) go();
+    else loadFallback();
+  });
 }
 function multToAmerican(mult){
   if(!(mult>1)) return null;
