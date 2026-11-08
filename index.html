@@ -1233,7 +1233,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <section class="panel" id="panel-pricer" role="tabpanel" aria-labelledby="tab-pricer" tabindex="0" hidden>
     <h1>Check my ticket</h1>
     <p class="record-line" data-record-suffix=" Ticket scores have no graded record yet — the score is our model's guess, not a proven result.">Our record: 0–0, $0 so far. Forecasts, not winners yet. Ticket scores have no graded record yet — the score is our model's guess, not a proven result.</p>
-    <p class="lede" style="margin-top:10px">Score a ticket — one pick or a whole parlay. Then run it 10,000 times and see how often it wins.</p>
+    <p class="lede" style="margin-top:10px">Score a ticket — one pick or a whole parlay. Upload a screenshot and see what it&rsquo;s worth.</p>
 
     <p class="ticket-step"><span class="n">1</span> Snap your ticket</p>
     <div class="snap-wrap">
@@ -1334,28 +1334,6 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       </div>
     </div>
 
-    <section aria-label="Run this ticket 10,000 times" id="parlaySim">
-      <p class="ticket-step"><span class="n">3</span> Run this ticket 10,000 times</p>
-      <p class="sub">Run the same ticket 10,000 times to see how often it wins, how often each number of legs hits, and what you&rsquo;d win or lose on average. Every chance comes from our models, from the <span id="parlaySimDate">&mdash;</span> board. Nothing here places a bet.</p>
-      <div class="controls">
-        <div class="field wide"><label for="simGamePick">Add a game &mdash; team to win</label><select id="simGamePick"></select></div>
-        <div class="field"><button type="button" class="btn secondary" id="simAddGame">Add game</button></div>
-      </div>
-      <div class="controls" style="margin-top:10px">
-        <div class="field wide"><label for="simPropPick">Add a player pick</label><select id="simPropPick"></select></div>
-        <div class="field"><button type="button" class="btn secondary" id="simAddProp">Add player pick</button></div>
-      </div>
-      <div class="sim-legs" id="simLegs"></div>
-      <p class="empty-note" id="simNoLegs">No legs yet &mdash; add a leg to run the simulation.</p>
-      <p class="note" id="simNote" aria-live="polite"></p>
-      <div class="controls" style="margin-top:10px">
-        <div class="field"><label for="simOdds">What the book pays (American odds, e.g. +350)</label><input type="text" id="simOdds" placeholder="+350" inputmode="text" autocomplete="off"></div>
-        <div class="field"><button type="button" class="btn" id="simRun">Run the simulation</button></div>
-      </div>
-      <p class="note">Leave the payout blank to see just the chance and the spread of outcomes. Enter the payout exactly as your book shows it for the whole ticket.</p>
-      <div id="simResults" aria-live="polite"></div>
-      <div id="simCorr"></div>
-    </section>
   </section>
 
   <!-- ============ DFS OPTIMIZER ============ -->
@@ -1581,14 +1559,13 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
         <li><a href="#doc-games">Game forecasts</a></li>
         <li><a href="#doc-props">Player picks</a></li>
         <li><a href="#doc-ticket">Check my ticket</a></li>
-        <li><a href="#doc-parlay">Parlay simulator</a></li>
         <li><a href="#doc-dfs">DFS Optimizer</a></li>
         <li><a href="#doc-record">Our record</a></li>
         <li><a href="#doc-bankroll">Your money over a season</a></li>
       </ul>
     </nav>
     <h1>How it works, <em>in plain words.</em></h1>
-    <p class="lede">This site helps you judge a bet before you place it. It gives a chance for every game and every player pick. It scores a whole ticket from any book. It runs a ticket 10,000 times to show how often it wins. And it keeps a public record of how its picks did.</p>
+    <p class="lede">This site helps you judge a bet before you place it. It gives a chance for every game and every player pick. It scores a whole ticket from any book. And it keeps a public record of how its picks did.</p>
     <p class="lede" style="margin-top:10px">The numbers are early. They’re still proving themselves. So <a href="#record" data-goto="record">Our record</a> shows every settled pick with its result and date. Look there before you trust any number here.</p>
 
     <h3 id="doc-games">Game forecasts (Who wins?)</h3>
@@ -1603,11 +1580,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <h3 id="doc-ticket">The ticket checker (Check my ticket)</h3>
     <p><b>What &ldquo;good value&rdquo; means.</b> Flip a coin with me. Heads, I pay you $2. Tails, you pay me $1. You'd take that all day, right? That's a good-value bet. The price is wrong in your favor. Now flip it. Heads you win $1, tails you lose $2. You'd walk away. Same coin, different price. A good-value bet pays you more than it should for how often it wins.</p>
     <p><b>How it works.</b> Upload a screenshot of a slip from any book. The checker lists the picks it found. It works for a single pick (a straight bet) as well as a multi-pick ticket. You can fix any of them by hand: player, kind of pick, line, over or under. The chance for each pick comes from our board — you never type one in. A pick we have no chance for is left out of the score, and named. Enter the payout exactly as shown on your slip. Your screenshot stays on your phone. Nothing gets sent anywhere. FanDuel's board is the reference for what a fair price looks like. But you can bet wherever you want.</p>
-    <p><b>The score.</b> The score runs 0 to 100. A 50 means a fair bet — the payout matches how often it wins. The score is 50 plus the value. A ticket worth 20% more than a fair price scores 70. One worth 15% less scores 35. It stops at 0 and 100. Next to the score you get the value as a percentage, and the chance the whole ticket hits as "1 in N". Like 1 in 7 — it should hit about once in every seven tries. There's no thumbs-up or thumbs-down. The score has no graded record yet, so it's just a number. One plain sentence sums up the verdict. Each pick shows our chance next to what the ticket pays like, so you can see which pick is carrying the ticket. If missing one pick still pays a little, the score counts that too. That's an average over many repeats of the same ticket. A single ticket either wins it all or loses it all.</p>
-
-    <h3 id="doc-parlay">The parlay simulator (Try a ticket 10,000 times)</h3>
-    <p>The ticket checker scores a ticket you already have. The simulator is different. Pick legs from today's board — teams to win, plus player picks — and it runs that ticket 10,000 times before you place it once. A single pick works too — it runs that one pick 10,000 times. You see the chance the whole ticket hits. How often each number of legs hits. And what you'd win or lose on average per $100 at the payout your book shows. It also shows how wild the ride is. One ticket is all or nothing, so the average only shows up over many tries. Legs we can't match to today's board are left out and named. So the chance shown is only for the legs that ran. Never the whole ticket.</p>
-    <p>Game legs in the same game run on the same simulated game, so their link is built in. Player picks in the same game as another leg are different. That link isn't modelled here. The simulator says so plainly, and you should treat the chance as the best case. Spread and total legs aren't offered on the site. The full simulator, which includes them, runs behind the scenes. Every chance comes from our models, from the board's date. A leg with no model chance is never offered.</p>
+    <p><b>The score.</b> The score is a letter grade, A to F. A is great value, B good, C fair, D poor, F bad. Under the grade you get the number, 0 to 100. A 50 means a fair bet — the payout matches how often it wins. The number is 50 plus the value. A ticket worth 20% more than a fair price scores 70. One worth 15% less scores 35. It stops at 0 and 100. Next to the score you get the value as a percentage, and the chance the whole ticket hits as "1 in N". Like 1 in 7 — it should hit about once in every seven tries. There's no thumbs-up or thumbs-down. The score has no graded record yet, so it's just a number. One plain sentence sums up the verdict. Each pick shows our chance next to what the ticket pays like, so you can see which pick is carrying the ticket. If missing one pick still pays a little, the score counts that too. That's an average over many repeats of the same ticket. A single ticket either wins it all or loses it all.</p>
 
     <h3 id="doc-dfs">DFS Optimizer</h3>
     <p>Pick a slate (NBA or NFL) and a platform (DraftKings or FanDuel). Then add the player salaries from that platform. Upload the salary file, paste the salaries, or try the sample salaries to see how it works. The optimizer ranks players by projected points and builds the best lineup it can under the salary limit, plus two more that differ from the first. Projected points are each player's recent average from our own game data. NBA from the last 5 games, NFL from the last 4. Defense is set to 7 points for every team because we don't model defenses. These are forecasts, not guarantees.</p>
@@ -4966,26 +4939,6 @@ function computeTicket(){
   if(sameTeam) $("corrNote").innerHTML='<div class="warnbox"><strong>Same team in one ticket.</strong> These picks affect each other &mdash; when teammates play, one doing well can make another doing well less likely, so the real chance is probably lower than shown. Do not just multiply the chances together.</div>';
   else if(sameGame) $("corrNote").innerHTML='<div class="callout"><b>Picks from the same game.</b> They share the pace and flow of that game. Treat the chance shown as the best case, not a promise.</div>';
   else $("corrNote").innerHTML="";
-  /* Load this ticket into the simulator below (step 3) so the user
-     does not have to rebuild it by hand: the simulator used to start
-     empty, which read as a separate tool, and the "Add a game" /
-     "Add a player pick" dropdowns looked like the only way in. */
-  try{
-    if(typeof ticketToSimLegs==="function"&&typeof simRenderLegs==="function"){
-      var conv=ticketToSimLegs();
-      simLegs=conv.matched||[];
-      simFromTicket=true; simTicketUnmatched=conv.unmatched||[];
-      simRenderLegs();
-      if(ticketPayouts&&ticketPayouts.all>1&&typeof multToAmerican==="function"){
-        var am=multToAmerican(ticketPayouts.all);
-        if(am) $("simOdds").value=am;
-      }
-      if(typeof snapshotDateLabel==="function"){
-        var psd=$("parlaySimDate"); if(psd) psd.textContent=snapshotDateLabel();
-      }
-      if(simLegs.length<1) clearTicketSim();
-    }
-  }catch(e){}
 }
 $("copyBtn").addEventListener("click",function(){
   var legs=ticketLegs.filter(function(l){return l.p!=null&&l.p>0&&l.p<1;});
@@ -5132,6 +5085,11 @@ function simPropOptions(){
 var simGameOpts=[], simPropOpts=[], simLegs=[];
 var simFromTicket=false, simTicketUnmatched=[];
 function simFillPickers(){
+  /* The simulator section was removed from the Check My Ticket tab
+     (redundant once the checker itself reports value, chance and
+     average). If its elements are gone, do nothing instead of
+     throwing on a missing node. */
+  if(!$("simGamePick")||!$("simPropPick")) return;
   simGameOpts=simGameOptions();
   simPropOpts=simPropOptions();
   $("simGamePick").innerHTML=simGameOpts.length
@@ -5300,15 +5258,19 @@ function simRun(){
   else if(modelled) corr.innerHTML='<div class="callout" style="margin-top:12px"><b>Legs from the same game.</b> The simulation runs those legs on the same simulated game, so their link is built in.</div>';
   else corr.innerHTML="";
 }
-$("simAddGame").addEventListener("click",simAddGame);
-$("simAddProp").addEventListener("click",simAddProp);
-$("simLegs").addEventListener("click",function(e){
-  var b=e.target.closest("[data-sim-remove]"); if(!b) return;
-  simFromTicket=false; simTicketUnmatched=[];
-  simLegs.splice(parseInt(b.getAttribute("data-sim-remove"),10),1);
-  simRenderLegs();
-});
-$("simRun").addEventListener("click",simRun);
+/* Simulator controls were removed with the Step 3 section; only
+   wire them up if the elements exist. */
+(function(){
+  var a=$("simAddGame"); if(a) a.addEventListener("click",simAddGame);
+  var p=$("simAddProp"); if(p) p.addEventListener("click",simAddProp);
+  var l=$("simLegs"); if(l) l.addEventListener("click",function(e){
+    var b=e.target.closest("[data-sim-remove]"); if(!b) return;
+    simFromTicket=false; simTicketUnmatched=[];
+    simLegs.splice(parseInt(b.getAttribute("data-sim-remove"),10),1);
+    simRenderLegs();
+  });
+  var r=$("simRun"); if(r) r.addEventListener("click",simRun);
+})();
 try{simFillPickers();}catch(e){}
 simRenderLegs();
 /* ---- screenshot upload + reading ---- */
@@ -6056,7 +6018,7 @@ function runOcr(file){
           ticketLegs=legs;
           renderLegs(); renderChips(); renderPayoutInputs(); computeTicket();
           var missing=legs.some(function(l){return l.p==null;});
-          setSlipStatus("We found "+legs.length+" leg"+(legs.length===1?"":"s")+". Open \u201cFix or add legs\u201d below if we misread anything."+(missing?" Some legs have no model chance on the board, so they are left out of the score.":"")+" Then use step 3 below to run it 10,000 times.");
+          setSlipStatus("We found "+legs.length+" leg"+(legs.length===1?"":"s")+". Open \u201cFix or add legs\u201d below if we misread anything."+(missing?" Some legs have no model chance on the board, so they are left out of the score.":""));
         }).catch(function(){
           if(settled) return;
           if(attempts<2){ attempt(); return; }
@@ -6789,10 +6751,6 @@ function fmtUpdatedLabel(d){
 /* Now that SNAPSHOT_UPDATED has been read, sync the Home picks
    heading once more so a stale snapshot is titled with its own date. */
 try{syncHomePicksHeading();}catch(e){}
-/* The simulator's board date was set at init, before SNAPSHOT_UPDATED
-   was assigned, so it fell back to the first game date (Nov 6) and
-   looked a day stale. Refresh it now that the snapshot date is known. */
-try{var psd2=document.getElementById("parlaySimDate"); if(psd2) psd2.textContent=snapshotDateLabel();}catch(e){}
 /* Welcome banner: sits at the top of Home, in the page flow - it
    never covers or blocks the page. Shown until "Got it" is tapped;
    that tap is remembered with a single flag (suite_onboarded_v1)
