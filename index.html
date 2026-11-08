@@ -3106,6 +3106,20 @@ function renderGames(){
       if(!gameDateMatch(f.date)) return;
       push(f.day,f.date,f.time,forecastRowHtml(f));
     });
+    /* NFL games covered by the headline forecasts render there
+       instead — this feed number is not lost: forecastRowHtml merges
+       it as the Model A line on the forecast card. A feed row is
+       skipped only when the headline list actually contains that
+       game — an empty headline list must not hide the feed rows.
+       (NFL_FORECASTS was empty on Nov 7–8 because Model B had no
+       NFL numbers, so the tab rendered blank even though the feed
+       carried all 13 Sunday games.) */
+    (FEED_GAMES||[]).forEach(function(f){
+      if(String(f.sport||"").toLowerCase()!=="nfl") return;
+      if(!gameDateMatch(f.date)) return;
+      if(forecastHasGame(NFL_FORECASTS,f)) return;
+      push(f.day,f.date,f.time,feedRowHtml(f));
+    });
   }else{
     if(leagueState==="nba"&&gameDateMatch("Nov 4")){
       (SLATE||[]).forEach(function(s){
