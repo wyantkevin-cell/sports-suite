@@ -5407,7 +5407,7 @@ function saneMoney(raw,min,max){
    line. Real OCR of Coinbase shots never reads "POSITION OPENED", so
    that phrase is deliberately not a detector. Sets ticketPayouts (and
    the stake, for Coinbase) as a side effect, like parseSlipText. */
-function parsePredictionSlip(text,known,NICKS,NBA_NICKS){
+function parsePredictionSlip(text,known,NICKS,NBA_NICKS,CFB_NICKS){
   var raw=String(text||"");
   var legRe=/(\d+)\s*\+\s*(?:\S{1,3}\s+){0,2}(assists|points|threes|3-pointers|3 pointers|rebounds|blocks|steals|goals)\b/gi;
   var matches=[], lm;
@@ -5416,10 +5416,18 @@ function parsePredictionSlip(text,known,NICKS,NBA_NICKS){
   var priceInfo=extractPmPrice(raw);
   var chanceM=raw.match(/(\d+(?:\.\d+)?)\s*%\s*chance/i);
   var comboM=raw.match(/(\d+)-way combo/i);
+  /* Polymarket position view: "Team A vs Team B", the picked team on
+     its own line, "Value $X > $Y", "Odds N% > M%", "To win $Z", and a
+     Polymarket marker. The arrow reads as ">" in OCR (sometimes as
+     the real arrow), so both are accepted. */
+  var polyPosM=/polymarket/i.test(raw)
+    &&/to win\s*\$?\s*\d/i.test(raw)
+    &&/value\s*\$?\s*\d/i.test(raw);
   var hasNPlusLine=matches.length>0||/\d+\s*\+\s*[A-Za-z]/.test(raw);
   var isPM=(hasNPlusLine&&(hasCostPayout||!!priceInfo||!!chanceM))
     ||(matches.length===0&&!!priceInfo&&/\bto win\b/i.test(raw))
-    ||(!!comboM&&hasCostPayout);
+    ||(!!comboM&&hasCostPayout)
+    ||polyPosM;
   if(!isPM) return null;
   var legs=[], seen={};
   function addPmLeg(leg){
@@ -5431,6 +5439,73 @@ function parsePredictionSlip(text,known,NICKS,NBA_NICKS){
     }
     seen[key]=legs.length; legs.push(leg);
   }
+  /* Shared board-team resolution for the combo and Polymarket
+     branches. boardGames is the whole board (every sport); a team name
+     resolves to CANDIDATE codes, not one code, because a name can
+     belong to two leagues at once ("Utah" is the NBA Jazz UTA and the
+     CFB Utes UTAH; "Washington" is the NBA Wizards WAS and the CFB
+     Huskies WASH). The game lookup tries every candidate pair, so the
+     other team in the matchup picks the right league. Parentheticals
+     are tried first and win: "Miami (OH)" resolves to M-OH only and
+     never falls through to bare "Miami" (MIA). Periods are stripped,
+     so "Ohio St." and "Ohio St" match the same key. */
+  var boardGames=(typeof simGameOpts!=="undefined"?simGameOpts:[]);
+  var boardCodeByUpper={};
+  boardGames.forEach(function(g){
+    if(g.away) boardCodeByUpper[String(g.away).toUpperCase()]=g.away;
+    if(g.home) boardCodeByUpper[String(g.home).toUpperCase()]=g.home;
+  });
+  var nickMaps=[];
+  if(NICKS) nickMaps.push(NICKS);
+  if(NBA_NICKS) nickMaps.push(NBA_NICKS);
+  if(CFB_NICKS) nickMaps.push(CFB_NICKS);
+  function resolveTeamCandidates(name){
+    var out=[];
+    function addCode(code){
+      if(!code) return;
+      var bc=boardCodeByUpper[String(code).toUpperCase()]||code;
+      if(out.indexOf(bc)<0) out.push(bc);
+    }
+    var clean=String(name||"").trim().replace(/\s+/g," ");
+    if(!clean) return out;
+    var up=clean.toUpperCase();
+    if(boardCodeByUpper[up]){ addCode(boardCodeByUpper[up]); return out; }
+    var low=clean.toLowerCase().replace(/\./g,"");
+    var base=low.replace(/\s*\([^)]*\)\s*$/,"").trim();
+    var found=false;
+    nickMaps.forEach(function(mp){ if(mp&&mp[low]){ addCode(mp[low]); found=true; } });
+    if(found) return out;
+    if(base&&base!==low){
+      nickMaps.forEach(function(mp){ if(mp&&mp[base]){ addCode(mp[base]); found=true; } });
+      if(found) return out;
+    }
+    var words=base.split(" ");
+    var last=words[words.length-1]||"";
+    if(last){
+      nickMaps.forEach(function(mp){ if(mp&&mp[last]) addCode(mp[last]); });
+      if(boardCodeByUpper[last.toUpperCase()]) addCode(boardCodeByUpper[last.toUpperCase()]);
+    }
+    return out;
+  }
+  function findBoardGame(candsA,candsB){
+    var found=null;
+    (candsA||[]).forEach(function(ca){
+      (candsB||[]).forEach(function(cb){
+        if(found) return;
+        var aUp=String(ca).toUpperCase(), bUp=String(cb).toUpperCase();
+        boardGames.forEach(function(g){
+          if(found) return;
+          var awUp=String(g.away).toUpperCase(), hmUp=String(g.home).toUpperCase();
+          if((awUp===aUp&&hmUp===bUp)||(awUp===bUp&&hmUp===aUp)) found=g;
+        });
+      });
+    });
+    return found;
+  }
+  function boardWinChance(game,pickedCode){
+    var isHome=String(pickedCode).toUpperCase()===String(game.home).toUpperCase();
+    return isHome?game.pHome:(game.pDraw!=null?1-game.pHome-game.pDraw:1-game.pHome);
+  }
   /* Coinbase team combos ("4-way combo"): one "X vs Y" matchup per
      leg, with the picked team's code alone on the next line — no odds
      token, no "moneyline" text and no "to win" near the teams, so the
@@ -5439,78 +5514,48 @@ function parsePredictionSlip(text,known,NICKS,NBA_NICKS){
      of them; the leg then carries the board's win chance for the
      picked team. */
   if(comboM){
-    var ALL_NICKS={};
-    if(NICKS) Object.keys(NICKS).forEach(function(nk){ALL_NICKS[nk]=NICKS[nk];});
-    if(NBA_NICKS) Object.keys(NBA_NICKS).forEach(function(nk){ALL_NICKS[nk]=NBA_NICKS[nk];});
-    var boardGames=(typeof simGameOpts!=="undefined"?simGameOpts:[]);
-    var boardCodeByUpper={};
-    boardGames.forEach(function(g){
-      if(g.away) boardCodeByUpper[String(g.away).toUpperCase()]=g.away;
-      if(g.home) boardCodeByUpper[String(g.home).toUpperCase()]=g.home;
-    });
-    function resolveTeam(name){
-      var clean=String(name||"").trim().replace(/\s+/g," ");
-      if(!clean) return null;
-      var up=clean.toUpperCase();
-      if(boardCodeByUpper[up]) return boardCodeByUpper[up];
-      var low=clean.toLowerCase();
-      if(ALL_NICKS[low]){
-        var mapped=ALL_NICKS[low];
-        return boardCodeByUpper[String(mapped).toUpperCase()]||mapped;
-      }
-      var words=low.split(" ");
-      var last=words[words.length-1]||"";
-      if(last&&ALL_NICKS[last]){
-        var mappedLast=ALL_NICKS[last];
-        return boardCodeByUpper[String(mappedLast).toUpperCase()]||mappedLast;
-      }
-      if(last&&boardCodeByUpper[last.toUpperCase()]) return boardCodeByUpper[last.toUpperCase()];
-      return null;
-    }
     var comboPicks=new Set();
-    var comboRe=/([A-Za-z][A-Za-z .'-]*?)\s+vs\s+([A-Za-z][A-Za-z .'-]*?)\s*\r?\n\s*([A-Za-z]{2,3})\b/g, cm;
+    var comboRe=/([A-Za-z][A-Za-z .()'-]*?)\s+vs\s+([A-Za-z][A-Za-z .()'-]*?)\s*\r?\n\s*([A-Za-z]{2,3})\b/g, cm;
     while((cm=comboRe.exec(raw))!==null){
-      var codeA=resolveTeam(cm[1]), codeB=resolveTeam(cm[2]);
-      if(!codeA||!codeB) continue;
+      var comboGame=findBoardGame(resolveTeamCandidates(cm[1]),resolveTeamCandidates(cm[2]));
+      if(!comboGame) continue;
       var pickedUp=String(cm[3]||"").toUpperCase();
       var picked=null;
-      if(pickedUp===String(codeA).toUpperCase()) picked=codeA;
-      else if(pickedUp===String(codeB).toUpperCase()) picked=codeB;
+      if(pickedUp===String(comboGame.away).toUpperCase()) picked=comboGame.away;
+      else if(pickedUp===String(comboGame.home).toUpperCase()) picked=comboGame.home;
       else continue;
-      var comboGame=null;
-      boardGames.forEach(function(g){
-        if(comboGame) return;
-        var awayUp=String(g.away).toUpperCase(), homeUp=String(g.home).toUpperCase();
-        var aUp=String(codeA).toUpperCase(), bUp=String(codeB).toUpperCase();
-        if((awayUp===aUp&&homeUp===bUp)||(awayUp===bUp&&homeUp===aUp)) comboGame=g;
-      });
-      if(!comboGame) continue;
-      var isHomePick=String(picked).toUpperCase()===String(comboGame.home).toUpperCase();
-      var pPick=isHomePick?comboGame.pHome:(comboGame.pDraw!=null?1-comboGame.pHome-comboGame.pDraw:1-comboGame.pHome);
+      var pPick=boardWinChance(comboGame,picked);
       comboPicks.add(String(picked).toUpperCase());
       addPmLeg({player:picked,stat:"To win",line:null,side:"Yes",p:pPick,game:comboGame.away+" @ "+comboGame.home,team:picked,ml:true});
     }
-    /* Fallback: OCR can split a multi-word city such as "Oklahoma
-       City" across two lines, so that matchup never matches the
-       "X vs Y" regex above. The picked team's code still sits alone
-       on its own line, so scan line by line for a standalone 2-3
-       letter code and recover any board team not already added. */
-    String(raw||"").split(/\r?\n/).forEach(function(line){
-      var code=String(line||"").trim().toUpperCase();
-      if(!/^[A-Z]{2,3}$/.test(code)) return;
-      if(comboPicks.has(code)) return;
-      var boardCode=boardCodeByUpper[code];
-      if(!boardCode) return;
-      var fallbackGame=null;
-      boardGames.forEach(function(g){
-        if(fallbackGame) return;
-        if(String(g.away).toUpperCase()===code||String(g.home).toUpperCase()===code) fallbackGame=g;
+    /* Fallback: a picked code anywhere in the text is enough, even
+       when the "X vs Y" line above it did not parse (OCR can split a
+       multi-word city such as "Oklahoma City" across lines, or put
+       the code on the same line as the team name, which breaks the
+       matchup regex — PSM 6 reads "Washington vs Oklahoma City
+       ie OKC" on one line). Each code appears once per day, so it
+       identifies exactly one board game. Only codes not already
+       added above are picked up here. Whole-word match only, so
+       "ATL" never fires inside "Atlanta". A code shared by two
+       leagues on the same day (MIA is the NBA Heat and the CFB
+       Hurricanes) is left to the matchup regex above, which
+       disambiguates via the other team. */
+    var codeGameCount={};
+    boardGames.forEach(function(g){
+      [String(g.away).toUpperCase(),String(g.home).toUpperCase()].forEach(function(code){
+        if(code) codeGameCount[code]=(codeGameCount[code]||0)+1;
       });
-      if(!fallbackGame) return;
-      var isHomeFallback=String(boardCode).toUpperCase()===String(fallbackGame.home).toUpperCase();
-      var pFallback=isHomeFallback?fallbackGame.pHome:(fallbackGame.pDraw!=null?1-fallbackGame.pHome-fallbackGame.pDraw:1-fallbackGame.pHome);
-      comboPicks.add(code);
-      addPmLeg({player:boardCode,stat:"To win",line:null,side:"Yes",p:pFallback,game:fallbackGame.away+" @ "+fallbackGame.home,team:boardCode,ml:true});
+    });
+    boardGames.forEach(function(g){
+      [String(g.away).toUpperCase(),String(g.home).toUpperCase()].forEach(function(code){
+        if(!code||comboPicks.has(code)) return;
+        if(codeGameCount[code]!==1) return;
+        var re=new RegExp("\\b"+code+"\\b");
+        if(!re.test(raw)) return;
+        var boardCode=boardCodeByUpper[code]||code;
+        comboPicks.add(code);
+        addPmLeg({player:boardCode,stat:"To win",line:null,side:"Yes",p:boardWinChance(g,boardCode),game:g.away+" @ "+g.home,team:boardCode,ml:true});
+      });
     });
   }
   function surnameBefore(before){
@@ -5590,6 +5635,45 @@ function parsePredictionSlip(text,known,NICKS,NBA_NICKS){
      numbers pass the sanity checks; otherwise they are ignored. */
   var multSet=false;
   var stakeSet=false;
+  /* Polymarket position view: "Team A vs Team B", the picked team on
+     its own line, "Value $X > $Y", "Odds N% > M%", "To win $Z", and a
+     Polymarket marker. Stake is the FIRST Value number (the original
+     value / cost basis); the second is the current value after the
+     price moved. Multiplier is To win / first Value. The matchup
+     names resolve through the shared candidate resolver, so CFB
+     parentheticals ("Miami (FL)") and full names ("Notre Dame") work
+     and the two-team game lookup picks the right league. */
+  if(polyPosM&&!legs.length){
+    var polyRe=/([A-Za-z][A-Za-z .()'-]*?)\s+vs\s+([A-Za-z][A-Za-z .()'-]*?)\s*\r?\n\s*([A-Za-z][A-Za-z .()'-]*?)\s*(?:\r?\n|$)/;
+    var pm=polyRe.exec(raw);
+    if(pm){
+      var polyGame=findBoardGame(resolveTeamCandidates(pm[1]),resolveTeamCandidates(pm[2]));
+      if(polyGame){
+        var pickCands=resolveTeamCandidates(pm[3]);
+        var polyPicked=null;
+        pickCands.forEach(function(pc){
+          if(polyPicked) return;
+          var pcUp=String(pc).toUpperCase();
+          if(pcUp===String(polyGame.away).toUpperCase()) polyPicked=polyGame.away;
+          else if(pcUp===String(polyGame.home).toUpperCase()) polyPicked=polyGame.home;
+        });
+        if(polyPicked){
+          var valM=raw.match(/value\s*\$?\s*(\d+(?:\.\d+)?)\s*(?:>|→|->)\s*\$?\s*(\d+(?:\.\d+)?)/i);
+          var winM=raw.match(/to win\s*\$?\s*(\d+(?:\.\d+)?)/i);
+          if(valM&&winM){
+            var stakeV=parseFloat(valM[1]);
+            var winV=parseFloat(winM[1]);
+            if(stakeV>0&&winV>stakeV){
+              addPmLeg({player:polyPicked,stat:"To win",line:null,side:"Yes",p:boardWinChance(polyGame,polyPicked),game:polyGame.away+" @ "+polyGame.home,team:polyPicked,ml:true});
+              ticketPayouts.all=Math.round(winV/stakeV*10000)/10000;
+              try{$("stake").value=String(stakeV);}catch(e){}
+              multSet=true; stakeSet=true;
+            }
+          }
+        }
+      }
+    }
+  }
   if(hasCostPayout){
     var costIdx=raw.search(/cost/i), payIdx=raw.search(/max\s*payout/i);
     var regionStart=Math.min(costIdx<0?1e12:costIdx,payIdx<0?1e12:payIdx);
@@ -5658,6 +5742,15 @@ function parsePredictionSlip(text,known,NICKS,NBA_NICKS){
 function parseSlipText(text){
   var NFL_NICKS={jaguars:"JAX",ravens:"BAL",bills:"BUF",dolphins:"MIA",patriots:"NE",jets:"NYJ",bengals:"CIN",browns:"CLE",steelers:"PIT",texans:"HOU",colts:"IND",titans:"TEN",broncos:"DEN",chiefs:"KC",raiders:"LV",chargers:"LAC",cowboys:"DAL",giants:"NYG",eagles:"PHI",commanders:"WSH",bears:"CHI",lions:"DET",packers:"GB",vikings:"MIN",falcons:"ATL",panthers:"CAR",saints:"NO",buccaneers:"TB",cardinals:"ARI",rams:"LA","49ers":"SF",seahawks:"SEA"};
   var NBA_NICKS={celtics:"BOS",boston:"BOS",nets:"BKN",brooklyn:"BKN",hornets:"CHA",charlotte:"CHA",bulls:"CHI",chicago:"CHI",cavaliers:"CLE",cleveland:"CLE",mavericks:"DAL",dallas:"DAL",nuggets:"DEN",denver:"DEN",pistons:"DET",detroit:"DET",warriors:"GSW","golden state":"GSW",rockets:"HOU",houston:"HOU",pacers:"IND",indiana:"IND",clippers:"LAC",lakers:"LAL","los angeles":"LAL",grizzlies:"MEM",memphis:"MEM",heat:"MIA",miami:"MIA",bucks:"MIL",milwaukee:"MIL",timberwolves:"MIN",minnesota:"MIN",pelicans:"NOP","new orleans":"NOP",knicks:"NYK","new york":"NYK",thunder:"OKC","oklahoma city":"OKC",magic:"ORL",orlando:"ORL","76ers":"PHI",philadelphia:"PHI",suns:"PHX",phoenix:"PHX","trail blazers":"POR",blazers:"POR",portland:"POR",kings:"SAC",sacramento:"SAC",spurs:"SAS","san antonio":"SAS",raptors:"TOR",toronto:"TOR",jazz:"UTA",utah:"UTA",wizards:"WAS",washington:"WAS",hawks:"ATL",atlanta:"ATL"};
+  /* College football team names -> board (SGO) codes. Keys are
+     lowercase, periods stripped. Parentheticals disambiguate schools
+     that share a name: "miami (fl)" is MIA (Hurricanes), "miami (oh)"
+     is M-OH (RedHawks); bare "miami" defaults to MIA. Full names
+     ("notre dame") and "St." forms ("ohio st") are included. Built
+     from the pipeline's Kalshi market labels + CFB_FULL + standard
+     display names; a name missing here simply fails to resolve rather
+     than guessing. */
+  var CFB_NICKS={"air force":"AFA","akron":"AKR","alabama":"ALA","app state":"APP","appalachian st":"APP","appalachian state":"APP","arizona":"ARIZ","arizona st":"ASU","arizona state":"ASU","arkansas":"ARK","arkansas st":"ARST","arkansas state":"ARST","army":"ARMY","auburn":"AUB","ball st":"BALL","ball state":"BALL","baylor":"BAY","boise st":"BOIS","boise state":"BOIS","boston college":"BC","bowling green":"BGSU","buffalo":"BUFF","byu":"BYU","california":"CAL","central connecticut st":"CCSU","central connecticut state":"CCSU","central florida":"UCF","central michigan":"CMU","charlotte":"CLT","cincinnati":"CIN","clemson":"CLEM","coastal carolina":"CCU","colgate":"COLG","colorado":"COLO","colorado st":"CSU","colorado state":"CSU","connecticut":"CONN","delaware":"DEL","delaware st":"DSU","delaware state":"DSU","duke":"DUKE","duquesne":"DUQ","east carolina":"ECU","east tennessee st":"ETSU","east tennessee state":"ETSU","eastern michigan":"EMU","elon":"ELON","florida":"FLA","florida a&m":"FAMU","florida atlantic":"FAU","florida international":"FIU","florida st":"FSU","florida state":"FSU","fresno st":"FRES","fresno state":"FRES","georgia":"UGA","georgia southern":"GASO","georgia state":"GAST","georgia tech":"GT","hampton":"HAMP","hawai'i":"HAW","hawaii":"HAW","holy cross":"HC","houston":"HOU","howard":"HOW","illinois":"ILL","iowa":"IOWA","iowa st":"ISU","iowa state":"ISU","jacksonville st":"JXST","jacksonville state":"JXST","james madison":"JM","kansas":"KU","kansas st":"KSU","kansas state":"KSU","kennesaw st":"KENN","kennesaw state":"KENN","kent st":"KENT","kent state":"KENT","kentucky":"UK","lafayette":"LAF","liberty":"LIB","liu":"LIU","louisiana":"UL","louisiana monroe":"ULM","louisiana tech":"LT","louisiana-lafayette":"UL","louisiana-monroe":"ULM","louisville":"LOU","lsu":"LSU","marshall":"MRSH","maryland":"MD","memphis":"MEM","merrimack":"MRMK","miami":"MIA","miami (fl)":"MIA","miami (oh)":"M-OH","michigan":"MICH","michigan st":"MSU","michigan state":"MSU","middle tennessee":"MTSU","middle tennessee st":"MTSU","minnesota":"MINN","mississippi":"MISS","mississippi st":"MSST","mississippi state":"MSST","mississippi valley st":"MVSU","mississippi valley state":"MVSU","missouri":"MIZ","missouri st":"MOST","missouri state":"MOST","mizzou":"MIZ","monmouth":"MONM","mtsu":"MTSU","navy":"NAVY","nc state":"NCSU","nebraska":"NEB","nevada":"NEV","new mexico":"UNM","new mexico st":"NMSU","new mexico state":"NMSU","north carolina":"UNC","north carolina a&t":"NCAT","north carolina state":"NCSU","north dakota st":"NDSU","north dakota state":"NDSU","north texas":"UNT","northern illinois":"NIU","northwestern":"NU","notre dame":"ND","ohio":"OHIO","ohio st":"OSU","ohio state":"OSU","oklahoma":"OU","oklahoma st":"OKST","oklahoma state":"OKST","old dominion":"ODU","ole miss":"MISS","oregon":"ORE","oregon st":"ORST","oregon state":"ORST","penn st":"PSU","penn state":"PSU","pittsburgh":"PITT","purdue":"PUR","rice":"RICE","robert morris":"RMU","rutgers":"RUTG","sacramento st":"SAC","sacramento state":"SAC","sam houston":"SHSU","sam houston st":"SHSU","sam houston state":"SHSU","san diego st":"SDSU","san diego state":"SDSU","san jose st":"SJSU","san jose state":"SJSU","smu":"SMU","south alabama":"USA","south carolina":"SC","south florida":"USF","southern miss":"USM","stanford":"STAN","syracuse":"SYR","tcu":"TCU","temple":"TEM","tennessee":"TENN","texas":"TEX","texas a&m":"TA&M","texas am":"TA&M","texas st":"TXST","texas state":"TXST","texas tech":"TTU","the citadel":"CIT","toledo":"TOL","troy":"TROY","tulane":"TULN","tulsa":"TLSA","uab":"UAB","ucf":"UCF","ucla":"UCLA","uconn":"CONN","ul monroe":"ULM","umass":"MASS","unlv":"UNLV","usc":"USC","utah":"UTAH","utah st":"USU","utah state":"USU","utep":"UTEP","utsa":"UTSA","vanderbilt":"VAN","villanova":"VILL","vmi":"VMI","wake forest":"WAKE","washington":"WASH","washington state":"WSU","west virginia":"WVU","western carolina":"WCU","western kentucky":"WKU","western kentucky hilltoppers":"WKU","western michigan":"WMU","wisconsin":"WIS","wofford":"WOF","wyoming":"WYO"};
   var known=boardKnownLegs();
   /* Prediction markets are tried FIRST: when the slip is one, its
      result stands even if no leg parses — the sportsbook branch
@@ -5673,7 +5766,7 @@ function parseSlipText(text){
     ticketMode="flex";
     try{ $("btnFlex").setAttribute("aria-pressed","true"); $("btnStandard").setAttribute("aria-pressed","false"); }catch(e){}
   }
-  var pmLegs=parsePredictionSlip(text,known,NFL_NICKS,NBA_NICKS);
+  var pmLegs=parsePredictionSlip(text,known,NFL_NICKS,NBA_NICKS,CFB_NICKS);
   if(pmLegs!==null) return dedupeLegs(pmLegs);
   var found=[], seen={};
   function addLeg(leg){
