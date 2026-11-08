@@ -1233,7 +1233,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <section class="panel" id="panel-pricer" role="tabpanel" aria-labelledby="tab-pricer" tabindex="0" hidden>
     <h1>Check my ticket</h1>
     <p class="record-line" data-record-suffix=" Ticket scores have no graded record yet — the score is our model's guess, not a proven result.">Our record: 0–0, $0 so far. Forecasts, not winners yet. Ticket scores have no graded record yet — the score is our model's guess, not a proven result.</p>
-    <p class="lede" style="margin-top:10px">Score a ticket. Then run it 10,000 times and see how often it wins.</p>
+    <p class="lede" style="margin-top:10px">Score a ticket — one pick or a whole parlay. Then run it 10,000 times and see how often it wins.</p>
 
     <p class="ticket-step"><span class="n">1</span> Snap your ticket</p>
     <div class="snap-wrap">
@@ -1259,7 +1259,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <div class="explain" id="ticketDetails" hidden>
         <div class="stat-row" style="margin-top:0">
           <div class="stat"><div class="k">Value</div><div class="v" id="statValue">&mdash;</div><div class="d">compared with a fair price</div></div>
-          <div class="stat"><div class="k">Chance it hits</div><div class="v" id="statHit">&mdash;</div><div class="d">every leg right</div></div>
+          <div class="stat"><div class="k">Chance it hits</div><div class="v" id="statHit">&mdash;</div><div class="d">how often the ticket hits</div></div>
           <div class="stat"><div class="k">You get back, on average</div><div class="v" id="statAvg">&mdash;</div><div class="d">over many repeats of this ticket</div></div>
         </div>
         <p class="note" id="scoreExplain"></p>
@@ -1339,7 +1339,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
         <div class="field"><button type="button" class="btn secondary" id="simAddProp">Add player pick</button></div>
       </div>
       <div class="sim-legs" id="simLegs"></div>
-      <p class="empty-note" id="simNoLegs">No legs yet &mdash; add at least 2 to run the simulation.</p>
+      <p class="empty-note" id="simNoLegs">No legs yet &mdash; add a leg to run the simulation.</p>
       <p class="note" id="simNote" aria-live="polite"></p>
       <div class="controls" style="margin-top:10px">
         <div class="field"><label for="simOdds">What the book pays (American odds, e.g. +350)</label><input type="text" id="simOdds" placeholder="+350" inputmode="text" autocomplete="off"></div>
@@ -1595,11 +1595,11 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 
     <h3 id="doc-ticket">The ticket checker (Check my ticket)</h3>
     <p><b>What &ldquo;good value&rdquo; means.</b> Flip a coin with me. Heads, I pay you $2. Tails, you pay me $1. You'd take that all day, right? That's a good-value bet. The price is wrong in your favor. Now flip it. Heads you win $1, tails you lose $2. You'd walk away. Same coin, different price. A good-value bet pays you more than it should for how often it wins.</p>
-    <p><b>How it works.</b> Upload a screenshot of a slip from any book. The checker lists the picks it found. You can fix any of them by hand: player, kind of pick, line, over or under. The chance for each pick comes from our board — you never type one in. A pick we have no chance for is left out of the score, and named. Enter the payout exactly as shown on your slip. Your screenshot stays on your phone. Nothing gets sent anywhere. FanDuel's board is the reference for what a fair price looks like. But you can bet wherever you want.</p>
+    <p><b>How it works.</b> Upload a screenshot of a slip from any book. The checker lists the picks it found. It works for a single pick (a straight bet) as well as a multi-pick ticket. You can fix any of them by hand: player, kind of pick, line, over or under. The chance for each pick comes from our board — you never type one in. A pick we have no chance for is left out of the score, and named. Enter the payout exactly as shown on your slip. Your screenshot stays on your phone. Nothing gets sent anywhere. FanDuel's board is the reference for what a fair price looks like. But you can bet wherever you want.</p>
     <p><b>The score.</b> The score runs 0 to 100. A 50 means a fair bet — the payout matches how often it wins. The score is 50 plus the value. A ticket worth 20% more than a fair price scores 70. One worth 15% less scores 35. It stops at 0 and 100. Next to the score you get the value as a percentage, and the chance the whole ticket hits as "1 in N". Like 1 in 7 — it should hit about once in every seven tries. There's no thumbs-up or thumbs-down. The score has no graded record yet, so it's just a number. One plain sentence sums up the verdict. Each pick shows our chance next to what the ticket pays like, so you can see which pick is carrying the ticket. If missing one pick still pays a little, the score counts that too. That's an average over many repeats of the same ticket. A single ticket either wins it all or loses it all.</p>
 
     <h3 id="doc-parlay">The parlay simulator (Try a ticket 10,000 times)</h3>
-    <p>The ticket checker scores a ticket you already have. The simulator is different. Pick legs from today's board — teams to win, plus player picks — and it runs that ticket 10,000 times before you place it once. You see the chance the whole ticket hits. How often you get 3 out of 4 right — the most common way to lose a 4-leg ticket. And what you'd win or lose on average per $100 at the payout your book shows. It also shows how wild the ride is. One ticket is all or nothing, so the average only shows up over many tries. Legs we can't match to today's board are left out and named. So the chance shown is only for the legs that ran. Never the whole ticket.</p>
+    <p>The ticket checker scores a ticket you already have. The simulator is different. Pick legs from today's board — teams to win, plus player picks — and it runs that ticket 10,000 times before you place it once. A single pick works too — it runs that one pick 10,000 times. You see the chance the whole ticket hits. How often you get 3 out of 4 right — the most common way to lose a 4-leg ticket. And what you'd win or lose on average per $100 at the payout your book shows. It also shows how wild the ride is. One ticket is all or nothing, so the average only shows up over many tries. Legs we can't match to today's board are left out and named. So the chance shown is only for the legs that ran. Never the whole ticket.</p>
     <p>Game legs in the same game run on the same simulated game, so their link is built in. Player picks in the same game as another leg are different. That link isn't modelled here. The simulator says so plainly, and you should treat the chance as the best case. Spread and total legs aren't offered on the site. The full simulator, which includes them, runs behind the scenes. Every chance comes from our models, from the board's date. A leg with no model chance is never offered.</p>
 
     <h3 id="doc-dfs">DFS Optimizer</h3>
@@ -4765,8 +4765,8 @@ function renderPayoutInputs(){
   var n=ticketLegs.length, html="";
   function inp(key,label,val){return '<div class="field"><label for="pay-'+key+'">'+label+'</label><input type="number" id="pay-'+key+'" data-pay="'+key+'" value="'+val+'" min="0" step="0.01" inputmode="decimal"></div>';}
   if(n===0){html=inp("all","Add a leg to see your payout",ticketPayouts.all);}
-  else if(ticketMode==="standard"){html=inp("all","Pays back if all "+n+" hit (\u00d7)",ticketPayouts.all);}
-  else{html=inp("all","Pays back if all "+n+" hit (\u00d7)",ticketPayouts.all)+inp("minus1","Pays back if you miss one (\u00d7)",ticketPayouts.minus1);}
+  else if(ticketMode==="standard"){html=inp("all",n===1?"Pays back if it hits (\u00d7)":"Pays back if all "+n+" hit (\u00d7)",ticketPayouts.all);}
+  else{html=inp("all",n===1?"Pays back if it hits (\u00d7)":"Pays back if all "+n+" hit (\u00d7)",ticketPayouts.all)+inp("minus1","Pays back if you miss one (\u00d7)",ticketPayouts.minus1);}
   $("payoutControls").innerHTML=html;
   Array.prototype.forEach.call($("payoutControls").querySelectorAll("[data-pay]"),function(inpEl){
     inpEl.addEventListener("input",function(){
@@ -4870,7 +4870,7 @@ function computeTicket(){
     if(perLegMult>modelOneIn) note=" The ticket pays better than our chance on this leg.";
     else if(perLegMult<modelOneIn) note=" The ticket pays worse than our chance on this leg.";
     else note=" About even on this leg.";
-    return '<div class="compare-row"><b>'+esc(legLabel(l))+'</b><span>Our model: hits <b>1 in '+fmtOneIn(modelOneIn)+'</b> ('+pct(l.p)+'). Ticket pays like <b>1 in '+ticketOneIn+'</b>.'+esc(note)+' The ticket line splits the payout evenly across the legs.</span></div>';
+    return '<div class="compare-row"><b>'+esc(legLabel(l))+'</b><span>Our model: hits <b>1 in '+fmtOneIn(modelOneIn)+'</b> ('+pct(l.p)+'). Ticket pays like <b>1 in '+ticketOneIn+'</b>.'+esc(note)+(n>1?' The ticket line splits the payout evenly across the legs.':'')+'</span></div>';
   }).join("")+unscored.map(function(l){
     return '<div class="compare-row"><b>'+esc(legLabel(l))+'</b><span>Our model: no chance on the board for this leg \u2014 left out of the score.</span></div>';
   }).join("");
@@ -4894,7 +4894,7 @@ function computeTicket(){
 $("copyBtn").addEventListener("click",function(){
   var legs=ticketLegs.filter(function(l){return l.p!=null&&l.p>0&&l.p<1;});
   var leftOut=ticketLegs.filter(function(l){return !(l.p!=null&&l.p>0&&l.p<1);});
-  if(legs.length<2){$("copyNote").textContent="Add at least 2 legs with a model chance first.";return;}
+  if(legs.length<1){$("copyNote").textContent="Add at least 1 leg with a model chance first.";return;}
   var stake=parseFloat($("stake").value)||10;
   var dp=poissonBinomial(legs.map(function(l){return l.p||0;}));
   var expMult=0; for(var k=0;k<=legs.length;k++) expMult+=dp[k]*payoutForK(k,legs.length);
@@ -5097,8 +5097,8 @@ function simRun(){
   $("simNote").textContent=partial
     ? "This ran on "+simLegs.length+" of your "+partialTotal+" legs \u2014 "+partialLabels+" weren't included."
     : "";
-  if(simLegs.length<2){
-    res.innerHTML='<p class="note">Add at least 2 legs to run the simulation.</p>';
+  if(simLegs.length<1){
+    res.innerHTML='<p class="note">Add at least 1 leg to run the simulation.</p>';
     corr.innerHTML="";
     return;
   }
@@ -5466,6 +5466,11 @@ function parsePredictionSlip(text,known,NICKS){
 }
 function parseSlipText(text){
   var NFL_NICKS={jaguars:"JAX",ravens:"BAL",bills:"BUF",dolphins:"MIA",patriots:"NE",jets:"NYJ",bengals:"CIN",browns:"CLE",steelers:"PIT",texans:"HOU",colts:"IND",titans:"TEN",broncos:"DEN",chiefs:"KC",raiders:"LV",chargers:"LAC",cowboys:"DAL",giants:"NYG",eagles:"PHI",commanders:"WSH",bears:"CHI",lions:"DET",packers:"GB",vikings:"MIN",falcons:"ATL",panthers:"CAR",saints:"NO",buccaneers:"TB",cardinals:"ARI",rams:"LA","49ers":"SF",seahawks:"SEA"};
+  /* NBA team names: city + nickname, so a slip that says "Denver Nuggets"
+     (or just "Denver" or just "Nuggets") matches the same way the NFL
+     nicknames do. Without these, only the 3-letter code matched, so a
+     plain slip listing full team names found no moneyline legs at all. */
+  var NBA_NICKS={hawks:"ATL",atlanta:"ATL",celtics:"BOS",boston:"BOS",nets:"BKN",brooklyn:"BKN",hornets:"CHA",charlotte:"CHA",bulls:"CHI",chicago:"CHI",cavaliers:"CLE",cavs:"CLE",cleveland:"CLE",mavericks:"DAL",mavs:"DAL",dallas:"DAL",nuggets:"DEN",denver:"DEN",pistons:"DET",detroit:"DET",warriors:"GSW","golden state":"GSW",rockets:"HOU",houston:"HOU",pacers:"IND",indiana:"IND",clippers:"LAC",lakers:"LAL",grizzlies:"MEM",memphis:"MEM",heat:"MIA",miami:"MIA",bucks:"MIL",milwaukee:"MIL",timberwolves:"MIN",wolves:"MIN",minnesota:"MIN",pelicans:"NOP","new orleans":"NOP",knicks:"NYK","new york":"NYK",thunder:"OKC","oklahoma city":"OKC",magic:"ORL",orlando:"ORL","76ers":"PHI",sixers:"PHI",philadelphia:"PHI",suns:"PHX",phoenix:"PHX",blazers:"POR","trail blazers":"POR",portland:"POR",kings:"SAC",sacramento:"SAC",spurs:"SAS","san antonio":"SAS",raptors:"TOR",toronto:"TOR",jazz:"UTA",utah:"UTA",wizards:"WAS",washington:"WAS"};
   var known=boardKnownLegs();
   /* Prediction markets are tried FIRST: when the slip is one, its
      result stands even if no leg parses — the sportsbook branch
@@ -5553,6 +5558,9 @@ function parseSlipText(text){
       var terms=[String(code).toLowerCase()];
       if(String(g.league||"").toLowerCase()==="nfl"){
         Object.keys(NFL_NICKS).forEach(function(nick){if(NFL_NICKS[nick]===code) terms.push(nick);});
+      }
+      if(String(g.league||"").toLowerCase()==="nba"){
+        Object.keys(NBA_NICKS).forEach(function(nick){if(NBA_NICKS[nick]===code) terms.push(nick);});
       }
       for(var ti=0;ti<terms.length&&!hit;ti++){
         var term=terms[ti];
