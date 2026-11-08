@@ -4966,6 +4966,26 @@ function computeTicket(){
   if(sameTeam) $("corrNote").innerHTML='<div class="warnbox"><strong>Same team in one ticket.</strong> These picks affect each other &mdash; when teammates play, one doing well can make another doing well less likely, so the real chance is probably lower than shown. Do not just multiply the chances together.</div>';
   else if(sameGame) $("corrNote").innerHTML='<div class="callout"><b>Picks from the same game.</b> They share the pace and flow of that game. Treat the chance shown as the best case, not a promise.</div>';
   else $("corrNote").innerHTML="";
+  /* Load this ticket into the simulator below (step 3) so the user
+     does not have to rebuild it by hand: the simulator used to start
+     empty, which read as a separate tool, and the "Add a game" /
+     "Add a player pick" dropdowns looked like the only way in. */
+  try{
+    if(typeof ticketToSimLegs==="function"&&typeof simRenderLegs==="function"){
+      var conv=ticketToSimLegs();
+      simLegs=conv.matched||[];
+      simFromTicket=true; simTicketUnmatched=conv.unmatched||[];
+      simRenderLegs();
+      if(ticketPayouts&&ticketPayouts.all>1&&typeof multToAmerican==="function"){
+        var am=multToAmerican(ticketPayouts.all);
+        if(am) $("simOdds").value=am;
+      }
+      if(typeof snapshotDateLabel==="function"){
+        var psd=$("parlaySimDate"); if(psd) psd.textContent=snapshotDateLabel();
+      }
+      if(simLegs.length<1) clearTicketSim();
+    }
+  }catch(e){}
 }
 $("copyBtn").addEventListener("click",function(){
   var legs=ticketLegs.filter(function(l){return l.p!=null&&l.p>0&&l.p<1;});
@@ -5474,6 +5494,7 @@ function parsePredictionSlip(text,known,NICKS,NBA_NICKS){
       if(parts.length>1&&allNicks[parts[parts.length-1]]) return allNicks[parts[parts.length-1]];
       return null;
     }
+    var comboPicks={};
     var comboRe=/([A-Za-z][A-Za-z .'-]*?)\s+vs\s+([A-Za-z][A-Za-z .'-]*?)\s*\r?\n\s*([A-Za-z]{2,3})\b/g, cm;
     while((cm=comboRe.exec(raw))!==null){
       var cA=resolveTeam(cm[1]), cB=resolveTeam(cm[2]);
@@ -5489,8 +5510,31 @@ function parsePredictionSlip(text,known,NICKS,NBA_NICKS){
       if(!game) continue;
       var isHome=pick===String(game.home).toUpperCase();
       var pTeam=isHome?game.pHome:(game.pDraw!=null?1-game.pHome-game.pDraw:1-game.pHome);
+      comboPicks[pick]=1;
       addPmLeg({player:pick,stat:"To win",line:null,side:"Yes",p:pTeam,game:game.away+" @ "+game.home,team:pick,ml:true});
     }
+    /* Fallback: a picked code on its own line is enough, even when
+       the "X vs Y" line above it did not parse (OCR can split a
+       multi-word city such as "Oklahoma City" across lines, which
+       breaks the matchup regex). Each code appears once per day, so
+       it identifies exactly one board game. Only codes not already
+       added above are picked up here. */
+    raw.split(/\r?\n/).forEach(function(ln){
+      var code=String(ln||"").trim().toUpperCase();
+      if(!/^[A-Z]{2,3}$/.test(code)) return;
+      if(!codeSet[code]||comboPicks[code]) return;
+      var game2=null;
+      (typeof simGameOpts!=="undefined"?simGameOpts:[]).forEach(function(g){
+        if(game2) return;
+        var a=String(g.away).toUpperCase(), h=String(g.home).toUpperCase();
+        if(a===code||h===code) game2=g;
+      });
+      if(!game2) return;
+      var isHome2=code===String(game2.home).toUpperCase();
+      var pTeam2=isHome2?game2.pHome:(game2.pDraw!=null?1-game2.pHome-game2.pDraw:1-game2.pHome);
+      comboPicks[code]=1;
+      addPmLeg({player:code,stat:"To win",line:null,side:"Yes",p:pTeam2,game:game2.away+" @ "+game2.home,team:code,ml:true});
+    });
   }
   function surnameBefore(before){
     var words=before.match(/[A-Za-z][A-Za-z.'-]*/g)||[];
@@ -6748,6 +6792,10 @@ function fmtUpdatedLabel(d){
 /* Now that SNAPSHOT_UPDATED has been read, sync the Home picks
    heading once more so a stale snapshot is titled with its own date. */
 try{syncHomePicksHeading();}catch(e){}
+/* The simulator's board date was set at init, before SNAPSHOT_UPDATED
+   was assigned, so it fell back to the first game date (Nov 6) and
+   looked a day stale. Refresh it now that the snapshot date is known. */
+try{var psd2=document.getElementById("parlaySimDate"); if(psd2) psd2.textContent=snapshotDateLabel();}catch(e){}
 /* Welcome banner: sits at the top of Home, in the page flow - it
    never covers or blocks the page. Shown until "Got it" is tapped;
    that tap is remembered with a single flag (suite_onboarded_v1)
