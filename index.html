@@ -737,7 +737,7 @@ html[data-theme="terminal"] .parlay-card{background:var(--panel);border-color:va
 }
 /* Player picks — compact list view (one row per prop) */
 .prop-list{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--bg)}
-.prop-list-head,.prop-list-row{display:grid;grid-template-columns:minmax(150px,1.35fr) minmax(0,1.8fr) 62px 82px 104px;gap:10px;align-items:center;padding:8px 14px}
+.prop-list-head,.prop-list-row{display:grid;grid-template-columns:minmax(150px,1.2fr) minmax(0,1.6fr) 172px 150px 112px;gap:10px;align-items:center;padding:8px 14px}
 .prop-list-head{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);background:var(--panel);border-bottom:1px solid var(--line)}
 .prop-list-row{border-bottom:1px solid var(--line);font-size:14.5px;padding:7px 14px}
 .prop-list-row:last-child{border-bottom:0}
@@ -750,6 +750,14 @@ html[data-theme="terminal"] .parlay-card{background:var(--panel);border-color:va
 .pl-guess{color:var(--avg);font-weight:700}
 .pl-tier{text-align:right}
 .pl-tier .picktag{margin-top:0}
+/* Line and Our chance cells stack instead of running wide: the book's
+   line on one line with "Book pays:" under it, our guess on one line
+   with "(book says …)" under it. The cells wrap inside their columns
+   rather than spilling into the prop/date text or the tier badge. */
+.pl-line,.pl-guess{white-space:normal}
+.line-sub{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin-top:1px}
+.book-says{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin-top:1px}
+#propBody .trow .avg-val{white-space:normal}
 .prop-list-row .flag{grid-column:1 / -1}
 @media(max-width:640px){
   .strip{flex-wrap:nowrap;align-items:center;gap:8px}
@@ -3923,6 +3931,23 @@ function propLineText(r){
   if(odds==null||String(odds).trim()==="") return line;
   return line?line+", Book pays: "+String(odds):"Book pays: "+String(odds);
 }
+/* The Line cell as stacked HTML: the book's line on the first line
+   and "Book pays: <odds>" on its own line under it (a .line-sub
+   block), so the pair fits the column instead of running into the
+   date on one side or the chance on the other. Same fields and same
+   rules as propLineText — the odds show only when the row carries
+   them, and are never invented. */
+function propLineHtml(r,labelled){
+  if(!r) return "";
+  var line=r.line==null?"":String(r.line);
+  var odds=r.odds;
+  if(odds==null||String(odds).trim()==="") odds=r.line_odds;
+  var hasOdds=!(odds==null||String(odds).trim()==="");
+  var main=line?(labelled?"Line: ":"")+esc(line):"";
+  if(!hasOdds) return main;
+  var sub='<span class="line-sub">Book pays: '+esc(String(odds))+'</span>';
+  return main?main+sub:sub;
+}
 function propGuessHtml(r,labelled){
   var g=propGuessPct(r);
   var txt=(labelled?"Our guess: ":"")+(g!=null?g:r.guess)+"%";
@@ -4010,7 +4035,7 @@ function selectTouchdownsView(){
 function renderProps(){
   var el=$("propBody");
   if(!el) return;
-  var cols="minmax(0,1.6fr) 72px 100px 122px 110px";
+  var cols="minmax(0,1.4fr) 100px 178px 150px 118px";
   var head='<div class="rowhead" style="grid-template-columns:'+cols+'"><span>Player</span><span>Date</span><span style="text-align:right">Line</span><span style="text-align:right">Our chance</span><span style="text-align:right">Tier</span></div>';
   var shown=[];
   (TOP_PROPS||[]).forEach(function(r,i){
@@ -4029,13 +4054,13 @@ function renderProps(){
     var badges=pickBadgesPlainHtml(r), rowInfo=propRowInfoHtml(r);
     return '<div class="trow" style="grid-template-columns:'+cols+'"><div class="who"><b>'+esc(r.player)+'</b><span>'+esc(r.sport)+' &middot; '+esc(r.team)+' &middot; '+esc(r.prop)+'</span></div>'+
     '<span class="prop-date">'+esc(fmtDateLong(r.date))+'</span>'+
-    '<span class="num avg-val">Line: '+esc(propLineText(r))+'</span><span class="num avg-val">'+propGuessHtml(r,true)+'</span><span style="text-align:right">'+propTierHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<div class="flag" style="grid-column:1 / -1">'+esc(r.flag)+'</div>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
+    '<span class="num avg-val">'+propLineHtml(r,true)+'</span><span class="num avg-val">'+propGuessHtml(r,true)+'</span><span style="text-align:right">'+propTierHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<div class="flag" style="grid-column:1 / -1">'+esc(r.flag)+'</div>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
   }
   function listRow(r){
     var badges=pickBadgesPlainHtml(r), rowInfo=propRowInfoHtml(r);
     return '<div class="prop-list-row"><span class="pl-player">'+esc(r.player)+'<span class="pl-team">'+esc(r.team)+'</span></span>'+
     '<span class="pl-prop">'+esc(r.prop)+'<span class="pl-meta">'+esc(r.sport)+' &middot; '+esc(fmtDateLong(r.date))+'</span></span>'+
-    '<span class="pl-line">'+esc(propLineText(r))+'</span><span class="pl-guess">'+propGuessHtml(r,false)+'</span><span class="pl-tier">'+propTierHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<span class="flag">'+esc(r.flag)+'</span>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
+    '<span class="pl-line">'+propLineHtml(r,false)+'</span><span class="pl-guess">'+propGuessHtml(r,false)+'</span><span class="pl-tier">'+propTierHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<span class="flag">'+esc(r.flag)+'</span>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
   }
   var emptyHtml='<div class="empty-state"><p>No props available for this game &mdash; lines haven\'t been posted yet. Check back closer to tip-off.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no props yet">i</button><span class="tip">Lines come from the sportsbooks and can take a while to appear, especially for games later in the week.</span></span></p><p>Try another sport, date, game, or prop type.</p></div>';
   if(propView==="list"){
@@ -5159,11 +5184,33 @@ function statNum(entry,name){
   var v=parseFloat(statVal(entry,name));
   return isNaN(v)?null:v;
 }
+/* Best-first ordering for a standings group, applied to a copy so
+   the fetched data is never mutated. ESPN's entries arrive in no
+   guaranteed order, so the table sorts them itself: by points when
+   the league awards them (NHL), otherwise by win percentage (NBA,
+   NFL, CBB), with total wins as the tiebreak. Best team on top. */
+function sortedStandingsEntries(entries){
+  var hasPoints=false;
+  entries.forEach(function(en){ if(statNum(en,"points")!=null) hasPoints=true; });
+  function key(en){
+    if(hasPoints){ var p=statNum(en,"points"); return p!=null?p:-1; }
+    var v=statNum(en,"winPercent");
+    if(v!=null) return v;
+    var w=statNum(en,"wins"), gp=statNum(en,"gamesPlayed");
+    if(w!=null&&gp) return w/gp;
+    return -1;
+  }
+  return entries.slice().sort(function(a,b){
+    var d=key(b)-key(a);
+    if(d) return d;
+    return (statNum(b,"wins")||0)-(statNum(a,"wins")||0);
+  });
+}
 function collectStandingGroups(node,groups){
   if(!node) return;
   var entries=node.standings&&node.standings.entries;
   if(entries&&entries.length){
-    groups.push({name:node.name||"",entries:entries});
+    groups.push({name:node.name||"",entries:sortedStandingsEntries(entries)});
     return;
   }
   (node.children||[]).forEach(function(c){collectStandingGroups(c,groups);});
