@@ -149,6 +149,7 @@ section.block{margin-top:24px}
 .filters button{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:7px 13px;font-weight:700;font-size:14px;color:var(--muted)}
 .filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .filters select{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-weight:600;font-size:16px;max-width:100%}
+.filters input[type="date"]{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-weight:600;font-size:16px;max-width:100%;color:var(--ink)}
 .prop-filters{display:grid;gap:10px;margin-top:16px}
 .filter-group{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px}
 .filter-group .filter-label{font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);min-width:44px}
@@ -1147,12 +1148,18 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <!-- ============ SCORES ============ -->
   <section class="panel" id="panel-scores" role="tabpanel" aria-labelledby="tab-scores" tabindex="0" hidden>
     <h1>Scores</h1>
-    <p class="lede">Today&rsquo;s games, live from ESPN. Scores refresh on their own while you stay on this tab.</p>
+    <p class="lede" id="scoresLede">Today&rsquo;s games, live from ESPN. Scores refresh on their own while you stay on this tab.</p>
     <div class="gf-subnav" role="group" aria-label="Scores sections" id="scoresSubnav">
       <button type="button" data-scores-nav="scores-list" aria-pressed="true">Scores</button>
       <button type="button" data-scores-nav="scores-standings" aria-pressed="false">Standings</button>
     </div>
     <div id="scores-list">
+    <div class="filters" role="group" aria-label="Choose a day" id="scoresDateFilters">
+      <button type="button" aria-pressed="true" data-scores-date="today">Today</button>
+      <button type="button" aria-pressed="false" data-scores-date="yesterday">Yesterday</button>
+      <input type="date" id="scoresDateInput" aria-label="Pick a day" />
+    </div>
+    <p class="sub" id="scoresDateLabel" aria-live="polite"></p>
     <div class="scores-toolbar">
       <p class="updated-line" id="scoresAsOf" aria-live="polite">Scores have not loaded yet.</p>
       <button type="button" class="btn secondary" id="scoresRefresh">Refresh</button>
@@ -5098,6 +5105,28 @@ function ptTodayYYYYMMDD(){
 function fmtTimePT(iso){
   try{return new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",hour:"numeric",minute:"2-digit",hour12:true}).format(new Date(iso));}catch(e){return "";}
 }
+/* Scores date picker: every date is Pacific Time, the site's
+   timezone. The picker never goes past today — future games live
+   on Game forecasts, not here. */
+function ptAddDaysYYYYMMDD(yyyymmdd,days){
+  try{
+    var y=+yyyymmdd.slice(0,4), m=+yyyymmdd.slice(4,6)-1, d=+yyyymmdd.slice(6,8);
+    var dt=new Date(Date.UTC(y,m,d)+days*86400000);
+    function pad(x){return (x<10?"0":"")+x;}
+    return ""+dt.getUTCFullYear()+pad(dt.getUTCMonth()+1)+pad(dt.getUTCDate());
+  }catch(e){ return yyyymmdd; }
+}
+function ptYesterdayYYYYMMDD(){ return ptAddDaysYYYYMMDD(ptTodayYYYYMMDD(),-1); }
+function yyyymmddToInput(yyyymmdd){ return yyyymmdd.slice(0,4)+"-"+yyyymmdd.slice(4,6)+"-"+yyyymmdd.slice(6,8); }
+function inputToYYYYMMDD(v){ return String(v||"").replace(/-/g,""); }
+function scoresDateLabel(yyyymmdd){
+  /* "Sat, Nov 7, 2026" — parsed at noon PT so the weekday is right
+     across daylight-saving changes. */
+  try{
+    var dt=new Date(yyyymmdd.slice(0,4)+"-"+yyyymmdd.slice(4,6)+"-"+yyyymmdd.slice(6,8)+"T12:00:00-08:00");
+    return new Intl.DateTimeFormat("en-US",{weekday:"short",month:"short",day:"numeric",year:"numeric"}).format(dt);
+  }catch(e){ return ""; }
+}
 function fmtAsOfPT(){
   try{return new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",hour:"numeric",minute:"2-digit",hour12:true}).format(new Date());}catch(e){return "";}
 }
@@ -5192,8 +5221,54 @@ function parseScoreboard(data,leagueKey){
   });
   return {games:games,parseOk:parseOk};
 }
-var scoresState={loaded:false,loading:false,filter:"all",byLeague:{},anyOk:false};
+var scoresState={loaded:false,loading:false,filter:"all",byLeague:{},anyOk:false,date:null};
 var standState={loaded:false,loading:false,byLeague:{}};
+/* The date the Scores tab is showing, as YYYYMMDD in PT. null means
+   today (resolved when the scores load). */
+function scoresViewDate(){ return scoresState.date||ptTodayYYYYMMDD(); }
+function syncScoresDateUI(){
+  var ds=scoresViewDate(), today=ptTodayYYYYMMDD(), yest=ptYesterdayYYYYMMDD();
+  var label=scoresDateLabel(ds);
+  var labelEl=$("scoresDateLabel");
+  if(labelEl){
+    if(ds===today) labelEl.innerHTML="<b>Scores &mdash; Today, "+esc(label)+"</b>";
+    else if(ds===yest) labelEl.innerHTML="<b>Scores &mdash; Yesterday, "+esc(label)+"</b>";
+    else labelEl.innerHTML="<b>Scores &mdash; "+esc(label)+"</b>";
+  }
+  var lede=$("scoresLede");
+  if(lede){
+    lede.textContent=(ds===today)
+      ? "Today\u2019s games, live from ESPN. Scores refresh on their own while you stay on this tab."
+      : "Games from "+label+", live from ESPN. Past scores don\u2019t change, so this page stays as it is.";
+  }
+  var wrap=$("scoresDateFilters");
+  if(wrap){
+    Array.prototype.forEach.call(wrap.querySelectorAll("[data-scores-date]"),function(b){
+      var k=b.getAttribute("data-scores-date");
+      b.setAttribute("aria-pressed",(k==="today"&&ds===today)||(k==="yesterday"&&ds===yest)?"true":"false");
+    });
+  }
+  var input=$("scoresDateInput");
+  if(input){
+    input.max=yyyymmddToInput(today);
+    input.value=yyyymmddToInput(ds);
+  }
+}
+function setScoresDate(yyyymmdd){
+  var today=ptTodayYYYYMMDD();
+  var ds=String(yyyymmdd||"");
+  /* Clamp bad or future dates to today — the picker caps at today
+     too, but a bad value must never fetch a future scoreboard. */
+  if(!/^\d{8}$/.test(ds)||ds>today) ds=today;
+  if(scoresState.date===ds&&scoresState.loaded){ syncScoresDateUI(); return; }
+  scoresState.date=ds;
+  scoresState.loading=false;
+  scoresState.loaded=false;
+  scoresState.byLeague={};
+  scoresState.anyOk=false;
+  syncScoresDateUI();
+  loadScores();
+}
 function sortedGames(games){
   function rank(g){
     var s=g.status&&g.status.type?g.status.type.state:"pre";
@@ -5213,7 +5288,10 @@ function scoreRowHtml(g){
   if(state==="pre") scoreHtml='<span class="score-num" aria-label="Not started yet">&mdash;</span>';
   else scoreHtml='<span class="score-num">'+esc(g.awayScore==null?"0":g.awayScore)+" &ndash; "+esc(g.homeScore==null?"0":g.homeScore)+'</span>';
   var pill=state==="in"?'<span class="status live">Live</span>':"";
-  var pick=PICK_MAP[pickKey(g.awayAbbr,g.homeAbbr)];
+  /* "Our pick" comes from today's forecasts, so it only shows on
+     today's scores. On a past date it would be the wrong pick for
+     the wrong day. */
+  var pick=(scoresViewDate()===ptTodayYYYYMMDD())?PICK_MAP[pickKey(g.awayAbbr,g.homeAbbr)]:null;
   var pickHtml=pick?'<div class="score-pick"><span class="picktag">Our pick: '+esc(pick.team)+' ('+pick.p+'%)</span></div>':"";
   return '<div class="trow"><div class="who"><b>'+matchup+'</b>'+names+'<div class="score-status-line">'+pill+'<span class="score-status-text">'+esc(statusTextFor(g))+'</span></div>'+pickHtml+'</div>'+scoreHtml+'</div>';
 }
@@ -5259,7 +5337,7 @@ function renderScores(){
     if(!r||!r.ok){
       html+='<div class="empty-state"><p>Scores could not be loaded &mdash; try again.</p><p style="margin-top:10px"><button type="button" class="btn secondary" data-scores-retry>Try again</button></p></div>';
     }else if(!r.games.length){
-      html+='<div class="empty-state"><p>No games scheduled today.</p></div>';
+      html+='<div class="empty-state"><p>No games that day.</p></div>';
     }else{
       html+='<div class="rows scores-rows" role="table" aria-label="'+esc(L.label)+' scores"><div class="rowhead"><span>Game</span><span style="text-align:right">Score</span></div>';
       sortedGames(r.games).forEach(function(g){html+=scoreRowHtml(g);});
@@ -5281,7 +5359,7 @@ function loadScores(){
   }
   scoresState.loading=true;
   if(!scoresState.loaded) renderScores();
-  var ds=ptTodayYYYYMMDD();
+  var ds=scoresViewDate();
   var reqs=SCORE_LEAGUES.map(function(L){
     var url=L.scoreUrl+"?dates="+ds+(L.extra||"");
     return fetchJson(url).then(function(data){
@@ -5466,7 +5544,8 @@ function ensureScoresLoaded(){
 function startScoresTimer(){
   if(scoresTimer) return;
   scoresTimer=setInterval(function(){
-    if(scoresPanelActive()&&!document.hidden) loadScores();
+    /* Past dates are final — only today's scores refresh. */
+    if(scoresPanelActive()&&!document.hidden&&scoresViewDate()===ptTodayYYYYMMDD()) loadScores();
   },120000);
 }
 function stopScoresTimer(){
@@ -5498,6 +5577,23 @@ if(scoresFiltersEl) scoresFiltersEl.addEventListener("click",function(e){
 });
 var scoresRefreshBtn=$("scoresRefresh");
 if(scoresRefreshBtn) scoresRefreshBtn.addEventListener("click",function(){scoresState.loading=false;scoresState.loaded=false;loadScores();});
+/* Scores date picker: Today / Yesterday chips plus a date input for
+   any older day. Picking a day reloads that day's ESPN scoreboard. */
+var scoresDateFiltersEl=$("scoresDateFilters");
+if(scoresDateFiltersEl) scoresDateFiltersEl.addEventListener("click",function(e){
+  var b=e.target.closest("[data-scores-date]");
+  if(!b) return;
+  var k=b.getAttribute("data-scores-date");
+  if(k==="today") setScoresDate(ptTodayYYYYMMDD());
+  else if(k==="yesterday") setScoresDate(ptYesterdayYYYYMMDD());
+});
+var scoresDateInput=$("scoresDateInput");
+if(scoresDateInput) scoresDateInput.addEventListener("change",function(){
+  var v=scoresDateInput.value;
+  if(!v) return;
+  setScoresDate(inputToYYYYMMDD(v));
+});
+syncScoresDateUI();
 document.addEventListener("click",function(e){
   if(!e.target.closest) return;
   if(e.target.closest("[data-scores-retry]")){scoresState.loading=false;scoresState.loaded=false;loadScores();}
