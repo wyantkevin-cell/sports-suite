@@ -99,6 +99,10 @@ button,[role="tab"],.btn,a.btn{min-height:44px}
 .gf-filter-strip .filters[hidden]{display:none}
 .gf-filter-sep{flex:0 0 auto;width:1px;background:var(--line)}
 .gf-filter-sep[hidden]{display:none}
+.gf-filter-strip .filter-group[hidden]{display:none}
+#soccerLeagueGroup{flex:1 1 230px;max-width:360px;margin:0}
+@media(max-width:640px){#soccerLeagueGroup{flex:1 1 100%;max-width:none}}
+#tennisSlate .slate-row[hidden]{display:none}
 #panel-gameforecasts .model-lines{display:block;font-size:13.5px;margin-top:3px}
 #panel-gameforecasts .model-lines>div{display:inline}
 #panel-gameforecasts .model-lines>div+div::before{content:" \00b7 "}
@@ -975,6 +979,12 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <button type="button" aria-pressed="false" data-gdate="today">Today</button>
       <button type="button" aria-pressed="false" data-gdate="tomorrow">Tomorrow</button>
     </div>
+    <div class="filter-group" id="soccerLeagueGroup" hidden>
+      <span class="filter-label" id="soccerLeagueLabel">League</span>
+      <select id="soccerLeagueFilter" aria-labelledby="soccerLeagueLabel">
+        <option value="ALL">All leagues</option>
+      </select>
+    </div>
     </div>
     <p class="note">Past games are on the Scores tab.</p>
     <div id="leagueCard"></div>
@@ -985,21 +995,27 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <div id="slateList" style="margin-top:12px"></div>
     </section>
 
-        <section class="block" id="tennisBlock" hidden>
-      <h2 id="tennisHeading">Tennis — as of 2026-11-08T09:49:46-08:00</h2>
+        <section class="block explain-wrap" id="tennisBlock" hidden>
+      <h2 class="explain-head"><span class="explain-title" id="tennisHeading">Tennis</span></h2>
       <p class="sub">Each match shows who we think wins, and how often we think they win.</p>
       <p class="note">Tennis moves fast &mdash; these are from our latest update. Check back for fresh numbers.</p>
       <p class="stale-banner" id="tennisStaleBanner" hidden></p>
-      <div class="slate" style="margin-top:12px">
-        <div class="slate-row"><div class="match"><span class="n">WTA &middot; starts 12:00 PM PT Nov 8, 2026</span><div class="picklines"><div class="avgline"><b>Linda Noskova</b> <span class="pickpct">57.0%</span> <span class="loser">over Marta Kostyuk</span></div><div><span class="lbl">Marta Kostyuk vs Linda Noskova</span></div></div></div></div>
-        <div class="slate-row"><div class="match"><span class="n">WTA &middot; starts 1:30 PM PT Nov 8, 2026</span><div class="picklines"><div class="avgline"><b>Coco Gauff</b> <span class="pickpct">58.7%</span> <span class="loser">over Jessica Pegula</span></div><div><span class="lbl">Coco Gauff vs Jessica Pegula</span></div></div></div></div>
-        <div class="slate-row"><div class="match"><span class="n">WTA &middot; starts 9:30 PM PT Nov 8, 2026</span><div class="picklines"><div class="avgline"><b>Janice Tjen</b> <span class="pickpct">66.3%</span> <span class="loser">over Magda Linette</span></div><div><span class="lbl">Janice Tjen vs Magda Linette</span></div></div></div></div>
-        <div class="slate-row"><div class="match"><span class="n">ATP &middot; starts 3:30 AM PT Nov 9, 2026</span><div class="picklines"><div class="avgline"><b>Alex Michelsen</b> <span class="pickpct">76.2%</span> <span class="loser">over Yannick Hanfmann</span></div><div><span class="lbl">Alex Michelsen vs Yannick Hanfmann</span></div></div></div></div>
-        <div class="slate-row"><div class="match"><span class="n">ATP &middot; starts 4:00 AM PT Nov 9, 2026</span><div class="picklines"><div class="avgline"><b>Cameron Norrie</b> <span class="pickpct">70.0%</span> <span class="loser">over James Duckworth</span></div><div><span class="lbl">James Duckworth vs Cameron Norrie</span></div></div></div></div>
-        <div class="slate-row"><div class="match"><span class="n">ATP &middot; starts 5:30 AM PT Nov 9, 2026</span><div class="picklines"><div class="avgline"><b>Ugo Humbert</b> <span class="pickpct">66.7%</span> <span class="loser">over Adolfo Daniel Vallejo</span></div><div><span class="lbl">Adolfo Daniel Vallejo vs Ugo Humbert</span></div></div></div></div>
-        <div class="slate-row"><div class="match"><span class="n">ATP &middot; starts 9:00 PM PT Nov 9, 2026</span><div class="picklines"><div class="avgline"><b>Arthur Rinderknech</b> <span class="pickpct">69.8%</span> <span class="loser">over Miomir Kecmanovic</span></div><div><span class="lbl">Arthur Rinderknech vs Miomir Kecmanovic</span></div></div></div></div>
-        <div class="slate-row"><div class="match"><span class="n">ATP &middot; starts 9:00 PM PT Nov 9, 2026</span><div class="picklines"><div class="avgline"><b>Holger Rune</b> <span class="pickpct">60.7%</span> <span class="loser">over Zizou Bergs</span></div><div><span class="lbl">Holger Rune vs Zizou Bergs</span></div></div></div></div>
+      <div class="filters" role="group" aria-label="Choose a tour" id="tennisTourFilters">
+        <button type="button" aria-pressed="true" data-tour="ALL">All</button>
+        <button type="button" aria-pressed="false" data-tour="ATP">ATP</button>
+        <button type="button" aria-pressed="false" data-tour="WTA">WTA</button>
       </div>
+      <div class="slate" id="tennisSlate" style="margin-top:12px">
+        <div class="slate-row" data-tour="WTA"><div class="match"><span class="n">WTA &middot; Marta Kostyuk vs Linda Noskova &middot; Sun, Nov 8, 2026 &middot; 12:00pm PT</span><div class="picklines"><div class="avgline"><b>Linda Noskova</b> <span class="pickpct">57.0%</span> <span class="loser">over Marta Kostyuk</span></div><div class="model-lines"><div>Model A: <b>Linda Noskova 57.0%</b></div></div></div></div></div>
+        <div class="slate-row" data-tour="WTA"><div class="match"><span class="n">WTA &middot; Coco Gauff vs Jessica Pegula &middot; Sun, Nov 8, 2026 &middot; 1:30pm PT</span><div class="picklines"><div class="avgline"><b>Coco Gauff</b> <span class="pickpct">58.7%</span> <span class="loser">over Jessica Pegula</span></div><div class="model-lines"><div>Model A: <b>Coco Gauff 58.7%</b></div></div></div></div></div>
+        <div class="slate-row" data-tour="WTA"><div class="match"><span class="n">WTA &middot; Janice Tjen vs Magda Linette &middot; Sun, Nov 8, 2026 &middot; 9:30pm PT</span><div class="picklines"><div class="avgline"><b>Janice Tjen</b> <span class="pickpct">66.3%</span> <span class="loser">over Magda Linette</span></div><div class="model-lines"><div>Model A: <b>Janice Tjen 66.3%</b></div></div></div></div></div>
+        <div class="slate-row" data-tour="ATP"><div class="match"><span class="n">ATP &middot; Alex Michelsen vs Yannick Hanfmann &middot; Mon, Nov 9, 2026 &middot; 3:30am PT</span><div class="picklines"><div class="avgline"><b>Alex Michelsen</b> <span class="pickpct">76.2%</span> <span class="loser">over Yannick Hanfmann</span></div><div class="model-lines"><div>Model A: <b>Alex Michelsen 76.2%</b></div></div></div></div></div>
+        <div class="slate-row" data-tour="ATP"><div class="match"><span class="n">ATP &middot; James Duckworth vs Cameron Norrie &middot; Mon, Nov 9, 2026 &middot; 4:00am PT</span><div class="picklines"><div class="avgline"><b>Cameron Norrie</b> <span class="pickpct">70.0%</span> <span class="loser">over James Duckworth</span></div><div class="model-lines"><div>Model A: <b>Cameron Norrie 70.0%</b></div></div></div></div></div>
+        <div class="slate-row" data-tour="ATP"><div class="match"><span class="n">ATP &middot; Adolfo Daniel Vallejo vs Ugo Humbert &middot; Mon, Nov 9, 2026 &middot; 5:30am PT</span><div class="picklines"><div class="avgline"><b>Ugo Humbert</b> <span class="pickpct">66.7%</span> <span class="loser">over Adolfo Daniel Vallejo</span></div><div class="model-lines"><div>Model A: <b>Ugo Humbert 66.7%</b></div></div></div></div></div>
+        <div class="slate-row" data-tour="ATP"><div class="match"><span class="n">ATP &middot; Arthur Rinderknech vs Miomir Kecmanovic &middot; Mon, Nov 9, 2026 &middot; 9:00pm PT</span><div class="picklines"><div class="avgline"><b>Arthur Rinderknech</b> <span class="pickpct">69.8%</span> <span class="loser">over Miomir Kecmanovic</span></div><div class="model-lines"><div>Model A: <b>Arthur Rinderknech 69.8%</b></div></div></div></div></div>
+        <div class="slate-row" data-tour="ATP"><div class="match"><span class="n">ATP &middot; Holger Rune vs Zizou Bergs &middot; Mon, Nov 9, 2026 &middot; 9:00pm PT</span><div class="picklines"><div class="avgline"><b>Holger Rune</b> <span class="pickpct">60.7%</span> <span class="loser">over Zizou Bergs</span></div><div class="model-lines"><div>Model A: <b>Holger Rune 60.7%</b></div></div></div></div></div>
+      </div>
+      <p class="note" id="tennisTourEmpty" hidden>No matches on this tour in the latest update.</p>
     </section>
   </section>
 
@@ -2361,16 +2377,54 @@ function syncTennisVisibility(){
   if($("gameDateFilters")) $("gameDateFilters").hidden=isTennis;
   if($("gfFilterSep")) $("gfFilterSep").hidden=isTennis;
 }
+/* Soccer league dropdown: soccer is the one sport split across many
+   leagues (6 in this snapshot), so its leagues get a <select> in the
+   filter strip instead of another row of buttons crowding a phone
+   screen. Options are built from the leagues actually present in
+   SOCCER_GAMES, "All leagues" first. The choice filters the soccer
+   rows in renderGames(), on top of the date buttons; soccer games
+   live in the Who wins view, which is where the strip sits, so the
+   filter applies in the sub-view that shows soccer games. */
+var soccerLeagueState="ALL";
+function soccerLeagueDisplayName(code){
+  var games=SOCCER_GAMES||[];
+  for(var i=0;i<games.length;i++){ if(String(games[i].league||"")===String(code)) return soccerLeagueName(games[i]); }
+  return (typeof SOCCER_LEAGUE_NAMES!=="undefined"&&SOCCER_LEAGUE_NAMES[code])||String(code);
+}
+function buildSoccerLeagueOptions(){
+  var sel=$("soccerLeagueFilter"); if(!sel) return;
+  var seen={}, order=[];
+  (SOCCER_GAMES||[]).forEach(function(s){
+    var lg=s&&s.league?String(s.league):"";
+    if(lg&&!seen[lg]){seen[lg]=1;order.push(lg);}
+  });
+  var html='<option value="ALL">All leagues</option>';
+  order.forEach(function(lg){ html+='<option value="'+esc(lg)+'">'+esc(soccerLeagueDisplayName(lg))+'</option>'; });
+  sel.innerHTML=html;
+  if(soccerLeagueState!=="ALL"&&!seen[soccerLeagueState]) soccerLeagueState="ALL";
+  sel.value=soccerLeagueState;
+}
+function syncSoccerLeagueVisibility(){
+  var grp=$("soccerLeagueGroup"); if(!grp) return;
+  grp.hidden=leagueState!=="soccer";
+}
+var soccerLeagueFilterEl=$("soccerLeagueFilter"); if(soccerLeagueFilterEl) soccerLeagueFilterEl.addEventListener("change",function(){
+  soccerLeagueState=soccerLeagueFilterEl.value||"ALL";
+  renderGames();
+});
 var leagueFiltersEl=$("leagueFilters"); if(leagueFiltersEl) leagueFiltersEl.addEventListener("click",function(e){
   var b=e.target.closest("[data-league]"); if(!b) return;
   leagueState=b.getAttribute("data-league");
   Array.prototype.forEach.call($("leagueFilters").querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x===b?"true":"false");});
   renderLeague();
   syncTennisVisibility();
+  syncSoccerLeagueVisibility();
   renderGames();
 });
 try{renderLeague();}catch(e){}
 try{syncTennisVisibility();}catch(e){}
+try{buildSoccerLeagueOptions();}catch(e){}
+try{syncSoccerLeagueVisibility();}catch(e){}
 /* Tennis freshness: the heading is the ONE freshness statement for
    tennis, rendered through the same "Updated ..." label as every
    other tab — never a raw ISO string, and no second line anywhere
@@ -2383,7 +2437,7 @@ var TENNIS_UPDATED=new Date("2026-11-08T09:49:46-08:00");
 try{(function(){
   if(!TENNIS_UPDATED||isNaN(TENNIS_UPDATED.getTime())) return;
   var h=$("tennisHeading");
-  if(h) h.textContent="Tennis — as of 2026-11-08T09:49:46-08:00";
+  if(h) h.textContent="Tennis \u2014 Updated "+fmtUpdatedLabel(TENNIS_UPDATED);
   var block=$("tennisBlock");
   if(!block) return;
   var snapKey=ptDateKey(TENNIS_UPDATED), todayKey=ptDateKey(new Date());
@@ -2403,6 +2457,29 @@ try{(function(){
     try{syncTennisVisibility();}catch(e){}
   }
 })();}catch(e){}
+/* Tennis tour tabs: All / ATP / WTA, the same pill sub-tab style as
+   the rest of the page (only two tours, so tabs fit where soccer's
+   six-plus leagues needed a dropdown). Each match row carries a
+   data-tour attribute; a tab just shows or hides rows, so the cards
+   keep the exact markup of the other sports' game rows. Default All. */
+var tennisTourState="ALL";
+function applyTennisTour(){
+  var slate=$("tennisSlate"); if(!slate) return;
+  var shown=0;
+  Array.prototype.forEach.call(slate.querySelectorAll(".slate-row"),function(r){
+    var show=tennisTourState==="ALL"||r.getAttribute("data-tour")===tennisTourState;
+    r.hidden=!show;
+    if(show) shown++;
+  });
+  var empty=$("tennisTourEmpty"); if(empty) empty.hidden=shown>0;
+}
+var tennisTourFiltersEl=$("tennisTourFilters"); if(tennisTourFiltersEl) tennisTourFiltersEl.addEventListener("click",function(e){
+  var b=e.target.closest("[data-tour]"); if(!b) return;
+  tennisTourState=b.getAttribute("data-tour");
+  Array.prototype.forEach.call(tennisTourFiltersEl.querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x===b?"true":"false");});
+  applyTennisTour();
+});
+try{applyTennisTour();}catch(e){}
 /* Game list: re-rendered on every sport or date tap, so the sport tabs
    filter the list itself, not just the description card above it. The
    Nov 4 NBA rows keep the headline pick already on the page; every
@@ -2925,12 +3002,13 @@ function renderGames(){
   if(leagueState==="soccer"){
     var headSoccer=$("slateHeading");
     var dateLabelSoccer=gameDateLabel();
-    if(headSoccer) headSoccer.textContent="Soccer games \u2014 "+dateLabelSoccer;
+    if(headSoccer) headSoccer.textContent=(soccerLeagueState!=="ALL"?soccerLeagueDisplayName(soccerLeagueState):"Soccer")+" games \u2014 "+dateLabelSoccer;
     /* Chronological by kickoff (game date, then time), grouped by day
        in that order — the same ordering rule as other sports. */
     var sRows=[];
     (SOCCER_GAMES||[]).forEach(function(s){
       if(isPastGameDate(s.game_date||s.date)) return;
+      if(soccerLeagueState!=="ALL"&&String(s.league||"")!==soccerLeagueState) return;
       var nd=soccerDateParts(s.date);
       if(!gameDateMatch(nd.shortLabel||nd.label)) return;
       var mins=timeMinutes(soccerNormTime(s.time));
@@ -2938,7 +3016,7 @@ function renderGames(){
     });
     sRows.sort(function(a,b){return a.key-b.key||a.mins-b.mins;});
     if(!sRows.length){
-      $("slateList").innerHTML='<div class="empty-state"><p>No games scheduled for this date.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no games">i</button><span class="tip">Games are grouped by date. Try This Week to see every game this week.</span></span></p><p>No Soccer games posted for this date yet. Try This Week.</p></div>';
+      $("slateList").innerHTML='<div class="empty-state"><p>No games scheduled for this date.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no games">i</button><span class="tip">Games are grouped by date. Try This Week to see every game this week.</span></span></p><p>'+(soccerLeagueState!=="ALL"?("No "+esc(soccerLeagueDisplayName(soccerLeagueState))+" games posted for this date yet. Try This Week, or pick All leagues."):"No Soccer games posted for this date yet. Try This Week.")+'</p></div>';
       return;
     }
     var out="", curDay=null;
@@ -3421,8 +3499,6 @@ try{renderSpreads();}catch(e){}
 
 /* ================= PLAYER PICKS — Top props, Nov 4–5 ================= */
 var TOP_PROPS=[
-  {player:"Braelon Allen",team:"NYJ",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"310",market_prob:0.2439,guess:52,tier:"strong",flag:"implausible_edge",value_pct:113.4,markets:{"polymarket": "https://polymarket.us/event/nfl-nyj-kc-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08NYJKC-NYJBALLEN0-1", "novig": null},line_move:{"from": 240, "to": 310, "at": "2026-11-08 10:11:41 PST"},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Geno Smith",team:"NYJ",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1500",market_prob:0.0625,guess:13.1,tier:"strong",flag:"implausible_edge",value_pct:108.8,markets:{"polymarket": "https://polymarket.us/event/nfl-nyj-kc-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08NYJKC-NYJGSMITH7-1", "novig": null},line_move:{"from": 1200, "to": 1500, "at": "2026-11-08 10:11:41 PST"},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
   {player:"Adam Trautman",team:"DEN",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1400",market_prob:0.0667,guess:13.2,tier:"strong",flag:"",value_pct:97.27,markets:{"polymarket": "https://polymarket.us/event/nfl-den-car-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08DENCAR-DENATRAUTMAN82-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
   {player:"Michael Penix Jr.",team:"ATL",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"950",market_prob:0.0952,guess:18.4,tier:"strong",flag:"",value_pct:93.24,markets:{"polymarket": "https://polymarket.us/event/nfl-cin-atl-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08CINATL-ATLMPENIX9-1", "novig": null},line_move:{"from": 900, "to": 950, "at": "2026-11-07 22:26:21 PST"},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
   {player:"George Holani",team:"SEA",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1200",market_prob:0.0769,guess:14.7,tier:"strong",flag:"",value_pct:91.14,markets:{"polymarket": "https://polymarket.us/event/nfl-ari-sea-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08ARISEA-SEAGHOLANI36-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
@@ -3431,8 +3507,8 @@ var TOP_PROPS=[
   {player:"Gavin Bartholomew",team:"MIN",sport:"NFL",date:"Nov 9",prop:"anytime TD",line:"Anytime TD",odds:"1400",market_prob:0.0667,guess:12.1,tier:"strong",flag:"",value_pct:81.15,markets:{"polymarket": "https://polymarket.us/event/nfl-buf-min-2026-11-10-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV09BUFMIN-MINGBARTHOLOMEW86-1", "novig": null},line_move:{"from": 1200, "to": 1400, "at": "2026-11-07 22:26:21 PST"},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
   {player:"Charlie Woerner",team:"ATL",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1000",market_prob:0.0909,guess:16.4,tier:"strong",flag:"",value_pct:80.61,markets:{"polymarket": "https://polymarket.us/event/nfl-cin-atl-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08CINATL-ATLCWOERNER89-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
   {player:"Trevor Etienne",team:"CAR",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1500",market_prob:0.0625,guess:11.1,tier:"strong",flag:"",value_pct:76.91,markets:{"polymarket": "https://polymarket.us/event/nfl-den-car-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08DENCAR-CARTETIENNE23-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Bryce Lance",team:"NO",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"950",market_prob:0.0952,guess:16.8,tier:"lean",flag:"",value_pct:75.91,markets:{"polymarket": "https://polymarket.us/event/nfl-cle-no-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08CLENO-NOBLANCE18-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Oscar Delp",team:"NO",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1400",market_prob:0.0667,guess:11.6,tier:"lean",flag:"",value_pct:73.45,markets:{"polymarket": "https://polymarket.us/event/nfl-cle-no-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08CLENO-NOODELP4-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Bryce Lance",team:"NO",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"950",market_prob:0.0952,guess:16.8,tier:"strong",flag:"",value_pct:75.91,markets:{"polymarket": "https://polymarket.us/event/nfl-cle-no-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08CLENO-NOBLANCE18-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Oscar Delp",team:"NO",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1400",market_prob:0.0667,guess:11.6,tier:"strong",flag:"",value_pct:73.45,markets:{"polymarket": "https://polymarket.us/event/nfl-cle-no-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08CLENO-NOODELP4-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
   {player:"Lil'Jordan Humphrey",team:"DEN",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1400",market_prob:0.0667,guess:11.4,tier:"lean",flag:"",value_pct:71.04,markets:{"polymarket": "https://polymarket.us/event/nfl-den-car-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08DENCAR-DENLHUMPHREY5-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
   {player:"Jalen Royals",team:"KC",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"850",market_prob:0.1053,guess:17.8,tier:"lean",flag:"",value_pct:68.62,markets:{"polymarket": "https://polymarket.us/event/nfl-nyj-kc-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08NYJKC-KCJROYALS11-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
   {player:"Noah Gray",team:"KC",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"600",market_prob:0.1429,guess:24,tier:"lean",flag:"",value_pct:68.21,markets:{"polymarket": "https://polymarket.us/event/nfl-nyj-kc-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08NYJKC-KCNGRAY83-1", "novig": null},line_move:{"from": 500, "to": 600, "at": "2026-11-08 10:11:41 PST"},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
@@ -4874,7 +4950,7 @@ window.addEventListener("resize",closeAllInfo);
    boxes stay empty rather than showing a guessed time. Older than 18
    hours, a calm banner says so at the top of the tab — the numbers
    below still render. */
-var SNAPSHOT_UPDATED="2026-11-08T10:11:41-08:00";
+var SNAPSHOT_UPDATED="2026-11-08T12:14:20-08:00";
 function ptDateKey(d){
   try{return new Intl.DateTimeFormat("en-CA",{timeZone:"America/Los_Angeles",year:"numeric",month:"2-digit",day:"2-digit"}).format(d);}catch(e){return "";}
 }
