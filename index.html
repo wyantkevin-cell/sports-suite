@@ -5513,27 +5513,24 @@ function parsePredictionSlip(text,known,NICKS,NBA_NICKS){
       comboPicks[pick]=1;
       addPmLeg({player:pick,stat:"To win",line:null,side:"Yes",p:pTeam,game:game.away+" @ "+game.home,team:pick,ml:true});
     }
-    /* Fallback: a picked code on its own line is enough, even when
-       the "X vs Y" line above it did not parse (OCR can split a
-       multi-word city such as "Oklahoma City" across lines, which
-       breaks the matchup regex). Each code appears once per day, so
-       it identifies exactly one board game. Only codes not already
-       added above are picked up here. */
-    raw.split(/\r?\n/).forEach(function(ln){
-      var code=String(ln||"").trim().toUpperCase();
-      if(!/^[A-Z]{2,3}$/.test(code)) return;
-      if(!codeSet[code]||comboPicks[code]) return;
-      var game2=null;
-      (typeof simGameOpts!=="undefined"?simGameOpts:[]).forEach(function(g){
-        if(game2) return;
-        var a=String(g.away).toUpperCase(), h=String(g.home).toUpperCase();
-        if(a===code||h===code) game2=g;
+    /* Fallback: a picked code anywhere in the text is enough, even
+       when the "X vs Y" line above it did not parse (OCR can split a
+       multi-word city such as "Oklahoma City" across lines, or put
+       the code on the same line as the team name, which breaks the
+       matchup regex). Each code appears once per day, so it
+       identifies exactly one board game. Only codes not already
+       added above are picked up here. Whole-word match only, so
+       "ATL" never fires inside "Atlanta". */
+    (typeof simGameOpts!=="undefined"?simGameOpts:[]).forEach(function(g){
+      [String(g.away).toUpperCase(),String(g.home).toUpperCase()].forEach(function(code){
+        if(!code||comboPicks[code]) return;
+        var re=new RegExp("\\b"+code+"\\b");
+        if(!re.test(raw)) return;
+        var isHome=code===String(g.home).toUpperCase();
+        var pTeam=isHome?g.pHome:(g.pDraw!=null?1-g.pHome-g.pDraw:1-g.pHome);
+        comboPicks[code]=1;
+        addPmLeg({player:code,stat:"To win",line:null,side:"Yes",p:pTeam,game:g.away+" @ "+g.home,team:code,ml:true});
       });
-      if(!game2) return;
-      var isHome2=code===String(game2.home).toUpperCase();
-      var pTeam2=isHome2?game2.pHome:(game2.pDraw!=null?1-game2.pHome-game2.pDraw:1-game2.pHome);
-      comboPicks[code]=1;
-      addPmLeg({player:code,stat:"To win",line:null,side:"Yes",p:pTeam2,game:game2.away+" @ "+game2.home,team:code,ml:true});
     });
   }
   function surnameBefore(before){
