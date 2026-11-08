@@ -388,6 +388,7 @@ table.mini td:first-child{font-family:var(--sans);font-weight:600}
 .docs h3:first-child{margin-top:0}
 .docs p{margin:0 0 10px;line-height:1.6;max-width:720px}
 .docs p.sub{margin-bottom:6px}
+.docs h4{font-size:16px;margin:22px 0 5px}
 /* How it works side drawer: slides in from the left, closes on tap elsewhere.
    The trigger is a solid, full-contrast hamburger button so it cannot be
    mistaken for one of the pale tab pills above it. */
@@ -477,6 +478,15 @@ footer b{color:var(--ink)}
   .slate{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;border:0;background:transparent;overflow:visible}
   .slate-row{flex-direction:column;align-items:stretch;gap:8px;padding:11px 12px;border:1px solid var(--line);border-radius:12px;min-width:0;overflow-wrap:break-word}
   .slate-row button{width:100%;padding:10px 14px;font-size:13px;white-space:normal;line-height:1.35;min-height:44px}
+  /* Game forecasts List view (Settings -> View -> List): the two-column
+     grid above is the phone Tiles layout for the forecasts slate. When
+     the panel carries .gf-list, the slate goes back to the full-width
+     stacked rows the desktop list uses, so every game row stays
+     readable at phone width instead of squeezed into half-width tiles. */
+  #panel-gameforecasts.gf-list .slate{display:block;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  #panel-gameforecasts.gf-list .slate-row{flex-direction:row;align-items:center;gap:6px 14px;padding:12px 16px;border:0;border-bottom:1px solid var(--line);border-radius:0}
+  #panel-gameforecasts.gf-list .slate-row:last-child{border-bottom:0}
+  #panel-gameforecasts.gf-list .slate-row button{width:auto}
   .slate-row .match{font-size:14.5px}
   .picklines .avgline{font-size:14.5px}
   .sim-lines,.model-lines{font-size:13.5px}
@@ -498,25 +508,6 @@ footer b{color:var(--ink)}
   .btn-row{margin-top:9px}
 }
 @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
-/* DFS Optimizer: pickers reuse .filters; lineup cards and rows below use
-   only the site variables so every theme restyles them. */
-.dfs-textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 13px;font-size:16px;font-family:var(--mono);min-height:110px;resize:vertical;color:var(--ink)}
-.dfs-build{width:100%;justify-content:center;padding:16px 20px;font-size:18px;border-radius:12px;margin-top:14px}
-.dfs-status{margin:12px 0 0;font-size:15px;line-height:1.55}
-.dfs-status:empty{display:none}
-.dfs-lineups{display:grid;gap:14px;margin-top:16px}
-.dfs-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
-.dfs-card h3{font-size:17px;margin:0 0 10px}
-.dfs-row{display:grid;grid-template-columns:52px minmax(0,1fr) auto 62px;gap:8px;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--line);font-size:15px}
-.dfs-row .dfs-pos{font-family:var(--mono);font-weight:700;font-size:13px;color:var(--accent)}
-.dfs-row .dfs-who b{display:block;font-size:15.5px}
-.dfs-row .dfs-who span{color:var(--muted);font-size:13px}
-.dfs-row .dfs-sal{font-family:var(--mono);font-weight:600;white-space:nowrap}
-.dfs-row .dfs-pts{font-family:var(--mono);font-weight:700;text-align:right;white-space:nowrap}
-.dfs-row .dfs-pts span{display:block;font-family:var(--sans);font-weight:500;font-size:11.5px;color:var(--muted)}
-.dfs-foot{margin-top:12px;font-size:15px;line-height:1.6}
-.dfs-foot b{font-family:var(--mono)}
-@media(max-width:640px){.dfs-card{padding:13px 14px}.dfs-row{grid-template-columns:44px minmax(0,1fr) auto 54px;font-size:14px}}
 /* Scores tab: live scores + standings fetched from ESPN in the browser.
    Built only from the site variables and shared classes (.rows, .trow,
    .filters, .empty-state, .picktag, .status) so Classic, Dark sportsbook,
@@ -1134,68 +1125,21 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <section id="tdBoardSection" aria-label="Touchdowns — NFL anytime TD" hidden>
       <h2 style="margin-top:26px">Touchdowns &mdash; NFL anytime TD</h2>
       <p class="sub">Who scores a touchdown? The chance for every player on the list, from how much they touch the ball near the goal line. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p>
+      <div id="tdBoardRows" class="rows"></div>
           <p class="empty-state" id="tdBoardEmpty">The next touchdown board hasn&rsquo;t been posted yet. Check back on game day.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no board yet">i</button><span class="tip">The next board is posted on game day, once the week&rsquo;s games are set.</span></span></p>
     </section>
   </section>
 
 
-  <!-- ============ DFS OPTIMIZER ============ -->
-  <section class="panel" id="panel-dfs" role="tabpanel" aria-labelledby="tab-dfs" tabindex="0" hidden>
-    <div class="explain-wrap">
-      <h1 class="explain-head"><span class="explain-title">DFS Optimizer</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainDfs" aria-label="About the DFS Optimizer">i</button></h1>
-      <div class="explain" id="explainDfs" hidden><p style="margin:0">We rank players by how many points they&rsquo;ve averaged lately, then pick the best team that fits under the salary limit. You add the salaries from DraftKings or FanDuel.</p></div>
-    </div>
-    <p class="lede">Pick a slate and a platform, add player salaries, and we build the best lineup that fits under the limit &mdash; plus two more options.</p>
-    <p class="sub" style="margin-top:10px">This tool needs player salaries from DraftKings or FanDuel. Upload the salary file they let you download, or paste the salaries in. The sample salaries are examples only, not real prices.</p>
-    <div class="freshness"></div>
-    <p class="updated-line" id="dfsAsOf" hidden></p>
-
-    <section class="block" aria-label="Pick a slate">
-      <h2>1. Pick a slate</h2>
-      <div class="filters" role="group" aria-label="Choose a slate" id="dfsSlateFilters">
-        <button type="button" aria-pressed="true" data-dfs-slate="NBA">NBA &mdash; Fri, Nov 6, 2026</button>
-        <button type="button" aria-pressed="false" data-dfs-slate="NFL">NFL &mdash; Sun, Nov 8, 2026</button>
-      </div>
-    </section>
-
-    <section class="block" aria-label="Pick a platform">
-      <h2>2. Pick a platform</h2>
-      <div class="filters" role="group" aria-label="Choose a platform" id="dfsPlatformFilters">
-        <button type="button" aria-pressed="true" data-dfs-platform="DK">DraftKings ($50,000 limit)</button>
-        <button type="button" aria-pressed="false" data-dfs-platform="FD">FanDuel ($60,000 limit)</button>
-      </div>
-    </section>
-
-    <section class="block" aria-label="Add salaries">
-      <h2>3. Add salaries</h2>
-      <div class="card">
-        <h3>Upload salary file</h3>
-        <p class="sub">The .csv file DraftKings or FanDuel lets you download for a slate.</p>
-        <label class="btn secondary" for="dfsFile">Upload salary file</label>
-        <input type="file" id="dfsFile" accept=".csv,text/csv" hidden>
-        <p class="note" id="dfsFileName" aria-live="polite"></p>
-        <div class="rule"></div>
-        <h3>Or paste salaries</h3>
-        <p class="sub">Paste the same CSV text here instead.</p>
-        <textarea class="dfs-textarea" id="dfsPaste" placeholder="Name,Position,Salary,Team&#10;..." aria-label="Paste salaries as CSV text"></textarea>
-        <div class="rule"></div>
-        <h3>Try with sample salaries</h3>
-        <p class="sub">No file handy? Fill in example salaries and see how it works.</p>
-        <button type="button" class="btn secondary" id="dfsSample">Try with sample salaries</button>
-        <p class="note"><b>Sample salaries are examples only, not real DraftKings or FanDuel prices.</b></p>
-      </div>
-      <p class="dfs-status" id="dfsStatus" aria-live="polite"></p>
-      <button type="button" class="btn dfs-build" id="dfsBuild">Build my lineup</button>
-      <div id="dfsResults" aria-live="polite"></div>
-      <p class="note">Projected points are each player&rsquo;s recent average from our own game data &mdash; NBA from the last 5 games, NFL from the last 4. NFL numbers run through Week 6 (Nov 1, 2026). Defense is set to 7 points for every team because we don&rsquo;t model defenses &mdash; swap in your own pick. These are forecasts, not guarantees.</p>
-    </section>
-  </section>
-
   <!-- ============ SCORES ============ -->
   <section class="panel" id="panel-scores" role="tabpanel" aria-labelledby="tab-scores" tabindex="0" hidden>
     <h1>Scores</h1>
     <p class="lede">Today&rsquo;s games, live from ESPN. Scores refresh on their own while you stay on this tab.</p>
-
+    <div class="gf-subnav" role="group" aria-label="Scores sections" id="scoresSubnav">
+      <button type="button" data-scores-nav="scores-list" aria-pressed="true">Scores</button>
+      <button type="button" data-scores-nav="scores-standings" aria-pressed="false">Standings</button>
+    </div>
+    <div id="scores-list">
     <div class="scores-toolbar">
       <p class="updated-line" id="scoresAsOf" aria-live="polite">Scores have not loaded yet.</p>
       <button type="button" class="btn secondary" id="scoresRefresh">Refresh</button>
@@ -1211,12 +1155,15 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     </div>
     <div id="scoresBody" aria-live="polite"><div class="empty-state"><p>Scores could not be loaded &mdash; try again.</p><p style="margin-top:10px"><button type="button" class="btn secondary" data-scores-retry>Try again</button></p></div></div>
 
+    </div>
+    <div id="scores-standings" hidden>
     <section class="block" aria-label="Standings">
       <h2>Standings</h2>
       <p class="sub">Wins, losses and win percentage for each team, live from ESPN.</p>
       <div id="standingsBody" aria-live="polite"></div>
       <p class="note" id="standingsNote" hidden>College standings coming soon.</p>
     </section>
+    </div>
   </section>
 
   <!-- ============ OUR RECORD ============ -->
@@ -1361,47 +1308,136 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <ul class="drawer-list">
         <li><a href="#doc-games">Game forecasts</a></li>
         <li><a href="#doc-props">Player picks</a></li>
-        <li><a href="#doc-dfs">DFS Optimizer</a></li>
+        <li><a href="#doc-sims">Simulations</a></li>
+        <li><a href="#doc-calibration">Calibration</a></li>
+        <li><a href="#doc-enhancements">Enhancements</a></li>
+        <li><a href="#doc-concepts">Concepts and methods</a></li>
         <li><a href="#doc-record">Our record</a></li>
         <li><a href="#doc-bankroll">Your money over a season</a></li>
+        <li><a href="#doc-models">Our models</a></li>
       </ul>
     </nav>
     <h1>How it works, <em>in plain words.</em></h1>
     <p class="lede">This site helps you judge a bet before you place it. It gives a chance for every game and every player pick. And it keeps a public record of how its picks did.</p>
-    <p class="lede" style="margin-top:10px">The numbers are early. They’re still proving themselves. So <a href="#record" data-goto="record">Our record</a> shows every settled pick with its result and date. Look there before you trust any number here.</p>
+    <p class="lede" style="margin-top:10px">The numbers are early. They are still proving themselves. So <a href="#record" data-goto="record">Our record</a> shows every settled pick with its result and date. Look there before you trust any number here.</p>
+    <p>Two models make the numbers. Model A (ALL_IN) is built by Grok. Model B (FULL_SLATE) is built by Muse. Where both exist, the headline number is the simple average of the two. Neither model is a proven winner. Both are forecasters. The record is the proof, and it is still being built.</p>
 
     <h3 id="doc-games">Game forecasts (Who wins?)</h3>
     <p>Each game gets one headline number: the team we think wins, and how often we think it wins &mdash; for example, &ldquo;Knicks 87%&rdquo;. Under it, Model A (ALL_IN) and Model B (FULL_SLATE) show the two numbers behind it, where their numbers are in this snapshot. Model A is built by Grok and Model B is built by Muse. A game close to 50-50 is marked as a close call &mdash; a lean, not a pick to lean on.</p>
-    <p>A chance comes from past games. How well teams score and stop the other team. Recent form. Rest. Playing at home. Recent games count most. News that comes after the numbers are made — injuries, late lineup changes — isn't in them. So check the news before you use a pick. Every number carries its date.</p>
+    <p>A chance comes from past games. How well teams score and stop the other team. Recent form. Rest. Playing at home. Recent games count most. News that comes after the numbers are made &mdash; injuries, late lineup changes &mdash; isn&rsquo;t in them. So check the news before you use a pick. Every number carries its date.</p>
+    <p>One guardrail applies to Model B. If Model B&rsquo;s chance is more than 15 points away from the book&rsquo;s chance, we pull it back to within 15 points. See Enhancements below for why.</p>
 
     <h3 id="doc-props">Player picks</h3>
-    <p>Player picks give a chance a player goes over or under a line. Points, shots on goal, catches and yards, and more. The chance comes from recent games — the most recent ones count most. It also looks at how good the other team's defense is against that kind of player. Warnings flag injuries and other reasons to be careful.</p>
-    <p>Touchdown picks work the same way. How often a player gets the ball near the goal line. Plus the weather and how the game should play out. The chance shown is our guess, not a book's price. Hold it next to a real payout and see if the payout is worth it.</p>
+    <p>Player picks give a chance a player goes over or under a line. Points, shots on goal, catches and yards, and more. The chance comes from recent games &mdash; the most recent ones count most. It also looks at how good the other team&rsquo;s defense is against that kind of player. Warnings flag injuries and other reasons to be careful.</p>
+    <p>Every player-pick chance goes through calibration before it is shown. That means we checked it against past seasons and adjusted it so the quoted chance matches how often it actually hit. See Calibration below.</p>
+    <p>Touchdown picks work the same way. How often a player gets the ball near the goal line. Plus the weather and how the game should play out. The chance shown is our guess, not a book&rsquo;s price. Hold it next to a real payout and see if the payout is worth it. Touchdown picks only cover quarterbacks, running backs, receivers, and tight ends. And a touchdown pick is never shown if the gap between our chance and the book&rsquo;s price is more than double &mdash; that kind of gap usually means our number is wrong, not that we found a bargain.</p>
     <p>Picks in the same game can affect each other. If teammates are on the same ticket, one scoring can make the other less likely. So the real chance of the whole ticket is lower than just combining the single chances.</p>
 
-    <h3 id="doc-dfs">DFS Optimizer</h3>
-    <p>Pick a slate (NBA or NFL) and a platform (DraftKings or FanDuel). Then add the player salaries from that platform. Upload the salary file, paste the salaries, or try the sample salaries to see how it works. The optimizer ranks players by projected points and builds the best lineup it can under the salary limit, plus two more that differ from the first. Projected points are each player's recent average from our own game data. NBA from the last 5 games, NFL from the last 4. Defense is set to 7 points for every team because we don't model defenses. These are forecasts, not guarantees.</p>
-    <p>This tool needs player salaries from DraftKings or FanDuel. Upload the salary file they let you download, or paste the salaries in. The sample salaries are examples only, not real prices.</p>
+    <h3 id="doc-sims">Simulations</h3>
+    <p>We play each game 10,000 times on a computer before we show you a number. That is a Monte Carlo simulation. The computer uses the same inputs as the model &mdash; team strength, home field, rest &mdash; and adds the normal randomness of a real game. Then it counts how often each outcome happened.</p>
+    <p>For games, the simulation gives a second opinion on who wins, and a range for the total points and the margin. The range is shown as a band, for example &ldquo;total 41 to 58&rdquo;. That band is the middle 90% of the simulated games. 5% of the simulated games were below it. 5% were above it. The band is wide because real games are noisy. A narrow band would be a lie.</p>
+    <p>For player props, the simulation plays the player&rsquo;s game 2,000 times and counts how often he goes over the line. Then we compare that number with the model&rsquo;s calibrated chance. If the two disagree by more than about 10 points, the row says so in plain words: &ldquo;Our model and the simulation disagree by N%&rdquo;. A disagreement does not mean one of them is wrong. It means the pick is uncertain, and you should know that.</p>
+    <p>The simulation is also how we price totals and spreads. The chance a total goes over, or a team covers the spread, is the share of the 10,000 simulated games where it happened.</p>
+    <p>What the simulation cannot do: it cannot see injuries, weather changes, or a coach&rsquo;s game plan. It only knows what past games looked like.</p>
+
+    <h3 id="doc-calibration">Calibration</h3>
+    <p>A model that says &ldquo;70%&rdquo; should be right about 70 times in 100. Most models are not. They are too sure of themselves. Calibration fixes that.</p>
+    <p>Before any player-pick chance is shown on this site, it passes through a walk-forward calibration check. Walk-forward means we tested the model on past seasons it had never seen, in order, the way it would have run live. Then we built a table that adjusts the model&rsquo;s chances so they match how often they actually hit. Only the adjusted chance is shown. This rule has applied to every prop since November 3, 2026.</p>
+    <p>The calibration tables are not rebuilt every day. They are rebuilt only when 100 or more new graded picks have piled up for that market. That is because a small sample makes the table worse, not better. Until the table is rebuilt, the site keeps quoting the old table.</p>
+    <p>Every morning we grade yesterday&rsquo;s picks and check for drift. Drift means the quoted chances and the actual results have pulled apart. We flag it when a family has 20 or more graded picks and the gap is more than 10 points (a warning) or more than 15 points (a drift flag). Right now, for example, the NFL props are flagged: they were quoted at 50.1% on average and actually hit 33.3% over 30 graded picks, a gap of 16.7 points. That flag is shown in our notes, and the family stays under watch until the sample grows or the table is rebuilt. We do not quietly change the chances to hide a bad run. The record shows it.</p>
+    <p>The same daily grading also feeds the silent grading log. See Our record below.</p>
+
+    <h3 id="doc-enhancements">Enhancements</h3>
+    <p>These are the extra rules we put on top of the models. Each one exists because the plain model made a mistake we could measure.</p>
+    <p><b>The 15-point market cap.</b> Live since November 8, 2026. When Model B&rsquo;s chance that the home team wins is more than 15 points away from the book&rsquo;s chance, we pull Model B&rsquo;s number back to within 15 points of the book. The book&rsquo;s chance is the book&rsquo;s odds with the book&rsquo;s cut taken out (see Concepts: de-vigging). The cap applies to college football, the NBA, the NHL, baseball, and soccer. It does not apply to the NFL or college basketball yet, because we have not tested it there. Why we added it: two college football games had Model B at 66% and 73% while the book had them near 29% and 45%. Both lost badly. The model was too sure of itself when it disagreed with the market that much. The cap keeps the forecast honest without throwing the model away. The cap is applied once, in the morning run. It is never re-applied during the day.</p>
+    <p><b>The touchdown guard.</b> Two rules. First, only quarterbacks, running backs, receivers, and tight ends can appear as touchdown picks. If we do not know a player&rsquo;s position, he is left out. Second, a touchdown pick is dropped when the gap between our chance and the book&rsquo;s price is more than double. Before this guard, the top 100 board picks included 55 touchdown picks and the biggest gap was over 2,200%. After it, 36 touchdown picks remain and the biggest gap is under 100%. Touchdown picks still run hotter than other props. We watch them.</p>
+    <p><b>The consensus check.</b> Before the card is picked, we compare each candidate with the sharp book&rsquo;s price (Pinnacle) and the other books. If the books agree with us, the pick is marked confirmed. If they disagree, it is marked contradicted. This check never removes a pick. It is a note, and a tiebreaker when two picks are otherwise equal. We do not have a feed of where the public&rsquo;s money is going, so there is no &ldquo;fade the public&rdquo; signal here.</p>
+    <p><b>Adaptive value bars.</b> The card only takes picks whose edge over the book is at least 10%. Edge means our chance divided by the book&rsquo;s chance, minus one. But the bar moves with the evidence. If a family has 30 or more graded picks and it is cold &mdash; losing money on paper, or hitting more than 15 points below its quoted chance &mdash; the bar rises to 20%. If a family is warm &mdash; breaking even or better, and hitting within 10 points of its quoted chance &mdash; the bar drops to 5%. The bar is never below 5% or above 20%.</p>
+    <p><b>Shrinkage toward the market.</b> For some props, a player with only a few games of history gets his chance pulled toward the book&rsquo;s chance. A small sample is noisy. The book&rsquo;s price is a second opinion. The pull is stronger when the sample is smaller.</p>
+    <p><b>What we tested and killed.</b> Not every idea helped. We tested a goalie adjustment for the NHL, a Bayesian shrinkage version of the receiving model, offensive-line injuries, referee tendencies, play distribution, and situational spots like lookahead and letdown games. None of them beat the plain model in walk-forward testing, so none of them is live. The receiving model&rsquo;s Bayesian version is the closest call: it was tested and it did not beat the current version, so the current version stays. We list the killed ideas here so you know what we tried and why it is not in the numbers.</p>
+
+    <h3 id="doc-concepts">Concepts and methods</h3>
+    <p>These are the ideas and tools behind the numbers. Each one is named plainly, because you should be able to check our work.</p>
+    <p><b>Elo ratings.</b> A single number for how good a team is. It goes up when a team wins and down when it loses. A win against a strong team moves it more than a win against a weak team. Recent games count more than old ones: soccer ratings fade with a 400-day half-life, so a game from a year ago counts about half as much as a game from today. The NFL rating also pulls partway back toward average between seasons. Elo is the base of every game model here. On its own it is already a decent forecaster. The other features sit on top of it.</p>
+    <p><b>Logistic regression.</b> A model that turns a list of numbers into a chance between 0% and 100%. It is simple, it is easy to check, and it rarely fools itself. The NFL game model is logistic regression on 11 features: the Elo gap, home field, each team&rsquo;s Elo, recent form, how well each team scores and stops the other team, and rest. The NBA game model is logistic regression on 5 features. Baseball and hockey are logistic regression on Elo alone, because adding more features did not help in testing. The touchdown model is logistic regression on 20 usage features, like how often a player gets the ball near the goal line.</p>
+    <p><b>Gradient-boosted models.</b> A model built from many small yes-or-no splits, stacked together. It can find patterns a straight-line model misses. It can also overfit &mdash; learn noise and call it signal. We use it for college basketball, where it beat the simpler model in 8 out of 8 tested seasons. We tested it for the NFL too, and it lost to logistic regression there (log loss 0.6765 against 0.6429), so the NFL keeps the simpler model.</p>
+    <p><b>Negative-binomial distributions.</b> A way to describe how many times something happens in a game &mdash; 3-pointers made, shots on goal, rebounds. The simple version (Poisson) assumes the count is steady. Real counts are not steady: some games a player is hot, some games he is cold. The counts spread out wider than Poisson allows. That is called overdispersion. The negative binomial allows for the extra spread. We use it for NBA 3-pointers (fitted overdispersion 0.3426), NHL shots on goal (it beat Poisson in walk-forward testing on 3,010 player-games), and college rebounds and assists. For college points we tested it and rejected it: it underestimated the chance of going over low lines, so points use a normal distribution instead.</p>
+    <p><b>Walk-forward testing and calibration.</b> We never test a model on the same games it learned from. We train it on past seasons, test it on the next season it has never seen, then roll forward. That is walk-forward testing. It is the only test we trust. Calibration is the step after: we compare the model&rsquo;s quoted chances with what actually happened, and adjust them so a quoted 70% hits about 70 times in 100. Every prop chance on this site passes through that adjustment before it is shown.</p>
+    <p><b>Log loss and Brier score.</b> Two yardsticks for how good a chance is. Log loss asks: how surprised were you by what happened? A chance of 90% on something that did not happen is a big surprise, and log loss punishes it hard. Lower is better. Brier score asks: how far was your chance from the result, squared? A chance of 70% on something that happened scores (1 &minus; 0.70)&sup2; = 0.09. Lower is better. We report log loss for win and prop models, and the average miss in points for totals and spreads models. Every number on this page comes from walk-forward testing, not from the games the model trained on.</p>
+    <p><b>Monte Carlo simulation.</b> Playing a game thousands of times on a computer with randomness added, then counting the outcomes. Games are simulated 10,000 times. Player props are simulated 2,000 times. See Simulations above.</p>
+    <p><b>De-vigging the book&rsquo;s odds.</b> A book&rsquo;s odds include the book&rsquo;s cut. If both sides of a bet are priced at &minus;110, the two implied chances add to about 105%, not 100%. The extra 5% is the book&rsquo;s cut. De-vigging takes the cut out so the two sides add to 100%. That gives the book&rsquo;s true chance, which is what we compare our number with. The value of a pick is our chance divided by the book&rsquo;s de-vigged chance, minus one.</p>
+    <p><b>Bayesian shrinkage.</b> A way to handle small samples. When a player has only a few games of history, his average is noisy. Shrinkage pulls his number partway toward the league average, more when the sample is small and less when it is large. We tested a Bayesian shrinkage version of the receiving-yards model. It did not beat the current version in walk-forward testing, so it is not live. The current model stays.</p>
+    <p><b>Recency weighting and trailing averages.</b> Recent games count more than old ones. The receiving-yards model uses a trailing-4 average: the last four games, weighted toward the most recent. NBA 3-pointers use a trailing-10 average. College props use a trailing-8 average with at least 4 games of history. A player who has been hot lately gets a higher number than a player with the same season average who has gone cold.</p>
+    <p><b>Efficiency and rest features.</b> The game models look at more than wins and losses. Efficiency means how well a team scores and stops the other team, adjusted for how good the opponent was. Rest means days off and back-to-back games. The NFL model uses both. The NBA model uses rest and back-to-back flags; form and efficiency gaps were tested and dropped, because they read as noise on 7,740 test games. College basketball builds its own opponent-adjusted efficiency, because the public version only covers the top 25 teams.</p>
+    <p><b>The 15-point market cap.</b> Covered in Enhancements above. When Model B disagrees with the book by more than 15 points, we pull it back to within 15 points. It is a guardrail, not a model.</p>
 
     <h3 id="doc-record">Our record</h3>
-    <p><a href="#record" data-goto="record">Our record</a> lists only bets that have finished. Date, pick, odds, result, and the profit at $100 per bet. Today’s bets stay on <a href="#bets" data-goto="bets">Our Bets</a> until their games finish. The record started fresh on Nov 6, 2026. The card only includes games dated that day. When a rule changes, the old card is archived and the change is noted here.</p>
+    <p><a href="#record" data-goto="record">Our record</a> lists only bets that have finished. Date, pick, odds, result, and the profit at $100 per bet. Today&rsquo;s bets stay on <a href="#bets" data-goto="bets">Our Bets</a> until their games finish. The record started fresh on Nov 6, 2026. The card only includes games dated that day. When a rule changes, the old card is archived and the change is noted here.</p>
+    <p><b>How the card is picked.</b> Each day the card has 1 to 4 straight bets plus 1 Parlay of the Day. Picks are ranked by likelihood &mdash; the model&rsquo;s chance it hits &mdash; among picks that pass the value screen. The value screen is an edge of at least 10% over the book (see Enhancements for the adaptive bars). The card can be any sport and any bet type. Soccer is excluded from the public record. The parlay has 2 legs, both from the value-passing pool, from different games, no leg longer than +500, and the combined odds are capped at 10 times the stake. At most 1 college football prop per card. A pick is dropped if its game has already started. Every pick is graded at $100 flat. A pick that lands exactly on the line is a push. A player who does not play stays pending.</p>
+    <p><b>Silent grading.</b> Every morning we also grade the whole board in the background &mdash; every prop and every game forecast, about 25 times as many picks as the card. That grading never touches the public record. It exists only to feed the calibration tables and to show us which families are running hot or cold. On November 8, for example, it graded 355 events from the November 5 to 7 boards. The public record is only the card. The silent log is the lab notebook.</p>
+    <p><b>Closing-line value (CLV).</b> We also track whether our picks beat the closing price at Pinnacle, the sharpest book. For each card pick, we record the price when we picked it and the Pinnacle price near game time. If the closing price moved our way, that is positive CLV. Positive CLV over many bets is the best early sign a model has an edge, because the closing price is the market&rsquo;s best guess. So far we have 28 closes recorded, averaging about +3 points. That is a small sample. It is suggestive, not proof. We need around 75 closes before we draw any conclusion, and we are not there yet.</p>
+    <p><b>The record so far.</b> After November 7: straights 4&ndash;4, &minus;$90.30. Parlays 0&ndash;2, &minus;$200. Total &minus;$290.30 on paper. That is a losing record. We show it because the record is the point. If it stays negative, we change the selection rules and say so here.</p>
 
     <h3 id="doc-bankroll">Your money over a season</h3>
     <p><a href="#record" data-goto="record">Our record</a> also shows what happens to $10,000 over a season of 250 bets, played 10,000 times on a computer. Two ways of betting: the same $100 on every bet, and a bet sized to the edge. Bigger when the edge is bigger, smaller when it’s smaller, never more than 10% of what you have. That’s a standard sizing rule called half-Kelly. These numbers are a teaching example, not our record. One row shows a real edge (winning 55 times in 100 at &minus;110 odds). One row shows the same bets with no edge at all. One row shows what happens when you size bets for an edge you don’t have. Our own picks will run through the same simulation once 30 of them are graded. Until then that part of the page says so plainly. No way of betting shown here is a promise it wins. Even with a real edge, the sized bets end higher in the middle but finish ahead less often and dip further along the way.</p>
 
-    <h3 id="doc-models">Our Models</h3>
-    <p>These are the 30 models behind the numbers on this site &mdash; 29 Mordy models (together, Model B &mdash; FULL_SLATE) plus ALL_IN (Model A) as the 30th. Each one focuses on one job:</p>
-    <p>Each number below comes from testing the model on past seasons it had never seen. For win/loss models, the score is log loss. That's how far the model's chances were from what actually happened. Lower is better. For totals and spreads, the score is the average miss in points. Lower is better. R² says how much of the result the model explains versus a simple average. Higher is better. Recalibration means we adjusted the model's chances using past seasons, so the quoted chance matches how often it actually hit.</p>
-    <ul style="margin:0 0 10px;padding-left:20px;line-height:1.6;max-width:720px">
-      <li style="margin-bottom:6px"><b>Game (6 models)</b> &mdash; walk-forward log loss: NFL 0.6429, CFB 0.5709, NBA 0.6260, MLB 0.6795, NHL 0.6690, CBB 0.5081. None has beaten the book&rsquo;s odds across multiple seasons.</li>
-      <li style="margin-bottom:6px"><b>Touchdowns (1)</b> &mdash; walk-forward log loss 0.4798, beats the position base rate in all 6 seasons. Probability skill only &mdash; no edge claimed.</li>
-      <li style="margin-bottom:6px"><b>Player props (9)</b> &mdash; every probability passes walk-forward recalibration before it is quoted; e.g. receiving yards R&sup2; 0.331 vs trailing-average 0.240.</li>
-      <li style="margin-bottom:6px"><b>Totals (4)</b> &mdash; walk-forward MAE: NFL 10.749, CFB 13.18, CBB 13.751, NBA 14.834 (v2, not yet wired into the board). Forecasters only.</li>
-      <li style="margin-bottom:6px"><b>Spreads (3)</b> &mdash; walk-forward MAE: NFL 10.272, CFB 13.99, CBB 10.183. Forecasters only.</li>
-      <li style="margin-bottom:6px"><b>Soccer (6)</b> &mdash; one per league; best is Eredivisie, which beat the market in 1 of 5 seasons. Forecasters only, no public track record.</li>
-      <li style="margin-bottom:6px"><b>Model A &mdash; ALL_IN (1, the 30th model)</b> &mdash; a second forecasting source; the headline number is the average of the two models where both exist.</li>
-    </ul>
-    <p>Every model gets tested on past games before it goes live. And we keep score in Our Record, so you can see how they've done.</p>
+    <h3 id="doc-models">Our models</h3>
+    <p>These are the 30 models behind the numbers on this site &mdash; 29 Mordy models (together, Model B &mdash; FULL_SLATE) plus ALL_IN (Model A) as the 30th. Each one focuses on one job.</p>
+    <p>Each number below comes from testing the model on past seasons it had never seen. For win/loss models, the score is log loss. That&rsquo;s how far the model&rsquo;s chances were from what actually happened. Lower is better. For totals and spreads, the score is the average miss in points. Lower is better. R&sup2; says how much of the result the model explains versus a simple average. Higher is better. Recalibration means we adjusted the model&rsquo;s chances using past seasons, so the quoted chance matches how often it actually hit.</p>
+    <p><b>The honest headline first: every model below is a forecaster, not a proven edge.</b> Each one beats simple baselines like home-always and Elo-only in walk-forward testing. None has beaten the book&rsquo;s odds across multiple seasons. The only model to beat the market in even one season is Eredivisie soccer, in 1 of 5 seasons. Nothing here is a guaranteed winning system. Forecasts are the product. Whether there is an edge is the lab&rsquo;s open question, and the record is how we answer it.</p>
+
+    <h4>Game models &mdash; who wins (6 models)</h4>
+    <p><b>NFL.</b> Logistic regression on 11 features (Elo gap, home field, each team&rsquo;s Elo, recent form, scoring and defensive efficiency, rest). Trained on 2,033 games. Walk-forward log loss 0.6429, against 0.6448 for Elo alone and about 0.69 for always picking the home team. So it beats Elo alone by a hair. A gradient-boosted version was tested and lost, so the simple model stays. Moneyline backtesting shows no edge.</p>
+    <p><b>College football.</b> Elo plus efficiency. Trained on 7,193 games. Walk-forward log loss 0.5709. Beats Elo alone. Forecaster only.</p>
+    <p><b>NBA.</b> Logistic regression on 5 features (Elo gap, home field, rest, back-to-back flags). Trained on 8,882 games. Walk-forward log loss 0.6260 and Brier score 0.2181, against 0.6272 for Elo alone. Form and efficiency gaps were tested and dropped &mdash; they read as noise on 7,740 test games.</p>
+    <p><b>Baseball.</b> Elo alone, as a logistic regression. Trained on 17,902 games. Walk-forward log loss 0.6795. Adding more features did not help in testing, so we ship the simple version. Forecaster only.</p>
+    <p><b>Hockey.</b> Elo alone, as a logistic regression. Trained on 9,275 games. Walk-forward log loss 0.6690. Same story as baseball: the extra features did not help, so the simple version ships. Forecaster only.</p>
+    <p><b>College basketball.</b> Gradient-boosted model on Elo gap plus opponent-adjusted efficiency that we compute ourselves (the public version only covers the top 25 teams). Trained on 65,041 games over 12 seasons. Walk-forward log loss 0.5081 and Brier score 0.1714, beating the previous version (0.5221 and 0.1761) in 8 out of 8 tested seasons. Forecaster only. There is no Model A for college basketball.</p>
+
+    <h4>Touchdowns (1 model)</h4>
+    <p><b>Anytime touchdown, NFL.</b> Logistic regression on 20 usage features, like how often a player gets the ball near the goal line. Trained on 38,671 player-games from 2019 to 2026. Walk-forward log loss 0.4798 and Brier score 0.1538. It beats the plain position base rate in all 6 tested seasons. Probability skill only &mdash; no edge claimed, because no archive of historical touchdown odds exists to test against. Known limits: no injury data, and it looks back about 4 weeks.</p>
+
+    <h4>Player props (9 models)</h4>
+    <p>Every prop chance passes walk-forward recalibration before it is quoted. That rule has applied since November 3, 2026.</p>
+    <p><b>NFL receiving yards.</b> Two-part model: the chance a player gets any yards, times the yards if he does. Trained on 34,346 player-games. Walk-forward R&sup2; 0.331 against 0.240 for a trailing-4 average, and average miss 18.85 yards against 19.67. Wins in all 6 tested seasons.</p>
+    <p><b>NFL receptions.</b> Two-part model with recalibration. Walk-forward R&sup2; 0.338 against 0.280 for the baseline. Wins in all 6 tested seasons.</p>
+    <p><b>NFL rushing yards.</b> Two-part model with recalibration. Walk-forward R&sup2; 0.395 against 0.333 for the baseline. Wins in all 6 tested seasons.</p>
+    <p><b>NFL passing yards.</b> Single Ridge model. Average miss 63.6 yards against 69.9 for the baseline, about 9% better. Wins in all 6 tested seasons. This one uses its raw chances, because recalibration did not help. Quarterbacks with no history are left out honestly.</p>
+    <p><b>NBA 3-pointers.</b> Negative binomial on a trailing-10 average, because 3-pointer counts spread wider than Poisson allows. Opponent defense was tested and did not help, so it is not used. After recalibration, the average error by line is under 0.05 at every line from 0.5 to 3.5.</p>
+    <p><b>NHL shots on goal.</b> Negative binomial plus recalibration. It beat Poisson in walk-forward testing on 3,010 player-games.</p>
+    <p><b>College basketball points, rebounds, assists.</b> Trailing-8 averages with at least 4 games of history. Points use a normal distribution (the negative binomial was tested and rejected &mdash; it underestimated the chance of going over low lines). Rebounds and assists use the negative binomial. All three are pulled heavily toward the market price when the sample is small. Walk-forward tested on 103,167 predictions, with recalibrated errors under 0.05 at every line. College prop lines are confirmed live before a pick is shown.</p>
+    <p><b>A note on NBA points, rebounds, and assists, and college football props.</b> These are priced from trailing-mean tables with the same walk-forward recalibration as the models above, and they carry their own calibration tables. They are not standalone models in the registry. We list them here so you know they exist, and we do not dress them up as more than they are.</p>
+
+    <h4>Totals (4 models)</h4>
+    <p>Ridge models that forecast total points. All are forecasters. None claims an edge. A lean needs a gap of 2 points for the NFL and 3 points for college football and college basketball.</p>
+    <p><b>NFL totals.</b> Average miss 10.749 points against 10.901 for a naive baseline. Won 11 of 12 tested seasons.</p>
+    <p><b>College football totals.</b> Average miss 13.18 against 13.20 for the baseline. Won 6 of 8 seasons. The improvement is tiny, about 0.2%.</p>
+    <p><b>College basketball totals.</b> Average miss 13.751 against 13.800 for the baseline. Won 7 of 8 seasons (it lost only the COVID season).</p>
+    <p><b>NBA totals v2.</b> Average miss 14.834 against 14.968 for the baseline. Won 5 of 5 seasons. Built and validated, but not yet wired into the board. The old version lost to the naive baseline, so it was replaced.</p>
+
+    <h4>Spreads (3 models)</h4>
+    <p>Ridge models that forecast the home team&rsquo;s margin. All are forecasters. None claims an edge. A lean needs a gap of 2 points for the NFL and 3 points for college football and college basketball.</p>
+    <p><b>NFL spreads.</b> Average miss 10.272 points against 10.993 for the baseline. Won 12 of 12 tested seasons.</p>
+    <p><b>College football spreads.</b> Average miss 13.99 against 14.49 for the baseline. Won 7 of 8 seasons.</p>
+    <p><b>College basketball spreads.</b> Average miss 10.183 against 11.406 for the baseline, about 11% better. Won 8 of 8 seasons.</p>
+
+    <h4>Soccer (6 models)</h4>
+    <p>One model per league: Premier League, Eredivisie, La Liga, Bundesliga, Serie A, Ligue 1. Time-decayed Elo (400-day half-life) feeding a model that gives three chances: home win, draw, away win. All ship as forecasters only. In every league, the market&rsquo;s number has been closer to what happened than ours: the ranked-probability score is 0.2018 against the market&rsquo;s 0.1949 in the Premier League, 0.1932 against 0.1876 in the Eredivisie, 0.1991 against 0.1926 in La Liga, 0.2065 against 0.1974 in the Bundesliga, 0.1985 against 0.1916 in Serie A, and 0.2086 against 0.2017 in Ligue 1 (lower is better). The Eredivisie is the best of the six: it beat the market in 1 of 5 seasons, the only model on the site to beat the market in any season. There is no public track record for soccer, because the data license is for private use only, not commercial use. Soccer is Model B only &mdash; there is no Model A for soccer.</p>
+
+    <h4>Model A &mdash; ALL_IN (1 model, the 30th)</h4>
+    <p>A second forecasting source, built by Kevin&rsquo;s Grok bot and supplied as a feed. It covers the NFL, college football, the NBA, the NHL, tennis, and soccer. Its core is a ratings-only chance, with market spread and total and per-game flags for quarterback, goalie, availability, and weather. The pipeline uses the ratings-only number, not the market-blended published number, so the market is not counted twice. The feed is polled every 15 minutes. Model A does not cover college basketball. The headline number on the site is the simple average of Model A and Model B where both exist.</p>
+
+    <h4>Per-sport notes</h4>
+    <p><b>NFL.</b> Game model, totals, spreads, and five prop models (touchdown, receiving yards, receptions, rushing yards, passing yards). The game model barely beats Elo alone. The props are the strongest part of the suite, and the receiving model is the most tested. The props are currently flagged for drift: quoted 50.1%, actually hitting 33.3% over 30 graded picks. No edge is proven.</p>
+    <p><b>College football.</b> Game model, totals, spreads, and prop tables. The game model is solid (log loss 0.5709). Totals barely beat the baseline. College football receiving props have run cold. The 15-point market cap applies here &mdash; it was added after two big model-versus-market misses both lost badly.</p>
+    <p><b>NBA.</b> Game model, totals v2 (built, not yet wired), and props for points, rebounds, assists, and 3-pointers. The game model barely beats Elo alone (0.6260 against 0.6272). The 3-pointer model is the most carefully calibrated prop on the site. NBA props are on watch for drift.</p>
+    <p><b>NHL.</b> Game model (Elo alone) and a shots-on-goal prop model. The game model is Elo alone because nothing else helped. The shots-on-goal model uses the negative binomial and is recalibrated. NHL props are on watch for drift. A goalie adjustment was tested and failed &mdash; Elo already captures it &mdash; so it is not live.</p>
+    <p><b>Baseball.</b> Game model only, Elo alone. The simplest model on the site, because nothing else helped in testing. No props, no totals, no spreads model yet. Forecaster only.</p>
+    <p><b>College basketball.</b> Game model, totals, spreads, and three prop models (points, rebounds, assists). The game model is the strongest in the suite by its test scores, beating its previous version in 8 of 8 seasons. There is no Model A here, so the headline is Model B alone. College prop lines are confirmed live before a pick is shown.</p>
+    <p><b>Soccer.</b> Six league models, Model B only, forecasters only. The market beats us in every league. The Eredivisie is the closest. No public track record, because the data license does not allow commercial use. Soccer is excluded from the public betting record.</p>
+    <p><b>Tennis.</b> Model A only &mdash; there is no Model B tennis model. The numbers come from the ALL_IN feed, which logs three times a day plus an early morning push. Tennis moves fast, so the numbers carry their own time stamp and a stale warning if they are more than 14 hours old. Over the full log, the strongest tennis signal has been the small-value picks on the women&rsquo;s tour, not picking winners. That is a small sample, not a proven edge.</p>
+
+    <p>Every model gets tested on past games before it goes live. And we keep score in Our Record, so you can see how they&rsquo;ve done.</p>
     <p>Like the site? <a href="#books" data-goto="books" data-goto-support>Support it here</a> &mdash; tips are optional and never affect any pick.</p>
 
   </section>
@@ -3388,106 +3424,106 @@ try{renderSpreads();}catch(e){}
 
 /* ================= PLAYER PICKS — Top props, Nov 4–5 ================= */
 var TOP_PROPS=[
-  {player:"Adam Trautman",team:"DEN",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1400",market_prob:0.0667,guess:13.2,tier:"strong",flag:"",value_pct:97.27,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Michael Penix Jr.",team:"ATL",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"950",market_prob:0.0952,guess:18.4,tier:"strong",flag:"",value_pct:93.24,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 900, "to": 950, "at": "2026-11-07 22:26:21 PST"},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"George Holani",team:"SEA",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1200",market_prob:0.0769,guess:14.7,tier:"strong",flag:"",value_pct:91.14,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Adam Trautman",team:"DEN",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1400",market_prob:0.0667,guess:13.2,tier:"strong",flag:"",value_pct:97.27,markets:{"polymarket": "https://polymarket.us/event/nfl-den-car-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08DENCAR-DENATRAUTMAN82-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Michael Penix Jr.",team:"ATL",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"950",market_prob:0.0952,guess:18.4,tier:"strong",flag:"",value_pct:93.24,markets:{"polymarket": "https://polymarket.us/event/nfl-cin-atl-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08CINATL-ATLMPENIX9-1", "novig": null},line_move:{"from": 900, "to": 950, "at": "2026-11-07 22:26:21 PST"},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"George Holani",team:"SEA",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1200",market_prob:0.0769,guess:14.7,tier:"strong",flag:"",value_pct:91.14,markets:{"polymarket": "https://polymarket.us/event/nfl-ari-sea-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08ARISEA-SEAGHOLANI36-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
   {player:"AJ Dillon",team:"CAR",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1500",market_prob:0.0625,guess:11.5,tier:"strong",flag:"",value_pct:83.3,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Gavin Bartholomew",team:"MIN",sport:"NFL",date:"Nov 9",prop:"anytime TD",line:"Anytime TD",odds:"1400",market_prob:0.0667,guess:12.1,tier:"strong",flag:"",value_pct:81.15,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 1200, "to": 1400, "at": "2026-11-07 22:26:21 PST"},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Charlie Woerner",team:"ATL",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1000",market_prob:0.0909,guess:16.4,tier:"strong",flag:"",value_pct:80.61,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Braelon Allen",team:"NYJ",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"240",market_prob:0.2941,guess:52,tier:"strong",flag:"",value_pct:76.98,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Trevor Etienne",team:"CAR",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1500",market_prob:0.0625,guess:11.1,tier:"strong",flag:"",value_pct:76.91,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Bryce Lance",team:"NO",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"950",market_prob:0.0952,guess:16.8,tier:"strong",flag:"",value_pct:75.91,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Jonnu Smith",team:"GB",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1500",market_prob:0.0625,guess:10.9,tier:"strong",flag:"",value_pct:75.12,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 1100, "to": 1500, "at": "2026-11-07 22:26:21 PST"},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Oscar Delp",team:"NO",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1400",market_prob:0.0667,guess:11.6,tier:"lean",flag:"",value_pct:73.45,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Lil'Jordan Humphrey",team:"DEN",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1400",market_prob:0.0667,guess:11.4,tier:"lean",flag:"",value_pct:71.04,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Geno Smith",team:"NYJ",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1200",market_prob:0.0769,guess:13.1,tier:"lean",flag:"",value_pct:69.71,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Zavion Thomas",team:"CHI",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1300",market_prob:0.0714,guess:12.1,tier:"lean",flag:"",value_pct:69.03,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Jalen Royals",team:"KC",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"850",market_prob:0.1053,guess:17.8,tier:"lean",flag:"",value_pct:68.62,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Isaiah Williams",team:"NYJ",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1200",market_prob:0.0769,guess:12.9,tier:"lean",flag:"",value_pct:68.16,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Will Kacmarek",team:"MIA",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1200",market_prob:0.0769,guess:12.6,tier:"lean",flag:"",value_pct:63.35,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Cade Stover",team:"HOU",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1200",market_prob:0.0769,guess:12,tier:"lean",flag:"",value_pct:55.71,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Ray Davis",team:"BUF",sport:"NFL",date:"Nov 9",prop:"anytime TD",line:"Anytime TD",odds:"1200",market_prob:0.0769,guess:11.9,tier:"lean",flag:"",value_pct:55.09,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Ashton Dulin",team:"IND",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1200",market_prob:0.0769,guess:11.9,tier:"lean",flag:"",value_pct:54.73,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Eric Saubert",team:"SEA",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1200",market_prob:0.0769,guess:11.7,tier:"lean",flag:"",value_pct:51.4,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Kevin Coleman Jr.",team:"MIA",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"900",market_prob:0.1,guess:15.1,tier:"lean",flag:"",value_pct:51.2,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Braelon Allen",team:"NYJ",sport:"NFL",date:"Nov 8",prop:"over 34.5 rushing yards",line:"Over 34.5 yds",odds:"-113",market_prob:0.5305,guess:76.8,tier:"lean",flag:"",value_pct:44.67,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.8575,sim_flag:"",sim_p5:14.92,sim_p95:174.14,sim_std:48.47},
-  {player:"Noah Gray",team:"KC",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"500",market_prob:0.1667,guess:24,tier:"lean",flag:"",value_pct:44.17,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Brayden Burries",team:"MIL",sport:"NBA",date:"Nov 8",prop:"under 3.5 assists",line:"Under 3.5 ast",odds:"-148",market_prob:0.5968,guess:84.3,tier:"lean",flag:"",value_pct:41.27,markets:{"polymarket": "https://polymarket.us/event/nba-bos-mil-2026-11-08", "kalshi": null, "novig": null},sim_p_over:0.144,sim_flag:"",sim_p5:0,sim_p95:4.63,sim_std:2},
-  {player:"Jordan Love",team:"GB",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1000",market_prob:0.0909,guess:12.7,tier:"lean",flag:"",value_pct:39.88,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Deion Burks",team:"IND",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1100",market_prob:0.0833,guess:11.6,tier:"lean",flag:"",value_pct:39.22,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Xavier Hutchinson",team:"HOU",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"550",market_prob:0.1538,guess:21.3,tier:"lean",flag:"",value_pct:38.43,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Joe Burrow",team:"CIN",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"550",market_prob:0.1538,guess:21,tier:"lean",flag:"",value_pct:36.34,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Devin Singletary",team:"NYG",sport:"NFL",date:"Nov 8",prop:"under 55.5 rushing yards",line:"Under 55.5 yds",odds:"-113",market_prob:0.5305,guess:71.7,tier:"lean",flag:"",value_pct:35.22,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.0405,sim_flag:"sim/model disagree by 24%",sim_p5:0,sim_p95:53.44,sim_std:17.19},
-  {player:"Justin Jefferson",team:"MIN",sport:"NFL",date:"Nov 9",prop:"under 77.5 receiving yards",line:"Under 77.5 yds",odds:"-114",market_prob:0.5327,guess:71.5,tier:"lean",flag:"",value_pct:34.12,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.157,sim_flag:"sim/model disagree by 13%",sim_p5:0,sim_p95:91.43,sim_std:25.36},
-  {player:"Dj Moore",team:"BUF",sport:"NFL",date:"Nov 9",prop:"under 47.5 receiving yards",line:"Under 47.5 yds",odds:"-114",market_prob:0.5327,guess:71.1,tier:"lean",flag:"",value_pct:33.52,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.1415,sim_flag:"sim/model disagree by 15%",sim_p5:0,sim_p95:61.24,sim_std:19.95},
-  {player:"Nate Adkins",team:"DEN",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"750",market_prob:0.1176,guess:15.7,tier:"lean",flag:"",value_pct:33.4,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Pierre Strong",team:"GB",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"900",market_prob:0.1,guess:13.2,tier:"lean",flag:"",value_pct:32.3,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 600, "to": 900, "at": "2026-11-07 22:26:21 PST"},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Ceedee Lamb",team:"DAL",sport:"NFL",date:"Nov 8",prop:"under 83.5 receiving yards",line:"Under 83.5 yds",odds:"-113",market_prob:0.5305,guess:70.1,tier:"lean",flag:"",value_pct:32.2,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.2195,sim_flag:"",sim_p5:23.16,sim_p95:103.12,sim_std:24.44},
-  {player:"Ladd Mcconkey",team:"LAC",sport:"NFL",date:"Nov 8",prop:"under 53.5 receiving yards",line:"Under 53.5 yds",odds:"-113",market_prob:0.5305,guess:70.1,tier:"lean",flag:"",value_pct:32.1,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 52.5, "to": 53.5, "at": "2026-11-08 07:12:16 PST"},sim_p_over:0.222,sim_flag:"",sim_p5:0,sim_p95:75.72,sim_std:23.07},
-  {player:"Malik Washington",team:"MIA",sport:"NFL",date:"Nov 8",prop:"under 41.5 receiving yards",line:"Under 41.5 yds",odds:"-113",market_prob:0.5305,guess:69.5,tier:"lean",flag:"",value_pct:30.95,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.2135,sim_flag:"",sim_p5:0,sim_p95:62.47,sim_std:20.35},
-  {player:"Dj Moore",team:"BUF",sport:"NFL",date:"Nov 9",prop:"under 3.5 receptions",line:"Under 3.5 rec",odds:"-102",market_prob:0.505,guess:66.1,tier:"lean",flag:"",value_pct:30.9,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.116,sim_flag:"sim/model disagree by 22%",sim_p5:0,sim_p95:4,sim_std:1.48},
-  {player:"Austin Hooper",team:"ATL",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"900",market_prob:0.1,guess:13.1,tier:"lean",flag:"",value_pct:30.5,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Marvin Mims Jr.",team:"DEN",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"900",market_prob:0.1,guess:13,tier:"lean",flag:"",value_pct:30.39,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Nico Collins",team:"HOU",sport:"NFL",date:"Nov 8",prop:"under 68.5 receiving yards",line:"Under 68.5 yds",odds:"-113",market_prob:0.5305,guess:68.5,tier:"lean",flag:"",value_pct:29.18,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.289,sim_flag:"",sim_p5:3.02,sim_p95:94.53,sim_std:25.19},
+  {player:"Gavin Bartholomew",team:"MIN",sport:"NFL",date:"Nov 9",prop:"anytime TD",line:"Anytime TD",odds:"1400",market_prob:0.0667,guess:12.1,tier:"strong",flag:"",value_pct:81.15,markets:{"polymarket": "https://polymarket.us/event/nfl-buf-min-2026-11-10-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV09BUFMIN-MINGBARTHOLOMEW86-1", "novig": null},line_move:{"from": 1200, "to": 1400, "at": "2026-11-07 22:26:21 PST"},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Charlie Woerner",team:"ATL",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1000",market_prob:0.0909,guess:16.4,tier:"strong",flag:"",value_pct:80.61,markets:{"polymarket": "https://polymarket.us/event/nfl-cin-atl-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08CINATL-ATLCWOERNER89-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Braelon Allen",team:"NYJ",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"240",market_prob:0.2941,guess:52,tier:"strong",flag:"",value_pct:76.98,markets:{"polymarket": "https://polymarket.us/event/nfl-nyj-kc-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08NYJKC-NYJBALLEN0-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Trevor Etienne",team:"CAR",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1500",market_prob:0.0625,guess:11.1,tier:"strong",flag:"",value_pct:76.91,markets:{"polymarket": "https://polymarket.us/event/nfl-den-car-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08DENCAR-CARTETIENNE23-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Bryce Lance",team:"NO",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"950",market_prob:0.0952,guess:16.8,tier:"strong",flag:"",value_pct:75.91,markets:{"polymarket": "https://polymarket.us/event/nfl-cle-no-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08CLENO-NOBLANCE18-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Jonnu Smith",team:"GB",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1500",market_prob:0.0625,guess:10.9,tier:"strong",flag:"",value_pct:75.12,markets:{"polymarket": "https://polymarket.us/event/nfl-gb-ne-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08GBNE-GBJSMITH18-1", "novig": null},line_move:{"from": 1100, "to": 1500, "at": "2026-11-07 22:26:21 PST"},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Oscar Delp",team:"NO",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1400",market_prob:0.0667,guess:11.6,tier:"lean",flag:"",value_pct:73.45,markets:{"polymarket": "https://polymarket.us/event/nfl-cle-no-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08CLENO-NOODELP4-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Lil'Jordan Humphrey",team:"DEN",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1400",market_prob:0.0667,guess:11.4,tier:"lean",flag:"",value_pct:71.04,markets:{"polymarket": "https://polymarket.us/event/nfl-den-car-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08DENCAR-DENLHUMPHREY5-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Geno Smith",team:"NYJ",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1200",market_prob:0.0769,guess:13.1,tier:"lean",flag:"",value_pct:69.71,markets:{"polymarket": "https://polymarket.us/event/nfl-nyj-kc-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08NYJKC-NYJGSMITH7-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Jalen Royals",team:"KC",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"850",market_prob:0.1053,guess:17.8,tier:"lean",flag:"",value_pct:68.62,markets:{"polymarket": "https://polymarket.us/event/nfl-nyj-kc-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08NYJKC-KCJROYALS11-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Isaiah Williams",team:"NYJ",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1200",market_prob:0.0769,guess:12.9,tier:"lean",flag:"",value_pct:68.16,markets:{"polymarket": "https://polymarket.us/event/nfl-nyj-kc-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08NYJKC-NYJIWILLIAMS18-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Zavion Thomas",team:"CHI",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1300",market_prob:0.0714,guess:12,tier:"lean",flag:"",value_pct:67.71,markets:{"polymarket": "https://polymarket.us/event/nfl-tb-chi-2026-11-09-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08TBCHI-CHIZTHOMAS13-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Will Kacmarek",team:"MIA",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1200",market_prob:0.0769,guess:12.6,tier:"lean",flag:"",value_pct:63.35,markets:{"polymarket": "https://polymarket.us/event/nfl-det-mia-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08DETMIA-MIAWKACMAREK89-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Cade Stover",team:"HOU",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1200",market_prob:0.0769,guess:12,tier:"lean",flag:"",value_pct:55.71,markets:{"polymarket": "https://polymarket.us/event/nfl-hou-lac-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08HOULAC-HOUCSTOVER8-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Ray Davis",team:"BUF",sport:"NFL",date:"Nov 9",prop:"anytime TD",line:"Anytime TD",odds:"1200",market_prob:0.0769,guess:11.9,tier:"lean",flag:"",value_pct:55.09,markets:{"polymarket": "https://polymarket.us/event/nfl-buf-min-2026-11-10-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV09BUFMIN-BUFRDAVIS7-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Ashton Dulin",team:"IND",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1200",market_prob:0.0769,guess:11.9,tier:"lean",flag:"",value_pct:54.73,markets:{"polymarket": "https://polymarket.us/event/nfl-dal-ind-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08DALIND-INDADULIN16-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Eric Saubert",team:"SEA",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1200",market_prob:0.0769,guess:11.7,tier:"lean",flag:"",value_pct:51.4,markets:{"polymarket": "https://polymarket.us/event/nfl-ari-sea-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08ARISEA-SEAESAUBERT81-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Kevin Coleman Jr.",team:"MIA",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"900",market_prob:0.1,guess:15.1,tier:"lean",flag:"",value_pct:51.2,markets:{"polymarket": "https://polymarket.us/event/nfl-det-mia-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08DETMIA-MIAKCOLEMAN21-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Braelon Allen",team:"NYJ",sport:"NFL",date:"Nov 8",prop:"over 34.5 rushing yards",line:"Over 34.5 yds",odds:"-113",market_prob:0.5305,guess:76.8,tier:"lean",flag:"",value_pct:44.67,markets:{"polymarket": "https://polymarket.us/event/nfl-nyj-kc-2026-11-08-player-props", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-ec74-70b3-b5f0-7639783d83df"},sim_p_over:0.86,sim_flag:"",sim_p5:11.05,sim_p95:177.36,sim_std:49.39},
+  {player:"Noah Gray",team:"KC",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"500",market_prob:0.1667,guess:24,tier:"lean",flag:"",value_pct:44.17,markets:{"polymarket": "https://polymarket.us/event/nfl-nyj-kc-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08NYJKC-KCNGRAY83-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Jordan Love",team:"GB",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1000",market_prob:0.0909,guess:12.7,tier:"lean",flag:"",value_pct:39.88,markets:{"polymarket": "https://polymarket.us/event/nfl-gb-ne-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08GBNE-GBJLOVE10-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Deion Burks",team:"IND",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1100",market_prob:0.0833,guess:11.6,tier:"lean",flag:"",value_pct:39.22,markets:{"polymarket": "https://polymarket.us/event/nfl-dal-ind-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08DALIND-INDDBURKS80-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Xavier Hutchinson",team:"HOU",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"550",market_prob:0.1538,guess:21.3,tier:"lean",flag:"",value_pct:38.43,markets:{"polymarket": "https://polymarket.us/event/nfl-hou-lac-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08HOULAC-HOUXHUTCHINSON19-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Brayden Burries",team:"MIL",sport:"NBA",date:"Nov 8",prop:"under 3.5 assists",line:"Under 3.5 ast",odds:"-153",market_prob:0.6047,guess:82.8,tier:"lean",flag:"",value_pct:36.96,markets:{"polymarket": "https://polymarket.us/event/nba-bos-mil-2026-11-08", "kalshi": null, "novig": null},line_move:{"from": 2.5, "to": 3.5, "at": "2026-11-07 22:19:42 PST"},sim_p_over:0.1355,sim_flag:"",sim_p5:0,sim_p95:4.54,sim_std:1.99},
+  {player:"Joe Burrow",team:"CIN",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"550",market_prob:0.1538,guess:21,tier:"lean",flag:"",value_pct:36.34,markets:{"polymarket": "https://polymarket.us/event/nfl-cin-atl-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08CINATL-CINJBURROW9-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Justin Jefferson",team:"MIN",sport:"NFL",date:"Nov 9",prop:"under 77.5 receiving yards",line:"Under 77.5 yds",odds:"-114",market_prob:0.5327,guess:71.5,tier:"lean",flag:"",value_pct:34.12,markets:{"polymarket": "https://polymarket.us/event/nfl-buf-min-2026-11-10-player-props", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-f0e2-7e70-8389-a634f78e0796"},sim_p_over:0.167,sim_flag:"sim/model disagree by 12%",sim_p5:0,sim_p95:94.6,sim_std:25.6},
+  {player:"Dj Moore",team:"BUF",sport:"NFL",date:"Nov 9",prop:"under 47.5 receiving yards",line:"Under 47.5 yds",odds:"-114",market_prob:0.5327,guess:71.1,tier:"lean",flag:"",value_pct:33.52,markets:{"polymarket": "https://polymarket.us/event/nfl-buf-min-2026-11-10-player-props", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-f0e2-7e70-8389-a634f78e0796"},sim_p_over:0.1375,sim_flag:"sim/model disagree by 15%",sim_p5:0,sim_p95:60.84,sim_std:20},
+  {player:"Nate Adkins",team:"DEN",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"750",market_prob:0.1176,guess:15.7,tier:"lean",flag:"",value_pct:33.4,markets:{"polymarket": "https://polymarket.us/event/nfl-den-car-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08DENCAR-DENNADKINS45-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Devin Singletary",team:"NYG",sport:"NFL",date:"Nov 8",prop:"under 51.5 rushing yards",line:"Under 51.5 yds",odds:"-114",market_prob:0.5327,guess:71,tier:"lean",flag:"",value_pct:33.3,markets:{"polymarket": "https://polymarket.us/event/nfl-nyg-phi-2026-11-08-player-props", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-eacc-7fa0-856c-82ea9c7d04ee"},line_move:{"from": 55.5, "to": 51.5, "at": "2026-11-08 10:23:50 PST"},sim_p_over:0.0665,sim_flag:"sim/model disagree by 22%",sim_p5:0,sim_p95:55.05,sim_std:17.35},
+  {player:"Pierre Strong",team:"GB",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"900",market_prob:0.1,guess:13.2,tier:"lean",flag:"",value_pct:32.3,markets:{"polymarket": "https://polymarket.us/event/nfl-gb-ne-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08GBNE-GBPSTRONG22-1", "novig": null},line_move:{"from": 600, "to": 900, "at": "2026-11-07 22:26:21 PST"},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Ceedee Lamb",team:"DAL",sport:"NFL",date:"Nov 8",prop:"under 83.5 receiving yards",line:"Under 83.5 yds",odds:"-113",market_prob:0.5305,guess:70.1,tier:"lean",flag:"",value_pct:32.2,markets:{"polymarket": "https://polymarket.us/event/nfl-dal-ind-2026-11-08-player-props", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-eb49-75b1-87c9-dce9271b6bab"},sim_p_over:0.2355,sim_flag:"",sim_p5:19.82,sim_p95:104.76,sim_std:25.59},
+  {player:"Ladd Mcconkey",team:"LAC",sport:"NFL",date:"Nov 8",prop:"under 53.5 receiving yards",line:"Under 53.5 yds",odds:"-113",market_prob:0.5305,guess:70.1,tier:"lean",flag:"",value_pct:32.1,markets:{"polymarket": "https://polymarket.us/event/nfl-hou-lac-2026-11-08-player-props", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-eda7-7820-8e04-5b45d714ea91"},sim_p_over:0.2325,sim_flag:"",sim_p5:0,sim_p95:77.1,sim_std:23.48},
+  {player:"Malik Washington",team:"MIA",sport:"NFL",date:"Nov 8",prop:"under 41.5 receiving yards",line:"Under 41.5 yds",odds:"-113",market_prob:0.5305,guess:69.5,tier:"lean",flag:"",value_pct:30.95,markets:{"polymarket": "https://polymarket.us/event/nfl-det-mia-2026-11-08-player-props", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-e957-77c1-816c-2d0ae98be0de"},sim_p_over:0.206,sim_flag:"",sim_p5:0,sim_p95:62.64,sim_std:20.03},
+  {player:"Dj Moore",team:"BUF",sport:"NFL",date:"Nov 9",prop:"under 3.5 receptions",line:"Under 3.5 rec",odds:"-102",market_prob:0.505,guess:66.1,tier:"lean",flag:"",value_pct:30.9,markets:{"polymarket": "https://polymarket.us/event/nfl-buf-min-2026-11-10-player-props", "kalshi": "https://kalshi.com/markets/KXNFLREC-26NOV09BUFMIN-BUFDMOORE2-4", "novig": "https://app.novig.us/event-markets/01a17f1a-f0e2-7e70-8389-a634f78e0796"},sim_p_over:0.1275,sim_flag:"sim/model disagree by 21%",sim_p5:0,sim_p95:5,sim_std:1.55},
+  {player:"Austin Hooper",team:"ATL",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"900",market_prob:0.1,guess:13.1,tier:"lean",flag:"",value_pct:30.5,markets:{"polymarket": "https://polymarket.us/event/nfl-cin-atl-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08CINATL-ATLAHOOPER81-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Marvin Mims Jr.",team:"DEN",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"900",market_prob:0.1,guess:13,tier:"lean",flag:"",value_pct:30.39,markets:{"polymarket": "https://polymarket.us/event/nfl-den-car-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08DENCAR-DENMMIMS19-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Kc Concepcion",team:"CLE",sport:"NFL",date:"Nov 8",prop:"under 5.5 receptions",line:"Under 5.5 rec",odds:"-110",market_prob:0.5238,guess:68,tier:"lean",flag:"",value_pct:29.91,markets:{"polymarket": "https://polymarket.us/event/nfl-cle-no-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLREC-26NOV08CLENO-CLEKCONCEPCION1-6", "novig": null},line_move:{"from": 4.5, "to": 5.5, "at": "2026-11-08 10:23:50 PST"},sim_p_over:0.2075,sim_flag:"sim/model disagree by 11%",sim_p5:0,sim_p95:8,sim_std:2.4},
+  {player:"Nico Collins",team:"HOU",sport:"NFL",date:"Nov 8",prop:"under 68.5 receiving yards",line:"Under 68.5 yds",odds:"-113",market_prob:0.5305,guess:68.5,tier:"lean",flag:"",value_pct:29.18,markets:{"polymarket": "https://polymarket.us/event/nfl-hou-lac-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLRECYDS-26NOV08HOULAC-HOUNCOLLINS12-70", "novig": "https://app.novig.us/event-markets/01a17f1a-eda7-7820-8e04-5b45d714ea91"},sim_p_over:0.294,sim_flag:"",sim_p5:0,sim_p95:93.97,sim_std:25.98},
   {player:"Jamarr Chase",team:"CIN",sport:"NFL",date:"Nov 8",prop:"under 76.5 receiving yards",line:"Under 76.5 yds",odds:"-113",market_prob:0.5305,guess:68.5,tier:"lean",flag:"",value_pct:29.08,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.2685,sim_flag:"",sim_p5:16.77,sim_p95:100.8,sim_std:25.22},
-  {player:"Jahan Dotson",team:"ATL",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"360",market_prob:0.2174,guess:28,tier:"lean",flag:"",value_pct:28.65,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 350, "to": 360, "at": "2026-11-07 22:26:21 PST"},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Justin Jefferson",team:"MIN",sport:"NFL",date:"Nov 9",prop:"under 6.5 receptions",line:"Under 6.5 rec",odds:"-122",market_prob:0.5495,guess:70.1,tier:"lean",flag:"",value_pct:27.56,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.19,sim_flag:"sim/model disagree by 11%",sim_p5:1,sim_p95:9,sim_std:2.76},
+  {player:"Jahan Dotson",team:"ATL",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"360",market_prob:0.2174,guess:28,tier:"lean",flag:"",value_pct:28.65,markets:{"polymarket": "https://polymarket.us/event/nfl-cin-atl-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08CINATL-ATLJDOTSON4-1", "novig": null},line_move:{"from": 350, "to": 360, "at": "2026-11-07 22:26:21 PST"},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"George Kittle",team:"SF",sport:"NFL",date:"Nov 8",prop:"under 69.5 receiving yards",line:"Under 69.5 yds",odds:"-113",market_prob:0.5305,guess:67.9,tier:"lean",flag:"",value_pct:28.05,markets:{"polymarket": "https://polymarket.us/event/nfl-lv-sf-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLRECYDS-26NOV08LVSF-SFGKITTLE85-70", "novig": "https://app.novig.us/event-markets/01a17f1a-ef94-7a33-ac49-42d1cde2b17a"},sim_p_over:0.3075,sim_flag:"",sim_p5:6.69,sim_p95:97.01,sim_std:25.54},
+  {player:"Aaron Jones",team:"MIN",sport:"NFL",date:"Nov 9",prop:"over 31.5 rushing yards",line:"Over 31.5 yds",odds:"-114",market_prob:0.5327,guess:68.1,tier:"lean",flag:"",value_pct:27.79,markets:{"polymarket": "https://polymarket.us/event/nfl-buf-min-2026-11-10-player-props", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-f0e2-7e70-8389-a634f78e0796"},sim_p_over:0.7515,sim_flag:"",sim_p5:4.86,sim_p95:110.22,sim_std:32.1},
+  {player:"Justin Jefferson",team:"MIN",sport:"NFL",date:"Nov 9",prop:"under 6.5 receptions",line:"Under 6.5 rec",odds:"-122",market_prob:0.5495,guess:70.1,tier:"lean",flag:"",value_pct:27.56,markets:{"polymarket": "https://polymarket.us/event/nfl-buf-min-2026-11-10-player-props", "kalshi": "https://kalshi.com/markets/KXNFLREC-26NOV09BUFMIN-MINJJEFFERSON18-7", "novig": "https://app.novig.us/event-markets/01a17f1a-f0e2-7e70-8389-a634f78e0796"},sim_p_over:0.1865,sim_flag:"sim/model disagree by 11%",sim_p5:1,sim_p95:9,sim_std:2.68},
   {player:"Jamarr Chase",team:"CIN",sport:"NFL",date:"Nov 8",prop:"under 6.5 receptions",line:"Under 6.5 rec",odds:"102",market_prob:0.495,guess:63,tier:"lean",flag:"",value_pct:27.26,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.289,sim_flag:"",sim_p5:1,sim_p95:11,sim_std:3.13},
-  {player:"Drake London",team:"ATL",sport:"NFL",date:"Nov 8",prop:"under 78.5 receiving yards",line:"Under 78.5 yds",odds:"-113",market_prob:0.5305,guess:67.4,tier:"lean",flag:"",value_pct:27.1,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.28,sim_flag:"",sim_p5:19.81,sim_p95:103.42,sim_std:24.97},
-  {player:"Drew Sample",team:"CIN",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"650",market_prob:0.1333,guess:16.9,tier:"lean",flag:"",value_pct:26.41,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Bijan Robinson",team:"ATL",sport:"NFL",date:"Nov 8",prop:"under 25.5 receiving yards",line:"Under 25.5 yds",odds:"-113",market_prob:0.5305,guess:66.9,tier:"lean",flag:"",value_pct:26.17,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.3055,sim_flag:"",sim_p5:0,sim_p95:55.48,sim_std:18.81},
-  {player:"Jalen Coker",team:"CAR",sport:"NFL",date:"Nov 8",prop:"under 4.5 receptions",line:"Under 4.5 rec",odds:"-114",market_prob:0.5327,guess:67.1,tier:"lean",flag:"",value_pct:25.9,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.223,sim_flag:"sim/model disagree by 11%",sim_p5:0,sim_p95:7,sim_std:2.2},
-  {player:"Chris Olave",team:"NO",sport:"NFL",date:"Nov 8",prop:"under 71.5 receiving yards",line:"Under 71.5 yds",odds:"-113",market_prob:0.5305,guess:66.7,tier:"lean",flag:"",value_pct:25.77,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.326,sim_flag:"",sim_p5:10.74,sim_p95:99.92,sim_std:25.2},
-  {player:"Dak Prescott",team:"DAL",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"500",market_prob:0.1667,guess:20.9,tier:"lean",flag:"",value_pct:25.69,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Jayson Tatum",team:"BOS",sport:"NBA",date:"Nov 8",prop:"under 6.5 rebounds",line:"Under 6.5 reb",odds:"118",market_prob:0.4587,guess:57.6,tier:"lean",flag:"",value_pct:25.47,markets:{"polymarket": "https://polymarket.us/event/nba-bos-mil-2026-11-08", "kalshi": null, "novig": null},sim_p_over:0.3885,sim_flag:"",sim_p5:2.65,sim_p95:9.18,sim_std:1.97},
-  {player:"Kayshon Boutte",team:"HOU",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"800",market_prob:0.1111,guess:13.9,tier:"lean",flag:"",value_pct:25.47,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Ty Johnson",team:"BUF",sport:"NFL",date:"Nov 9",prop:"anytime TD",line:"Anytime TD",odds:"850",market_prob:0.1053,guess:13.2,tier:"lean",flag:"",value_pct:25.39,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Jk Dobbins",team:"DEN",sport:"NFL",date:"Nov 8",prop:"over 24.5 rushing yards",line:"Over 24.5 yds",odds:"-113",market_prob:0.5305,guess:66.5,tier:"lean",flag:"",value_pct:25.34,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.7605,sim_flag:"",sim_p5:4.32,sim_p95:90.99,sim_std:26.03},
-  {player:"Brock Wright",team:"DET",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"750",market_prob:0.1176,guess:14.7,tier:"lean",flag:"",value_pct:25.13,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Bucky Irving",team:"TB",sport:"NFL",date:"Nov 8",prop:"over 63.5 rushing yards",line:"Over 63.5 yds",odds:"-113",market_prob:0.5305,guess:66.3,tier:"lean",flag:"",value_pct:24.92,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.6515,sim_flag:"",sim_p5:11.07,sim_p95:166.64,sim_std:46.46},
-  {player:"Neemias Queta",team:"BOS",sport:"NBA",date:"Nov 8",prop:"under 6.5 rebounds",line:"Under 6.5 reb",odds:"106",market_prob:0.4854,guess:60.5,tier:"lean",flag:"",value_pct:24.56,markets:{"polymarket": "https://polymarket.us/event/nba-bos-mil-2026-11-08", "kalshi": null, "novig": null},sim_p_over:0.299,sim_flag:"",sim_p5:2.16,sim_p95:8.72,sim_std:1.99},
+  {player:"Drake London",team:"ATL",sport:"NFL",date:"Nov 8",prop:"under 78.5 receiving yards",line:"Under 78.5 yds",odds:"-113",market_prob:0.5305,guess:67.4,tier:"lean",flag:"",value_pct:27.1,markets:{"polymarket": "https://polymarket.us/event/nfl-cin-atl-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLRECYDS-26NOV08CINATL-ATLDLONDON5-80", "novig": "https://app.novig.us/event-markets/01a17f1a-e8c2-7253-ab6a-aa31d5a8a1c5"},sim_p_over:0.28,sim_flag:"",sim_p5:19.81,sim_p95:103.42,sim_std:24.97},
+  {player:"Drew Sample",team:"CIN",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"650",market_prob:0.1333,guess:16.9,tier:"lean",flag:"",value_pct:26.41,markets:{"polymarket": "https://polymarket.us/event/nfl-cin-atl-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08CINATL-CINDSAMPLE89-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Brock Bowers",team:"LV",sport:"NFL",date:"Nov 8",prop:"under 76.5 receiving yards",line:"Under 76.5 yds",odds:"-113",market_prob:0.5305,guess:66.9,tier:"lean",flag:"",value_pct:26.18,markets:{"polymarket": "https://polymarket.us/event/nfl-lv-sf-2026-11-08-player-props", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-ef94-7a33-ac49-42d1cde2b17a"},sim_p_over:0.32,sim_flag:"",sim_p5:18.31,sim_p95:104.15,sim_std:26},
+  {player:"Bijan Robinson",team:"ATL",sport:"NFL",date:"Nov 8",prop:"under 25.5 receiving yards",line:"Under 25.5 yds",odds:"-113",market_prob:0.5305,guess:66.9,tier:"lean",flag:"",value_pct:26.17,markets:{"polymarket": "https://polymarket.us/event/nfl-cin-atl-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLRECYDS-26NOV08CINATL-ATLBROBINSON7-25", "novig": "https://app.novig.us/event-markets/01a17f1a-e8c2-7253-ab6a-aa31d5a8a1c5"},sim_p_over:0.3055,sim_flag:"",sim_p5:0,sim_p95:55.48,sim_std:18.81},
+  {player:"Jalen Coker",team:"CAR",sport:"NFL",date:"Nov 8",prop:"under 4.5 receptions",line:"Under 4.5 rec",odds:"-114",market_prob:0.5327,guess:67.1,tier:"lean",flag:"",value_pct:25.9,markets:{"polymarket": "https://polymarket.us/event/nfl-den-car-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLREC-26NOV08DENCAR-CARJCOKER18-5", "novig": "https://app.novig.us/event-markets/01a17f1a-ebea-7641-9bc7-f5f9e80c7946"},sim_p_over:0.2505,sim_flag:"",sim_p5:0,sim_p95:7,sim_std:2.25},
+  {player:"Chris Olave",team:"NO",sport:"NFL",date:"Nov 8",prop:"under 71.5 receiving yards",line:"Under 71.5 yds",odds:"-113",market_prob:0.5305,guess:66.7,tier:"lean",flag:"",value_pct:25.77,markets:{"polymarket": "https://polymarket.us/event/nfl-cle-no-2026-11-08-player-props", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-ea0b-7720-aa75-5899ba78ead0"},sim_p_over:0.3275,sim_flag:"",sim_p5:10.28,sim_p95:98.8,sim_std:25.88},
+  {player:"Dak Prescott",team:"DAL",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"500",market_prob:0.1667,guess:20.9,tier:"lean",flag:"",value_pct:25.69,markets:{"polymarket": "https://polymarket.us/event/nfl-dal-ind-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08DALIND-DALDPRESCOTT4-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Kayshon Boutte",team:"HOU",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"800",market_prob:0.1111,guess:13.9,tier:"lean",flag:"",value_pct:25.47,markets:{"polymarket": "https://polymarket.us/event/nfl-hou-lac-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08HOULAC-HOUKBOUTTE14-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Ty Johnson",team:"BUF",sport:"NFL",date:"Nov 9",prop:"anytime TD",line:"Anytime TD",odds:"850",market_prob:0.1053,guess:13.2,tier:"lean",flag:"",value_pct:25.39,markets:{"polymarket": "https://polymarket.us/event/nfl-buf-min-2026-11-10-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV09BUFMIN-BUFTJOHNSON26-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Jk Dobbins",team:"DEN",sport:"NFL",date:"Nov 8",prop:"over 24.5 rushing yards",line:"Over 24.5 yds",odds:"-113",market_prob:0.5305,guess:66.5,tier:"lean",flag:"",value_pct:25.34,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.7735,sim_flag:"sim/model disagree by 11%",sim_p5:3.63,sim_p95:91.59,sim_std:26.16},
+  {player:"Dandre Swift",team:"CHI",sport:"NFL",date:"Nov 8",prop:"under 62.5 rushing yards",line:"Under 62.5 yds",odds:"-113",market_prob:0.5305,guess:66.4,tier:"lean",flag:"",value_pct:25.24,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.409,sim_flag:"",sim_p5:7.53,sim_p95:106.64,sim_std:30.77},
+  {player:"Brock Wright",team:"DET",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"750",market_prob:0.1176,guess:14.7,tier:"lean",flag:"",value_pct:25.13,markets:{"polymarket": "https://polymarket.us/event/nfl-det-mia-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV08DETMIA-DETBWRIGHT89-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
+  {player:"Jadarian Price",team:"SEA",sport:"NFL",date:"Nov 8",prop:"under 55.5 rushing yards",line:"Under 55.5 yds",odds:"-113",market_prob:0.5305,guess:66.4,tier:"lean",flag:"",value_pct:25.11,markets:{"polymarket": "https://polymarket.us/event/nfl-ari-sea-2026-11-08-player-props", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-eee8-70d3-afbf-5b597b901f43"},sim_p_over:0.315,sim_flag:"",sim_p5:2.15,sim_p95:89.05,sim_std:26.38},
+  {player:"Bucky Irving",team:"TB",sport:"NFL",date:"Nov 8",prop:"over 63.5 rushing yards",line:"Over 63.5 yds",odds:"-113",market_prob:0.5305,guess:66.3,tier:"lean",flag:"",value_pct:24.92,markets:{"polymarket": "https://polymarket.us/event/nfl-tb-chi-2026-11-09-player-props", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-f02d-74e1-ba1f-5656d7500a9b"},sim_p_over:0.646,sim_flag:"",sim_p5:10.04,sim_p95:166.04,sim_std:47.37},
+  {player:"Christian Mccaffrey",team:"SF",sport:"NFL",date:"Nov 8",prop:"under 62.5 rushing yards",line:"Under 62.5 yds",odds:"-113",market_prob:0.5305,guess:66,tier:"lean",flag:"",value_pct:24.48,markets:{"polymarket": "https://polymarket.us/event/nfl-lv-sf-2026-11-08-player-props", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-ef94-7a33-ac49-42d1cde2b17a"},sim_p_over:0.4115,sim_flag:"",sim_p5:6.48,sim_p95:109.99,sim_std:31.41},
   {player:"Marquise Brown",team:"PHI",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"1000",market_prob:0.0909,guess:11.3,tier:"lean",flag:"",value_pct:24.34,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Jonathan Kuminga",team:"MIN",sport:"NBA",date:"Nov 8",prop:"under 14.5 points",line:"Under 14.5 pts",odds:"100",market_prob:0.5,guess:61.4,tier:"lean",flag:"",value_pct:22.78,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.3375,sim_flag:"",sim_p5:4,sim_p95:20.64,sim_std:5.12},
-  {player:"Josh Giddey",team:"CHI",sport:"NBA",date:"Nov 8",prop:"under 12.5 points",line:"Under 12.5 pts",odds:"-130",market_prob:0.5652,guess:69.3,tier:"lean",flag:"",value_pct:22.54,markets:{"polymarket": "https://polymarket.us/event/nba-phi-chi-2026-11-08", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1b537-1805-7b32-a74b-dbf5960feb28"},line_move:{"from": 11.5, "to": 12.5, "at": "2026-11-08 07:12:16 PST"},sim_p_over:0.21,sim_flag:"",sim_p5:2.46,sim_p95:15.76,sim_std:4.02},
-  {player:"Aaron Jones",team:"MIN",sport:"NFL",date:"Nov 9",prop:"anytime TD",line:"Anytime TD",odds:"270",market_prob:0.2703,guess:33.1,tier:"lean",flag:"",value_pct:22.37,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Matas Buzelis",team:"CHI",sport:"NBA",date:"Nov 8",prop:"under 4.5 rebounds",line:"Under 4.5 reb",odds:"116",market_prob:0.463,guess:56.6,tier:"lean",flag:"",value_pct:22.3,markets:{"polymarket": "https://polymarket.us/event/nba-phi-chi-2026-11-08", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1b537-1805-7b32-a74b-dbf5960feb28"},sim_p_over:0.4315,sim_flag:"",sim_p5:1.05,sim_p95:7.48,sim_std:1.96},
+  {player:"Dean Wade",team:"PHI",sport:"NBA",date:"Nov 8",prop:"under 3.5 rebounds",line:"Under 3.5 reb",odds:"112",market_prob:0.4717,guess:58.5,tier:"lean",flag:"",value_pct:24.08,markets:{"polymarket": "https://polymarket.us/event/nba-phi-chi-2026-11-08", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1b537-1805-7b32-a74b-dbf5960feb28"},sim_p_over:0.3565,sim_flag:"",sim_p5:0,sim_p95:6.02,sim_std:2.01},
+  {player:"Josh Giddey",team:"CHI",sport:"NBA",date:"Nov 8",prop:"under 12.5 points",line:"Under 12.5 pts",odds:"-128",market_prob:0.5614,guess:69.3,tier:"lean",flag:"",value_pct:23.37,markets:{"polymarket": "https://polymarket.us/event/nba-phi-chi-2026-11-08", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1b537-1805-7b32-a74b-dbf5960feb28"},sim_p_over:0.1995,sim_flag:"sim/model disagree by 11%",sim_p5:2.57,sim_p95:15.55,sim_std:3.96},
+  {player:"Rhamondre Stevenson",team:"NE",sport:"NFL",date:"Nov 8",prop:"under 54.5 rushing yards",line:"Under 54.5 yds",odds:"-113",market_prob:0.5305,guess:65.4,tier:"lean",flag:"",value_pct:23.27,markets:{"polymarket": "https://polymarket.us/event/nfl-gb-ne-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLRSHYDS-26NOV08GBNE-NERSTEVENSON38-55", "novig": "https://app.novig.us/event-markets/01a17f1a-ee65-7511-ac0e-6042805ef7c3"},sim_p_over:0.424,sim_flag:"",sim_p5:4.84,sim_p95:98.75,sim_std:27.89},
+  {player:"Brock Bowers",team:"LV",sport:"NFL",date:"Nov 8",prop:"under 6.5 receptions",line:"Under 6.5 rec",odds:"-110",market_prob:0.5238,guess:64.3,tier:"lean",flag:"",value_pct:22.71,markets:{"polymarket": "https://polymarket.us/event/nfl-lv-sf-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLREC-26NOV08LVSF-LVBBOWERS89-7", "novig": null},sim_p_over:0.3005,sim_flag:"",sim_p5:1,sim_p95:11,sim_std:3.12},
+  {player:"Matas Buzelis",team:"CHI",sport:"NBA",date:"Nov 8",prop:"under 4.5 rebounds",line:"Under 4.5 reb",odds:"116",market_prob:0.463,guess:56.7,tier:"lean",flag:"",value_pct:22.49,markets:{"polymarket": "https://polymarket.us/event/nba-phi-chi-2026-11-08", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1b537-1805-7b32-a74b-dbf5960feb28"},sim_p_over:0.4655,sim_flag:"",sim_p5:1.02,sim_p95:7.61,sim_std:2.03},
+  {player:"Aaron Jones",team:"MIN",sport:"NFL",date:"Nov 9",prop:"anytime TD",line:"Anytime TD",odds:"270",market_prob:0.2703,guess:33.1,tier:"lean",flag:"",value_pct:22.37,markets:{"polymarket": "https://polymarket.us/event/nfl-buf-min-2026-11-10-player-props", "kalshi": "https://kalshi.com/markets/KXNFLTD-26NOV09BUFMIN-MINAJONES33-1", "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
   {player:"Luke Schoonmaker",team:"DAL",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"950",market_prob:0.0952,guess:11.7,tier:"lean",flag:"",value_pct:22.3,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Lamelo Ball",team:"MIN",sport:"NBA",date:"Nov 8",prop:"under 3.5 3-pointers",line:"Under 3.5 3PT",odds:"104",market_prob:0.4902,guess:59.9,tier:"lean",flag:"",value_pct:22.28,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.372,sim_flag:"",sim_p5:0,sim_p95:8,sim_std:2.61},
-  {player:"Ceedee Lamb",team:"DAL",sport:"NFL",date:"Nov 8",prop:"under 6.5 receptions",line:"Under 6.5 rec",odds:"-114",market_prob:0.5327,guess:65,tier:"lean",flag:"",value_pct:21.97,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.3375,sim_flag:"",sim_p5:1,sim_p95:11,sim_std:3.26},
-  {player:"James Cook",team:"BUF",sport:"NFL",date:"Nov 9",prop:"under 82.5 rushing yards",line:"Under 82.5 yds",odds:"-114",market_prob:0.5327,guess:65,tier:"lean",flag:"",value_pct:21.95,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4235,sim_flag:"",sim_p5:8.46,sim_p95:151.35,sim_std:42.72},
-  {player:"Jaylen Clark",team:"MIN",sport:"NBA",date:"Nov 8",prop:"under 5.5 points",line:"Under 5.5 pts",odds:"-106",market_prob:0.5146,guess:62.7,tier:"lean",flag:"",value_pct:21.92,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 6.5, "to": 5.5, "at": "2026-11-08 07:12:16 PST"},sim_p_over:0.302,sim_flag:"",sim_p5:0,sim_p95:9.07,sim_std:3.23},
-  {player:"Malik Washington",team:"MIA",sport:"NFL",date:"Nov 8",prop:"under 4.5 receptions",line:"Under 4.5 rec",odds:"-148",market_prob:0.5968,guess:72.7,tier:"lean",flag:"",value_pct:21.82,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.109,sim_flag:"sim/model disagree by 16%",sim_p5:0,sim_p95:5,sim_std:1.74},
-  {player:"Luther Burden Iii",team:"CHI",sport:"NFL",date:"Nov 8",prop:"under 65.5 receiving yards",line:"Under 65.5 yds",odds:"-113",market_prob:0.5305,guess:64.6,tier:"lean",flag:"",value_pct:21.77,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.3535,sim_flag:"",sim_p5:10.56,sim_p95:97.39,sim_std:24.97},
-  {player:"Zaccharie Risacher",team:"DAL",sport:"NBA",date:"Nov 8",prop:"over 3.5 rebounds",line:"Over 3.5 reb",odds:"-102",market_prob:0.505,guess:61.5,tier:"lean",flag:"",value_pct:21.73,markets:{"polymarket": "https://polymarket.us/event/nba-bkn-dal-2026-11-08", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1b613-4410-7141-ba6f-ddaec5574502"},sim_p_over:0.882,sim_flag:"sim/model disagree by 27%",sim_p5:2.52,sim_p95:9.11,sim_std:1.98},
-  {player:"Zion Williamson",team:"NOP",sport:"NBA",date:"Nov 8",prop:"under 5.5 rebounds",line:"Under 5.5 reb",odds:"120",market_prob:0.4545,guess:55.3,tier:"lean",flag:"",value_pct:21.68,markets:{"polymarket": "https://polymarket.us/event/nba-nop-lac-2026-11-08", "kalshi": null, "novig": null},sim_p_over:0.4775,sim_flag:"",sim_p5:0.07,sim_p95:10.61,sim_std:3.13},
-  {player:"Dean Wade",team:"PHI",sport:"NBA",date:"Nov 8",prop:"under 3.5 rebounds",line:"Under 3.5 reb",odds:"108",market_prob:0.4808,guess:58.4,tier:"lean",flag:"",value_pct:21.53,markets:{"polymarket": "https://polymarket.us/event/nba-phi-chi-2026-11-08", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1b537-1805-7b32-a74b-dbf5960feb28"},sim_p_over:0.3695,sim_flag:"",sim_p5:0,sim_p95:6.11,sim_std:2.01},
-  {player:"Jalen Coker",team:"CAR",sport:"NFL",date:"Nov 8",prop:"under 50.5 receiving yards",line:"Under 50.5 yds",odds:"-113",market_prob:0.5305,guess:64.4,tier:"lean",flag:"",value_pct:21.43,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.3595,sim_flag:"",sim_p5:0,sim_p95:81.97,sim_std:24.26},
-  {player:"Brayden Burries",team:"MIL",sport:"NBA",date:"Nov 8",prop:"under 10.5 points",line:"Under 10.5 pts",odds:"104",market_prob:0.4902,guess:59.4,tier:"lean",flag:"",value_pct:21.14,markets:{"polymarket": "https://polymarket.us/event/nba-bos-mil-2026-11-08", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1b62e-c17f-71a1-aaae-3899a58821cd"},sim_p_over:0.3425,sim_flag:"",sim_p5:2.31,sim_p95:15.57,sim_std:3.98},
-  {player:"Cade Cunningham",team:"DET",sport:"NBA",date:"Nov 8",prop:"under 9.5 assists",line:"Under 9.5 ast",odds:"-154",market_prob:0.6063,guess:73.4,tier:"lean",flag:"",value_pct:21.12,markets:{"polymarket": "https://polymarket.us/event/nba-lal-det-2026-11-08", "kalshi": null, "novig": null},line_move:{"from": 8.5, "to": 9.5, "at": "2026-11-08 07:12:16 PST"},sim_p_over:0.1145,sim_flag:"sim/model disagree by 15%",sim_p5:3.84,sim_p95:10.32,sim_std:1.97},
-  {player:"Jaime Jaquez Jr",team:"MIL",sport:"NBA",date:"Nov 8",prop:"over 4.5 rebounds",line:"Over 4.5 reb",odds:"-128",market_prob:0.5614,guess:68,tier:"lean",flag:"",value_pct:21.03,markets:{"polymarket": "https://polymarket.us/event/nba-bos-mil-2026-11-08", "kalshi": null, "novig": null},sim_p_over:0.9095,sim_flag:"sim/model disagree by 23%",sim_p5:3.77,sim_p95:10.7,sim_std:2.13},
-  {player:"Tyrese Maxey",team:"PHI",sport:"NBA",date:"Nov 8",prop:"over 25.5 points",line:"Over 25.5 pts",odds:"100",market_prob:0.5,guess:60.2,tier:"lean",flag:"",value_pct:20.29,markets:{"polymarket": "https://polymarket.us/event/nba-phi-chi-2026-11-08", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1b537-1805-7b32-a74b-dbf5960feb28"},sim_p_over:0.797,sim_flag:"sim/model disagree by 20%",sim_p5:22.56,sim_p95:35.69,sim_std:4.05},
-  {player:"Antonio Williams",team:"WAS",sport:"NFL",date:"Nov 8",prop:"under 4.5 receptions",line:"Under 4.5 rec",odds:"-122",market_prob:0.5495,guess:66.1,tier:"lean",flag:"",value_pct:20.2,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.2885,sim_flag:"",sim_p5:0,sim_p95:8,sim_std:2.35},
-  {player:"Baker Mayfield",team:"TB",sport:"NFL",date:"Nov 8",prop:"under 17.5 rushing yards",line:"Under 17.5 yds",odds:"-113",market_prob:0.5305,guess:63.7,tier:"lean",flag:"",value_pct:20.01,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.2735,sim_flag:"",sim_p5:0,sim_p95:32.04,sim_std:11.28},
-  {player:"Trey Mcbride",team:"ARI",sport:"NFL",date:"Nov 8",prop:"under 7.5 receptions",line:"Under 7.5 rec",odds:"-148",market_prob:0.5968,guess:71.5,tier:"lean",flag:"",value_pct:19.78,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.2765,sim_flag:"",sim_p5:1,sim_p95:12,sim_std:3.35},
-  {player:"Dayron Sharpe",team:"BKN",sport:"NBA",date:"Nov 8",prop:"under 3.5 assists",line:"Under 3.5 ast",odds:"-130",market_prob:0.5652,guess:67.5,tier:"lean",flag:"",value_pct:19.46,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 2.5, "to": 3.5, "at": "2026-11-08 07:12:16 PST"},sim_p_over:0.2055,sim_flag:"sim/model disagree by 12%",sim_p5:0,sim_p95:5.14,sim_std:2},
-  {player:"Tyler Allgeier",team:"ARI",sport:"NFL",date:"Nov 8",prop:"under 49.5 rushing yards",line:"Under 49.5 yds",odds:"-113",market_prob:0.5305,guess:63.2,tier:"lean",flag:"",value_pct:19.1,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4295,sim_flag:"",sim_p5:3.71,sim_p95:92.84,sim_std:26.55},
-  {player:"Woody Marks",team:"HOU",sport:"NFL",date:"Nov 8",prop:"under 60.5 rushing yards",line:"Under 60.5 yds",odds:"-113",market_prob:0.5305,guess:63,tier:"lean",flag:"",value_pct:18.78,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.427,sim_flag:"",sim_p5:5.89,sim_p95:114.19,sim_std:32.2},
-  {player:"Rhamondre Stevenson",team:"NE",sport:"NFL",date:"Nov 8",prop:"under 3.5 receptions",line:"Under 3.5 rec",odds:"-114",market_prob:0.5327,guess:63.3,tier:"lean",flag:"",value_pct:18.77,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.2705,sim_flag:"",sim_p5:0,sim_p95:6,sim_std:1.88},
-  {player:"Sean Tucker",team:"TB",sport:"NFL",date:"Nov 8",prop:"anytime TD",line:"Anytime TD",odds:"750",market_prob:0.1176,guess:14,tier:"lean",flag:"",value_pct:18.75,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:null,sim_flag:"",sim_p5:null,sim_p95:null,sim_std:null},
-  {player:"Antonio Williams",team:"WAS",sport:"NFL",date:"Nov 8",prop:"under 49.5 receiving yards",line:"Under 49.5 yds",odds:"-113",market_prob:0.5305,guess:62.8,tier:"lean",flag:"",value_pct:18.31,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 48.5, "to": 49.5, "at": "2026-11-08 07:12:16 PST"},sim_p_over:0.4065,sim_flag:"",sim_p5:0,sim_p95:82.03,sim_std:23.86},
-  {player:"Dayron Sharpe",team:"BKN",sport:"NBA",date:"Nov 8",prop:"under 7.5 rebounds",line:"Under 7.5 reb",odds:"110",market_prob:0.4762,guess:56.2,tier:"lean",flag:"",value_pct:18.1,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.4805,sim_flag:"",sim_p5:2.68,sim_p95:11.87,sim_std:2.79},
-  {player:"Kevin Huerter",team:"DET",sport:"NBA",date:"Nov 8",prop:"under 7.5 points",line:"Under 7.5 pts",odds:"-112",market_prob:0.5283,guess:62.3,tier:"lean",flag:"",value_pct:17.99,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.316,sim_flag:"",sim_p5:2.12,sim_p95:10.46,sim_std:2.56},
-  {player:"Derrick White",team:"BOS",sport:"NBA",date:"Nov 8",prop:"under 13.5 points",line:"Under 13.5 pts",odds:"-120",market_prob:0.5455,guess:64.3,tier:"lean",flag:"",value_pct:17.82,markets:{"polymarket": "https://polymarket.us/event/nba-bos-mil-2026-11-08", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1b62e-c17f-71a1-aaae-3899a58821cd"},sim_p_over:0.2925,sim_flag:"",sim_p5:3.86,sim_p95:18.16,sim_std:4.34},
-  {player:"Tre Jones",team:"CHI",sport:"NBA",date:"Nov 8",prop:"under 11.5 points",line:"Under 11.5 pts",odds:"-122",market_prob:0.5495,guess:64.6,tier:"lean",flag:"",value_pct:17.57,markets:{"polymarket": "https://polymarket.us/event/nba-phi-chi-2026-11-08", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1b537-1805-7b32-a74b-dbf5960feb28"},line_move:{"from": 10.5, "to": 11.5, "at": "2026-11-08 07:12:16 PST"},sim_p_over:0.311,sim_flag:"",sim_p5:6.96,sim_p95:13.69,sim_std:2.06},
-  {player:"Jonah Coleman",team:"DEN",sport:"NFL",date:"Nov 8",prop:"under 55.5 rushing yards",line:"Under 55.5 yds",odds:"-113",market_prob:0.5305,guess:62.3,tier:"lean",flag:"",value_pct:17.45,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.3615,sim_flag:"",sim_p5:3.84,sim_p95:96.44,sim_std:27.57},
-  {player:"Christian Watson",team:"GB",sport:"NFL",date:"Nov 8",prop:"under 70.5 receiving yards",line:"Under 70.5 yds",odds:"-113",market_prob:0.5305,guess:62.3,tier:"lean",flag:"",value_pct:17.43,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.421,sim_flag:"",sim_p5:20.73,sim_p95:106.9,sim_std:25.84},
-  {player:"Paul Reed",team:"DET",sport:"NBA",date:"Nov 8",prop:"under 7.5 rebounds",line:"Under 7.5 reb",odds:"-102",market_prob:0.505,guess:59.2,tier:"lean",flag:"",value_pct:17.26,markets:{"polymarket": "https://polymarket.us/event/nba-lal-det-2026-11-08", "kalshi": null, "novig": null},sim_p_over:0.3925,sim_flag:"",sim_p5:2.42,sim_p95:11.12,sim_std:2.66},
-  {player:"Ayo Dosunmu",team:"MIN",sport:"NBA",date:"Nov 8",prop:"under 18.5 points",line:"Under 18.5 pts",odds:"-122",market_prob:0.5495,guess:64.4,tier:"lean",flag:"",value_pct:17.22,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.307,sim_flag:"",sim_p5:6.32,sim_p95:25.53,sim_std:5.8},
-  {player:"Bucky Irving",team:"TB",sport:"NFL",date:"Nov 8",prop:"under 2.5 receptions",line:"Under 2.5 rec",odds:"-130",market_prob:0.5652,guess:66.2,tier:"lean",flag:"",value_pct:17.21,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.2415,sim_flag:"",sim_p5:0,sim_p95:4,sim_std:1.43},
-  {player:"Ayo Dosunmu",team:"MIN",sport:"NBA",date:"Nov 8",prop:"under 4.5 assists",line:"Under 4.5 ast",odds:"110",market_prob:0.4762,guess:55.8,tier:"lean",flag:"",value_pct:17.17,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.461,sim_flag:"",sim_p5:0,sim_p95:9.61,sim_std:3.28},
-  {player:"Lamelo Ball",team:"MIN",sport:"NBA",date:"Nov 8",prop:"under 21.5 points",line:"Under 21.5 pts",odds:"-128",market_prob:0.5614,guess:65.6,tier:"lean",flag:"",value_pct:16.88,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.2905,sim_flag:"",sim_p5:2.57,sim_p95:31.45,sim_std:8.68},
-  {player:"Bam Adebayo",team:"MIA",sport:"NBA",date:"Nov 8",prop:"under 9.5 rebounds",line:"Under 9.5 reb",odds:"-118",market_prob:0.5413,guess:63.2,tier:"lean",flag:"",value_pct:16.7,markets:{"polymarket": "https://polymarket.us/event/nba-mia-sac-2026-11-08", "kalshi": null, "novig": null},sim_p_over:0.197,sim_flag:"sim/model disagree by 17%",sim_p5:4.61,sim_p95:11.18,sim_std:2},
-  {player:"Marshawn Lloyd",team:"GB",sport:"NFL",date:"Nov 8",prop:"over 8.5 rushing yards",line:"Over 8.5 yds",odds:"-106",market_prob:0.5146,guess:60,tier:"lean",flag:"",value_pct:16.62,markets:{"polymarket": null, "kalshi": null, "novig": null},line_move:{"from": 7.5, "to": 8.5, "at": "2026-11-08 07:12:16 PST"},sim_p_over:0.7865,sim_flag:"sim/model disagree by 19%",sim_p5:0,sim_p95:58.45,sim_std:18.47}
+  {player:"Lamelo Ball",team:"MIN",sport:"NBA",date:"Nov 8",prop:"under 3.5 3-pointers",line:"Under 3.5 3PT",odds:"104",market_prob:0.4902,guess:59.9,tier:"lean",flag:"",value_pct:22.28,markets:{"polymarket": "https://polymarket.us/event/nba-uta-min-2026-11-08", "kalshi": null, "novig": null},sim_p_over:0.401,sim_flag:"",sim_p5:0,sim_p95:9,sim_std:2.76},
+  {player:"Jonathan Kuminga",team:"MIN",sport:"NBA",date:"Nov 8",prop:"under 14.5 points",line:"Under 14.5 pts",odds:"-104",market_prob:0.5098,guess:62.2,tier:"lean",flag:"",value_pct:22.07,markets:{"polymarket": "https://polymarket.us/event/nba-uta-min-2026-11-08", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1b5f7-cfd9-7291-b8ca-76be878855ac"},sim_p_over:0.3385,sim_flag:"",sim_p5:3.67,sim_p95:20.53,sim_std:5.17},
+  {player:"Ceedee Lamb",team:"DAL",sport:"NFL",date:"Nov 8",prop:"under 6.5 receptions",line:"Under 6.5 rec",odds:"-114",market_prob:0.5327,guess:65,tier:"lean",flag:"",value_pct:21.97,markets:{"polymarket": "https://polymarket.us/event/nfl-dal-ind-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLREC-26NOV08DALIND-DALCLAMB88-7", "novig": "https://app.novig.us/event-markets/01a17f1a-eb49-75b1-87c9-dce9271b6bab"},sim_p_over:0.3445,sim_flag:"",sim_p5:1,sim_p95:12,sim_std:3.28},
+  {player:"James Cook",team:"BUF",sport:"NFL",date:"Nov 9",prop:"under 82.5 rushing yards",line:"Under 82.5 yds",odds:"-114",market_prob:0.5327,guess:65,tier:"lean",flag:"",value_pct:21.95,markets:{"polymarket": "https://polymarket.us/event/nfl-buf-min-2026-11-10-player-props", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-f0e2-7e70-8389-a634f78e0796"},sim_p_over:0.422,sim_flag:"",sim_p5:10.27,sim_p95:153.82,sim_std:43.91},
+  {player:"Jaylen Clark",team:"MIN",sport:"NBA",date:"Nov 8",prop:"under 5.5 points",line:"Under 5.5 pts",odds:"-106",market_prob:0.5146,guess:62.7,tier:"lean",flag:"",value_pct:21.92,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1b5f7-cfd9-7291-b8ca-76be878855ac"},sim_p_over:0.272,sim_flag:"sim/model disagree by 10%",sim_p5:0,sim_p95:9,sim_std:3.26},
+  {player:"Malik Washington",team:"MIA",sport:"NFL",date:"Nov 8",prop:"under 4.5 receptions",line:"Under 4.5 rec",odds:"-148",market_prob:0.5968,guess:72.7,tier:"lean",flag:"",value_pct:21.82,markets:{"polymarket": "https://polymarket.us/event/nfl-det-mia-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLREC-26NOV08DETMIA-MIAMWASHINGTON6-5", "novig": "https://app.novig.us/event-markets/01a17f1a-e957-77c1-816c-2d0ae98be0de"},sim_p_over:0.1085,sim_flag:"sim/model disagree by 16%",sim_p5:0,sim_p95:6,sim_std:1.79},
+  {player:"Luther Burden Iii",team:"CHI",sport:"NFL",date:"Nov 8",prop:"under 65.5 receiving yards",line:"Under 65.5 yds",odds:"-113",market_prob:0.5305,guess:64.6,tier:"lean",flag:"",value_pct:21.77,markets:{"polymarket": "https://polymarket.us/event/nfl-tb-chi-2026-11-09-player-props", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-f02d-74e1-ba1f-5656d7500a9b"},sim_p_over:0.365,sim_flag:"",sim_p5:5.18,sim_p95:98.27,sim_std:25.78},
+  {player:"Jalen Coker",team:"CAR",sport:"NFL",date:"Nov 8",prop:"under 50.5 receiving yards",line:"Under 50.5 yds",odds:"-113",market_prob:0.5305,guess:64.4,tier:"lean",flag:"",value_pct:21.43,markets:{"polymarket": "https://polymarket.us/event/nfl-den-car-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLRECYDS-26NOV08DENCAR-CARJCOKER18-50", "novig": "https://app.novig.us/event-markets/01a17f1a-ebea-7641-9bc7-f5f9e80c7946"},sim_p_over:0.389,sim_flag:"",sim_p5:0,sim_p95:81.57,sim_std:24.27},
+  {player:"Zion Williamson",team:"NOP",sport:"NBA",date:"Nov 8",prop:"under 5.5 rebounds",line:"Under 5.5 reb",odds:"118",market_prob:0.4587,guess:55.6,tier:"lean",flag:"",value_pct:21.2,markets:{"polymarket": "https://polymarket.us/event/nba-nop-lac-2026-11-08", "kalshi": null, "novig": null},sim_p_over:0.4885,sim_flag:"",sim_p5:0.07,sim_p95:10.51,sim_std:3.11},
+  {player:"Zaccharie Risacher",team:"DAL",sport:"NBA",date:"Nov 8",prop:"over 3.5 rebounds",line:"Over 3.5 reb",odds:"-106",market_prob:0.5146,guess:62.3,tier:"lean",flag:"",value_pct:21.13,markets:{"polymarket": "https://polymarket.us/event/nba-bkn-dal-2026-11-08", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1b613-4410-7141-ba6f-ddaec5574502"},sim_p_over:0.871,sim_flag:"sim/model disagree by 25%",sim_p5:2.54,sim_p95:9.19,sim_std:2.02},
+  {player:"Cade Cunningham",team:"DET",sport:"NBA",date:"Nov 8",prop:"under 9.5 assists",line:"Under 9.5 ast",odds:"-154",market_prob:0.6063,guess:73.4,tier:"lean",flag:"",value_pct:21.12,markets:{"polymarket": "https://polymarket.us/event/nba-lal-det-2026-11-08", "kalshi": null, "novig": null},sim_p_over:0.129,sim_flag:"sim/model disagree by 14%",sim_p5:3.99,sim_p95:10.63,sim_std:2},
+  {player:"Jaime Jaquez Jr",team:"MIL",sport:"NBA",date:"Nov 8",prop:"over 4.5 rebounds",line:"Over 4.5 reb",odds:"-128",market_prob:0.5614,guess:68,tier:"lean",flag:"",value_pct:21.03,markets:{"polymarket": "https://polymarket.us/event/nba-bos-mil-2026-11-08", "kalshi": null, "novig": null},sim_p_over:0.9105,sim_flag:"sim/model disagree by 23%",sim_p5:3.73,sim_p95:10.77,sim_std:2.14},
+  {player:"Lamelo Ball",team:"MIN",sport:"NBA",date:"Nov 8",prop:"under 21.5 points",line:"Under 21.5 pts",odds:"-114",market_prob:0.5327,guess:64.4,tier:"lean",flag:"",value_pct:20.88,markets:{"polymarket": "https://polymarket.us/event/nba-uta-min-2026-11-08", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1b5f7-cfd9-7291-b8ca-76be878855ac"},sim_p_over:0.2925,sim_flag:"",sim_p5:1.95,sim_p95:30.55,sim_std:8.84},
+  {player:"Quinshon Judkins",team:"CLE",sport:"NFL",date:"Nov 8",prop:"under 68.5 rushing yards",line:"Under 68.5 yds",odds:"-113",market_prob:0.5305,guess:63.9,tier:"lean",flag:"",value_pct:20.47,markets:{"polymarket": "https://polymarket.us/event/nfl-cle-no-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLRSHYDS-26NOV08CLENO-CLEQJUDKINS10-70", "novig": "https://app.novig.us/event-markets/01a17f1a-ea0b-7720-aa75-5899ba78ead0"},line_move:{"from": 64.5, "to": 68.5, "at": "2026-11-08 10:23:50 PST"},sim_p_over:0.4195,sim_flag:"",sim_p5:6.51,sim_p95:126.78,sim_std:36.62},
+  {player:"Tyrese Maxey",team:"PHI",sport:"NBA",date:"Nov 8",prop:"over 25.5 points",line:"Over 25.5 pts",odds:"100",market_prob:0.5,guess:60.2,tier:"lean",flag:"",value_pct:20.29,markets:{"polymarket": "https://polymarket.us/event/nba-phi-chi-2026-11-08", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1b537-1805-7b32-a74b-dbf5960feb28"},sim_p_over:0.832,sim_flag:"sim/model disagree by 23%",sim_p5:22.68,sim_p95:35.96,sim_std:4.06},
+  {player:"Antonio Williams",team:"WAS",sport:"NFL",date:"Nov 8",prop:"under 4.5 receptions",line:"Under 4.5 rec",odds:"-122",market_prob:0.5495,guess:66.1,tier:"lean",flag:"",value_pct:20.2,markets:{"polymarket": "https://polymarket.us/event/nfl-la-was-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLREC-26NOV08LARWAS-WASAWILLIAMS14-5", "novig": "https://app.novig.us/event-markets/01a17f1a-ed00-78e3-b4bb-fab0dfb71dc4"},sim_p_over:0.289,sim_flag:"",sim_p5:0,sim_p95:8,sim_std:2.35},
+  {player:"Drake Maye",team:"NE",sport:"NFL",date:"Nov 8",prop:"under 25.5 rushing yards",line:"Under 25.5 yds",odds:"-113",market_prob:0.5305,guess:63.8,tier:"lean",flag:"",value_pct:20.18,markets:{"polymarket": "https://polymarket.us/event/nfl-gb-ne-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLRSHYDS-26NOV08GBNE-NEDMAYE10-25", "novig": "https://app.novig.us/event-markets/01a17f1a-ee65-7511-ac0e-6042805ef7c3"},sim_p_over:0.3785,sim_flag:"",sim_p5:0,sim_p95:51.05,sim_std:16.42},
+  {player:"Baker Mayfield",team:"TB",sport:"NFL",date:"Nov 8",prop:"under 17.5 rushing yards",line:"Under 17.5 yds",odds:"-113",market_prob:0.5305,guess:63.7,tier:"lean",flag:"",value_pct:20.01,markets:{"polymarket": "https://polymarket.us/event/nfl-tb-chi-2026-11-09-player-props", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-f02d-74e1-ba1f-5656d7500a9b"},sim_p_over:0.286,sim_flag:"",sim_p5:0,sim_p95:31.82,sim_std:11.45},
+  {player:"Trey Mcbride",team:"ARI",sport:"NFL",date:"Nov 8",prop:"under 7.5 receptions",line:"Under 7.5 rec",odds:"-148",market_prob:0.5968,guess:71.5,tier:"lean",flag:"",value_pct:19.78,markets:{"polymarket": "https://polymarket.us/event/nfl-ari-sea-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLREC-26NOV08ARISEA-ARITMCBRIDE85-8", "novig": "https://app.novig.us/event-markets/01a17f1a-eee8-70d3-afbf-5b597b901f43"},sim_p_over:0.2785,sim_flag:"",sim_p5:1,sim_p95:12,sim_std:3.5},
+  {player:"Dayron Sharpe",team:"BKN",sport:"NBA",date:"Nov 8",prop:"under 3.5 assists",line:"Under 3.5 ast",odds:"-130",market_prob:0.5652,guess:67.5,tier:"lean",flag:"",value_pct:19.46,markets:{"polymarket": null, "kalshi": null, "novig": null},sim_p_over:0.205,sim_flag:"sim/model disagree by 12%",sim_p5:0,sim_p95:5.16,sim_std:1.98},
+  {player:"Ayo Dosunmu",team:"MIN",sport:"NBA",date:"Nov 8",prop:"under 4.5 assists",line:"Under 4.5 ast",odds:"116",market_prob:0.463,guess:55.2,tier:"lean",flag:"",value_pct:19.32,markets:{"polymarket": "https://polymarket.us/event/nba-uta-min-2026-11-08", "kalshi": null, "novig": null},sim_p_over:0.4575,sim_flag:"",sim_p5:0,sim_p95:9.82,sim_std:3.34},
+  {player:"Marshawn Lloyd",team:"GB",sport:"NFL",date:"Nov 8",prop:"over 7.5 rushing yards",line:"Over 7.5 yds",odds:"-110",market_prob:0.5238,guess:62.4,tier:"lean",flag:"",value_pct:19.12,markets:{"polymarket": null, "kalshi": null, "novig": "https://app.novig.us/event-markets/01a17f1a-ee65-7511-ac0e-6042805ef7c3"},line_move:{"from": 8.5, "to": 7.5, "at": "2026-11-08 10:23:50 PST"},sim_p_over:0.803,sim_flag:"sim/model disagree by 18%",sim_p5:0,sim_p95:57.58,sim_std:18.19},
+  {player:"Tyler Allgeier",team:"ARI",sport:"NFL",date:"Nov 8",prop:"under 49.5 rushing yards",line:"Under 49.5 yds",odds:"-113",market_prob:0.5305,guess:63.2,tier:"lean",flag:"",value_pct:19.1,markets:{"polymarket": "https://polymarket.us/event/nfl-ari-sea-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLRSHYDS-26NOV08ARISEA-ARITALLGEIER22-50", "novig": "https://app.novig.us/event-markets/01a17f1a-eee8-70d3-afbf-5b597b901f43"},sim_p_over:0.439,sim_flag:"",sim_p5:4.4,sim_p95:93.49,sim_std:26.83},
+  {player:"Caleb Williams",team:"CHI",sport:"NFL",date:"Nov 8",prop:"under 19.5 rushing yards",line:"Under 19.5 yds",odds:"-113",market_prob:0.5305,guess:63.2,tier:"lean",flag:"",value_pct:19.06,markets:{"polymarket": "https://polymarket.us/event/nfl-tb-chi-2026-11-09-player-props", "kalshi": "https://kalshi.com/markets/KXNFLRSHYDS-26NOV08TBCHI-CHICWILLIAMS18-20", "novig": "https://app.novig.us/event-markets/01a17f1a-f02d-74e1-ba1f-5656d7500a9b"},sim_p_over:0.294,sim_flag:"",sim_p5:0,sim_p95:38.72,sim_std:13.32},
+  {player:"Woody Marks",team:"HOU",sport:"NFL",date:"Nov 8",prop:"under 60.5 rushing yards",line:"Under 60.5 yds",odds:"-113",market_prob:0.5305,guess:63,tier:"lean",flag:"",value_pct:18.78,markets:{"polymarket": "https://polymarket.us/event/nfl-hou-lac-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLRSHYDS-26NOV08HOULAC-HOUWMARKS4-60", "novig": "https://app.novig.us/event-markets/01a17f1a-eda7-7820-8e04-5b45d714ea91"},sim_p_over:0.423,sim_flag:"",sim_p5:6.54,sim_p95:113.04,sim_std:32.02},
+  {player:"Rhamondre Stevenson",team:"NE",sport:"NFL",date:"Nov 8",prop:"under 3.5 receptions",line:"Under 3.5 rec",odds:"-114",market_prob:0.5327,guess:63.3,tier:"lean",flag:"",value_pct:18.77,markets:{"polymarket": "https://polymarket.us/event/nfl-gb-ne-2026-11-08-player-props", "kalshi": "https://kalshi.com/markets/KXNFLREC-26NOV08GBNE-NERSTEVENSON38-4", "novig": "https://app.novig.us/event-markets/01a17f1a-ee65-7511-ac0e-6042805ef7c3"},sim_p_over:0.277,sim_flag:"",sim_p5:0,sim_p95:6,sim_std:1.91},
+  {player:"Bam Adebayo",team:"MIA",sport:"NBA",date:"Nov 8",prop:"under 9.5 rebounds",line:"Under 9.5 reb",odds:"-114",market_prob:0.5327,guess:63.2,tier:"lean",flag:"",value_pct:18.58,markets:{"polymarket": "https://polymarket.us/event/nba-mia-sac-2026-11-08", "kalshi": null, "novig": null},sim_p_over:0.201,sim_flag:"sim/model disagree by 17%",sim_p5:4.49,sim_p95:11.09,sim_std:2},
+  {player:"Tre Jones",team:"CHI",sport:"NBA",date:"Nov 8",prop:"under 11.5 points",line:"Under 11.5 pts",odds:"-120",market_prob:0.5455,guess:64.6,tier:"lean",flag:"",value_pct:18.45,markets:{"polymarket": "https://polymarket.us/event/nba-phi-chi-2026-11-08", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1b537-1805-7b32-a74b-dbf5960feb28"},sim_p_over:0.276,sim_flag:"",sim_p5:7.25,sim_p95:13.59,sim_std:1.95},
+  {player:"Brayden Burries",team:"MIL",sport:"NBA",date:"Nov 8",prop:"under 11.5 points",line:"Under 11.5 pts",odds:"-132",market_prob:0.569,guess:67.3,tier:"lean",flag:"",value_pct:18.31,markets:{"polymarket": "https://polymarket.us/event/nba-bos-mil-2026-11-08", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1b62e-c17f-71a1-aaae-3899a58821cd"},sim_p_over:0.2525,sim_flag:"",sim_p5:2.43,sim_p95:15.3,sim_std:3.94}
 ];
 /* Home "strongest picks": the TODAY_BETS rows marked top_tier, in
    the same order the Our Bets tab shows them (falling back to the
@@ -3887,6 +3923,13 @@ function setPropView(view){
   /* Our Bets follows the same View setting: re-render it too, so
      flipping Tiles/List updates the card without a reload. */
   try{renderBets();}catch(e){}
+  /* Game forecasts follows the same View setting: on phones its slate
+     is a two-column tile grid, so List switches it to the full-width
+     stacked rows via a class on the panel (the CSS does the layout).
+     Without this the List choice never reached Game forecasts and the
+     games stayed in tiles on mobile. */
+  var gfPanel=$("panel-gameforecasts");
+  if(gfPanel) gfPanel.classList.toggle("gf-list",view==="list");
 }
 /* Tier column: only the exceptions are labelled. A strong-tier row
    (top 10% of today's value gaps) gets the "Strong pick" pill; every
@@ -4020,9 +4063,40 @@ function propRowInfoHtml(r){
 function tdBoardVisible(){
   return propType==="anytime TD"||(propSport==="NFL"&&propType==="ALL");
 }
+function renderTdBoard(){
+  var rowsEl=$("tdBoardRows");
+  var emptyEl=$("tdBoardEmpty");
+  if(!rowsEl) return;
+  var cols="minmax(0,1.4fr) 100px 178px 150px 118px";
+  var tdRows=[];
+  (TOP_PROPS||[]).forEach(function(r){
+    if(!r) return;
+    var hay=(String(r.prop||"")+" "+String(r.market||"")).toLowerCase();
+    if(hay.indexOf("anytime td")<0) return;
+    if(!propMatchesFilters(r)) return;
+    tdRows.push(r);
+  });
+  if(!tdRows.length){
+    rowsEl.innerHTML="";
+    rowsEl.hidden=true;
+    rowsEl.style.display="none";
+    if(emptyEl){ emptyEl.hidden=false; emptyEl.style.display=""; }
+    return;
+  }
+  if(emptyEl){ emptyEl.hidden=true; emptyEl.style.display="none"; }
+  rowsEl.hidden=false;
+  rowsEl.style.display="";
+  rowsEl.innerHTML=tdRows.map(function(r){
+    var badges=pickBadgesPlainHtml(r), rowInfo=propRowInfoHtml(r);
+    return '<div class="trow" style="grid-template-columns:'+cols+'"><div class="who"><b>'+esc(r.player)+'</b><span>'+esc(r.sport)+' &middot; '+esc(r.team)+' &middot; '+esc(r.prop)+'</span></div>'+
+    '<span class="prop-date">'+esc(fmtDateLong(r.date))+'</span>'+
+    '<span class="num avg-val">'+propLineHtml(r,true)+'</span><span class="num avg-val">'+propGuessHtml(r,true)+'</span><span style="text-align:right">'+propTierHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<div class="flag" style="grid-column:1 / -1">'+esc(r.flag)+'</div>':"")+'</div>';
+  }).join("");
+}
 function syncTdBoard(){
   var sec=$("tdBoardSection");
   if(sec) sec.hidden=!tdBoardVisible();
+  renderTdBoard();
 }
 function selectTouchdownsView(){
   propSport="NFL"; propType="anytime TD"; propGame="ALL"; propShowAll=false;
@@ -4090,6 +4164,7 @@ function renderProps(){
   }
   renderMovers();
   syncTdBoard();
+  renderTdBoard();
 }
 var propShowMoreBtn=$("propShowMore");
 if(propShowMoreBtn) propShowMoreBtn.addEventListener("click",function(){propShowAll=!propShowAll;renderProps();});
@@ -5362,6 +5437,23 @@ document.addEventListener("click",function(e){
   if(g){ensureScoresLoaded();startScoresTimer();}
 });
 if(scoresPanelActive()){ensureScoresLoaded();startScoresTimer();}
+/* Scores sub-tabs: Scores / Standings, same pattern as the Game
+   forecasts sub-nav. Standings keep loading lazily with the panel
+   (ensureScoresLoaded above) whichever sub-tab is showing; this only
+   toggles which block is visible. */
+function showScoresSection(id){
+  ["scores-list","scores-standings"].forEach(function(sid){
+    var el=$(sid); if(el) el.hidden=(sid!==id);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-scores-nav]"),function(b){
+    b.setAttribute("aria-pressed",b.getAttribute("data-scores-nav")===id?"true":"false");
+  });
+}
+var scoresSubnavEl=$("scoresSubnav");
+if(scoresSubnavEl) scoresSubnavEl.addEventListener("click",function(e){
+  var b=e.target.closest("[data-scores-nav]"); if(!b) return;
+  showScoresSection(b.getAttribute("data-scores-nav"));
+});
 
 function seasonWins(v){return (v%1===0)?String(v):v.toFixed(1);}
 function seasonPct(v,oneDecimal){
@@ -5403,375 +5495,6 @@ try{renderBets();}catch(e){}
 try{renderRecord();}catch(e){}
 try{updateYesterdayRecap();}catch(e){}
 try{loadCumulativeRecord();}catch(e){}
-})();
-</script>
-<script>
-(function(){
-"use strict";
-/* ================= DFS OPTIMIZER =================
-   Runs entirely in the browser. Projections are embedded below exactly
-   as supplied: [name, team, position-or-null, DK points, FD points,
-   games counted]. NBA positions are null — they come from the salary
-   file. NFL DST rows get a flat 7.0 projected points. */
-var DFS_PROJ_NBA=[["Luka Doncic","LAL",null,64.2,66.9,5],["Jayson Tatum","BOS",null,47.1,47.7,5],["Victor Wembanyama","SA",null,47.0,47.4,5],["Anthony Edwards","MIN",null,46.3,48.0,4],["Darius Acuff Jr.","SAC",null,46.2,48.0,5],["Tyrese Maxey","PHI",null,44.4,45.6,5],["Shai Gilgeous-Alexander","OKC",null,43.2,44.4,5],["Cooper Flagg","DAL",null,42.6,42.7,5],["Jalen Johnson","ATL",null,41.4,41.8,5],["Deni Avdija","POR",null,41.0,41.6,5],["Scottie Barnes","TOR",null,40.5,40.4,5],["Brandon Miller","CHA",null,39.8,40.9,5],["Trae Young","WSH",null,39.6,40.1,5],["Cameron Boozer","MEM",null,39.6,40.3,5],["Anthony Davis","WSH",null,38.0,38.1,5],["Domantas Sabonis","SAC",null,38.0,37.4,5],["Ty Jerome","MEM",null,37.7,38.6,5],["Joel Embiid","PHI",null,37.5,37.1,5],["LeBron James","PHI",null,36.5,36.6,5],["Donovan Mitchell","CLE",null,36.0,37.2,5],["RJ Barrett","TOR",null,35.9,36.9,5],["Jaylen Brown","PHI",null,35.8,36.5,5],["Evan Mobley","CLE",null,35.4,36.0,5],["Dylan Harper","SA",null,35.1,35.4,5],["Kyrie Irving","DAL",null,34.8,36.7,5],["Paul George","BOS",null,34.4,35.5,5],["Dejounte Murray","NO",null,34.3,34.4,4],["Austin Reaves","LAL",null,33.9,34.6,5],["James Harden","CLE",null,33.7,34.9,5],["Keyonte George","UTAH",null,33.4,33.9,5],["LaMelo Ball","MIN",null,32.8,34.4,5],["Tyler Herro","MIL",null,32.4,34.0,5],["Zion Williamson","NO",null,32.4,32.2,5],["Kawhi Leonard","TOR",null,32.1,32.8,2],["Jeremiah Fears","NO",null,32.0,32.3,5],["Zach LaVine","SAC",null,31.7,33.0,5],["Jaden McDaniels","MIN",null,31.5,31.8,5],["Ajay Mitchell","OKC",null,31.4,31.6,5],["Ayo Dosunmu","MIN",null,31.4,32.0,5],["Kyshawn George","WSH",null,31.1,32.2,5],["Damian Lillard","POR",null,30.7,31.6,5],["Cedric Coward","MEM",null,30.6,31.7,5],["Immanuel Quickley","TOR",null,30.3,31.6,5],["Nickeil Alexander-Walker","ATL",null,30.1,32.4,5],["De'Aaron Fox","SA",null,29.7,29.9,5],["Trey Murphy III","NO",null,29.5,30.5,5],["Onyeka Okongwu","ATL",null,29.4,29.9,5],["Jarrett Allen","CLE",null,28.8,28.4,5],["Isaiah Hartenstein","OKC",null,28.7,28.1,5],["Stephon Castle","SA",null,28.6,29.1,5],["VJ Edgecombe","PHI",null,28.4,28.8,5],["Jaime Jaquez Jr.","MIL",null,28.1,28.8,5],["Ja Morant","POR",null,28.0,28.8,4],["AJ Dybantsa","WSH",null,27.7,27.9,3],["Kel'el Ware","MIL",null,27.4,27.2,5],["Ace Bailey","UTAH",null,27.3,27.6,5],["Lauri Markkanen","UTAH",null,27.0,28.3,5],["Derik Queen","NO",null,26.9,26.8,5],["Darryn Peterson","UTAH",null,26.6,27.4,5],["Daniel Gafford","DAL",null,26.6,26.2,5],["Moussa Diabate","CHA",null,26.4,25.9,5],["Cam Spencer","MEM",null,26.2,26.8,5],["Jaren Jackson Jr.","UTAH",null,26.1,26.4,4],["Chet Holmgren","OKC",null,25.9,25.6,3],["CJ McCollum","ATL",null,25.8,26.3,5],["De'Andre Hunter","SAC",null,25.5,26.4,5],["Naz Reid","CHA",null,25.3,25.6,5],["P.J. Washington","DAL",null,25.2,26.1,5],["Jalen Williams","OKC",null,25.1,25.5,3],["Naji Marshall","DAL",null,24.9,25.3,4],["Jonathan Kuminga","MIN",null,24.7,25.6,5],["Payton Pritchard","BOS",null,24.6,24.7,5],["Walker Kessler","LAL",null,24.6,24.1,5],["Devin Vassell","SA",null,24.4,24.7,5],["Jrue Holiday","POR",null,24.2,25.5,5],["Rudy Gobert","MIN",null,24.0,23.4,5],["Saddiq Bey","NO",null,23.9,24.5,5],["Terrence Shannon Jr.","MIN",null,22.9,23.6,5],["Ryan Rollins","MIL",null,22.7,23.2,5],["Yves Missi","NO",null,22.6,22.2,2],["Donovan Clingan","POR",null,22.5,22.5,5],["Kyle Kuzma","MIL",null,22.3,22.7,5],["Peyton Watson","CLE",null,22.3,22.5,5],["Julian Champagnie","SA",null,22.1,23.4,5],["Alex Caruso","OKC",null,21.7,22.4,4],["Isaiah Stewart","MEM",null,21.7,22.0,5],["Aaron Wiggins","ATL",null,21.6,22.6,5],["Grayson Allen","CHA",null,21.3,23.0,5],["Ja'Kobe Walter","TOR",null,21.3,22.1,5],["Toumani Camara","POR",null,21.2,22.6,5],["Precious Achiuwa","SAC",null,21.1,20.8,5],["Anfernee Simons","PHI",null,20.8,22.4,5],["Derrick White","BOS",null,20.7,21.1,5],["Meleek Thomas","CLE",null,20.6,21.7,4],["Isaiah Collier","UTAH",null,20.1,19.8,5],["Jaxson Hayes","UTAH",null,19.8,19.4,5],["Mario Hezonja","CLE",null,19.8,20.4,5],["Alex Sarr","WSH",null,19.6,19.7,5],["Ziaire Williams","LAL",null,19.4,20.2,4],["Dennis Schroder","CHA",null,19.2,19.5,5],["Jared McCain","OKC",null,18.9,19.2,5],["Neemias Queta","BOS",null,18.8,18.6,5],["Sandro Mamukelashvili","LAL",null,18.8,18.9,5],["Kingston Flemings","ATL",null,18.7,19.2,5],["Justin Champagnie","WSH",null,18.7,18.5,4],["Zaccharie Risacher","DAL",null,18.7,19.0,5],["Keldon Johnson","SA",null,18.6,18.4,5],["Karlo Matkovic","NO",null,18.6,19.3,5],["Jaylen Wells","MEM",null,18.5,19.0,5],["Dyson Daniels","ATL",null,18.4,18.2,5],["Kasparas Jakucionis","MIL",null,18.4,18.6,5],["Collin Sexton","LAL",null,18.3,18.8,5],["Robert Williams III","POR",null,18.2,17.8,4],["Aday Mara","OKC",null,17.8,17.5,5],["Myles Turner","MIL",null,17.7,18.2,5],["Joan Beringer","MIN",null,17.7,17.4,5],["Zach Edey","MEM",null,17.7,17.4,5],["Brayden Burries","MIL",null,17.6,17.6,5],["Bones Hyland","MIN",null,17.5,18.7,5],["Jamal Shead","TOR",null,17.3,17.6,5],["Sam Merrill","CLE",null,17.3,18.3,5],["Brice Sensabaugh","UTAH",null,17.2,18.1,5],["Jaylon Tyson","CLE",null,17.0,17.3,5],["Walter Clayton Jr.","DAL",null,16.9,17.7,5],["Mo Bamba","UTAH",null,16.9,16.6,4],["Malik Monk","SAC",null,16.7,17.5,5],["Jerami Grant","MEM",null,16.5,17.1,5],["Javon Small","MEM",null,16.4,16.9,1],["Luguentz Dort","ATL",null,16.1,16.9,5],["Tyrese Proctor","CLE",null,15.6,16.2,5],["DeAndre Jordan","NO",null,15.6,15.3,2],["Luka Garza","BOS",null,15.1,15.8,5],["GG Jackson","MEM",null,15.1,15.7,5],["Collin Murray-Boyles","TOR",null,15.0,15.3,5],["Herbert Jones","NO",null,14.9,15.1,5],["Sidy Cissoko","POR",null,14.9,15.0,5],["AJ Green","MIL",null,14.6,15.4,5],["Sion James","CHA",null,14.6,15.0,5],["Kenrich Williams","OKC",null,14.5,15.2,5],["Scoot Henderson","POR",null,14.4,14.8,5],["Baylor Scheierman","BOS",null,14.2,14.9,5],["Tre Johnson","WSH",null,14.2,14.5,5],["Matisse Thybulle","LAL",null,14.2,15.1,5],["Quentin Grimes","LAL",null,14.2,14.4,5],["Jock Landale","ATL",null,14.0,13.9,5],["Jordan Poole","NO",null,13.4,13.7,4],["Jakob Poeltl","TOR",null,13.3,13.1,5],["Mitchell Robinson","BOS",null,13.2,13.0,5],["Bub Carrington","WSH",null,13.2,13.7,5],["Morez Johnson Jr.","DAL",null,13.2,13.1,5],["Max Christie","DAL",null,12.8,13.3,5],["Scotty Pippen Jr.","MEM",null,12.7,12.7,5],["Bennedict Mathurin","NO",null,12.7,13.0,5],["Sam Hauser","BOS",null,12.5,13.2,5],["Bilal Coulibaly","WSH",null,12.5,12.5,5],["Coby White","CHA",null,12.4,13.3,1],["Cason Wallace","OKC",null,12.2,12.5,3],["Quinten Post","MEM",null,12.2,12.4,5],["Jake LaRavia","LAL",null,12.2,12.8,5],["Trey Lyles","MIN",null,12.0,12.5,5],["Bennett Stirtz","OKC",null,11.9,13.1,5],["Dean Wade","PHI",null,11.9,12.0,5],["Leaky Black","SAC",null,11.9,12.7,2],["Keegan Murray","SAC",null,11.7,11.8,2],["Deandre Ayton","WSH",null,11.6,11.4,5],["Trendon Watford","NO",null,11.6,11.4,3],["Caleb Martin","DAL",null,11.5,11.9,3],["Jordan Walsh","BOS",null,11.4,11.8,5],["Jamison Battle","TOR",null,11.1,12.1,5],["Nate Ament","MIL",null,11.0,11.5,5],["Royce O'Neale","CHA",null,10.9,11.4,5],["Adem Bona","PHI",null,10.4,10.1,5],["Luke Kornet","SA",null,10.4,10.2,5],["Yang Hansen","POR",null,10.2,10.5,3],["Ryan Kalkbrenner","CHA",null,10.1,9.9,5],["Sergio de Larrea","DAL",null,10.1,10.5,4],["Marcus Sasser","DAL",null,10.1,10.1,5],["Kentavious Caldwell-Pope","PHI",null,10.0,10.2,5],["Josh Okogie","UTAH",null,9.9,10.0,5],["Allen Graves","TOR",null,9.8,9.9,5],["Corey Kispert","ATL",null,9.8,10.7,4],["Jarred Vanderbilt","LAL",null,9.8,9.5,3],["RayJ Dennis","ATL",null,9.6,9.6,1],["Hugo Gonzalez","BOS",null,9.4,9.4,5],["Thomas Bryant","CLE",null,9.4,10.1,2],["Jaylin Williams","OKC",null,9.3,9.4,5],["Tidjane Salaun","CHA",null,8.9,9.3,5],["Jonathan Mogbo","SAC",null,8.8,8.8,4],["Jaylen Clark","MIN",null,8.7,9.3,5],["Christian Anderson","CHA",null,8.3,8.5,5],["Asa Newell","ATL",null,8.1,8.2,4],["Trayce Jackson-Davis","TOR",null,7.9,7.8,5],["Jabari Walker","PHI",null,7.5,7.5,5],["Tarris Reed Jr.","SA",null,7.2,7.0,4],["Emanuel Sharp","SAC",null,7.0,7.4,5],["Svi Mykhailiuk","UTAH",null,6.7,7.0,5],["Vit Krejci","POR",null,6.5,6.7,5],["Alijah Martin","TOR",null,6.2,6.4,5],["Zuby Ejiofor","ATL",null,6.2,6.4,3],["Hannes Steinbach","CHA",null,6.1,6.0,3],["Micah Peavy","OKC",null,6.1,6.2,3],["Ousmane Dieng","MIL",null,5.7,5.6,5],["Craig Porter Jr.","CLE",null,5.6,5.6,5],["Josh Green","UTAH",null,5.5,5.7,5],["John Tonje","POR",null,5.2,5.5,1],["Khris Middleton","WSH",null,5.1,5.1,5],["Olivier-Maxence Prosper","MEM",null,5.1,5.2,2],["Carson Cooper","MEM",null,5.1,5.2,1],["Mike Conley","BOS",null,5.0,5.5,2],["Branden Carlson","POR",null,5.0,4.9,2],["Carter Bryant","SA",null,4.9,5.3,5],["Kevon Looney","LAL",null,4.9,4.8,4],["Micah Potter","POR",null,4.9,4.9,3],["Gary Trent Jr.","MIL",null,4.9,5.3,2],["Rayan Rupert","PHI",null,4.9,5.2,1],["Kyle Anderson","TOR",null,4.6,4.5,4],["Kris Murray","MEM",null,4.5,4.5,4],["Tony Bradley","UTAH",null,4.5,4.4,2],["Liam McNeeley","CHA",null,4.3,4.2,4],["Harrison Barnes","SA",null,4.2,4.6,5],["Daeqwon Plowden","SAC",null,4.2,4.3,5],["Labaron Philon Jr.","PHI",null,4.2,4.3,5],["Chris Cenac Jr.","BOS",null,4.0,4.1,3],["Riley Minix","CLE",null,3.9,3.8,1],["Jaden Bradley","TOR",null,3.8,3.7,5],["PJ Hall","CHA",null,3.7,3.9,2],["Jahmai Mashack","MEM",null,3.7,3.9,1],["Ja'Kobi Gillespie","SA",null,3.6,4.7,2],["Alex Karaban","SAC",null,3.6,3.8,4],["Josh Dix","OKC",null,3.6,3.7,4],["Kyle Filipowski","UTAH",null,3.5,3.6,5],["Taylor Hendricks","MEM",null,3.5,3.8,3],["Bryce McGowens","NO",null,3.5,3.5,4],["Tristan Enaruna","CLE",null,3.5,3.8,1],["Bogoljub Markovic","MIL",null,3.4,3.5,1],["Chris Youngblood","POR",null,3.4,3.8,1],["Jordan McLaughlin","SA",null,3.3,3.3,3],["Moussa Cisse","DAL",null,3.2,3.2,5],["Jaden Hardy","LAL",null,3.2,3.1,4],["Julian Reese","NO",null,3.2,3.2,1],["Brooks Barnhizer","OKC",null,2.9,2.9,5],["Tobi Lawal","DAL",null,2.9,3.0,4],["Zyon Pullin","MIN",null,2.7,2.8,2],["Dorian Finney-Smith","ATL",null,2.6,2.9,3],["Jett Howard","DAL",null,2.5,2.7,3],["Ron Harper Jr.","BOS",null,2.5,2.7,3],["Karim Lopez","MEM",null,2.2,2.2,2],["David Jones Garcia","SA",null,2.0,2.0,1],["Maliq Brown","SA",null,1.9,2.3,1],["Nique Clifford","SAC",null,1.8,1.8,5],["Justin Edwards","PHI",null,1.8,2.1,3],["Isaiah Evans","MIN",null,1.6,2.0,4],["Chris Manon","LAL",null,1.6,1.6,2],["Jayson Kent","POR",null,1.6,1.8,1],["Jericho Sims","MIL",null,1.3,1.3,3],["Felix Okpara","WSH",null,1.1,1.2,1],["Will Riley","WSH",null,1.1,1.1,5],["Bronny James","LAL",null,0.7,0.7,3],["Cameron Carr","LAL",null,0.4,0.8,1],["Caleb Love","PHI",null,0.3,0.6,1],["Cody Williams","MIN",null,0.2,0.2,5],["Anthony Gill","WSH",null,0.2,0.4,1],["Tre Mann","WSH",null,0.2,0.4,2],["Dillon Mitchell","BOS",null,0.1,0.2,1],["Reece Beekman","WSH",null,0.0,0.0,1],["AJ Johnson","NO",null,0.0,0.0,1]];
-var DFS_PROJ_NFL=[["Joe Burrow","CIN","QB",29.2,29.2,4],["Drake Maye","NE","QB",28.3,28.3,4],["Jaxon Smith-Njigba","SEA","WR",25.8,25.8,4],["Malik Nabers","NYG","WR",24.7,24.7,4],["Jahmyr Gibbs","DET","RB",23.1,23.1,4],["Tee Higgins","CIN","WR",22.3,22.3,4],["Drew Lock","SEA","QB",21.4,21.4,1],["Jordan Love","GB","QB",21.0,21.0,4],["C.J. Stroud","HOU","QB",20.9,20.9,4],["Jayden Daniels","WAS","QB",20.7,20.7,4],["Christian McCaffrey","SF","RB",20.5,20.5,4],["Trey McBride","ARI","TE",20.3,20.3,4],["Kirk Cousins","LV","QB",20.2,20.2,4],["Jared Goff","DET","QB",19.1,19.1,4],["Josh Jacobs","GB","RB",18.6,18.6,2],["Chuba Hubbard","CAR","RB",18.5,18.5,4],["Ja'Marr Chase","CIN","WR",18.4,18.4,4],["Bucky Irving","TB","RB",18.4,18.4,4],["Braelon Allen","NYJ","RB",18.4,18.4,4],["Tetairoa McMillan","CAR","WR",18.4,18.4,4],["Brock Bowers","LV","TE",17.9,17.9,4],["Matthew Golden","GB","WR",17.9,17.9,4],["D'Andre Swift","CHI","RB",17.3,17.3,4],["DeVonta Smith","PHI","WR",17.2,17.2,4],["Kenneth Walker III","KC","RB",17.2,17.2,4],["Luther Burden III","CHI","WR",17.2,17.2,4],["Dak Prescott","DAL","QB",16.7,16.7,4],["Jameson Williams","DET","WR",16.5,16.5,4],["Christian Watson","GB","WR",16.4,16.4,4],["Brock Purdy","SF","QB",16.3,16.3,4],["Amon-Ra St. Brown","DET","WR",16.3,16.3,4],["Isaiah Likely","NYG","TE",16.3,16.3,4],["Omar Cooper Jr.","NYJ","WR",16.3,16.3,3],["Geno Smith","NYJ","QB",15.9,15.9,4],["George Pickens","DAL","WR",15.9,15.9,4],["Malik Willis","MIA","QB",15.5,15.5,4],["Jonathan Taylor","IND","RB",15.5,15.5,4],["Mike Evans","SF","WR",15.4,15.4,4],["Caleb Williams","CHI","QB",15.1,15.1,4],["DeMario Douglas","NE","WR",15.0,15.0,4],["Emanuel Wilson","SEA","RB",15.0,15.0,4],["George Kittle","SF","TE",14.8,14.8,4],["Patrick Mahomes","KC","QB",14.7,14.7,4],["Jonah Coleman","DEN","RB",14.7,14.7,3],["Ashton Jeanty","LV","RB",14.6,14.6,4],["Bo Nix","DEN","QB",14.5,14.5,4],["Bryce Young","CAR","QB",14.3,14.3,4],["Breece Hall","NYJ","RB",14.2,14.2,3],["Ollie Gordon II","MIA","RB",14.2,14.2,4],["Jameis Winston","NYG","QB",14.1,14.1,4],["Tyler Shough","NO","QB",14.1,14.1,4],["Rashee Rice","KC","WR",14.1,14.1,4],["Michael Penix Jr.","ATL","QB",14.0,14.0,4],["Chase Brown","CIN","RB",14.0,14.0,4],["Rhamondre Stevenson","NE","RB",13.9,13.9,4],["Colston Loveland","CHI","TE",13.9,13.9,4],["Jalen Hurts","PHI","QB",13.8,13.8,4],["Javonte Williams","DAL","RB",13.8,13.8,4],["Chris Olave","NO","WR",13.5,13.5,4],["Quinshon Judkins","CLE","RB",13.5,13.5,4],["Ryan Flournoy","DAL","WR",13.3,13.3,4],["Kyle Monangai","CHI","RB",13.3,13.3,4],["Tucker Kraft","GB","TE",13.1,13.1,4],["Jacoby Brissett","ARI","QB",13.0,13.0,4],["Marcus Mariota","WAS","QB",12.9,12.9,2],["Michael Wilson","ARI","WR",12.9,12.9,4],["Sam LaPorta","DET","TE",12.9,12.9,4],["Deshaun Watson","CLE","QB",12.8,12.8,4],["Tyler Warren","IND","TE",12.8,12.8,4],["Sam Darnold","SEA","QB",12.7,12.7,4],["Garrett Wilson","NYJ","WR",12.7,12.7,4],["Drake London","ATL","WR",12.6,12.6,4],["CeeDee Lamb","DAL","WR",12.5,12.5,4],["Tre Tucker","LV","WR",12.4,12.4,4],["Emeka Egbuka","TB","WR",12.4,12.4,4],["Jaylin Noel","HOU","WR",12.4,12.4,4],["Nico Collins","HOU","WR",12.2,12.2,4],["Cam Skattebo","NYG","RB",12.2,12.2,4],["RJ Harvey","DEN","RB",12.2,12.2,4],["Jalon Daniels","TB","QB",12.1,12.1,3],["Hunter Henry","NE","TE",12.1,12.1,4],["Adonai Mitchell","NYJ","WR",12.1,12.1,4],["Kyle Pitts","ATL","TE",12.0,12.0,4],["Jawhar Jordan","HOU","RB",12.0,12.0,1],["Alvin Kamara","NO","RB",11.9,11.9,4],["Devaughn Vele","NO","WR",11.9,11.9,4],["Tyler Allgeier","ARI","RB",11.8,11.8,4],["Dylan Sampson","CLE","RB",11.8,11.8,2],["Bijan Robinson","ATL","RB",11.6,11.6,4],["Keenan Allen","IND","WR",11.4,11.4,4],["Mike Gesicki","CIN","TE",11.4,11.4,4],["Malik Washington","MIA","WR",11.4,11.4,4],["Makai Lemon","PHI","WR",11.4,11.4,4],["Stefon Diggs","WAS","WR",11.2,11.2,4],["Rachaad White","WAS","RB",10.9,10.9,4],["Harold Fannin Jr.","CLE","TE",10.9,10.9,4],["Caleb Douglas","MIA","WR",10.4,10.4,4],["J.J. McCarthy","NYG","QB",10.2,10.2,1],["Terry McLaurin","WAS","WR",10.2,10.2,4],["Greg Dulcich","MIA","TE",10.0,10.0,4],["Dameon Pierce","PHI","RB",10.0,10.0,3],["Woody Marks","HOU","RB",10.0,10.0,4],["Romeo Doubs","NE","WR",9.9,9.9,4],["KC Concepcion","CLE","WR",9.8,9.8,4],["Demarcus Robinson","SF","WR",9.7,9.7,2],["Dallas Goedert","PHI","TE",9.7,9.7,4],["J.K. Dobbins","DEN","RB",9.7,9.7,4],["Tyquan Thornton","KC","WR",9.7,9.7,4],["Nate Adkins","DEN","TE",9.7,9.7,3],["Saquon Barkley","PHI","RB",9.6,9.6,4],["Travis Etienne","NO","RB",9.6,9.6,3],["Jahan Dotson","ATL","WR",9.6,9.6,4],["Teagan Quitoriano","ARI","TE",9.5,9.5,1],["Treylon Burks","WAS","WR",9.5,9.5,4],["Rome Odunze","CHI","WR",9.4,9.4,4],["Justin Herbert","LAC","QB",9.1,9.1,4],["Deebo Samuel Sr.","SF","WR",9.1,9.1,4],["Ryan Miller","MIA","WR",9.1,9.1,2],["Kimani Vidal","LAC","RB",9.1,9.1,4],["Mack Hollins","NE","WR",9.0,9.0,4],["Tanner McKee","PHI","QB",8.8,8.8,2],["Emmett Johnson","KC","RB",8.8,8.8,4],["Daniel Jones","IND","QB",8.7,8.7,4],["Mason Taylor","NYJ","TE",8.7,8.7,4],["Charlie Jones","NYG","WR",8.6,8.6,1],["Michael Mayer","LV","TE",8.6,8.6,4],["Devin Singletary","NYG","RB",8.4,8.4,4],["Xavier Worthy","KC","WR",8.4,8.4,4],["Anthony Tyus III","CAR","RB",8.3,8.3,1],["Malachi Fields","NYG","WR",8.3,8.3,4],["Travis Kelce","KC","TE",8.2,8.2,4],["Jaylen Waddle","DEN","WR",8.2,8.2,4],["Nick Muse","ATL","TE",8.2,8.2,1],["Xavier Hutchinson","HOU","WR",8.2,8.2,4],["De'Von Achane","MIA","RB",8.2,8.2,3],["Jalen Coker","CAR","WR",8.2,8.2,4],["KeAndre Lambert-Smith","LAC","WR",8.2,8.2,1],["Jeremiyah Love","ARI","RB",8.2,8.2,4],["Josh Downs","IND","WR",8.1,8.1,4],["Jacory Croskey-Merritt","WAS","RB",8.1,8.1,4],["Tre Harris","LAC","WR",8.1,8.1,4],["Kenny Gainwell","TB","RB",8.0,8.0,4],["Baker Mayfield","TB","QB",7.9,7.9,4],["Chig Okonkwo","WAS","TE",7.9,7.9,4],["A.Estime","CLE","RB",7.9,7.9,1],["Kyle Williams","NE","WR",7.9,7.9,4],["Jack Bech","LV","WR",7.9,7.9,2],["Denzel Boston","CLE","WR",7.9,7.9,4],["Hayden Rucci","LAC","TE",7.7,7.7,1],["Omarion Hampton","LAC","RB",7.7,7.7,4],["Courtland Sutton","DEN","WR",7.6,7.6,4],["Rashid Shaheed","SEA","WR",7.6,7.6,4],["Pat Bryant","DEN","WR",7.5,7.5,4],["Kendrick Bourne","ARI","WR",7.4,7.4,4],["Roschon Johnson","CHI","RB",7.4,7.4,4],["Antonio Williams","WAS","WR",7.4,7.4,4],["Brian Robinson","ATL","RB",7.3,7.3,4],["Noah Gray","KC","TE",7.2,7.2,4],["Eli Raridon","NE","TE",7.2,7.2,4],["E.Mitchell","PHI","RB",7.1,7.1,2],["Jack Endries","CIN","TE",7.1,7.1,1],["Marvin Harrison Jr.","HOU","WR",7.0,7.0,2],["Kendre Miller","NO","RB",6.9,6.9,4],["Isaiah Williams","NYJ","WR",6.9,6.9,4],["Tez Johnson","TB","WR",6.9,6.9,4],["Samaje Perine","CIN","RB",6.8,6.8,4],["Sean Tucker","TB","RB",6.7,6.7,3],["Kevin Coleman Jr.","MIA","WR",6.7,6.7,4],["Quentin Johnston","LAC","WR",6.6,6.6,4],["Jordan Watkins","SF","WR",6.6,6.6,3],["Tyrone Tracy Jr.","NYG","RB",6.5,6.5,4],["Ladd McConkey","LAC","WR",6.5,6.5,4],["Savion Williams","GB","WR",6.5,6.5,3],["David Njoku","LAC","TE",6.4,6.4,2],["Dalton Schultz","HOU","TE",6.4,6.4,4],["A.J. Brown","NE","WR",6.4,6.4,3],["Dontayvion Wicks","PHI","WR",6.4,6.4,4],["Cooper Kupp","SEA","WR",6.3,6.3,4],["Jeremy Ruckert","NYJ","TE",6.3,6.3,3],["Isaac TeSlaa","DET","WR",6.3,6.3,4],["Dylan Laube","LV","RB",6.2,6.2,2],["Dohnte Meyers","CIN","WR",6.2,6.2,4],["Tommy Tremble","CAR","TE",6.1,6.1,4],["Alec Pierce","IND","WR",6.1,6.1,2],["Z.Knight","ARI","RB",6.0,6.0,4],["Zach Charbonnet","SEA","RB",5.9,5.9,1],["Darius Cooper","PHI","WR",5.9,5.9,4],["Oronde Gadsden II","LAC","TE",5.9,5.9,4],["Jadarian Price","SEA","RB",5.9,5.9,4],["Keaton Mitchell","LAC","RB",5.7,5.7,4],["Pierre Strong","GB","RB",5.6,5.6,3],["AJ Barner","SEA","TE",5.6,5.6,4],["Jerry Jeudy","CLE","WR",5.5,5.5,4],["Tank Dell","HOU","WR",5.5,5.5,1],["Elijah Higgins","ARI","TE",5.5,5.5,4],["Efton Chism III","NE","WR",5.5,5.5,4],["Jalen Nailor","LV","WR",5.4,5.4,4],["Chris Godwin Jr.","TB","WR",5.3,5.3,4],["Foster Moreau","HOU","TE",5.3,5.3,4],["Darren Waller","CAR","TE",5.2,5.2,4]];
-function dfsEsc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
-var __dfsMissing={};
-function dfs$(id){var el=document.getElementById(id);if(el) return el;if(!__dfsMissing[id]){var d=document.createElement("div");d.id=id;d.value="";__dfsMissing[id]=d;}return __dfsMissing[id];}
-function dfsMoney(n){return "$"+Math.round(n).toLocaleString("en-US");}
-var dfsSlate="NBA", dfsPlatform="DK";
-/* Date of the projections on this tab, set by the daily pipeline
-   edit (empty until it does). When set, it is shown on the
-   #dfsAsOf line so stale projections are distinguishable from
-   fresh ones; while empty it reads "Last update unknown". */
-var DFS_AS_OF="2026-11-06T14:57:00-08:00";
-function dfsUpdatedLabel(d){
-  try{
-    var time=new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",hour:"numeric",minute:"2-digit",hour12:true}).format(d).replace(" AM","am").replace(" PM","pm");
-    var keyFmt=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Los_Angeles",year:"numeric",month:"2-digit",day:"2-digit"});
-    var todayKey=keyFmt.format(new Date()), updKey=keyFmt.format(d);
-    if(updKey&&updKey===todayKey) return "today at "+time+" PT";
-    var a=new Date(updKey+"T00:00:00Z"), b=new Date(todayKey+"T00:00:00Z");
-    if((b-a)/86400000===1) return "yesterday at "+time+" PT";
-    var datePart=new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",month:"short",day:"numeric"}).format(d);
-    return datePart+" at "+time+" PT";
-  }catch(e){ return String(DFS_AS_OF); }
-}
-(function(){
-  var el=dfs$("dfsAsOf");
-  if(!el) return;
-  if(DFS_AS_OF){
-    var d=new Date(DFS_AS_OF);
-    el.textContent="Updated "+(!isNaN(d.getTime())?dfsUpdatedLabel(d):DFS_AS_OF);
-    el.hidden=false;
-  }else{
-    el.textContent="Last update unknown";
-    el.hidden=false;
-  }
-})();
-var dfsFileText=null, dfsUsingSample=false;
-
-var DFS_SLOTS={
-  NBA:{DK:["PG","SG","SF","PF","C","G","F","UTIL"],FD:["PG","PG","SG","SG","SF","SF","PF","PF","C"]},
-  NFL:{DK:["QB","RB","RB","WR","WR","WR","TE","FLEX","DST"],FD:["QB","RB","RB","WR","WR","WR","TE","FLEX","DST"]}
-};
-var DFS_CAP={DK:50000,FD:60000};
-var DFS_ELIG={
-  PG:["PG","G","UTIL"],SG:["SG","G","UTIL"],SF:["SF","F","UTIL"],PF:["PF","F","UTIL"],C:["C","UTIL"],
-  QB:["QB"],RB:["RB","FLEX"],WR:["WR","FLEX"],TE:["TE","FLEX"],DST:["DST"]
-};
-function dfsEligible(pos,slot){var e=DFS_ELIG[pos];return !!e&&e.indexOf(slot)!==-1;}
-
-function dfsNormName(s){
-  return String(s||"").toLowerCase().replace(/[^a-z0-9 ]+/g," ").replace(/\s+/g," ").trim();
-}
-function dfsFallbackKey(norm){
-  var parts=norm.split(" ").filter(Boolean);
-  if(parts.length<2) return null;
-  return parts[0].charAt(0)+"|"+parts[parts.length-1];
-}
-function dfsNormPos(p){
-  var s=String(p||"").toUpperCase().replace(/\s+/g,"").split("/")[0];
-  if(s==="D"||s==="DEF"||s==="DST"||s==="D-ST") s="DST";
-  return s;
-}
-function dfsNormHeader(h){return String(h||"").toLowerCase().replace(/[^a-z0-9]+/g,"");}
-
-/* Small CSV reader that handles quoted fields with commas inside. */
-function dfsParseCsv(text){
-  var rows=[],row=[],cur="",inQ=false,i,c;
-  text=String(text||"").replace(/\r\n/g,"\n").replace(/\r/g,"\n");
-  for(i=0;i<text.length;i++){
-    c=text.charAt(i);
-    if(inQ){
-      if(c==='"'){ if(text.charAt(i+1)==='"'){cur+='"';i++;} else inQ=false; }
-      else cur+=c;
-    }else if(c==='"'){ inQ=true; }
-    else if(c===","){ row.push(cur); cur=""; }
-    else if(c==="\n"){ row.push(cur); cur=""; rows.push(row); row=[]; }
-    else cur+=c;
-  }
-  row.push(cur); rows.push(row);
-  return rows.filter(function(r){return r.some(function(x){return String(x).trim()!=="";});});
-}
-
-/* Turn CSV text into a player pool matched to the embedded projections.
-   Returns {pool:[...], skipped:n, total:n} or null when the text has no
-   usable salary rows at all. */
-function dfsBuildPool(csvText){
-  var rows=dfsParseCsv(csvText);
-  if(rows.length<2) return null;
-  var head=rows[0].map(dfsNormHeader);
-  function col(names){for(var i=0;i<head.length;i++){if(names.indexOf(head[i])!==-1) return i;}return -1;}
-  var iName=col(["name","player","playername"]);
-  var iFirst=col(["firstname","first"]);
-  var iLast=col(["lastname","last"]);
-  var iPos=col(["position","pos"]);
-  var iSal=col(["salary","price"]);
-  var iTeam=col(["team","teamabbrev"]);
-  if(iSal===-1||(iName===-1&&!(iFirst!==-1&&iLast!==-1))) return null;
-  var proj=dfsSlate==="NBA"?DFS_PROJ_NBA:DFS_PROJ_NFL;
-  var projIdx=dfsPlatform==="DK"?3:4;
-  var exact={}, fbCount={}, fbMap={};
-  proj.forEach(function(p,idx){
-    var n=dfsNormName(p[0]);
-    if(!(n in exact)) exact[n]=idx;
-    var k=dfsFallbackKey(n);
-    if(k){ fbCount[k]=(fbCount[k]||0)+1; if(!(k in fbMap)) fbMap[k]=idx; }
-  });
-  var pool=[], skipped=0, seen={};
-  for(var r=1;r<rows.length;r++){
-    var row=rows[r];
-    var name=iName!==-1?String(row[iName]||"").trim():(String(row[iFirst]||"").trim()+" "+String(row[iLast]||"").trim()).trim();
-    var salRaw=String(iSal<row.length?row[iSal]:"").replace(/[$,]/g,"").trim();
-    var salary=parseFloat(salRaw);
-    if(!name||!(salary>0)) continue;
-    var pos=iPos!==-1?dfsNormPos(row[iPos]):"";
-    var team=iTeam!==-1?String(row[iTeam]||"").trim():"";
-    if(dfsSlate==="NFL"&&pos==="DST"){
-      var dkey="dst|"+dfsNormName(name);
-      if(!seen[dkey]){ seen[dkey]=1; pool.push({name:name,team:team||name,pos:"DST",salary:salary,proj:7.0}); }
-      continue;
-    }
-    var norm=dfsNormName(name), pIdx=(norm in exact)?exact[norm]:-1;
-    if(pIdx===-1){
-      var k=dfsFallbackKey(norm);
-      if(k&&fbCount[k]===1) pIdx=fbMap[k];
-    }
-    if(pIdx===-1){ skipped++; continue; }
-    var p=proj[pIdx];
-    var key="p|"+pIdx;
-    if(seen[key]) continue;
-    seen[key]=1;
-    var finalPos=pos||(p[2]?dfsNormPos(p[2]):"");
-    pool.push({name:p[0],team:team||p[1],pos:finalPos,salary:salary,proj:p[projIdx]});
-  }
-  return {pool:pool,skipped:skipped,total:rows.length-1};
-}
-
-/* Cheapest distinct-player cost of filling the given slots from the pool,
-   ignoring players in usedSet. Infinity when a slot cannot be filled. */
-function dfsMinCost(slots,pool,usedSet){
-  var taken={}, total=0;
-  for(var s=0;s<slots.length;s++){
-    var bestP=null;
-    for(var i=0;i<pool.length;i++){
-      var p=pool[i];
-      if(usedSet[p.name]||taken[p.name]) continue;
-      if(!dfsEligible(p.pos,slots[s])) continue;
-      if(bestP===null||p.salary<bestP.salary) bestP=p;
-    }
-    if(bestP===null) return Infinity;
-    taken[bestP.name]=1;
-    total+=bestP.salary;
-  }
-  return total;
-}
-
-function dfsGreedy(pool,slots,cap,exclude){
-  var work=pool.filter(function(p){return !exclude[p.name];});
-  var used={}, lineup=[], spent=0;
-  for(var s=0;s<slots.length;s++){
-    var slot=slots[s];
-    var cands=work.filter(function(p){return !used[p.name]&&dfsEligible(p.pos,slot);});
-    cands.sort(function(a,b){return (b.proj-a.proj)||(a.salary-b.salary);});
-    var picked=null, i, cand;
-    for(i=0;i<cands.length;i++){
-      cand=cands[i];
-      if(spent+cand.salary>cap) continue;
-      var trial={}; Object.keys(used).forEach(function(k){trial[k]=1;}); trial[cand.name]=1;
-      var rest=dfsMinCost(slots.slice(s+1),work,trial);
-      if(spent+cand.salary+rest<=cap){ picked=cand; break; }
-    }
-    if(!picked){
-      var cheap=cands.slice().sort(function(a,b){return a.salary-b.salary;});
-      for(i=0;i<cheap.length;i++){ if(spent+cheap[i].salary<=cap){ picked=cheap[i]; break; } }
-    }
-    if(!picked) return null;
-    used[picked.name]=1; spent+=picked.salary;
-    lineup.push({slot:slot,player:picked});
-  }
-  return {lineup:lineup,salary:spent};
-}
-
-function dfsImprove(result,pool,slots,cap,exclude){
-  var lineup=result.lineup, spent=result.salary, guard=0;
-  function totalProj(){var t=0;lineup.forEach(function(x){t+=x.player.proj;});return t;}
-  while(guard++<200){
-    var inLineup={}; lineup.forEach(function(x){inLineup[x.player.name]=1;});
-    var bestGain=0.0001, bestIdx=-1, bestPlayer=null;
-    for(var i=0;i<lineup.length;i++){
-      var cur=lineup[i];
-      for(var j=0;j<pool.length;j++){
-        var p=pool[j];
-        if(exclude[p.name]||inLineup[p.name]) continue;
-        if(!dfsEligible(p.pos,cur.slot)) continue;
-        if(spent-cur.player.salary+p.salary>cap) continue;
-        var gain=p.proj-cur.player.proj;
-        if(gain>bestGain){ bestGain=gain; bestIdx=i; bestPlayer=p; }
-      }
-    }
-    if(bestIdx===-1) break;
-    spent=spent-lineup[bestIdx].player.salary+bestPlayer.salary;
-    lineup[bestIdx]={slot:lineup[bestIdx].slot,player:bestPlayer};
-  }
-  return {lineup:lineup,salary:spent,proj:totalProj()};
-}
-
-function dfsBuildOne(pool,slots,cap,exclude){
-  var g=dfsGreedy(pool,slots,cap,exclude);
-  if(!g) return null;
-  var imp=dfsImprove(g,pool,slots,cap,exclude);
-  /* Validate: right size, no repeats, under the cap. */
-  var seen={}, ok=imp.lineup.length===slots.length&&imp.salary<=cap;
-  imp.lineup.forEach(function(x){ if(seen[x.player.name]) ok=false; seen[x.player.name]=1; });
-  return ok?imp:null;
-}
-
-function dfsHash(name){
-  var h=0; name=String(name);
-  for(var i=0;i<name.length;i++){ h=((h*31)+name.charCodeAt(i))>>>0; }
-  return h;
-}
-function dfsSampleCsv(){
-  var proj=dfsSlate==="NBA"?DFS_PROJ_NBA:DFS_PROJ_NFL;
-  var projIdx=dfsPlatform==="DK"?3:4;
-  var lines=["Name,Position,Salary,Team"];
-  proj.forEach(function(p){
-    var h=dfsHash(p[0]);
-    var noise=(h%1201)-600;
-    var pts=p[projIdx];
-    var salary=Math.round(Math.min(12000,Math.max(3500,3000+pts*230+noise))/100)*100;
-    var pos;
-    if(dfsSlate==="NBA"){
-      var m=h%100;
-      pos=m<25?"PG":(m<50?"SG":(m<70?"SF":(m<90?"PF":"C")));
-    }else pos=p[2];
-    lines.push('"'+String(p[0]).replace(/"/g,'""')+'",'+pos+","+salary+","+p[1]);
-  });
-  if(dfsSlate==="NFL"){
-    var teams={};
-    proj.forEach(function(p){teams[p[1]]=1;});
-    Object.keys(teams).sort().forEach(function(t){ lines.push(t+" DST,DST,2200,"+t); });
-  }
-  return lines.join("\n");
-}
-
-function dfsSetStatus(msg){ var el=dfs$("dfsStatus"); if(el) el.textContent=msg||""; }
-
-function dfsCurrentText(){
-  var ta=dfs$("dfsPaste");
-  var pasted=ta?ta.value.trim():"";
-  if(dfsUsingSample) return dfs$("dfsPaste").value;
-  if(pasted) return ta.value;
-  return dfsFileText;
-}
-
-function dfsRender(lineups,cap,skipped){
-  var wrap=dfs$("dfsResults");
-  if(!lineups.length){
-    wrap.innerHTML='<div class="empty-state"><p>We couldn&rsquo;t build a full lineup that fits under the limit with these salaries. Check the file is for the slate and platform you picked, or try the sample salaries.</p></div>';
-    return;
-  }
-  var html='<div class="dfs-lineups">';
-  lineups.forEach(function(lu,i){
-    var label=i===0?"Lineup 1 (best)":("Lineup "+(i+1));
-    html+='<div class="dfs-card"><h3>'+label+'</h3>';
-    lu.lineup.forEach(function(x){
-      html+='<div class="dfs-row"><span class="dfs-pos">'+dfsEsc(x.slot)+'</span><span class="dfs-who"><b>'+dfsEsc(x.player.name)+'</b><span>'+dfsEsc(x.player.team)+'</span></span><span class="dfs-sal">'+dfsMoney(x.player.salary)+'</span><span class="dfs-pts">'+x.player.proj.toFixed(1)+'<span>proj pts</span></span></div>';
-    });
-    html+='<div class="dfs-foot">Projected total: <b>'+lu.proj.toFixed(1)+' points</b><br>Salary used: <b>'+dfsMoney(lu.salary)+' of '+dfsMoney(cap)+' ('+dfsMoney(cap-lu.salary)+' left)</b></div></div>';
-  });
-  html+='</div>';
-  if(lineups.length<3) html+='<p class="note">Only '+lineups.length+(lineups.length===1?" lineup":" lineups")+' could be built from these salaries.</p>';
-  if(dfsUsingSample) html+='<p class="note"><b>Sample salaries are examples only, not real DraftKings or FanDuel prices.</b></p>';
-  if(skipped>0) html+='<p class="note">'+skipped+' salaries had no projection and were skipped.</p>';
-  wrap.innerHTML=html;
-}
-
-function dfsWirePicker(id,attr,apply){
-  var group=dfs$(id); if(!group) return;
-  group.addEventListener("click",function(e){
-    var b=e.target.closest?e.target.closest("button["+attr+"]"):null;
-    if(!b) return;
-    Array.prototype.forEach.call(group.querySelectorAll("button"),function(x){x.setAttribute("aria-pressed","false");});
-    b.setAttribute("aria-pressed","true");
-    apply(b.getAttribute(attr));
-  });
-}
-dfsWirePicker("dfsSlateFilters","data-dfs-slate",function(v){ dfsSlate=v; dfsUsingSample=false; dfs$("dfsResults").innerHTML=""; });
-dfsWirePicker("dfsPlatformFilters","data-dfs-platform",function(v){ dfsPlatform=v; dfsUsingSample=false; dfs$("dfsResults").innerHTML=""; });
-
-var dfsFileInput=dfs$("dfsFile");
-if(dfsFileInput) dfsFileInput.addEventListener("change",function(){
-  var f=this.files&&this.files[0];
-  if(!f) return;
-  var reader=new FileReader();
-  reader.onload=function(){
-    dfsFileText=String(reader.result||"");
-    dfsUsingSample=false;
-    var ta=dfs$("dfsPaste"); if(ta) ta.value="";
-    dfs$("dfsFileName").textContent="Loaded file: "+f.name+" — now tap \u201CBuild my lineup\u201D.";
-    dfsSetStatus("");
-  };
-  reader.onerror=function(){ dfsSetStatus("That file could not be read. Try pasting the salaries instead."); };
-  reader.readAsText(f);
-});
-var dfsPasteEl=dfs$("dfsPaste");
-if(dfsPasteEl) dfsPasteEl.addEventListener("input",function(){ if(this.value.trim()) dfsUsingSample=false; });
-var dfsSampleBtn=dfs$("dfsSample");
-if(dfsSampleBtn) dfsSampleBtn.addEventListener("click",function(){
-  var csv=dfsSampleCsv();
-  var ta=dfs$("dfsPaste"); if(ta) ta.value=csv;
-  dfsUsingSample=true;
-  dfsSetStatus("Sample salaries loaded — examples only, not real DraftKings or FanDuel prices. Now tap \u201CBuild my lineup\u201D.");
-  dfs$("dfsResults").innerHTML="";
-});
-
-var dfsBuildBtn=dfs$("dfsBuild");
-if(dfsBuildBtn) dfsBuildBtn.addEventListener("click",function(){
-  var text=dfsCurrentText();
-  if(!text||!String(text).trim()){
-    dfsSetStatus("Add salaries first — upload the file from DraftKings or FanDuel, paste them, or try the sample salaries.");
-    dfs$("dfsResults").innerHTML="";
-    return;
-  }
-  var built=dfsBuildPool(text);
-  if(!built||!built.pool.length){
-    dfsSetStatus("");
-    dfs$("dfsResults").innerHTML='<div class="empty-state"><p>None of those salaries matched our player list for this slate. Check the file is for the slate you picked, or try the sample salaries.</p></div>';
-    return;
-  }
-  var slots=DFS_SLOTS[dfsSlate][dfsPlatform], cap=DFS_CAP[dfsPlatform];
-  var lineups=[], exclude={};
-  for(var n=0;n<3;n++){
-    var lu=dfsBuildOne(built.pool,slots,cap,exclude);
-    if(!lu) break;
-    lineups.push(lu);
-    var top=lu.lineup.slice().sort(function(a,b){return b.player.proj-a.player.proj;}).slice(0,3);
-    top.forEach(function(x){exclude[x.player.name]=1;});
-  }
-  /* Greedy + single swaps can leave a later build a hair ahead of the
-     first. If reordering by projected total keeps every later lineup at
-     least 3 players different from the new first lineup, show the true
-     best first so the "Lineup 1 (best)" label is honest. */
-  if(lineups.length>1){
-    var sorted=lineups.slice().sort(function(a,b){return b.proj-a.proj;});
-    if(sorted[0]!==lineups[0]){
-      var baseNames={};
-      sorted[0].lineup.forEach(function(x){baseNames[x.player.name]=1;});
-      var sortOk=true;
-      for(var si=1;si<sorted.length;si++){
-        var diffN=0;
-        sorted[si].lineup.forEach(function(x){ if(!baseNames[x.player.name]) diffN++; });
-        if(diffN<3) sortOk=false;
-      }
-      if(sortOk) lineups=sorted;
-    }
-  }
-  dfsSetStatus("");
-  dfsRender(lineups,cap,built.skipped);
-});
 })();
 </script>
 
