@@ -740,6 +740,23 @@ html[data-theme="dark"] .beton a.beton-novig,html[data-theme="terminal"] .beton 
 .rec-profit{font-family:var(--mono);font-weight:700;white-space:nowrap}
 .rec-profit.pos{color:var(--good)} .rec-profit.neg{color:var(--bad)}
 .rec-actual{font-size:13px;color:var(--muted);white-space:nowrap}
+/* Graded bets: every graded forecast, grouped by sport then kind of
+   pick. Sports collapse (native details); a group's bets live in a
+   scrolling box so the page stays usable. Bet rows render only when
+   a sport is first opened, so the page never holds all 2,000+ rows. */
+.gb-sport{border:1px solid var(--line);border-radius:14px;background:var(--bg);margin-top:12px;overflow:hidden}
+.gb-sport summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;gap:2px 12px;align-items:baseline;justify-content:space-between;padding:14px 16px;font-size:16px;font-weight:800}
+.gb-sport summary::-webkit-details-marker{display:none}
+.gb-sport summary::after{content:"\25be";font-size:13px;color:var(--muted)}
+.gb-sport[open ] summary::after{content:"\25b4"}
+.gb-sport summary .gb-sum-sub{font-size:13.5px;color:var(--muted);font-weight:600}
+.gb-sport[open ] summary{border-bottom:1px solid var(--line)}
+.gb-group{padding:14px 16px 2px}
+.gb-group h3{font-size:14px;margin:0 0 8px}
+.gb-group h3 span{color:var(--muted);font-weight:600}
+.gb-scroll{max-height:320px;overflow-y:auto;border:1px solid var(--line);border-radius:10px;background:var(--bg);margin-bottom:14px;-webkit-overflow-scrolling:touch}
+.gb-scroll .record-row{padding:10px 14px}
+.gb-scroll .record-row .rec-who{max-width:calc(100% - 80px)}
 @media(max-width:640px){.bets-hero{padding:18px 16px}.bet-card{padding:15px 16px}.parlay-card{padding:16px 17px}.bet-prob{flex-wrap:wrap}.bet-prob-label{flex:1 1 100%}}
 html[data-theme="minimal"] .bets-hero,html[data-theme="minimal"] .bet-card,html[data-theme="minimal"] .parlay-card,html[data-theme="minimal"] .tally-block,html[data-theme="minimal"] .period-block{border-radius:8px}
 html[data-theme="terminal"] .bets-hero{background:var(--panel);color:var(--ink);border-color:var(--line)}
@@ -1261,6 +1278,13 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <div class="rows" id="breakdownRows" style="margin-top:12px"><p class="empty-note">No breakdown yet &mdash; check back after the morning update.</p></div>
       <p class="sub" id="breakdownNote" style="margin-top:10px">Quoted chance is the average chance our model gave these picks. Hit rate is how often they actually hit. Totals and spreads leans carry no quoted chance, so those rows show none.</p>
       <p class="sub" id="breakdownMeta"></p>
+    </section>
+
+    <section class="block" aria-label="Every graded bet">
+      <h2>Every graded bet</h2>
+      <p class="sub">Each forecast we graded, grouped by sport and by kind of pick. This is the forecast record &mdash; how often our picks hit &mdash; not the dollar record on Our Bets. Tap a sport to open it.</p>
+      <div id="gradedBets"><p class="empty-note">No graded bets yet &mdash; check back after the morning update.</p></div>
+      <p class="sub" id="gradedBetsMeta"></p>
     </section>
 
 
@@ -6417,6 +6441,139 @@ function loadRecordBreakdown(){
     }).catch(function(){});
   }catch(e){}
 }
+/* Graded bets: the Our Record tab also tries to load
+   "record_graded_bets.json" (same folder as this page) — every graded
+   forecast, grouped by sport then kind of pick, built each morning
+   from the silent grade log. One collapsible section per sport;
+   inside, one scrolling box per kind of pick. Rows render only when
+   a sport is first opened, so the page never holds all 2,000+ rows.
+   Rows show date, the pick in plain words, the chance the model gave
+   it (props and moneylines only — totals and spreads leans carry
+   none), the result, and what actually happened where we have it.
+   NO dollars, NO ROI: the dollar record stays only on Our Bets.
+   Any failure at all leaves the honest "No graded bets yet" note
+   exactly as it is: no banner, no stale numbers, nothing here is
+   allowed to throw. */
+var GRADED_BETS=null;
+var GRADED_BETS_RENDERED={};
+function gbHitRate(wins,losses){
+  var w=Number(wins)||0, l=Number(losses)||0;
+  if(!w&&!l) return "\u2014";
+  return Math.round(w/(w+l)*100)+"%";
+}
+function gbShortDate(s){
+  var months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  s=String(s||"");
+  var m=s.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if(!m) return s;
+  return months[Number(m[2])-1]+" "+Number(m[3]);
+}
+function gbActualText(b){
+  var a=b.actual;
+  if(a==null||a==="") return null;
+  a=String(a);
+  if(a.indexOf("Final:")===0||/won by /.test(a)) return a;
+  return "Actual: "+a;
+}
+function gbBetRowHtml(b){
+  var res=String(b.result||"").toLowerCase();
+  var cls=res==="won"?"win":res==="lost"?"loss":"push";
+  var lbl=res==="won"?"Won":res==="lost"?"Lost":"Push";
+  var bits=[gbShortDate(b.date)];
+  if(typeof b.model_prob==="number"&&isFinite(b.model_prob))
+    bits.push("model said "+Math.round(b.model_prob*100)+"%");
+  var act=gbActualText(b);
+  if(act) bits.push(act);
+  return '<div class="record-row"><div class="rec-who"><b>'+esc(b.label||"")+'</b><span>'+esc(bits.join(" \u00B7 "))+'</span></div>'
+    +'<span class="rec-outcome '+cls+'">'+lbl+'</span></div>';
+}
+function gbGroupHtml(g,si,gi){
+  var hit=gbHitRate(g.wins,g.losses);
+  var pushes=g.pushes?(", "+g.pushes+" push"+(g.pushes>1?"es":"")):"";
+  return '<div class="gb-group"><h3>'+esc(g.label||"")+' <span>&mdash; '+(g.n_graded||0)+' graded \u00B7 '+hit+' hit'+esc(pushes)+'</span></h3>'
+    +'<div class="gb-scroll" data-sport="'+si+'" data-group="'+gi+'"><p class="empty-note" style="margin:0;border:0">Open this sport to see the bets.</p></div></div>';
+}
+function gbSportHtml(s,si){
+  var hit=gbHitRate(s.wins,s.losses);
+  var pushes=s.pushes?(", "+s.pushes+" push"+(s.pushes>1?"es":"")):"";
+  var groups=(s.groups||[]).map(function(g,gi){return gbGroupHtml(g,si,gi);}).join("");
+  return '<details class="gb-sport" data-sport="'+si+'"><summary><span>'+esc(s.label||"")+'</span>'
+    +'<span class="gb-sum-sub">'+(s.n_graded||0)+' graded \u00B7 '+hit+' hit'+esc(pushes)+'</span></summary>'
+    +groups+'</details>';
+}
+function renderGradedSport(si){
+  if(!GRADED_BETS||GRADED_BETS_RENDERED[si]) return;
+  var sport=GRADED_BETS.sports[si];
+  if(!sport) return;
+  GRADED_BETS_RENDERED[si]=true;
+  var host=$("gradedBets"); if(!host) return;
+  var det=host.querySelector('details[data-sport="'+si+'"]');
+  if(!det) return;
+  (sport.groups||[]).forEach(function(g,gi){
+    var box=det.querySelector('.gb-scroll[data-group="'+gi+'"]');
+    if(!box) return;
+    var bets=g.bets||[];
+    box.innerHTML=bets.length?bets.map(gbBetRowHtml).join(""):'<p class="empty-note" style="margin:0;border:0">No bets in this group.</p>';
+  });
+}
+function gradedBetsMetaText(){
+  if(!GRADED_BETS) return "";
+  var dates=GRADED_BETS.game_dates||[];
+  var months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  function shortDate(s){
+    s=String(s||"");
+    var m=s.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if(!m) return s;
+    return months[Number(m[2])-1]+" "+Number(m[3]);
+  }
+  var range="";
+  if(dates.length){
+    var first=shortDate(dates[0]), last=shortDate(dates[dates.length-1]);
+    var year=String(dates[0]).slice(0,4);
+    range=(first===last?first:first+" \u2013 "+last)+", "+year;
+  }
+  var total=GRADED_BETS.total_graded;
+  var parts=[];
+  if(range) parts.push("Games "+range);
+  if(total!=null) parts.push(Number(total).toLocaleString("en-US")+" forecasts graded");
+  return parts.join(" \u00B7 ")+".";
+}
+function renderGradedBets(){
+  var host=$("gradedBets"); if(!host) return;
+  var sports=(GRADED_BETS&&Array.isArray(GRADED_BETS.sports))?GRADED_BETS.sports:null;
+  if(!sports||!sports.length){
+    host.innerHTML='<p class="empty-note">No graded bets yet \u2014 check back after the morning update.</p>';
+  }else{
+    host.innerHTML=sports.map(function(s,si){return gbSportHtml(s,si);}).join("");
+    Array.prototype.forEach.call(host.querySelectorAll("details.gb-sport"),function(det){
+      det.addEventListener("toggle",function(){
+        if(det.open){try{renderGradedSport(Number(det.getAttribute("data-sport")));}catch(e){}}
+      });
+    });
+  }
+  var meta=$("gradedBetsMeta");
+  if(meta) meta.textContent=gradedBetsMetaText();
+}
+function applyGradedBets(data){
+  if(!data||typeof data!=="object") return false;
+  if(!Array.isArray(data.sports)) return false;
+  GRADED_BETS=data;
+  GRADED_BETS_RENDERED={};
+  try{renderGradedBets();}catch(e){}
+  return true;
+}
+function loadGradedBets(){
+  try{
+    if(typeof fetch!=="function") return;
+    fetch("record_graded_bets.json").then(function(res){
+      if(!res||!res.ok) return null;
+      return res.json();
+    }).then(function(data){
+      if(!data) return;
+      try{applyGradedBets(data);}catch(e){}
+    }).catch(function(){});
+  }catch(e){}
+}
 /* Explanations behind ⓘ buttons: tap toggles the panel below the heading;
    tapping again, tapping elsewhere, switching tabs, or Escape closes it.
    One panel open at a time. Panels stay open while being read (no
@@ -7241,6 +7398,7 @@ try{renderRecord();}catch(e){}
 try{updateYesterdayRecap();}catch(e){}
 try{loadCumulativeRecord();}catch(e){}
 try{loadRecordBreakdown();}catch(e){}
+try{loadGradedBets();}catch(e){}
 try{var bvf=$("breakdownViewFilter");if(bvf) bvf.addEventListener("change",function(){try{renderBreakdown();}catch(e){}});}catch(e){}
 })();
 </script>
