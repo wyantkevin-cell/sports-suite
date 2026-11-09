@@ -726,6 +726,7 @@ html[data-theme="dark"] .beton a.beton-novig,html[data-theme="terminal"] .beton 
 .rec-outcome.push{background:var(--panel2);color:var(--muted);border:1px solid var(--line)}
 .rec-profit{font-family:var(--mono);font-weight:700;white-space:nowrap}
 .rec-profit.pos{color:var(--good)} .rec-profit.neg{color:var(--bad)}
+.rec-actual{font-size:13px;color:var(--muted);white-space:nowrap}
 @media(max-width:640px){.bets-hero{padding:18px 16px}.bet-card{padding:15px 16px}.parlay-card{padding:16px 17px}.bet-prob{flex-wrap:wrap}.bet-prob-label{flex:1 1 100%}}
 html[data-theme="minimal"] .bets-hero,html[data-theme="minimal"] .bet-card,html[data-theme="minimal"] .parlay-card,html[data-theme="minimal"] .tally-block,html[data-theme="minimal"] .period-block{border-radius:8px}
 html[data-theme="terminal"] .bets-hero{background:var(--panel);color:var(--ink);border-color:var(--line)}
@@ -5466,10 +5467,24 @@ function outcomeClass(o){
   var v=String(o||"").toLowerCase();
   return v==="win"||v==="loss"||v==="push"?v:"push";
 }
+function actualText(r){
+  /* What actually happened, in plain words, for a graded pick.
+     Props carry a numeric actual (the player's stat). An anytime-TD
+     pick's actual is 1 (scored) or 0 (did not). Moneylines and parlays
+     carry no actual, so nothing shows — missing pieces are omitted,
+     never narrated. */
+  var act=r.actual;
+  if(typeof act!=="number") return null;
+  if((r.market||"").toLowerCase()==="anytime td")
+    return "Actual: "+(act>=1?"scored":"no TD");
+  return "Actual: "+String(act);
+}
 function recordRowHtml(r,sub){
   var prof=typeof r.profit==="number"?r.profit:null;
+  var actTxt=actualText(r);
   return '<div class="record-row"><div class="rec-who"><b>'+esc(r.description||"Pick")+'</b><span>'+esc(sub)+'</span></div>'
     +'<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span class="num">'+esc(fmtOdds(r.line_odds))+'</span>'
+    +(actTxt?'<span class="rec-actual">'+esc(actTxt)+'</span>':"")
     +'<span class="rec-outcome '+outcomeClass(r.outcome)+'">'+esc(outcomeLabel(r.outcome))+'</span>'
     +(prof!=null?'<span class="rec-profit '+(prof>0?"pos":prof<0?"neg":"")+'">'+esc(fmtProfit(prof))+'</span>':"")
     +'</div></div>';
