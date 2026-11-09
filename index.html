@@ -571,7 +571,7 @@ html[data-theme="minimal"] .tabbar [role="tab"][aria-selected="true"]{background
 .swatches i{width:22px;height:22px;border-radius:6px;border:1px solid var(--line);display:block}
 /* Settings button + panel (top right) */
 .topbar{position:relative}
-.strip-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.strip-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:space-between}
 .strip-right #stripUpdated{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:min(62vw,430px)}
 .settings-btn{display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:999px;padding:8px 14px;font-weight:800;font-size:14px;line-height:1;white-space:nowrap}
 .settings-btn svg{width:18px;height:18px;flex:none}
@@ -776,7 +776,7 @@ html[data-theme="terminal"] .parlay-card{background:var(--panel);border-color:va
   .pl-tier{margin-left:auto}
   .prop-list-row .flag{flex:1 1 100%;order:5}
   .prop-list-row .line-move{flex:1 1 100%;order:5}
-  .settings-panel{padding:14px 15px}
+  .settings-panel{padding:14px 15px;width:min(320px,calc(100vw - 28px))}
 }
 /* Terminal style: Bloomberg-style density. Monospace throughout, near-black
    background, green primary data, amber highlights, dim-gray secondary text,
