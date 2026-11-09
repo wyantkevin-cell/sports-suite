@@ -5906,13 +5906,15 @@ function renderBets(){
           pctHtml='<div class="parlay-pct">Combined chance: <b>'+Math.round(combined*100)+'%</b> <span>\u2014 all legs must hit ('+esc(parts.join(" \u00D7 "))+', counted separately)</span></div>';
         }
       }
-      wrap.innerHTML='<div class="parlay-card"><div class="parlay-head">Parlay of the Day \u2014 unproven, no parlays graded yet</div>'
+      var pt=(typeof TRACK_TALLY!=="undefined"&&TRACK_TALLY&&TRACK_TALLY.parlays)||{wins:0,losses:0,n_graded:0};
+      var pHead=(Number(pt.n_graded)||0)>0?'Parlay of the Day \u2014 parlays so far: '+(pt.wins||0)+'\u2013'+(pt.losses||0):'Parlay of the Day \u2014 no parlays graded yet';
+      wrap.innerHTML='<div class="parlay-card"><div class="parlay-head">'+esc(pHead)+'</div>'
         +(isVoid?'<div class="parlay-void" role="alert">\u26A0 This parlay is VOID \u2014 one leg ('+esc(voidLegName(voidLegs[0]))+') has no such game. It does not count in the record.</div>':"")
         +(isVoid
           ? '<div class="parlay-odds"><s>'+esc(fmtOdds(TODAY_PARLAY.combined_odds))+'</s> <span>combined odds \u2014 void</span></div>'
           : '<div class="parlay-odds">'+esc(fmtOdds(TODAY_PARLAY.combined_odds))+' <span>combined odds</span></div>'+pctHtml)
         +(legs.length?'<ol class="parlay-legs">'+legs.map(function(l){return "<li>"+esc(l)+"</li>";}).join("")+'</ol>':"")
-        +'<p class="parlay-note">All legs must hit for the parlay to win. No parlay has been graded yet on the fresh record, and no straight bets have settled yet either. Treat this as a forecast, not a proven winner.</p></div>';
+        +'<p class="parlay-note">All legs must hit for the parlay to win. Treat this as a forecast, not a proven winner.</p></div>';
     }
   }
 }
