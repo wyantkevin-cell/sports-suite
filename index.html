@@ -2881,7 +2881,7 @@ var TODAY_CARD_DATE="2026-11-09";
    stale when a new card posts. */
 var RECORD_START_DATE="2026-11-06";
 var TRACK_RECORD=[
-  {date:"2026-11-06",pick_id:"20261106-01",kind:"straight",sport:"NBA",type:"moneyline",description:"TOR to win vs MIL",player:null,team:"TOR",opponent:"MIL",market:"moneyline",side:"away",line:null,line_odds:"-162",model_prob:0.7652,market_prob:0.6183,value_pct:23.75,value_flag:null,game_date:"2026-11-06",tier:"strong",markets:{"polymarket": "https://polymarket.us/event/nba-tor-mil-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAGAME-26NOV06TORMIL", "novig": "https://app.novig.us/event-markets/01a1abe1-09a0-7791-baf6-f9fee03ca4db"},top_tier:false,outcome:"win",profit:61.73},
+  {date:"2026-11-06",pick_id:"20261106-01",kind:"straight",sport:"NBA",type:"moneyline",description:"TOR to win vs MIL",player:null,team:"TOR",opponent:"MIL",market:"moneyline",side:"away",line:null,line_odds:"-162",model_prob:0.7652,market_prob:0.6183,value_pct:23.75,value_flag:null,game_date:"2026-11-06",tier:"strong",markets:{"polymarket": "https://polymarket.us/event/nba-tor-mil-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAGAME-26NOV06TORMIL", "novig": "https://app.novig.us/event-markets/01a1abe1-09a0-7791-baf6-f9fee03ca4db"},top_tier:false,outcome:"win",profit:61.73,score:"TOR 121, MIL 107"},
   {date:"2026-11-06",pick_id:"20261106-02",kind:"straight",sport:"NBA",type:"prop",description:"Dyson Daniels (ATL) under 6.5 assists",player:"Dyson Daniels",team:"ATL",opponent:"WAS",market:"assists",side:"under",line:6.5,line_odds:"-152",model_prob:0.7405,market_prob:0.6031746031746031,value_pct:22.77,value_flag:null,game_date:"2026-11-06",tier:"lean",markets:{"polymarket": "https://polymarket.us/event/nba-was-atl-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV06WASATL-ATLDDANIELS5-8", "novig": "https://app.novig.us/event-markets/01a1abaa-76e6-7202-97fc-fd67811f5e2e"},top_tier:true,outcome:"loss",profit:-100,actual:12},
   {date:"2026-11-06",pick_id:"20261106-03",kind:"straight",sport:"NBA",type:"prop",description:"Jayson Tatum (BOS) under 3.5 3-pointers",player:"Jayson Tatum",team:"BOS",opponent:"CHA",market:"3-pointers",side:"under",line:3.5,line_odds:"-152",model_prob:0.7264,market_prob:0.6031746031746031,value_pct:20.44,value_flag:null,game_date:"2026-11-06",tier:"lean",markets:{"polymarket": "https://polymarket.us/event/nba-bos-cha-2026-11-06", "kalshi": "https://kalshi.com/markets/KXNBA3PT-26NOV06BOSCHA-BOSJTATUM0-4", "novig": "https://app.novig.us/event-markets/01a1abaa-7659-71d2-b1d9-95bf8a8ab2ab"},top_tier:true,outcome:"loss",profit:-100,actual:5},
   {date:"2026-11-06",pick_id:"20261106-04",kind:"straight",sport:"NBA",type:"prop",description:"Jamal Shead (TOR) under 11.5 points",player:"Jamal Shead",team:"TOR",opponent:"MIL",market:"points",side:"under",line:11.5,line_odds:"-120",model_prob:0.7102,market_prob:0.5454545454545454,value_pct:30.21,value_flag:null,game_date:"2026-11-06",tier:"lean",markets:{"polymarket": "https://polymarket.us/event/nba-tor-mil-2026-11-06", "kalshi": null, "novig": "https://app.novig.us/event-markets/01a1abe1-09a0-7791-baf6-f9fee03ca4db"},top_tier:true,outcome:"win",profit:83.33,actual:10},
@@ -5470,14 +5470,19 @@ function outcomeClass(o){
 function actualText(r){
   /* What actually happened, in plain words, for a graded pick.
      Props carry a numeric actual (the player's stat). An anytime-TD
-     pick's actual is 1 (scored) or 0 (did not). Moneylines and parlays
-     carry no actual, so nothing shows — missing pieces are omitted,
-     never narrated. */
+     pick's actual is 1 (scored) or 0 (did not). Moneylines carry a
+     final-score string (e.g. "TOR 121, MIL 107"). Parlays carry
+     neither, so nothing shows — missing pieces are omitted, never
+     narrated. */
   var act=r.actual;
-  if(typeof act!=="number") return null;
-  if((r.market||"").toLowerCase()==="anytime td")
-    return "Actual: "+(act>=1?"scored":"no TD");
-  return "Actual: "+String(act);
+  if(typeof act==="number"){
+    if((r.market||"").toLowerCase()==="anytime td")
+      return "Actual: "+(act>=1?"scored":"no TD");
+    return "Actual: "+String(act);
+  }
+  if(typeof r.score==="string"&&r.score)
+    return "Final: "+r.score;
+  return null;
 }
 function recordRowHtml(r,sub){
   var prof=typeof r.profit==="number"?r.profit:null;
