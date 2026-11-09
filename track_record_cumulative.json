@@ -1,7 +1,8 @@
 {
   "days": [
     "2026-11-06",
-    "2026-11-07"
+    "2026-11-07",
+    "2026-11-08"
   ],
   "name": "Track record \u2014 cumulative",
   "notes": [
@@ -57,6 +58,32 @@
       "model_prob": null,
       "outcome": "loss",
       "pick_id": "20261107-P",
+      "profit": -100.0,
+      "sport": "multi",
+      "type": "parlay",
+      "value_pct": null
+    },
+    {
+      "combined_cash_pct": 64.7,
+      "combined_decimal": 3.1586,
+      "combined_prob": 0.6471,
+      "date": "2026-11-08",
+      "description": "Parlay of the Day: Brayden Burries (MIL) under 3.5 assists + Braelon Allen (NYJ) over 34.5 rushing yards",
+      "game_date": "2026-11-08",
+      "kind": "parlay",
+      "leg_descriptions": [
+        "Brayden Burries (MIL) under 3.5 assists",
+        "Braelon Allen (NYJ) over 34.5 rushing yards"
+      ],
+      "legs": [
+        "20261108-01",
+        "20261108-02"
+      ],
+      "line_odds": "+216",
+      "market_prob": null,
+      "model_prob": null,
+      "outcome": "loss",
+      "pick_id": "20261108-P",
       "profit": -100.0,
       "sport": "multi",
       "type": "parlay",
@@ -315,26 +342,158 @@
       "value_flag": null,
       "value_pct": 24.88,
       "would_veto": false
+    },
+    {
+      "actual": 4.0,
+      "consensus_flag": "confirmed",
+      "date": "2026-11-08",
+      "description": "Brayden Burries (MIL) under 3.5 assists",
+      "game_date": "2026-11-08",
+      "kind": "straight",
+      "line": 3.5,
+      "line_odds": "-148",
+      "market": "assists",
+      "market_prob": 0.5967741935483871,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": "https://polymarket.us/event/nba-bos-mil-2026-11-08"
+      },
+      "model_prob": 0.8431,
+      "opponent": "BOS",
+      "outcome": "loss",
+      "pick_id": "20261108-01",
+      "player": "Brayden Burries",
+      "profit": -100.0,
+      "rlm_flag": false,
+      "side": "under",
+      "sport": "NBA",
+      "team": "MIL",
+      "tier": "lean",
+      "top_tier": false,
+      "type": "prop",
+      "value_flag": null,
+      "value_pct": 41.27,
+      "would_veto": false
+    },
+    {
+      "actual": 33.0,
+      "consensus_flag": "missing",
+      "date": "2026-11-08",
+      "description": "Braelon Allen (NYJ) over 34.5 rushing yards",
+      "game_date": "2026-11-08",
+      "kind": "straight",
+      "line": 34.5,
+      "line_odds": "-113",
+      "market": "rushing yards",
+      "market_prob": 0.5305164319248826,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.7675,
+      "opponent": "KC",
+      "outcome": "loss",
+      "pick_id": "20261108-02",
+      "player": "Braelon Allen",
+      "profit": -100.0,
+      "rlm_flag": false,
+      "side": "over",
+      "sport": "NFL",
+      "team": "NYJ",
+      "tier": "lean",
+      "top_tier": false,
+      "type": "prop",
+      "value_flag": null,
+      "value_pct": 44.67,
+      "would_veto": false
+    },
+    {
+      "actual": 8.0,
+      "consensus_flag": "neutral",
+      "date": "2026-11-08",
+      "description": "Cade Cunningham (DET) under 9.5 assists",
+      "game_date": "2026-11-08",
+      "kind": "straight",
+      "line": 9.5,
+      "line_odds": "-154",
+      "market": "assists",
+      "market_prob": 0.6062992125984252,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": "https://polymarket.us/event/nba-lal-det-2026-11-08"
+      },
+      "model_prob": 0.7344,
+      "opponent": "LAL",
+      "outcome": "win",
+      "pick_id": "20261108-03",
+      "player": "Cade Cunningham",
+      "profit": 64.94,
+      "rlm_flag": false,
+      "side": "under",
+      "sport": "NBA",
+      "team": "DET",
+      "tier": "lean",
+      "top_tier": false,
+      "type": "prop",
+      "value_flag": null,
+      "value_pct": 21.12,
+      "would_veto": false
+    },
+    {
+      "actual": 2.0,
+      "consensus_flag": "neutral",
+      "date": "2026-11-08",
+      "description": "Malik Washington (MIA) under 4.5 receptions",
+      "game_date": "2026-11-08",
+      "kind": "straight",
+      "line": 4.5,
+      "line_odds": "-148",
+      "market": "receptions",
+      "market_prob": 0.5967741935483871,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.727,
+      "opponent": "DET",
+      "outcome": "win",
+      "pick_id": "20261108-04",
+      "player": "Malik Washington",
+      "profit": 67.57,
+      "rlm_flag": false,
+      "side": "under",
+      "sport": "NFL",
+      "team": "MIA",
+      "tier": "lean",
+      "top_tier": false,
+      "type": "prop",
+      "value_flag": null,
+      "value_pct": 21.82,
+      "would_veto": false
     }
   ],
   "tally": {
     "parlays": {
-      "losses": 2,
-      "n_graded": 2,
-      "profit": -200.0,
+      "losses": 3,
+      "n_graded": 3,
+      "profit": -300.0,
       "pushes": 0,
       "roi_pct": -100.0,
       "voids": 0,
       "wins": 0
     },
     "straights": {
-      "losses": 4,
-      "n_graded": 8,
-      "profit": -90.3,
+      "losses": 6,
+      "n_graded": 12,
+      "profit": -157.79,
       "pushes": 0,
-      "roi_pct": -11.29,
+      "roi_pct": -13.15,
       "voids": 0,
-      "wins": 4
+      "wins": 6
     },
     "top_tier": {
       "losses": 0,
@@ -348,5 +507,5 @@
       "wins": 0
     }
   },
-  "updated_pt": "2026-11-08 07:40:24 PST"
+  "updated_pt": "2026-11-09 07:06:34 PST"
 }
