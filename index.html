@@ -1235,6 +1235,21 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <div id="parlayRecordRows"><p class="empty-note">No settled parlays yet.</p></div>
     </section>
 
+    <section class="block" aria-label="How we have done, broken down">
+      <h2>How we have done, broken down</h2>
+      <p class="sub">Every forecast we graded, grouped by sport and by kind of pick. This is the forecast record &mdash; how often our picks hit &mdash; not the dollar record on Our Bets. Small groups are noisy: a handful of picks proves nothing either way.</p>
+      <div class="filter-group">
+        <span class="filter-label" id="breakdownViewLabel">Show</span>
+        <select id="breakdownViewFilter" aria-labelledby="breakdownViewLabel">
+          <option value="sport">By sport</option>
+          <option value="prop">By prop type</option>
+        </select>
+      </div>
+      <div class="rows" id="breakdownRows" style="margin-top:12px"><p class="empty-note">No breakdown yet &mdash; check back after the morning update.</p></div>
+      <p class="sub" id="breakdownNote" style="margin-top:10px">Quoted chance is the average chance our model gave these picks. Hit rate is how often they actually hit. Totals and spreads leans carry no quoted chance, so those rows show none.</p>
+      <p class="sub" id="breakdownMeta"></p>
+    </section>
+
 
     <section class="block" aria-label="What happens to your money over a season">
       <h2>What happens to your money over a season?</h2>
@@ -6262,6 +6277,83 @@ function loadCumulativeRecord(){
     }).catch(function(){});
   }catch(e){}
 }
+/* Record breakdown: the Our Record tab also tries to load
+   "record_breakdown.json" (same folder as this page) — the forecast
+   record grouped by sport and by kind of pick, built each morning
+   from the silent grade log (every graded forecast, ~1,400/day).
+   Rows show graded count, wins-losses, hit rate, and the average
+   chance the model quoted — NO dollars, NO ROI: the dollar record
+   stays only on Our Bets. Any failure at all (file missing, network
+   error, bad JSON, unrecognizable shape) leaves the honest "No
+   breakdown yet" note exactly as it is: no banner, no stale numbers,
+   nothing here is allowed to throw. */
+var BREAKDOWN=null;
+function breakdownRowHtml(r){
+  var hit=(r.hit_rate==null)?"\u2014":Math.round(r.hit_rate*100)+"%";
+  var quoted=(r.quoted_avg==null)?"model said \u2014":"model said "+Math.round(r.quoted_avg*100)+"%";
+  var wl=(r.wins||0)+" won, "+(r.losses||0)+" lost";
+  if(r.pushes) wl+=", "+r.pushes+" push"+(r.pushes>1?"es":"");
+  return '<div class="trow" style="grid-template-columns:minmax(0,1fr) auto">'
+    +'<div class="who"><b>'+esc(r.label||"")+'</b><span>'+(r.n_graded||0)+' graded \u00B7 '+esc(wl)+'</span></div>'
+    +'<div style="text-align:right"><div class="num" style="font-size:20px">'+hit+'</div>'
+    +'<div style="font-size:12px;color:var(--muted)">hit \u00B7 '+esc(quoted)+'</div></div></div>';
+}
+function breakdownMetaText(){
+  if(!BREAKDOWN) return "";
+  var dates=BREAKDOWN.board_dates||[];
+  var months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  function shortDate(s){
+    s=String(s||"");
+    if(s.length!==8) return s;
+    return months[Number(s.slice(4,6))-1]+" "+Number(s.slice(6,8));
+  }
+  var range="";
+  if(dates.length){
+    var first=shortDate(dates[0]), last=shortDate(dates[dates.length-1]);
+    var year=String(dates[0]).slice(0,4);
+    range=(first===last?first:first+" \u2013 "+last)+", "+year;
+  }
+  var total=BREAKDOWN.total_graded;
+  var parts=[];
+  if(range) parts.push("Boards "+range);
+  if(total!=null) parts.push(Number(total).toLocaleString("en-US")+" forecasts graded");
+  return parts.join(" \u00B7 ")+".";
+}
+function renderBreakdown(){
+  var host=$("breakdownRows"); if(!host) return;
+  var sel=$("breakdownViewFilter");
+  var view=sel?sel.value:"sport";
+  var list=null;
+  if(BREAKDOWN){
+    list=view==="prop"?BREAKDOWN.by_prop:BREAKDOWN.by_sport;
+  }
+  if(!list||!Array.isArray(list)||!list.length){
+    host.innerHTML='<p class="empty-note">No breakdown yet \u2014 check back after the morning update.</p>';
+  }else{
+    host.innerHTML=list.map(breakdownRowHtml).join("");
+  }
+  var meta=$("breakdownMeta");
+  if(meta) meta.textContent=breakdownMetaText();
+}
+function applyBreakdown(data){
+  if(!data||typeof data!=="object") return false;
+  if(!Array.isArray(data.by_sport)||!Array.isArray(data.by_prop)) return false;
+  BREAKDOWN=data;
+  try{renderBreakdown();}catch(e){}
+  return true;
+}
+function loadRecordBreakdown(){
+  try{
+    if(typeof fetch!=="function") return;
+    fetch("record_breakdown.json").then(function(res){
+      if(!res||!res.ok) return null;
+      return res.json();
+    }).then(function(data){
+      if(!data) return;
+      try{applyBreakdown(data);}catch(e){}
+    }).catch(function(){});
+  }catch(e){}
+}
 /* Explanations behind ⓘ buttons: tap toggles the panel below the heading;
    tapping again, tapping elsewhere, switching tabs, or Escape closes it.
    One panel open at a time. Panels stay open while being read (no
@@ -7080,6 +7172,8 @@ try{renderBets();}catch(e){}
 try{renderRecord();}catch(e){}
 try{updateYesterdayRecap();}catch(e){}
 try{loadCumulativeRecord();}catch(e){}
+try{loadRecordBreakdown();}catch(e){}
+try{var bvf=$("breakdownViewFilter");if(bvf) bvf.addEventListener("change",function(){try{renderBreakdown();}catch(e){}});}catch(e){}
 })();
 </script>
 
