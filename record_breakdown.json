@@ -3,129 +3,141 @@
     "20261105",
     "20261106",
     "20261107",
-    "20261108"
+    "20261108",
+    "20261109"
   ],
   "by_prop": [
     {
-      "hit_rate": 0.8202,
+      "hit_rate": 0.8417,
       "key": "ML:CBB",
       "label": "College basketball moneyline",
-      "losses": 41,
-      "n_graded": 228,
+      "losses": 44,
+      "n_graded": 278,
       "pushes": 0,
-      "quoted_avg": 0.8047,
-      "quoted_n": 228,
-      "wins": 187
+      "quoted_avg": 0.8159,
+      "quoted_n": 278,
+      "wins": 234
     },
     {
-      "hit_rate": 0.5397,
+      "hit_rate": 0.5373,
       "key": "NBA:points",
       "label": "NBA points",
-      "losses": 58,
-      "n_graded": 126,
+      "losses": 93,
+      "n_graded": 201,
       "pushes": 0,
-      "quoted_avg": 0.604,
-      "quoted_n": 126,
-      "wins": 68
+      "quoted_avg": 0.5934,
+      "quoted_n": 201,
+      "wins": 108
     },
     {
-      "hit_rate": 0.4762,
-      "key": "NFL:receiving yards",
-      "label": "NFL receiving yards",
-      "losses": 66,
-      "n_graded": 126,
-      "pushes": 0,
-      "quoted_avg": 0.5853,
-      "quoted_n": 126,
-      "wins": 60
-    },
-    {
-      "hit_rate": 0.4386,
-      "key": "SPR:CBB",
-      "label": "College basketball spread",
-      "losses": 64,
-      "n_graded": 114,
-      "pushes": 0,
-      "quoted_avg": null,
-      "quoted_n": 0,
-      "wins": 50
-    },
-    {
-      "hit_rate": 0.5524,
-      "key": "NFL:receptions",
-      "label": "NFL receptions",
-      "losses": 47,
-      "n_graded": 105,
-      "pushes": 0,
-      "quoted_avg": 0.62,
-      "quoted_n": 105,
-      "wins": 58
-    },
-    {
-      "hit_rate": 0.5096,
-      "key": "TOT:CBB",
-      "label": "College basketball total",
-      "losses": 51,
-      "n_graded": 104,
-      "pushes": 0,
-      "quoted_avg": null,
-      "quoted_n": 0,
-      "wins": 53
-    },
-    {
-      "hit_rate": 0.58,
+      "hit_rate": 0.5465,
       "key": "NBA:rebounds",
       "label": "NBA rebounds",
-      "losses": 42,
-      "n_graded": 100,
+      "losses": 78,
+      "n_graded": 172,
       "pushes": 0,
-      "quoted_avg": 0.5855,
-      "quoted_n": 100,
-      "wins": 58
+      "quoted_avg": 0.5819,
+      "quoted_n": 172,
+      "wins": 94
     },
     {
-      "hit_rate": 0.5385,
-      "key": "NHL:shots on goal",
-      "label": "NHL shots on goal",
-      "losses": 42,
-      "n_graded": 91,
+      "hit_rate": 0.4315,
+      "key": "SPR:CBB",
+      "label": "College basketball spread",
+      "losses": 83,
+      "n_graded": 146,
       "pushes": 0,
-      "quoted_avg": 0.5776,
-      "quoted_n": 91,
-      "wins": 49
+      "quoted_avg": null,
+      "quoted_n": 0,
+      "wins": 63
     },
     {
-      "hit_rate": 0.5676,
+      "hit_rate": 0.5069,
+      "key": "NFL:receiving yards",
+      "label": "NFL receiving yards",
+      "losses": 71,
+      "n_graded": 144,
+      "pushes": 0,
+      "quoted_avg": 0.5858,
+      "quoted_n": 144,
+      "wins": 73
+    },
+    {
+      "hit_rate": 0.5259,
+      "key": "TOT:CBB",
+      "label": "College basketball total",
+      "losses": 64,
+      "n_graded": 135,
+      "pushes": 0,
+      "quoted_avg": null,
+      "quoted_n": 0,
+      "wins": 71
+    },
+    {
+      "hit_rate": 0.6066,
       "key": "NBA:assists",
       "label": "NBA assists",
-      "losses": 32,
-      "n_graded": 74,
+      "losses": 48,
+      "n_graded": 122,
       "pushes": 0,
-      "quoted_avg": 0.5959,
-      "quoted_n": 74,
-      "wins": 42
+      "quoted_avg": 0.5927,
+      "quoted_n": 122,
+      "wins": 74
     },
     {
-      "hit_rate": 0.5507,
+      "hit_rate": 0.5126,
+      "key": "NHL:shots on goal",
+      "label": "NHL shots on goal",
+      "losses": 58,
+      "n_graded": 119,
+      "pushes": 0,
+      "quoted_avg": 0.5727,
+      "quoted_n": 119,
+      "wins": 61
+    },
+    {
+      "hit_rate": 0.5424,
+      "key": "NFL:receptions",
+      "label": "NFL receptions",
+      "losses": 54,
+      "n_graded": 118,
+      "pushes": 0,
+      "quoted_avg": 0.619,
+      "quoted_n": 118,
+      "wins": 64
+    },
+    {
+      "hit_rate": 0.5043,
       "key": "NBA:3-pointers",
       "label": "NBA 3-pointers",
-      "losses": 31,
-      "n_graded": 69,
+      "losses": 58,
+      "n_graded": 117,
       "pushes": 0,
-      "quoted_avg": 0.5901,
-      "quoted_n": 69,
-      "wins": 38
+      "quoted_avg": 0.582,
+      "quoted_n": 117,
+      "wins": 59
     },
     {
-      "hit_rate": 0.5833,
+      "hit_rate": 0.5652,
       "key": "NFL:rushing yards",
       "label": "NFL rushing yards",
-      "losses": 25,
+      "losses": 30,
+      "n_graded": 69,
+      "pushes": 0,
+      "quoted_avg": 0.6068,
+      "quoted_n": 69,
+      "wins": 39
+    },
+    {
+      "hit_rate": 0.1167,
+      "key": "NFL:anytime td",
+      "label": "NFL anytime td",
+      "losses": 53,
       "n_graded": 60,
       "pushes": 0,
-      "quoted_avg": 0.6044,
+      "quoted_avg": 0.178,
       "quoted_n": 60,
-      "wins": 35
+      "wins": 7
     },
     {
       "hit_rate": 0.5536,
@@ -150,17 +162,6 @@
       "wins": 19
     },
     {
-      "hit_rate": 0.1395,
-      "key": "NFL:anytime td",
-      "label": "NFL anytime td",
-      "losses": 37,
-      "n_graded": 43,
-      "pushes": 0,
-      "quoted_avg": 0.161,
-      "quoted_n": 43,
-      "wins": 6
-    },
-    {
       "hit_rate": 0.3429,
       "key": "TOT:CFB",
       "label": "College football total",
@@ -170,6 +171,17 @@
       "quoted_avg": null,
       "quoted_n": 0,
       "wins": 12
+    },
+    {
+      "hit_rate": 0.8182,
+      "key": "ML:NBA",
+      "label": "NBA moneyline",
+      "losses": 6,
+      "n_graded": 33,
+      "pushes": 0,
+      "quoted_avg": 0.6855,
+      "quoted_n": 33,
+      "wins": 27
     },
     {
       "hit_rate": 0.3125,
@@ -194,103 +206,103 @@
       "wins": 17
     },
     {
-      "hit_rate": 0.88,
-      "key": "ML:NBA",
-      "label": "NBA moneyline",
-      "losses": 3,
-      "n_graded": 25,
-      "pushes": 0,
-      "quoted_avg": 0.679,
-      "quoted_n": 25,
-      "wins": 22
-    },
-    {
-      "hit_rate": 0.7391,
-      "key": "ML:NHL",
-      "label": "NHL moneyline",
-      "losses": 6,
-      "n_graded": 23,
-      "pushes": 0,
-      "quoted_avg": 0.5914,
-      "quoted_n": 23,
-      "wins": 17
-    },
-    {
-      "hit_rate": 0.3333,
-      "key": "TOT:NBA",
-      "label": "NBA total",
-      "losses": 12,
-      "n_graded": 18,
-      "pushes": 0,
-      "quoted_avg": null,
-      "quoted_n": 0,
-      "wins": 6
-    },
-    {
-      "hit_rate": 0.5,
-      "key": "NFL:passing yards",
-      "label": "NFL passing yards",
-      "losses": 8,
-      "n_graded": 16,
-      "pushes": 0,
-      "quoted_avg": 0.5372,
-      "quoted_n": 16,
-      "wins": 8
-    },
-    {
       "hit_rate": 0.6,
       "key": "CBB:points",
       "label": "College basketball points",
+      "losses": 10,
+      "n_graded": 25,
+      "pushes": 0,
+      "quoted_avg": 0.5463,
+      "quoted_n": 25,
+      "wins": 15
+    },
+    {
+      "hit_rate": 0.36,
+      "key": "TOT:NBA",
+      "label": "NBA total",
+      "losses": 16,
+      "n_graded": 25,
+      "pushes": 0,
+      "quoted_avg": null,
+      "quoted_n": 0,
+      "wins": 9
+    },
+    {
+      "hit_rate": 0.76,
+      "key": "ML:NHL",
+      "label": "NHL moneyline",
+      "losses": 6,
+      "n_graded": 25,
+      "pushes": 0,
+      "quoted_avg": 0.5923,
+      "quoted_n": 25,
+      "wins": 19
+    },
+    {
+      "hit_rate": 0.7,
+      "key": "CBB:rebounds",
+      "label": "College basketball rebounds",
+      "losses": 6,
+      "n_graded": 20,
+      "pushes": 0,
+      "quoted_avg": 0.5663,
+      "quoted_n": 20,
+      "wins": 14
+    },
+    {
+      "hit_rate": 0.45,
+      "key": "NFL:passing yards",
+      "label": "NFL passing yards",
+      "losses": 11,
+      "n_graded": 20,
+      "pushes": 0,
+      "quoted_avg": 0.5334,
+      "quoted_n": 20,
+      "wins": 9
+    },
+    {
+      "hit_rate": 0.9375,
+      "key": "ML:NFL",
+      "label": "NFL moneyline",
+      "losses": 1,
+      "n_graded": 16,
+      "pushes": 0,
+      "quoted_avg": 0.6814,
+      "quoted_n": 16,
+      "wins": 15
+    },
+    {
+      "hit_rate": 0.6,
+      "key": "CBB:assists",
+      "label": "College basketball assists",
       "losses": 6,
       "n_graded": 15,
       "pushes": 0,
-      "quoted_avg": 0.5419,
+      "quoted_avg": 0.5726,
       "quoted_n": 15,
       "wins": 9
     },
     {
-      "hit_rate": 0.9286,
-      "key": "ML:NFL",
-      "label": "NFL moneyline",
-      "losses": 1,
-      "n_graded": 14,
-      "pushes": 0,
-      "quoted_avg": 0.6952,
-      "quoted_n": 14,
-      "wins": 13
-    },
-    {
-      "hit_rate": 0.6,
-      "key": "CBB:rebounds",
-      "label": "College basketball rebounds",
-      "losses": 4,
-      "n_graded": 10,
-      "pushes": 0,
-      "quoted_avg": 0.57,
-      "quoted_n": 10,
-      "wins": 6
-    },
-    {
-      "hit_rate": 0.8,
+      "hit_rate": 0.75,
       "key": "SPR:NFL",
       "label": "NFL spread",
-      "losses": 2,
-      "n_graded": 10,
+      "losses": 3,
+      "n_graded": 12,
       "pushes": 0,
       "quoted_avg": null,
       "quoted_n": 0,
-      "wins": 8
+      "wins": 9
     },
     {
-      "hit_rate": 0.6667,
+      "hit_rate": 0.6364,
       "key": "TOT:NFL",
       "label": "NFL total",
-      "losses": 3,
-      "n_graded": 9,
+      "losses": 4,
+      "n_graded": 11,
       "pushes": 0,
       "quoted_avg": null,
       "quoted_n": 0,
-      "wins": 6
+      "wins": 7
     },
     {
       "hit_rate": 0.8571,
@@ -302,52 +314,41 @@
       "quoted_avg": 0.6597,
       "quoted_n": 7,
       "wins": 6
-    },
-    {
-      "hit_rate": 0.3333,
-      "key": "CBB:assists",
-      "label": "College basketball assists",
-      "losses": 4,
-      "n_graded": 6,
-      "pushes": 0,
-      "quoted_avg": 0.5608,
-      "quoted_n": 6,
-      "wins": 2
     }
   ],
   "by_sport": [
     {
-      "hit_rate": 0.6436,
-      "key": "CBB",
-      "label": "College basketball",
-      "losses": 170,
-      "n_graded": 477,
-      "pushes": 0,
-      "quoted_avg": null,
-      "quoted_n": 259,
-      "wins": 307
-    },
-    {
-      "hit_rate": 0.568,
+      "hit_rate": 0.5537,
       "key": "NBA",
       "label": "NBA",
-      "losses": 178,
-      "n_graded": 412,
+      "losses": 299,
+      "n_graded": 670,
       "pushes": 0,
-      "quoted_avg": 0.6001,
-      "quoted_n": 394,
-      "wins": 234
+      "quoted_avg": 0.5929,
+      "quoted_n": 645,
+      "wins": 371
     },
     {
-      "hit_rate": 0.5065,
+      "hit_rate": 0.6559,
+      "key": "CBB",
+      "label": "College basketball",
+      "losses": 213,
+      "n_graded": 619,
+      "pushes": 0,
+      "quoted_avg": null,
+      "quoted_n": 338,
+      "wins": 406
+    },
+    {
+      "hit_rate": 0.4956,
       "key": "NFL",
       "label": "NFL",
-      "losses": 189,
-      "n_graded": 383,
+      "losses": 227,
+      "n_graded": 450,
       "pushes": 0,
-      "quoted_avg": 0.5504,
-      "quoted_n": 364,
-      "wins": 194
+      "quoted_avg": 0.5422,
+      "quoted_n": 427,
+      "wins": 223
     },
     {
       "hit_rate": 0.4457,
@@ -361,15 +362,15 @@
       "wins": 78
     },
     {
-      "hit_rate": 0.5789,
+      "hit_rate": 0.5556,
       "key": "NHL",
       "label": "NHL",
-      "losses": 48,
-      "n_graded": 114,
+      "losses": 64,
+      "n_graded": 144,
       "pushes": 0,
-      "quoted_avg": 0.5804,
-      "quoted_n": 114,
-      "wins": 66
+      "quoted_avg": 0.5761,
+      "quoted_n": 144,
+      "wins": 80
     },
     {
       "hit_rate": 0.5862,
@@ -383,7 +384,7 @@
       "wins": 17
     }
   ],
-  "generated_pt": "2026-11-09 13:32:23 PST",
+  "generated_pt": "2026-11-10 07:07:00 PST",
   "name": "Forecast record \u2014 breakdown",
   "notes": [
     "Forecast record: every graded forecast on the board, not the dollar record on Our Bets.",
@@ -391,6 +392,6 @@
     "Totals and spreads leans carry no quoted chance, so their rows show none.",
     "Soccer moneylines combine all six leagues."
   ],
-  "total_graded": 1590,
+  "total_graded": 2087,
   "total_pushes": 1
 }
