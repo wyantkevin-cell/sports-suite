@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script>
+/* Force HTTPS on thesimsays.com: GitHub Pages "Enforce HTTPS" is off, so an
+   http load would otherwise show "Not Secure". Only the live domain
+   redirects; localhost / github.io / file:// are left alone. */
+(function(){if(location.protocol==="http:"&&(location.hostname==="thesimsays.com"||location.hostname==="www.thesimsays.com")){location.replace("https://"+location.hostname+location.pathname+location.search+location.hash);}})();
+</script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="light dark" />
