@@ -1,0 +1,172 @@
+{
+  "baseline": {
+    "paper_log_from": "2026-11-10",
+    "source": "variant_backtest_20261110.md (corrected Nov 10, NHL alias fix)",
+    "through": "Nov 5\u20139 graded (Nov 10 pending, excluded)"
+  },
+  "generated_pt": "2026-11-10 08:12:01 PST",
+  "name": "How each way of picking is doing",
+  "notes": [
+    "The live card switched from the old way to the new way on Nov 11, 2026. The old way's record is kept here as an archive \u2014 never blended into the new way's numbers.",
+    "Paper-test rows are an experiment, not the live card. They never place a bet.",
+    "Each bet is $100 flat. ROI is profit divided by the number of graded bets."
+  ],
+  "rows": [
+    {
+      "combined": {
+        "losses": 0,
+        "n_graded": 0,
+        "profit": 0.0,
+        "pushes": 0,
+        "roi_pct": null,
+        "wins": 0
+      },
+      "dates": "Nov 11, 2026 \u2013 now",
+      "id": "live_d",
+      "label": "Our record now \u2014 new way (from Nov 11)",
+      "parlays": {
+        "losses": 0,
+        "n_graded": 0,
+        "profit": 0.0,
+        "pushes": 0,
+        "roi_pct": null,
+        "wins": 0
+      },
+      "phrase": "Picks where we agree with the book",
+      "status": "current",
+      "straights": {
+        "losses": 0,
+        "n_graded": 0,
+        "profit": 0.0,
+        "pushes": 0,
+        "roi_pct": null,
+        "wins": 0
+      }
+    },
+    {
+      "combined": {
+        "losses": 12,
+        "n_graded": 20,
+        "profit": -587.32,
+        "pushes": 0,
+        "roi_pct": -29.4,
+        "wins": 8
+      },
+      "dates": "Nov 6\u201310, 2026",
+      "id": "live_a",
+      "label": "Archived \u2014 old way (Nov 6\u201310)",
+      "parlays": {
+        "losses": 4,
+        "n_graded": 4,
+        "profit": -400.0,
+        "pushes": 0,
+        "roi_pct": -100.0,
+        "wins": 0
+      },
+      "phrase": "Picks with the biggest edge over the book",
+      "status": "archived",
+      "straights": {
+        "losses": 8,
+        "n_graded": 16,
+        "profit": -187.32,
+        "pushes": 0,
+        "roi_pct": -11.7,
+        "wins": 8
+      }
+    },
+    {
+      "combined": {
+        "losses": 8,
+        "n_graded": 25,
+        "profit": 79.96,
+        "pushes": 0,
+        "roi_pct": 3.2,
+        "wins": 17
+      },
+      "dates": "Nov 5, 2026 \u2013 now",
+      "id": "paper_d",
+      "label": "Paper test \u2014 agreement (D)",
+      "parlays": {
+        "losses": 3,
+        "n_graded": 5,
+        "profit": -127.27,
+        "pushes": 0,
+        "roi_pct": -25.5,
+        "wins": 2
+      },
+      "phrase": "Picks where we agree with the book",
+      "status": "paper",
+      "straights": {
+        "losses": 5,
+        "n_graded": 20,
+        "profit": 207.23,
+        "pushes": 0,
+        "roi_pct": 10.4,
+        "wins": 15
+      }
+    },
+    {
+      "combined": {
+        "losses": 9,
+        "n_graded": 25,
+        "profit": -76.69,
+        "pushes": 0,
+        "roi_pct": -3.1,
+        "wins": 16
+      },
+      "dates": "Nov 5, 2026 \u2013 now",
+      "id": "paper_m",
+      "label": "Paper test \u2014 moderate edge (M)",
+      "parlays": {
+        "losses": 4,
+        "n_graded": 5,
+        "profit": -317.36,
+        "pushes": 0,
+        "roi_pct": -63.5,
+        "wins": 1
+      },
+      "phrase": "Picks with a small edge, not the biggest",
+      "status": "paper",
+      "straights": {
+        "losses": 5,
+        "n_graded": 20,
+        "profit": 240.67,
+        "pushes": 0,
+        "roi_pct": 12.0,
+        "wins": 15
+      }
+    },
+    {
+      "combined": {
+        "losses": 16,
+        "n_graded": 24,
+        "profit": -833.32,
+        "pushes": 0,
+        "roi_pct": -34.7,
+        "wins": 8
+      },
+      "dates": "Nov 5, 2026 \u2013 now",
+      "id": "paper_r",
+      "label": "Paper test \u2014 random (R)",
+      "parlays": {
+        "losses": 4,
+        "n_graded": 5,
+        "profit": -187.0,
+        "pushes": 0,
+        "roi_pct": -37.4,
+        "wins": 1
+      },
+      "phrase": "Picks chosen at random, as a check",
+      "status": "paper",
+      "straights": {
+        "losses": 12,
+        "n_graded": 19,
+        "profit": -646.32,
+        "pushes": 0,
+        "roi_pct": -34.0,
+        "wins": 7
+      }
+    }
+  ],
+  "switch_date": "2026-11-11"
+}
