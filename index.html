@@ -1241,6 +1241,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <span class="bets-date" id="betsDate" hidden></span>
       <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not winners yet.</p>
       <p>Today&rsquo;s bets &mdash; the main tracked record: 1&ndash;4 best bets plus 1 Parlay of the Day. Each card shows our chance it hits, and how it stacks up against the book&rsquo;s number.</p>
+      <p class="note" id="betsSwitchNote">We changed how we pick bets on Nov 11. The old way chased the biggest edges, and those lost the most. The new way picks bets where we agree with the book &mdash; in a backtest (Nov 5&ndash;10) it went 15&ndash;5 on single bets for +$207, while the old way went 8&ndash;8 for &minus;$187. The sample is still small, so this does not prove the new way wins yet. See <a href="#record" data-goto="record">Our Record</a> for the full record of each way.</p>
       <div class="freshness"></div>
     </div>
     <div id="betsEmpty" class="empty-state bets-empty"><p>Today's card posts with the morning update — check back after 9am.</p></div>
@@ -1263,12 +1264,32 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <div id="periodRecord"></div>
     </div>
 
+    <p class="sub" id="recordEraNote">This record covers two ways of picking. Nov 6&ndash;10 used the old way; from Nov 11 we use the new way. Each way&rsquo;s record is shown on its own below &mdash; nothing is blended.</p>
+
     <div id="recordDays"></div>
 
     <section class="block" aria-label="Parlay record">
       <h2>Parlays</h2>
       <p class="sub">Parlay of the Day results. Kept apart from single bets.</p>
       <div id="parlayRecordRows"><p class="empty-note">No settled parlays yet.</p></div>
+    </section>
+
+    <section class="block" aria-label="How we pick our bets">
+      <h2>How we pick our bets</h2>
+      <p class="sub">We try different ways of picking bets, and we keep the record for each way. Here are the four ways.</p>
+      <div class="rows">
+        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Biggest edge &mdash; the old way (Nov 6&ndash;10)</b><span>We picked the bets where our number was furthest above the book&rsquo;s number. It lost money &mdash; and the bets with the biggest edge lost the most. We stopped using it. Its record is kept below, as an archive.</span></div></div>
+        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Agreement &mdash; the new way (from Nov 11)</b><span>We pick the bets where our number and the book&rsquo;s number are close, within 10 points of each other. When we agree with the book, our number is the most trustworthy. This is how the card picks bets now, and it is our record now.</span></div></div>
+        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Moderate edge &mdash; paper test only</b><span>We pick bets where our number is a little above the book&rsquo;s number, but not by a lot. We only run this on paper, to see if it does better than the old way.</span></div></div>
+        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Random &mdash; paper test only</b><span>We pick bets at random, just to check. If picking at random does as well as our ways, our ways are not helping.</span></div></div>
+      </div>
+    </section>
+
+    <section class="block" aria-label="How each way of picking is doing">
+      <h2>How each way of picking is doing</h2>
+      <p class="sub">Each way&rsquo;s record, on its own. The new way is our record now; the old way is kept here as an archive, not blended in. The paper-test rows are an experiment &mdash; they never place a bet. Each bet is $100 flat.</p>
+      <div class="rows" id="variantRows"><p class="empty-note">No variant records yet &mdash; check back after the morning update.</p></div>
+      <p class="sub" id="variantMeta"></p>
     </section>
 
     <section class="block" aria-label="How we have done, broken down">
@@ -6397,6 +6418,83 @@ function loadRecordBreakdown(){
     }).catch(function(){});
   }catch(e){}
 }
+/* Variant records: the Our Record tab also tries to load
+   "variant_records.json" (same folder as this page) — how each way of
+   picking bets is doing, built each morning from the live ledger and
+   the paper-test log. The live card switched ways on Nov 11, 2026:
+   the new way (agreement) is our record now; the old way (biggest
+   edge, Nov 6-10) is kept as an archive, never blended in. Paper-test
+   rows are an experiment and never place a bet. Each bet is $100 flat.
+   Any failure at all leaves the honest "No variant records yet" note
+   exactly as it is: no banner, no stale numbers, nothing here is
+   allowed to throw. */
+var VARIANT_RECORDS=null;
+function vrMoney(n){
+  n=Number(n)||0;
+  if(n>0) return "+$"+Math.abs(Math.round(n)).toLocaleString("en-US");
+  if(n<0) return "\u2212$"+Math.abs(Math.round(n)).toLocaleString("en-US");
+  return "$0";
+}
+function vrRoi(r){
+  if(r==null||!isFinite(r)) return "\u2014";
+  if(r>0) return "+"+Math.abs(r).toFixed(1)+"%";
+  if(r<0) return "\u2212"+Math.abs(r).toFixed(1)+"%";
+  return "0.0%";
+}
+function variantRowHtml(r){
+  var s=r.straights||{}, p=r.parlays||{}, c=r.combined||{};
+  var sWL=(s.wins||0)+"\u2013"+(s.losses||0);
+  var pWL=(p.wins||0)+"\u2013"+(p.losses||0);
+  var cWL=(c.wins||0)+"\u2013"+(c.losses||0);
+  var sub=esc(r.phrase||"")+" \u00B7 "+esc(r.dates||"");
+  sub+=" \u00B7 Single bets "+sWL+" ("+vrMoney(s.profit)+") \u00B7 Parlays "+pWL+" ("+vrMoney(p.profit)+")";
+  var big, small;
+  if(!c.n_graded){
+    big="\u2014";
+    small="No settled bets yet";
+  }else{
+    big=cWL+" \u00B7 "+vrMoney(c.profit);
+    small="ROI "+vrRoi(c.roi_pct)+" \u00B7 "+c.n_graded+" graded";
+  }
+  return '<div class="trow" style="grid-template-columns:minmax(0,1fr) auto">'
+    +'<div class="who"><b>'+esc(r.label||"")+'</b><span>'+sub+'</span></div>'
+    +'<div style="text-align:right"><div class="num" style="font-size:20px">'+esc(big)+'</div>'
+    +'<div style="font-size:12px;color:var(--muted)">'+esc(small)+'</div></div></div>';
+}
+function renderVariantRecords(){
+  var host=$("variantRows"); if(!host) return;
+  var list=(VARIANT_RECORDS&&Array.isArray(VARIANT_RECORDS.rows))?VARIANT_RECORDS.rows:null;
+  if(!list||!list.length){
+    host.innerHTML='<p class="empty-note">No variant records yet \u2014 check back after the morning update.</p>';
+  }else{
+    host.innerHTML=list.map(variantRowHtml).join("");
+  }
+  var meta=$("variantMeta");
+  if(meta){
+    meta.textContent=VARIANT_RECORDS&&VARIANT_RECORDS.generated_pt
+      ?("Updated "+VARIANT_RECORDS.generated_pt+".")
+      :"";
+  }
+}
+function applyVariantRecords(data){
+  if(!data||typeof data!=="object") return false;
+  if(!Array.isArray(data.rows)) return false;
+  VARIANT_RECORDS=data;
+  try{renderVariantRecords();}catch(e){}
+  return true;
+}
+function loadVariantRecords(){
+  try{
+    if(typeof fetch!=="function") return;
+    fetch("variant_records.json").then(function(res){
+      if(!res||!res.ok) return null;
+      return res.json();
+    }).then(function(data){
+      if(!data) return;
+      try{applyVariantRecords(data);}catch(e){}
+    }).catch(function(){});
+  }catch(e){}
+}
 /* Graded bets: the Our Record tab also tries to load
    "record_graded_bets.json" (same folder as this page) — every graded
    forecast, grouped by sport then kind of pick, built each morning
@@ -7428,6 +7526,7 @@ try{renderRecord();}catch(e){}
 try{updateYesterdayRecap();}catch(e){}
 try{loadCumulativeRecord();}catch(e){}
 try{loadRecordBreakdown();}catch(e){}
+try{loadVariantRecords();}catch(e){}
 try{loadGradedBets();}catch(e){}
 try{var bvf=$("breakdownViewFilter");if(bvf) bvf.addEventListener("change",function(){try{renderBreakdown();}catch(e){}});}catch(e){}
 })();
