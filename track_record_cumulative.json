@@ -2,7 +2,8 @@
   "days": [
     "2026-11-06",
     "2026-11-07",
-    "2026-11-08"
+    "2026-11-08",
+    "2026-11-09"
   ],
   "name": "Track record \u2014 cumulative",
   "notes": [
@@ -88,6 +89,32 @@
       "sport": "multi",
       "type": "parlay",
       "value_pct": null
+    },
+    {
+      "combined_cash_pct": 51.3,
+      "combined_decimal": 3.0933,
+      "combined_prob": 0.5129,
+      "date": "2026-11-09",
+      "description": "Parlay of the Day: TOR to win vs MEM + Dj Moore (BUF) under 45.5 receiving yards",
+      "game_date": "2026-11-09",
+      "kind": "parlay",
+      "leg_descriptions": [
+        "TOR to win vs MEM",
+        "Dj Moore (BUF) under 45.5 receiving yards"
+      ],
+      "legs": [
+        "20261109-01",
+        "20261109-02"
+      ],
+      "line_odds": "+209",
+      "market_prob": null,
+      "model_prob": null,
+      "outcome": "loss",
+      "pick_id": "20261109-P",
+      "profit": -100.0,
+      "sport": "multi",
+      "type": "parlay",
+      "value_pct": null
     }
   ],
   "start_date": "2026-11-06",
@@ -112,6 +139,7 @@
       "pick_id": "20261106-01",
       "player": null,
       "profit": 61.73,
+      "score": "TOR 121, MIL 107",
       "side": "away",
       "sport": "NBA",
       "team": "TOR",
@@ -474,26 +502,158 @@
       "value_flag": null,
       "value_pct": 21.82,
       "would_veto": false
+    },
+    {
+      "consensus_flag": null,
+      "date": "2026-11-09",
+      "description": "TOR to win vs MEM",
+      "game_date": "2026-11-09",
+      "kind": "straight",
+      "line": null,
+      "line_odds": "-156",
+      "market": "moneyline",
+      "market_prob": 0.6094,
+      "markets": {
+        "kalshi": "https://kalshi.com/markets/KXNBAGAME-26NOV09MEMTOR",
+        "novig": "https://app.novig.us/event-markets/01a1bb38-e5cd-7f61-83d6-bb8010926d80",
+        "polymarket": "https://polymarket.us/event/nba-mem-tor-2026-11-09"
+      },
+      "model_prob": 0.7241,
+      "opponent": "MEM",
+      "outcome": "loss",
+      "pick_id": "20261109-01",
+      "player": null,
+      "profit": -100.0,
+      "rlm_flag": false,
+      "score": "TOR 102, MEM 118",
+      "side": "home",
+      "sport": "NBA",
+      "team": "TOR",
+      "tier": "lean",
+      "top_tier": false,
+      "type": "moneyline",
+      "value_flag": null,
+      "value_pct": 18.83,
+      "would_veto": null
+    },
+    {
+      "actual": 25.0,
+      "consensus_flag": null,
+      "date": "2026-11-09",
+      "description": "Dj Moore (BUF) under 45.5 receiving yards",
+      "game_date": "2026-11-09",
+      "kind": "straight",
+      "line": 45.5,
+      "line_odds": "-113",
+      "market": "receiving yards",
+      "market_prob": 0.5305164319248826,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.7083,
+      "opponent": "MIN",
+      "outcome": "win",
+      "pick_id": "20261109-02",
+      "player": "Dj Moore",
+      "profit": 88.5,
+      "rlm_flag": false,
+      "side": "under",
+      "sport": "NFL",
+      "team": "BUF",
+      "tier": "lean",
+      "top_tier": false,
+      "type": "prop",
+      "value_flag": null,
+      "value_pct": 33.51,
+      "would_veto": null
+    },
+    {
+      "actual": 3.0,
+      "consensus_flag": null,
+      "date": "2026-11-09",
+      "description": "Justin Jefferson (MIN) under 6.5 receptions",
+      "game_date": "2026-11-09",
+      "kind": "straight",
+      "line": 6.5,
+      "line_odds": "-122",
+      "market": "receptions",
+      "market_prob": 0.5495495495495496,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.701,
+      "opponent": "BUF",
+      "outcome": "win",
+      "pick_id": "20261109-03",
+      "player": "Justin Jefferson",
+      "profit": 81.97,
+      "rlm_flag": false,
+      "side": "under",
+      "sport": "NFL",
+      "team": "MIN",
+      "tier": "lean",
+      "top_tier": false,
+      "type": "prop",
+      "value_flag": null,
+      "value_pct": 27.56,
+      "would_veto": null
+    },
+    {
+      "actual": 107.0,
+      "consensus_flag": null,
+      "date": "2026-11-09",
+      "description": "James Cook (BUF) under 86.5 rushing yards",
+      "game_date": "2026-11-09",
+      "kind": "straight",
+      "line": 86.5,
+      "line_odds": "-113",
+      "market": "rushing yards",
+      "market_prob": 0.5305164319248826,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.6862,
+      "opponent": "MIN",
+      "outcome": "loss",
+      "pick_id": "20261109-04",
+      "player": "James Cook",
+      "profit": -100.0,
+      "rlm_flag": false,
+      "side": "under",
+      "sport": "NFL",
+      "team": "BUF",
+      "tier": "lean",
+      "top_tier": false,
+      "type": "prop",
+      "value_flag": null,
+      "value_pct": 29.34,
+      "would_veto": null
     }
   ],
   "tally": {
     "parlays": {
-      "losses": 3,
-      "n_graded": 3,
-      "profit": -300.0,
+      "losses": 4,
+      "n_graded": 4,
+      "profit": -400.0,
       "pushes": 0,
       "roi_pct": -100.0,
       "voids": 0,
       "wins": 0
     },
     "straights": {
-      "losses": 6,
-      "n_graded": 12,
-      "profit": -157.79,
+      "losses": 8,
+      "n_graded": 16,
+      "profit": -187.32,
       "pushes": 0,
-      "roi_pct": -13.15,
+      "roi_pct": -11.71,
       "voids": 0,
-      "wins": 6
+      "wins": 8
     },
     "top_tier": {
       "losses": 0,
@@ -507,5 +667,5 @@
       "wins": 0
     }
   },
-  "updated_pt": "2026-11-09 07:06:34 PST"
+  "updated_pt": "2026-11-10 07:06:46 PST"
 }
