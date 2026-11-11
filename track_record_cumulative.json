@@ -3,7 +3,8 @@
     "2026-11-06",
     "2026-11-07",
     "2026-11-08",
-    "2026-11-09"
+    "2026-11-09",
+    "2026-11-10"
   ],
   "name": "Track record \u2014 cumulative",
   "notes": [
@@ -111,6 +112,32 @@
       "model_prob": null,
       "outcome": "loss",
       "pick_id": "20261109-P",
+      "profit": -100.0,
+      "sport": "multi",
+      "type": "parlay",
+      "value_pct": null
+    },
+    {
+      "combined_cash_pct": 57.7,
+      "combined_decimal": 3.8871,
+      "combined_prob": 0.5774,
+      "date": "2026-11-10",
+      "description": "Parlay of the Day: Mikal Bridges (NYK) under 3.5 assists + Darryn Peterson (UTA) under 18.5 points",
+      "game_date": "2026-11-10",
+      "kind": "parlay",
+      "leg_descriptions": [
+        "Mikal Bridges (NYK) under 3.5 assists",
+        "Darryn Peterson (UTA) under 18.5 points"
+      ],
+      "legs": [
+        "20261110-02",
+        "20261110-03"
+      ],
+      "line_odds": "+289",
+      "market_prob": null,
+      "model_prob": null,
+      "outcome": "loss",
+      "pick_id": "20261110-P",
       "profit": -100.0,
       "sport": "multi",
       "type": "parlay",
@@ -634,26 +661,125 @@
       "value_flag": null,
       "value_pct": 29.34,
       "would_veto": null
+    },
+    {
+      "actual": 1.0,
+      "consensus_flag": "missing",
+      "date": "2026-11-10",
+      "description": "Mikal Bridges (NYK) under 3.5 assists",
+      "game_date": "2026-11-10",
+      "kind": "straight",
+      "line": 3.5,
+      "line_odds": "124",
+      "market": "assists",
+      "market_prob": 0.44642857142857145,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.778,
+      "opponent": "MIL",
+      "outcome": "win",
+      "pick_id": "20261110-02",
+      "player": "Mikal Bridges",
+      "profit": 124.0,
+      "rlm_flag": false,
+      "side": "under",
+      "sport": "NBA",
+      "team": "NYK",
+      "tier": "strong",
+      "top_tier": false,
+      "type": "prop",
+      "value_flag": null,
+      "value_pct": 74.27,
+      "would_veto": false
+    },
+    {
+      "actual": 25.0,
+      "consensus_flag": "neutral",
+      "date": "2026-11-10",
+      "description": "Darryn Peterson (UTA) under 18.5 points",
+      "game_date": "2026-11-10",
+      "kind": "straight",
+      "line": 18.5,
+      "line_odds": "-136",
+      "market": "points",
+      "market_prob": 0.576271186440678,
+      "markets": {
+        "kalshi": "https://kalshi.com/markets/KXNBAPTS-26NOV10MIAUTA-UTADPETERSON22-20",
+        "novig": "https://app.novig.us/event-markets/01a1c0b1-7220-7770-a4ef-1797d3ed204c",
+        "polymarket": "https://polymarket.us/event/nba-mia-uta-2026-11-10"
+      },
+      "model_prob": 0.7422,
+      "opponent": "MIA",
+      "outcome": "loss",
+      "pick_id": "20261110-03",
+      "player": "Darryn Peterson",
+      "profit": -100.0,
+      "rlm_flag": false,
+      "side": "under",
+      "sport": "NBA",
+      "team": "UTA",
+      "tier": "lean",
+      "top_tier": false,
+      "type": "prop",
+      "value_flag": null,
+      "value_pct": 28.78,
+      "would_veto": false
+    },
+    {
+      "actual": 2.0,
+      "consensus_flag": "missing",
+      "date": "2026-11-10",
+      "description": "Josh Green (UTA) under 7.5 points",
+      "game_date": "2026-11-10",
+      "kind": "straight",
+      "line": 7.5,
+      "line_odds": "-138",
+      "market": "points",
+      "market_prob": 0.5798319327731093,
+      "markets": {
+        "kalshi": null,
+        "novig": "https://app.novig.us/event-markets/01a1c0b1-7220-7770-a4ef-1797d3ed204c",
+        "polymarket": null
+      },
+      "model_prob": 0.7358,
+      "opponent": "MIA",
+      "outcome": "win",
+      "pick_id": "20261110-04",
+      "player": "Josh Green",
+      "profit": 72.46,
+      "rlm_flag": false,
+      "side": "under",
+      "sport": "NBA",
+      "team": "UTA",
+      "tier": "lean",
+      "top_tier": false,
+      "type": "prop",
+      "value_flag": null,
+      "value_pct": 26.9,
+      "would_veto": false
     }
   ],
   "tally": {
     "parlays": {
-      "losses": 4,
-      "n_graded": 4,
-      "profit": -400.0,
+      "losses": 5,
+      "n_graded": 5,
+      "profit": -500.0,
       "pushes": 0,
       "roi_pct": -100.0,
       "voids": 0,
       "wins": 0
     },
     "straights": {
-      "losses": 8,
-      "n_graded": 16,
-      "profit": -187.32,
+      "losses": 9,
+      "n_graded": 19,
+      "profit": -90.86,
       "pushes": 0,
-      "roi_pct": -11.71,
+      "roi_pct": -4.78,
       "voids": 0,
-      "wins": 8
+      "wins": 10
     },
     "top_tier": {
       "losses": 0,
@@ -667,5 +793,5 @@
       "wins": 0
     }
   },
-  "updated_pt": "2026-11-10 07:06:46 PST"
+  "updated_pt": "2026-11-11 08:41:12 PST"
 }
