@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-11",
+  "generated_pt": "2026-11-11 07:20:28 PST",
+  "name": "Card R \u2014 Random (paper test)",
+  "notes": [
+    "Paper test, never the live card. Shown so users can pick which card to follow.",
+    "Parlay follows the same 75% safest-parlay rule as the live card (legs >= 75%, tightest agreement)."
+  ],
+  "parlay": null,
+  "parlay_record": {
+    "losses": 1,
+    "n_graded": 2,
+    "wins": 1
+  },
+  "straights": [],
+  "variant": "R"
+}
