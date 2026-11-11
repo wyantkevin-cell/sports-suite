@@ -4,6 +4,7 @@
       "combined": {
         "losses": 14,
         "n_graded": 24,
+        "n_pending": 0,
         "profit": -590.86,
         "pushes": 0,
         "roi_pct": -24.6,
@@ -71,6 +72,7 @@
       "combined": {
         "losses": 0,
         "n_graded": 0,
+        "n_pending": 0,
         "profit": 0.0,
         "pushes": 0,
         "roi_pct": null,
@@ -83,6 +85,7 @@
       "parlays": {
         "losses": 0,
         "n_graded": 0,
+        "n_pending": 0,
         "profit": 0.0,
         "pushes": 0,
         "roi_pct": null,
@@ -93,6 +96,7 @@
       "straights": {
         "losses": 0,
         "n_graded": 0,
+        "n_pending": 0,
         "profit": 0.0,
         "pushes": 0,
         "roi_pct": null,
@@ -100,7 +104,7 @@
       }
     }
   ],
-  "generated_pt": "2026-11-11 11:37:42 PST",
+  "generated_pt": "2026-11-11 12:21:06 PST",
   "name": "Record eras \u2014 archived, not deleted, never blended",
   "note": "Switching rules and starting a new record is not dishonest as long as the old way is shelved and kept visible, not deleted or hidden (Kevin, Nov 10). Every era below stays visible on the site. Numbers come from track_record_ledger.jsonl and variant_records.json \u2014 the ledger is the source of truth; variant_records.json agrees exactly (D straights profit_exact -90.86, parlays -500.0, combined -590.86). Each bet is $100 flat. ROI is profit divided by graded bets.",
   "paper_tests_not_in_live_record": [
