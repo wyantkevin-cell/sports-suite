@@ -764,6 +764,20 @@ html[data-theme="dark"] .beton a.beton-novig,html[data-theme="terminal"] .beton 
 /* Record tally: two plain-language blocks, straights and parlays. */
 .tally-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
 @media(max-width:640px){.tally-grid{grid-template-columns:minmax(0,1fr)}}
+.pnl-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-top:12px}
+.pnl-head{font-size:12px;color:var(--muted);text-align:center;font-weight:700;padding:2px 0}
+.pnl-day{border:1px solid var(--line);border-radius:10px;padding:8px 4px;min-height:66px;text-align:center;background:var(--panel)}
+.pnl-day .d{font-size:12px;color:var(--muted)}
+.pnl-day .amt{font-size:14px;font-weight:700;margin-top:2px}
+.pnl-day .wl{font-size:11px;color:var(--muted);margin-top:1px;line-height:1.3}
+.pnl-day.good{background:var(--good-bg)}
+.pnl-day.good .amt{color:var(--good)}
+.pnl-day.bad{background:var(--bad-bg)}
+.pnl-day.bad .amt{color:var(--bad)}
+.pnl-day.pending .amt{color:var(--muted);font-weight:600}
+.pnl-day.empty{background:transparent;border-style:dashed}
+.pnl-day.empty .amt{color:var(--muted)}
+@media(max-width:480px){.pnl-day{min-height:56px;padding:6px 2px}.pnl-day .amt{font-size:12px}.pnl-day .wl{font-size:10px}}
 .tally-block{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--bg)}
 .tally-block h3{font-size:15px;margin-bottom:6px}
 .tally-block .tally-line{font-family:var(--mono);font-weight:700;font-size:17px}
@@ -1345,6 +1359,17 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <p class="sub" id="recordEraNote">This record covers two ways of picking. Nov 6&ndash;10 used the old way; from Nov 11 we use the new way. Each way&rsquo;s record is shown on its own below &mdash; nothing is blended.</p>
 
     <div id="recordDays"></div>
+    <section class="block" aria-label="Profit and loss calendar">
+      <h2>Profit and loss calendar</h2>
+      <p class="sub">Each day&rsquo;s result at a glance. Green means the day made money, red means it lost money. A day whose bets have not finished yet shows &ldquo;not settled&rdquo;. Each bet is $100 flat.</p>
+      <div class="filter-group">
+        <span class="filter-label" id="pnlMonthLabel">Month</span>
+        <select id="pnlMonthFilter" aria-labelledby="pnlMonthLabel" style="display:none"></select>
+      </div>
+      <p class="sub" id="pnlCalendarTotal" style="margin-top:10px"></p>
+      <div id="pnlCalendar"><p class="empty-note">No calendar yet &mdash; check back after the morning update.</p></div>
+      <p class="sub" id="pnlCalendarMeta"></p>
+    </section>
 
     <section class="block" aria-label="Parlay record">
       <h2>Parlays</h2>
@@ -6426,6 +6451,93 @@ function loadRecordBreakdown(){
     }).catch(function(){});
   }catch(e){}
 }
+
+/* PnL calendar: the Our Record tab also tries to load
+   "record_pnl_calendar.json" (same folder as this page) — the paper
+   record's daily profit and loss, built each morning from the live
+   ledger (one line per straight/parlay, $100 flat stakes). Each day
+   in the month grid is green when it made money, red when it lost
+   money, neutral when nothing has settled yet. Days with no bets are
+   blank. Any failure at all (file missing, network error, bad JSON,
+   unrecognizable shape) leaves the honest "No calendar yet" note
+   exactly as it is: no banner, no stale numbers, nothing here is
+   allowed to throw. */
+var PNL_CALENDAR=null;
+var PNL_MONTH=null;
+function pnlMonthLabel(m){
+  var months=["January","February","March","April","May","June","July","August","September","October","November","December"];
+  var parts=String(m||"").split("-");
+  if(parts.length!==2) return String(m||"");
+  return months[Number(parts[1])-1]+" "+parts[0];
+}
+function renderPnlCalendar(){
+  var host=$("pnlCalendar"); if(!host) return;
+  var total=$("pnlCalendarTotal");
+  var sel=$("pnlMonthFilter");
+  var months=(PNL_CALENDAR&&Array.isArray(PNL_CALENDAR.months))?PNL_CALENDAR.months:[];
+  if(!months.length){
+    host.innerHTML='<p class="empty-note">No calendar yet \u2014 check back after the morning update.</p>';
+    if(total) total.textContent="";
+    return;
+  }
+  if(!PNL_MONTH||!months.some(function(m){return m.month===PNL_MONTH;})) PNL_MONTH=months[months.length-1].month;
+  if(sel){
+    if(sel.options.length!==months.length){
+      sel.innerHTML=months.map(function(m){return '<option value="'+esc(m.month)+'">'+esc(m.label||pnlMonthLabel(m.month))+'</option>';}).join("");
+    }
+    sel.value=PNL_MONTH;
+    sel.style.display=months.length>1?"":"none";
+  }
+  var m=months.filter(function(x){return x.month===PNL_MONTH;})[0]||months[months.length-1];
+  var byDate={};
+  (PNL_CALENDAR.days||[]).forEach(function(d){ if(d&&d.date) byDate[d.date]=d; });
+  var y=Number(m.month.slice(0,4)), mo=Number(m.month.slice(5,7));
+  var first=new Date(y,mo-1,1).getDay();
+  var ndays=new Date(y,mo,0).getDate();
+  var heads=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].map(function(h){return '<div class="pnl-head">'+h+'</div>';}).join("");
+  var cells="";
+  for(var i=0;i<first;i++) cells+='<div class="pnl-day empty" aria-hidden="true"></div>';
+  for(var d=1;d<=ndays;d++){
+    var ds=m.month+"-"+(d<10?"0"+d:""+d);
+    var day=byDate[ds];
+    if(!day){
+      cells+='<div class="pnl-day empty"><div class="d">'+d+'</div><div class="amt">\u2014</div><div class="wl">no bets</div></div>';
+    } else if(day.status==="pending"){
+      cells+='<div class="pnl-day pending"><div class="d">'+d+'</div><div class="amt">not settled</div><div class="wl">'+(day.n_pending||0)+' bet'+((day.n_pending||0)===1?"":"s")+' waiting</div></div>';
+    } else {
+      var cls=day.net_profit>0?"good":(day.net_profit<0?"bad":"");
+      var wl=day.wins+" won, "+day.losses+" lost";
+      if(day.pushes) wl+=", "+day.pushes+" push"+(day.pushes>1?"es":"");
+      cells+='<div class="pnl-day '+cls+'"><div class="d">'+d+'</div><div class="amt">'+esc(fmtProfit(day.net_profit))+'</div><div class="wl">'+esc(wl)+'</div></div>';
+    }
+  }
+  host.innerHTML='<div class="pnl-grid" role="table" aria-label="Profit and loss by day, '+esc(m.label||pnlMonthLabel(m.month))+'">'+heads+cells+'</div>';
+  if(total){
+    var t=wlText({wins:m.wins||0,losses:m.losses||0,pushes:m.pushes||0});
+    total.textContent=(m.label||pnlMonthLabel(m.month))+" so far: "+fmtProfit(m.net_profit)+" \u00b7 "+t+" \u00b7 "+(m.green_days||0)+" green day"+((m.green_days||0)===1?"":"s")+", "+(m.red_days||0)+" red day"+((m.red_days||0)===1?"":"s")+".";
+  }
+  var meta=$("pnlCalendarMeta");
+  if(meta) meta.textContent=PNL_CALENDAR.stake_note||"Each bet is $100 flat.";
+}
+function applyPnlCalendar(data){
+  if(!data||typeof data!=="object") return false;
+  if(!Array.isArray(data.days)||!Array.isArray(data.months)) return false;
+  PNL_CALENDAR=data;
+  try{renderPnlCalendar();}catch(e){}
+  return true;
+}
+function loadPnlCalendar(){
+  try{
+    if(typeof fetch!=="function") return;
+    fetch("record_pnl_calendar.json").then(function(res){
+      if(!res||!res.ok) return null;
+      return res.json();
+    }).then(function(data){
+      if(!data) return;
+      try{applyPnlCalendar(data);}catch(e){}
+    }).catch(function(){});
+  }catch(e){}
+}
 /* Variant records: the Our Record tab also tries to load
    "variant_records.json" (same folder as this page) — how each way of
    picking bets is doing, built each morning from the live ledger and
@@ -7539,6 +7651,8 @@ try{loadCumulativeRecord();}catch(e){}
 try{loadRecordBreakdown();}catch(e){}
 try{loadVariantRecords();}catch(e){}
 try{loadGradedBets();}catch(e){}
+try{loadPnlCalendar();}catch(e){}
+try{var pmf=$("pnlMonthFilter");if(pmf) pmf.addEventListener("change",function(){PNL_MONTH=pmf.value;try{renderPnlCalendar();}catch(e){}});}catch(e){}
 try{var bvf=$("breakdownViewFilter");if(bvf) bvf.addEventListener("change",function(){try{renderBreakdown();}catch(e){}});}catch(e){}
 })();
 </script>
