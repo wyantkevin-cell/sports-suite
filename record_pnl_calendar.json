@@ -1,0 +1,181 @@
+{
+  "days": [
+    {
+      "date": "2026-11-06",
+      "era": "D",
+      "losses": 3,
+      "n_graded": 5,
+      "n_pending": 0,
+      "net_profit": -154.94,
+      "parlays": {
+        "losses": 1,
+        "n": 1,
+        "profit": -100.0,
+        "pushes": 0,
+        "wins": 0
+      },
+      "pushes": 0,
+      "status": "settled",
+      "straights": {
+        "losses": 2,
+        "n": 4,
+        "profit": -54.94,
+        "pushes": 0,
+        "wins": 2
+      },
+      "wins": 2
+    },
+    {
+      "date": "2026-11-07",
+      "era": "D",
+      "losses": 3,
+      "n_graded": 5,
+      "n_pending": 0,
+      "net_profit": -135.36,
+      "parlays": {
+        "losses": 1,
+        "n": 1,
+        "profit": -100.0,
+        "pushes": 0,
+        "wins": 0
+      },
+      "pushes": 0,
+      "status": "settled",
+      "straights": {
+        "losses": 2,
+        "n": 4,
+        "profit": -35.36,
+        "pushes": 0,
+        "wins": 2
+      },
+      "wins": 2
+    },
+    {
+      "date": "2026-11-08",
+      "era": "D",
+      "losses": 3,
+      "n_graded": 5,
+      "n_pending": 0,
+      "net_profit": -167.49,
+      "parlays": {
+        "losses": 1,
+        "n": 1,
+        "profit": -100.0,
+        "pushes": 0,
+        "wins": 0
+      },
+      "pushes": 0,
+      "status": "settled",
+      "straights": {
+        "losses": 2,
+        "n": 4,
+        "profit": -67.49,
+        "pushes": 0,
+        "wins": 2
+      },
+      "wins": 2
+    },
+    {
+      "date": "2026-11-09",
+      "era": "D",
+      "losses": 3,
+      "n_graded": 5,
+      "n_pending": 0,
+      "net_profit": -129.53,
+      "parlays": {
+        "losses": 1,
+        "n": 1,
+        "profit": -100.0,
+        "pushes": 0,
+        "wins": 0
+      },
+      "pushes": 0,
+      "status": "settled",
+      "straights": {
+        "losses": 2,
+        "n": 4,
+        "profit": -29.53,
+        "pushes": 0,
+        "wins": 2
+      },
+      "wins": 2
+    },
+    {
+      "date": "2026-11-10",
+      "era": "D",
+      "losses": 2,
+      "n_graded": 4,
+      "n_pending": 0,
+      "net_profit": -3.54,
+      "parlays": {
+        "losses": 1,
+        "n": 1,
+        "profit": -100.0,
+        "pushes": 0,
+        "wins": 0
+      },
+      "pushes": 0,
+      "status": "settled",
+      "straights": {
+        "losses": 1,
+        "n": 3,
+        "profit": 96.46,
+        "pushes": 0,
+        "wins": 2
+      },
+      "wins": 2
+    },
+    {
+      "date": "2026-11-11",
+      "era": "A",
+      "losses": 0,
+      "n_graded": 0,
+      "n_pending": 5,
+      "net_profit": 0.0,
+      "parlays": {
+        "losses": 0,
+        "n": 0,
+        "profit": 0.0,
+        "pushes": 0,
+        "wins": 0
+      },
+      "pushes": 0,
+      "status": "pending",
+      "straights": {
+        "losses": 0,
+        "n": 5,
+        "profit": 0.0,
+        "pushes": 0,
+        "wins": 0
+      },
+      "wins": 0
+    }
+  ],
+  "era_note": "Nov 6-10, 2026 used the old way of picking (D); from Nov 11 we use the new way (A). Nothing is blended; the calendar covers both.",
+  "generated_pt": "2026-11-11 08:46:08 PST",
+  "months": [
+    {
+      "flat_days": 0,
+      "green_days": 0,
+      "label": "November 2026",
+      "losses": 14,
+      "month": "2026-11",
+      "n_graded": 24,
+      "n_pending": 5,
+      "net_profit": -590.86,
+      "pushes": 0,
+      "red_days": 5,
+      "wins": 10
+    }
+  ],
+  "name": "Daily profit and loss \u2014 paper record",
+  "stake_note": "Each bet is $100 flat.",
+  "totals": {
+    "losses": 14,
+    "n_graded": 24,
+    "n_pending": 5,
+    "net_profit": -590.86,
+    "pushes": 0,
+    "wins": 10
+  }
+}
