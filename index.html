@@ -5940,7 +5940,7 @@ function renderMCard(){
 function loadMCard(){
   try{
     if(typeof fetch!=="function") return;
-    fetch("paper_card_m.json").then(function(res){
+    fetch("paper_card_m.json?v=" + Date.now()).then(function(res){
       if(!res||!res.ok) return null;
       return res.json();
     }).then(function(data){
@@ -5992,7 +5992,7 @@ function renderRCard(){
 function loadRCard(){
   try{
     if(typeof fetch!=="function") return;
-    fetch("paper_card_r.json").then(function(res){
+    fetch("paper_card_r.json?v=" + Date.now()).then(function(res){
       if(!res||!res.ok) return null;
       return res.json();
     }).then(function(data){
@@ -6365,7 +6365,7 @@ function applyCumulativeRecord(data){
 function loadCumulativeRecord(){
   try{
     if(typeof fetch!=="function") return;
-    fetch("track_record_cumulative.json").then(function(res){
+    fetch("track_record_cumulative.json?v=" + Date.now()).then(function(res){
       if(!res||!res.ok) return null;
       return res.json();
     }).then(function(data){
@@ -6442,7 +6442,7 @@ function applyBreakdown(data){
 function loadRecordBreakdown(){
   try{
     if(typeof fetch!=="function") return;
-    fetch("record_breakdown.json").then(function(res){
+    fetch("record_breakdown.json?v=" + Date.now()).then(function(res){
       if(!res||!res.ok) return null;
       return res.json();
     }).then(function(data){
@@ -6529,7 +6529,7 @@ function applyPnlCalendar(data){
 function loadPnlCalendar(){
   try{
     if(typeof fetch!=="function") return;
-    fetch("record_pnl_calendar.json").then(function(res){
+    fetch("record_pnl_calendar.json?v=" + Date.now()).then(function(res){
       if(!res||!res.ok) return null;
       return res.json();
     }).then(function(data){
@@ -6606,7 +6606,7 @@ function applyVariantRecords(data){
 function loadVariantRecords(){
   try{
     if(typeof fetch!=="function") return;
-    fetch("variant_records.json").then(function(res){
+    fetch("variant_records.json?v=" + Date.now()).then(function(res){
       if(!res||!res.ok) return null;
       return res.json();
     }).then(function(data){
@@ -6739,7 +6739,7 @@ function applyGradedBets(data){
 function loadGradedBets(){
   try{
     if(typeof fetch!=="function") return;
-    fetch("record_graded_bets.json").then(function(res){
+    fetch("record_graded_bets.json?v=" + Date.now()).then(function(res){
       if(!res||!res.ok) return null;
       return res.json();
     }).then(function(data){
