@@ -4915,7 +4915,16 @@ function homeBetDateLabel(b){
 function renderHomePicks(){
   var box=$("homePicksList"), combo=$("homePicksCombo"), voidNote=$("homePicksVoidNote");
   if(!box) return;
-  var rows=(typeof TODAY_BETS!=="undefined"&&TODAY_BETS)?TODAY_BETS:[];
+  /* Home "strongest picks" reads Best Plays now (Nov 12): the live
+     recommendation is best_plays.json, and TODAY_BETS stays empty
+     permanently (the A card is retired). Best Plays rows are props
+     with side/line/market, so the same rendering below works unchanged.
+     Until the feed lands, fall back to TODAY_BETS (empty) and show the
+     honest "no picks yet" note — the feed re-renders this list when it
+     arrives (see loadBestPlays). */
+  var rows=(typeof BEST_PLAYS!=="undefined"&&BEST_PLAYS&&Array.isArray(BEST_PLAYS.straights)&&BEST_PLAYS.straights.length)
+    ?BEST_PLAYS.straights
+    :(typeof TODAY_BETS!=="undefined"&&TODAY_BETS)?TODAY_BETS:[];
   var voids=homeVoidKeys();
   var voidDesc=homeVoidDescriptions();
   var picks=[], voided=[];
@@ -6028,6 +6037,10 @@ function loadBestPlays(){
       if(!data) return;
       BEST_PLAYS=data;
       try{renderBestPlays();}catch(e){}
+      /* Home "strongest picks" reads this feed now — re-render it once
+         the picks arrive (its first render, before the fetch, shows the
+         honest "no picks yet" note). */
+      try{renderHomePicks();}catch(e){}
     }).catch(function(){});
   }catch(e){}
 }
