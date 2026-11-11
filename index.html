@@ -1287,7 +1287,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <h1>Today&rsquo;s Best Plays</h1>
       <span class="bets-date" id="betsDate" hidden></span>
       <p class="record-line">Our record: 0&ndash;0, $0 so far. Forecasts, not winners yet.</p>
-      <p>These are the only picks our numbers back right now. Below them, a few more picks from the board &mdash; one per sport.</p>
+      <p>These are the only picks our numbers back right now. Below them, a few more picks from the board &mdash; up to 10 per sport.</p>
       <div class="freshness"></div>
     </div>
 
@@ -1305,9 +1305,9 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <section class="bets-tier" aria-label="More Plays">
       <div class="explain-wrap">
         <h2 class="explain-head"><span class="explain-title">More Plays</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainMorePlays" aria-label="About More Plays">i</button></h2>
-        <div class="explain" id="explainMorePlays" hidden><p style="margin:0">These are the model&rsquo;s picks, one per sport &mdash; the closest our number sits to the book&rsquo;s number in each sport. They have not shown a profit, and they are not part of our main record. They are here for people who want to pick their own spots. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
+        <div class="explain" id="explainMorePlays" hidden><p style="margin:0">These are the model&rsquo;s picks, up to 10 per sport &mdash; the closest our number sits to the book&rsquo;s number. They have not shown a profit, and they are not part of our main record. They are here for people who want to pick their own spots. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
       </div>
-      <p class="sub">More picks from the board, one per sport. These are not our best plays.</p>
+      <p class="sub">More picks from the board, up to 10 per sport. These are not our best plays.</p>
       <div class="filters" id="morePlaysFilters" role="group" aria-label="Filter More Plays by sport"></div>
       <div id="morePlaysGrid" class="bets-grid"></div>
       <div id="morePlaysEmpty" class="empty-state"><p>Loading today&rsquo;s More Plays&hellip;</p></div>
@@ -1572,7 +1572,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 
     <h3 id="doc-record">Our record</h3>
     <p><a href="#record" data-goto="record">Our record</a> lists only bets that have finished. Date, pick, odds, result, and the profit at $100 per bet. Today&rsquo;s picks stay on <a href="#bets" data-goto="bets">Our Bets</a> until their games finish. The record started fresh on Nov 6, 2026, and started over again on Nov 12 with Best Plays &mdash; NBA assists only. The old eras are kept on <a href="#record" data-goto="record">Our Record</a> as an archive, never blended into the new era.</p>
-    <p><b>How the picks are chosen.</b> Best Plays are NBA assists where our number is more than 2 points above the book&rsquo;s number, up to 5 a day, only the ones that qualify &mdash; never padded. More Plays are up to ten picks per sport, the closest our number sits to the book&rsquo;s number in that sport; they are a second tier, not our best plays, and not part of the main record. There is no parlay. A pick is dropped if its game has already started. Every pick is graded at $100 flat. A pick that lands exactly on the line is a push. A player who does not play stays pending. Soccer is excluded from the public record.</p>
+    <p><b>How the picks are chosen.</b> Best Plays are NBA assists where our number is more than 2 points above the book&rsquo;s number, up to 5 a day, only the ones that qualify &mdash; never padded. More Plays are up to ten picks per sport, the closest our number sits to the book&rsquo;s number in that sport, with the best 30 shown in the main view; they are a second tier, not our best plays, and not part of the main record. There is no parlay. A pick is dropped if its game has already started. Every pick is graded at $100 flat. A pick that lands exactly on the line is a push. A player who does not play stays pending. Soccer is excluded from the public record.</p>
     <p><b>Silent grading.</b> Every morning we also grade the whole board in the background &mdash; every prop and every game forecast, about 25 times as many picks as the card. That grading never touches the public record. It exists only to feed the calibration tables and to show us which families are running hot or cold. On November 8, for example, it graded 355 events from the November 5 to 7 boards. The public record is only the card. The silent log is the lab notebook.</p>
     <p><b>Closing-line value (CLV).</b> We also track whether our picks beat the closing price at Pinnacle, the sharpest book. For each card pick, we record the price when we picked it and the Pinnacle price near game time. If the closing price moved our way, that is positive CLV. Positive CLV over many bets is the best early sign a model has an edge, because the closing price is the market&rsquo;s best guess. So far we have 53 closes recorded, averaging about +1.6 points. That is a small sample. It is suggestive, not proof. We need around 75 closes before we draw any conclusion, and we are not there yet.</p>
     <p><b>The record so far.</b> The old way (Nov 6&ndash;10, biggest edge): straights 10&ndash;9, &minus;$90.86; parlays 0&ndash;5, &minus;$500; total &minus;$590.86. That is a losing record. We show it because the record is the point. Nov 11 was a one-day switch to agreement; its 5 picks are still waiting on their games. The Best Plays era starts Nov 12 at 0&ndash;0, $0. If it stays negative, we change the selection rules and say so here.</p>
