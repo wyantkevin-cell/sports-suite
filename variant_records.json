@@ -4,10 +4,11 @@
     "source": "variant_backtest_20261110.md (corrected Nov 10, NHL alias fix)",
     "through": "Nov 5\u20139 graded (Nov 10 pending, excluded)"
   },
-  "generated_pt": "2026-11-11 08:57:30 PST",
+  "bp_start_date": "2026-11-12",
+  "generated_pt": "2026-11-11 12:21:06 PST",
   "name": "How each way of picking is doing",
   "notes": [
-    "The live card switched from the old way to the new way on Nov 11, 2026. The old way's record is kept here as an archive \u2014 never blended into the new way's numbers.",
+    "The live record is Best Plays (NBA assists only, edge over 2pp) from Nov 12, 2026. The agreement way ran one day (Nov 11) and the old biggest-edge way ran Nov 6\u201310; both are kept here as an archive \u2014 never blended into the Best Plays numbers.",
     "Paper-test rows are an experiment, not the live card. They never place a bet.",
     "Each bet is $100 flat. ROI is profit divided by the number of graded bets."
   ],
@@ -23,9 +24,46 @@
         "roi_pct_exact": null,
         "wins": 0
       },
-      "dates": "Nov 11, 2026 \u2013 now",
+      "dates": "Nov 12, 2026 \u2013 now",
+      "id": "live_bp",
+      "label": "Our record now \u2014 Best Plays (from Nov 12)",
+      "parlays": {
+        "losses": 0,
+        "n_graded": 0,
+        "profit": 0,
+        "profit_exact": 0.0,
+        "pushes": 0,
+        "roi_pct": null,
+        "roi_pct_exact": null,
+        "wins": 0
+      },
+      "phrase": "NBA assists where our number is clearly above the book's",
+      "status": "current",
+      "straights": {
+        "losses": 0,
+        "n_graded": 0,
+        "profit": 0,
+        "profit_exact": 0.0,
+        "pushes": 0,
+        "roi_pct": null,
+        "roi_pct_exact": null,
+        "wins": 0
+      }
+    },
+    {
+      "combined": {
+        "losses": 0,
+        "n_graded": 0,
+        "profit": 0,
+        "profit_exact": 0.0,
+        "pushes": 0,
+        "roi_pct": null,
+        "roi_pct_exact": null,
+        "wins": 0
+      },
+      "dates": "Nov 11, 2026",
       "id": "live_a",
-      "label": "Our record now \u2014 new way (from Nov 11)",
+      "label": "Archived \u2014 agreement (Nov 11)",
       "parlays": {
         "losses": 0,
         "n_graded": 0,
@@ -37,7 +75,7 @@
         "wins": 0
       },
       "phrase": "Picks where we agree with the book",
-      "status": "current",
+      "status": "archived",
       "straights": {
         "losses": 0,
         "n_graded": 0,
@@ -195,6 +233,43 @@
         "roi_pct": -11.6,
         "roi_pct_exact": -11.6,
         "wins": 11
+      }
+    },
+    {
+      "combined": {
+        "losses": 0,
+        "n_graded": 0,
+        "profit": 0,
+        "profit_exact": 0.0,
+        "pushes": 0,
+        "roi_pct": null,
+        "roi_pct_exact": null,
+        "wins": 0
+      },
+      "dates": "Nov 11, 2026 \u2013 now",
+      "id": "paper_mp",
+      "label": "Paper test \u2014 More Plays (MP)",
+      "parlays": {
+        "losses": 0,
+        "n_graded": 0,
+        "profit": 0,
+        "profit_exact": 0.0,
+        "pushes": 0,
+        "roi_pct": null,
+        "roi_pct_exact": null,
+        "wins": 0
+      },
+      "phrase": "More picks from the board, up to 10 per sport",
+      "status": "paper",
+      "straights": {
+        "losses": 0,
+        "n_graded": 0,
+        "profit": 0,
+        "profit_exact": 0.0,
+        "pushes": 0,
+        "roi_pct": null,
+        "roi_pct_exact": null,
+        "wins": 0
       }
     }
   ],
