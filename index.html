@@ -652,6 +652,12 @@ html[data-theme="minimal"] .tabbar [role="tab"][aria-selected="true"]{background
 .bets-hero p{margin:10px 0 0;font-size:16px;line-height:1.55;opacity:.9;max-width:620px}
 .bets-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}
 @media(max-width:700px){.bets-grid{grid-template-columns:minmax(0,1fr)}}
+/* Our Bets tiers (Nov 11 rebuild): Best Plays on top, More Plays below.
+   The filter row reuses the site's .filters pill buttons. */
+.bets-tier{margin-top:30px}
+.bets-tier .sub{margin-top:8px}
+.bets-tier .bets-grid{margin-top:14px}
+.bets-tier .filters{margin:14px 0 0}
 .bet-card{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:18px 19px;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:border-color .15s,box-shadow .15s}
 .bet-card:hover{border-color:var(--accent);box-shadow:0 6px 20px rgba(0,0,0,.10)}
 .bet-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
@@ -735,13 +741,11 @@ html[data-theme="dark"] .beton a.beton-novig,html[data-theme="terminal"] .beton 
 .parlay-legs li{margin-bottom:4px}
 .parlay-note{margin:10px 0 0;font-size:13.5px;color:var(--muted);line-height:1.55}
 .bets-empty{margin-top:18px}
-/* Three cards on Our Bets (Nov 11): Card A (live, agreement), Card M
-   (paper test, moderate edge) and Card R (paper test, random), side by
-   side on wide screens, stacked on phones. Each card is a designed
-   unit: a distinct header band (title + what it leans toward), the
-   picks, and a footer with the site address so a shared screenshot
-   points back to us. Picks inside a card run one per row so they stay
-   large and readable. */
+/* Three cards on Our Bets (Nov 11) — RETIRED Nov 11, 2026: Card A
+   (live, agreement), Card M (paper test, moderate edge) and Card R
+   (paper test, random) came off Our Bets in the Best Plays rebuild.
+   These rules are kept only so the old card styles do not break if
+   the markup ever returns; nothing on the live page uses them now. */
 .cards-wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:18px}
 @media(max-width:1100px){.cards-wrap{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:820px){.cards-wrap{grid-template-columns:minmax(0,1fr)}}
@@ -1005,7 +1009,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
         <button type="button" data-goto="gameforecasts" data-gf-section="gf-moneyline">Who wins? <span>Who we think wins each game &rarr;</span></button>
         <button type="button" data-goto="props">Player picks <span>Points, shots, touchdowns, all of it &rarr;</span></button>
         <button type="button" data-goto="gameforecasts" data-gf-section="gf-totals">Totals <span>Our total next to the book&rsquo;s &rarr;</span></button>
-        <button type="button" data-goto="bets">Our Bets <span>Today&rsquo;s card &rarr;</span></button>
+        <button type="button" data-goto="bets">Our Bets <span>Today&rsquo;s Best Plays &rarr;</span></button>
         <button type="button" data-goto="gameforecasts" data-gf-section="gf-season">NFL Season outlook <span>We ran the season 10,000 times. Here&rsquo;s how it ends. &rarr;</span></button>
         <button type="button" data-goto="record">Our record <span>Finished bets. Wins and losses. &rarr;</span></button>
       </div>
@@ -1280,81 +1284,63 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <!-- ============ OUR BETS ============ -->
   <section class="panel" id="panel-bets" role="tabpanel" aria-labelledby="tab-bets" tabindex="0" hidden>
     <div class="bets-hero">
-      <h1>Today's Cards</h1>
+      <h1>Today&rsquo;s Best Plays</h1>
       <span class="bets-date" id="betsDate" hidden></span>
-      <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not winners yet.</p>
-      <p>Three cards, three ways of picking &mdash; follow the one you like, or all three. Each card shows our chance it hits, and how it stacks up against the book&rsquo;s number.</p>
-      <p class="note" id="betsSwitchNote">We changed how we pick bets on Nov 11. The old way chased the biggest edges, and those lost the most. The new way picks bets where we agree with the book &mdash; in a backtest (Nov 5&ndash;10) it went 15&ndash;5 on single bets for +$207, while the old way went 8&ndash;8 for &minus;$187. The sample is still small, so this does not prove the new way wins yet. See <a href="#record" data-goto="record">Our Record</a> for the full record of each way.</p>
+      <p class="record-line">Our record: 0&ndash;0, $0 so far. Forecasts, not winners yet.</p>
+      <p>These are the only picks our numbers back right now. Below them, a few more picks from the board &mdash; one per sport.</p>
       <div class="freshness"></div>
     </div>
-    <div id="betsEmpty" class="empty-state bets-empty"><p>Today's cards post with the morning update — check back after 9am.</p></div>
-    <div class="cards-wrap">
-      <section class="pick-card pick-card-a" aria-label="Card A — Agreement">
-        <div class="pick-card-head pick-card-head-a">
-          <div class="pick-card-watermark" aria-hidden="true"></div>
-          <div class="pick-card-head-text">
-            <span class="pick-card-tag">Live</span>
-            <h2>Sim Says &mdash; Card A &middot; Agreement</h2>
-            <p>Leans toward bets where we agree with the book &mdash; mostly favorites, safer picks, smaller payouts.</p>
-          </div>
-        </div>
-        <div class="pick-card-body">
-          <div id="parlayWrap"></div>
-          <div class="bets-grid" id="betsGrid"></div>
-        </div>
-        <p class="pick-card-foot">Sim Says &mdash; thesimsays.com</p>
-      </section>
-      <section class="pick-card pick-card-m" aria-label="Card M — Moderate Edge">
-        <div class="pick-card-head pick-card-head-m">
-          <div class="pick-card-watermark" aria-hidden="true"></div>
-          <div class="pick-card-head-text">
-            <span class="pick-card-tag">Paper test</span>
-            <h2>Sim Says &mdash; Card M &middot; Moderate Edge</h2>
-            <p>Leans toward bets with a moderate edge &mdash; a mix, sometimes longer odds, a bit more upside than A.</p>
-          </div>
-        </div>
-        <div class="pick-card-body">
-          <div id="mParlayWrap"></div>
-          <div class="bets-grid" id="mBetsGrid"></div>
-          <p class="empty-note" id="mCardEmpty">No M card yet &mdash; check back after the morning update.</p>
-        </div>
-        <p class="pick-card-foot">Sim Says &mdash; thesimsays.com</p>
-      </section>
-      <section class="pick-card pick-card-r" aria-label="Card R — Random">
-        <div class="pick-card-head pick-card-head-r">
-          <div class="pick-card-watermark" aria-hidden="true"></div>
-          <div class="pick-card-head-text">
-            <span class="pick-card-tag">Paper test</span>
-            <h2>Sim Says &mdash; Card R &middot; Random</h2>
-            <p>Picks chosen at random, just to check &mdash; if random does as well as our ways, our ways are not helping.</p>
-          </div>
-        </div>
-        <div class="pick-card-body">
-          <div id="rParlayWrap"></div>
-          <div class="bets-grid" id="rBetsGrid"></div>
-          <p class="empty-note" id="rCardEmpty">No R card yet &mdash; check back after the morning update.</p>
-        </div>
-        <p class="pick-card-foot">Sim Says &mdash; thesimsays.com</p>
-      </section>
-    </div>
-    <p class="note" id="betsCardNote">Day 1 of the fresh record. These are the day's strongest picks, $100 flat on each. The parlay is tracked on its own — it's not part of the straight-bet tally.</p>
-    <p class="note">Today’s bets only. Once a game finishes and a pick is graded, it moves to <a href="#record" data-goto="record">Our Record</a>. Pending picks never show up there.</p>
+
+    <section class="bets-tier" aria-label="Best Plays">
+      <div class="explain-wrap">
+        <h2 class="explain-head"><span class="explain-title">Best Plays</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainBestPlays" aria-label="About Best Plays">i</button></h2>
+        <div class="explain" id="explainBestPlays" hidden><p style="margin:0">These are NBA assists where our number is clearly above the book&rsquo;s number. This is the best lead we have, and we are tracking every one of these picks, win or lose, in our record from November 12. It is not a promise &mdash; no pick is guaranteed, and the record so far is small. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
+      </div>
+      <p class="sub">These are the only picks our numbers back right now.</p>
+      <div id="bestPlaysGrid" class="bets-grid"></div>
+      <div id="bestPlaysEmpty" class="empty-state"><p>Loading today&rsquo;s Best Plays&hellip;</p></div>
+      <p class="sub" id="bestPlaysMeta"></p>
+    </section>
+
+    <section class="bets-tier" aria-label="More Plays">
+      <div class="explain-wrap">
+        <h2 class="explain-head"><span class="explain-title">More Plays</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainMorePlays" aria-label="About More Plays">i</button></h2>
+        <div class="explain" id="explainMorePlays" hidden><p style="margin:0">These are the model&rsquo;s picks, one per sport &mdash; the closest our number sits to the book&rsquo;s number in each sport. They have not shown a profit, and they are not part of our main record. They are here for people who want to pick their own spots. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
+      </div>
+      <p class="sub">More picks from the board, one per sport. These are not our best plays.</p>
+      <div class="filters" id="morePlaysFilters" role="group" aria-label="Filter More Plays by sport"></div>
+      <div id="morePlaysGrid" class="bets-grid"></div>
+      <div id="morePlaysEmpty" class="empty-state"><p>Loading today&rsquo;s More Plays&hellip;</p></div>
+      <p class="sub" id="morePlaysMeta"></p>
+    </section>
+    <p class="note">Today&rsquo;s picks only. Once a game finishes and a pick is graded, it moves to <a href="#record" data-goto="record">Our Record</a>. Pending picks never show up there.</p>
   </section>
 
   <section class="panel" id="panel-record" role="tabpanel" aria-labelledby="tab-record" tabindex="0" hidden>
     <div class="explain-wrap">
       <h1 class="explain-head"><span class="explain-title">How have <em>we done?</em></span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainRecord" aria-label="About this record">i</button></h1>
-      <div class="explain" id="explainRecord" hidden><p style="margin:0">Only finished bets show up here, with the result next to each one. Today’s bets stay on <a class="doclink" href="#bets" data-goto="bets">Our Bets</a> until their games finish. The record started fresh on Nov 6, 2026. The card only includes games dated that day. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
+      <div class="explain" id="explainRecord" hidden><p style="margin:0">Only finished bets show up here, with the result next to each one. Today&rsquo;s picks stay on <a class="doclink" href="#bets" data-goto="bets">Our Bets</a> until their games finish. The record started fresh on Nov 6, 2026, and started over again on Nov 12 with Best Plays &mdash; NBA assists only. The old eras are kept below, as an archive. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
     </div>
 
     <div class="card tally-card">
-      <div class="tally-big" id="tallyBig">No settled bets yet</div>
-      <p id="tallySub">Every settled bet counts at $100. So the profit is what $100 bets would have made or lost.</p>
-      <div class="tally-grid" id="tallyGrid"></div>
+      <div class="tally-big" id="tallyBig">0&ndash;0 &middot; $0 profit</div>
+      <p id="tallySub">Best Plays era, from Nov 12, 2026. Every settled bet counts at $100. So the profit is what $100 bets would have made or lost.</p>
+      <div class="tally-grid" id="tallyGrid"><div class="tally-block"><h3>Best Plays &mdash; NBA assists only</h3><div class="tally-line">0 wins, 0 losses</div><p>Profit: <b>$0</b> &nbsp;&middot;&nbsp; ROI: <b>&mdash;</b> &nbsp;&middot;&nbsp; 0 settled</p></div></div>
       <div id="periodRecord"></div>
     </div>
 
-    <p class="sub" id="recordEraNote">This record covers two ways of picking. Nov 6&ndash;10 used the old way; from Nov 11 we use the new way. Each way&rsquo;s record is shown on its own below &mdash; nothing is blended.</p>
+    <p class="sub" id="recordEraNote">This record covers three eras. Nov 6&ndash;10 used the old way (biggest edge); Nov 11 was a one-day switch to agreement; from Nov 12 the record is Best Plays &mdash; NBA assists only. Each era&rsquo;s record is shown on its own below &mdash; nothing is blended.</p>
+
+    <section class="block" aria-label="Record eras">
+      <h2>Record eras</h2>
+      <p class="sub">The current record is the Best Plays era. The old ways are kept here as an archive &mdash; visible, never blended in. <a href="record_eras_archive.json">Full archive (JSON)</a> &middot; <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p>
+      <div class="rows" id="eraRows">
+        <div class="trow" style="grid-template-columns:minmax(0,1fr) auto"><div class="who"><b>Best Plays era &mdash; NBA assists only</b><span>Current &middot; Nov 12, 2026 &ndash; now &middot; Single bets 0&ndash;0 ($0) &middot; No parlays</span></div><div style="text-align:right"><div class="num" style="font-size:20px">0&ndash;0 &middot; $0</div><div style="font-size:12px;color:var(--muted)">No settled bets yet</div></div></div>
+        <div class="trow" style="grid-template-columns:minmax(0,1fr) auto"><div class="who"><b>A era &mdash; agreement</b><span>Archived &middot; Nov 11, 2026 &middot; Single bets 0&ndash;0, 5 waiting on their games ($0)</span></div><div style="text-align:right"><div class="num" style="font-size:20px">&mdash;</div><div style="font-size:12px;color:var(--muted)">5 picks not settled yet</div></div></div>
+        <div class="trow" style="grid-template-columns:minmax(0,1fr) auto"><div class="who"><b>D era &mdash; biggest edge</b><span>Archived &middot; Nov 6&ndash;10, 2026 &middot; Single bets 10&ndash;9 (&minus;$90.86) &middot; Parlays 0&ndash;5 (&minus;$500)</span></div><div style="text-align:right"><div class="num" style="font-size:20px">10&ndash;14 &middot; &minus;$591</div><div style="font-size:12px;color:var(--muted)">ROI &minus;24.6% &middot; 24 graded</div></div></div>
+      </div>
+      <p class="sub" id="eraMeta"></p>
+    </section>
 
     <div id="recordDays"></div>
     <section class="block" aria-label="Profit and loss calendar">
@@ -1365,13 +1351,14 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
         <select id="pnlMonthFilter" aria-labelledby="pnlMonthLabel" style="display:none"></select>
       </div>
       <p class="sub" id="pnlCalendarTotal" style="margin-top:10px"></p>
+      <p class="sub">This calendar covers the archived eras so far. Best Plays days start landing here once the new era&rsquo;s picks settle, from Nov 12.</p>
       <div id="pnlCalendar"><p class="empty-note">No calendar yet &mdash; check back after the morning update.</p></div>
       <p class="sub" id="pnlCalendarMeta"></p>
     </section>
 
     <section class="block" aria-label="Parlay record">
-      <h2>Parlays</h2>
-      <p class="sub">Parlay of the Day results. Kept apart from single bets.</p>
+      <h2>Parlays &mdash; archived</h2>
+      <p class="sub">Parlay of the Day ended Nov 10. Its record stays here; there are no new parlays.</p>
       <div id="parlayRecordRows"><p class="empty-note">No settled parlays yet.</p></div>
     </section>
 
@@ -1379,16 +1366,16 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <h2>How we pick our bets</h2>
       <p class="sub">We try different ways of picking bets, and we keep the record for each way. Here are the four ways.</p>
       <div class="rows">
+        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Best Plays &mdash; the way now (from Nov 12)</b><span>NBA assists where our number is clearly above the book&rsquo;s number &mdash; more than 2 points above it. Up to 5 a day, only the ones that qualify, never padded. This is our record now.</span></div></div>
+        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>More Plays &mdash; second tier</b><span>One pick per sport, the closest our number sits to the book&rsquo;s number. Not our best plays, and not part of the main record. For people who want to pick their own spots.</span></div></div>
+        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Agreement (A) &mdash; one day (Nov 11)</b><span>We picked the bets where our number and the book&rsquo;s number were close, within 10 points of each other. One day only &mdash; the switch day. Its record is kept below, as an archive.</span></div></div>
         <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Dominant edge (D) &mdash; the old way (Nov 6&ndash;10)</b><span>We picked the bets where our number was furthest above the book&rsquo;s number. It lost money &mdash; and the bets with the biggest edge lost the most. We stopped using it. Its record is kept below, as an archive.</span></div></div>
-        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Agreement (A) &mdash; the new way (from Nov 11)</b><span>We pick the bets where our number and the book&rsquo;s number are close, within 10 points of each other. When we agree with the book, our number is the most trustworthy. This is how the card picks bets now, and it is our record now.</span></div></div>
-        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Moderate edge (M) &mdash; paper test only</b><span>We pick bets where our number is a little above the book&rsquo;s number, but not by a lot. We only run this on paper, to see if it does better than the old way.</span></div></div>
-        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Random (R) &mdash; paper test, shown as a card</b><span>We pick bets at random, just to check. If picking at random does as well as our ways, our ways are not helping. It is shown as a card on Our Bets so you can compare it with the other ways.</span></div></div>
       </div>
     </section>
 
     <section class="block" aria-label="How each way of picking is doing">
       <h2>How each way of picking is doing</h2>
-      <p class="sub">Each way&rsquo;s record, on its own. The new way is our record now; the old way is kept here as an archive, not blended in. The paper-test rows are an experiment &mdash; they never place a bet. Each bet is $100 flat.</p>
+      <p class="sub">Each era&rsquo;s record, on its own. The Best Plays era is our record now; the old eras are kept here as an archive, not blended in. The paper-test rows are an experiment &mdash; they never place a bet. Each bet is $100 flat.</p>
       <div class="rows" id="variantRows"><p class="empty-note">No variant records yet &mdash; check back after the morning update.</p></div>
       <p class="sub" id="variantMeta"></p>
     </section>
@@ -1584,11 +1571,11 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <p><b>The 15-point market cap.</b> Covered in Enhancements above. When Model B disagrees with the book by more than 15 points, we pull it back to within 15 points. It is a guardrail, not a model.</p>
 
     <h3 id="doc-record">Our record</h3>
-    <p><a href="#record" data-goto="record">Our record</a> lists only bets that have finished. Date, pick, odds, result, and the profit at $100 per bet. Today&rsquo;s bets stay on <a href="#bets" data-goto="bets">Our Bets</a> until their games finish. The record started fresh on Nov 6, 2026. The card only includes games dated that day.</p>
-    <p><b>How the card is picked.</b> Each day the card has 1 to 4 straight bets plus 1 Parlay of the Day. Picks are ranked by likelihood &mdash; the model&rsquo;s chance it hits &mdash; among picks that pass the value screen. The value screen is an edge of at least 10% over the book (see Enhancements for the adaptive bars). The card can be any sport and any bet type. Soccer is excluded from the public record. The parlay has 2 legs, both from the value-passing pool, from different games, no leg longer than +500, and the combined odds are capped at 10 times the stake. At most 1 college football prop per card. A pick is dropped if its game has already started. Every pick is graded at $100 flat. A pick that lands exactly on the line is a push. A player who does not play stays pending.</p>
+    <p><a href="#record" data-goto="record">Our record</a> lists only bets that have finished. Date, pick, odds, result, and the profit at $100 per bet. Today&rsquo;s picks stay on <a href="#bets" data-goto="bets">Our Bets</a> until their games finish. The record started fresh on Nov 6, 2026, and started over again on Nov 12 with Best Plays &mdash; NBA assists only. The old eras are kept on <a href="#record" data-goto="record">Our Record</a> as an archive, never blended into the new era.</p>
+    <p><b>How the picks are chosen.</b> Best Plays are NBA assists where our number is more than 2 points above the book&rsquo;s number, up to 5 a day, only the ones that qualify &mdash; never padded. More Plays are one pick per sport, the closest our number sits to the book&rsquo;s number in that sport; they are a second tier, not our best plays, and not part of the main record. There is no parlay. A pick is dropped if its game has already started. Every pick is graded at $100 flat. A pick that lands exactly on the line is a push. A player who does not play stays pending. Soccer is excluded from the public record.</p>
     <p><b>Silent grading.</b> Every morning we also grade the whole board in the background &mdash; every prop and every game forecast, about 25 times as many picks as the card. That grading never touches the public record. It exists only to feed the calibration tables and to show us which families are running hot or cold. On November 8, for example, it graded 355 events from the November 5 to 7 boards. The public record is only the card. The silent log is the lab notebook.</p>
     <p><b>Closing-line value (CLV).</b> We also track whether our picks beat the closing price at Pinnacle, the sharpest book. For each card pick, we record the price when we picked it and the Pinnacle price near game time. If the closing price moved our way, that is positive CLV. Positive CLV over many bets is the best early sign a model has an edge, because the closing price is the market&rsquo;s best guess. So far we have 53 closes recorded, averaging about +1.6 points. That is a small sample. It is suggestive, not proof. We need around 75 closes before we draw any conclusion, and we are not there yet.</p>
-    <p><b>The record so far.</b> After November 8: straights 6&ndash;6, &minus;$157.79. Parlays 0&ndash;3, &minus;$300. Total &minus;$457.79 on paper. That is a losing record. We show it because the record is the point. If it stays negative, we change the selection rules and say so here.</p>
+    <p><b>The record so far.</b> The old way (Nov 6&ndash;10, biggest edge): straights 10&ndash;9, &minus;$90.86; parlays 0&ndash;5, &minus;$500; total &minus;$590.86. That is a losing record. We show it because the record is the point. Nov 11 was a one-day switch to agreement; its 5 picks are still waiting on their games. The Best Plays era starts Nov 12 at 0&ndash;0, $0. If it stays negative, we change the selection rules and say so here.</p>
 
     <h3 id="doc-bankroll">Your money over a season</h3>
     <p><a href="#record" data-goto="record">Our record</a> also shows what happens to $10,000 over a season of 250 bets, played 10,000 times on a computer. Two ways of betting: the same $100 on every bet, and a bet sized to the edge. Bigger when the edge is bigger, smaller when it’s smaller, never more than 10% of what you have. These numbers are a teaching example, not our record. One row shows a real edge (winning 55 times in 100 at &minus;110 odds). One row shows the same bets with no edge at all. One row shows what happens when you size bets for an edge you don’t have. Our own picks will run through the same simulation once 30 of them are graded. Until then that part of the page says so plainly. No way of betting shown here is a promise it wins. Even with a real edge, the sized bets end higher in the middle but finish ahead less often and dip further along the way.</p>
@@ -5856,15 +5843,10 @@ function renderBets(){
     }
   }
 }
-/* Card M (paper test, moderate edge): the Our Bets tab also tries to
-   load "paper_card_m.json" (same folder as this page) — today's M
-   card from the paper test (straights + parlay), built each morning
-   after the paper test runs. It renders into the second card on Our
-   Bets, using the same bet cards as the live card so the picks look
-   identical. The M parlay follows the same 75% safest-parlay rule as
-   the live card, applied to the M pool. Any failure at all leaves the
-   honest "No M card yet" note exactly as it is: no banner, no stale
-   picks, nothing here is allowed to throw. */
+/* Card M (paper test, moderate edge) — RETIRED from Our Bets Nov 11,
+   2026 (Best Plays rebuild). The loader/render below are kept, uncalled:
+   "paper_card_m.json" stays published as a legacy file (still read by
+   tooling and the health check) and the paper test keeps grading. */
 var M_CARD=null;
 function mParlayCardHtml(parlay,mBets,parlayRecord){
   var legs=[];
@@ -5947,13 +5929,9 @@ function loadMCard(){
     }).catch(function(){});
   }catch(e){}
 }
-/* Card R (paper test, random): same pattern as Card M — the Our Bets
-   tab also tries to load "paper_card_r.json" and renders it into the
-   third card. The parlay HTML is shared with the M card
-   (mParlayCardHtml takes generic parlay/bets/record arguments, so it
-   renders an R parlay exactly the same way). Any failure at all
-   leaves the honest "No R card yet" note exactly as it is: no banner,
-   no stale picks, nothing here is allowed to throw. */
+/* Card R (paper test, random) — RETIRED from Our Bets Nov 11, 2026,
+   same as Card M above. Loader/render kept, uncalled; the file stays
+   published as a legacy file and the paper test keeps grading. */
 var R_CARD=null;
 function renderRCard(){
   var grid=$("rBetsGrid");
@@ -5999,6 +5977,200 @@ function loadRCard(){
     }).catch(function(){});
   }catch(e){}
 }
+/* Best Plays + More Plays (Nov 11 rebuild): Our Bets no longer shows
+   the A/M/R cards or a parlay. Best Plays renders from
+   "best_plays.json" (NBA assists only, edge > 2pp, top 5, never padded)
+   and More Plays from "more_plays.json" (one pick per sport), both
+   fetched at runtime with a cache-buster, same pattern as the paper
+   cards. Any failure at all leaves an honest note: no banner, no stale
+   picks, nothing here is allowed to throw. */
+var BEST_PLAYS=null;
+var MORE_PLAYS=null;
+var MORE_SPORT_FILTER="All";
+function renderBestPlays(){
+  var grid=$("bestPlaysGrid");
+  var emptyEl=$("bestPlaysEmpty");
+  var meta=$("bestPlaysMeta");
+  var dateEl=$("betsDate");
+  var picks=[];
+  if(BEST_PLAYS&&Array.isArray(BEST_PLAYS.straights)) picks=BEST_PLAYS.straights.filter(function(b){return !isSoccerRow(b);});
+  if(grid){
+    if(propView==="list"&&picks.length){
+      grid.className="";
+      grid.innerHTML='<div class="prop-list prop-list-bets"><div class="prop-list-head"><span>Player</span><span>Pick</span><span style="text-align:right">Book pays</span><span style="text-align:right">Our chance</span><span style="text-align:right">Tier</span></div>'+picks.map(function(b){return betListRowHtml(b,false);}).join("")+'</div>';
+    } else {
+      grid.className="bets-grid";
+      grid.innerHTML=picks.map(function(b){return betCardHtml(b,false);}).join("");
+    }
+  }
+  if(emptyEl){
+    if(!BEST_PLAYS){
+      emptyEl.hidden=false;
+      emptyEl.innerHTML="<p>Best Plays didn&rsquo;t load &mdash; check back after the morning update.</p>";
+    } else if(!picks.length){
+      emptyEl.hidden=false;
+      emptyEl.innerHTML="<p>No Best Plays today &mdash; no NBA assists cleared our edge bar.</p>";
+    } else {
+      emptyEl.hidden=true;
+    }
+  }
+  if(meta) meta.textContent=BEST_PLAYS&&BEST_PLAYS.generated_pt?("Updated "+BEST_PLAYS.generated_pt+"."):"";
+  if(dateEl&&BEST_PLAYS&&BEST_PLAYS.date){dateEl.textContent=fmtDateLong(BEST_PLAYS.date);dateEl.hidden=false;}
+}
+function loadBestPlays(){
+  try{
+    if(typeof fetch!=="function") return;
+    fetch("best_plays.json?v=" + Date.now()).then(function(res){
+      if(!res||!res.ok) return null;
+      return res.json();
+    }).then(function(data){
+      if(!data) return;
+      BEST_PLAYS=data;
+      try{renderBestPlays();}catch(e){}
+    }).catch(function(){});
+  }catch(e){}
+}
+function morePlaysSports(){
+  var seen={}, order=[];
+  (MORE_PLAYS&&Array.isArray(MORE_PLAYS.straights)?MORE_PLAYS.straights:[]).forEach(function(b){
+    var s=String(b.sport||"");
+    if(s&&!seen[s]){seen[s]=true;order.push(s);}
+  });
+  return order;
+}
+function renderMorePlaysFilters(){
+  var host=$("morePlaysFilters");
+  if(!host) return;
+  var sports=morePlaysSports();
+  var opts=["All"].concat(sports);
+  if(opts.indexOf(MORE_SPORT_FILTER)<0) MORE_SPORT_FILTER="All";
+  host.innerHTML=opts.map(function(s){
+    return '<button type="button" data-sport="'+esc(s)+'" aria-pressed="'+(MORE_SPORT_FILTER===s?"true":"false")+'">'+esc(s)+'</button>';
+  }).join("");
+  Array.prototype.forEach.call(host.querySelectorAll("button"),function(btn){
+    btn.addEventListener("click",function(){
+      MORE_SPORT_FILTER=btn.getAttribute("data-sport")||"All";
+      try{renderMorePlaysFilters();}catch(e){}
+      try{renderMorePlays();}catch(e){}
+    });
+  });
+}
+function renderMorePlays(){
+  var grid=$("morePlaysGrid");
+  var emptyEl=$("morePlaysEmpty");
+  var meta=$("morePlaysMeta");
+  var picks=[];
+  if(MORE_PLAYS&&Array.isArray(MORE_PLAYS.straights)) picks=MORE_PLAYS.straights.filter(function(b){return !isSoccerRow(b);});
+  var shown=MORE_SPORT_FILTER==="All"?picks:picks.filter(function(b){return String(b.sport||"")===MORE_SPORT_FILTER;});
+  if(grid){
+    if(propView==="list"&&shown.length){
+      grid.className="";
+      grid.innerHTML='<div class="prop-list prop-list-bets"><div class="prop-list-head"><span>Player</span><span>Pick</span><span style="text-align:right">Book pays</span><span style="text-align:right">Our chance</span><span style="text-align:right">Tier</span></div>'+shown.map(function(b){return betListRowHtml(b,false);}).join("")+'</div>';
+    } else {
+      grid.className="bets-grid";
+      grid.innerHTML=shown.map(function(b){return betCardHtml(b,false);}).join("");
+    }
+  }
+  if(emptyEl){
+    if(!MORE_PLAYS){
+      emptyEl.hidden=false;
+      emptyEl.innerHTML="<p>More Plays didn&rsquo;t load &mdash; check back after the morning update.</p>";
+    } else if(!shown.length){
+      emptyEl.hidden=false;
+      emptyEl.innerHTML="<p>No "+esc(MORE_SPORT_FILTER)+" picks today.</p>";
+    } else {
+      emptyEl.hidden=true;
+    }
+  }
+  if(meta) meta.textContent=MORE_PLAYS&&MORE_PLAYS.generated_pt?("Updated "+MORE_PLAYS.generated_pt+"."):"";
+}
+function loadMorePlays(){
+  try{
+    if(typeof fetch!=="function") return;
+    fetch("more_plays.json?v=" + Date.now()).then(function(res){
+      if(!res||!res.ok) return null;
+      return res.json();
+    }).then(function(data){
+      if(!data) return;
+      MORE_PLAYS=data;
+      try{renderMorePlaysFilters();}catch(e){}
+      try{renderMorePlays();}catch(e){}
+    }).catch(function(){});
+  }catch(e){}
+}
+/* Record eras (Nov 11 rebuild): the current record is the Best Plays
+   era (from Nov 12), loaded from "record_eras_archive.json" — the
+   archived D and A eras stay visible, never blended. The same file
+   drives the record line at the top of the page, the era rows on Our
+   Record, and the era rows in "How each way of picking is doing".
+   Any failure leaves the hard-coded archive numbers on the page
+   exactly as they are. */
+var ERA_SHORT_PHRASE={live_bp:"NBA assists only, edge over the book",live_a:"Agreement with the book, one day only",live_d:"Biggest edge \u2014 the old way"};
+function eraRowHtml(e){
+  var s=e.straights||{}, p=e.parlays||{}, c=e.combined||{};
+  var sWL=(s.wins||0)+"\u2013"+(s.losses||0);
+  var pWL=(p.wins||0)+"\u2013"+(p.losses||0);
+  var status=String(e.status||"")==="current"?"Current":"Archived";
+  var sub=status+" \u00B7 "+(e.dates||"")+" \u00B7 Single bets "+sWL+" ("+vrMoney(s.profit)+")";
+  if((Number(p.n_graded)||0)>0) sub+=" \u00B7 Parlays "+pWL+" ("+vrMoney(p.profit)+")";
+  else if(String(e.id||"")==="live_bp") sub+=" \u00B7 No parlays";
+  else if((Number(s.n_pending)||0)>0) sub+=", "+(s.n_pending)+" waiting on their games";
+  var big, small;
+  if((Number(c.n_graded)||0)>0){
+    big=(c.wins||0)+"\u2013"+(c.losses||0)+" \u00B7 "+vrMoney(c.profit);
+    small="ROI "+vrRoi(c.roi_pct)+" \u00B7 "+c.n_graded+" graded";
+  } else if((Number(s.n_graded)||0)>0){
+    big=sWL+" \u00B7 "+vrMoney(s.profit);
+    small="ROI "+vrRoi(s.roi_pct)+" \u00B7 "+s.n_graded+" graded";
+  } else if((Number(s.n_pending)||0)>0){
+    big="\u2014";
+    small=(s.n_pending)+" picks not settled yet";
+  } else if(String(e.id||"")==="live_bp"){
+    big="0\u20130 \u00B7 $0";
+    small="No settled bets yet";
+  } else {
+    big="\u2014";
+    small="No settled bets yet";
+  }
+  return '<div class="trow" style="grid-template-columns:minmax(0,1fr) auto">'
+    +'<div class="who"><b>'+esc(e.name||"")+'</b><span>'+esc(sub)+'</span></div>'
+    +'<div style="text-align:right"><div class="num" style="font-size:20px">'+esc(big)+'</div>'
+    +'<div style="font-size:12px;color:var(--muted)">'+esc(small)+'</div></div></div>';
+}
+function renderEras(){
+  if(!ERA_ARCHIVE||!Array.isArray(ERA_ARCHIVE.eras)) return;
+  var bp=null;
+  ERA_ARCHIVE.eras.forEach(function(e){ if(String(e.id||"")==="live_bp") bp=e; });
+  if(bp){
+    ERA_BP=bp;
+    var s=bp.straights||{};
+    ERA_TALLY={wins:s.wins||0,losses:s.losses||0,profit:s.profit||0};
+    try{renderRecordLine();}catch(e){}
+    try{syncBankrollRecordLine();}catch(e){}
+    var big=$("tallyBig");
+    if(big) big.textContent=(ERA_TALLY.wins||0)+"\u2013"+(ERA_TALLY.losses||0)+" \u00B7 "+fmtProfitWhole(ERA_TALLY.profit)+" profit";
+    var grid=$("tallyGrid");
+    if(grid) grid.innerHTML=tallyBlockHtml("Best Plays \u2014 NBA assists only",{wins:s.wins||0,losses:s.losses||0,pushes:s.pushes||0,profit:s.profit||0,roi_pct:s.roi_pct,n_graded:s.n_graded||0});
+  }
+  var host=$("eraRows");
+  if(host) host.innerHTML=ERA_ARCHIVE.eras.slice().reverse().map(eraRowHtml).join("");
+  var meta=$("eraMeta");
+  if(meta) meta.textContent=ERA_ARCHIVE.generated_pt?("Updated "+ERA_ARCHIVE.generated_pt+"."):"";
+  try{renderVariantRecords();}catch(e){}
+}
+function loadRecordEras(){
+  try{
+    if(typeof fetch!=="function") return;
+    fetch("record_eras_archive.json?v=" + Date.now()).then(function(res){
+      if(!res||!res.ok) return null;
+      return res.json();
+    }).then(function(data){
+      if(!data) return;
+      ERA_ARCHIVE=data;
+      try{renderEras();}catch(e){}
+    }).catch(function(){});
+  }catch(e){}
+}
 /* Card watermarks: clone the header logo (Sim Says, Option B) into each
    card's watermark corner, so a shared screenshot is clearly branded.
    The logo is an inline data image in the header, so cloning reuses
@@ -6016,18 +6188,20 @@ function applyCardWatermarks(){
   });
 }
 /* The one-line record at the top of the card tabs (Home, Our Bets),
-   rendered from the same tally the Our Record tab uses — TRACK_TALLY
-   straights — so every tab states the record the same way and the
-   line updates when the tally data updates. The static HTML in
-   each panel already carries the current line, so it reads right
-   even before this runs. Scoped to the card tabs on purpose: the
-   Game forecasts and Player picks tabs show board forecasts, not
-   card picks, so they must NOT carry this line (they keep a plain
-   "Forecasts, not winners yet." line in a separate class instead).
-   Same for Sportsbooks, whose referral disclosure is static text.
-   Do not add .record-line to any other panel. */
+   rendered from the Best Plays era tally — the current record, loaded
+   from "record_eras_archive.json" into ERA_TALLY (0–0, $0 until that
+   file loads). The static HTML in each panel already carries the same
+   line, so it reads right even before this runs. Scoped to the card
+   tabs on purpose: the Game forecasts and Player picks tabs show board
+   forecasts, not card picks, so they must NOT carry this line (they
+   keep a plain "Forecasts, not winners yet." line in a separate class
+   instead). Same for Sportsbooks, whose referral disclosure is static
+   text. Do not add .record-line to any other panel. */
+var ERA_TALLY={wins:0,losses:0,profit:0};
+var ERA_ARCHIVE=null;
+var ERA_BP=null;
 function renderRecordLine(){
-  var s=(typeof TRACK_TALLY!=="undefined"&&TRACK_TALLY&&TRACK_TALLY.straights)||{wins:0,losses:0,profit:0};
+  var s=ERA_TALLY||{wins:0,losses:0,profit:0};
   var profit=Number(s.profit)||0;
   var money=(profit<0?"\u2212$":profit>0?"+$":"$")+Math.abs(profit).toLocaleString("en-US");
   var txt="Our record: "+(s.wins||0)+"\u2013"+(s.losses||0)+", "+money+" so far. Forecasts, not winners yet.";
@@ -6044,15 +6218,23 @@ function syncBankrollRecordLine(){
   var el=$("bankrollRecordLine");
   if(!el) return;
   var n=0, latest=null;
-  if(typeof TRACK_TALLY!=="undefined"&&TRACK_TALLY&&TRACK_TALLY.straights){
-    n=Number(TRACK_TALLY.straights.n_graded)||0;
-  }
-  if(typeof TRACK_RECORD!=="undefined"&&Array.isArray(TRACK_RECORD)){
-    TRACK_RECORD.forEach(function(r){
-      if(!r||!r.date) return;
-      var d=parseGameDate(r.date);
-      if(d&&(!latest||d.getTime()>latest.getTime())) latest=d;
-    });
+  /* Best Plays era (Nov 12) counts its own graded picks: once the
+     archive has loaded, the count restarts at 0 for the new era
+     instead of carrying the archived eras' 19 graded picks. */
+  if(ERA_BP&&ERA_BP.straights){
+    n=Number(ERA_BP.straights.n_graded)||0;
+    latest=parseGameDate("2026-11-12");
+  } else {
+    if(typeof TRACK_TALLY!=="undefined"&&TRACK_TALLY&&TRACK_TALLY.straights){
+      n=Number(TRACK_TALLY.straights.n_graded)||0;
+    }
+    if(typeof TRACK_RECORD!=="undefined"&&Array.isArray(TRACK_RECORD)){
+      TRACK_RECORD.forEach(function(r){
+        if(!r||!r.date) return;
+        var d=parseGameDate(r.date);
+        if(d&&(!latest||d.getTime()>latest.getTime())) latest=d;
+      });
+    }
   }
   var dateTxt=latest?fmtDateLong(latest):"Nov 6, 2026";
   if(n>=30){
@@ -6260,14 +6442,11 @@ function renderRecord(){
   var p=(TRACK_TALLY&&TRACK_TALLY.parlays)||{wins:0,losses:0,pushes:0,profit:0,roi_pct:0,n_graded:0};
   if(s.n_graded===0&&rows.length) s=computedTally(rows);
   if(p.n_graded===0&&pars.length) p=computedTally(pars);
-  var totalGraded=s.n_graded+p.n_graded;
-  var big=$("tallyBig");
-  if(big){
-    if(totalGraded===0) big.textContent="No settled bets yet";
-    else big.textContent=wlText(s)+" \u00b7 "+fmtProfitWhole(s.profit)+" profit";
-  }
-  var grid=$("tallyGrid");
-  if(grid) grid.innerHTML=totalGraded===0?"":tallyBlockHtml("Straight bets",s)+tallyBlockHtml("Parlays",p);
+  /* The hero tally (tallyBig / tallyGrid) is the Best Plays era, set
+     from "record_eras_archive.json" by renderEras — NOT from
+     TRACK_TALLY, which still carries the archived D era. This function
+     only renders the settled-bet day groups, the archived parlay rows,
+     and the week/month blocks below the hero. */
   renderPeriodRecord(rows,pars);
   var days=$("recordDays");
   if(days){
@@ -6538,13 +6717,15 @@ function loadPnlCalendar(){
 /* Variant records: the Our Record tab also tries to load
    "variant_records.json" (same folder as this page) — how each way of
    picking bets is doing, built each morning from the live ledger and
-   the paper-test log. The live card switched ways on Nov 11, 2026:
-   the new way (agreement) is our record now; the old way (biggest
-   edge, Nov 6-10) is kept as an archive, never blended in. Paper-test
-   rows are an experiment and never place a bet. Each bet is $100 flat.
-   Any failure at all leaves the honest "No variant records yet" note
-   exactly as it is: no banner, no stale numbers, nothing here is
-   allowed to throw. */
+   the paper-test log. From Nov 12 the live record is the Best Plays
+   era (NBA assists only); the era rows here come from
+   "record_eras_archive.json" instead, and this file supplies only the
+   paper-test rows. The old way (biggest edge, Nov 6-10) and the
+   one-day agreement way (Nov 11) are kept as an archive, never blended
+   in. Paper-test rows are an experiment and never place a bet. Each
+   bet is $100 flat. Any failure at all leaves the honest "No variant
+   records yet" note exactly as it is: no banner, no stale numbers,
+   nothing here is allowed to throw. */
 var VARIANT_RECORDS=null;
 function vrMoney(n){
   n=Number(n)||0;
@@ -6581,10 +6762,27 @@ function variantRowHtml(r){
 function renderVariantRecords(){
   var host=$("variantRows"); if(!host) return;
   var list=(VARIANT_RECORDS&&Array.isArray(VARIANT_RECORDS.rows))?VARIANT_RECORDS.rows:null;
-  if(!list||!list.length){
+  if(ERA_ARCHIVE&&Array.isArray(ERA_ARCHIVE.eras)){
+    /* Eras come from the archive (Best Plays era current, D and A
+       archived), newest first; the paper-test rows still come from
+       variant_records. */
+    var eraRows=ERA_ARCHIVE.eras.slice().reverse().map(function(e){
+      var status=String(e.status||"")==="current"?"Our record now":"Archived";
+      return {label:e.name, phrase:status+" \u2014 "+(ERA_SHORT_PHRASE[e.id]||""), dates:e.dates, straights:e.straights, parlays:e.parlays, combined:e.combined};
+    });
+    var paper=(list||[]).filter(function(r){return String(r.id||"").indexOf("paper_")===0;});
+    host.innerHTML=eraRows.map(variantRowHtml).join("")+paper.map(variantRowHtml).join("");
+  }else if(!list||!list.length){
     host.innerHTML='<p class="empty-note">No variant records yet \u2014 check back after the morning update.</p>';
   }else{
-    host.innerHTML=list.map(variantRowHtml).join("");
+    /* No archive loaded yet: show the variant rows, but never label
+       the Nov 11 agreement row as the current record — it is archived. */
+    var rows=list.map(function(r){
+      if(String(r.id||"")==="live_a") return {label:"Agreement (A) \u2014 Nov 11, archived", phrase:"Agreement with the book, one day only", dates:r.dates, straights:r.straights, parlays:r.parlays, combined:r.combined};
+      if(String(r.id||"")==="live_d") return {label:"Biggest edge (D) \u2014 Nov 6\u201310, archived", phrase:"Biggest edge \u2014 the old way", dates:r.dates, straights:r.straights, parlays:r.parlays, combined:r.combined};
+      return r;
+    });
+    host.innerHTML=rows.map(variantRowHtml).join("");
   }
   var meta=$("variantMeta");
   if(meta){
@@ -7639,8 +7837,9 @@ function renderSeason(){
 
 try{renderSeason();}catch(e){}
 try{renderBets();}catch(e){}
-try{loadMCard();}catch(e){}
-try{loadRCard();}catch(e){}
+try{loadBestPlays();}catch(e){}
+try{loadMorePlays();}catch(e){}
+try{loadRecordEras();}catch(e){}
 try{applyCardWatermarks();}catch(e){}
 try{renderRecord();}catch(e){}
 try{updateYesterdayRecap();}catch(e){}
