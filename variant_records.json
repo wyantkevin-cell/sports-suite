@@ -4,7 +4,7 @@
     "source": "variant_backtest_20261110.md (corrected Nov 10, NHL alias fix)",
     "through": "Nov 5\u20139 graded (Nov 10 pending, excluded)"
   },
-  "generated_pt": "2026-11-11 07:10:41 PST",
+  "generated_pt": "2026-11-11 07:20:12 PST",
   "name": "How each way of picking is doing",
   "notes": [
     "The live card switched from the old way to the new way on Nov 11, 2026. The old way's record is kept here as an archive \u2014 never blended into the new way's numbers.",
@@ -24,7 +24,7 @@
         "wins": 0
       },
       "dates": "Nov 11, 2026 \u2013 now",
-      "id": "live_d",
+      "id": "live_a",
       "label": "Our record now \u2014 new way (from Nov 11)",
       "parlays": {
         "losses": 0,
@@ -61,7 +61,7 @@
         "wins": 10
       },
       "dates": "Nov 6\u201310, 2026",
-      "id": "live_a",
+      "id": "live_d",
       "label": "Archived \u2014 old way (Nov 6\u201310)",
       "parlays": {
         "losses": 5,
@@ -98,8 +98,8 @@
         "wins": 20
       },
       "dates": "Nov 5, 2026 \u2013 now",
-      "id": "paper_d",
-      "label": "Paper test \u2014 agreement (D)",
+      "id": "paper_a",
+      "label": "Paper test \u2014 agreement (A)",
       "parlays": {
         "losses": 3,
         "n_graded": 6,
