@@ -735,18 +735,21 @@ html[data-theme="dark"] .beton a.beton-novig,html[data-theme="terminal"] .beton 
 .parlay-legs li{margin-bottom:4px}
 .parlay-note{margin:10px 0 0;font-size:13.5px;color:var(--muted);line-height:1.55}
 .bets-empty{margin-top:18px}
-/* Two cards on Our Bets (Nov 10): Card D (live, agreement) and Card M
-   (paper test, moderate edge), side by side on wide screens, stacked
-   on phones. Each card is a designed unit: a distinct header band
-   (title + what it leans toward), the picks, and a footer with the
-   site address so a shared screenshot points back to us. Picks inside
-   a card run one per row so they stay large and readable. */
-.cards-wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}
+/* Three cards on Our Bets (Nov 11): Card A (live, agreement), Card M
+   (paper test, moderate edge) and Card R (paper test, random), side by
+   side on wide screens, stacked on phones. Each card is a designed
+   unit: a distinct header band (title + what it leans toward), the
+   picks, and a footer with the site address so a shared screenshot
+   points back to us. Picks inside a card run one per row so they stay
+   large and readable. */
+.cards-wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:18px}
+@media(max-width:1100px){.cards-wrap{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:820px){.cards-wrap{grid-template-columns:minmax(0,1fr)}}
 .pick-card{position:relative;background:var(--bg);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,.07);display:flex;flex-direction:column}
 .pick-card-head{position:relative;padding:20px;overflow:hidden}
-.pick-card-head-d{background:var(--ink);color:var(--bg);border-bottom:4px solid var(--gold)}
+.pick-card-head-a{background:var(--ink);color:var(--bg);border-bottom:4px solid var(--gold)}
 .pick-card-head-m{background:var(--accent);color:var(--accent-ink);border-bottom:4px solid var(--gold)}
+.pick-card-head-r{background:#1d5fb8;color:#fff;border-bottom:4px solid var(--gold)}
 .pick-card-head-text{padding-right:96px}
 .pick-card-tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;opacity:.85;margin-bottom:6px}
 .pick-card-head h2{margin:0;font-size:22px;line-height:1.25;letter-spacing:-.01em}
@@ -1269,18 +1272,18 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <h1>Today's Cards</h1>
       <span class="bets-date" id="betsDate" hidden></span>
       <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not winners yet.</p>
-      <p>Two cards, two ways of picking &mdash; follow the one you like, or both. Each card shows our chance it hits, and how it stacks up against the book&rsquo;s number.</p>
+      <p>Three cards, three ways of picking &mdash; follow the one you like, or all three. Each card shows our chance it hits, and how it stacks up against the book&rsquo;s number.</p>
       <p class="note" id="betsSwitchNote">We changed how we pick bets on Nov 11. The old way chased the biggest edges, and those lost the most. The new way picks bets where we agree with the book &mdash; in a backtest (Nov 5&ndash;10) it went 15&ndash;5 on single bets for +$207, while the old way went 8&ndash;8 for &minus;$187. The sample is still small, so this does not prove the new way wins yet. See <a href="#record" data-goto="record">Our Record</a> for the full record of each way.</p>
       <div class="freshness"></div>
     </div>
     <div id="betsEmpty" class="empty-state bets-empty"><p>Today's cards post with the morning update — check back after 9am.</p></div>
     <div class="cards-wrap">
-      <section class="pick-card pick-card-d" aria-label="Card D — Agreement">
-        <div class="pick-card-head pick-card-head-d">
+      <section class="pick-card pick-card-a" aria-label="Card A — Agreement">
+        <div class="pick-card-head pick-card-head-a">
           <div class="pick-card-watermark" aria-hidden="true"></div>
           <div class="pick-card-head-text">
             <span class="pick-card-tag">Live</span>
-            <h2>Sim Says &mdash; Card D &middot; Agreement</h2>
+            <h2>Sim Says &mdash; Card A &middot; Agreement</h2>
             <p>Leans toward bets where we agree with the book &mdash; mostly favorites, safer picks, smaller payouts.</p>
           </div>
         </div>
@@ -1296,13 +1299,29 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
           <div class="pick-card-head-text">
             <span class="pick-card-tag">Paper test</span>
             <h2>Sim Says &mdash; Card M &middot; Moderate Edge</h2>
-            <p>Leans toward bets with a moderate edge &mdash; a mix, sometimes longer odds, a bit more upside than D.</p>
+            <p>Leans toward bets with a moderate edge &mdash; a mix, sometimes longer odds, a bit more upside than A.</p>
           </div>
         </div>
         <div class="pick-card-body">
           <div id="mParlayWrap"></div>
           <div class="bets-grid" id="mBetsGrid"></div>
           <p class="empty-note" id="mCardEmpty">No M card yet &mdash; check back after the morning update.</p>
+        </div>
+        <p class="pick-card-foot">Sim Says &mdash; thesimsays.com</p>
+      </section>
+      <section class="pick-card pick-card-r" aria-label="Card R — Random">
+        <div class="pick-card-head pick-card-head-r">
+          <div class="pick-card-watermark" aria-hidden="true"></div>
+          <div class="pick-card-head-text">
+            <span class="pick-card-tag">Paper test</span>
+            <h2>Sim Says &mdash; Card R &middot; Random</h2>
+            <p>Picks chosen at random, just to check &mdash; if random does as well as our ways, our ways are not helping.</p>
+          </div>
+        </div>
+        <div class="pick-card-body">
+          <div id="rParlayWrap"></div>
+          <div class="bets-grid" id="rBetsGrid"></div>
+          <p class="empty-note" id="rCardEmpty">No R card yet &mdash; check back after the morning update.</p>
         </div>
         <p class="pick-card-foot">Sim Says &mdash; thesimsays.com</p>
       </section>
@@ -1338,10 +1357,10 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <h2>How we pick our bets</h2>
       <p class="sub">We try different ways of picking bets, and we keep the record for each way. Here are the four ways.</p>
       <div class="rows">
-        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Biggest edge &mdash; the old way (Nov 6&ndash;10)</b><span>We picked the bets where our number was furthest above the book&rsquo;s number. It lost money &mdash; and the bets with the biggest edge lost the most. We stopped using it. Its record is kept below, as an archive.</span></div></div>
-        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Agreement &mdash; the new way (from Nov 11)</b><span>We pick the bets where our number and the book&rsquo;s number are close, within 10 points of each other. When we agree with the book, our number is the most trustworthy. This is how the card picks bets now, and it is our record now.</span></div></div>
-        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Moderate edge &mdash; paper test only</b><span>We pick bets where our number is a little above the book&rsquo;s number, but not by a lot. We only run this on paper, to see if it does better than the old way.</span></div></div>
-        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Random &mdash; paper test only</b><span>We pick bets at random, just to check. If picking at random does as well as our ways, our ways are not helping.</span></div></div>
+        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Dominant edge (D) &mdash; the old way (Nov 6&ndash;10)</b><span>We picked the bets where our number was furthest above the book&rsquo;s number. It lost money &mdash; and the bets with the biggest edge lost the most. We stopped using it. Its record is kept below, as an archive.</span></div></div>
+        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Agreement (A) &mdash; the new way (from Nov 11)</b><span>We pick the bets where our number and the book&rsquo;s number are close, within 10 points of each other. When we agree with the book, our number is the most trustworthy. This is how the card picks bets now, and it is our record now.</span></div></div>
+        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Moderate edge (M) &mdash; paper test only</b><span>We pick bets where our number is a little above the book&rsquo;s number, but not by a lot. We only run this on paper, to see if it does better than the old way.</span></div></div>
+        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Random (R) &mdash; paper test, shown as a card</b><span>We pick bets at random, just to check. If picking at random does as well as our ways, our ways are not helping. It is shown as a card on Our Bets so you can compare it with the other ways.</span></div></div>
       </div>
     </section>
 
@@ -6104,7 +6123,7 @@ function renderMCard(){
   var hasContent=(bets.length>0)||!!parlay;
   if(emptyEl) emptyEl.hidden=hasContent;
   /* If the M card has picks, the "today's cards post" note above the
-     cards must not show even when the live (D) card is empty. */
+     cards must not show even when the live (A) card is empty. */
   if(hasContent){ var be=$("betsEmpty"); if(be) be.hidden=true; }
   if(grid){
     if(propView==="list"&&bets.length&&typeof betListRowHtml==="function"){
@@ -6132,6 +6151,58 @@ function loadMCard(){
       if(!data) return;
       M_CARD=data;
       try{renderMCard();}catch(e){}
+    }).catch(function(){});
+  }catch(e){}
+}
+/* Card R (paper test, random): same pattern as Card M — the Our Bets
+   tab also tries to load "paper_card_r.json" and renders it into the
+   third card. The parlay HTML is shared with the M card
+   (mParlayCardHtml takes generic parlay/bets/record arguments, so it
+   renders an R parlay exactly the same way). Any failure at all
+   leaves the honest "No R card yet" note exactly as it is: no banner,
+   no stale picks, nothing here is allowed to throw. */
+var R_CARD=null;
+function renderRCard(){
+  var grid=$("rBetsGrid");
+  var wrap=$("rParlayWrap");
+  var emptyEl=$("rCardEmpty");
+  var bets=[];
+  var parlay=null;
+  if(R_CARD){
+    bets=(R_CARD.straights||[]).filter(function(b){return !isSoccerRow(b);});
+    parlay=R_CARD.parlay||null;
+  }
+  var hasContent=(bets.length>0)||!!parlay;
+  if(emptyEl) emptyEl.hidden=hasContent;
+  /* If the R card has picks, the "today's cards post" note above the
+     cards must not show even when the live (A) card is empty. */
+  if(hasContent){ var be=$("betsEmpty"); if(be) be.hidden=true; }
+  if(grid){
+    if(propView==="list"&&bets.length&&typeof betListRowHtml==="function"){
+      grid.className="";
+      grid.innerHTML='<div class="prop-list prop-list-bets"><div class="prop-list-head"><span>Player</span><span>Pick</span><span style="text-align:right">Book pays</span><span style="text-align:right">Our chance</span><span style="text-align:right">Tier</span></div>'+bets.map(function(b){return betListRowHtml(b,false);}).join("")+'</div>';
+    } else {
+      grid.className="bets-grid";
+      grid.innerHTML=bets.map(function(b){return betCardHtml(b,false);}).join("");
+    }
+  }
+  if(wrap){
+    if(!parlay){wrap.innerHTML="";}
+    else{
+      try{wrap.innerHTML=mParlayCardHtml(parlay,bets,R_CARD?R_CARD.parlay_record:null);}catch(e){wrap.innerHTML="";}
+    }
+  }
+}
+function loadRCard(){
+  try{
+    if(typeof fetch!=="function") return;
+    fetch("paper_card_r.json").then(function(res){
+      if(!res||!res.ok) return null;
+      return res.json();
+    }).then(function(data){
+      if(!data) return;
+      R_CARD=data;
+      try{renderRCard();}catch(e){}
     }).catch(function(){});
   }catch(e){}
 }
@@ -7689,6 +7760,7 @@ function renderSeason(){
 try{renderSeason();}catch(e){}
 try{renderBets();}catch(e){}
 try{loadMCard();}catch(e){}
+try{loadRCard();}catch(e){}
 try{applyCardWatermarks();}catch(e){}
 try{renderRecord();}catch(e){}
 try{updateYesterdayRecap();}catch(e){}
