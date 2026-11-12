@@ -5,7 +5,7 @@
     "through": "Nov 5\u20139 graded (Nov 10 pending, excluded)"
   },
   "bp_start_date": "2026-11-12",
-  "generated_pt": "2026-11-12 06:58:15 PST",
+  "generated_pt": "2026-11-12 07:12:00 PST",
   "name": "How each way of picking is doing",
   "notes": [
     "The live record is Best Plays (NBA assists only, edge over 2pp) from Nov 12, 2026. The agreement way ran one day (Nov 11) and the old biggest-edge way ran Nov 6\u201310; both are kept here as an archive \u2014 never blended into the Best Plays numbers.",
@@ -237,14 +237,14 @@
     },
     {
       "combined": {
-        "losses": 5,
-        "n_graded": 21,
-        "profit": 279,
-        "profit_exact": 278.61,
+        "losses": 10,
+        "n_graded": 31,
+        "profit": 201,
+        "profit_exact": 201.43,
         "pushes": 0,
-        "roi_pct": 13.3,
-        "roi_pct_exact": 13.3,
-        "wins": 16
+        "roi_pct": 6.5,
+        "roi_pct_exact": 6.5,
+        "wins": 21
       },
       "dates": "Nov 11, 2026 \u2013 now",
       "id": "paper_mp",
@@ -262,14 +262,14 @@
       "phrase": "More picks from the board, up to 10 per sport",
       "status": "paper",
       "straights": {
-        "losses": 5,
-        "n_graded": 21,
-        "profit": 279,
-        "profit_exact": 278.61,
+        "losses": 10,
+        "n_graded": 31,
+        "profit": 201,
+        "profit_exact": 201.43,
         "pushes": 0,
-        "roi_pct": 13.3,
-        "roi_pct_exact": 13.3,
-        "wins": 16
+        "roi_pct": 6.5,
+        "roi_pct_exact": 6.5,
+        "wins": 21
       }
     }
   ],
