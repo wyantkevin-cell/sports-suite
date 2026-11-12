@@ -23,7 +23,7 @@
       "market_prob": 0.7093,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnbagame/nba-game/kxnbagame-26nov12chaphx",
-        "novig": "https://app.novig.us/event-markets/01a1cafd-ce67-7a61-9082-1fe015f2a9a0",
+        "novig": "https://novig.com/event-markets/01a1cafd-ce67-7a61-9082-1fe015f2a9a0",
         "polymarket": "https://polymarket.us/event/nba-cha-phx-2026-11-12"
       },
       "model_prob": 0.7434,
@@ -61,7 +61,7 @@
       "market_prob": 0.6835,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnbagame/nba-game/kxnbagame-26nov12dalmin",
-        "novig": "https://app.novig.us/event-markets/01a1cac7-5c83-7e41-ba84-afe1af0c1ca6",
+        "novig": "https://novig.com/event-markets/01a1cac7-5c83-7e41-ba84-afe1af0c1ca6",
         "polymarket": "https://polymarket.us/event/nba-dal-min-2026-11-12"
       },
       "model_prob": 0.7423,
@@ -133,7 +133,7 @@
       "market_prob": 0.7143,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxncaambgame/college-basketball-game/kxncaambgame-26nov12morgumbc",
-        "novig": "https://app.novig.us/event-markets/01a1ccec-c790-7dd3-80c9-54ad5acf3e4b",
+        "novig": "https://novig.com/event-markets/01a1ccec-c790-7dd3-80c9-54ad5acf3e4b",
         "polymarket": null
       },
       "model_prob": 0.7215,
@@ -171,7 +171,7 @@
       "market_prob": 0.6528,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnflrec/nfl-player-receptions/kxnflrec-26nov12wasnyg?op_market_ticker=KXNFLREC-26NOV12WASNYG-WASTBURKS13-2",
-        "novig": "https://app.novig.us/event-markets/01a1a3d7-9d33-7361-99bb-73a1d663face",
+        "novig": "https://novig.com/event-markets/01a1a3d7-9d33-7361-99bb-73a1d663face",
         "polymarket": "https://polymarket.us/event/nfl-was-nyg-2026-11-13-player-props"
       },
       "model_prob": 0.7038,
@@ -243,7 +243,7 @@
       "market_prob": 0.6575,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnba3pt/nba-player-3-pointers/kxnba3pt-26nov12chaphx?op_market_ticker=KXNBA3PT-26NOV12CHAPHX-CHACWHITE3-3",
-        "novig": "https://app.novig.us/event-markets/01a1cafd-ce67-7a61-9082-1fe015f2a9a0",
+        "novig": "https://novig.com/event-markets/01a1cafd-ce67-7a61-9082-1fe015f2a9a0",
         "polymarket": "https://polymarket.us/event/nba-cha-phx-2026-11-12"
       },
       "model_prob": 0.6885,
@@ -281,7 +281,7 @@
       "market_prob": 0.7101,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnba3pt/nba-player-3-pointers/kxnba3pt-26nov12detwas?op_market_ticker=KXNBA3PT-26NOV12DETWAS-WASADYBANTSA4-2",
-        "novig": "https://app.novig.us/event-markets/01a1ca90-4b5d-71a1-a88c-d1e37989760e",
+        "novig": "https://novig.com/event-markets/01a1ca90-4b5d-71a1-a88c-d1e37989760e",
         "polymarket": "https://polymarket.us/event/nba-det-was-2026-11-12"
       },
       "model_prob": 0.6884,
@@ -319,7 +319,7 @@
       "market_prob": 0.7101,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnflrec/nfl-player-receptions/kxnflrec-26nov12wasnyg?op_market_ticker=KXNFLREC-26NOV12WASNYG-WASVJEFFERSON12-2",
-        "novig": "https://app.novig.us/event-markets/01a1a3d7-9d33-7361-99bb-73a1d663face",
+        "novig": "https://novig.com/event-markets/01a1a3d7-9d33-7361-99bb-73a1d663face",
         "polymarket": "https://polymarket.us/event/nfl-was-nyg-2026-11-13-player-props"
       },
       "model_prob": 0.6841,
@@ -429,7 +429,7 @@
       "market_prob": 0.6241,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnflrec/nfl-player-receptions/kxnflrec-26nov12wasnyg?op_market_ticker=KXNFLREC-26NOV12WASNYG-WASRWHITE1-3",
-        "novig": "https://app.novig.us/event-markets/01a1a3d7-9d33-7361-99bb-73a1d663face",
+        "novig": "https://novig.com/event-markets/01a1a3d7-9d33-7361-99bb-73a1d663face",
         "polymarket": null
       },
       "model_prob": 0.6759,
@@ -467,7 +467,7 @@
       "market_prob": 0.7059,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnba3pt/nba-player-3-pointers/kxnba3pt-26nov12detwas?op_market_ticker=KXNBA3PT-26NOV12DETWAS-DETJCOLLINS20-1",
-        "novig": "https://app.novig.us/event-markets/01a1ca90-4b5d-71a1-a88c-d1e37989760e",
+        "novig": "https://novig.com/event-markets/01a1ca90-4b5d-71a1-a88c-d1e37989760e",
         "polymarket": null
       },
       "model_prob": 0.6682,
@@ -543,7 +543,7 @@
       "market_prob": 0.6403,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnbaast/nba-player-assists/kxnbaast-26nov12detwas",
-        "novig": "https://app.novig.us/event-markets/01a1ca90-4b5d-71a1-a88c-d1e37989760e",
+        "novig": "https://novig.com/event-markets/01a1ca90-4b5d-71a1-a88c-d1e37989760e",
         "polymarket": "https://polymarket.us/event/nba-det-was-2026-11-12"
       },
       "model_prob": 0.6632,
@@ -581,7 +581,7 @@
       "market_prob": 0.6154,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnbaast/nba-player-assists/kxnbaast-26nov12detwas?op_market_ticker=KXNBAAST-26NOV12DETWAS-DETDJENKINS24-6",
-        "novig": "https://app.novig.us/event-markets/01a1ca90-4b5d-71a1-a88c-d1e37989760e",
+        "novig": "https://novig.com/event-markets/01a1ca90-4b5d-71a1-a88c-d1e37989760e",
         "polymarket": "https://polymarket.us/event/nba-det-was-2026-11-12"
       },
       "model_prob": 0.6612,
@@ -619,7 +619,7 @@
       "market_prob": 0.6124,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnbaast/nba-player-assists/kxnbaast-26nov12detwas",
-        "novig": "https://app.novig.us/event-markets/01a1ca90-4b5d-71a1-a88c-d1e37989760e",
+        "novig": "https://novig.com/event-markets/01a1ca90-4b5d-71a1-a88c-d1e37989760e",
         "polymarket": "https://polymarket.us/event/nba-det-was-2026-11-12"
       },
       "model_prob": 0.6605,
@@ -657,7 +657,7 @@
       "market_prob": 0.6241,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnbaast/nba-player-assists/kxnbaast-26nov12detwas?op_market_ticker=KXNBAAST-26NOV12DETWAS-DETJCOLLINS20-2",
-        "novig": "https://app.novig.us/event-markets/01a1ca90-4b5d-71a1-a88c-d1e37989760e",
+        "novig": "https://novig.com/event-markets/01a1ca90-4b5d-71a1-a88c-d1e37989760e",
         "polymarket": "https://polymarket.us/event/nba-det-was-2026-11-12"
       },
       "model_prob": 0.6587,
@@ -695,7 +695,7 @@
       "market_prob": 0.6575,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnba3pt/nba-player-3-pointers/kxnba3pt-26nov12dalmin?op_market_ticker=KXNBA3PT-26NOV12DALMIN-DALKIRVING11-4",
-        "novig": "https://app.novig.us/event-markets/01a1cac7-5c83-7e41-ba84-afe1af0c1ca6",
+        "novig": "https://novig.com/event-markets/01a1cac7-5c83-7e41-ba84-afe1af0c1ca6",
         "polymarket": null
       },
       "model_prob": 0.6568,
@@ -733,7 +733,7 @@
       "market_prob": 0.6429,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnflrec/nfl-player-receptions/kxnflrec-26nov12wasnyg?op_market_ticker=KXNFLREC-26NOV12WASNYG-NYGMFIELDS88-3",
-        "novig": "https://app.novig.us/event-markets/01a1a3d7-9d33-7361-99bb-73a1d663face",
+        "novig": "https://novig.com/event-markets/01a1a3d7-9d33-7361-99bb-73a1d663face",
         "polymarket": "https://polymarket.us/event/nfl-was-nyg-2026-11-13-player-props"
       },
       "model_prob": 0.6297,
@@ -771,7 +771,7 @@
       "market_prob": 0.5305,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnflrshyds/nfl-player-rushing-yards/kxnflrshyds-26nov12wasnyg?op_market_ticker=KXNFLRSHYDS-26NOV12WASNYG-WASAEKELER30-30",
-        "novig": "https://app.novig.us/event-markets/01a1a3d7-9d33-7361-99bb-73a1d663face",
+        "novig": "https://novig.com/event-markets/01a1a3d7-9d33-7361-99bb-73a1d663face",
         "polymarket": "https://polymarket.us/event/nfl-was-nyg-2026-11-13-player-props"
       },
       "model_prob": 0.6271,
@@ -809,7 +809,7 @@
       "market_prob": 0.569,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnflrec/nfl-player-receptions/kxnflrec-26nov12wasnyg?op_market_ticker=KXNFLREC-26NOV12WASNYG-NYGMNABERS1-6",
-        "novig": "https://app.novig.us/event-markets/01a1a3d7-9d33-7361-99bb-73a1d663face",
+        "novig": "https://novig.com/event-markets/01a1a3d7-9d33-7361-99bb-73a1d663face",
         "polymarket": "https://polymarket.us/event/nfl-was-nyg-2026-11-13-player-props"
       },
       "model_prob": 0.6184,
@@ -847,7 +847,7 @@
       "market_prob": 0.6078,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnhlgame/nhl-game/kxnhlgame-26nov12bufchi",
-        "novig": "https://app.novig.us/event-markets/01a1cc2c-7a90-7f71-b1ef-dd2631f3d179",
+        "novig": "https://novig.com/event-markets/01a1cc2c-7a90-7f71-b1ef-dd2631f3d179",
         "polymarket": "https://polymarket.us/event/nhl-buf-chi-2026-11-12"
       },
       "model_prob": 0.6171,
@@ -885,7 +885,7 @@
       "market_prob": 0.6324,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnflrec/nfl-player-receptions/kxnflrec-26nov12wasnyg?op_market_ticker=KXNFLREC-26NOV12WASNYG-WASSDIGGS3-4",
-        "novig": "https://app.novig.us/event-markets/01a1a3d7-9d33-7361-99bb-73a1d663face",
+        "novig": "https://novig.com/event-markets/01a1a3d7-9d33-7361-99bb-73a1d663face",
         "polymarket": "https://polymarket.us/event/nfl-was-nyg-2026-11-13-player-props"
       },
       "model_prob": 0.6156,
@@ -923,7 +923,7 @@
       "market_prob": 0.6296,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnhlgame/nhl-game/kxnhlgame-26nov12mintor",
-        "novig": "https://app.novig.us/event-markets/01a1cc10-f655-76e3-bb93-7f8e93d039c6",
+        "novig": "https://novig.com/event-markets/01a1cc10-f655-76e3-bb93-7f8e93d039c6",
         "polymarket": "https://polymarket.us/event/nhl-min-tor-2026-11-12"
       },
       "model_prob": 0.6094,
@@ -961,7 +961,7 @@
       "market_prob": 0.6364,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnhlgame/nhl-game/kxnhlgame-26nov12wpgdal",
-        "novig": "https://app.novig.us/event-markets/01a1cc10-f838-7213-9ee0-194753f946a7",
+        "novig": "https://novig.com/event-markets/01a1cc10-f838-7213-9ee0-194753f946a7",
         "polymarket": "https://polymarket.us/event/nhl-wpg-dal-2026-11-12"
       },
       "model_prob": 0.6062,
@@ -1037,7 +1037,7 @@
       "market_prob": 0.5305,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnflrecyds/nfl-player-receiving-yards/kxnflrecyds-26nov12wasnyg",
-        "novig": "https://app.novig.us/event-markets/01a1a3d7-9d33-7361-99bb-73a1d663face",
+        "novig": "https://novig.com/event-markets/01a1a3d7-9d33-7361-99bb-73a1d663face",
         "polymarket": null
       },
       "model_prob": 0.6015,
@@ -1075,7 +1075,7 @@
       "market_prob": 0.5833,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnflrec/nfl-player-receptions/kxnflrec-26nov12wasnyg?op_market_ticker=KXNFLREC-26NOV12WASNYG-NYGDSINGLETARY26-2",
-        "novig": "https://app.novig.us/event-markets/01a1a3d7-9d33-7361-99bb-73a1d663face",
+        "novig": "https://novig.com/event-markets/01a1a3d7-9d33-7361-99bb-73a1d663face",
         "polymarket": null
       },
       "model_prob": 0.5944,
@@ -1113,7 +1113,7 @@
       "market_prob": 0.5305,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnflrshyds/nfl-player-rushing-yards/kxnflrshyds-26nov12wasnyg",
-        "novig": "https://app.novig.us/event-markets/01a1a3d7-9d33-7361-99bb-73a1d663face",
+        "novig": "https://novig.com/event-markets/01a1a3d7-9d33-7361-99bb-73a1d663face",
         "polymarket": "https://polymarket.us/event/nfl-was-nyg-2026-11-13-player-props"
       },
       "model_prob": 0.5912,
@@ -1227,7 +1227,7 @@
       "market_prob": 0.6296,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnhlgame/nhl-game/kxnhlgame-26nov12detfla",
-        "novig": "https://app.novig.us/event-markets/01a1cc10-f4e2-79a3-9bf1-8750a058c572",
+        "novig": "https://novig.com/event-markets/01a1cc10-f4e2-79a3-9bf1-8750a058c572",
         "polymarket": "https://polymarket.us/event/nhl-det-fla-2026-11-12"
       },
       "model_prob": 0.5816,
