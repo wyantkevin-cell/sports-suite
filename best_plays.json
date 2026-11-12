@@ -1,6 +1,6 @@
 {
   "date": "2026-11-12",
-  "generated_pt": "2026-11-12 06:56:54 PST",
+  "generated_pt": "2026-11-12 08:20:46 PST",
   "name": "Best Plays \u2014 NBA assists",
   "notes": [
     "These are our best plays today: NBA assists where our number is clearly above the book's number. They are being tracked, win or lose, in our record from November 12.",
@@ -21,7 +21,7 @@
       "market": "assists",
       "market_prob": 0.6124,
       "markets": {
-        "kalshi": null,
+        "kalshi": "https://kalshi.com/markets/kxnbaast/nba-player-assists/kxnbaast-26nov12dalmin",
         "novig": "https://app.novig.us/event-markets/01a1cac7-5c83-7e41-ba84-afe1af0c1ca6",
         "polymarket": null
       },
@@ -33,7 +33,7 @@
       "player": "Naji Marshall",
       "profit": null,
       "rlm_flag": false,
-      "selected_at_pt": "2026-11-12 06:56:54 PST",
+      "selected_at_pt": "2026-11-12 08:20:46 PST",
       "side": "over",
       "sport": "NBA",
       "team": "DAL",
@@ -58,7 +58,7 @@
       "market": "assists",
       "market_prob": 0.4167,
       "markets": {
-        "kalshi": null,
+        "kalshi": "https://kalshi.com/markets/kxnbaast/nba-player-assists/kxnbaast-26nov12torphi?op_market_ticker=KXNBAAST-26NOV12TORPHI-TORJPOELTL19-2",
         "novig": "https://app.novig.us/event-markets/01a1ca90-4a76-7503-acc5-4d5bfbf1c1d5",
         "polymarket": "https://polymarket.us/event/nba-tor-phi-2026-11-12"
       },
@@ -70,7 +70,7 @@
       "player": "Jakob Poeltl",
       "profit": null,
       "rlm_flag": false,
-      "selected_at_pt": "2026-11-12 06:56:54 PST",
+      "selected_at_pt": "2026-11-12 08:20:46 PST",
       "side": "under",
       "sport": "NBA",
       "team": "TOR",
@@ -95,7 +95,7 @@
       "market": "assists",
       "market_prob": 0.5327,
       "markets": {
-        "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV12DETWAS-DETCCUNNINGHAM2-8",
+        "kalshi": "https://kalshi.com/markets/kxnbaast/nba-player-assists/kxnbaast-26nov12detwas",
         "novig": "https://app.novig.us/event-markets/01a1ca90-4b5d-71a1-a88c-d1e37989760e",
         "polymarket": "https://polymarket.us/event/nba-det-was-2026-11-12"
       },
@@ -107,7 +107,7 @@
       "player": "Cade Cunningham",
       "profit": null,
       "rlm_flag": false,
-      "selected_at_pt": "2026-11-12 06:56:54 PST",
+      "selected_at_pt": "2026-11-12 08:20:46 PST",
       "side": "under",
       "sport": "NBA",
       "team": "DET",
@@ -132,7 +132,7 @@
       "market": "assists",
       "market_prob": 0.5413,
       "markets": {
-        "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV12CHAPHX-CHANREID0-4",
+        "kalshi": "https://kalshi.com/markets/kxnbaast/nba-player-assists/kxnbaast-26nov12chaphx",
         "novig": "https://app.novig.us/event-markets/01a1cafd-ce67-7a61-9082-1fe015f2a9a0",
         "polymarket": "https://polymarket.us/event/nba-cha-phx-2026-11-12"
       },
@@ -144,7 +144,7 @@
       "player": "Naz Reid",
       "profit": null,
       "rlm_flag": false,
-      "selected_at_pt": "2026-11-12 06:56:54 PST",
+      "selected_at_pt": "2026-11-12 08:20:46 PST",
       "side": "under",
       "sport": "NBA",
       "team": "CHA",
@@ -169,7 +169,7 @@
       "market": "assists",
       "market_prob": 0.6403,
       "markets": {
-        "kalshi": "https://kalshi.com/markets/KXNBAAST-26NOV12CHAPHX-CHAGALLEN8-6",
+        "kalshi": "https://kalshi.com/markets/kxnbaast/nba-player-assists/kxnbaast-26nov12chaphx",
         "novig": "https://app.novig.us/event-markets/01a1cafd-ce67-7a61-9082-1fe015f2a9a0",
         "polymarket": "https://polymarket.us/event/nba-cha-phx-2026-11-12"
       },
@@ -181,7 +181,7 @@
       "player": "Grayson Allen",
       "profit": null,
       "rlm_flag": false,
-      "selected_at_pt": "2026-11-12 06:56:54 PST",
+      "selected_at_pt": "2026-11-12 08:20:46 PST",
       "side": "under",
       "sport": "NBA",
       "team": "CHA",
