@@ -22,7 +22,7 @@
       "market_prob": 0.6124,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnbaast/nba-player-assists/kxnbaast-26nov12dalmin",
-        "novig": "https://app.novig.us/event-markets/01a1cac7-5c83-7e41-ba84-afe1af0c1ca6",
+        "novig": "https://novig.com/event-markets/01a1cac7-5c83-7e41-ba84-afe1af0c1ca6",
         "polymarket": null
       },
       "model_prob": 0.7554,
@@ -59,7 +59,7 @@
       "market_prob": 0.4167,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnbaast/nba-player-assists/kxnbaast-26nov12torphi?op_market_ticker=KXNBAAST-26NOV12TORPHI-TORJPOELTL19-2",
-        "novig": "https://app.novig.us/event-markets/01a1ca90-4a76-7503-acc5-4d5bfbf1c1d5",
+        "novig": "https://novig.com/event-markets/01a1ca90-4a76-7503-acc5-4d5bfbf1c1d5",
         "polymarket": "https://polymarket.us/event/nba-tor-phi-2026-11-12"
       },
       "model_prob": 0.5384,
@@ -96,7 +96,7 @@
       "market_prob": 0.5327,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnbaast/nba-player-assists/kxnbaast-26nov12detwas",
-        "novig": "https://app.novig.us/event-markets/01a1ca90-4b5d-71a1-a88c-d1e37989760e",
+        "novig": "https://novig.com/event-markets/01a1ca90-4b5d-71a1-a88c-d1e37989760e",
         "polymarket": "https://polymarket.us/event/nba-det-was-2026-11-12"
       },
       "model_prob": 0.6378,
@@ -133,7 +133,7 @@
       "market_prob": 0.5413,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnbaast/nba-player-assists/kxnbaast-26nov12chaphx",
-        "novig": "https://app.novig.us/event-markets/01a1cafd-ce67-7a61-9082-1fe015f2a9a0",
+        "novig": "https://novig.com/event-markets/01a1cafd-ce67-7a61-9082-1fe015f2a9a0",
         "polymarket": "https://polymarket.us/event/nba-cha-phx-2026-11-12"
       },
       "model_prob": 0.6395,
@@ -170,7 +170,7 @@
       "market_prob": 0.6403,
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnbaast/nba-player-assists/kxnbaast-26nov12chaphx",
-        "novig": "https://app.novig.us/event-markets/01a1cafd-ce67-7a61-9082-1fe015f2a9a0",
+        "novig": "https://novig.com/event-markets/01a1cafd-ce67-7a61-9082-1fe015f2a9a0",
         "polymarket": "https://polymarket.us/event/nba-cha-phx-2026-11-12"
       },
       "model_prob": 0.7344,
