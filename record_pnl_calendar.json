@@ -153,10 +153,10 @@
     {
       "date": "2026-11-12",
       "era": "BP",
-      "losses": 0,
-      "n_graded": 0,
-      "n_pending": 5,
-      "net_profit": 0.0,
+      "losses": 4,
+      "n_graded": 5,
+      "n_pending": 0,
+      "net_profit": -336.71,
       "parlays": {
         "losses": 0,
         "n": 0,
@@ -165,42 +165,42 @@
         "wins": 0
       },
       "pushes": 0,
-      "status": "pending",
+      "status": "settled",
       "straights": {
-        "losses": 0,
+        "losses": 4,
         "n": 5,
-        "profit": 0.0,
+        "profit": -336.71,
         "pushes": 0,
-        "wins": 0
+        "wins": 1
       },
-      "wins": 0
+      "wins": 1
     }
   ],
   "era_note": "Nov 6-10, 2026 used the old way of picking (D); Nov 11 was a one-day switch to agreement (A); from Nov 12 the record is Best Plays \u2014 NBA assists only (BP). Nothing is blended; the calendar covers all eras.",
-  "generated_pt": "2026-11-12 07:13:46 PST",
+  "generated_pt": "2026-11-13 06:59:06 PST",
   "months": [
     {
       "flat_days": 0,
       "green_days": 1,
       "label": "November 2026",
-      "losses": 14,
+      "losses": 18,
       "month": "2026-11",
-      "n_graded": 29,
-      "n_pending": 5,
-      "net_profit": -350.98,
+      "n_graded": 34,
+      "n_pending": 0,
+      "net_profit": -687.69,
       "pushes": 0,
-      "red_days": 5,
-      "wins": 15
+      "red_days": 6,
+      "wins": 16
     }
   ],
   "name": "Daily profit and loss \u2014 paper record",
   "stake_note": "Each bet is $100 flat.",
   "totals": {
-    "losses": 14,
-    "n_graded": 29,
-    "n_pending": 5,
-    "net_profit": -350.98,
+    "losses": 18,
+    "n_graded": 34,
+    "n_pending": 0,
+    "net_profit": -687.69,
     "pushes": 0,
-    "wins": 15
+    "wins": 16
   }
 }
