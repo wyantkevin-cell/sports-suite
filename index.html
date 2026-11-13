@@ -1291,7 +1291,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <section class="bets-tier" aria-label="Best Plays">
       <div class="explain-wrap">
         <h2 class="explain-head"><span class="explain-title">Best Plays</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainBestPlays" aria-label="About Best Plays">i</button></h2>
-        <div class="explain" id="explainBestPlays" hidden><p style="margin:0">These are NBA assists where our number is clearly above the book&rsquo;s number. This is the best lead we have, and we are tracking every one of these picks, win or lose, in our record from November 12. It is not a promise &mdash; no pick is guaranteed, and the record so far is small. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
+        <div class="explain" id="explainBestPlays" hidden><p style="margin:0">These are under bets on NBA assists where our number is clearly above the book&rsquo;s number. This is the best lead we have, and we are tracking every one of these picks, win or lose, in our record from November 12. It is not a promise &mdash; no pick is guaranteed, and the record so far is small. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
       </div>
       <p class="sub">These are the only picks our numbers back right now.</p>
       <div id="bestPlaysGrid" class="bets-grid"></div>
@@ -1316,23 +1316,23 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <section class="panel" id="panel-record" role="tabpanel" aria-labelledby="tab-record" tabindex="0" hidden>
     <div class="explain-wrap">
       <h1 class="explain-head"><span class="explain-title">How have <em>we done?</em></span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainRecord" aria-label="About this record">i</button></h1>
-      <div class="explain" id="explainRecord" hidden><p style="margin:0">Only finished bets show up here, with the result next to each one. Today&rsquo;s picks stay on <a class="doclink" href="#bets" data-goto="bets">Our Bets</a> until their games finish. The record started fresh on Nov 6, 2026, and started over again on Nov 12 with Best Plays &mdash; NBA assists only. The old eras are kept below, as an archive. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
+      <div class="explain" id="explainRecord" hidden><p style="margin:0">Only finished bets show up here, with the result next to each one. Today&rsquo;s picks stay on <a class="doclink" href="#bets" data-goto="bets">Our Bets</a> until their games finish. The record started fresh on Nov 6, 2026, and started over again on Nov 12 with Best Plays &mdash; NBA assists, unders only. The old eras are kept below, as an archive. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
     </div>
 
     <div class="card tally-card">
       <div class="tally-big" id="tallyBig">0&ndash;0 &middot; $0 profit</div>
       <p id="tallySub">Best Plays era, from Nov 12, 2026. Every settled bet counts at $100. So the profit is what $100 bets would have made or lost.</p>
-      <div class="tally-grid" id="tallyGrid"><div class="tally-block"><h3>Best Plays &mdash; NBA assists only</h3><div class="tally-line">0 wins, 0 losses</div><p>Profit: <b>$0</b> &nbsp;&middot;&nbsp; ROI: <b>&mdash;</b> &nbsp;&middot;&nbsp; 0 settled</p></div></div>
+      <div class="tally-grid" id="tallyGrid"><div class="tally-block"><h3>Best Plays &mdash; NBA assists, unders only</h3><div class="tally-line">0 wins, 0 losses</div><p>Profit: <b>$0</b> &nbsp;&middot;&nbsp; ROI: <b>&mdash;</b> &nbsp;&middot;&nbsp; 0 settled</p></div></div>
       <div id="periodRecord"></div>
     </div>
 
-    <p class="sub" id="recordEraNote">This record covers three eras. Nov 6&ndash;10 used the old way (biggest edge); Nov 11 was a one-day switch to agreement; from Nov 12 the record is Best Plays &mdash; NBA assists only. Each era&rsquo;s record is shown on its own below &mdash; nothing is blended.</p>
+    <p class="sub" id="recordEraNote">This record covers three eras. Nov 6&ndash;10 used the old way (biggest edge); Nov 11 was a one-day switch to agreement; from Nov 12 the record is Best Plays &mdash; NBA assists, unders only. Each era&rsquo;s record is shown on its own below &mdash; nothing is blended.</p>
 
     <section class="block" aria-label="Record eras">
       <h2>Record eras</h2>
       <p class="sub">The current record is the Best Plays era. The old ways are kept here as an archive &mdash; visible, never blended in. <a href="record_eras_archive.json">Full archive (JSON)</a> &middot; <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p>
       <div class="rows" id="eraRows">
-        <div class="trow" style="grid-template-columns:minmax(0,1fr) auto"><div class="who"><b>Best Plays era &mdash; NBA assists only</b><span>Current &middot; Nov 12, 2026 &ndash; now &middot; Single bets 0&ndash;0 ($0) &middot; No parlays</span></div><div style="text-align:right"><div class="num" style="font-size:20px">0&ndash;0 &middot; $0</div><div style="font-size:12px;color:var(--muted)">No settled bets yet</div></div></div>
+        <div class="trow" style="grid-template-columns:minmax(0,1fr) auto"><div class="who"><b>Best Plays era &mdash; NBA assists, unders only</b><span>Current &middot; Nov 12, 2026 &ndash; now &middot; Single bets 0&ndash;0 ($0) &middot; No parlays</span></div><div style="text-align:right"><div class="num" style="font-size:20px">0&ndash;0 &middot; $0</div><div style="font-size:12px;color:var(--muted)">No settled bets yet</div></div></div>
         <div class="trow" style="grid-template-columns:minmax(0,1fr) auto"><div class="who"><b>A era &mdash; agreement</b><span>Archived &middot; Nov 11, 2026 &middot; Single bets 0&ndash;0, 5 waiting on their games ($0)</span></div><div style="text-align:right"><div class="num" style="font-size:20px">&mdash;</div><div style="font-size:12px;color:var(--muted)">5 picks not settled yet</div></div></div>
         <div class="trow" style="grid-template-columns:minmax(0,1fr) auto"><div class="who"><b>D era &mdash; biggest edge</b><span>Archived &middot; Nov 6&ndash;10, 2026 &middot; Single bets 10&ndash;9 (&minus;$90.86) &middot; Parlays 0&ndash;5 (&minus;$500)</span></div><div style="text-align:right"><div class="num" style="font-size:20px">10&ndash;14 &middot; &minus;$591</div><div style="font-size:12px;color:var(--muted)">ROI &minus;24.6% &middot; 24 graded</div></div></div>
       </div>
@@ -1363,7 +1363,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <h2>How we pick our bets</h2>
       <p class="sub">We try different ways of picking bets, and we keep the record for each way. Here are the four ways.</p>
       <div class="rows">
-        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Best Plays &mdash; the way now (from Nov 12)</b><span>NBA assists where our number is clearly above the book&rsquo;s number &mdash; more than 2 points above it. Up to 5 a day, only the ones that qualify, never padded. This is our record now.</span></div></div>
+        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Best Plays &mdash; the way now (from Nov 12)</b><span>Under bets on NBA assists where our number is clearly above the book&rsquo;s number &mdash; more than 2 points above it. Up to 5 a day, only the ones that qualify, never padded. This is our record now.</span></div></div>
         <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>More Plays &mdash; second tier</b><span>Up to ten picks per sport, the closest our number sits to the book&rsquo;s number. Not our best plays, and not part of the main record. For people who want to pick their own spots.</span></div></div>
         <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Agreement (A) &mdash; one day (Nov 11)</b><span>We picked the bets where our number and the book&rsquo;s number were close, within 10 points of each other. One day only &mdash; the switch day. Its record is kept below, as an archive.</span></div></div>
         <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Dominant edge (D) &mdash; the old way (Nov 6&ndash;10)</b><span>We picked the bets where our number was furthest above the book&rsquo;s number. It lost money &mdash; and the bets with the biggest edge lost the most. We stopped using it. Its record is kept below, as an archive.</span></div></div>
@@ -1568,8 +1568,8 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <p><b>The 15-point market cap.</b> Covered in Enhancements above. When Model B disagrees with the book by more than 15 points, we pull it back to within 15 points. It is a guardrail, not a model.</p>
 
     <h3 id="doc-record">Our record</h3>
-    <p><a href="#record" data-goto="record">Our record</a> lists only bets that have finished. Date, pick, odds, result, and the profit at $100 per bet. Today&rsquo;s picks stay on <a href="#bets" data-goto="bets">Our Bets</a> until their games finish. The record started fresh on Nov 6, 2026, and started over again on Nov 12 with Best Plays &mdash; NBA assists only. The old eras are kept on <a href="#record" data-goto="record">Our Record</a> as an archive, never blended into the new era.</p>
-    <p><b>How the picks are chosen.</b> Best Plays are NBA assists where our number is more than 2 points above the book&rsquo;s number, up to 5 a day, only the ones that qualify &mdash; never padded. More Plays are up to ten picks per sport, the closest our number sits to the book&rsquo;s number in that sport, with the best 30 shown in the main view; they are a second tier, not our best plays, and not part of the main record. There is no parlay. A pick is dropped if its game has already started. Every pick is graded at $100 flat. A pick that lands exactly on the line is a push. A player who does not play stays pending. Soccer is excluded from the public record.</p>
+    <p><a href="#record" data-goto="record">Our record</a> lists only bets that have finished. Date, pick, odds, result, and the profit at $100 per bet. Today&rsquo;s picks stay on <a href="#bets" data-goto="bets">Our Bets</a> until their games finish. The record started fresh on Nov 6, 2026, and started over again on Nov 12 with Best Plays &mdash; NBA assists, unders only. The old eras are kept on <a href="#record" data-goto="record">Our Record</a> as an archive, never blended into the new era.</p>
+    <p><b>How the picks are chosen.</b> Best Plays are under bets on NBA assists where our number is more than 2 points above the book&rsquo;s number, up to 5 a day, only the ones that qualify &mdash; never padded. From November 13 we only pick unders: our check showed the edge filter does not fix overs, so overs are out even when the model likes them. More Plays are up to ten picks per sport, the closest our number sits to the book&rsquo;s number in that sport, with the best 30 shown in the main view; they are a second tier, not our best plays, and not part of the main record. There is no parlay. A pick is dropped if its game has already started. Every pick is graded at $100 flat. A pick that lands exactly on the line is a push. A player who does not play stays pending. Soccer is excluded from the public record.</p>
     <p><b>Silent grading.</b> Every morning we also grade the whole board in the background &mdash; every prop and every game forecast, about 25 times as many picks as the card. That grading never touches the public record. It exists only to feed the calibration tables and to show us which families are running hot or cold. On November 8, for example, it graded 355 events from the November 5 to 7 boards. The public record is only the card. The silent log is the lab notebook.</p>
     <p><b>Closing-line value (CLV).</b> We also track whether our picks beat the closing price at Pinnacle, the sharpest book. For each card pick, we record the price when we picked it and the Pinnacle price near game time. If the closing price moved our way, that is positive CLV. Positive CLV over many bets is the best early sign a model has an edge, because the closing price is the market&rsquo;s best guess. So far we have 53 closes recorded, averaging about +1.6 points. That is a small sample. It is suggestive, not proof. We need around 75 closes before we draw any conclusion, and we are not there yet.</p>
     <p><b>The record so far.</b> The old way (Nov 6&ndash;10, biggest edge): straights 10&ndash;9, &minus;$90.86; parlays 0&ndash;5, &minus;$500; total &minus;$590.86. That is a losing record. We show it because the record is the point. Nov 11 was a one-day switch to agreement; its 5 picks are still waiting on their games. The Best Plays era starts Nov 12 at 0&ndash;0, $0. If it stays negative, we change the selection rules and say so here.</p>
@@ -5835,7 +5835,7 @@ function loadRCard(){
 }
 /* Best Plays + More Plays (Nov 11 rebuild): Our Bets no longer shows
    the A/M/R cards or a parlay. Best Plays renders from
-   "best_plays.json" (NBA assists only, edge > 2pp, top 5, never padded)
+   "best_plays.json" (NBA assists, unders only, edge > 2pp, top 5, never padded)
    and More Plays from "more_plays.json" (up to ten picks per sport,
    best 30 in the main view), both
    fetched at runtime with a cache-buster, same pattern as the paper
@@ -5972,7 +5972,7 @@ function loadMorePlays(){
    Record, and the era rows in "How each way of picking is doing".
    Any failure leaves the hard-coded archive numbers on the page
    exactly as they are. */
-var ERA_SHORT_PHRASE={live_bp:"NBA assists only, edge over the book",live_a:"Agreement with the book, one day only",live_d:"Biggest edge \u2014 the old way"};
+var ERA_SHORT_PHRASE={live_bp:"NBA assists, unders only, edge over the book",live_a:"Agreement with the book, one day only",live_d:"Biggest edge \u2014 the old way"};
 function eraRowHtml(e){
   var s=e.straights||{}, p=e.parlays||{}, c=e.combined||{};
   var sWL=(s.wins||0)+"\u2013"+(s.losses||0);
@@ -6017,7 +6017,7 @@ function renderEras(){
     var big=$("tallyBig");
     if(big) big.textContent=(ERA_TALLY.wins||0)+"\u2013"+(ERA_TALLY.losses||0)+" \u00B7 "+fmtProfitWhole(ERA_TALLY.profit)+" profit";
     var grid=$("tallyGrid");
-    if(grid) grid.innerHTML=tallyBlockHtml("Best Plays \u2014 NBA assists only",{wins:s.wins||0,losses:s.losses||0,pushes:s.pushes||0,profit:s.profit||0,roi_pct:s.roi_pct,n_graded:s.n_graded||0});
+    if(grid) grid.innerHTML=tallyBlockHtml("Best Plays \u2014 NBA assists, unders only",{wins:s.wins||0,losses:s.losses||0,pushes:s.pushes||0,profit:s.profit||0,roi_pct:s.roi_pct,n_graded:s.n_graded||0});
   }
   var host=$("eraRows");
   if(host) host.innerHTML=ERA_ARCHIVE.eras.slice().reverse().map(eraRowHtml).join("");
@@ -6585,7 +6585,7 @@ function loadPnlCalendar(){
    "variant_records.json" (same folder as this page) — how each way of
    picking bets is doing, built each morning from the live ledger and
    the paper-test log. From Nov 12 the live record is the Best Plays
-   era (NBA assists only); the era rows here come from
+   era (NBA assists, unders only); the era rows here come from
    "record_eras_archive.json" instead, and this file supplies only the
    paper-test rows. The old way (biggest edge, Nov 6-10) and the
    one-day agreement way (Nov 11) are kept as an archive, never blended
