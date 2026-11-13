@@ -549,6 +549,7 @@ footer b{color:var(--ink)}
 .score-status-line{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;margin-top:3px}
 .score-status-text{color:var(--muted);font-size:13.5px}
 .score-pick{margin-top:5px}
+.score-pick .picktag+.picktag{margin-left:6px}
 /* Where to watch chip (Scores tab): compact pill, logo on a white
    tile so dark marks stay readable in every theme, same ring
    treatment as .signup-logo. Text-only when no logo is embedded. */
@@ -3670,22 +3671,34 @@ function feedRowHtml(f){
   var feedDetailsHtml=feedDetailBits?'<details class="gf-details"><summary>Details</summary><div class="gf-details-body">'+feedDetailBits+'</div></details>':"";
   return '<div class="slate-row"><div class="match"><span class="n">'+esc(f.g)+' \u00b7 '+esc(fmtDateLong(f.day,true))+' \u00b7 '+esc(f.time)+' PT</span><div class="picklines"><div class="avgline"><b>'+esc(pickCode)+'</b> <span class="pickpct">'+p+'%</span>'+confBadgeHtml(f.confidence_tier)+'</div>'+modelLinesHtml([modelLineHtml("Model A",pickCode,p+"%",gapInfoHtml(f.model_vs_market_pts))])+'</div><div class="tagrow">'+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(f.note?' <span class="n">'+esc(f.note)+'</span>':"")+'</div>'+feedDetailsHtml+'</div><button type="button" data-slate-game="'+esc(f.g)+'">Player picks for this game &rarr;</button></div>';
 }
-function forecastRowHtml(f){
-  var lineHtml=f.book?'<span class="loser">Book spread: '+esc(f.book)+'</span>':'<span class="loser">Line: TBD</span> <span class="picktag">Line not posted yet</span>';
-  var lines=[];
+/* One shared headline pick: the simple average of Model A and Model B
+   where both are in, the one model's number where only one is in.
+   Game Forecasts and the Scores tab both render this — never a raw
+   single-model pick (Nov 12: Scores showed Model B alone, USF 53%,
+   while Forecasts showed the MEM 53.0% average for MEM @ USF). */
+function headlinePickFor(f){
   var a=feedModelAForGame(f.g);
-  var headlinePick=f.pick, headlinePct=f.p;
+  var pick=f.pick, pct=f.p;
   if(a){
     var aPct=parseFloat(a.pct);
     if(a.pick===f.pick){
-      headlinePick=f.pick;
-      headlinePct=(aPct+f.p)/2;
+      pct=(aPct+f.p)/2;
     }else{
       var avgAPick=(aPct+(100-f.p))/2;
       var avgBPick=((100-aPct)+f.p)/2;
-      if(avgAPick>=avgBPick){ headlinePick=a.pick; headlinePct=avgAPick; }
-      else{ headlinePick=f.pick; headlinePct=avgBPick; }
+      if(avgAPick>=avgBPick){ pick=a.pick; pct=avgAPick; }
+      else{ pick=f.pick; pct=avgBPick; }
     }
+  }
+  return {pick:pick,pct:pct,split:!!(a&&a.pick!==f.pick),close:pct<=56,modelA:a};
+}
+function forecastRowHtml(f){
+  var lineHtml=f.book?'<span class="loser">Book spread: '+esc(f.book)+'</span>':'<span class="loser">Line: TBD</span> <span class="picktag">Line not posted yet</span>';
+  var lines=[];
+  var h=headlinePickFor(f);
+  var a=h.modelA;
+  var headlinePick=h.pick, headlinePct=h.pct;
+  if(a){
     lines.push(modelLineHtml("Model A",a.pick,a.pct,gapInfoHtml(a.model_vs_market_pts)));
   }
   lines.push(modelLineHtml("Model B",f.pick,f.p.toFixed(1)+"%"));
@@ -7065,13 +7078,13 @@ var TEAM_ALIAS={WAS:"WSH",GS:"GSW",SA:"SAS",NO:"NOP",NY:"NYK",UTAH:"UTA"};
 function normTeam(code){var c=String(code==null?"":code).trim().toUpperCase();return TEAM_ALIAS[c]||c;}
 function pickKey(away,home){return normTeam(away)+" @ "+normTeam(home);}
 var PICK_MAP={};
-function addPick(away,home,team,pctVal){
+function addPick(away,home,team,pctVal,split,close){
   if(away==null||home==null||!team) return;
   var p=Math.round(Number(pctVal));
   if(isNaN(p)||p<1||p>99) return;
   var k=pickKey(away,home);
   if(PICK_MAP[k]) return;
-  PICK_MAP[k]={team:normTeam(team),p:p};
+  PICK_MAP[k]={team:normTeam(team),p:p,split:!!split,close:(typeof close==="boolean"?close:p<=56)};
 }
 (function buildPickMap(){
   function fromForecasts(list){
@@ -7080,7 +7093,8 @@ function addPick(away,home,team,pctVal){
       if(!f||!f.g||!f.pick) return;
       var parts=String(f.g).split("@");
       if(parts.length!==2) return;
-      addPick(parts[0],parts[1],f.pick,f.p);
+      var h=headlinePickFor(f);
+      addPick(parts[0],parts[1],h.pick,h.pct,h.split,h.close);
     });
   }
   fromForecasts(typeof NFL_FORECASTS!=="undefined"?NFL_FORECASTS:null);
@@ -7281,7 +7295,7 @@ function scoreRowHtml(g){
   else scoreHtml='<span class="score-num">'+esc(g.awayScore==null?"0":g.awayScore)+" &ndash; "+esc(g.homeScore==null?"0":g.homeScore)+'</span>';
   var pill=state==="in"?'<span class="status live">Live</span>':"";
   var pick=isViewingToday()?PICK_MAP[pickKey(g.awayAbbr,g.homeAbbr)]:null;
-  var pickHtml=pick?'<div class="score-pick"><span class="picktag">Our pick: '+esc(pick.team)+' ('+pick.p+'%)</span></div>':"";
+  var pickHtml=pick?'<div class="score-pick"><span class="picktag">Our pick: '+esc(pick.team)+' ('+pick.p+'%)</span>'+(pick.split?'<span class="picktag close">Models split</span>':"")+(pick.close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+'</div>':"";
   /* Where to watch: logo chip when we have one for the network,
      plain "Watch on <name>" text chip when we don't. Only for games
      that haven't finished — the chip is meaningless on a final — and
