@@ -1082,7 +1082,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 
     <section class="block explain-wrap" id="gamesBlock">
       <h2 class="explain-head"><span class="explain-title" id="slateHeading">NFL games</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainSlate" aria-label="How to read these games">i</button></h2>
-      <div class="explain" id="explainSlate" hidden><p style="margin:0">The <b>bold</b> team is the pick, and the % is how often it is expected to win. Under each game, <b>Model A (ALL_IN)</b> shows the number built by Grok, and <b>Model B (FULL_SLATE)</b> shows the number built by Muse. A game shows only the model lines whose numbers are in this snapshot &mdash; sometimes only Model A is posted and our number is not in yet, sometimes only Model B is posted and Model A is not in yet. The headline is the average of the two models when both are in, and the one model&rsquo;s number when only one is in. Games with a posted book line show it next to our pick; games without one yet show &ldquo;Line: TBD&rdquo;. &ldquo;Close call&rdquo; means barely better than a coin flip &mdash; a lean, not a pick to trust. Check the news before using any of these: injuries and late news are invisible to old box scores.</p></div>
+      <div class="explain" id="explainSlate" hidden><p style="margin:0">The <b>bold</b> team is the pick, and the % is how often it is expected to win. Under each game, <b>Model A (ALL_IN)</b> shows the number built by Grok, and <b>Model B (FULL_SLATE)</b> shows the number built by Muse. A game shows only the model lines whose numbers are in this snapshot &mdash; sometimes only Model A is posted and our number is not in yet, sometimes only Model B is posted and Model A is not in yet (or doesn&rsquo;t cover that sport). The headline is the average of the two models when both are in, and the one model&rsquo;s number when only one is in. Games with a posted book line show it next to our pick; games without one yet show &ldquo;Line: TBD&rdquo;. &ldquo;Close call&rdquo; means barely better than a coin flip &mdash; a lean, not a pick to trust. Check the news before using any of these: injuries and late news are invisible to old box scores.</p></div>
       <div id="slateList" style="margin-top:12px"></div>
     </section>
 
@@ -3304,7 +3304,7 @@ function headlinePickFor(f){
   }
   return {pick:pick,pct:pct,split:!!(a&&a.pick!==f.pick),close:pct<=56,modelA:a};
 }
-function forecastRowHtml(f){
+function forecastRowHtml(f,league){
   var lineHtml=f.book?'<span class="loser">Book spread: '+esc(f.book)+'</span>':'<span class="loser">Line: TBD</span> <span class="picktag">Line not posted yet</span>';
   var lines=[];
   var h=headlinePickFor(f);
@@ -3318,8 +3318,14 @@ function forecastRowHtml(f){
     /* Model B only: say so plainly instead of leaving a bare
        Model B line with no agree/split tag and no strength word
        (Nov 9 review finding #5 — LAC @ BAL). The headline is
-       Model B's number when Model A is not in yet. */
-    lines.push('<div>Model A: not in yet for this game</div>');
+       Model B's number when Model A is not in yet. But Model A
+       never covers college basketball, so "not in yet" would
+       mislead there — it is not coming. Say that plainly. */
+    if(league==="cbb"){
+      lines.push('<div>Model A doesn&rsquo;t cover college basketball</div>');
+    } else {
+      lines.push('<div>Model A: not in yet for this game</div>');
+    }
   }
   var close=headlinePct<=56;
   var agreeTag=a?'<span class="picktag'+(a.pick===f.pick?"":" close")+'">'+(a.pick===f.pick?"Models agree":"Models split")+'</span>':"";
@@ -3594,7 +3600,7 @@ function renderGames(){
   if(leagueState==="nfl"){
     (NFL_FORECASTS||[]).forEach(function(f){
       if(!gameDateMatch(f.date)) return;
-      push(f.day,f.date,f.time,forecastRowHtml(f));
+      push(f.day,f.date,f.time,forecastRowHtml(f,leagueState));
     });
     /* A feed row is skipped only when the headline list actually
        contains that game — an empty headline list must not hide the
@@ -3635,25 +3641,25 @@ function renderGames(){
     if(leagueState==="cfb"){
       (CFB_FORECASTS||[]).forEach(function(f){
         if(!gameDateMatch(f.date)) return;
-        push(f.day,f.date,f.time,forecastRowHtml(f));
+        push(f.day,f.date,f.time,forecastRowHtml(f,leagueState));
       });
     }
     if(leagueState==="cbb"){
       (CBB_FORECASTS||[]).forEach(function(f){
         if(!gameDateMatch(f.date)) return;
-        push(f.day,f.date,f.time,forecastRowHtml(f));
+        push(f.day,f.date,f.time,forecastRowHtml(f,leagueState));
       });
     }
     if(leagueState==="nba"){
       (NBA_FORECASTS||[]).forEach(function(f){
         if(!gameDateMatch(f.date)) return;
-        push(f.day,f.date,f.time,forecastRowHtml(f));
+        push(f.day,f.date,f.time,forecastRowHtml(f,leagueState));
       });
     }
     if(leagueState==="nhl"){
       (NHL_FORECASTS||[]).forEach(function(f){
         if(!gameDateMatch(f.date)) return;
-        push(f.day,f.date,f.time,forecastRowHtml(f));
+        push(f.day,f.date,f.time,forecastRowHtml(f,leagueState));
       });
     }
   }
