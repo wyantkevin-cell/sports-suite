@@ -70,13 +70,13 @@
     },
     {
       "combined": {
-        "losses": 4,
-        "n_graded": 5,
-        "n_pending": 5,
-        "profit": -336.71,
+        "losses": 8,
+        "n_graded": 10,
+        "n_pending": 0,
+        "profit": -647.42,
         "pushes": 0,
-        "roi_pct": -67.3,
-        "wins": 1
+        "roi_pct": -64.7,
+        "wins": 2
       },
       "dates": "2026-11-12 to now",
       "id": "live_bp",
@@ -94,17 +94,17 @@
       "rule": "Best Plays (variant BP): NBA assists only, model edge (model_prob - market_prob) > 2pp, odds >= -300, 15pp market-cap re-check, news-flag and not-started guards, ranked by edge, top 5, never padded. More Plays (variant MP) is a second tier, one best agreement pick per sport; it is paper-only measurement and never part of this record. No parlay.",
       "status": "current",
       "straights": {
-        "losses": 4,
-        "n_graded": 5,
-        "n_pending": 5,
-        "profit": -336.71,
+        "losses": 8,
+        "n_graded": 10,
+        "n_pending": 0,
+        "profit": -647.42,
         "pushes": 0,
-        "roi_pct": -67.3,
-        "wins": 1
+        "roi_pct": -64.7,
+        "wins": 2
       }
     }
   ],
-  "generated_pt": "2026-11-13 07:11:12 PST",
+  "generated_pt": "2026-11-14 07:11:26 PST",
   "name": "Record eras \u2014 archived, not deleted, never blended",
   "note": "Switching rules and starting a new record is not dishonest as long as the old way is shelved and kept visible, not deleted or hidden (Kevin, Nov 10). Every era below stays visible on the site. Numbers come from track_record_ledger.jsonl and variant_records.json \u2014 the ledger is the source of truth; variant_records.json agrees exactly (D straights profit_exact -90.86, parlays -500.0, combined -590.86). Each bet is $100 flat. ROI is profit divided by graded bets.",
   "paper_tests_not_in_live_record": [
