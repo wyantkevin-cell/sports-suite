@@ -659,6 +659,14 @@ html[data-theme="minimal"] .tabbar [role="tab"][aria-selected="true"]{background
 .bets-tier .sub{margin-top:8px}
 .bets-tier .bets-grid{margin-top:14px}
 .bets-tier .filters{margin:14px 0 0}
+/* Experiment board (Nov 14): six approaches, each a .bets-tier with
+   its record in the header. Name left, record right. */
+.approach-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.approach-head h2{margin:0}
+.approach-record{font-family:var(--mono);font-size:15px;font-weight:700;white-space:nowrap}
+.approach-record .good{color:var(--good)}
+.approach-record .bad{color:var(--bad)}
+
 .bet-card{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:18px 19px;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:border-color .15s,box-shadow .15s}
 .bet-card:hover{border-color:var(--accent);box-shadow:0 6px 20px rgba(0,0,0,.10)}
 .bet-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
@@ -1010,7 +1018,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
         <button type="button" data-goto="gameforecasts" data-gf-section="gf-moneyline">Who wins? <span>Who we think wins each game &rarr;</span></button>
         <button type="button" data-goto="props">Player picks <span>Points, shots, touchdowns, all of it &rarr;</span></button>
         <button type="button" data-goto="gameforecasts" data-gf-section="gf-totals">Totals <span>Our total next to the book&rsquo;s &rarr;</span></button>
-        <button type="button" data-goto="bets">Our Bets <span>Today&rsquo;s Best Plays &rarr;</span></button>
+        <button type="button" data-goto="bets">Our Bets <span>Today&rsquo;s picks &rarr;</span></button>
         <button type="button" data-goto="gameforecasts" data-gf-section="gf-season">NFL Season outlook <span>We ran the season 10,000 times. Here&rsquo;s how it ends. &rarr;</span></button>
         <button type="button" data-goto="record">Our record <span>Finished bets. Wins and losses. &rarr;</span></button>
       </div>
@@ -1283,142 +1291,20 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <!-- ============ OUR BETS ============ -->
   <section class="panel" id="panel-bets" role="tabpanel" aria-labelledby="tab-bets" tabindex="0" hidden>
     <div class="bets-hero">
-      <h1>Today&rsquo;s Best Plays</h1>
+      <h1>Our Bets</h1>
       <span class="bets-date" id="betsDate" hidden></span>
-      <p class="record-line">Our record: 0&ndash;0, $0 so far. Forecasts, not winners yet.</p>
-      <p>These are the only picks our numbers back right now. Below them, a few more picks from the board &mdash; up to 10 per sport.</p>
+      <p>Every pick tracked at $100.</p>
       <div class="freshness"></div>
     </div>
-
-    <section class="bets-tier" aria-label="Best Plays">
-      <div class="explain-wrap">
-        <h2 class="explain-head"><span class="explain-title">Best Plays</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainBestPlays" aria-label="About Best Plays">i</button></h2>
-        <div class="explain" id="explainBestPlays" hidden><p style="margin:0">These are under bets on NBA assists where our number is clearly above the book&rsquo;s number. This is the best lead we have, and we are tracking every one of these picks, win or lose, in our record from November 12. It is not a promise &mdash; no pick is guaranteed, and the record so far is small. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
-      </div>
-      <p class="sub">These are the only picks our numbers back right now.</p>
-      <div id="bestPlaysGrid" class="bets-grid"></div>
-      <div id="bestPlaysEmpty" class="empty-state"><p>Loading today&rsquo;s Best Plays&hellip;</p></div>
-      <p class="sub" id="bestPlaysMeta"></p>
-    </section>
-
-    <section class="bets-tier" aria-label="More Plays">
-      <div class="explain-wrap">
-        <h2 class="explain-head"><span class="explain-title">More Plays</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainMorePlays" aria-label="About More Plays">i</button></h2>
-        <div class="explain" id="explainMorePlays" hidden><p style="margin:0">These are the model&rsquo;s picks, up to 10 per sport &mdash; the closest our number sits to the book&rsquo;s number. They have not shown a profit, and they are not part of our main record. They are here for people who want to pick their own spots. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
-      </div>
-      <p class="sub">More picks from the board, up to 10 per sport. These are not our best plays.</p>
-      <div class="filters" id="morePlaysFilters" role="group" aria-label="Filter More Plays by sport"></div>
-      <div id="morePlaysGrid" class="bets-grid"></div>
-      <div id="morePlaysEmpty" class="empty-state"><p>Loading today&rsquo;s More Plays&hellip;</p></div>
-      <p class="sub" id="morePlaysMeta"></p>
-    </section>
-    <p class="note">Today&rsquo;s picks only. Once a game finishes and a pick is graded, it moves to <a href="#record" data-goto="record">Our Record</a>. Pending picks never show up there.</p>
+    <div id="experimentBoard"><div class="empty-state"><p>Loading today&rsquo;s picks&hellip;</p></div></div>
+    <p class="note">How each one works: <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p>
   </section>
 
   <section class="panel" id="panel-record" role="tabpanel" aria-labelledby="tab-record" tabindex="0" hidden>
-    <div class="explain-wrap">
-      <h1 class="explain-head"><span class="explain-title">How have <em>we done?</em></span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainRecord" aria-label="About this record">i</button></h1>
-      <div class="explain" id="explainRecord" hidden><p style="margin:0">Only finished bets show up here, with the result next to each one. Today&rsquo;s picks stay on <a class="doclink" href="#bets" data-goto="bets">Our Bets</a> until their games finish. The record started fresh on Nov 6, 2026, and started over again on Nov 12 with Best Plays &mdash; NBA assists, unders only. The old eras are kept below, as an archive. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
-    </div>
-
-    <div class="card tally-card">
-      <div class="tally-big" id="tallyBig">0&ndash;0 &middot; $0 profit</div>
-      <p id="tallySub">Best Plays era, from Nov 12, 2026. Every settled bet counts at $100. So the profit is what $100 bets would have made or lost.</p>
-      <div class="tally-grid" id="tallyGrid"><div class="tally-block"><h3>Best Plays &mdash; NBA assists, unders only</h3><div class="tally-line">0 wins, 0 losses</div><p>Profit: <b>$0</b> &nbsp;&middot;&nbsp; ROI: <b>&mdash;</b> &nbsp;&middot;&nbsp; 0 settled</p></div></div>
-      <div id="periodRecord"></div>
-    </div>
-
-    <p class="sub" id="recordEraNote">This record covers three eras. Nov 6&ndash;10 used the old way (biggest edge); Nov 11 was a one-day switch to agreement; from Nov 12 the record is Best Plays &mdash; NBA assists, unders only. Each era&rsquo;s record is shown on its own below &mdash; nothing is blended.</p>
-
-    <section class="block" aria-label="Record eras">
-      <h2>Record eras</h2>
-      <p class="sub">The current record is the Best Plays era. The old ways are kept here as an archive &mdash; visible, never blended in. <a href="record_eras_archive.json">Full archive (JSON)</a> &middot; <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p>
-      <div class="rows" id="eraRows">
-        <div class="trow" style="grid-template-columns:minmax(0,1fr) auto"><div class="who"><b>Best Plays era &mdash; NBA assists, unders only</b><span>Current &middot; Nov 12, 2026 &ndash; now &middot; Single bets 0&ndash;0 ($0) &middot; No parlays</span></div><div style="text-align:right"><div class="num" style="font-size:20px">0&ndash;0 &middot; $0</div><div style="font-size:12px;color:var(--muted)">No settled bets yet</div></div></div>
-        <div class="trow" style="grid-template-columns:minmax(0,1fr) auto"><div class="who"><b>A era &mdash; agreement</b><span>Archived &middot; Nov 11, 2026 &middot; Single bets 0&ndash;0, 5 waiting on their games ($0)</span></div><div style="text-align:right"><div class="num" style="font-size:20px">&mdash;</div><div style="font-size:12px;color:var(--muted)">5 picks not settled yet</div></div></div>
-        <div class="trow" style="grid-template-columns:minmax(0,1fr) auto"><div class="who"><b>D era &mdash; biggest edge</b><span>Archived &middot; Nov 6&ndash;10, 2026 &middot; Single bets 10&ndash;9 (&minus;$90.86) &middot; Parlays 0&ndash;5 (&minus;$500)</span></div><div style="text-align:right"><div class="num" style="font-size:20px">10&ndash;14 &middot; &minus;$591</div><div style="font-size:12px;color:var(--muted)">ROI &minus;24.6% &middot; 24 graded</div></div></div>
-      </div>
-      <p class="sub" id="eraMeta"></p>
-    </section>
-
-    <div id="recordDays"></div>
-    <section class="block" aria-label="Profit and loss calendar">
-      <h2>Profit and loss calendar</h2>
-      <p class="sub">Each day&rsquo;s result at a glance. Green means the day made money, red means it lost money. A day whose bets have not finished yet shows &ldquo;not settled&rdquo;. Each bet is $100 flat.</p>
-      <div class="filter-group">
-        <span class="filter-label" id="pnlMonthLabel">Month</span>
-        <select id="pnlMonthFilter" aria-labelledby="pnlMonthLabel" style="display:none"></select>
-      </div>
-      <p class="sub" id="pnlCalendarTotal" style="margin-top:10px"></p>
-      <p class="sub">This calendar covers the archived eras so far. Best Plays days start landing here once the new era&rsquo;s picks settle, from Nov 12.</p>
-      <div id="pnlCalendar"><p class="empty-note">No calendar yet &mdash; check back after the morning update.</p></div>
-      <p class="sub" id="pnlCalendarMeta"></p>
-    </section>
-
-    <section class="block" aria-label="Parlay record">
-      <h2>Parlays &mdash; archived</h2>
-      <p class="sub">Parlay of the Day ended Nov 10. Its record stays here; there are no new parlays.</p>
-      <div id="parlayRecordRows"><p class="empty-note">No settled parlays yet.</p></div>
-    </section>
-
-    <section class="block" aria-label="How we pick our bets">
-      <h2>How we pick our bets</h2>
-      <p class="sub">We try different ways of picking bets, and we keep the record for each way. Here are the four ways.</p>
-      <div class="rows">
-        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Best Plays &mdash; the way now (from Nov 12)</b><span>Under bets on NBA assists where our number is clearly above the book&rsquo;s number &mdash; more than 2 points above it. Up to 5 a day, only the ones that qualify, never padded. This is our record now.</span></div></div>
-        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>More Plays &mdash; second tier</b><span>Up to ten picks per sport, the closest our number sits to the book&rsquo;s number. Not our best plays, and not part of the main record. For people who want to pick their own spots.</span></div></div>
-        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Agreement (A) &mdash; one day (Nov 11)</b><span>We picked the bets where our number and the book&rsquo;s number were close, within 10 points of each other. One day only &mdash; the switch day. Its record is kept below, as an archive.</span></div></div>
-        <div class="trow" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Dominant edge (D) &mdash; the old way (Nov 6&ndash;10)</b><span>We picked the bets where our number was furthest above the book&rsquo;s number. It lost money &mdash; and the bets with the biggest edge lost the most. We stopped using it. Its record is kept below, as an archive.</span></div></div>
-      </div>
-    </section>
-
-    <section class="block" aria-label="How each way of picking is doing">
-      <h2>How each way of picking is doing</h2>
-      <p class="sub">Each era&rsquo;s record, on its own. The Best Plays era is our record now; the old eras are kept here as an archive, not blended in. The paper-test rows are an experiment &mdash; they never place a bet. Each bet is $100 flat.</p>
-      <div class="rows" id="variantRows"><p class="empty-note">No variant records yet &mdash; check back after the morning update.</p></div>
-      <p class="sub" id="variantMeta"></p>
-    </section>
-
-    <section class="block" aria-label="How we have done, broken down">
-      <h2>How we have done, broken down</h2>
-      <p class="sub">Every forecast we graded, grouped by sport and by kind of pick. This is the forecast record &mdash; how often our picks hit &mdash; not the dollar record on Our Bets. Small groups are noisy: a handful of picks proves nothing either way.</p>
-      <div class="filter-group">
-        <span class="filter-label" id="breakdownViewLabel">Show</span>
-        <select id="breakdownViewFilter" aria-labelledby="breakdownViewLabel">
-          <option value="sport">By sport</option>
-          <option value="prop">By prop type</option>
-        </select>
-      </div>
-      <div class="rows" id="breakdownRows" style="margin-top:12px"><p class="empty-note">No breakdown yet &mdash; check back after the morning update.</p></div>
-      <p class="sub" id="breakdownNote" style="margin-top:10px">Quoted chance is the average chance our model gave these picks. Hit rate is how often they actually hit. Totals and spreads leans carry no quoted chance, so those rows show none.</p>
-      <p class="sub" id="breakdownMeta"></p>
-    </section>
-
-    <section class="block" aria-label="Every graded bet">
-      <h2>Every graded bet</h2>
-      <p class="sub">Each forecast we graded, grouped by sport and by kind of pick. This is the forecast record &mdash; how often our picks hit &mdash; not the dollar record on Our Bets. Tap a sport to open it.</p>
-      <div id="gradedBets"><p class="empty-note">No graded bets yet &mdash; check back after the morning update.</p></div>
-      <p class="sub" id="gradedBetsMeta"></p>
-    </section>
-
-
-    <section class="block" aria-label="What happens to your money over a season">
-      <h2>What happens to your money over a season?</h2>
-      <div class="explain-wrap" style="margin-bottom:8px">
-        <button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainBankroll" aria-label="How these numbers work">i</button>
-        <div class="explain" id="explainBankroll" hidden><p style="margin:0">We played a season of 250 bets 10,000 times on a computer, starting with $10,000, and counted how the money ended up. &ldquo;Middle result&rdquo; is the result in the middle; &ldquo;usually between&rdquo; covers the middle 8 times out of 10. &ldquo;Ahead&rdquo; means finishing with more than the $10,000 you started with. &ldquo;Biggest fall&rdquo; is how far the money typically falls from its highest point along the way. The &ldquo;sized to the edge&rdquo; way of betting grows the bet when the edge is bigger and shrinks it when the edge is smaller; it never puts more than 10% of what you have on one bet. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
-      </div>
-      <p class="sub">An example to show what an edge does &mdash; and what no edge does. This is <b>not</b> our record. Our record is the picks above; it is too short so far to run this on.</p>
-      <div class="rows">
-        <div class="trow score" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>With a real edge &mdash; same $100 every bet</b><span>Winning 55 times in 100 at &minus;110 odds. Middle result: $11,155 (usually $9,245&ndash;$13,064). Ahead 81 times in 100. Typical biggest fall 11%.</span></div></div>
-        <div class="trow score" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>With a real edge &mdash; bet sized to the edge</b><span>Same 55-in-100 edge. Middle result: $12,609 (usually $7,453&ndash;$21,332). Ahead 73 times in 100. Typical biggest fall 31% &mdash; higher in the middle, but wilder both ways.</span></div></div>
-        <div class="trow score" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>No edge at all &mdash; same $100 every bet</b><span>A coin flip at &minus;110 odds. Middle result: $8,864 (usually $6,955&ndash;$10,773). Ahead 23 times in 100. The book&rsquo;s price quietly eats the money.</span></div></div>
-        <div class="trow score" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>No edge at all &mdash; bet sized to the edge</b><span>With no edge showing, this way of betting places no bets at all. You keep your $10,000. Not betting beats betting when the price is not in your favor.</span></div></div>
-        <div class="trow score" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Edge claimed, but not real &mdash; bet sized to the edge</b><span>Betting as if the 55-in-100 edge were real, when it is not. Middle result: $9,198 (usually $5,437&ndash;$15,561). Ahead 42 times in 100. Typical biggest fall 39%. Sizing bets for an edge you do not have loses faster than flat betting &mdash; this is why we do not size bets on our chances until the record proves them.</span></div></div>
-      </div>
-      <p class="sub" id="bankrollRecordLine" style="margin-top:12px"><b>Our picks, run this way:</b> 12 graded picks so far (Nov 8, 2026). We need 30 graded picks before this runs on our own record. Check back as the record grows.</p>
-      <p class="sub">Even a small real edge comes with big swings. Nothing here is a promise that any way of betting wins.</p>
-    </section>
+    <h1>How have <em>we done?</em></h1>
+    <p class="sub">Every pick tracked at $100.</p>
+    <div class="rows" id="experimentRecordRows"><p class="empty-note">Loading the record&hellip;</p></div>
+    <p class="note">Full history, old eras, and every graded bet: <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p>
   </section>
 
   <!-- ============ SPORTSBOOKS ============ -->
@@ -1570,14 +1456,68 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <p><b>The 15-point market cap.</b> Covered in Enhancements above. When Model B disagrees with the book by more than 15 points, we pull it back to within 15 points. It is a guardrail, not a model.</p>
 
     <h3 id="doc-record">Our record</h3>
-    <p><a href="#record" data-goto="record">Our record</a> lists only bets that have finished. Date, pick, odds, result, and the profit at $100 per bet. Today&rsquo;s picks stay on <a href="#bets" data-goto="bets">Our Bets</a> until their games finish. The record started fresh on Nov 6, 2026, and started over again on Nov 12 with Best Plays &mdash; NBA assists, unders only. The old eras are kept on <a href="#record" data-goto="record">Our Record</a> as an archive, never blended into the new era.</p>
-    <p><b>How the picks are chosen.</b> Best Plays are under bets on NBA assists where our number is more than 2 points above the book&rsquo;s number, up to 5 a day, only the ones that qualify &mdash; never padded. From November 13 we only pick unders: our check showed the edge filter does not fix overs, so overs are out even when the model likes them. More Plays are up to ten picks per sport, the closest our number sits to the book&rsquo;s number in that sport, with the best 30 shown in the main view; they are a second tier, not our best plays, and not part of the main record. There is no parlay. A pick is dropped if its game has already started. Every pick is graded at $100 flat. A pick that lands exactly on the line is a push. A player who does not play stays pending. Soccer is excluded from the public record.</p>
+    <p><a href="#bets" data-goto="bets">Our Bets</a> shows six ways of picking bets, each tracked on its own at $100 flat. Today&rsquo;s picks stay there until their games finish. <a href="#record" data-goto="record">Our Record</a> shows each way&rsquo;s record &mdash; wins, losses, and profit. None of the six is proven. The record decides which, if any, is worth following.</p>
+    <p><b>How the picks are chosen.</b> <b>Best Plays:</b> under bets on NBA assists where our number is more than 2 points above the book&rsquo;s number, up to 5 a day, only the ones that qualify &mdash; never padded. From November 13 we only pick unders: our check showed the edge filter does not fix overs, so overs are out even when the model likes them. From November 14, at most one pick per game. <b>More Plays:</b> up to ten picks per sport, the closest our number sits to the book&rsquo;s number in that sport, with the best 30 shown in the main view. <b>Moderate:</b> the picks our model likes most, ranked by how likely they are to hit. <b>Random:</b> picks chosen at random from the board, as a check &mdash; if random beats a method, the method is not doing anything. <b>Best Families:</b> only the two pick types with the best backtested record &mdash; college basketball moneylines and NBA assists &mdash; where our number and the book&rsquo;s number are close. <b>Medium Card:</b> under bets on NBA assists and rebounds, ranked by edge, only from the two pick types that passed our gate. A pick is dropped if its game has already started. Every pick is graded at $100 flat. A pick that lands exactly on the line is a push. A player who does not play stays pending. Soccer is excluded from the public record.</p>
     <p><b>Silent grading.</b> Every morning we also grade the whole board in the background &mdash; every prop and every game forecast, about 25 times as many picks as the card. That grading never touches the public record. It exists only to feed the calibration tables and to show us which families are running hot or cold. On November 8, for example, it graded 355 events from the November 5 to 7 boards. The public record is only the card. The silent log is the lab notebook.</p>
-    <p><b>Closing-line value (CLV).</b> We also track whether our picks beat the closing price at Pinnacle, the sharpest book. For each card pick, we record the price when we picked it and the Pinnacle price near game time. If the closing price moved our way, that is positive CLV. Positive CLV over many bets is the best early sign a model has an edge, because the closing price is the market&rsquo;s best guess. So far we have 53 closes recorded, averaging about +1.6 points. That is a small sample. It is suggestive, not proof. We need around 75 closes before we draw any conclusion, and we are not there yet.</p>
-    <p><b>The record so far.</b> The old way (Nov 6&ndash;10, biggest edge): straights 10&ndash;9, &minus;$90.86; parlays 0&ndash;5, &minus;$500; total &minus;$590.86. That is a losing record. We show it because the record is the point. Nov 11 was a one-day switch to agreement; its 5 picks are still waiting on their games. The Best Plays era starts Nov 12 at 0&ndash;0, $0. If it stays negative, we change the selection rules and say so here.</p>
+    <p><b>Closing-line value (CLV).</b> We also track whether our picks beat the closing price at Pinnacle, the sharpest book. For each card pick, we record the price when we picked it and the Pinnacle price near game time. If the closing price moved our way, that is positive CLV. Positive CLV over many bets is the best early sign a model has an edge, because the closing price is the market&rsquo;s best guess. So far we have 69 closes recorded, averaging about +0.3 points. That is a small sample. It is suggestive, not proof. We need around 75 closes before we draw any conclusion, and we are not there yet.</p>
+    <p><b>The record so far &mdash; old ways, archived.</b> The old way (Nov 6&ndash;10, biggest edge): straights 10&ndash;9, &minus;$90.86; parlays 0&ndash;5, &minus;$500; total &minus;$590.86. That is a losing record. We show it because the record is the point. Nov 11 was a one-day switch to agreement: 5&ndash;0, +$239.88. Nov 11 was also a transition day for Best Plays and More Plays (Best Plays 3&ndash;0, +$231.78; More Plays 21&ndash;10, +$201.43) &mdash; those picks are graded, but they are not counted in the current tallies, which start Nov 12. The parlay of the day ended Nov 10; its record stays here and there are no new parlays.</p>
 
+    <h3>Settled bets, by day</h3>
+    <div id="recordDays"></div>
+    <section class="block" aria-label="Profit and loss calendar">
+      <h3>Profit and loss calendar</h3>
+      <p class="sub">Each day&rsquo;s result at a glance. Green means the day made money, red means it lost money. A day whose bets have not finished yet shows &ldquo;not settled&rdquo;. Each bet is $100 flat.</p>
+      <div class="filter-group">
+        <span class="filter-label" id="pnlMonthLabel">Month</span>
+        <select id="pnlMonthFilter" aria-labelledby="pnlMonthLabel" style="display:none"></select>
+      </div>
+      <p class="sub" id="pnlCalendarTotal" style="margin-top:10px"></p>
+      <p class="sub">Each day&rsquo;s result from the live record &mdash; the archived eras and Best Plays.</p>
+      <div id="pnlCalendar"><p class="empty-note">No calendar yet &mdash; check back after the morning update.</p></div>
+      <p class="sub" id="pnlCalendarMeta"></p>
+    </section>
+    <section class="block" aria-label="How we have done, broken down">
+      <h3>How we have done, broken down</h3>
+      <p class="sub">Every forecast we graded, grouped by sport and by kind of pick. This is the forecast record &mdash; how often our picks hit &mdash; not the dollar record on Our Bets. Small groups are noisy: a handful of picks proves nothing either way.</p>
+      <div class="filter-group">
+        <span class="filter-label" id="breakdownViewLabel">Show</span>
+        <select id="breakdownViewFilter" aria-labelledby="breakdownViewLabel">
+          <option value="sport">By sport</option>
+          <option value="prop">By prop type</option>
+        </select>
+      </div>
+      <div class="rows" id="breakdownRows" style="margin-top:12px"><p class="empty-note">No breakdown yet &mdash; check back after the morning update.</p></div>
+      <p class="sub" id="breakdownNote" style="margin-top:10px">Quoted chance is the average chance our model gave these picks. Hit rate is how often they actually hit. Totals and spreads leans carry no quoted chance, so those rows show none.</p>
+      <p class="sub" id="breakdownMeta"></p>
+    </section>
+    <section class="block" aria-label="Every graded bet">
+      <h3>Every graded bet</h3>
+      <p class="sub">Each forecast we graded, grouped by sport and by kind of pick. This is the forecast record &mdash; how often our picks hit &mdash; not the dollar record on Our Bets. Tap a sport to open it.</p>
+      <div id="gradedBets"><p class="empty-note">No graded bets yet &mdash; check back after the morning update.</p></div>
+      <p class="sub" id="gradedBetsMeta"></p>
+    </section>
+    <section class="block" aria-label="Parlay record">
+      <h3>Parlays &mdash; archived</h3>
+      <p class="sub">Parlay of the Day ended Nov 10. Its record stays here; there are no new parlays.</p>
+      <div id="parlayRecordRows"><p class="empty-note">No settled parlays yet.</p></div>
+    </section>
     <h3 id="doc-bankroll">Your money over a season</h3>
-    <p><a href="#record" data-goto="record">Our record</a> also shows what happens to $10,000 over a season of 250 bets, played 10,000 times on a computer. Two ways of betting: the same $100 on every bet, and a bet sized to the edge. Bigger when the edge is bigger, smaller when it’s smaller, never more than 10% of what you have. These numbers are a teaching example, not our record. One row shows a real edge (winning 55 times in 100 at &minus;110 odds). One row shows the same bets with no edge at all. One row shows what happens when you size bets for an edge you don’t have. Our own picks will run through the same simulation once 30 of them are graded. Until then that part of the page says so plainly. No way of betting shown here is a promise it wins. Even with a real edge, the sized bets end higher in the middle but finish ahead less often and dip further along the way.</p>
+    <p>Below is what happens to $10,000 over a season of 250 bets, played 10,000 times on a computer. Two ways of betting: the same $100 on every bet, and a bet sized to the edge. Bigger when the edge is bigger, smaller when it’s smaller, never more than 10% of what you have. These numbers are a teaching example, not our record. One row shows a real edge (winning 55 times in 100 at &minus;110 odds). One row shows the same bets with no edge at all. One row shows what happens when you size bets for an edge you don’t have. Our own picks will run through the same simulation once 30 of them are graded. Until then that part of the page says so plainly. No way of betting shown here is a promise it wins. Even with a real edge, the sized bets end higher in the middle but finish ahead less often and dip further along the way.</p>
+      <div class="explain-wrap" style="margin-bottom:8px">
+        <button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainBankroll" aria-label="How these numbers work">i</button>
+        <div class="explain" id="explainBankroll" hidden><p style="margin:0">We played a season of 250 bets 10,000 times on a computer, starting with $10,000, and counted how the money ended up. &ldquo;Middle result&rdquo; is the result in the middle; &ldquo;usually between&rdquo; covers the middle 8 times out of 10. &ldquo;Ahead&rdquo; means finishing with more than the $10,000 you started with. &ldquo;Biggest fall&rdquo; is how far the money typically falls from its highest point along the way. The &ldquo;sized to the edge&rdquo; way of betting grows the bet when the edge is bigger and shrinks it when the edge is smaller; it never puts more than 10% of what you have on one bet. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p></div>
+      </div>
+      <p class="sub">An example to show what an edge does &mdash; and what no edge does. This is <b>not</b> our record. Our record is the picks above; it is too short so far to run this on.</p>
+      <div class="rows">
+        <div class="trow score" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>With a real edge &mdash; same $100 every bet</b><span>Winning 55 times in 100 at &minus;110 odds. Middle result: $11,155 (usually $9,245&ndash;$13,064). Ahead 81 times in 100. Typical biggest fall 11%.</span></div></div>
+        <div class="trow score" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>With a real edge &mdash; bet sized to the edge</b><span>Same 55-in-100 edge. Middle result: $12,609 (usually $7,453&ndash;$21,332). Ahead 73 times in 100. Typical biggest fall 31% &mdash; higher in the middle, but wilder both ways.</span></div></div>
+        <div class="trow score" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>No edge at all &mdash; same $100 every bet</b><span>A coin flip at &minus;110 odds. Middle result: $8,864 (usually $6,955&ndash;$10,773). Ahead 23 times in 100. The book&rsquo;s price quietly eats the money.</span></div></div>
+        <div class="trow score" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>No edge at all &mdash; bet sized to the edge</b><span>With no edge showing, this way of betting places no bets at all. You keep your $10,000. Not betting beats betting when the price is not in your favor.</span></div></div>
+        <div class="trow score" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Edge claimed, but not real &mdash; bet sized to the edge</b><span>Betting as if the 55-in-100 edge were real, when it is not. Middle result: $9,198 (usually $5,437&ndash;$15,561). Ahead 42 times in 100. Typical biggest fall 39%. Sizing bets for an edge you do not have loses faster than flat betting &mdash; this is why we do not size bets on our chances until the record proves them.</span></div></div>
+      </div>
+      <p class="sub" id="bankrollRecordLine" style="margin-top:12px"><b>Our picks, run this way:</b> 12 graded picks so far (Nov 8, 2026). We need 30 graded picks before this runs on our own record. Check back as the record grows.</p>
+      <p class="sub">Even a small real edge comes with big swings. Nothing here is a promise that any way of betting wins.</p>
+
 
     <h3 id="doc-models">Our models</h3>
     <p>These are the 30 models behind the numbers on this site &mdash; 29 of our models (together, Model B &mdash; FULL_SLATE) plus ALL_IN (Model A) as the 30th. Each one focuses on one job.</p>
@@ -5663,6 +5603,103 @@ function loadMorePlays(){
     }).catch(function(){});
   }catch(e){}
 }
+/* Experiment board (Nov 14): Our Bets shows six approaches, each with
+   today's picks and its running record, from one feed
+   "experiment_board.json". The same feed drives the six rows on Our
+   Record. The Best Plays / More Plays loaders still run — Home's
+   "strongest picks" reads BEST_PLAYS. Any failure leaves the honest
+   loading note: no banner, no stale picks, nothing here throws. */
+var EXPERIMENT_BOARD=null;
+var EXP_MP_FILTER="All";
+function expRecordHtml(rec){
+  var wl=(rec.wins||0)+"\u2013"+(rec.losses||0);
+  var money=vrMoney(rec.profit);
+  var cls=(rec.profit||0)>0?"good":((rec.profit||0)<0?"bad":"");
+  return wl+" \u00B7 "+(cls?'<span class="'+cls+'">'+esc(money)+'</span>':esc(money));
+}
+function expPicksHtml(picks){
+  if(!picks.length) return "";
+  if(propView==="list"){
+    return '<div class="prop-list prop-list-bets"><div class="prop-list-head"><span>Player</span><span>Pick</span><span style="text-align:right">Book pays</span><span style="text-align:right">Our chance</span><span style="text-align:right">Tier</span></div>'+picks.map(function(b){return betListRowHtml(b,false);}).join("")+'</div>';
+  }
+  return '<div class="bets-grid">'+picks.map(function(b){return betCardHtml(b,false);}).join("")+'</div>';
+}
+function expMpSports(picks){
+  var seen={}, order=MORE_SPORTS_ALL.slice();
+  MORE_SPORTS_ALL.forEach(function(s){seen[s]=true;});
+  picks.forEach(function(b){
+    var s=String(b.sport||"");
+    if(s&&!seen[s]){seen[s]=true;order.push(s);}
+  });
+  return order;
+}
+function renderExperimentBoard(){
+  var host=$("experimentBoard");
+  if(!host) return;
+  if(!EXPERIMENT_BOARD||!Array.isArray(EXPERIMENT_BOARD.approaches)){
+    host.innerHTML='<div class="empty-state"><p>Today&rsquo;s picks didn&rsquo;t load &mdash; check back after the morning update.</p></div>';
+    return;
+  }
+  var dateEl=$("betsDate");
+  if(dateEl&&EXPERIMENT_BOARD.date){dateEl.textContent=fmtDateLong(EXPERIMENT_BOARD.date);dateEl.hidden=false;}
+  host.innerHTML=EXPERIMENT_BOARD.approaches.map(function(a){
+    var picks=(a.picks||[]).filter(function(b){return !isSoccerRow(b);});
+    var body="";
+    if(a.id==="mp"){
+      var shown=EXP_MP_FILTER==="All"?picks.filter(function(b){return b.in_all_view!==false;}):picks.filter(function(b){return String(b.sport||"")===EXP_MP_FILTER;});
+      var opts=["All"].concat(expMpSports(picks));
+      if(opts.indexOf(EXP_MP_FILTER)<0) EXP_MP_FILTER="All";
+      body+='<div class="filters" id="expMpFilters" role="group" aria-label="Filter More Plays by sport">'
+        +opts.map(function(s){return '<button type="button" data-sport="'+esc(s)+'" aria-pressed="'+(EXP_MP_FILTER===s?"true":"false")+'">'+esc(s)+'</button>';}).join("")+'</div>';
+      body+=shown.length?expPicksHtml(shown):'<div class="empty-state"><p>'+(EXP_MP_FILTER==="All"?"No More Plays today.":"No "+esc(EXP_MP_FILTER)+" picks today.")+'</p></div>';
+    } else {
+      body+=picks.length?expPicksHtml(picks):'<div class="empty-state"><p>No picks today.</p></div>';
+    }
+    return '<section class="bets-tier" aria-label="'+esc(a.name)+'">'
+      +'<div class="approach-head"><h2>'+esc(a.name)+'</h2><span class="approach-record">'+expRecordHtml(a.record||{})+'</span></div>'
+      +body+'</section>';
+  }).join("");
+  var fhost=$("expMpFilters");
+  if(fhost){
+    Array.prototype.forEach.call(fhost.querySelectorAll("button"),function(btn){
+      btn.addEventListener("click",function(){
+        EXP_MP_FILTER=btn.getAttribute("data-sport")||"All";
+        try{renderExperimentBoard();}catch(e){}
+      });
+    });
+  }
+  try{renderExperimentRecord();}catch(e){}
+}
+function renderExperimentRecord(){
+  var host=$("experimentRecordRows");
+  if(!host) return;
+  if(!EXPERIMENT_BOARD||!Array.isArray(EXPERIMENT_BOARD.approaches)){
+    host.innerHTML='<p class="empty-note">No record yet &mdash; check back after the morning update.</p>';
+    return;
+  }
+  host.innerHTML=EXPERIMENT_BOARD.approaches.map(function(a){
+    var r=a.record||{};
+    var big=(r.wins||0)+"\u2013"+(r.losses||0)+" \u00B7 "+vrMoney(r.profit);
+    var small="ROI "+vrRoi(r.roi_pct)+" \u00B7 "+(r.n||0)+" settled";
+    return '<div class="trow" style="grid-template-columns:minmax(0,1fr) auto">'
+      +'<div class="who"><b>'+esc(a.name)+'</b></div>'
+      +'<div style="text-align:right"><div class="num" style="font-size:20px">'+esc(big)+'</div>'
+      +'<div style="font-size:12px;color:var(--muted)">'+esc(small)+'</div></div></div>';
+  }).join("");
+}
+function loadExperimentBoard(){
+  try{
+    if(typeof fetch!=="function") return;
+    fetch("experiment_board.json?v=" + Date.now()).then(function(res){
+      if(!res||!res.ok) return null;
+      return res.json();
+    }).then(function(data){
+      if(!data) return;
+      EXPERIMENT_BOARD=data;
+      try{renderExperimentBoard();}catch(e){}
+    }).catch(function(){});
+  }catch(e){}
+}
 /* Record eras (Nov 11 rebuild): the current record is the Best Plays
    era (from Nov 12), loaded from "record_eras_archive.json" — the
    archived D and A eras stay visible, never blended. The same file
@@ -7405,6 +7442,7 @@ try{renderSeason();}catch(e){}
 try{renderBets();}catch(e){}
 try{loadBestPlays();}catch(e){}
 try{loadMorePlays();}catch(e){}
+try{loadExperimentBoard();}catch(e){}
 try{loadRecordEras();}catch(e){}
 try{applyCardWatermarks();}catch(e){}
 try{renderRecord();}catch(e){}
