@@ -1444,10 +1444,10 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 
     <h3 id="doc-record">Our record</h3>
     <p><a href="#bets" data-goto="bets">Our Bets</a> shows six ways of picking bets, each tracked on its own at $100 flat. Today&rsquo;s picks stay there until their games finish. <a href="#record" data-goto="record">Our Record</a> shows each way&rsquo;s record &mdash; wins, losses, and profit. None of the six is proven. The record decides which, if any, is worth following.</p>
-    <p><b>How the picks are chosen.</b> <b>Best Plays:</b> under bets on NBA assists where our number is more than 2 points above the book&rsquo;s number, up to 5 a day, only the ones that qualify &mdash; never padded. From November 13 we only pick unders: our check showed the edge filter does not fix overs, so overs are out even when the model likes them. From November 14, at most one pick per game. <b>More Plays:</b> up to ten picks per sport, the closest our number sits to the book&rsquo;s number in that sport, with the best 30 shown in the main view. <b>Moderate:</b> the picks our model likes most, ranked by how likely they are to hit. <b>Random:</b> picks chosen at random from the board, as a check &mdash; if random beats a method, the method is not doing anything. <b>Best Families:</b> only the two pick types with the best backtested record &mdash; college basketball moneylines and NBA assists &mdash; where our number and the book&rsquo;s number are close. <b>Medium Card:</b> under bets on NBA assists and rebounds, ranked by edge, only from the two pick types that passed our gate. A pick is dropped if its game has already started. Every pick is graded at $100 flat. A pick that lands exactly on the line is a push. A player who does not play stays pending. Soccer is excluded from the public record.</p>
+    <p><b>How the picks are chosen.</b> <b>NBA Assists:</b> under bets on NBA assists where our number is more than 2 points above the book&rsquo;s number, up to 5 a day, only the ones that qualify &mdash; never padded. From November 13 we only pick unders: our check showed the edge filter does not fix overs, so overs are out even when the model likes them. From November 14, at most one pick per game. <b>More Plays:</b> up to ten picks per sport, the closest our number sits to the book&rsquo;s number in that sport, with the best 30 shown in the main view. <b>Moderate:</b> the picks our model likes most, ranked by how likely they are to hit. <b>Random:</b> picks chosen at random from the board, as a check &mdash; if random beats a method, the method is not doing anything. <b>Best Families:</b> only the two pick types with the best backtested record &mdash; college basketball moneylines and NBA assists &mdash; where our number and the book&rsquo;s number are close. <b>Medium Card:</b> under bets on NBA assists and rebounds, ranked by edge, only from the two pick types that passed our gate. A pick is dropped if its game has already started. Every pick is graded at $100 flat. A pick that lands exactly on the line is a push. A player who does not play stays pending. Soccer is excluded from the public record.</p>
     <p><b>Silent grading.</b> Every morning we also grade the whole board in the background &mdash; every prop and every game forecast, about 25 times as many picks as the card. That grading never touches the public record. It exists only to feed the calibration tables and to show us which families are running hot or cold. On November 8, for example, it graded 355 events from the November 5 to 7 boards. The public record is only the card. The silent log is the lab notebook.</p>
     <p><b>Closing-line value (CLV).</b> We also track whether our picks beat the closing price at Pinnacle, the sharpest book. For each card pick, we record the price when we picked it and the Pinnacle price near game time. If the closing price moved our way, that is positive CLV. Positive CLV over many bets is the best early sign a model has an edge, because the closing price is the market&rsquo;s best guess. So far we have 69 closes recorded, averaging about +0.3 points. That is a small sample. It is suggestive, not proof. We need around 75 closes before we draw any conclusion, and we are not there yet.</p>
-    <p><b>The record so far &mdash; old ways, archived.</b> The old way (Nov 6&ndash;10, biggest edge): straights 10&ndash;9, &minus;$90.86; parlays 0&ndash;5, &minus;$500; total &minus;$590.86. That is a losing record. We show it because the record is the point. Nov 11 was a one-day switch to agreement: 5&ndash;0, +$239.88. Nov 11 was also a transition day for Best Plays and More Plays (Best Plays 3&ndash;0, +$231.78; More Plays 21&ndash;10, +$201.43) &mdash; those picks are graded, but they are not counted in the current tallies, which start Nov 12. The parlay of the day ended Nov 10; its record stays here and there are no new parlays.</p>
+    <p><b>The record so far &mdash; old ways, archived.</b> The old way (Nov 6&ndash;10, biggest edge): straights 10&ndash;9, &minus;$90.86; parlays 0&ndash;5, &minus;$500; total &minus;$590.86. That is a losing record. We show it because the record is the point. Nov 11 was a one-day switch to agreement: 5&ndash;0, +$239.88. Nov 11 was also a transition day for NBA Assists (then called Best Plays) and More Plays (NBA Assists 3&ndash;0, +$231.78; More Plays 21&ndash;10, +$201.43) &mdash; those picks are graded, but they are not counted in the current tallies, which start Nov 12. The parlay of the day ended Nov 10; its record stays here and there are no new parlays.</p>
 
     <h3>Settled bets, by day</h3>
     <div id="recordDays"></div>
@@ -1459,7 +1459,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
         <select id="pnlMonthFilter" aria-labelledby="pnlMonthLabel" style="display:none"></select>
       </div>
       <p class="sub" id="pnlCalendarTotal" style="margin-top:10px"></p>
-      <p class="sub">Each day&rsquo;s result from the live record &mdash; the archived eras and Best Plays.</p>
+      <p class="sub">Each day&rsquo;s result from the live record &mdash; the archived eras and NBA Assists.</p>
       <div id="pnlCalendar"><p class="empty-note">No calendar yet &mdash; check back after the morning update.</p></div>
       <p class="sub" id="pnlCalendarMeta"></p>
     </section>
@@ -5488,10 +5488,10 @@ function renderBestPlays(){
   if(emptyEl){
     if(!BEST_PLAYS){
       emptyEl.hidden=false;
-      emptyEl.innerHTML="<p>Best Plays didn&rsquo;t load &mdash; check back after the morning update.</p>";
+      emptyEl.innerHTML="<p>NBA Assists didn&rsquo;t load &mdash; check back after the morning update.</p>";
     } else if(!picks.length){
       emptyEl.hidden=false;
-      emptyEl.innerHTML="<p>No Best Plays today &mdash; no NBA assists cleared our edge bar.</p>";
+      emptyEl.innerHTML="<p>No NBA Assists today &mdash; no NBA assists cleared our edge bar.</p>";
     } else {
       emptyEl.hidden=true;
     }
@@ -5594,7 +5594,7 @@ function loadMorePlays(){
    picked from a dropdown — each option carries its running record,
    so the six can be compared without scrolling. Today's picks and
    records come from one feed, "experiment_board.json". The same feed
-   drives the six rows on Our Record. The Best Plays / More Plays
+   drives the six rows on Our Record. The NBA Assists / More Plays
    loaders still run (the feeds still publish) but no panel reads them
    anymore — Home dropped its picks and record lines the same day.
    Any failure leaves the honest loading note: no banner, no stale
@@ -5760,7 +5760,7 @@ function renderEras(){
     var big=$("tallyBig");
     if(big) big.textContent=(ERA_TALLY.wins||0)+"\u2013"+(ERA_TALLY.losses||0)+" \u00B7 "+fmtProfitWhole(ERA_TALLY.profit)+" profit";
     var grid=$("tallyGrid");
-    if(grid) grid.innerHTML=tallyBlockHtml("Best Plays \u2014 NBA assists, unders only",{wins:s.wins||0,losses:s.losses||0,pushes:s.pushes||0,profit:s.profit||0,roi_pct:s.roi_pct,n_graded:s.n_graded||0});
+    if(grid) grid.innerHTML=tallyBlockHtml("NBA Assists \u2014 unders only",{wins:s.wins||0,losses:s.losses||0,pushes:s.pushes||0,profit:s.profit||0,roi_pct:s.roi_pct,n_graded:s.n_graded||0});
   }
   var host=$("eraRows");
   if(host) host.innerHTML=ERA_ARCHIVE.eras.slice().reverse().map(eraRowHtml).join("");
