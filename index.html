@@ -996,21 +996,8 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <button type="button" class="btn" id="welcomeGotIt">Got it</button>
     </div>
     <h1>Check the chances <em>before you bet.</em></h1>
-    <p class="lede">Today's picks. Each one shows how often we think it hits.</p>
-    <p class="record-line">Our record: 0–0, $0 so far. Forecasts, not winners yet.</p>
-    <p class="recap-line" id="yesterdayRecap" hidden></p>
+    <p class="lede">Our number next to the book&rsquo;s number, for every game and prop.</p>
     <div class="freshness"></div>
-
-    <section class="block" style="margin-top:22px" aria-label="Strongest picks">
-      <h2 id="homePicksHeading">Today&rsquo;s strongest picks &mdash; Tue, Nov 10, 2026</h2>
-      <p class="sub" id="homePicksNote" hidden></p>
-      <p class="sub">The % next to each pick is how often we think it hits.</p>
-      <div class="best" id="homePicksList">
-        <div class="pickrow"><div class="who"><b>Loading today's picks…</b><span>If this stays, the morning update hasn't posted yet.</span></div></div>
-      </div>
-      <p class="sub" id="homePicksVoidNote" hidden></p>
-      <p class="sub" id="homePicksCombo" style="margin-top:10px"></p>
-    </section>
 
     <section class="block" aria-label="All tools">
       <h2>Everything else</h2>
@@ -5789,12 +5776,13 @@ function applyCardWatermarks(){
     el.appendChild(c);
   });
 }
-/* The one-line record at the top of the card tabs (Home, Our Bets),
-   rendered from the Best Plays era tally — the current record, loaded
+/* The one-line record (Nov 14: no panel carries it anymore — Home
+   dropped its picks and record lines, and Our Bets shows each
+   approach's record in its own header). renderRecordLine still
+   rewrites any .record-line element if one is ever added back.
+   Rendered from the Best Plays era tally — the current record, loaded
    from "record_eras_archive.json" into ERA_TALLY (0–0, $0 until that
-   file loads). The static HTML in each panel already carries the same
-   line, so it reads right even before this runs. Scoped to the card
-   tabs on purpose: the Game forecasts and Player picks tabs show board
+   file loads). Scoped to the card tabs on purpose: the Game forecasts and Player picks tabs show board
    forecasts, not card picks, so they must NOT carry this line (they
    keep a plain "Forecasts, not winners yet." line in a separate class
    instead). Same for Sportsbooks, whose referral disclosure is static
