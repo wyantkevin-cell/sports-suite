@@ -80,7 +80,7 @@
       },
       "dates": "2026-11-12 to now",
       "id": "live_bp",
-      "name": "Best Plays era \u2014 NBA assists only",
+      "name": "NBA Assists era",
       "note": "Starts Nov 12, 2026 \u2014 the first full day of NBA-assists-only recommendations. Nov 11 Best Plays (5 assists, pick_ids 20261111-BP01..BP05) are a transition-day preview: they are logged in best_plays_log.jsonl with era 'transition' and will be graded, but they do NOT count in this era's tally. The era tally counts BP rows dated 2026-11-12 onward.",
       "parlays": {
         "losses": 0,
@@ -91,7 +91,7 @@
         "roi_pct": null,
         "wins": 0
       },
-      "rule": "Best Plays (variant BP): NBA assists only, model edge (model_prob - market_prob) > 2pp, odds >= -300, 15pp market-cap re-check, news-flag and not-started guards, ranked by edge, top 5, never padded. More Plays (variant MP) is a second tier, one best agreement pick per sport; it is paper-only measurement and never part of this record. No parlay.",
+      "rule": "NBA Assists (variant BP): NBA assists only, model edge (model_prob - market_prob) > 2pp, odds >= -300, 15pp market-cap re-check, news-flag and not-started guards, ranked by edge, top 5, never padded. More Plays (variant MP) is a second tier, one best agreement pick per sport; it is paper-only measurement and never part of this record. No parlay.",
       "status": "current",
       "straights": {
         "losses": 8,
@@ -104,7 +104,7 @@
       }
     }
   ],
-  "generated_pt": "2026-11-14 07:12:45 PST",
+  "generated_pt": "2026-11-14 07:42:27 PST",
   "name": "Record eras \u2014 archived, not deleted, never blended",
   "note": "Switching rules and starting a new record is not dishonest as long as the old way is shelved and kept visible, not deleted or hidden (Kevin, Nov 10). Every era below stays visible on the site. Numbers come from track_record_ledger.jsonl and variant_records.json \u2014 the ledger is the source of truth; variant_records.json agrees exactly (D straights profit_exact -90.86, parlays -500.0, combined -590.86). Each bet is $100 flat. ROI is profit divided by graded bets.",
   "paper_tests_not_in_live_record": [
@@ -121,7 +121,7 @@
     {
       "id": "paper_bf",
       "name": "Best Families tracker (BF)",
-      "note": "Paper-only measurement (CBB moneyline + NBA assists, agreement rule), started Nov 11. Unchanged by this change: best_families_select.py and best_families_log.jsonl are untouched. Best Plays is the live recommendation; BF stays paper-only. Different pick_ids, different feed, different log."
+      "note": "Paper-only measurement (CBB moneyline + NBA assists, agreement rule), started Nov 11. Unchanged by this change: best_families_select.py and best_families_log.jsonl are untouched. NBA Assists is the live recommendation; BF stays paper-only. Different pick_ids, different feed, different log."
     },
     {
       "id": "paper_mp",
