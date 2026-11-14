@@ -2,7 +2,7 @@
   "approaches": [
     {
       "id": "bp",
-      "name": "Best Plays",
+      "name": "NBA Assists",
       "picks": [
         {
           "consensus_flag": null,
@@ -2388,7 +2388,7 @@
     }
   ],
   "date": "2026-11-14",
-  "generated_pt": "2026-11-14 07:12:09 PST",
+  "generated_pt": "2026-11-14 07:42:27 PST",
   "name": "Experiment board \u2014 six ways of picking",
   "notes": [
     "Six ways of picking bets, each tracked on its own at $100 flat. None is proven. The record decides."
