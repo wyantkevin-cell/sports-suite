@@ -5590,13 +5590,17 @@ function loadMorePlays(){
     }).catch(function(){});
   }catch(e){}
 }
-/* Experiment board (Nov 14): Our Bets shows six approaches, each with
-   today's picks and its running record, from one feed
-   "experiment_board.json". The same feed drives the six rows on Our
-   Record. The Best Plays / More Plays loaders still run — Home's
-   "strongest picks" reads BEST_PLAYS. Any failure leaves the honest
-   loading note: no banner, no stale picks, nothing here throws. */
+/* Experiment board (Nov 14): Our Bets shows one approach at a time,
+   picked from a dropdown — each option carries its running record,
+   so the six can be compared without scrolling. Today's picks and
+   records come from one feed, "experiment_board.json". The same feed
+   drives the six rows on Our Record. The Best Plays / More Plays
+   loaders still run (the feeds still publish) but no panel reads them
+   anymore — Home dropped its picks and record lines the same day.
+   Any failure leaves the honest loading note: no banner, no stale
+   picks, nothing here throws. */
 var EXPERIMENT_BOARD=null;
+var EXP_SELECTED="bp";
 var EXP_MP_FILTER="All";
 function expRecordHtml(rec){
   var wl=(rec.wins||0)+"\u2013"+(rec.losses||0);
@@ -5629,23 +5633,40 @@ function renderExperimentBoard(){
   }
   var dateEl=$("betsDate");
   if(dateEl&&EXPERIMENT_BOARD.date){dateEl.textContent=fmtDateLong(EXPERIMENT_BOARD.date);dateEl.hidden=false;}
-  host.innerHTML=EXPERIMENT_BOARD.approaches.map(function(a){
-    var picks=(a.picks||[]).filter(function(b){return !isSoccerRow(b);});
-    var body="";
-    if(a.id==="mp"){
-      var shown=EXP_MP_FILTER==="All"?picks.filter(function(b){return b.in_all_view!==false;}):picks.filter(function(b){return String(b.sport||"")===EXP_MP_FILTER;});
-      var opts=["All"].concat(expMpSports(picks));
-      if(opts.indexOf(EXP_MP_FILTER)<0) EXP_MP_FILTER="All";
-      body+='<div class="filters" id="expMpFilters" role="group" aria-label="Filter More Plays by sport">'
-        +opts.map(function(s){return '<button type="button" data-sport="'+esc(s)+'" aria-pressed="'+(EXP_MP_FILTER===s?"true":"false")+'">'+esc(s)+'</button>';}).join("")+'</div>';
-      body+=shown.length?expPicksHtml(shown):'<div class="empty-state"><p>'+(EXP_MP_FILTER==="All"?"No More Plays today.":"No "+esc(EXP_MP_FILTER)+" picks today.")+'</p></div>';
-    } else {
-      body+=picks.length?expPicksHtml(picks):'<div class="empty-state"><p>No picks today.</p></div>';
-    }
-    return '<section class="bets-tier" aria-label="'+esc(a.name)+'">'
-      +'<div class="approach-head"><h2>'+esc(a.name)+'</h2><span class="approach-record">'+expRecordHtml(a.record||{})+'</span></div>'
-      +body+'</section>';
+  var apps=EXPERIMENT_BOARD.approaches;
+  var sel=null;
+  apps.forEach(function(a){if(a.id===EXP_SELECTED) sel=a;});
+  if(!sel) sel=apps[0];
+  if(sel) EXP_SELECTED=sel.id;
+  var optHtml=apps.map(function(a){
+    var r=a.record||{};
+    var label=a.name+" \u00B7 "+(r.wins||0)+"\u2013"+(r.losses||0)+" \u00B7 "+vrMoney(r.profit);
+    return '<option value="'+esc(a.id)+'"'+(a.id===EXP_SELECTED?' selected':'')+'>'+esc(label)+'</option>';
   }).join("");
+  var picks=(sel.picks||[]).filter(function(b){return !isSoccerRow(b);});
+  var body="";
+  if(sel.id==="mp"){
+    var shown=EXP_MP_FILTER==="All"?picks.filter(function(b){return b.in_all_view!==false;}):picks.filter(function(b){return String(b.sport||"")===EXP_MP_FILTER;});
+    var opts=["All"].concat(expMpSports(picks));
+    if(opts.indexOf(EXP_MP_FILTER)<0) EXP_MP_FILTER="All";
+    body+='<div class="filters" id="expMpFilters" role="group" aria-label="Filter More Plays by sport">'
+      +opts.map(function(s){return '<button type="button" data-sport="'+esc(s)+'" aria-pressed="'+(EXP_MP_FILTER===s?"true":"false")+'">'+esc(s)+'</button>';}).join("")+'</div>';
+    body+=shown.length?expPicksHtml(shown):'<div class="empty-state"><p>'+(EXP_MP_FILTER==="All"?"No More Plays today.":"No "+esc(EXP_MP_FILTER)+" picks today.")+'</p></div>';
+  } else {
+    body+=picks.length?expPicksHtml(picks):'<div class="empty-state"><p>No picks today.</p></div>';
+  }
+  host.innerHTML='<div class="filters" style="margin-bottom:14px">'
+    +'<select id="expApproachSelect" aria-label="Pick a card">'+optHtml+'</select></div>'
+    +'<section class="bets-tier" aria-label="'+esc(sel.name)+'">'
+    +'<div class="approach-head"><h2>'+esc(sel.name)+'</h2><span class="approach-record">'+expRecordHtml(sel.record||{})+'</span></div>'
+    +body+'</section>';
+  var select=$("expApproachSelect");
+  if(select){
+    select.addEventListener("change",function(){
+      EXP_SELECTED=select.value||apps[0].id;
+      try{renderExperimentBoard();}catch(e){}
+    });
+  }
   var fhost=$("expMpFilters");
   if(fhost){
     Array.prototype.forEach.call(fhost.querySelectorAll("button"),function(btn){
