@@ -199,10 +199,35 @@
         "wins": 1
       },
       "wins": 1
+    },
+    {
+      "date": "2026-11-14",
+      "era": "BP",
+      "losses": 0,
+      "n_graded": 0,
+      "n_pending": 5,
+      "net_profit": 0.0,
+      "parlays": {
+        "losses": 0,
+        "n": 0,
+        "profit": 0.0,
+        "pushes": 0,
+        "wins": 0
+      },
+      "pushes": 0,
+      "status": "pending",
+      "straights": {
+        "losses": 0,
+        "n": 5,
+        "profit": 0.0,
+        "pushes": 0,
+        "wins": 0
+      },
+      "wins": 0
     }
   ],
   "era_note": "Nov 6-10, 2026 used the old way of picking (D); Nov 11 was a one-day switch to agreement (A); from Nov 12 the record is Best Plays \u2014 NBA assists only (BP). Nothing is blended; the calendar covers all eras.",
-  "generated_pt": "2026-11-14 07:11:09 PST",
+  "generated_pt": "2026-11-14 07:11:47 PST",
   "months": [
     {
       "flat_days": 0,
@@ -211,7 +236,7 @@
       "losses": 22,
       "month": "2026-11",
       "n_graded": 39,
-      "n_pending": 0,
+      "n_pending": 5,
       "net_profit": -998.4,
       "pushes": 0,
       "red_days": 7,
@@ -223,7 +248,7 @@
   "totals": {
     "losses": 22,
     "n_graded": 39,
-    "n_pending": 0,
+    "n_pending": 5,
     "net_profit": -998.4,
     "pushes": 0,
     "wins": 17
