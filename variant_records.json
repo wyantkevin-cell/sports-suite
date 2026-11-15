@@ -1,17 +1,17 @@
 {
-  "baseline": {
-    "paper_log_from": "2026-11-10",
-    "source": "variant_backtest_20261110.md (corrected Nov 10, NHL alias fix)",
-    "through": "Nov 5\u20139 graded (Nov 10 pending, excluded)"
-  },
   "bp_start_date": "2026-11-12",
-  "generated_pt": "2026-11-15 07:11:04 PST",
+  "generated_pt": "2026-11-15 07:56:00 PST",
   "name": "How each way of picking is doing",
   "notes": [
     "The live record is Test Card 1 (NBA assists only, edge over 2pp) from Nov 12, 2026. The agreement way ran one day (Nov 11) and the old biggest-edge way ran Nov 6\u201310; both are kept here as an archive \u2014 never blended into the Test Card 1 numbers.",
     "Paper-test rows are an experiment, not the live card. They never place a bet.",
     "Each bet is $100 flat. ROI is profit divided by the number of graded bets."
   ],
+  "paper_source": {
+    "note": "No backtest baseline is blended in (process_review_20261115.md Rec 13). The frozen Nov 5-9 backtest (variant_backtest_20261110.md) is kept as a document only.",
+    "paper_log_from": "2026-11-09",
+    "source": "paper_test_log.jsonl only (log-only since Nov 15, 2026)"
+  },
   "rows": [
     {
       "combined": {
@@ -126,113 +126,113 @@
     },
     {
       "combined": {
-        "losses": 10,
-        "n_graded": 35,
-        "profit": 307,
-        "profit_exact": 306.28,
+        "losses": 2,
+        "n_graded": 15,
+        "profit": 502,
+        "profit_exact": 501.65,
         "pushes": 0,
-        "roi_pct": 8.8,
-        "roi_pct_exact": 8.8,
-        "wins": 25
+        "roi_pct": 33.5,
+        "roi_pct_exact": 33.4,
+        "wins": 13
       },
-      "dates": "Nov 5, 2026 \u2013 now",
+      "dates": "Nov 9, 2026 \u2013 now",
       "id": "paper_a",
       "label": "Paper test \u2014 agreement (A)",
       "parlays": {
-        "losses": 3,
-        "n_graded": 6,
-        "profit": -25,
-        "profit_exact": -25.27,
+        "losses": 0,
+        "n_graded": 2,
+        "profit": 192,
+        "profit_exact": 192.09,
         "pushes": 0,
-        "roi_pct": -4.2,
-        "roi_pct_exact": -4.2,
-        "wins": 3
+        "roi_pct": 96.0,
+        "roi_pct_exact": 96.0,
+        "wins": 2
       },
       "phrase": "Picks where we agree with the book",
       "status": "paper",
       "straights": {
-        "losses": 7,
-        "n_graded": 29,
-        "profit": 332,
-        "profit_exact": 331.55,
+        "losses": 2,
+        "n_graded": 13,
+        "profit": 310,
+        "profit_exact": 309.56,
         "pushes": 0,
-        "roi_pct": 11.4,
-        "roi_pct_exact": 11.4,
-        "wins": 22
+        "roi_pct": 23.8,
+        "roi_pct_exact": 23.8,
+        "wins": 11
       }
     },
     {
       "combined": {
-        "losses": 18,
-        "n_graded": 51,
-        "profit": -110,
-        "profit_exact": -110.02,
+        "losses": 11,
+        "n_graded": 31,
+        "profit": -114,
+        "profit_exact": -113.88,
         "pushes": 0,
-        "roi_pct": -2.2,
-        "roi_pct_exact": -2.2,
-        "wins": 33
+        "roi_pct": -3.7,
+        "roi_pct_exact": -3.7,
+        "wins": 20
       },
-      "dates": "Nov 5, 2026 \u2013 now",
+      "dates": "Nov 9, 2026 \u2013 now",
       "id": "paper_m",
       "label": "Paper test \u2014 moderate edge (M)",
       "parlays": {
-        "losses": 5,
-        "n_graded": 7,
-        "profit": -282,
-        "profit_exact": -282.36,
+        "losses": 2,
+        "n_graded": 3,
+        "profit": -65,
+        "profit_exact": -65.0,
         "pushes": 0,
-        "roi_pct": -40.3,
-        "roi_pct_exact": -40.3,
-        "wins": 2
+        "roi_pct": -21.7,
+        "roi_pct_exact": -21.7,
+        "wins": 1
       },
       "phrase": "Picks with a small edge, not the biggest",
       "status": "paper",
       "straights": {
-        "losses": 13,
-        "n_graded": 44,
-        "profit": 172,
-        "profit_exact": 172.34,
+        "losses": 9,
+        "n_graded": 28,
+        "profit": -49,
+        "profit_exact": -48.88,
         "pushes": 0,
-        "roi_pct": 3.9,
-        "roi_pct_exact": 3.9,
-        "wins": 31
+        "roi_pct": -1.8,
+        "roi_pct_exact": -1.7,
+        "wins": 19
       }
     },
     {
       "combined": {
-        "losses": 23,
-        "n_graded": 50,
-        "profit": 50,
-        "profit_exact": 50.33,
+        "losses": 12,
+        "n_graded": 31,
+        "profit": 384,
+        "profit_exact": 383.65,
         "pushes": 0,
-        "roi_pct": 1.0,
-        "roi_pct_exact": 1.0,
-        "wins": 27
+        "roi_pct": 12.4,
+        "roi_pct_exact": 12.4,
+        "wins": 19
       },
-      "dates": "Nov 5, 2026 \u2013 now",
+      "dates": "Nov 9, 2026 \u2013 now",
       "id": "paper_r",
       "label": "Paper test \u2014 random (R)",
       "parlays": {
-        "losses": 5,
-        "n_graded": 7,
-        "profit": -71,
-        "profit_exact": -71.0,
+        "losses": 2,
+        "n_graded": 3,
+        "profit": 16,
+        "profit_exact": 16.0,
         "pushes": 0,
-        "roi_pct": -10.1,
-        "roi_pct_exact": -10.1,
-        "wins": 2
+        "roi_pct": 5.3,
+        "roi_pct_exact": 5.3,
+        "wins": 1
       },
       "phrase": "Picks chosen at random, as a check",
       "status": "paper",
       "straights": {
-        "losses": 18,
-        "n_graded": 43,
-        "profit": 121,
-        "profit_exact": 121.33,
+        "losses": 10,
+        "n_graded": 28,
+        "profit": 368,
+        "profit_exact": 367.65,
         "pushes": 0,
-        "roi_pct": 2.8,
-        "roi_pct_exact": 2.8,
-        "wins": 25
+        "roi_pct": 13.1,
+        "roi_pct_exact": 13.1,
+        "wins": 18
       }
     },
     {
