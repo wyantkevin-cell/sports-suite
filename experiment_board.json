@@ -1,8 +1,9 @@
 {
   "approaches": [
     {
+      "description": "Under bets on NBA assists where our number beats the book by more than 2 points. Up to 5 a day, one pick per game.",
       "id": "bp",
-      "name": "NBA Assists",
+      "name": "Test Card 1",
       "picks": [
         {
           "consensus_flag": null,
@@ -200,8 +201,9 @@
       }
     },
     {
+      "description": "A wider net: the 10 best picks per sport, with the best 30 shown here, across every sport we cover.",
       "id": "mp",
-      "name": "More Plays",
+      "name": "Test Card 2",
       "picks": [
         {
           "consensus_flag": null,
@@ -1616,8 +1618,9 @@
       }
     },
     {
+      "description": "The picks our model likes most, ranked by how likely they are to hit. Up to 5 a day.",
       "id": "m",
-      "name": "Moderate",
+      "name": "Test Card 3",
       "picks": [
         {
           "consensus_flag": null,
@@ -1805,8 +1808,9 @@
       }
     },
     {
+      "description": "Five picks drawn at random from the board each day, as a check \u2014 if random beats a method, the method is not doing anything.",
       "id": "r",
-      "name": "Random",
+      "name": "Test Card 4",
       "picks": [
         {
           "consensus_flag": null,
@@ -1994,8 +1998,9 @@
       }
     },
     {
+      "description": "Only our two best-tested pick types: college basketball moneylines and NBA assists, where our number and the book's number are close. Up to 5 a day.",
       "id": "bf",
-      "name": "Best Families",
+      "name": "Test Card 5",
       "picks": [
         {
           "consensus_flag": null,
@@ -2188,8 +2193,9 @@
       }
     },
     {
+      "description": "Under bets on NBA assists and rebounds, ranked by edge, only from the two pick types that passed our gate. Up to 5 a day, one per game.",
       "id": "mc",
-      "name": "Medium Card",
+      "name": "Test Card 6",
       "picks": [
         {
           "consensus_flag": null,
@@ -2385,12 +2391,26 @@
         "roi_pct": 10.8,
         "wins": 3
       }
+    },
+    {
+      "description": "Model A's best disagreements with the market: NHL games, NBA favorites, and WTA tennis, where its number beats the market by 3 cents or more.",
+      "id": "gold",
+      "name": "Test Card 7",
+      "picks": [],
+      "record": {
+        "losses": 0,
+        "n": 0,
+        "profit": 0.0,
+        "pushes": 0,
+        "roi_pct": null,
+        "wins": 0
+      }
     }
   ],
   "date": "2026-11-14",
-  "generated_pt": "2026-11-14 07:42:27 PST",
-  "name": "Experiment board \u2014 six ways of picking",
+  "generated_pt": "2026-11-14 17:00:14 PST",
+  "name": "Experiment board \u2014 seven ways of picking",
   "notes": [
-    "Six ways of picking bets, each tracked on its own at $100 flat. None is proven. The record decides."
+    "Seven ways of picking bets, each tracked on its own at $100 flat. None is proven. The record decides."
   ]
 }
