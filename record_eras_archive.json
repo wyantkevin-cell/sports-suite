@@ -80,7 +80,7 @@
       },
       "dates": "2026-11-12 to now",
       "id": "live_bp",
-      "name": "NBA Assists era",
+      "name": "Test Card 1 era",
       "note": "Starts Nov 12, 2026 \u2014 the first full day of NBA-assists-only recommendations. Nov 11 Best Plays (5 assists, pick_ids 20261111-BP01..BP05) are a transition-day preview: they are logged in best_plays_log.jsonl with era 'transition' and will be graded, but they do NOT count in this era's tally. The era tally counts BP rows dated 2026-11-12 onward.",
       "parlays": {
         "losses": 0,
@@ -91,7 +91,7 @@
         "roi_pct": null,
         "wins": 0
       },
-      "rule": "NBA Assists (variant BP): NBA assists only, model edge (model_prob - market_prob) > 2pp, odds >= -300, 15pp market-cap re-check, news-flag and not-started guards, ranked by edge, top 5, never padded. More Plays (variant MP) is a second tier, one best agreement pick per sport; it is paper-only measurement and never part of this record. No parlay.",
+      "rule": "Test Card 1 (variant BP): NBA assists only, model edge (model_prob - market_prob) > 2pp, odds >= -300, 15pp market-cap re-check, news-flag and not-started guards, ranked by edge, top 5, never padded. Test Card 2 (variant MP) is a second tier, one best agreement pick per sport; it is paper-only measurement and never part of this record. No parlay.",
       "status": "current",
       "straights": {
         "losses": 8,
