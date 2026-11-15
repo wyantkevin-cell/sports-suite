@@ -2133,41 +2133,6 @@
           "value_pct": 16.08,
           "variant": "R",
           "would_veto": null
-        },
-        {
-          "consensus_flag": null,
-          "date": "2026-11-15",
-          "description": "Tj Hockenson (MIN) under 4.5 receptions",
-          "game_date": "2026-11-15",
-          "kind": "straight",
-          "line": 4.5,
-          "line_odds": "-117",
-          "market": "receptions",
-          "market_prob": 0.5391705069124424,
-          "markets": {
-            "kalshi": null,
-            "novig": null,
-            "polymarket": null
-          },
-          "model_prob": 0.673,
-          "opponent": "GB",
-          "outcome": null,
-          "paper": true,
-          "pick_id": "20261115-R05",
-          "player": "Tj Hockenson",
-          "profit": null,
-          "rlm_flag": false,
-          "selected_at_pt": "2026-11-15 06:54:18 PST",
-          "side": "under",
-          "sport": "NFL",
-          "team": "MIN",
-          "tier": "lean",
-          "top_tier": false,
-          "type": "prop",
-          "value_flag": null,
-          "value_pct": 24.81,
-          "variant": "R",
-          "would_veto": null
         }
       ],
       "record": {
@@ -2590,7 +2555,7 @@
     }
   ],
   "date": "2026-11-15",
-  "generated_pt": "2026-11-15 07:11:40 PST",
+  "generated_pt": "2026-11-15 07:15:07 PST",
   "name": "Experiment board \u2014 seven ways of picking",
   "notes": [
     "Seven ways of picking bets, each tracked on its own at $100 flat. None is proven. The record decides."
