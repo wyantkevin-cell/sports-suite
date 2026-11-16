@@ -22,9 +22,9 @@
       "market": "receptions",
       "market_prob": 0.7059,
       "markets": {
-        "kalshi": null,
-        "novig": null,
-        "polymarket": null
+        "kalshi": "https://kalshi.com/markets/kxnflrec/nfl-player-receptions/kxnflrec-26nov16lacbal",
+        "novig": "https://novig.com/event-markets/01a1a3d7-a3ad-76c2-b6f7-21e14c9a50bc",
+        "polymarket": "https://polymarket.us/event/nfl-lac-bal-2026-11-17-player-props"
       },
       "model_prob": 0.7607,
       "opponent": "LAC",
@@ -136,9 +136,9 @@
       "market": "receptions",
       "market_prob": 0.6454,
       "markets": {
-        "kalshi": null,
-        "novig": null,
-        "polymarket": null
+        "kalshi": "https://kalshi.com/markets/kxnflrec/nfl-player-receptions/kxnflrec-26nov16lacbal?op_market_ticker=KXNFLREC-26NOV16LACBAL-BALRBATEMAN7-3",
+        "novig": "https://novig.com/event-markets/01a1a3d7-a3ad-76c2-b6f7-21e14c9a50bc",
+        "polymarket": "https://polymarket.us/event/nfl-lac-bal-2026-11-17-player-props"
       },
       "model_prob": 0.704,
       "opponent": "LAC",
@@ -175,7 +175,7 @@
       "market_prob": 0.6575,
       "markets": {
         "kalshi": null,
-        "novig": null,
+        "novig": "https://novig.com/event-markets/01a1a3d7-a3ad-76c2-b6f7-21e14c9a50bc",
         "polymarket": null
       },
       "model_prob": 0.703,
@@ -212,8 +212,8 @@
       "market": "receptions",
       "market_prob": 0.6774,
       "markets": {
-        "kalshi": null,
-        "novig": null,
+        "kalshi": "https://kalshi.com/markets/kxnflrec/nfl-player-receptions/kxnflrec-26nov16lacbal?op_market_ticker=KXNFLREC-26NOV16LACBAL-BALDHENRY22-2",
+        "novig": "https://novig.com/event-markets/01a1a3d7-a3ad-76c2-b6f7-21e14c9a50bc",
         "polymarket": null
       },
       "model_prob": 0.7017,
@@ -288,9 +288,9 @@
       "market": "assists",
       "market_prob": 0.6454,
       "markets": {
-        "kalshi": null,
-        "novig": null,
-        "polymarket": null
+        "kalshi": "https://kalshi.com/markets/kxnbaast/nba-player-assists/kxnbaast-26nov16gswnop",
+        "novig": "https://novig.com/event-markets/01a1d7a0-33e7-7511-b839-b873966838d3",
+        "polymarket": "https://polymarket.us/event/nba-gsw-nop-2026-11-16"
       },
       "model_prob": 0.6893,
       "opponent": "NOP",
@@ -326,9 +326,9 @@
       "market": "rebounds",
       "market_prob": 0.6575,
       "markets": {
-        "kalshi": null,
-        "novig": null,
-        "polymarket": null
+        "kalshi": "https://kalshi.com/markets/kxnbareb/nba-player-rebounds/kxnbareb-26nov16phxden?op_market_ticker=KXNBAREB-26NOV16PHXDEN-PHXDBOOKER15-4",
+        "novig": "https://novig.com/event-markets/01a1d7d6-c78e-7853-9b5a-caa998491ee8",
+        "polymarket": "https://polymarket.us/event/nba-phx-den-2026-11-16"
       },
       "model_prob": 0.6888,
       "opponent": "DEN",
@@ -364,8 +364,8 @@
       "market": "receptions",
       "market_prob": 0.6241,
       "markets": {
-        "kalshi": null,
-        "novig": null,
+        "kalshi": "https://kalshi.com/markets/kxnflrec/nfl-player-receptions/kxnflrec-26nov16lacbal?op_market_ticker=KXNFLREC-26NOV16LACBAL-LACKMITCHELL34-3",
+        "novig": "https://novig.com/event-markets/01a1a3d7-a3ad-76c2-b6f7-21e14c9a50bc",
         "polymarket": null
       },
       "model_prob": 0.6744,
@@ -402,9 +402,9 @@
       "market": "points",
       "market_prob": 0.5763,
       "markets": {
-        "kalshi": null,
-        "novig": null,
-        "polymarket": null
+        "kalshi": "https://kalshi.com/markets/kxnbapts/nba-player-points/kxnbapts-26nov16chicle",
+        "novig": "https://novig.com/event-markets/01a1d769-d243-7431-8ff1-683c5ed7de25",
+        "polymarket": "https://polymarket.us/event/nba-chi-cle-2026-11-16"
       },
       "model_prob": 0.6701,
       "opponent": "CLE",
@@ -440,9 +440,9 @@
       "market": "3-pointers",
       "market_prob": 0.6667,
       "markets": {
-        "kalshi": null,
-        "novig": null,
-        "polymarket": null
+        "kalshi": "https://kalshi.com/markets/kxnba3pt/nba-player-3-pointers/kxnba3pt-26nov16houmia?op_market_ticker=KXNBA3PT-26NOV16HOUMIA-HOUJSMITH10-2",
+        "novig": "https://novig.com/event-markets/01a1d784-88fb-7262-9ce3-c7dc31f8648b",
+        "polymarket": "https://polymarket.us/event/nba-hou-mia-2026-11-16"
       },
       "model_prob": 0.6658,
       "opponent": "MIA",
@@ -478,9 +478,9 @@
       "market": "3-pointers",
       "market_prob": 0.6667,
       "markets": {
-        "kalshi": null,
-        "novig": null,
-        "polymarket": null
+        "kalshi": "https://kalshi.com/markets/kxnba3pt/nba-player-3-pointers/kxnba3pt-26nov16pormin?op_market_ticker=KXNBA3PT-26NOV16PORMIN-PORDCLINGAN23-1",
+        "novig": "https://novig.com/event-markets/01a1d7a0-3511-7a30-8829-675c3763b200",
+        "polymarket": "https://polymarket.us/event/nba-por-min-2026-11-16"
       },
       "model_prob": 0.6632,
       "opponent": "MIN",
@@ -516,8 +516,8 @@
       "market": "receptions",
       "market_prob": 0.6454,
       "markets": {
-        "kalshi": null,
-        "novig": null,
+        "kalshi": "https://kalshi.com/markets/kxnflrec/nfl-player-receptions/kxnflrec-26nov16lacbal?op_market_ticker=KXNFLREC-26NOV16LACBAL-LACOHAMPTON8-2",
+        "novig": "https://novig.com/event-markets/01a1a3d7-a3ad-76c2-b6f7-21e14c9a50bc",
         "polymarket": null
       },
       "model_prob": 0.6626,
@@ -555,8 +555,8 @@
       "market_prob": 0.5798,
       "markets": {
         "kalshi": null,
-        "novig": null,
-        "polymarket": null
+        "novig": "https://novig.com/event-markets/01a1d784-88bd-7a83-b81d-7cd4cf1ccba2",
+        "polymarket": "https://polymarket.us/event/nba-phi-bkn-2026-11-16"
       },
       "model_prob": 0.6618,
       "opponent": "PHI",
@@ -592,9 +592,9 @@
       "market": "points",
       "market_prob": 0.569,
       "markets": {
-        "kalshi": null,
-        "novig": null,
-        "polymarket": null
+        "kalshi": "https://kalshi.com/markets/kxnbapts/nba-player-points/kxnbapts-26nov16gswnop",
+        "novig": "https://novig.com/event-markets/01a1d7a0-33e7-7511-b839-b873966838d3",
+        "polymarket": "https://polymarket.us/event/nba-gsw-nop-2026-11-16"
       },
       "model_prob": 0.6615,
       "opponent": "NOP",
@@ -630,9 +630,9 @@
       "market": "rebounds",
       "market_prob": 0.6454,
       "markets": {
-        "kalshi": null,
-        "novig": null,
-        "polymarket": null
+        "kalshi": "https://kalshi.com/markets/kxnbareb/nba-player-rebounds/kxnbareb-26nov16phxden?op_market_ticker=KXNBAREB-26NOV16PHXDEN-PHXCGILLESPIE12-4",
+        "novig": "https://novig.com/event-markets/01a1d7d6-c78e-7853-9b5a-caa998491ee8",
+        "polymarket": "https://polymarket.us/event/nba-phx-den-2026-11-16"
       },
       "model_prob": 0.6613,
       "opponent": "DEN",
@@ -744,9 +744,9 @@
       "market": "receptions",
       "market_prob": 0.5763,
       "markets": {
-        "kalshi": null,
-        "novig": null,
-        "polymarket": null
+        "kalshi": "https://kalshi.com/markets/kxnflrec/nfl-player-receptions/kxnflrec-26nov16lacbal?op_market_ticker=KXNFLREC-26NOV16LACBAL-LACTHARRIS9-4",
+        "novig": "https://novig.com/event-markets/01a1a3d7-a3ad-76c2-b6f7-21e14c9a50bc",
+        "polymarket": "https://polymarket.us/event/nfl-lac-bal-2026-11-17-player-props"
       },
       "model_prob": 0.6341,
       "opponent": "BAL",
@@ -782,9 +782,9 @@
       "market": "receptions",
       "market_prob": 0.5763,
       "markets": {
-        "kalshi": null,
-        "novig": null,
-        "polymarket": null
+        "kalshi": "https://kalshi.com/markets/kxnflrec/nfl-player-receptions/kxnflrec-26nov16lacbal?op_market_ticker=KXNFLREC-26NOV16LACBAL-LACQJOHNSTON1-3",
+        "novig": "https://novig.com/event-markets/01a1a3d7-a3ad-76c2-b6f7-21e14c9a50bc",
+        "polymarket": "https://polymarket.us/event/nfl-lac-bal-2026-11-17-player-props"
       },
       "model_prob": 0.6329,
       "opponent": "BAL",
@@ -1012,7 +1012,7 @@
       "markets": {
         "kalshi": "https://kalshi.com/markets/kxnflgame/nfl-game/kxnflgame-26nov16lacbal",
         "novig": "https://novig.com/event-markets/01a1a3d7-a3ad-76c2-b6f7-21e14c9a50bc",
-        "polymarket": null
+        "polymarket": "https://polymarket.us/event/nfl-lac-bal-2026-11-17"
       },
       "model_prob": 0.6116,
       "opponent": "LAC",
