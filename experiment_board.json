@@ -2172,6 +2172,44 @@
           "value_pct": 7.15,
           "variant": "GOLD",
           "would_veto": null
+        },
+        {
+          "consensus_flag": null,
+          "date": "2026-11-16",
+          "description": "HOU to win vs MIA",
+          "edge_c": 3.0,
+          "fade": false,
+          "faded_side": null,
+          "family": "ML:NBA",
+          "game_date": "2026-11-16",
+          "kind": "straight",
+          "line": null,
+          "line_odds": "-130",
+          "market": "moneyline",
+          "market_prob": 0.5652,
+          "markets": {
+            "kalshi": "https://kalshi.com/markets/kxnbagame/nba-game/kxnbagame-26nov16houmia",
+            "novig": "https://novig.com/event-markets/01a1d784-88fb-7262-9ce3-c7dc31f8648b",
+            "polymarket": "https://polymarket.us/event/nba-hou-mia-2026-11-16"
+          },
+          "model_prob": 0.598,
+          "opponent": "MIA",
+          "outcome": null,
+          "paper": true,
+          "pick_id": "20261116-G03",
+          "player": null,
+          "profit": null,
+          "rlm_flag": false,
+          "selected_at_pt": "2026-11-16 10:39:14 PST",
+          "side": "away",
+          "sport": "NBA",
+          "team": "HOU",
+          "tier": "lean",
+          "top_tier": false,
+          "type": "moneyline",
+          "value_pct": 5.8,
+          "variant": "GOLD",
+          "would_veto": null
         }
       ],
       "record": {
@@ -2199,7 +2237,7 @@
     }
   ],
   "date": "2026-11-16",
-  "generated_pt": "2026-11-16 09:30:26 PST",
+  "generated_pt": "2026-11-16 10:39:26 PST",
   "name": "Experiment board \u2014 eight ways of picking",
   "notes": [
     "Eight ways of picking bets, each tracked on its own at $100 flat. None is proven. The record decides."
