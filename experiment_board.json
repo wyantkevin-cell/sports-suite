@@ -2373,7 +2373,46 @@
       "description": "Under bets on college football passing yards, chosen where our model leans furthest over the book's number. Up to 5 a day, one pick per game.",
       "id": "tc8",
       "name": "Test Card 8",
-      "picks": [],
+      "picks": [
+        {
+          "consensus_flag": null,
+          "date": "2026-11-17",
+          "description": "Keldric Luster (BALL) under 184.5 passing yards",
+          "era": "paper",
+          "family": "CFB:PASS",
+          "game_date": "2026-11-17",
+          "kind": "straight",
+          "line": 184.5,
+          "line_odds": "-114",
+          "market": "passing yards",
+          "market_prob": 0.5327,
+          "markets": {
+            "kalshi": null,
+            "novig": null,
+            "polymarket": null
+          },
+          "model_prob": null,
+          "opponent": "OHIO",
+          "outcome": null,
+          "over_lean_model_prob": 0.6829,
+          "over_lean_value_pct": 28.19,
+          "paper": true,
+          "pick_id": "20261117-TC801",
+          "player": "Keldric Luster",
+          "profit": null,
+          "rlm_flag": false,
+          "selected_at_pt": "2026-11-17 07:33:27 PST",
+          "side": "under",
+          "sport": "CFB",
+          "team": "BALL",
+          "tier": "lean",
+          "top_tier": false,
+          "type": "prop",
+          "value_pct": null,
+          "variant": "TC8",
+          "would_veto": null
+        }
+      ],
       "record": {
         "losses": 0,
         "n": 0,
@@ -2385,7 +2424,7 @@
     }
   ],
   "date": "2026-11-17",
-  "generated_pt": "2026-11-17 07:13:14 PST",
+  "generated_pt": "2026-11-17 07:33:32 PST",
   "name": "Experiment board \u2014 eight ways of picking",
   "notes": [
     "Eight ways of picking bets, each tracked on its own at $100 flat. None is proven. The record decides."
