@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-16",
-  "generated_at_pt": "2026-11-16 07:56:36 PST",
+  "date": "2026-11-17",
+  "generated_at_pt": "2026-11-17 07:36:04 PST",
   "name": "Sim Says bot API \u2014 per-card records",
   "note": "Live-graded straights only, $100 flat per bet. Voids are excluded from W-L and P&L. No backtest is blended in. None of these cards is proven \u2014 the record decides.",
   "records": [
@@ -10,15 +10,15 @@
         "name": "Test Card 1"
       },
       "description": "Under bets on NBA assists where our number beats the book by more than 2 points. Up to 5 a day, one pick per game.",
-      "losses": 12,
-      "n": 19,
-      "profit": -617.88,
+      "losses": 16,
+      "n": 24,
+      "profit": -883.88,
       "pushes": 0,
       "record_start": "2026-11-12",
-      "roi_pct": -32.5,
+      "roi_pct": -36.8,
       "stake_per_bet_usd": 100,
       "voids": 1,
-      "wins": 7
+      "wins": 8
     },
     {
       "card": {
@@ -26,15 +26,15 @@
         "name": "Test Card 2"
       },
       "description": "A wider net: the 10 best picks per sport, with the best 30 shown here, across every sport we cover.",
-      "losses": 68,
-      "n": 159,
-      "profit": -1580.66,
+      "losses": 85,
+      "n": 189,
+      "profit": -2553.77,
       "pushes": 0,
       "record_start": "2026-11-12",
-      "roi_pct": -9.9,
+      "roi_pct": -13.5,
       "stake_per_bet_usd": 100,
       "voids": 3,
-      "wins": 91
+      "wins": 104
     },
     {
       "card": {
@@ -43,14 +43,14 @@
       },
       "description": "The picks our model likes most, ranked by how likely they are to hit. Up to 5 a day.",
       "losses": 10,
-      "n": 33,
-      "profit": 24.07,
+      "n": 37,
+      "profit": 220.7,
       "pushes": 0,
       "record_start": "2026-11-09",
-      "roi_pct": 0.7,
+      "roi_pct": 6.0,
       "stake_per_bet_usd": 100,
-      "voids": 0,
-      "wins": 23
+      "voids": 1,
+      "wins": 27
     },
     {
       "card": {
@@ -58,15 +58,15 @@
         "name": "Test Card 4"
       },
       "description": "Five picks drawn at random from the board each day, as a check \u2014 if random beats a method, the method is not doing anything.",
-      "losses": 13,
-      "n": 32,
-      "profit": 132.17,
+      "losses": 14,
+      "n": 36,
+      "profit": 255.39,
       "pushes": 0,
       "record_start": "2026-11-09",
-      "roi_pct": 4.1,
+      "roi_pct": 7.1,
       "stake_per_bet_usd": 100,
       "voids": 0,
-      "wins": 19
+      "wins": 22
     },
     {
       "card": {
@@ -74,15 +74,15 @@
         "name": "Test Card 5"
       },
       "description": "Only our two best-tested pick types: college basketball moneylines and NBA assists, where our number and the book's number are close. Up to 5 a day.",
-      "losses": 7,
-      "n": 20,
-      "profit": -108.2,
+      "losses": 8,
+      "n": 23,
+      "profit": -114.49,
       "pushes": 0,
       "record_start": "2026-11-11",
-      "roi_pct": -5.4,
+      "roi_pct": -5.0,
       "stake_per_bet_usd": 100,
       "voids": 0,
-      "wins": 13
+      "wins": 15
     },
     {
       "card": {
@@ -90,15 +90,15 @@
         "name": "Test Card 6"
       },
       "description": "Under bets on NBA assists and rebounds, ranked by edge, only from the two pick types that passed our gate. Up to 5 a day, one per game.",
-      "losses": 8,
-      "n": 15,
-      "profit": -212.44,
+      "losses": 12,
+      "n": 20,
+      "profit": -552.2,
       "pushes": 0,
       "record_start": "2026-11-13",
-      "roi_pct": -14.2,
+      "roi_pct": -27.6,
       "stake_per_bet_usd": 100,
       "voids": 0,
-      "wins": 7
+      "wins": 8
     },
     {
       "card": {
@@ -106,16 +106,32 @@
         "name": "Test Card 7"
       },
       "description": "Model A's best disagreements with the market: NHL games, NBA favorites, and WTA tennis, where its number beats the market by 3 cents or more.",
-      "losses": 2,
-      "n": 8,
-      "profit": 19.95,
+      "losses": 4,
+      "n": 11,
+      "profit": -122.25,
       "pushes": 0,
       "record_start": "2026-11-15",
-      "roi_pct": 2.5,
+      "roi_pct": -11.1,
       "stake_per_bet_usd": 100,
       "voids": 0,
-      "wins": 6
+      "wins": 7
+    },
+    {
+      "card": {
+        "id": "tc8",
+        "name": "Test Card 8"
+      },
+      "description": "Under bets on college football passing yards, chosen where our model leans furthest over the book's number. Up to 5 a day, one pick per game.",
+      "losses": 0,
+      "n": 0,
+      "profit": 0.0,
+      "pushes": 0,
+      "record_start": null,
+      "roi_pct": null,
+      "stake_per_bet_usd": 100,
+      "voids": null,
+      "wins": 0
     }
   ],
-  "version": "1.0"
+  "version": "1.1"
 }
