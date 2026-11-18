@@ -1300,6 +1300,45 @@
           "value_pct": 1.23,
           "variant": "GOLD",
           "would_veto": null
+        },
+        {
+          "consensus_flag": null,
+          "date": "2026-11-18",
+          "description": "COL to win vs UTA",
+          "edge_c": 4.1,
+          "fade": false,
+          "faded_side": null,
+          "family": "ML:NHL",
+          "game_date": "2026-11-18",
+          "kind": "straight",
+          "line": null,
+          "line_odds": "-110",
+          "market": "moneyline",
+          "market_prob": 0.5238,
+          "markets": {
+            "kalshi": "https://kalshi.com/markets/kxnhlgame/nhl-game/kxnhlgame-26nov18coluta",
+            "novig": "https://novig.com/event-markets/01a1e25a-eb0b-7d11-9fc7-1e4b63dca17a",
+            "polymarket": null
+          },
+          "model_prob": 0.539,
+          "opponent": "UTA",
+          "outcome": null,
+          "paper": true,
+          "pick_id": "20261118-G07",
+          "player": null,
+          "profit": null,
+          "rlm_flag": false,
+          "selected_at_pt": "2026-11-18 15:24:44 PST",
+          "side": "away",
+          "sport": "NHL",
+          "start_time_pt": "19:00",
+          "team": "COL",
+          "tier": "lean",
+          "top_tier": false,
+          "type": "moneyline",
+          "value_pct": 2.9,
+          "variant": "GOLD",
+          "would_veto": null
         }
       ],
       "record": {
@@ -1367,7 +1406,7 @@
     }
   ],
   "date": "2026-11-18",
-  "generated_pt": "2026-11-18 13:53:57 PST",
+  "generated_pt": "2026-11-18 15:24:54 PST",
   "name": "Experiment board \u2014 eight ways of picking",
   "notes": [
     "Eight ways of picking bets, each tracked on its own at $100 flat. None is proven. The record decides.",
