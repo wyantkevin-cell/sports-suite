@@ -583,7 +583,7 @@
     {
       "description": "Only our two best-tested pick types: college basketball moneylines and NBA assists, where our number and the book's number are close. Up to 5 a day.",
       "id": "bf",
-      "name": "Best Families Card",
+      "name": "Best Record Card",
       "picks": [
         {
           "consensus_flag": null,
@@ -778,7 +778,7 @@
     {
       "description": "Under bets on NBA assists and rebounds, ranked by edge, only from the two pick types that passed our gate. Up to 5 a day, one per game.",
       "id": "mc",
-      "name": "Medium Card",
+      "name": "Assists + Rebounds Card",
       "picks": [
         {
           "consensus_flag": null,
@@ -978,7 +978,7 @@
     {
       "description": "Model A's best disagreements with the market: NHL games, NBA favorites, and WTA tennis, where its number beats the market by 3 cents or more.",
       "id": "gold",
-      "name": "Gold Card",
+      "name": "Biggest Edge Card",
       "picks": [
         {
           "consensus_flag": null,
@@ -1235,7 +1235,7 @@
     }
   ],
   "date": "2026-11-18",
-  "generated_pt": "2026-11-18 08:50:09 PST",
+  "generated_pt": "2026-11-18 08:51:53 PST",
   "name": "Experiment board \u2014 seven ways of picking",
   "notes": [
     "Seven ways of picking bets, each tracked on its own at $100 flat. None is proven. The record decides.",
