@@ -50,7 +50,7 @@
     }
   ],
   "date": "2026-11-18",
-  "generated_at_pt": "2026-11-18 07:32:39 PST",
+  "generated_at_pt": "2026-11-18 07:36:03 PST",
   "name": "Sim Says bot API \u2014 today's signals",
   "note": "Paper signals from the Sim Says experiment board. These are our numbers vs the book's numbers \u2014 not promises, not proven winners. Check `date` before trading: an old date means a stale file. Empty `signals` means no signals today \u2014 never trade yesterday's.",
   "signals": [
