@@ -1,0 +1,279 @@
+{
+  "card_id": "best_findings",
+  "components": {
+    "cfb_passing": {
+      "backtest": {
+        "fade_n": 81,
+        "fade_win_pct": 69.0,
+        "note": "Model over-leans on CFB passing yards went 25-56 as picks Nov 5-17; the UNDER fade won 69%."
+      },
+      "label": "CFB passing unders",
+      "record": {
+        "losses": 0,
+        "n": 0,
+        "pending": 1,
+        "profit": 0.0,
+        "pushes": 0,
+        "roi_pct": null,
+        "wins": 0
+      },
+      "source_card": "CFB Passing Card",
+      "today": [
+        {
+          "component": "cfb_passing",
+          "description": "Cibastian Broughton (AKR) under 199.5 passing yards",
+          "game_date": "2026-11-18",
+          "line": 199.5,
+          "line_odds": "-114",
+          "market": "passing yards",
+          "opponent": "MASS",
+          "outcome": null,
+          "pick_id": "20261118-TC801",
+          "player": "Cibastian Broughton",
+          "profit": null,
+          "side": "under",
+          "source_card": "CFB Passing Card",
+          "sport": "CFB",
+          "start_time_pt": null,
+          "team": "AKR"
+        }
+      ]
+    },
+    "cfb_totals": {
+      "backtest": {
+        "fade_losses": 16,
+        "fade_n": 48,
+        "fade_win_pct": 66.7,
+        "fade_wins": 32,
+        "note": "Model over-leans on CFB totals went 16-32 as picks Nov 5-17; the UNDER fade went 32-16."
+      },
+      "label": "CFB totals unders",
+      "record": {
+        "losses": 0,
+        "n": 0,
+        "pending": 0,
+        "profit": 0.0,
+        "pushes": 0,
+        "roi_pct": null,
+        "wins": 0
+      },
+      "source_card": "CFB totals fade (desk signal)",
+      "today": []
+    },
+    "nba_dog_fade": {
+      "backtest": {
+        "fade_losses": 3,
+        "fade_n": 22,
+        "fade_win_pct": 86.4,
+        "fade_wins": 19,
+        "note": "Model A underdog golds went 3-19 as picks; fading them (betting the favorite) went 19-3."
+      },
+      "label": "NBA underdog fades",
+      "record": {
+        "losses": 0,
+        "n": 0,
+        "pending": 0,
+        "profit": 0.0,
+        "pushes": 0,
+        "roi_pct": null,
+        "wins": 0
+      },
+      "source_card": "Biggest Edge Card",
+      "today": []
+    },
+    "nhl_gold": {
+      "backtest": {
+        "n": 94,
+        "note": "Model A gold NHL picks, backtested at real Kalshi prices with Jul 7 2026 fees. Maker-fillable subset n=41, ROI +5.8%.",
+        "taker_roi_pct": 4.8
+      },
+      "label": "NHL gold",
+      "record": {
+        "losses": 0,
+        "n": 0,
+        "pending": 2,
+        "profit": 0.0,
+        "pushes": 0,
+        "roi_pct": null,
+        "wins": 0
+      },
+      "source_card": "Biggest Edge Card",
+      "today": [
+        {
+          "component": "nhl_gold",
+          "description": "DET to win vs BOS",
+          "game_date": "2026-11-18",
+          "line": null,
+          "line_odds": "-115",
+          "market": "moneyline",
+          "opponent": "BOS",
+          "outcome": null,
+          "pick_id": "20261118-G01",
+          "player": null,
+          "profit": null,
+          "side": "home",
+          "source_card": "Biggest Edge Card",
+          "sport": "NHL",
+          "start_time_pt": null,
+          "team": "DET"
+        },
+        {
+          "component": "nhl_gold",
+          "description": "NJ to win vs MTL",
+          "game_date": "2026-11-18",
+          "line": null,
+          "line_odds": "-162",
+          "market": "moneyline",
+          "opponent": "MTL",
+          "outcome": null,
+          "pick_id": "20261118-G02",
+          "player": null,
+          "profit": null,
+          "side": "home",
+          "source_card": "Biggest Edge Card",
+          "sport": "NHL",
+          "start_time_pt": null,
+          "team": "NJ"
+        }
+      ]
+    }
+  },
+  "date": "2026-11-18",
+  "generated_at_pt": "2026-11-18 08:52:23 PST",
+  "name": "Best Findings Card",
+  "note": "One composite card from our four best findings. Live record starts Nov 18, 2026 at 0-0. Backtest numbers are evidence, not the record.",
+  "paper": true,
+  "record": {
+    "losses": 0,
+    "n": 0,
+    "pending": 3,
+    "profit": 0.0,
+    "pushes": 0,
+    "roi_pct": null,
+    "wins": 0
+  },
+  "record_start": "2026-11-18",
+  "stake": 100,
+  "straights": [
+    {
+      "component": "cfb_passing",
+      "description": "Cibastian Broughton (AKR) under 199.5 passing yards",
+      "game_date": "2026-11-18",
+      "line": 199.5,
+      "line_odds": "-114",
+      "market": "passing yards",
+      "opponent": "MASS",
+      "outcome": null,
+      "pick_id": "20261118-TC801",
+      "player": "Cibastian Broughton",
+      "profit": null,
+      "side": "under",
+      "source_card": "CFB Passing Card",
+      "sport": "CFB",
+      "start_time_pt": null,
+      "team": "AKR"
+    },
+    {
+      "component": "nhl_gold",
+      "description": "DET to win vs BOS",
+      "game_date": "2026-11-18",
+      "line": null,
+      "line_odds": "-115",
+      "market": "moneyline",
+      "opponent": "BOS",
+      "outcome": null,
+      "pick_id": "20261118-G01",
+      "player": null,
+      "profit": null,
+      "side": "home",
+      "source_card": "Biggest Edge Card",
+      "sport": "NHL",
+      "start_time_pt": null,
+      "team": "DET"
+    },
+    {
+      "component": "nhl_gold",
+      "description": "NJ to win vs MTL",
+      "game_date": "2026-11-18",
+      "line": null,
+      "line_odds": "-162",
+      "market": "moneyline",
+      "opponent": "MTL",
+      "outcome": null,
+      "pick_id": "20261118-G02",
+      "player": null,
+      "profit": null,
+      "side": "home",
+      "source_card": "Biggest Edge Card",
+      "sport": "NHL",
+      "start_time_pt": null,
+      "team": "NJ"
+    }
+  ],
+  "today": {
+    "by_component": {
+      "cfb_passing": [
+        {
+          "component": "cfb_passing",
+          "description": "Cibastian Broughton (AKR) under 199.5 passing yards",
+          "game_date": "2026-11-18",
+          "line": 199.5,
+          "line_odds": "-114",
+          "market": "passing yards",
+          "opponent": "MASS",
+          "outcome": null,
+          "pick_id": "20261118-TC801",
+          "player": "Cibastian Broughton",
+          "profit": null,
+          "side": "under",
+          "source_card": "CFB Passing Card",
+          "sport": "CFB",
+          "start_time_pt": null,
+          "team": "AKR"
+        }
+      ],
+      "cfb_totals": [],
+      "nba_dog_fade": [],
+      "nhl_gold": [
+        {
+          "component": "nhl_gold",
+          "description": "DET to win vs BOS",
+          "game_date": "2026-11-18",
+          "line": null,
+          "line_odds": "-115",
+          "market": "moneyline",
+          "opponent": "BOS",
+          "outcome": null,
+          "pick_id": "20261118-G01",
+          "player": null,
+          "profit": null,
+          "side": "home",
+          "source_card": "Biggest Edge Card",
+          "sport": "NHL",
+          "start_time_pt": null,
+          "team": "DET"
+        },
+        {
+          "component": "nhl_gold",
+          "description": "NJ to win vs MTL",
+          "game_date": "2026-11-18",
+          "line": null,
+          "line_odds": "-162",
+          "market": "moneyline",
+          "opponent": "MTL",
+          "outcome": null,
+          "pick_id": "20261118-G02",
+          "player": null,
+          "profit": null,
+          "side": "home",
+          "source_card": "Biggest Edge Card",
+          "sport": "NHL",
+          "start_time_pt": null,
+          "team": "NJ"
+        }
+      ]
+    },
+    "date": "2026-11-18",
+    "n": 3
+  }
+}
