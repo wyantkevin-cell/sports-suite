@@ -5810,11 +5810,31 @@ function pickText(b){
   return b.type==="moneyline"?"To win":(b.market||"Pick");
 }
 function betName(b){return b.player||b.team||"Pick";}
+function fmtStartTime(hhmm){
+  /* "16:30" -> "4:30 PM PT". Fail-soft: anything unparseable
+     returns "" (the match line just shows no time). */
+  var m=String(hhmm||"").match(/^(\d{1,2}):(\d{2})/);
+  if(!m) return "";
+  var h=+m[1];
+  if(h<0||h>23) return "";
+  var ap=h>=12?"PM":"AM";
+  var h12=h%12; if(h12===0) h12=12;
+  return h12+":"+m[2]+" "+ap+" PT";
+}
 function betMatch(b){
   var parts=[];
   if(b.player&&b.team) parts.push(b.team);
   if(b.opponent) parts.push("vs "+b.opponent);
   if(b.game_date) parts.push(fmtDateLong(b.game_date));
+  /* Game time (Nov 18): the experiment board carries start_time_pt
+     ("HH:MM" PT) on every row whose game is in the board file, so
+     moneylines and props alike show when their game starts. Rows
+     without one (tennis, or a game the board doesn't know) show no
+     time rather than a guessed one. */
+  if(b.start_time_pt){
+    var st=fmtStartTime(b.start_time_pt);
+    if(st) parts.push(st);
+  }
   return parts.join(" \u00b7 ");
 }
 function betValue(b){
