@@ -1,6 +1,6 @@
 {
   "bp_start_date": "2026-11-12",
-  "generated_pt": "2026-11-17 07:12:13 PST",
+  "generated_pt": "2026-11-18 07:13:02 PST",
   "name": "How each way of picking is doing",
   "notes": [
     "The live record is Test Card 1 (NBA assists only, edge over 2pp) from Nov 12, 2026. The agreement way ran one day (Nov 11) and the old biggest-edge way ran Nov 6\u201310; both are kept here as an archive \u2014 never blended into the Test Card 1 numbers.",
@@ -15,14 +15,14 @@
   "rows": [
     {
       "combined": {
-        "losses": 16,
-        "n_graded": 24,
-        "profit": -884,
-        "profit_exact": -883.88,
+        "losses": 18,
+        "n_graded": 29,
+        "profit": -771,
+        "profit_exact": -771.35,
         "pushes": 0,
-        "roi_pct": -36.8,
-        "roi_pct_exact": -36.8,
-        "wins": 8
+        "roi_pct": -26.6,
+        "roi_pct_exact": -26.6,
+        "wins": 11
       },
       "dates": "Nov 12, 2026 \u2013 now",
       "id": "live_bp",
@@ -40,14 +40,14 @@
       "phrase": "NBA assists where our number is clearly above the book's",
       "status": "current",
       "straights": {
-        "losses": 16,
-        "n_graded": 24,
-        "profit": -884,
-        "profit_exact": -883.88,
+        "losses": 18,
+        "n_graded": 29,
+        "profit": -771,
+        "profit_exact": -771.35,
         "pushes": 0,
-        "roi_pct": -36.8,
-        "roi_pct_exact": -36.8,
-        "wins": 8
+        "roi_pct": -26.6,
+        "roi_pct_exact": -26.6,
+        "wins": 11
       }
     },
     {
@@ -163,14 +163,14 @@
     },
     {
       "combined": {
-        "losses": 12,
-        "n_graded": 40,
-        "profit": 156,
-        "profit_exact": 155.7,
+        "losses": 13,
+        "n_graded": 45,
+        "profit": 237,
+        "profit_exact": 236.65,
         "pushes": 0,
-        "roi_pct": 3.9,
-        "roi_pct_exact": 3.9,
-        "wins": 28
+        "roi_pct": 5.3,
+        "roi_pct_exact": 5.3,
+        "wins": 32
       },
       "dates": "Nov 9, 2026 \u2013 now",
       "id": "paper_m",
@@ -188,26 +188,26 @@
       "phrase": "Picks with a small edge, not the biggest",
       "status": "paper",
       "straights": {
-        "losses": 10,
-        "n_graded": 37,
-        "profit": 221,
-        "profit_exact": 220.7,
+        "losses": 11,
+        "n_graded": 42,
+        "profit": 302,
+        "profit_exact": 301.65,
         "pushes": 0,
-        "roi_pct": 6.0,
-        "roi_pct_exact": 6.0,
-        "wins": 27
+        "roi_pct": 7.2,
+        "roi_pct_exact": 7.2,
+        "wins": 31
       }
     },
     {
       "combined": {
-        "losses": 16,
-        "n_graded": 39,
-        "profit": 271,
-        "profit_exact": 271.39,
+        "losses": 18,
+        "n_graded": 44,
+        "profit": 278,
+        "profit_exact": 278.38,
         "pushes": 0,
-        "roi_pct": 6.9,
-        "roi_pct_exact": 7.0,
-        "wins": 23
+        "roi_pct": 6.3,
+        "roi_pct_exact": 6.3,
+        "wins": 26
       },
       "dates": "Nov 9, 2026 \u2013 now",
       "id": "paper_r",
@@ -225,26 +225,26 @@
       "phrase": "Picks chosen at random, as a check",
       "status": "paper",
       "straights": {
-        "losses": 14,
-        "n_graded": 36,
-        "profit": 255,
-        "profit_exact": 255.39,
+        "losses": 16,
+        "n_graded": 41,
+        "profit": 262,
+        "profit_exact": 262.38,
         "pushes": 0,
-        "roi_pct": 7.1,
-        "roi_pct_exact": 7.1,
-        "wins": 22
+        "roi_pct": 6.4,
+        "roi_pct_exact": 6.4,
+        "wins": 25
       }
     },
     {
       "combined": {
-        "losses": 95,
-        "n_graded": 220,
-        "profit": -2352,
-        "profit_exact": -2352.34,
+        "losses": 105,
+        "n_graded": 250,
+        "profit": -2194,
+        "profit_exact": -2194.15,
         "pushes": 0,
-        "roi_pct": -10.7,
-        "roi_pct_exact": -10.7,
-        "wins": 125
+        "roi_pct": -8.8,
+        "roi_pct_exact": -8.8,
+        "wins": 145
       },
       "dates": "Nov 11, 2026 \u2013 now",
       "id": "paper_mp",
@@ -262,14 +262,14 @@
       "phrase": "More picks from the board, up to 10 per sport",
       "status": "paper",
       "straights": {
-        "losses": 95,
-        "n_graded": 220,
-        "profit": -2352,
-        "profit_exact": -2352.34,
+        "losses": 105,
+        "n_graded": 250,
+        "profit": -2194,
+        "profit_exact": -2194.15,
         "pushes": 0,
-        "roi_pct": -10.7,
-        "roi_pct_exact": -10.7,
-        "wins": 125
+        "roi_pct": -8.8,
+        "roi_pct_exact": -8.8,
+        "wins": 145
       }
     }
   ],
