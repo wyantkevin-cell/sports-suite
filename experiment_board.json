@@ -1183,7 +1183,7 @@
     {
       "description": "Under bets on college football passing yards, chosen where our model leans furthest over the book's number. Up to 5 a day, one pick per game.",
       "id": "tc8",
-      "name": "CFB Passing Fade Card",
+      "name": "CFB Passing Card",
       "picks": [
         {
           "consensus_flag": null,
@@ -1235,7 +1235,7 @@
     }
   ],
   "date": "2026-11-18",
-  "generated_pt": "2026-11-18 08:44:05 PST",
+  "generated_pt": "2026-11-18 08:50:09 PST",
   "name": "Experiment board \u2014 seven ways of picking",
   "notes": [
     "Seven ways of picking bets, each tracked on its own at $100 flat. None is proven. The record decides.",
