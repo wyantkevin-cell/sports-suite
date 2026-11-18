@@ -34,7 +34,7 @@
           "side": "under",
           "source_card": "CFB Passing Card",
           "sport": "CFB",
-          "start_time_pt": null,
+          "start_time_pt": "16:00",
           "team": "AKR"
         }
       ]
@@ -143,7 +143,7 @@
           "side": "home",
           "source_card": "Biggest Edge Card",
           "sport": "NHL",
-          "start_time_pt": null,
+          "start_time_pt": "16:30",
           "team": "DET"
         },
         {
@@ -161,14 +161,14 @@
           "side": "home",
           "source_card": "Biggest Edge Card",
           "sport": "NHL",
-          "start_time_pt": null,
+          "start_time_pt": "16:30",
           "team": "NJ"
         }
       ]
     }
   },
   "date": "2026-11-18",
-  "generated_at_pt": "2026-11-18 09:29:46 PST",
+  "generated_at_pt": "2026-11-18 13:53:41 PST",
   "name": "Best Findings Card",
   "note": "One composite card from our five best findings. Live record starts Nov 18, 2026 at 0-0. Backtest numbers are evidence, not the record.",
   "paper": true,
@@ -199,7 +199,7 @@
       "side": "under",
       "source_card": "CFB Passing Card",
       "sport": "CFB",
-      "start_time_pt": null,
+      "start_time_pt": "16:00",
       "team": "AKR"
     },
     {
@@ -217,7 +217,7 @@
       "side": "home",
       "source_card": "Biggest Edge Card",
       "sport": "NHL",
-      "start_time_pt": null,
+      "start_time_pt": "16:30",
       "team": "DET"
     },
     {
@@ -235,7 +235,7 @@
       "side": "home",
       "source_card": "Biggest Edge Card",
       "sport": "NHL",
-      "start_time_pt": null,
+      "start_time_pt": "16:30",
       "team": "NJ"
     }
   ],
@@ -257,7 +257,7 @@
           "side": "under",
           "source_card": "CFB Passing Card",
           "sport": "CFB",
-          "start_time_pt": null,
+          "start_time_pt": "16:00",
           "team": "AKR"
         }
       ],
@@ -280,7 +280,7 @@
           "side": "home",
           "source_card": "Biggest Edge Card",
           "sport": "NHL",
-          "start_time_pt": null,
+          "start_time_pt": "16:30",
           "team": "DET"
         },
         {
@@ -298,7 +298,7 @@
           "side": "home",
           "source_card": "Biggest Edge Card",
           "sport": "NHL",
-          "start_time_pt": null,
+          "start_time_pt": "16:30",
           "team": "NJ"
         }
       ]
