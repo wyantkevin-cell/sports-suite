@@ -1293,6 +1293,18 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <h1>How have <em>we done?</em></h1>
     <p class="sub">Every pick tracked at $100.</p>
     <div class="rows" id="experimentRecordRows"><p class="empty-note">Loading the record&hellip;</p></div>
+    <section class="block" aria-label="How honest are our numbers">
+      <h3>How honest are our numbers?</h3>
+      <p class="sub">Every morning we grade the whole board in the background &mdash; every prop and every game forecast, about 25 times as many picks as the card. This table covers every bet of each type, not just the ones the model liked. &ldquo;We said&rdquo; is the chance the model gave. &ldquo;It hit&rdquo; is how often it actually happened. A big gap means we overstate that type of bet. Small groups are noisy: a handful of picks proves nothing either way.</p>
+      <div class="rows" id="calibrationRows"><p class="empty-note">No calibration yet &mdash; check back after the morning update.</p></div>
+      <p class="sub" id="calibrationMeta"></p>
+    </section>
+    <section class="block" aria-label="What we took off the board">
+      <h3>What we took off the board</h3>
+      <p class="sub">When a type of bet keeps losing, we take it off the board. It keeps getting graded, and its record stays here &mdash; we do not hide it. These numbers cover all bets of each type. The shelf decision looked at the picks the model actually favored, where the numbers were worse.</p>
+      <div class="rows" id="shelvedRows"><p class="empty-note">No shelved records yet &mdash; check back after the morning update.</p></div>
+      <p class="sub" id="shelvedMeta"></p>
+    </section>
     <p class="note">Full history, old eras, and every graded bet: <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p>
   </section>
 
@@ -1447,7 +1459,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <h3 id="doc-record">Our record</h3>
     <p><a href="#bets" data-goto="bets">Our Bets</a> shows seven ways of picking bets, each tracked on its own at $100 flat. Today&rsquo;s picks stay there until their games finish. <a href="#record" data-goto="record">Our Record</a> shows each way&rsquo;s record &mdash; wins, losses, and profit. None of the seven is proven. The record decides which, if any, is worth following.</p>
     <p><b>How the picks are chosen.</b> <b>Test Card 1:</b> under bets on NBA assists where our number is more than 2 points above the book&rsquo;s number, up to 5 a day, only the ones that qualify &mdash; never padded. From November 13 we only pick unders: our check showed the edge filter does not fix overs, so overs are out even when the model likes them. From November 14, at most one pick per game. <b>Test Card 2:</b> up to ten picks per sport, the closest our number sits to the book&rsquo;s number in that sport, with the best 30 shown in the main view. <b>Test Card 3:</b> the picks our model likes most, ranked by how likely they are to hit. <b>Test Card 4:</b> picks chosen at random from the board, as a check &mdash; if random beats a method, the method is not doing anything. <b>Test Card 5:</b> only the two pick types with the best backtested record &mdash; college basketball moneylines and NBA assists &mdash; where our number and the book&rsquo;s number are close. <b>Test Card 6:</b> under bets on NBA assists and rebounds, ranked by edge, only from the two pick types that passed our gate. <b>Test Card 7:</b> Model A&rsquo;s best disagreements with the market &mdash; NHL games, NBA favorites, and WTA tennis &mdash; where its number beats the market by 3 cents or more. A pick is dropped if its game has already started. Every pick is graded at $100 flat. A pick that lands exactly on the line is a push. A player who does not play stays pending. Soccer is excluded from the public record.</p>
-    <p><b>Silent grading.</b> Every morning we also grade the whole board in the background &mdash; every prop and every game forecast, about 25 times as many picks as the card. That grading never touches the public record. It exists only to feed the calibration tables and to show us which families are running hot or cold. On November 8, for example, it graded 355 events from the November 5 to 7 boards. The public record is only the card. The silent log is the lab notebook.</p>
+    <p><b>Silent grading.</b> Every morning we also grade the whole board in the background &mdash; every prop and every game forecast, about 25 times as many picks as the card. That grading feeds the calibration tables and the &ldquo;How honest are our numbers?&rdquo; table on Our Record, so you can see which families are running hot or cold. On November 8, for example, it graded 355 events from the November 5 to 7 boards. The public record is only the card. The silent log is the lab notebook.</p>
     <p><b>Closing-line value (CLV).</b> We also track whether our picks beat the closing price at Pinnacle, the sharpest book. For each card pick, we record the price when we picked it and the Pinnacle price near game time. If the closing price moved our way, that is positive CLV. Positive CLV over many bets is the best early sign a model has an edge, because the closing price is the market&rsquo;s best guess. So far we have 69 closes recorded, averaging about +0.3 points. That is a small sample. It is suggestive, not proof. We need around 75 closes before we draw any conclusion, and we are not there yet.</p>
     <p><b>The record so far &mdash; old ways, archived.</b> The old way (Nov 6&ndash;10, biggest edge): straights 10&ndash;9, &minus;$90.86; parlays 0&ndash;5, &minus;$500; total &minus;$590.86. That is a losing record. We show it because the record is the point. Nov 11 was a one-day switch to agreement: 5&ndash;0, +$239.88. Nov 11 was also a transition day for the two short cards, then called Best Plays and More Plays (Test Card 1 3&ndash;0, +$231.78; Test Card 2 21&ndash;10, +$201.43) &mdash; those picks are graded, but they are not counted in the current tallies, which start Nov 12. The parlay of the day ended Nov 10; its record stays here and there are no new parlays.</p>
 
@@ -7043,6 +7055,110 @@ function loadVariantRecords(){
     }).catch(function(){});
   }catch(e){}
 }
+/* Calibration: the Our Record tab also tries to load
+   "calibration.json" (same folder as this page) — what the model said
+   vs what actually happened, for every bet type, built each morning
+   from the silent grade log. The families list covers EVERY bet of
+   each type, not just the ones the model liked. The shelved list is
+   every bet type we took off the board, still graded, with the date
+   and reason it was shelved. Families sort by gap, most overconfident
+   first. A gap is actual minus quoted: negative means we overstate
+   that type. Any failure at all leaves the honest "No calibration
+   yet" / "No shelved records yet" notes exactly as they are: no
+   banner, no stale numbers, nothing here is allowed to throw. */
+var CALIBRATION=null;
+function calPct(v){
+  if(v==null||!isFinite(Number(v))) return "\u2014";
+  return Math.round(Number(v))+"%";
+}
+function calGap(v){
+  if(v==null||!isFinite(Number(v))) return "\u2014";
+  var n=Number(v);
+  if(n>0) return "+"+Math.abs(Math.round(n))+" points";
+  if(n<0) return "\u2212"+Math.abs(Math.round(n))+" points";
+  return "0 points";
+}
+function calibrationRowHtml(r){
+  var n=Number(r.n)||0;
+  var sub="We said "+calPct(r.quoted_pct)+" \u00B7 It hit "+calPct(r.actual_pct);
+  var small="ROI "+vrRoi(r.roi_pct)+" \u00B7 "+n.toLocaleString("en-US")+" bets";
+  if(n>0&&n<50) small+=" \u00B7 Small group, noisy";
+  return '<div class="trow" style="grid-template-columns:minmax(0,1fr) auto">'
+    +'<div class="who"><b>'+esc(r.label||"")+'</b><span>'+esc(sub)+'</span></div>'
+    +'<div style="text-align:right"><div class="num" style="font-size:20px">'+esc(calGap(r.gap_pp))+'</div>'
+    +'<div style="font-size:12px;color:var(--muted)">'+esc(small)+'</div></div></div>';
+}
+function shelvedRowHtml(r){
+  var n=Number(r.n)||0;
+  var when=r.shelved_date?("Off the board "+fmtDateLong(r.shelved_date)):"Off the board";
+  var sub=when+(r.reason?(" \u00B7 "+r.reason):"");
+  var small="We said "+calPct(r.quoted_pct)+" \u00B7 It hit "+calPct(r.actual_pct)+" \u00B7 "+n.toLocaleString("en-US")+" bets";
+  return '<div class="trow" style="grid-template-columns:minmax(0,1fr) auto">'
+    +'<div class="who"><b>'+esc(r.label||"")+'</b><span>'+esc(sub)+'</span></div>'
+    +'<div style="text-align:right"><div class="num" style="font-size:20px">'+esc(vrRoi(r.roi_pct))+'</div>'
+    +'<div style="font-size:12px;color:var(--muted)">'+esc(small)+'</div></div></div>';
+}
+function renderCalibration(){
+  var host=$("calibrationRows");
+  if(host){
+    var fams=(CALIBRATION&&Array.isArray(CALIBRATION.families))?CALIBRATION.families.slice():null;
+    if(!fams||!fams.length){
+      host.innerHTML='<p class="empty-note">No calibration yet \u2014 check back after the morning update.</p>';
+    }else{
+      fams.sort(function(a,b){
+        var ga=(a.gap_pp==null||!isFinite(Number(a.gap_pp)))?Infinity:Number(a.gap_pp);
+        var gb=(b.gap_pp==null||!isFinite(Number(b.gap_pp)))?Infinity:Number(b.gap_pp);
+        return ga-gb;
+      });
+      host.innerHTML=fams.map(calibrationRowHtml).join("");
+    }
+  }
+  var shost=$("shelvedRows");
+  if(shost){
+    var shel=(CALIBRATION&&Array.isArray(CALIBRATION.shelved))?CALIBRATION.shelved.slice():null;
+    if(!shel||!shel.length){
+      shost.innerHTML='<p class="empty-note">No shelved records yet \u2014 check back after the morning update.</p>';
+    }else{
+      shel.sort(function(a,b){
+        var da=String(a.shelved_date||""), db=String(b.shelved_date||"");
+        if(da!==db) return db<da?-1:1;
+        return String(a.label||"")<String(b.label||"")?-1:1;
+      });
+      shost.innerHTML=shel.map(shelvedRowHtml).join("");
+    }
+  }
+  var meta=$("calibrationMeta");
+  if(meta){
+    meta.textContent=CALIBRATION&&CALIBRATION.generated_at_pt
+      ?("Updated "+CALIBRATION.generated_at_pt+".")
+      :"";
+  }
+  var smeta=$("shelvedMeta");
+  if(smeta){
+    smeta.textContent=CALIBRATION&&CALIBRATION.generated_at_pt
+      ?("Updated "+CALIBRATION.generated_at_pt+".")
+      :"";
+  }
+}
+function applyCalibration(data){
+  if(!data||typeof data!=="object") return false;
+  if(!Array.isArray(data.families)&&!Array.isArray(data.shelved)) return false;
+  CALIBRATION=data;
+  try{renderCalibration();}catch(e){}
+  return true;
+}
+function loadCalibration(){
+  try{
+    if(typeof fetch!=="function") return;
+    fetch("calibration.json?v=" + Date.now()).then(function(res){
+      if(!res||!res.ok) return null;
+      return res.json();
+    }).then(function(data){
+      if(!data) return;
+      try{applyCalibration(data);}catch(e){}
+    }).catch(function(){});
+  }catch(e){}
+}
 /* Graded bets: the Our Record tab also tries to load
    "record_graded_bets.json" (same folder as this page) — every graded
    forecast, grouped by sport then kind of pick, built each morning
@@ -8083,6 +8199,7 @@ try{loadRecordBreakdown();}catch(e){}
 try{loadVariantRecords();}catch(e){}
 try{loadGradedBets();}catch(e){}
 try{loadPnlCalendar();}catch(e){}
+try{loadCalibration();}catch(e){}
 try{var pmf=$("pnlMonthFilter");if(pmf) pmf.addEventListener("change",function(){PNL_MONTH=pmf.value;try{renderPnlCalendar();}catch(e){}});}catch(e){}
 try{var bvf=$("breakdownViewFilter");if(bvf) bvf.addEventListener("change",function(){try{renderBreakdown();}catch(e){}});}catch(e){}
 })();
