@@ -39,6 +39,35 @@
         }
       ]
     },
+    "cfb_rushing": {
+      "backtest": {
+        "n": 192,
+        "note": "Model's pick side on CFB rushing yards, Nov 10-17: 60.9% vs 53.3% quoted, ROI +14.3%, 95% CI (+1.4%, +27.3%). Both sides win \u2014 no side restriction. Only board family whose ROI CI clears zero (Nov 16 panel).",
+        "over_n": 44,
+        "over_roi_pct": 19.4,
+        "quoted_pct": 53.3,
+        "roi_ci_95": [
+          1.4,
+          27.3
+        ],
+        "roi_pct": 14.3,
+        "under_n": 148,
+        "under_roi_pct": 12.8,
+        "win_pct": 60.9
+      },
+      "label": "CFB rushing yards",
+      "record": {
+        "losses": 0,
+        "n": 0,
+        "pending": 0,
+        "profit": 0.0,
+        "pushes": 0,
+        "roi_pct": null,
+        "wins": 0
+      },
+      "source_card": "Model B board",
+      "today": []
+    },
     "cfb_totals": {
       "backtest": {
         "fade_losses": 16,
@@ -139,9 +168,9 @@
     }
   },
   "date": "2026-11-18",
-  "generated_at_pt": "2026-11-18 08:52:23 PST",
+  "generated_at_pt": "2026-11-18 09:29:46 PST",
   "name": "Best Findings Card",
-  "note": "One composite card from our four best findings. Live record starts Nov 18, 2026 at 0-0. Backtest numbers are evidence, not the record.",
+  "note": "One composite card from our five best findings. Live record starts Nov 18, 2026 at 0-0. Backtest numbers are evidence, not the record.",
   "paper": true,
   "record": {
     "losses": 0,
@@ -232,6 +261,7 @@
           "team": "AKR"
         }
       ],
+      "cfb_rushing": [],
       "cfb_totals": [],
       "nba_dog_fade": [],
       "nhl_gold": [
