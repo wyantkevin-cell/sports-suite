@@ -10,12 +10,12 @@
       "label": "CFB passing unders",
       "record": {
         "losses": 0,
-        "n": 0,
+        "n": 1,
         "pending": 0,
-        "profit": 0.0,
+        "profit": 87.72,
         "pushes": 0,
-        "roi_pct": null,
-        "wins": 0
+        "roi_pct": 87.7,
+        "wins": 1
       },
       "source_card": "CFB Passing Card",
       "today": []
@@ -93,20 +93,20 @@
     }
   },
   "date": "2026-11-19",
-  "generated_at_pt": "2026-11-19 08:04:33 PST",
+  "generated_at_pt": "2026-11-19 08:24:59 PST",
   "name": "Best Findings Card",
-  "note": "One composite card from our four best findings. Live record starts Nov 19, 2026 at 0-0 (Phase 2; Phase 1 was Nov 18: 1-2, -$112.28). NHL gold was dropped from the composite Nov 19. Backtest numbers are evidence, not the record.",
+  "note": "One composite card from our four best findings. Live record is cumulative from Nov 18, 2026 (first day: 1-2, -$112.28). Nov 19 brought rule changes (NHL gold dropped from the composite), not a reset. Backtest numbers are evidence, not the record.",
   "paper": true,
   "record": {
-    "losses": 0,
-    "n": 0,
+    "losses": 2,
+    "n": 3,
     "pending": 0,
-    "profit": 0.0,
+    "profit": -112.28,
     "pushes": 0,
-    "roi_pct": null,
-    "wins": 0
+    "roi_pct": -37.4,
+    "wins": 1
   },
-  "record_start": "2026-11-19",
+  "record_start": "2026-11-12",
   "stake": 100,
   "straights": [],
   "today": {
