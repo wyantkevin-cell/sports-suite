@@ -2,6 +2,9 @@
   "cards_included": [
     {
       "description": "Fade the tired home team: when the home team is on a back-to-back and the road team is rested, bet the road team ATS \u2014 gated to road favorites laying under 10 points (Kalshi reprice, Nov 19). Gated backtest: n=215, 61.9% win, +18.1% ROI, CI (+5.7%, +30.5%). Road dogs and double-digit lines show no edge and are excluded. Yes on the road team's exact-line KXNBASPREAD market; exact line only, 53c taker hard cap. In-sample \u2014 unproven live.",
+      "held": true,
+      "held_since": "2026-11-19",
+      "hold_reason": "Gate does not reproduce on Grok's window (reconciliation Nov 19): on the shared window the gate is +9.3% with CI including zero, and the +18.1% headline is carried by 2021-22 (gated 75%, n=56), the season Grok's window drops. Newest seasons point the wrong way (2025-26 47.6% ungated, 2026-27 so far 40.7%). Hold until the gate is re-tested on Grok's exact 548-game list. Kevin confirmed 2026-11-19 10:00 PT.",
       "id": "b2b_fade",
       "n_signals": 0,
       "name": "NBA B2B fade \u2014 gated (desk signal)"
@@ -44,7 +47,15 @@
     }
   ],
   "date": "2026-11-19",
-  "generated_at_pt": "2026-11-19 09:15:50 PST",
+  "generated_at_pt": "2026-11-19 10:01:22 PST",
+  "holds": {
+    "b2b_fade": {
+      "held": true,
+      "held_by": "Kevin",
+      "reason": "Gate does not reproduce on Grok's window (reconciliation Nov 19): on the shared window the gate is +9.3% with CI including zero, and the +18.1% headline is carried by 2021-22 (gated 75%, n=56), the season Grok's window drops. Newest seasons point the wrong way (2025-26 47.6% ungated, 2026-27 so far 40.7%). Hold until the gate is re-tested on Grok's exact 548-game list. Kevin confirmed 2026-11-19 10:00 PT.",
+      "since": "2026-11-19"
+    }
+  },
   "name": "Sim Says bot API \u2014 today's signals",
   "note": "Paper signals from the Sim Says experiment board. These are our numbers vs the book's numbers \u2014 not promises, not proven winners. Check `date` before trading: an old date means a stale file. Empty `signals` means no signals today \u2014 never trade yesterday's.",
   "signals": [
@@ -58,7 +69,7 @@
       "description": "Victor Wembanyama (SAS) over 2.5 3-pointers",
       "early_flag": true,
       "early_logged_at_pt": "2026-11-19 08:33:32 PST",
-      "edge_pp": -5.0,
+      "edge_pp": -0.08,
       "family": "NBA:3-pointers",
       "game_date": "2026-11-19",
       "game_id": "2026-11-19-NBA-SAS-LAC",
@@ -71,7 +82,7 @@
         "novig": null,
         "polymarket": null
       },
-      "model_prob": 0.3437,
+      "model_prob": 0.3929,
       "model_version": "FULL_SLATE v2",
       "opponent": "LAC",
       "pick_id": "20261119-NMU-SAS-victor-wembanyama-3-pointers",
@@ -95,7 +106,7 @@
       "description": "Stephon Castle (SAS) over 5.5 rebounds",
       "early_flag": true,
       "early_logged_at_pt": "2026-11-19 08:33:32 PST",
-      "edge_pp": -5.99,
+      "edge_pp": -3.34,
       "family": "NBA:rebounds",
       "game_date": "2026-11-19",
       "game_id": "2026-11-19-NBA-SAS-LAC",
@@ -108,7 +119,7 @@
         "novig": null,
         "polymarket": null
       },
-      "model_prob": 0.3749,
+      "model_prob": 0.4014,
       "model_version": "FULL_SLATE v2",
       "opponent": "LAC",
       "pick_id": "20261119-NMU-SAS-stephon-castle-rebounds",
@@ -132,7 +143,7 @@
       "description": "Victor Wembanyama (SAS) over 3.5 assists",
       "early_flag": true,
       "early_logged_at_pt": "2026-11-19 08:33:32 PST",
-      "edge_pp": -3.99,
+      "edge_pp": 0.14,
       "family": "NBA:assists",
       "game_date": "2026-11-19",
       "game_id": "2026-11-19-NBA-SAS-LAC",
@@ -145,7 +156,7 @@
         "novig": null,
         "polymarket": null
       },
-      "model_prob": 0.4026,
+      "model_prob": 0.4439,
       "model_version": "FULL_SLATE v2",
       "opponent": "LAC",
       "pick_id": "20261119-NMU-SAS-victor-wembanyama-assists",
@@ -725,7 +736,7 @@
       "early_flag": true,
       "early_logged_at_pt": "2026-11-19 08:01:11 PST",
       "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
-      "edge_pp": -3.99,
+      "edge_pp": 0.14,
       "family": "NBA:assists",
       "game_date": "2026-11-19",
       "game_id": "2026-11-19-NBA-SAS-LAC",
@@ -738,7 +749,7 @@
         "novig": null,
         "polymarket": null
       },
-      "model_prob": 0.4026,
+      "model_prob": 0.4439,
       "model_version": "FULL_SLATE v2",
       "nmu_out_players": [
         {
@@ -757,7 +768,7 @@
       "status": "pregame",
       "team": "SAS",
       "type": "prop",
-      "value_pct": -9.02
+      "value_pct": 0.32
     },
     {
       "bot_tradeable": true,
@@ -770,7 +781,7 @@
       "early_flag": true,
       "early_logged_at_pt": "2026-11-19 08:01:11 PST",
       "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
-      "edge_pp": -5.0,
+      "edge_pp": -0.08,
       "family": "NBA:3-pointers",
       "game_date": "2026-11-19",
       "game_id": "2026-11-19-NBA-SAS-LAC",
@@ -783,7 +794,7 @@
         "novig": null,
         "polymarket": null
       },
-      "model_prob": 0.3437,
+      "model_prob": 0.3929,
       "model_version": "FULL_SLATE v2",
       "nmu_out_players": [
         {
@@ -802,7 +813,7 @@
       "status": "pregame",
       "team": "SAS",
       "type": "prop",
-      "value_pct": -12.7
+      "value_pct": -0.2
     },
     {
       "bot_tradeable": true,
@@ -815,7 +826,7 @@
       "early_flag": true,
       "early_logged_at_pt": "2026-11-19 08:01:11 PST",
       "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
-      "edge_pp": -5.99,
+      "edge_pp": -3.34,
       "family": "NBA:rebounds",
       "game_date": "2026-11-19",
       "game_id": "2026-11-19-NBA-SAS-LAC",
@@ -828,7 +839,7 @@
         "novig": null,
         "polymarket": null
       },
-      "model_prob": 0.3749,
+      "model_prob": 0.4014,
       "model_version": "FULL_SLATE v2",
       "nmu_out_players": [
         {
@@ -847,7 +858,7 @@
       "status": "pregame",
       "team": "SAS",
       "type": "prop",
-      "value_pct": -13.78
+      "value_pct": -7.68
     },
     {
       "bot_tradeable": true,
@@ -905,7 +916,7 @@
       "early_flag": true,
       "early_logged_at_pt": "2026-11-19 08:01:11 PST",
       "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
-      "edge_pp": -21.09,
+      "edge_pp": -14.89,
       "family": "NBA:assists",
       "game_date": "2026-11-19",
       "game_id": "2026-11-19-NBA-SAS-LAC",
@@ -918,7 +929,7 @@
         "novig": null,
         "polymarket": null
       },
-      "model_prob": 0.2564,
+      "model_prob": 0.3184,
       "model_version": "FULL_SLATE v2",
       "nmu_out_players": [
         {
@@ -937,7 +948,7 @@
       "status": "pregame",
       "team": "SAS",
       "type": "prop",
-      "value_pct": -45.13
+      "value_pct": -31.86
     },
     {
       "bot_tradeable": true,
@@ -950,7 +961,7 @@
       "early_flag": true,
       "early_logged_at_pt": "2026-11-19 08:01:11 PST",
       "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
-      "edge_pp": -3.99,
+      "edge_pp": 0.14,
       "family": "NBA:assists",
       "game_date": "2026-11-19",
       "game_id": "2026-11-19-NBA-SAS-LAC",
@@ -963,7 +974,7 @@
         "novig": null,
         "polymarket": null
       },
-      "model_prob": 0.4026,
+      "model_prob": 0.4439,
       "model_version": "FULL_SLATE v2",
       "nmu_out_players": [
         {
@@ -981,7 +992,7 @@
       "status": "pregame",
       "team": "SAS",
       "type": "prop",
-      "value_pct": -9.02
+      "value_pct": 0.32
     },
     {
       "bot_tradeable": true,
@@ -994,7 +1005,7 @@
       "early_flag": true,
       "early_logged_at_pt": "2026-11-19 08:01:11 PST",
       "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
-      "edge_pp": -5.0,
+      "edge_pp": -0.08,
       "family": "NBA:3-pointers",
       "game_date": "2026-11-19",
       "game_id": "2026-11-19-NBA-SAS-LAC",
@@ -1007,7 +1018,7 @@
         "novig": null,
         "polymarket": null
       },
-      "model_prob": 0.3437,
+      "model_prob": 0.3929,
       "model_version": "FULL_SLATE v2",
       "nmu_out_players": [
         {
@@ -1025,7 +1036,7 @@
       "status": "pregame",
       "team": "SAS",
       "type": "prop",
-      "value_pct": -12.7
+      "value_pct": -0.2
     },
     {
       "bot_tradeable": true,
@@ -1038,7 +1049,7 @@
       "early_flag": true,
       "early_logged_at_pt": "2026-11-19 08:01:11 PST",
       "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
-      "edge_pp": -5.99,
+      "edge_pp": -3.34,
       "family": "NBA:rebounds",
       "game_date": "2026-11-19",
       "game_id": "2026-11-19-NBA-SAS-LAC",
@@ -1051,7 +1062,7 @@
         "novig": null,
         "polymarket": null
       },
-      "model_prob": 0.3749,
+      "model_prob": 0.4014,
       "model_version": "FULL_SLATE v2",
       "nmu_out_players": [
         {
@@ -1069,7 +1080,7 @@
       "status": "pregame",
       "team": "SAS",
       "type": "prop",
-      "value_pct": -13.78
+      "value_pct": -7.68
     },
     {
       "bot_tradeable": true,
@@ -1126,7 +1137,7 @@
       "early_flag": true,
       "early_logged_at_pt": "2026-11-19 08:01:11 PST",
       "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
-      "edge_pp": -21.09,
+      "edge_pp": -14.89,
       "family": "NBA:assists",
       "game_date": "2026-11-19",
       "game_id": "2026-11-19-NBA-SAS-LAC",
@@ -1139,7 +1150,7 @@
         "novig": null,
         "polymarket": null
       },
-      "model_prob": 0.2564,
+      "model_prob": 0.3184,
       "model_version": "FULL_SLATE v2",
       "nmu_out_players": [
         {
@@ -1157,7 +1168,7 @@
       "status": "pregame",
       "team": "SAS",
       "type": "prop",
-      "value_pct": -45.13
+      "value_pct": -31.86
     }
   ],
   "version": "1.4"
