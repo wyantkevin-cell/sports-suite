@@ -90,31 +90,12 @@
       },
       "source_card": "Biggest Edge Card",
       "today": []
-    },
-    "nhl_gold": {
-      "backtest": {
-        "n": 94,
-        "note": "Model A gold NHL picks, backtested at real Kalshi prices with Jul 7 2026 fees. Maker-fillable subset n=41, ROI +5.8%.",
-        "taker_roi_pct": 4.8
-      },
-      "label": "NHL gold",
-      "record": {
-        "losses": 0,
-        "n": 0,
-        "pending": 0,
-        "profit": 0.0,
-        "pushes": 0,
-        "roi_pct": null,
-        "wins": 0
-      },
-      "source_card": "Biggest Edge Card",
-      "today": []
     }
   },
   "date": "2026-11-19",
-  "generated_at_pt": "2026-11-19 07:25:06 PST",
+  "generated_at_pt": "2026-11-19 07:41:08 PST",
   "name": "Best Findings Card",
-  "note": "One composite card from our five best findings. Live record starts Nov 19, 2026 at 0-0 (Phase 2; Phase 1 was Nov 18: 1-2, -$112.28). Backtest numbers are evidence, not the record.",
+  "note": "One composite card from our four best findings. Live record starts Nov 19, 2026 at 0-0 (Phase 2; Phase 1 was Nov 18: 1-2, -$112.28). NHL gold was dropped from the composite Nov 19. Backtest numbers are evidence, not the record.",
   "paper": true,
   "record": {
     "losses": 0,
@@ -133,8 +114,7 @@
       "cfb_passing": [],
       "cfb_rushing": [],
       "cfb_totals": [],
-      "nba_dog_fade": [],
-      "nhl_gold": []
+      "nba_dog_fade": []
     },
     "date": "2026-11-19",
     "n": 0
