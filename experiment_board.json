@@ -6,12 +6,12 @@
       "name": "Best Findings Card",
       "picks": [],
       "record": {
-        "losses": 0,
-        "n": 0,
-        "profit": 0.0,
+        "losses": 2,
+        "n": 3,
+        "profit": -112.28,
         "pushes": 0,
-        "roi_pct": null,
-        "wins": 0
+        "roi_pct": -37.4,
+        "wins": 1
       }
     },
     {
@@ -201,12 +201,12 @@
         }
       ],
       "record": {
-        "losses": 0,
-        "n": 0,
-        "profit": 0.0,
+        "losses": 11,
+        "n": 34,
+        "profit": -92.33,
         "pushes": 0,
-        "roi_pct": null,
-        "wins": 0
+        "roi_pct": -2.7,
+        "wins": 23
       }
     },
     {
@@ -396,12 +396,12 @@
         }
       ],
       "record": {
-        "losses": 0,
-        "n": 0,
-        "profit": 0.0,
+        "losses": 12,
+        "n": 32,
+        "profit": 227.34,
         "pushes": 0,
-        "roi_pct": null,
-        "wins": 0
+        "roi_pct": 7.1,
+        "wins": 20
       }
     },
     {
@@ -596,12 +596,12 @@
         }
       ],
       "record": {
-        "losses": 0,
-        "n": 0,
-        "profit": 0.0,
+        "losses": 10,
+        "n": 27,
+        "profit": -238.4,
         "pushes": 0,
-        "roi_pct": null,
-        "wins": 0
+        "roi_pct": -8.8,
+        "wins": 17
       }
     },
     {
@@ -610,12 +610,12 @@
       "name": "Biggest Edge Card",
       "picks": [],
       "record": {
-        "losses": 0,
-        "n": 0,
-        "profit": 0.0,
+        "losses": 14,
+        "n": 25,
+        "profit": -820.8,
         "pushes": 0,
-        "roi_pct": null,
-        "wins": 0
+        "roi_pct": -32.8,
+        "wins": 11
       }
     },
     {
@@ -624,21 +624,21 @@
       "name": "CFB Passing Card",
       "picks": [],
       "record": {
-        "losses": 0,
-        "n": 0,
-        "profit": 0.0,
+        "losses": 1,
+        "n": 2,
+        "profit": -12.28,
         "pushes": 0,
-        "roi_pct": null,
-        "wins": 0
+        "roi_pct": -6.1,
+        "wins": 1
       }
     }
   ],
   "date": "2026-11-19",
-  "generated_pt": "2026-11-19 08:11:16 PST",
+  "generated_pt": "2026-11-19 08:24:51 PST",
   "name": "Experiment board \u2014 six ways of picking",
   "notes": [
     "Six ways of picking bets, each tracked on its own at $100 flat. None is proven. The record decides.",
-    "Phase 2 starts Nov 19, 2026: records start fresh from that day. Phase 1 (Nov 12-18) is archived in How It Works \u2014 nothing is erased.",
+    "Records are cumulative from Nov 12, 2026. Phase 1 (Nov 12-18) is archived in How It Works \u2014 nothing is erased. Nov 19 brought rule changes (value floors, NHL dropped from Biggest Edge, two cards shelved), not a reset.",
     "More Plays (shelved Nov 18), NBA Assists and Assists + Rebounds (shelved Nov 19) keep grading silently; their records are in the shelved list."
   ],
   "shelved": [
