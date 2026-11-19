@@ -1,6 +1,6 @@
 {
   "bp_start_date": "2026-11-12",
-  "generated_pt": "2026-11-19 07:12:42 PST",
+  "generated_pt": "2026-11-19 08:10:47 PST",
   "name": "How each way of picking is doing",
   "notes": [
     "The live record is the NBA Assists Card (NBA assists only, edge over 2pp) from Nov 12, 2026. The agreement way ran one day (Nov 11) and the old biggest-edge way ran Nov 6\u201310; both are kept here as an archive \u2014 never blended into the NBA Assists Card numbers.",
@@ -238,13 +238,13 @@
     {
       "combined": {
         "losses": 112,
-        "n_graded": 278,
-        "profit": -1738,
-        "profit_exact": -1738.02,
+        "n_graded": 277,
+        "profit": -1794,
+        "profit_exact": -1793.76,
         "pushes": 0,
-        "roi_pct": -6.3,
-        "roi_pct_exact": -6.3,
-        "wins": 166
+        "roi_pct": -6.5,
+        "roi_pct_exact": -6.5,
+        "wins": 165
       },
       "dates": "Nov 11, 2026 \u2013 now",
       "id": "paper_mp",
@@ -263,13 +263,13 @@
       "status": "paper",
       "straights": {
         "losses": 112,
-        "n_graded": 278,
-        "profit": -1738,
-        "profit_exact": -1738.02,
+        "n_graded": 277,
+        "profit": -1794,
+        "profit_exact": -1793.76,
         "pushes": 0,
-        "roi_pct": -6.3,
-        "roi_pct_exact": -6.3,
-        "wins": 166
+        "roi_pct": -6.5,
+        "roi_pct_exact": -6.5,
+        "wins": 165
       }
     }
   ],
