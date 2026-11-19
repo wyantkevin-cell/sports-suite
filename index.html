@@ -1547,7 +1547,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <li>CFB Passing 1&ndash;1, &minus;$12.28</li>
       <li>More Plays 144&ndash;102, &minus;$1,995.19 (final &mdash; one duplicated tennis match removed, last pending pick graded).</li>
     </ul>
-    <p>The NBA Assists and Assists + Rebounds cards came off the board on November 19. The other six started fresh records that day. Nothing here is erased.</p>
+    <p>The NBA Assists and Assists + Rebounds cards came off the board on November 19. The other six kept their full records from November 12 &mdash; the records are cumulative, not reset. November 19 brought rule changes instead: value floors on two cards, NHL gold dropped from Biggest Edge, and two more cards shelved. Nothing here is erased.</p>
 
     <h3>Settled bets, by day</h3>
     <div id="recordDays"></div>
@@ -5510,7 +5510,7 @@ function loadMorePlays(){
     }).catch(function(){});
   }catch(e){}
 }
-/* Experiment board (Nov 14; renamed Nov 18, More Plays shelved, NBA Assists + Assists/Rebounds shelved Nov 19, Phase 2 from Nov 19): Our Bets shows one approach at a time,
+/* Experiment board (Nov 14; renamed Nov 18, More Plays shelved, NBA Assists + Assists/Rebounds shelved Nov 19; Phase 2 reset undone Nov 19 — records cumulative from Nov 12): Our Bets shows one approach at a time,
    picked from a dropdown — each option carries its running record,
    so the six can be compared without scrolling. Today's picks and
    records come from one feed, "experiment_board.json". The same feed
