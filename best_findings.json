@@ -23,10 +23,10 @@
     "cfb_rushing": {
       "backtest": {
         "n": 192,
-        "note": "Model's pick side on CFB rushing yards, Nov 10-17: 60.9% vs 53.3% quoted, ROI +14.3%, 95% CI (+1.4%, +27.3%). Both sides win \u2014 no side restriction. Only board family whose ROI CI clears zero (Nov 16 panel).",
+        "note": "Model-favoured side (model_prob > 0.5, any tier) on CFB rushing yards, Nov 10-17: 60.9% vs 52.7% quoted, ROI +14.3%, 95% CI (+1.4%, +27.3%). Both sides win \u2014 no side restriction. The edge lives in tier-'none' rows (model_prob 0.50-0.55, +18.3%, n=176); tier-lean rows (>= 0.55) lost -33% (n=14), so the selector takes model-favoured rows of ANY tier, mildest leans first. One Saturday (Nov 14, 152/192 rows) dominates the number; the 3-pick subset edge is unproven and Nov 21 is its first live test.",
         "over_n": 44,
         "over_roi_pct": 19.4,
-        "quoted_pct": 53.3,
+        "quoted_pct": 52.7,
         "roi_ci_95": [
           1.4,
           27.3
@@ -90,17 +90,96 @@
       },
       "source_card": "Biggest Edge Card",
       "today": []
+    },
+    "nmu": {
+      "backtest": {
+        "n": 160,
+        "note": "Next-man-up starter overs at plus money, Nov 6-17: 57.5% hit, ROI +28.4%, 95% CI (+10.3%, +46.6%). Usage redistributes to starters already on the floor when a teammate is out; the edge is freshest on the first absence and dies by absence #3.",
+        "roi_ci_95": [
+          10.3,
+          46.6
+        ],
+        "roi_pct": 28.4,
+        "win_pct": 57.5
+      },
+      "label": "Next man up",
+      "record": {
+        "losses": 0,
+        "n": 0,
+        "pending": 3,
+        "profit": 0.0,
+        "pushes": 0,
+        "roi_pct": null,
+        "wins": 0
+      },
+      "source_card": "NMU paper tracker",
+      "today": [
+        {
+          "component": "nmu",
+          "description": "Victor Wembanyama (SAS) over 2.5 3-pointers",
+          "game_date": "2026-11-19",
+          "line": 2.5,
+          "line_odds": "154",
+          "market": "3-pointers",
+          "opponent": "LAC",
+          "outcome": null,
+          "pick_id": "20261119-NMU-SAS-victor-wembanyama-3-pointers",
+          "player": "Victor Wembanyama",
+          "profit": null,
+          "side": "over",
+          "source_card": "NMU paper tracker",
+          "sport": "NBA",
+          "start_time_pt": "17:00",
+          "team": "SAS"
+        },
+        {
+          "component": "nmu",
+          "description": "Stephon Castle (SAS) over 5.5 rebounds",
+          "game_date": "2026-11-19",
+          "line": 5.5,
+          "line_odds": "130",
+          "market": "rebounds",
+          "opponent": "LAC",
+          "outcome": null,
+          "pick_id": "20261119-NMU-SAS-stephon-castle-rebounds",
+          "player": "Stephon Castle",
+          "profit": null,
+          "side": "over",
+          "source_card": "NMU paper tracker",
+          "sport": "NBA",
+          "start_time_pt": "17:00",
+          "team": "SAS"
+        },
+        {
+          "component": "nmu",
+          "description": "Victor Wembanyama (SAS) over 3.5 assists",
+          "game_date": "2026-11-19",
+          "line": 3.5,
+          "line_odds": "126",
+          "market": "assists",
+          "opponent": "LAC",
+          "outcome": null,
+          "pick_id": "20261119-NMU-SAS-victor-wembanyama-assists",
+          "player": "Victor Wembanyama",
+          "profit": null,
+          "side": "over",
+          "source_card": "NMU paper tracker",
+          "sport": "NBA",
+          "start_time_pt": "17:00",
+          "team": "SAS"
+        }
+      ]
     }
   },
   "date": "2026-11-19",
-  "generated_at_pt": "2026-11-19 08:24:59 PST",
+  "generated_at_pt": "2026-11-19 08:33:32 PST",
   "name": "Best Findings Card",
-  "note": "One composite card from our four best findings. Live record is cumulative from Nov 18, 2026 (first day: 1-2, -$112.28). Nov 19 brought rule changes (NHL gold dropped from the composite), not a reset. Backtest numbers are evidence, not the record.",
+  "note": "One composite card from our five best findings. Live record is cumulative from Nov 18, 2026 (first day: 1-2, -$112.28). Nov 19 brought rule changes (NHL gold dropped from the composite, next-man-up starter overs added), not a reset. Backtest numbers are evidence, not the record.",
   "paper": true,
   "record": {
     "losses": 2,
     "n": 3,
-    "pending": 0,
+    "pending": 3,
     "profit": -112.28,
     "pushes": 0,
     "roi_pct": -37.4,
@@ -108,15 +187,126 @@
   },
   "record_start": "2026-11-12",
   "stake": 100,
-  "straights": [],
+  "straights": [
+    {
+      "component": "nmu",
+      "description": "Victor Wembanyama (SAS) over 2.5 3-pointers",
+      "game_date": "2026-11-19",
+      "line": 2.5,
+      "line_odds": "154",
+      "market": "3-pointers",
+      "opponent": "LAC",
+      "outcome": null,
+      "pick_id": "20261119-NMU-SAS-victor-wembanyama-3-pointers",
+      "player": "Victor Wembanyama",
+      "profit": null,
+      "side": "over",
+      "source_card": "NMU paper tracker",
+      "sport": "NBA",
+      "start_time_pt": "17:00",
+      "team": "SAS"
+    },
+    {
+      "component": "nmu",
+      "description": "Stephon Castle (SAS) over 5.5 rebounds",
+      "game_date": "2026-11-19",
+      "line": 5.5,
+      "line_odds": "130",
+      "market": "rebounds",
+      "opponent": "LAC",
+      "outcome": null,
+      "pick_id": "20261119-NMU-SAS-stephon-castle-rebounds",
+      "player": "Stephon Castle",
+      "profit": null,
+      "side": "over",
+      "source_card": "NMU paper tracker",
+      "sport": "NBA",
+      "start_time_pt": "17:00",
+      "team": "SAS"
+    },
+    {
+      "component": "nmu",
+      "description": "Victor Wembanyama (SAS) over 3.5 assists",
+      "game_date": "2026-11-19",
+      "line": 3.5,
+      "line_odds": "126",
+      "market": "assists",
+      "opponent": "LAC",
+      "outcome": null,
+      "pick_id": "20261119-NMU-SAS-victor-wembanyama-assists",
+      "player": "Victor Wembanyama",
+      "profit": null,
+      "side": "over",
+      "source_card": "NMU paper tracker",
+      "sport": "NBA",
+      "start_time_pt": "17:00",
+      "team": "SAS"
+    }
+  ],
   "today": {
     "by_component": {
       "cfb_passing": [],
       "cfb_rushing": [],
       "cfb_totals": [],
-      "nba_dog_fade": []
+      "nba_dog_fade": [],
+      "nmu": [
+        {
+          "component": "nmu",
+          "description": "Victor Wembanyama (SAS) over 2.5 3-pointers",
+          "game_date": "2026-11-19",
+          "line": 2.5,
+          "line_odds": "154",
+          "market": "3-pointers",
+          "opponent": "LAC",
+          "outcome": null,
+          "pick_id": "20261119-NMU-SAS-victor-wembanyama-3-pointers",
+          "player": "Victor Wembanyama",
+          "profit": null,
+          "side": "over",
+          "source_card": "NMU paper tracker",
+          "sport": "NBA",
+          "start_time_pt": "17:00",
+          "team": "SAS"
+        },
+        {
+          "component": "nmu",
+          "description": "Stephon Castle (SAS) over 5.5 rebounds",
+          "game_date": "2026-11-19",
+          "line": 5.5,
+          "line_odds": "130",
+          "market": "rebounds",
+          "opponent": "LAC",
+          "outcome": null,
+          "pick_id": "20261119-NMU-SAS-stephon-castle-rebounds",
+          "player": "Stephon Castle",
+          "profit": null,
+          "side": "over",
+          "source_card": "NMU paper tracker",
+          "sport": "NBA",
+          "start_time_pt": "17:00",
+          "team": "SAS"
+        },
+        {
+          "component": "nmu",
+          "description": "Victor Wembanyama (SAS) over 3.5 assists",
+          "game_date": "2026-11-19",
+          "line": 3.5,
+          "line_odds": "126",
+          "market": "assists",
+          "opponent": "LAC",
+          "outcome": null,
+          "pick_id": "20261119-NMU-SAS-victor-wembanyama-assists",
+          "player": "Victor Wembanyama",
+          "profit": null,
+          "side": "over",
+          "source_card": "NMU paper tracker",
+          "sport": "NBA",
+          "start_time_pt": "17:00",
+          "team": "SAS"
+        }
+      ]
     },
     "date": "2026-11-19",
-    "n": 0
+    "n": 3
   }
 }
