@@ -1,137 +1,105 @@
 {
-  "date": "2026-11-18",
-  "generated_at_pt": "2026-11-18 07:36:03 PST",
+  "date": "2026-11-19",
+  "generated_at_pt": "2026-11-19 09:15:50 PST",
   "name": "Sim Says bot API \u2014 per-card records",
   "note": "Live-graded straights only, $100 flat per bet. Voids are excluded from W-L and P&L. No backtest is blended in. None of these cards is proven \u2014 the record decides.",
   "records": [
     {
       "card": {
-        "id": "bp",
-        "name": "Test Card 1"
+        "id": "best",
+        "name": "Best Findings Card"
       },
-      "description": "Under bets on NBA assists where our number beats the book by more than 2 points. Up to 5 a day, one pick per game.",
-      "losses": 18,
-      "n": 29,
-      "profit": -771.35,
+      "description": "Our five best findings in one card: CFB totals unders, CFB passing unders, CFB rushing yards, next-man-up starter overs, and NBA underdog fades. The card we post to X each day.",
+      "losses": 2,
+      "n": 3,
+      "profit": -112.28,
       "pushes": 0,
-      "record_start": "2026-11-12",
-      "roi_pct": -26.6,
+      "record_start": null,
+      "roi_pct": -37.4,
       "stake_per_bet_usd": 100,
-      "voids": 1,
-      "wins": 11
-    },
-    {
-      "card": {
-        "id": "mp",
-        "name": "Test Card 2"
-      },
-      "description": "A wider net: the 10 best picks per sport, with the best 30 shown here, across every sport we cover.",
-      "losses": 95,
-      "n": 219,
-      "profit": -2395.58,
-      "pushes": 0,
-      "record_start": "2026-11-12",
-      "roi_pct": -10.9,
-      "stake_per_bet_usd": 100,
-      "voids": 3,
-      "wins": 124
+      "voids": null,
+      "wins": 1
     },
     {
       "card": {
         "id": "m",
-        "name": "Test Card 3"
+        "name": "Moderate EV Card"
       },
-      "description": "The picks our model likes most, ranked by how likely they are to hit. Up to 5 a day.",
+      "description": "Picks with a moderate edge over the book \u2014 no more than 20% \u2014 ranked by how likely they are to hit. Up to 5 a day.",
       "losses": 11,
-      "n": 42,
-      "profit": 301.65,
+      "n": 34,
+      "profit": -92.33,
       "pushes": 0,
       "record_start": "2026-11-09",
-      "roi_pct": 7.2,
+      "roi_pct": -2.7,
       "stake_per_bet_usd": 100,
       "voids": 1,
-      "wins": 31
+      "wins": 23
     },
     {
       "card": {
         "id": "r",
-        "name": "Test Card 4"
+        "name": "Random Card"
       },
       "description": "Five picks drawn at random from the board each day, as a check \u2014 if random beats a method, the method is not doing anything.",
-      "losses": 16,
-      "n": 41,
-      "profit": 262.38,
+      "losses": 12,
+      "n": 32,
+      "profit": 227.34,
       "pushes": 0,
       "record_start": "2026-11-09",
-      "roi_pct": 6.4,
+      "roi_pct": 7.1,
       "stake_per_bet_usd": 100,
-      "voids": 0,
-      "wins": 25
+      "voids": 2,
+      "wins": 20
     },
     {
       "card": {
         "id": "bf",
-        "name": "Test Card 5"
+        "name": "Best Record Card"
       },
       "description": "Only our two best-tested pick types: college basketball moneylines and NBA assists, where our number and the book's number are close. Up to 5 a day.",
-      "losses": 9,
-      "n": 28,
-      "profit": -38.28,
+      "losses": 10,
+      "n": 27,
+      "profit": -238.4,
       "pushes": 0,
       "record_start": "2026-11-11",
-      "roi_pct": -1.4,
+      "roi_pct": -8.8,
       "stake_per_bet_usd": 100,
-      "voids": 0,
-      "wins": 19
+      "voids": 1,
+      "wins": 17
     },
     {
       "card": {
-        "id": "mc",
-        "name": "Test Card 6"
+        "id": "gold",
+        "name": "Biggest Edge Card"
       },
-      "description": "Under bets on NBA assists and rebounds, ranked by edge, only from the two pick types that passed our gate. Up to 5 a day, one per game.",
+      "description": "Model A's best disagreements with the market: NBA favorites, NBA underdog fades, and WTA tennis, where its number beats the market by 3 cents or more. NHL gold was dropped from the card Nov 19, 2026 after going 2-9 live.",
       "losses": 14,
       "n": 25,
-      "profit": -516.45,
+      "profit": -820.8,
       "pushes": 0,
-      "record_start": "2026-11-13",
-      "roi_pct": -20.7,
+      "record_start": "2026-11-15",
+      "roi_pct": -32.8,
       "stake_per_bet_usd": 100,
       "voids": 0,
       "wins": 11
     },
     {
       "card": {
-        "id": "gold",
-        "name": "Test Card 7"
-      },
-      "description": "Model A's best disagreements with the market: NHL games, NBA favorites, and WTA tennis, where its number beats the market by 3 cents or more.",
-      "losses": 9,
-      "n": 19,
-      "profit": -357.97,
-      "pushes": 0,
-      "record_start": "2026-11-15",
-      "roi_pct": -18.8,
-      "stake_per_bet_usd": 100,
-      "voids": 0,
-      "wins": 10
-    },
-    {
-      "card": {
         "id": "tc8",
-        "name": "Test Card 8"
+        "name": "CFB Passing Card"
       },
       "description": "Under bets on college football passing yards, chosen where our model leans furthest over the book's number. Up to 5 a day, one pick per game.",
       "losses": 1,
-      "n": 1,
-      "profit": -100.0,
+      "n": 2,
+      "profit": -12.28,
       "pushes": 0,
       "record_start": null,
-      "roi_pct": -100.0,
+      "roi_pct": -6.1,
       "stake_per_bet_usd": 100,
       "voids": null,
-      "wins": 0
+      "wins": 1
     }
   ],
-  "version": "1.2"
+  "version": "1.4"
 }
