@@ -3833,6 +3833,19 @@ function headlinePickFor(f, league){
   }
   return {pick:pick,pct:pct,split:!!(a&&a.pick!==f.pick),close:pct<=56,modelA:a,shelved:mlPickShelved(league, pick, f, a)};
 }
+/* Betting splits (Playbook morning snapshot): one placeholder div
+   per forecast row, filled in by fillSplitsLines() once
+   splits_feed.json loads. Empty until then — an empty div has no
+   height, so a missing or late feed changes nothing visually. The
+   key matches the feed's site codes and "Nov 19" date form. */
+var SPLITS_LEAGUE={"nfl":"NFL","nba":"NBA","nhl":"NHL","cfb":"NCAAF","cbb":"NCAAB"};
+function splitsPlaceholderHtml(f,league){
+  var lg=SPLITS_LEAGUE[String(league||"").toLowerCase()];
+  if(!lg||!f.g||!f.date) return "";
+  var parts=String(f.g).split(" @ ");
+  if(parts.length!==2) return "";
+  return '<div class="splits-line" data-splits="'+esc(lg+"|"+parts[0]+"|"+parts[1]+"|"+f.date)+'"></div>';
+}
 function forecastRowHtml(f,league){
   var lineHtml=f.book?'<span class="loser">Book spread: '+esc(f.book)+'</span>':'<span class="loser">Line: TBD</span> <span class="picktag">Line not posted yet</span>';
   var lines=[];
@@ -3866,7 +3879,7 @@ function forecastRowHtml(f,league){
   var avgHtml=h.shelved
     ? '<div class="avgline"><b>No pick</b> <span class="picktag">Home favorites are off the board for now</span> '+lineHtml+'</div>'
     : '<div class="avgline"><b>'+esc(headlinePick)+'</b> <span class="pickpct">'+headlinePct.toFixed(1)+'%</span>'+(a?confBadgeHtml(a.confidence_tier):"")+' '+lineHtml+'</div>';
-  return '<div class="slate-row"><div class="match"><span class="n">'+esc(f.g)+' \u00b7 '+esc(fmtDateLong(f.day,true))+' \u00b7 '+esc(f.time)+' PT</span><div class="picklines">'+avgHtml+modelLinesHtml(lines)+'</div><div class="tagrow">'+(f.book?"":'<span>forecast only \u2014 no book line to compare against</span>')+agreeTag+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(f.note?' <span class="n">'+esc(f.note)+'</span>':"")+'</div>'+fcDetailsHtml+'</div><button type="button" data-slate-game="'+esc(f.g)+'">Player picks for this game &rarr;</button></div>';
+  return '<div class="slate-row"><div class="match"><span class="n">'+esc(f.g)+' \u00b7 '+esc(fmtDateLong(f.day,true))+' \u00b7 '+esc(f.time)+' PT</span><div class="picklines">'+avgHtml+modelLinesHtml(lines)+'</div>'+splitsPlaceholderHtml(f,league)+'<div class="tagrow">'+(f.book?"":'<span>forecast only \u2014 no book line to compare against</span>')+agreeTag+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(f.note?' <span class="n">'+esc(f.note)+'</span>':"")+'</div>'+fcDetailsHtml+'</div><button type="button" data-slate-game="'+esc(f.g)+'">Player picks for this game &rarr;</button></div>';
 }
 /* Monte Carlo sim lines, shown only for games whose forecast carries
    sim data (forecast.sim, 10,000 sims). Two shapes:
@@ -4212,7 +4225,57 @@ function renderGames(){
   $("slateList").innerHTML=groups.map(function(day){
     return '<h3 class="date-group">'+esc(fmtDateLong(day,true))+'</h3><div class="slate">'+byDay[day].map(function(r){return r.html;}).join("")+'</div>';
   }).join("");
+  try{fillSplitsLines();}catch(e){}
 }
+/* Betting splits display (Playbook free tier, morning snapshot).
+   splits_feed.json carries one row per game: spread / moneyline /
+   total bet % and money %. Each forecast row shows the spread
+   splits, except hockey, which shows the moneyline splits (the
+   puck-line market is thin). Plain language only — no "RLM",
+   "ATS", or "sharp" wording. The feed is optional: when it fails
+   to load, the placeholder divs stay empty and the rows render
+   exactly as before. */
+var splitsFeedMap=null, splitsFeedStamp="";
+function splitsLineHtml(g, league){
+  var m=(league==="NHL")?g.moneyline:g.spread;
+  if(!m) return "";
+  var label=(league==="NHL")?"moneyline":"spread";
+  var betsSide=m.betsHome>=m.betsAway?g.home:g.away;
+  var betsPct=Math.max(m.betsHome,m.betsAway);
+  var moneySide=m.moneyHome>=m.moneyAway?g.home:g.away;
+  var moneyPct=Math.max(m.moneyHome,m.moneyAway);
+  var tip="Where the public\u2019s bets and money sit on the "+label+", from this morning\u2019s snapshot"+(splitsFeedStamp?" ("+splitsFeedStamp+")":"")+". When most bets are on one side but most money is on the other, the big bets disagree with the crowd.";
+  return '<span class="n">Public: '+betsPct+'% of bets on '+esc(betsSide)+', '+moneyPct+'% of money on '+esc(moneySide)+'</span><span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="About the public splits">i</button><span class="tip">'+tip+'</span></span>';
+}
+function fillSplitsLines(){
+  if(!splitsFeedMap) return;
+  var els=document.querySelectorAll("[data-splits]");
+  for(var i=0;i<els.length;i++){
+    var el=els[i];
+    if(el.getAttribute("data-splits-filled")) continue;
+    var g=splitsFeedMap[el.getAttribute("data-splits")];
+    if(!g) continue;
+    var lg=el.getAttribute("data-splits").split("|")[0];
+    var html=splitsLineHtml(g, lg);
+    if(!html) continue;
+    el.innerHTML=html;
+    el.setAttribute("data-splits-filled","1");
+  }
+}
+function loadSplitsFeed(){
+  fetch("splits_feed.json?v="+Date.now()).then(function(res){
+    if(!res.ok) throw new Error("splits feed "+res.status);
+    return res.json();
+  }).then(function(doc){
+    splitsFeedMap={};
+    (doc.games||[]).forEach(function(g){
+      splitsFeedMap[g.league+"|"+g.away+"|"+g.home+"|"+g.date]=g;
+    });
+    splitsFeedStamp=doc.fetched_pt||"";
+    fillSplitsLines();
+  }).catch(function(){ /* splits are optional; rows render without them */ });
+}
+try{loadSplitsFeed();}catch(e){}
 var gameDateFiltersEl=$("gameDateFilters"); if(gameDateFiltersEl) gameDateFiltersEl.addEventListener("click",function(e){
   var b=e.target.closest("[data-gdate]"); if(!b) return;
   gameDateState=b.getAttribute("data-gdate");
