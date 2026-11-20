@@ -1,13 +1,13 @@
 {
   "date": "2026-11-20",
-  "generated_at_pt": "2026-11-20 07:36:02 PST",
+  "generated_at_pt": "2026-11-20 11:59:52 PST",
   "name": "Sim Says bot API \u2014 per-card records",
   "note": "Live-graded straights only, $100 flat per bet. Voids are excluded from W-L and P&L. No backtest is blended in. None of these cards is proven \u2014 the record decides.",
   "records": [
     {
       "card": {
         "id": "best",
-        "name": "Best Findings Card"
+        "name": "What We Found"
       },
       "description": "Our five best findings in one card: CFB totals unders, CFB passing unders, CFB rushing yards, next-man-up starter overs, and NBA underdog fades. The card we post to X each day.",
       "losses": 4,
@@ -23,7 +23,7 @@
     {
       "card": {
         "id": "m",
-        "name": "Moderate EV Card"
+        "name": "Likely Hits"
       },
       "description": "Picks with a moderate edge over the book \u2014 no more than 20% \u2014 ranked by how likely they are to hit. Up to 5 a day.",
       "losses": 12,
@@ -39,7 +39,7 @@
     {
       "card": {
         "id": "r",
-        "name": "Random Card"
+        "name": "Random Check"
       },
       "description": "Five picks drawn at random from the board each day, as a check \u2014 if random beats a method, the method is not doing anything.",
       "losses": 14,
@@ -55,7 +55,7 @@
     {
       "card": {
         "id": "bf",
-        "name": "Best Record Card"
+        "name": "What Tested Best"
       },
       "description": "Only our two best-tested pick types: college basketball moneylines and NBA assists, where our number and the book's number are close. Up to 5 a day.",
       "losses": 13,
@@ -70,24 +70,8 @@
     },
     {
       "card": {
-        "id": "gold",
-        "name": "Biggest Edge Card"
-      },
-      "description": "Model A's best disagreements with the market: NBA favorites, NBA underdog fades, and WTA tennis, where its number beats the market by 3 cents or more. NHL gold was dropped from the card Nov 19, 2026 after going 2-9 live.",
-      "losses": 14,
-      "n": 25,
-      "profit": -820.8,
-      "pushes": 0,
-      "record_start": "2026-11-15",
-      "roi_pct": -32.8,
-      "stake_per_bet_usd": 100,
-      "voids": 0,
-      "wins": 11
-    },
-    {
-      "card": {
         "id": "tc8",
-        "name": "CFB Passing Card"
+        "name": "College Football Passing Unders"
       },
       "description": "Under bets on college football passing yards, chosen where our model leans furthest over the book's number. Up to 5 a day, one pick per game.",
       "losses": 1,
