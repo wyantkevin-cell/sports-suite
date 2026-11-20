@@ -44,10 +44,16 @@
       "id": "tc8",
       "n_signals": 5,
       "name": "CFB Passing Card"
+    },
+    {
+      "description": "NBA starter overs at plus money when a high-usage teammate is out. Backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp \u2014 the edge is the role change, not the model number. 1-contract live test from Nov 19.",
+      "id": "nmu",
+      "n_signals": 10,
+      "name": "Next-man-up starter overs"
     }
   ],
   "date": "2026-11-20",
-  "generated_at_pt": "2026-11-20 07:36:02 PST",
+  "generated_at_pt": "2026-11-20 07:45:17 PST",
   "holds": {
     "b2b_fade": {
       "held": true,
@@ -1035,6 +1041,446 @@
       "team": "UNM",
       "type": "total",
       "value_pct": null
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "nmu",
+        "name": "Next-man-up starter overs"
+      },
+      "date": "2026-11-20",
+      "description": "Scottie Barnes (TOR) over 1.5 3-pointers \u2014 next man up (RJ Barrett out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:44:24 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": 2.31,
+      "family": "NBA:3-pointers",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-DET-TOR",
+      "line": 1.5,
+      "line_odds": "230",
+      "market": "3-pointers",
+      "market_prob": 0.303,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.3261,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 2,
+          "player": "RJ Barrett"
+        }
+      ],
+      "opponent": "DET",
+      "pick_id": "20261120-NMU-TOR-scottie-barnes-3-pointers",
+      "player": "Scottie Barnes",
+      "selected_at_pt": "2026-11-20 07:44:24 PST",
+      "side": "over",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 16:30 PT",
+      "status": "pregame",
+      "team": "TOR",
+      "type": "prop",
+      "value_pct": 7.62
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "nmu",
+        "name": "Next-man-up starter overs"
+      },
+      "date": "2026-11-20",
+      "description": "James Harden (CLE) over 2.5 3-pointers \u2014 next man up (Evan Mobley out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:44:24 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -2.4,
+      "family": "NBA:3-pointers",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-CLE-IND",
+      "line": 2.5,
+      "line_odds": "104",
+      "market": "3-pointers",
+      "market_prob": 0.4902,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.4662,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 5,
+          "player": "Evan Mobley"
+        }
+      ],
+      "opponent": "IND",
+      "pick_id": "20261120-NMU-CLE-james-harden-3-pointers",
+      "player": "James Harden",
+      "selected_at_pt": "2026-11-20 07:44:24 PST",
+      "side": "over",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 16:30 PT",
+      "status": "pregame",
+      "team": "CLE",
+      "type": "prop",
+      "value_pct": -4.9
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "nmu",
+        "name": "Next-man-up starter overs"
+      },
+      "date": "2026-11-20",
+      "description": "John Collins (DET) over 1.5 3-pointers \u2014 next man up (Duncan Robinson out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:44:24 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -2.59,
+      "family": "NBA:3-pointers",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-DET-TOR",
+      "line": 1.5,
+      "line_odds": "124",
+      "market": "3-pointers",
+      "market_prob": 0.4464,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.4205,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 3,
+          "player": "Duncan Robinson"
+        }
+      ],
+      "opponent": "TOR",
+      "pick_id": "20261120-NMU-DET-john-collins-3-pointers",
+      "player": "John Collins",
+      "selected_at_pt": "2026-11-20 07:44:24 PST",
+      "side": "over",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 16:30 PT",
+      "status": "pregame",
+      "team": "DET",
+      "type": "prop",
+      "value_pct": -5.8
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "nmu",
+        "name": "Next-man-up starter overs"
+      },
+      "date": "2026-11-20",
+      "description": "Matisse Thybulle (LAL) over 1.5 3-pointers \u2014 next man up (Austin Reaves out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:44:24 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -4.11,
+      "family": "NBA:3-pointers",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-LAL-SAC",
+      "line": 1.5,
+      "line_odds": "102",
+      "market": "3-pointers",
+      "market_prob": 0.495,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.4539,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 4,
+          "player": "Austin Reaves"
+        }
+      ],
+      "opponent": "SAC",
+      "pick_id": "20261120-NMU-LAL-matisse-thybulle-3-pointers",
+      "player": "Matisse Thybulle",
+      "selected_at_pt": "2026-11-20 07:44:24 PST",
+      "side": "over",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 19:00 PT",
+      "status": "pregame",
+      "team": "LAL",
+      "type": "prop",
+      "value_pct": -8.3
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "nmu",
+        "name": "Next-man-up starter overs"
+      },
+      "date": "2026-11-20",
+      "description": "Matisse Thybulle (LAL) over 2.5 rebounds \u2014 next man up (Austin Reaves out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:44:24 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -6.56,
+      "family": "NBA:rebounds",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-LAL-SAC",
+      "line": 2.5,
+      "line_odds": "108",
+      "market": "rebounds",
+      "market_prob": 0.4808,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.4152,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 4,
+          "player": "Austin Reaves"
+        }
+      ],
+      "opponent": "SAC",
+      "pick_id": "20261120-NMU-LAL-matisse-thybulle-rebounds",
+      "player": "Matisse Thybulle",
+      "selected_at_pt": "2026-11-20 07:44:24 PST",
+      "side": "over",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 19:00 PT",
+      "status": "pregame",
+      "team": "LAL",
+      "type": "prop",
+      "value_pct": -13.64
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "nmu",
+        "name": "Next-man-up starter overs"
+      },
+      "date": "2026-11-20",
+      "description": "Ausar Thompson (DET) over 11.5 points \u2014 next man up (Duncan Robinson out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:44:24 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -6.77,
+      "family": "NBA:points",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-DET-TOR",
+      "line": 11.5,
+      "line_odds": "102",
+      "market": "points",
+      "market_prob": 0.495,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.4273,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 3,
+          "player": "Duncan Robinson"
+        }
+      ],
+      "opponent": "TOR",
+      "pick_id": "20261120-NMU-DET-ausar-thompson-points",
+      "player": "Ausar Thompson",
+      "selected_at_pt": "2026-11-20 07:44:24 PST",
+      "side": "over",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 16:30 PT",
+      "status": "pregame",
+      "team": "DET",
+      "type": "prop",
+      "value_pct": -13.68
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "nmu",
+        "name": "Next-man-up starter overs"
+      },
+      "date": "2026-11-20",
+      "description": "Scottie Barnes (TOR) over 7.5 rebounds \u2014 next man up (RJ Barrett out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:44:24 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -7.24,
+      "family": "NBA:rebounds",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-DET-TOR",
+      "line": 7.5,
+      "line_odds": "102",
+      "market": "rebounds",
+      "market_prob": 0.495,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.4226,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 2,
+          "player": "RJ Barrett"
+        }
+      ],
+      "opponent": "DET",
+      "pick_id": "20261120-NMU-TOR-scottie-barnes-rebounds",
+      "player": "Scottie Barnes",
+      "selected_at_pt": "2026-11-20 07:44:24 PST",
+      "side": "over",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 16:30 PT",
+      "status": "pregame",
+      "team": "TOR",
+      "type": "prop",
+      "value_pct": -14.63
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "nmu",
+        "name": "Next-man-up starter overs"
+      },
+      "date": "2026-11-20",
+      "description": "James Harden (CLE) over 5.5 rebounds \u2014 next man up (Evan Mobley out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:44:24 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -8.65,
+      "family": "NBA:rebounds",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-CLE-IND",
+      "line": 5.5,
+      "line_odds": "118",
+      "market": "rebounds",
+      "market_prob": 0.4587,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.3722,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 5,
+          "player": "Evan Mobley"
+        }
+      ],
+      "opponent": "IND",
+      "pick_id": "20261120-NMU-CLE-james-harden-rebounds",
+      "player": "James Harden",
+      "selected_at_pt": "2026-11-20 07:44:24 PST",
+      "side": "over",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 16:30 PT",
+      "status": "pregame",
+      "team": "CLE",
+      "type": "prop",
+      "value_pct": -18.86
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "nmu",
+        "name": "Next-man-up starter overs"
+      },
+      "date": "2026-11-20",
+      "description": "Ziaire Williams (LAL) over 2.5 rebounds \u2014 next man up (Austin Reaves out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:44:24 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -9.23,
+      "family": "NBA:rebounds",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-LAL-SAC",
+      "line": 2.5,
+      "line_odds": "108",
+      "market": "rebounds",
+      "market_prob": 0.4808,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.3885,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 4,
+          "player": "Austin Reaves"
+        }
+      ],
+      "opponent": "SAC",
+      "pick_id": "20261120-NMU-LAL-ziaire-williams-rebounds",
+      "player": "Ziaire Williams",
+      "selected_at_pt": "2026-11-20 07:44:24 PST",
+      "side": "over",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 19:00 PT",
+      "status": "pregame",
+      "team": "LAL",
+      "type": "prop",
+      "value_pct": -19.2
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "nmu",
+        "name": "Next-man-up starter overs"
+      },
+      "date": "2026-11-20",
+      "description": "Luka Doncic (LAL) over 8.5 assists \u2014 next man up (Austin Reaves out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:44:24 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -13.25,
+      "family": "NBA:assists",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-LAL-SAC",
+      "line": 8.5,
+      "line_odds": "110",
+      "market": "assists",
+      "market_prob": 0.4762,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.3437,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 4,
+          "player": "Austin Reaves"
+        }
+      ],
+      "opponent": "SAC",
+      "pick_id": "20261120-NMU-LAL-luka-doncic-assists",
+      "player": "Luka Doncic",
+      "selected_at_pt": "2026-11-20 07:44:24 PST",
+      "side": "over",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 19:00 PT",
+      "status": "pregame",
+      "team": "LAL",
+      "type": "prop",
+      "value_pct": -27.82
     }
   ],
   "version": "1.4"
