@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-19",
-  "generated_at_pt": "2026-11-19 12:00:03 PST",
+  "date": "2026-11-20",
+  "generated_at_pt": "2026-11-20 07:36:02 PST",
   "name": "Sim Says bot API \u2014 per-card records",
   "note": "Live-graded straights only, $100 flat per bet. Voids are excluded from W-L and P&L. No backtest is blended in. None of these cards is proven \u2014 the record decides.",
   "records": [
@@ -10,15 +10,15 @@
         "name": "Best Findings Card"
       },
       "description": "Our five best findings in one card: CFB totals unders, CFB passing unders, CFB rushing yards, next-man-up starter overs, and NBA underdog fades. The card we post to X each day.",
-      "losses": 2,
-      "n": 3,
-      "profit": -112.28,
+      "losses": 4,
+      "n": 6,
+      "profit": -182.28,
       "pushes": 0,
       "record_start": null,
-      "roi_pct": -37.4,
+      "roi_pct": -30.4,
       "stake_per_bet_usd": 100,
       "voids": null,
-      "wins": 1
+      "wins": 2
     },
     {
       "card": {
@@ -26,15 +26,15 @@
         "name": "Moderate EV Card"
       },
       "description": "Picks with a moderate edge over the book \u2014 no more than 20% \u2014 ranked by how likely they are to hit. Up to 5 a day.",
-      "losses": 11,
-      "n": 34,
-      "profit": -92.33,
+      "losses": 12,
+      "n": 39,
+      "profit": 14.81,
       "pushes": 0,
       "record_start": "2026-11-09",
-      "roi_pct": -2.7,
+      "roi_pct": 0.4,
       "stake_per_bet_usd": 100,
       "voids": 1,
-      "wins": 23
+      "wins": 27
     },
     {
       "card": {
@@ -42,15 +42,15 @@
         "name": "Random Card"
       },
       "description": "Five picks drawn at random from the board each day, as a check \u2014 if random beats a method, the method is not doing anything.",
-      "losses": 12,
-      "n": 32,
-      "profit": 227.34,
+      "losses": 14,
+      "n": 36,
+      "profit": 167.26,
       "pushes": 0,
       "record_start": "2026-11-09",
-      "roi_pct": 7.1,
+      "roi_pct": 4.6,
       "stake_per_bet_usd": 100,
       "voids": 2,
-      "wins": 20
+      "wins": 22
     },
     {
       "card": {
@@ -58,15 +58,15 @@
         "name": "Best Record Card"
       },
       "description": "Only our two best-tested pick types: college basketball moneylines and NBA assists, where our number and the book's number are close. Up to 5 a day.",
-      "losses": 10,
-      "n": 27,
-      "profit": -238.4,
+      "losses": 13,
+      "n": 32,
+      "profit": -433.87,
       "pushes": 0,
       "record_start": "2026-11-11",
-      "roi_pct": -8.8,
+      "roi_pct": -13.6,
       "stake_per_bet_usd": 100,
       "voids": 1,
-      "wins": 17
+      "wins": 19
     },
     {
       "card": {
