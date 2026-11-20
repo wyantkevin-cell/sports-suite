@@ -1,6 +1,6 @@
 {
   "date": "2026-11-20",
-  "generated_at_pt": "2026-11-20 11:59:52 PST",
+  "generated_at_pt": "2026-11-20 14:42:57 PST",
   "name": "Sim Says bot API \u2014 per-card records",
   "note": "Live-graded straights only, $100 flat per bet. Voids are excluded from W-L and P&L. No backtest is blended in. None of these cards is proven \u2014 the record decides.",
   "records": [
@@ -83,6 +83,23 @@
       "stake_per_bet_usd": 100,
       "voids": null,
       "wins": 1
+    },
+    {
+      "card": {
+        "id": "gold_fades",
+        "name": "Test Card 7 \u2014 NBA dog fades"
+      },
+      "description": "Fade the NBA underdog golds: when Model A's >=3c side is the underdog, the favorite is the pick. NBA underdog golds are 3-19 \u2014 the edge is that record, not the model's number.",
+      "losses": 14,
+      "n": 25,
+      "note": "Fades grade inside Test Card 7 \u2014 this is the shared Test Card 7 record, not a fade-only tally.",
+      "profit": -820.8,
+      "pushes": 0,
+      "record_start": "2026-11-15",
+      "roi_pct": -32.8,
+      "stake_per_bet_usd": 100,
+      "voids": 0,
+      "wins": 11
     }
   ],
   "version": "1.4"
