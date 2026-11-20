@@ -6,12 +6,12 @@
       "name": "Best Findings Card",
       "picks": [],
       "record": {
-        "losses": 2,
-        "n": 3,
-        "profit": -112.28,
+        "losses": 4,
+        "n": 6,
+        "profit": -182.28,
         "pushes": 0,
-        "roi_pct": -37.4,
-        "wins": 1
+        "roi_pct": -30.4,
+        "wins": 2
       }
     },
     {
@@ -523,7 +523,7 @@
     }
   ],
   "date": "2026-11-20",
-  "generated_pt": "2026-11-20 07:11:49 PST",
+  "generated_pt": "2026-11-20 07:27:34 PST",
   "name": "Experiment board \u2014 six ways of picking",
   "notes": [
     "Six ways of picking bets, each tracked on its own at $100 flat. None is proven. The record decides.",
