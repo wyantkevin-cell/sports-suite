@@ -992,9 +992,9 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
 
   <!-- ============ HOME ============ -->
   <section class="panel active" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview" tabindex="0">
-    <div class="welcome-banner" id="welcomeBanner" role="region" aria-label="Our Mission" hidden>
-      <p class="onboard-mission">Our mission: we can&rsquo;t stop people from betting, but we can help them make better informed bets.</p>
-      <p>We built two models in-house. For each game and prop, we show our number next to the book&rsquo;s number. And we keep an honest pick-by-pick record of how we did.</p>
+    <div class="welcome-banner" id="welcomeBanner" role="region" aria-label="Welcome" hidden>
+      <p class="onboard-mission">A dude and his agents trying to beat the market.</p>
+      <p>Every pick public. Every result graded. We show our number next to the book&rsquo;s number, for every game and prop.</p>
       <p><a href="#docs" data-goto="docs">How it works</a></p>
       <button type="button" class="btn" id="welcomeGotIt">Got it</button>
     </div>
@@ -1009,7 +1009,6 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
         <button type="button" data-goto="props">Player picks <span>Points, shots, touchdowns, all of it &rarr;</span></button>
         <button type="button" data-goto="gameforecasts" data-gf-section="gf-totals">Totals <span>Our total next to the book&rsquo;s &rarr;</span></button>
         <button type="button" data-goto="bets">Our Bets <span>Today&rsquo;s picks &rarr;</span></button>
-        <button type="button" data-goto="gameforecasts" data-gf-section="gf-season">NFL Season outlook <span>We ran the season 10,000 times. Here&rsquo;s how it ends. &rarr;</span></button>
         <button type="button" data-goto="record">Our record <span>Finished bets. Wins and losses. &rarr;</span></button>
       </div>
     </section>
@@ -1045,7 +1044,6 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <button type="button" data-gf-nav="gf-moneyline" aria-pressed="true">Who wins</button>
       <button type="button" data-gf-nav="gf-totals" aria-pressed="false">Totals</button>
       <button type="button" data-gf-nav="gf-spreads" aria-pressed="false">Spreads</button>
-      <button type="button" data-gf-nav="gf-season" aria-pressed="false">Season</button>
     </div>
   <!-- ============ WHO WINS ============ -->
   <section class="gf-section" id="gf-moneyline" aria-label="Moneyline">
@@ -1059,8 +1057,8 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <div class="gf-filter-strip" id="gfFilterStrip">
     <div class="filters" role="group" aria-label="Choose a league" id="leagueFilters">
       <button type="button" aria-pressed="true" data-league="nfl">NFL</button>
-      <button type="button" aria-pressed="false" data-league="cfb">CFB</button>
-      <button type="button" aria-pressed="false" data-league="cbb">CBB</button>
+      <button type="button" aria-pressed="false" data-league="cfb">College Football</button>
+      <button type="button" aria-pressed="false" data-league="cbb">College Basketball</button>
       <button type="button" aria-pressed="false" data-league="nba">NBA</button>
       <button type="button" aria-pressed="false" data-league="mlb">MLB</button>
       <button type="button" aria-pressed="false" data-league="nhl">NHL</button>
@@ -1081,6 +1079,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     </div>
     </div>
     <p class="note">Past games are on the Scores tab.</p>
+    <p class="note" id="soccerFreshNote" hidden>Soccer odds update once a day, in the morning &mdash; these are from about 7:00 AM PT today and do not move during the day.</p>
     <div id="leagueCard"></div>
 
     <section class="block explain-wrap" id="gamesBlock">
@@ -1136,27 +1135,13 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <p class="note">Spreads leans are just forecasts. We don’t track them, so there’s no record for them. Our tracked picks are on <a href="#record" data-goto="record">Our record</a>.</p>
   </section>
 
-  <!-- ============ SEASON OUTLOOK ============ -->
-  <section class="gf-section" id="gf-season" aria-label="NFL Season outlook" hidden>
-    <div class="explain-wrap">
-      <h1 class="explain-head"><span class="explain-title">NFL Season outlook &mdash; <em>how will the season end?</em></span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainSeason" aria-label="How these numbers work">i</button></h1>
-      <div class="explain" id="explainSeason" hidden><p style="margin:0">We played the rest of the season 10,000 times on a computer. Each game used our guess for who wins that game. The numbers below are how often each ending came up. &ldquo;Most likely wins&rdquo; is the middle result; &ldquo;usually between&rdquo; covers the middle 8 times out of 10. Ties are broken by group and conference record, then chance &mdash; the league&rsquo;s real tiebreak list is longer, so close races may be off by a hair. &ldquo;Book&rdquo; is the book&rsquo;s win-total line: when we sit far from it, we say so under the number. <a class="doclink" href="#docs" data-goto="docs">How it works &rarr;</a></p><p class="sub" id="seasonMeta" style="margin:8px 0 0"></p></div>
-    </div>
-    <p class="lede">NFL only. Every team's most likely win total, how often they make the playoffs, and how often they win it all. We ran 10,000 seasons to get these.</p>
-    <p class="sub">When we sit far from the book, we say so under the number. These are forecasts, not proven winners.</p>
-    <div id="seasonTables"></div>
-    <section class="block" aria-label="NBA">
-      <h2>NBA is coming soon</h2>
-      <p>Our NBA numbers are too far from the book's right now. Our model has Indiana at about 24 wins. The book says about 42. So we're holding the NBA back until the numbers line up. We'll check again as the season goes on.</p>
-    </section>
-  </section>
   </section>
 
   <!-- ============ PLAYER PICKS ============ -->
   <section class="panel" id="panel-props" role="tabpanel" aria-labelledby="tab-props" tabindex="0" hidden>
     <div class="explain-wrap">
       <h1 class="explain-head"><span class="explain-title">Top props</span><button type="button" class="explain-btn" aria-expanded="false" aria-controls="explainProps" aria-label="About these props">i</button></h1>
-      <div class="explain" id="explainProps" hidden><p style="margin:0"><b>Line</b> is the book&rsquo;s line. Like under 30.5 receiving yards. <b>Book pays</b> is what the book pays on it. <b>Our chance</b> is how often we think it hits, in %. <b>&#128170; Strong pick</b> = the strongest picks (top ten percent of the day&rsquo;s value). <b>&#129450; Lean</b> = a smaller edge, still above the value screen. A row keeps its own ⓘ only when there is something specific on that pick to explain &mdash; a news note or a simulation note. Lines from FanDuel. Tomorrow&rsquo;s games are here early so you can beat line movement.</p></div>
+      <div class="explain" id="explainProps" hidden><p style="margin:0"><b>Line</b> is the book&rsquo;s line. Like under 30.5 receiving yards. <b>Book pays</b> is what the book pays on it. <b>Our chance</b> is how often we think it hits, in %. <b>&#128170; Strong pick</b> = the strongest picks (top ten percent of the day&rsquo;s value). Rows without the mark are smaller edges. A row keeps its own ⓘ only when there is something specific on that pick to explain &mdash; a news note or a simulation note. Lines from FanDuel, via SharpAPI. Tomorrow&rsquo;s games are here early so you can beat line movement.</p></div>
     </div>
     <p class="note">Forecasts, not winners yet.</p>
     <p class="note" id="propsSourceNote"></p>
@@ -1175,8 +1160,8 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
           <button type="button" aria-pressed="true" data-sport="ALL">All</button>
           <button type="button" aria-pressed="false" data-sport="NBA">NBA</button>
           <button type="button" aria-pressed="false" data-sport="NFL">NFL</button>
-          <button type="button" aria-pressed="false" data-sport="CFB">CFB</button>
-          <button type="button" aria-pressed="false" data-sport="CBB">CBB</button>
+          <button type="button" aria-pressed="false" data-sport="CFB">College Football</button>
+          <button type="button" aria-pressed="false" data-sport="CBB">College Basketball</button>
         </div>
       </div>
       <div class="filter-group">
@@ -1291,6 +1276,11 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <h1>How have <em>we done?</em></h1>
     <p class="sub">Every pick tracked at $100.</p>
     <div class="rows" id="experimentRecordRows"><p class="empty-note">Loading the record&hellip;</p></div>
+    <section class="block" aria-label="Cards off the board" id="experimentShelvedSection" hidden>
+      <h3>Cards off the board &mdash; still grading</h3>
+      <p class="sub">These cards came off the board, but they keep grading in the background. The numbers below are live, not final.</p>
+      <div class="rows" id="experimentShelvedRows"></div>
+    </section>
     <section class="block" aria-label="How honest are our numbers">
       <h3>How honest are our numbers?</h3>
       <p class="sub">Every morning we grade the whole board in the background &mdash; every prop and every game forecast, about 25 times as many picks as the card. This table covers every bet of each type, not just the ones the model liked. &ldquo;We said&rdquo; is the chance the model gave. &ldquo;It hit&rdquo; is how often it actually happened. A big gap means we overstate that type of bet. Small groups are noisy: a handful of picks proves nothing either way.</p>
@@ -1507,18 +1497,18 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <p>Covered in Enhancements above. When Model B disagrees with the book by more than 15 points, we pull it back to within 15 points. It is a guardrail, not a model.</p>
 
     <h3 id="doc-record">Our record</h3>
-    <p><a href="#bets" data-goto="bets">Our Bets</a> shows six ways of picking bets, each tracked on its own at $100 flat. Today&rsquo;s picks stay there until their games finish.</p>
+    <p><a href="#bets" data-goto="bets">Our Bets</a> shows six ways of picking bets, each tracked on its own at $100 flat. Today&rsquo;s picks stay there until their games finish. Two more cards came off the board and keep grading in the background &mdash; they are marked shelved below.</p>
     <p><a href="#record" data-goto="record">Our Record</a> shows each way&rsquo;s record &mdash; wins, losses, and profit. None of the six is proven. The record decides which, if any, is worth following.</p>
     <h4>How the picks are chosen</h4>
     <ul>
-      <li><b>Best Findings Card:</b> our five best findings in one card &mdash; CFB totals unders, CFB passing unders, CFB rushing yards, next-man-up starter overs, and NBA underdog fades. The card we post to X each day.</li>
-      <li><b>NBA Assists Card:</b> under bets on NBA assists where our number is more than 2 points above the book&rsquo;s number, up to 5 a day, only the ones that qualify &mdash; never padded. From November 13 we only pick unders: our check showed the edge filter does not fix overs, so overs are out even when the model likes them. From November 14, at most one pick per game.</li>
-      <li><b>Moderate EV Card:</b> picks with a moderate edge over the book &mdash; no more than 20% &mdash; ranked by how likely they are to hit, up to 5 a day.</li>
-      <li><b>Random Card:</b> picks chosen at random from the board, as a check &mdash; if random beats a method, the method is not doing anything.</li>
-      <li><b>Best Record Card:</b> only the two pick types with the best backtested record &mdash; college basketball moneylines and NBA assists &mdash; where our number and the book&rsquo;s number are close.</li>
-      <li><b>Assists + Rebounds Card:</b> under bets on NBA assists and rebounds, ranked by edge, only from the two pick types that passed our gate.</li>
-      <li><b>Biggest Edge Card:</b> Model A&rsquo;s best disagreements with the market &mdash; NHL games, NBA favorites, and WTA tennis &mdash; where its number beats the market by 3 cents or more.</li>
-      <li><b>CFB Passing Card:</b> under bets on college football passing yards, chosen where our model leans furthest over the book&rsquo;s number, up to 5 a day, one pick per game.</li>
+      <li><b>What We Found Card:</b> our five best findings in one card &mdash; college football totals unders, college football passing unders, college football rushing yards, next-man-up starter overs, and NBA underdog fades. The card we post to X each day.</li>
+      <li><b>NBA Assists Card (shelved November 19 &mdash; still grading):</b> under bets on NBA assists where our number is more than 2 points above the book&rsquo;s number, up to 5 a day, only the ones that qualify &mdash; never padded. From November 13 we only pick unders: our check showed the edge filter does not fix overs, so overs are out even when the model likes them. From November 14, at most one pick per game. It came off the board because the live record did not match the backtest; it keeps grading in the background and its live record is on Our Record.</li>
+      <li><b>Likely Hits Card:</b> picks with a moderate edge over the book &mdash; no more than 20% &mdash; ranked by how likely they are to hit, up to 5 a day.</li>
+      <li><b>Random Check Card:</b> picks chosen at random from the board, as a check &mdash; if random beats a method, the method is not doing anything.</li>
+      <li><b>What Tested Best Card:</b> only the two pick types with the best backtested record &mdash; college basketball moneylines and NBA assists &mdash; where our number and the book&rsquo;s number are close. NBA assists was shelved as its own card on November 19; it stays on this card for now because our check showed it was not the losing half, and that decision is under review.</li>
+      <li><b>Assists + Rebounds Card (shelved November 19 &mdash; still grading):</b> under bets on NBA assists and rebounds, ranked by edge, only from the two pick types that passed our gate. It came off the board with the NBA Assists card; it keeps grading in the background and its live record is on Our Record.</li>
+      <li><b>Biggest Disagreement Card:</b> Model A&rsquo;s best disagreements with the market &mdash; NBA favorites, NBA underdog fades, and WTA tennis &mdash; where its number beats the market by 3 cents or more.</li>
+      <li><b>College Football Passing Unders Card:</b> under bets on college football passing yards, chosen where our model leans furthest over the book&rsquo;s number, up to 5 a day, one pick per game.</li>
     </ul>
     <p>A pick is dropped if its game has already started. Every pick is graded at $100 flat. A pick that lands exactly on the line is a push.</p>
     <p>A player who does not play is a void &mdash; the pick is cancelled, not a loss. Soccer is excluded from the public record.</p>
@@ -1532,20 +1522,20 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <h4>The record so far &mdash; old ways, archived</h4>
     <p>The old way (Nov 6&ndash;10, biggest edge): straights 10&ndash;9, &minus;$90.86; parlays 0&ndash;5, &minus;$500; total &minus;$590.86. That is a losing record. We show it because the record is the point.</p>
     <p>Nov 11 was a one-day switch to agreement: 5&ndash;0, +$239.88. Nov 11 was also a transition day for the two short cards, then called Best Plays and More Plays (NBA Assists Card 3&ndash;0, +$231.78; More Plays 21&ndash;10, +$201.43) &mdash; those picks are graded, but they are not counted in the current tallies, which start Nov 12. The parlay of the day ended Nov 10; its record stays here and there are no new parlays.</p>
-    <p>More Plays was shelved on November 18 at 124&ndash;95, &minus;$2,395.58. It was losing, so it came off the board. It actually went 20&ndash;7 after it was shelved, and its final record is below.</p>
-    <p>Phase 1 of the experiment board ended November 18, 2026. The final records:</p>
+    <p>More Plays was shelved on November 18 at 124&ndash;95, &minus;$2,395.58. It was losing, so it came off the board. It actually went 20&ndash;7 after it was shelved, and it keeps grading in the background &mdash; its live record is on Our Record.</p>
+    <p>Phase 1 of the experiment board ended November 18, 2026. The records at the end of Phase 1:</p>
     <ul>
-      <li>Best Findings 1&ndash;2, &minus;$112.28</li>
+      <li>What We Found 1&ndash;2, &minus;$112.28</li>
       <li>NBA Assists 12&ndash;21, &minus;$973.31</li>
-      <li>Moderate EV 23&ndash;11, &minus;$92.33</li>
-      <li>Random 20&ndash;12, +$227.34</li>
-      <li>Best Record 17&ndash;10, &minus;$238.40</li>
+      <li>Likely Hits 23&ndash;11, &minus;$92.33</li>
+      <li>Random Check 20&ndash;12, +$227.34</li>
+      <li>What Tested Best 17&ndash;10, &minus;$238.40</li>
       <li>Assists + Rebounds 12&ndash;17, &minus;$676.45</li>
-      <li>Biggest Edge 11&ndash;14, &minus;$820.80</li>
-      <li>CFB Passing 1&ndash;1, &minus;$12.28</li>
-      <li>More Plays 144&ndash;102, &minus;$1,995.19 (final &mdash; one duplicated tennis match removed, last pending pick graded).</li>
+      <li>Biggest Disagreement 11&ndash;14, &minus;$820.80</li>
+      <li>College Football Passing Unders 1&ndash;1, &minus;$12.28</li>
+      <li>More Plays 144&ndash;102, &minus;$1,995.19 (at the end of Phase 1 &mdash; one duplicated tennis match removed, last pending pick graded; it keeps grading, so see Our Record for the live number).</li>
     </ul>
-    <p>The NBA Assists and Assists + Rebounds cards came off the board on November 19. The other six kept their full records from November 12 &mdash; the records are cumulative, not reset. November 19 brought rule changes instead: value floors on two cards, NHL gold dropped from Biggest Edge, and two more cards shelved. Nothing here is erased.</p>
+    <p>The NBA Assists and Assists + Rebounds cards came off the board on November 19. The other six kept their full records from November 12 &mdash; the records are cumulative, not reset. November 19 brought rule changes instead: value floors on two cards, NHL games dropped from Biggest Disagreement, and two more cards shelved. Nothing here is erased.</p>
 
     <h3>Settled bets, by day</h3>
     <div id="recordDays"></div>
@@ -1602,7 +1592,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
         <div class="trow score" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>No edge at all &mdash; bet sized to the edge</b><span>With no edge showing, this way of betting places no bets at all. You keep your $10,000. Not betting beats betting when the price is not in your favor.</span></div></div>
         <div class="trow score" style="grid-template-columns:minmax(0,1fr)"><div class="who"><b>Edge claimed, but not real &mdash; bet sized to the edge</b><span>Betting as if the 55-in-100 edge were real, when it is not. Middle result: $9,198 (usually $5,437&ndash;$15,561). Ahead 42 times in 100. Typical biggest fall 39%. Sizing bets for an edge you do not have loses faster than flat betting &mdash; this is why we do not size bets on our chances until the record proves them.</span></div></div>
       </div>
-      <p class="sub" id="bankrollRecordLine" style="margin-top:12px"><b>Our picks, run this way:</b> 12 graded picks so far (Nov 8, 2026). We need 30 graded picks before this runs on our own record. Check back as the record grows.</p>
+      <p class="sub" id="bankrollRecordLine" style="margin-top:12px"><b>Our picks, run this way:</b> The numbers above are a teaching example, not our own record — we have not run this on our own record yet.</p>
       <p class="sub">Even a small real edge comes with big swings. Nothing here is a promise that any way of betting wins.</p>
 
 
@@ -1748,16 +1738,16 @@ function gameTimeCompare(a,b){
   return va-vb;
 }
 
-/* ================= DATA — Nov 4, 2026 snapshot ================= */
+/* ================= DATA — model info cards (refreshed Nov 20, 2026) ================= */
 var LEAGUES={
   nfl:{name:"NFL",games:"2,033",features:"Team strength, how well teams score and stop the other team, last 5 games, playing at home",verdict:"Beats simple guesses on closeness tests. The lead over team-strength-only is tiny \u2014 it is mostly a team-strength score. Tested for money: lost. No proven way to make money from it.",status:"early",statusLabel:"Early \u2014 be careful",scores:"Tested on old games it had not seen. Scores beat simple guesses by a hair; see the record tab for the numbers."},
-  cfb:{name:"CFB",games:"7,193",features:"Team strength, scoring, speed, big plays, rest, altitude",verdict:"Beats simple guesses on closeness tests. Tested for money: lost. No proven way to make money from it.",status:"early",statusLabel:"Early \u2014 be careful",scores:"7,193 past games. No money-making test passed."},
-  cbb:{name:"CBB",games:"65,041",features:"Team strength, opponent-adjusted efficiency, home game",verdict:"Beats team-strength-only on closeness tests in 9 of 9 seasons. No money-making test passed.",status:"early",statusLabel:"Early \u2014 be careful",scores:"65,041 past games over 12 seasons, covering all 1,227 teams. Log loss 0.4934 vs 0.5155 for team-strength-only."},
-  nba:{name:"NBA",games:"8,882",features:"Team strength, home game, rest, back-to-back games (5 things looked at)",verdict:"On 7,740 past games, our guesses scored 0.62603 and 0.21812, vs 0.62717 and 0.21878 for team-strength-only. Head to head on the same games, the bookies\u2019 final odds scored 0.6128 vs our 0.6410 \u2014 closer than us. Lower is closer. A starting point, not a way to beat the line.",status:"early",statusLabel:"Early \u2014 be careful",scores:"7,740 past games. Our scores 0.62603 / 0.21812; team-strength-only 0.62717 / 0.21878; bookies\u2019 final odds 0.6128 vs our 0.6410."},
+  cfb:{name:"College Football",games:"7,193",features:"Team strength, scoring, speed, big plays, rest, altitude",verdict:"Beats simple guesses on closeness tests. Tested for money: lost. No proven way to make money from it.",status:"early",statusLabel:"Early \u2014 be careful",scores:"7,193 past games. No money-making test passed."},
+  cbb:{name:"College Basketball",games:"65,041",features:"Team strength, opponent-adjusted efficiency, home game",verdict:"Beats team-strength-only on closeness tests in 8 of 8 seasons. No money-making test passed.",status:"early",statusLabel:"Early \u2014 be careful",scores:"65,041 past games over 12 seasons, covering all 1,227 teams. Log loss 0.5081 vs 0.5221 for the previous version."},
+  nba:{name:"NBA",games:"8,882",features:"Team strength, home game, rest, back-to-back games (5 things looked at)",verdict:"On 7,740 past games, our guesses scored log loss 0.62603 and Brier score 0.21812, vs 0.62717 and 0.21878 for team-strength-only. Head to head on the same games, the bookies\u2019 final odds scored 0.6128 vs our 0.6410 \u2014 closer than us. Lower is closer. A starting point, not a way to beat the line.",status:"early",statusLabel:"Early \u2014 be careful",scores:"7,740 past games. Log loss 0.62603, Brier score 0.21812; team-strength-only 0.62717 / 0.21878; bookies\u2019 final odds 0.6128 vs our 0.6410."},
   mlb:{name:"MLB",games:"17,902",features:"Team strength only",verdict:"Team strength only. It is about tied with a team-strength-only guess and has no measured way to make money. Kept for team scores, not for bets.",status:"early",statusLabel:"Team strength only",scores:"17,902 past games."},
   nhl:{name:"NHL",games:"9,275",features:"Team strength only",verdict:"Team strength only, same story as MLB: about tied with a team-strength-only guess, no money-making test passed.",status:"early",statusLabel:"Team strength only",scores:"9,275 past games."},
   soccer:{name:"Soccer",games:"Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie",features:"Team strength, home game, recent form",verdict:"Soccer forecasts are early and unproven. They ship as forecasts only, with no public track record.",status:"early",statusLabel:"Early \u2014 be careful",scores:"Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie. Forecasts only \u2014 no public record is kept for soccer."},
-  tennis:{name:"Tennis",games:"8 matches in this snapshot",features:"Latest update only",verdict:"Tennis forecasts come from the latest update only. No past-games test is shown for tennis in this snapshot, so treat these as early and unproven like the rest of this tab.",status:"early",statusLabel:"Early \u2014 be careful",scores:"8 matches: 3 WTA, 5 ATP, starting Nov 8, 2026 at 12:00 PM PT."}
+  tennis:{name:"Tennis",games:"Today's matches only",features:"Latest update only",verdict:"Tennis forecasts come from the latest update only. No past-games test is shown for tennis, so treat these as early and unproven like the rest of this tab.",status:"early",statusLabel:"Early \u2014 be careful",scores:"Matches refresh every 2 hours during the day."}
 };
 var TEAM_NAMES={CHI:"Chicago Bulls",NYK:"New York Knicks",MIL:"Milwaukee Bucks",BOS:"Boston Celtics",DAL:"Dallas Mavericks",SAS:"San Antonio Spurs",UTA:"Utah Jazz",NOP:"New Orleans Pelicans",LAL:"Los Angeles Lakers",SAC:"Sacramento Kings",CLE:"Cleveland Cavaliers",OKC:"Oklahoma City Thunder",ATL:"Atlanta Hawks",WAS:"Washington Wizards",POR:"Portland Trail Blazers",PHX:"Phoenix Suns",MIA:"Miami Heat",LAC:"LA Clippers",IND:"Indiana Pacers",MEM:"Memphis Grizzlies",CHA:"Charlotte Hornets",BKN:"Brooklyn Nets",PHI:"Philadelphia 76ers",DET:"Detroit Pistons",MIN:"Minnesota Timberwolves",HOU:"Houston Rockets",TOR:"Toronto Raptors",DEN:"Denver Nuggets"};
 var SLATE=[
@@ -2310,8 +2300,9 @@ var TD=[
 /* Totals and spreads rows, NFL + CFB + CBB + NBA totals. The daily pipeline's
    totals_forecast_YYYYMMDD.json / spreads_forecast_YYYYMMDD.json are the
    source; map each entry like this (NFL entries already follow it):
-   - league "NFL" -> badge NFL, "NCAAF" -> badge CFB, "NCAAB" -> badge
-     CBB, "NBA" -> badge NBA. Rows render grouped under a section header
+   - league "NFL" -> badge NFL, "NCAAF" -> badge College Football,
+     "NCAAB" -> badge College Basketball, "NBA" -> badge NBA. Rows
+     render grouped under a section header
      per league: NFL, College Football, College Basketball, NBA.
    - Totals: game "AWAY @ HOME", our = predicted_total, book = book_total
      (null -> "Book total not yet posted"), homeScore/awayScore from
@@ -2917,11 +2908,6 @@ var BANKROLL={date:"2026-11-05",start:10000,nBets:250,nSims:10000,graded:7,total
   withEdge:{flat:{med:11155,p10:9245,p90:13064,ahead:0.81,dd:0.11},sized:{med:12609,p10:7453,p90:21332,ahead:0.73,dd:0.31}},
   noEdge:{flat:{med:8864,p10:6955,p90:10773,ahead:0.23,dd:0.21},sized:{med:10000,p10:10000,p90:10000,ahead:0,dd:0,placed:0}},
   phantom:{sized:{med:9198,p10:5437,p90:15561,ahead:0.42,dd:0.39}}};
-/* ================= SEASON SIM — Nov 5, 2026 ================= */
-/* NFL only. NBA held back: sim medians sit far from the market (see GATE_RESULTS).
-   Refresh: replace this whole block with the fresh season_site_nfl_YYYYMMDD.json
-   from ~/workspace/season-simulator/data/ (the daily pipeline regenerates it). */
-var SEASON_NFL={"league":"nfl","generated":"2026-11-06","model_as_of":"2026-11-02","n_sims":10000,"n_completed":122,"n_remaining":150,"market_source":"VegasInsider NFL win totals table (BetMGM column)","market_date":"2026-11-06","teams":[{"abbr":"ARI","name":"Arizona Cardinals","conf":"NFC","div":"NFC West","w":3,"l":5,"ties":0,"left":9,"med":6.0,"p10":4.0,"p90":8.0,"mean":6.1,"mkt":6.5,"gap":-0.5,"flag":false,"po":0.9,"dv":0.0,"ts":0.0,"ti":0.0},{"abbr":"ATL","name":"Atlanta Falcons","conf":"NFC","div":"NFC South","w":3,"l":5,"ties":0,"left":9,"med":7.0,"p10":5.0,"p90":9.0,"mean":6.83,"mkt":7.5,"gap":-0.5,"flag":false,"po":18.8,"dv":18.1,"ts":0.0,"ti":0.09},{"abbr":"BAL","name":"Baltimore Ravens","conf":"AFC","div":"AFC North","w":4,"l":5,"ties":0,"left":8,"med":8.0,"p10":6.0,"p90":9.0,"mean":7.57,"mkt":7.5,"gap":0.5,"flag":false,"po":10.7,"dv":0.9,"ts":0.0,"ti":0.03},{"abbr":"BUF","name":"Buffalo Bills","conf":"AFC","div":"AFC East","w":6,"l":1,"ties":0,"left":10,"med":14.0,"p10":12.0,"p90":15.0,"mean":13.44,"mkt":12.5,"gap":1.5,"flag":false,"po":99.4,"dv":93.4,"ts":54.6,"ti":18.77},{"abbr":"CAR","name":"Carolina Panthers","conf":"NFC","div":"NFC South","w":3,"l":4,"ties":0,"left":10,"med":7.0,"p10":5.0,"p90":9.0,"mean":6.78,"mkt":7.5,"gap":-0.5,"flag":false,"po":20.5,"dv":20.0,"ts":0.0,"ti":0.1},{"abbr":"CHI","name":"Chicago Bears","conf":"NFC","div":"NFC North","w":6,"l":2,"ties":0,"left":9,"med":11.0,"p10":9.0,"p90":13.0,"mean":11.13,"mkt":11.5,"gap":-0.5,"flag":false,"po":79.1,"dv":30.7,"ts":12.9,"ti":6.37},{"abbr":"CIN","name":"Cincinnati Bengals","conf":"AFC","div":"AFC North","w":5,"l":2,"ties":0,"left":10,"med":12.0,"p10":10.0,"p90":14.0,"mean":11.73,"mkt":11.5,"gap":0.5,"flag":false,"po":89.7,"dv":50.7,"ts":7.1,"ti":3.4},{"abbr":"CLE","name":"Cleveland Browns","conf":"AFC","div":"AFC North","w":5,"l":3,"ties":0,"left":9,"med":9.0,"p10":7.0,"p90":11.0,"mean":8.96,"mkt":8.5,"gap":0.5,"flag":false,"po":32.3,"dv":2.8,"ts":0.1,"ti":0.04},{"abbr":"DAL","name":"Dallas Cowboys","conf":"NFC","div":"NFC East","w":3,"l":5,"ties":0,"left":9,"med":7.0,"p10":6.0,"p90":9.0,"mean":7.33,"mkt":7.5,"gap":-0.5,"flag":false,"po":16.9,"dv":14.5,"ts":0.0,"ti":0.2},{"abbr":"DEN","name":"Denver Broncos","conf":"AFC","div":"AFC West","w":6,"l":2,"ties":0,"left":9,"med":12.0,"p10":11.0,"p90":14.0,"mean":12.12,"mkt":11.5,"gap":0.5,"flag":false,"po":96.8,"dv":83.6,"ts":7.0,"ti":7.7},{"abbr":"DET","name":"Detroit Lions","conf":"NFC","div":"NFC North","w":5,"l":2,"ties":0,"left":10,"med":11.0,"p10":10.0,"p90":13.0,"mean":11.4,"mkt":10.5,"gap":0.5,"flag":false,"po":84.4,"dv":35.8,"ts":16.2,"ti":9.85},{"abbr":"GB","name":"Green Bay Packers","conf":"NFC","div":"NFC North","w":5,"l":3,"ties":0,"left":9,"med":10.0,"p10":8.0,"p90":11.0,"mean":9.63,"mkt":9.5,"gap":0.5,"flag":false,"po":42.5,"dv":5.5,"ts":1.7,"ti":1.72},{"abbr":"HOU","name":"Houston Texans","conf":"AFC","div":"AFC South","w":2,"l":5,"ties":0,"left":10,"med":8.0,"p10":6.0,"p90":10.0,"mean":7.8,"mkt":8.5,"gap":-0.5,"flag":false,"po":17.3,"dv":1.1,"ts":0.0,"ti":0.42},{"abbr":"IND","name":"Indianapolis Colts","conf":"AFC","div":"AFC South","w":2,"l":6,"ties":0,"left":9,"med":5.0,"p10":4.0,"p90":7.0,"mean":5.3,"mkt":5.5,"gap":-0.5,"flag":false,"po":0.5,"dv":0.0,"ts":0.0,"ti":0.0},{"abbr":"JAX","name":"Jacksonville Jaguars","conf":"AFC","div":"AFC South","w":6,"l":2,"ties":0,"left":9,"med":13.0,"p10":11.0,"p90":14.0,"mean":12.94,"mkt":12.5,"gap":0.5,"flag":false,"po":99.5,"dv":98.9,"ts":20.4,"ti":14.94},{"abbr":"KC","name":"Kansas City Chiefs","conf":"AFC","div":"AFC West","w":5,"l":2,"ties":0,"left":10,"med":11.0,"p10":9.0,"p90":12.0,"mean":10.55,"mkt":11.5,"gap":-0.5,"flag":false,"po":72.4,"dv":15.2,"ts":0.9,"ti":1.69},{"abbr":"LAC","name":"Los Angeles Chargers","conf":"AFC","div":"AFC West","w":0,"l":7,"ties":0,"left":10,"med":3.0,"p10":1.0,"p90":5.0,"mean":2.76,"mkt":4.5,"gap":-1.5,"flag":false,"po":0.0,"dv":0.0,"ts":0.0,"ti":0.0},{"abbr":"LAR","name":"Los Angeles Rams","conf":"NFC","div":"NFC West","w":4,"l":4,"ties":0,"left":9,"med":9.0,"p10":7.0,"p90":11.0,"mean":9.23,"mkt":9.5,"gap":-0.5,"flag":false,"po":46.3,"dv":4.9,"ts":0.4,"ti":2.84},{"abbr":"LV","name":"Las Vegas Raiders","conf":"AFC","div":"AFC West","w":4,"l":4,"ties":0,"left":9,"med":7.0,"p10":6.0,"p90":9.0,"mean":7.4,"mkt":7.5,"gap":-0.5,"flag":false,"po":7.4,"dv":1.2,"ts":0.0,"ti":0.02},{"abbr":"MIA","name":"Miami Dolphins","conf":"AFC","div":"AFC East","w":1,"l":6,"ties":0,"left":10,"med":4.0,"p10":2.0,"p90":5.0,"mean":3.66,"mkt":3.5,"gap":0.5,"flag":false,"po":0.0,"dv":0.0,"ts":0.0,"ti":0.0},{"abbr":"MIN","name":"Minnesota Vikings","conf":"NFC","div":"NFC North","w":6,"l":1,"ties":0,"left":10,"med":12.0,"p10":10.0,"p90":13.0,"mean":11.5,"mkt":10.5,"gap":1.5,"flag":false,"po":86.5,"dv":28.0,"ts":16.0,"ti":4.56},{"abbr":"NE","name":"New England Patriots","conf":"AFC","div":"AFC East","w":5,"l":3,"ties":0,"left":9,"med":11.0,"p10":9.0,"p90":12.0,"mean":10.67,"mkt":10.5,"gap":0.5,"flag":false,"po":80.5,"dv":6.6,"ts":1.9,"ti":4.62},{"abbr":"NO","name":"New Orleans Saints","conf":"NFC","div":"NFC South","w":2,"l":5,"ties":0,"left":10,"med":6.0,"p10":4.0,"p90":7.0,"mean":5.55,"mkt":6.5,"gap":-0.5,"flag":false,"po":8.2,"dv":8.0,"ts":0.0,"ti":0.02},{"abbr":"NYG","name":"New York Giants","conf":"NFC","div":"NFC East","w":4,"l":2,"ties":1,"left":10,"med":9.5,"p10":7.5,"p90":11.5,"mean":9.42,"mkt":8.5,"gap":1.0,"flag":false,"po":78.4,"dv":77.5,"ts":1.2,"ti":0.91},{"abbr":"NYJ","name":"New York Jets","conf":"AFC","div":"AFC East","w":2,"l":6,"ties":0,"left":9,"med":5.0,"p10":3.0,"p90":6.0,"mean":4.59,"mkt":5.5,"gap":-0.5,"flag":false,"po":0.1,"dv":0.0,"ts":0.0,"ti":0.0},{"abbr":"PHI","name":"Philadelphia Eagles","conf":"NFC","div":"NFC East","w":2,"l":6,"ties":0,"left":9,"med":5.0,"p10":3.0,"p90":7.0,"mean":5.09,"mkt":4.5,"gap":0.5,"flag":false,"po":1.3,"dv":1.1,"ts":0.0,"ti":0.0},{"abbr":"PIT","name":"Pittsburgh Steelers","conf":"AFC","div":"AFC North","w":6,"l":2,"ties":0,"left":9,"med":12.0,"p10":10.0,"p90":14.0,"mean":11.89,"mkt":10.5,"gap":1.5,"flag":false,"po":93.3,"dv":45.7,"ts":8.0,"ti":5.79},{"abbr":"SEA","name":"Seattle Seahawks","conf":"NFC","div":"NFC West","w":4,"l":4,"ties":0,"left":9,"med":10.0,"p10":8.0,"p90":11.0,"mean":9.64,"mkt":null,"gap":null,"flag":false,"po":55.1,"dv":6.8,"ts":0.7,"ti":2.71},{"abbr":"SF","name":"San Francisco 49ers","conf":"NFC","div":"NFC West","w":6,"l":1,"ties":0,"left":10,"med":13.0,"p10":11.0,"p90":15.0,"mean":13.12,"mkt":12.5,"gap":0.5,"flag":false,"po":98.2,"dv":88.3,"ts":50.7,"ti":12.01},{"abbr":"TB","name":"Tampa Bay Buccaneers","conf":"NFC","div":"NFC South","w":3,"l":5,"ties":0,"left":9,"med":8.0,"p10":6.0,"p90":10.0,"mean":8.13,"mkt":7.5,"gap":0.5,"flag":false,"po":54.8,"dv":53.9,"ts":0.0,"ti":1.13},{"abbr":"TEN","name":"Tennessee Titans","conf":"AFC","div":"AFC South","w":1,"l":7,"ties":0,"left":9,"med":3.0,"p10":2.0,"p90":5.0,"mean":3.02,"mkt":3.5,"gap":-0.5,"flag":false,"po":0.0,"dv":0.0,"ts":0.0,"ti":0.0},{"abbr":"WAS","name":"Washington Commanders","conf":"NFC","div":"NFC East","w":2,"l":4,"ties":1,"left":10,"med":6.5,"p10":4.5,"p90":8.5,"mean":6.72,"mkt":6.5,"gap":0.0,"flag":false,"po":7.9,"dv":6.8,"ts":0.0,"ti":0.07}]};
 var CFB=[
   {player:"Keldric Luster",team:"BALL",game:"BALL @ MASS",pos:"QB",stat:"219.2 pass yds / 1.6 TD (last 5 games)",note:""},
   {player:"TJ Horton",team:"BALL",game:"BALL @ MASS",pos:"RB",stat:"49.4 rush yds (last 5 games)",note:"Leads MAC at 6.3 yds/carry; 9 rush TDs"},
@@ -3046,18 +3032,19 @@ if(tabbarEl){
   window.addEventListener("load",updateTabArrows);
   updateTabArrows();
 }
-/* Game forecasts fold: Moneyline, Totals, Spreads and the NFL Season
-   outlook now live as sections inside the one Game forecasts tab.
-   Old tab names and hashes (#moneyline, #totals, #spreads, #season)
-   land on the tab scrolled to the matching section — the same
-   redirect pattern as the Touchdowns fold below. */
-var GF_SECTIONS={forecasts:"gf-moneyline",moneyline:"gf-moneyline",totals:"gf-totals",spreads:"gf-spreads",season:"gf-season","season-outlook":"gf-season"};
-/* Sub-navigation (Who wins / Totals / Spreads / Season): one section
+/* Game forecasts fold: Moneyline, Totals and Spreads now live as
+   sections inside the one Game forecasts tab. Old tab names and
+   hashes (#moneyline, #totals, #spreads) land on the tab scrolled
+   to the matching section — the same redirect pattern as the
+   Touchdowns fold below. (Season pulled Nov 20, 2026: its sim
+   fails its gate and the data was 14 days stale.) */
+var GF_SECTIONS={forecasts:"gf-moneyline",moneyline:"gf-moneyline",totals:"gf-totals",spreads:"gf-spreads"};
+/* Sub-navigation (Who wins / Totals / Spreads): one section
    at a time. showGfSection is the single switch point, so the sub-nav
    buttons, the Home deep links (data-gf-section) and the old hashes
-   (#totals, #spreads, #season) all land on the same state. */
+   (#totals, #spreads) all land on the same state. */
 function showGfSection(sectionId){
-  var ids=["gf-moneyline","gf-totals","gf-spreads","gf-season"];
+  var ids=["gf-moneyline","gf-totals","gf-spreads"];
   if(ids.indexOf(sectionId)===-1) sectionId="gf-moneyline";
   ids.forEach(function(id){
     var el=$(id);
@@ -3283,6 +3270,7 @@ function buildSoccerLeagueOptions(){
 function syncSoccerLeagueVisibility(){
   var grp=$("soccerLeagueGroup"); if(!grp) return;
   grp.hidden=leagueState!=="soccer";
+  var note=$("soccerFreshNote"); if(note) note.hidden=leagueState!=="soccer";
 }
 var soccerLeagueFilterEl=$("soccerLeagueFilter"); if(soccerLeagueFilterEl) soccerLeagueFilterEl.addEventListener("change",function(){
   soccerLeagueState=soccerLeagueFilterEl.value||"ALL";
@@ -4366,12 +4354,13 @@ function simSpreadHtml(s){
 
 /* ================= TOTALS ================= */
 /* League helpers shared by Totals and Spreads: the pipeline's league
-   codes map to a short badge and a section header, and CFB/CBB share
-   the 3.0-point lean threshold (NFL is 2.0). Any league the pipeline
-   sends renders from these maps — nothing is CBB-seed-specific. */
+   codes map to a badge and a section header (college leagues spell
+   out in full, Nov 20 panel), and CFB/CBB share the 3.0-point lean
+   threshold (NFL is 2.0). Any league the pipeline sends renders from
+   these maps — nothing is CBB-seed-specific. */
 function tsBadge(league){
-  if(league==="NCAAF") return "CFB";
-  if(league==="NCAAB") return "CBB";
+  if(league==="NCAAF") return "College Football";
+  if(league==="NCAAB") return "College Basketball";
   if(league==="NBA") return "NBA";
   return league;
 }
@@ -4381,6 +4370,14 @@ function tsSection(league){
   if(league==="NFL") return "NFL";
   if(league==="NBA") return "NBA";
   return league||"Games";
+}
+/* Display name for a sport code on rows and cards: college codes
+   spell out in full (Nov 20 panel — CFB/CBB are the main jargon
+   violation). Data keys stay as-is; only the shown text changes. */
+function sportDisplayName(s){
+  if(s==="CFB"||s==="NCAAF") return "College Football";
+  if(s==="CBB"||s==="NCAAB") return "College Basketball";
+  return s||"";
 }
 function tsThreshold(league){
   return (league==="NCAAF"||league==="NCAAB")?3:2;
@@ -4852,13 +4849,10 @@ function homeBetDateLabel(b){
 function renderHomePicks(){
   var box=$("homePicksList"), combo=$("homePicksCombo"), voidNote=$("homePicksVoidNote");
   if(!box) return;
-  /* Home "strongest picks" reads Best Plays now (Nov 12): the live
-     recommendation is best_plays.json, and TODAY_BETS stays empty
-     permanently (the A card is retired). Best Plays rows are props
-     with side/line/market, so the same rendering below works unchanged.
-     Until the feed lands, fall back to TODAY_BETS (empty) and show the
-     honest "no picks yet" note — the feed re-renders this list when it
-     arrives (see loadBestPlays). */
+  /* Dead code (Nov 20): homePicksList has no element on the page, so
+     this returns at the guard above. The best_plays.json loader was
+     removed the same day — the feed is the shelved NBA Assists card,
+     not a live recommendation. Kept for reference only. */
   var rows=(typeof BEST_PLAYS!=="undefined"&&BEST_PLAYS&&Array.isArray(BEST_PLAYS.straights)&&BEST_PLAYS.straights.length)
     ?BEST_PLAYS.straights
     :(typeof TODAY_BETS!=="undefined"&&TODAY_BETS)?TODAY_BETS:[];
@@ -5407,7 +5401,7 @@ function renderTdBoard(){
   rowsEl.style.display="";
   rowsEl.innerHTML=tdRows.map(function(r){
     var badges=pickBadgesPlainHtml(r), rowInfo=propRowInfoHtml(r);
-    return '<div class="trow" style="grid-template-columns:'+cols+'"><div class="who"><b>'+esc(r.player)+'</b><span>'+esc(r.sport)+' &middot; '+esc(r.team)+' &middot; '+esc(r.prop)+'</span></div>'+
+    return '<div class="trow" style="grid-template-columns:'+cols+'"><div class="who"><b>'+esc(r.player)+'</b><span>'+esc(sportDisplayName(r.sport))+' &middot; '+esc(r.team)+' &middot; '+esc(r.prop)+'</span></div>'+
     '<span class="prop-date">'+esc(fmtDateLong(r.date))+'</span>'+
     '<span class="num avg-val">'+propLineHtml(r,true)+'</span><span class="num avg-val">'+propGuessHtml(r,true)+'</span><span style="text-align:right">'+propTierHtml(r)+propLongshotHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<div class="flag" style="grid-column:1 / -1">'+esc(flagText(r.flag))+'</div>':"")+'</div>';
   }).join("");
@@ -5445,14 +5439,14 @@ function renderProps(){
      filters only narrow the list; they never reorder it. */
   function tileRow(r){
     var badges=pickBadgesPlainHtml(r), rowInfo=propRowInfoHtml(r);
-    return '<div class="trow" style="grid-template-columns:'+cols+'"><div class="who"><b>'+esc(r.player)+'</b><span>'+esc(r.sport)+' &middot; '+esc(r.team)+' &middot; '+esc(r.prop)+'</span></div>'+
+    return '<div class="trow" style="grid-template-columns:'+cols+'"><div class="who"><b>'+esc(r.player)+'</b><span>'+esc(sportDisplayName(r.sport))+' &middot; '+esc(r.team)+' &middot; '+esc(r.prop)+'</span></div>'+
     '<span class="prop-date">'+esc(fmtDateLong(r.date))+'</span>'+
     '<span class="num avg-val">'+propLineHtml(r,true)+'</span><span class="num avg-val">'+propGuessHtml(r,true)+'</span><span style="text-align:right">'+propTierHtml(r)+propLongshotHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<div class="flag" style="grid-column:1 / -1">'+esc(flagText(r.flag))+'</div>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
   }
   function listRow(r){
     var badges=pickBadgesPlainHtml(r), rowInfo=propRowInfoHtml(r);
     return '<div class="prop-list-row"><span class="pl-player">'+esc(r.player)+'<span class="pl-team">'+esc(r.team)+'</span></span>'+
-    '<span class="pl-prop">'+esc(r.prop)+'<span class="pl-meta">'+esc(r.sport)+' &middot; '+esc(fmtDateLong(r.date))+'</span></span>'+
+    '<span class="pl-prop">'+esc(r.prop)+'<span class="pl-meta">'+esc(sportDisplayName(r.sport))+' &middot; '+esc(fmtDateLong(r.date))+'</span></span>'+
     '<span class="pl-line">'+propLineHtml(r,false)+'</span><span class="pl-guess">'+propGuessHtml(r,false)+'</span><span class="pl-tier">'+propTierHtml(r)+propLongshotHtml(r)+((badges||rowInfo)?'<div class="tt-wrap">'+badges+rowInfo+'</div>':"")+'</span>'+lineMoveHtml(r)+(r.flag?'<span class="flag">'+esc(flagText(r.flag))+'</span>':"")+marketsHtml(r.markets)+propSimHtml(r)+'</div>';
   }
   var emptyHtml='<div class="empty-state"><p>No props available for this game &mdash; lines haven\'t been posted yet. Check back closer to tip-off.<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="Why no props yet">i</button><span class="tip">Lines come from the sportsbooks and can take a while to appear, especially for games later in the week.</span></span></p><p>Try another sport, date, game, or prop type.</p></div>';
@@ -5530,7 +5524,7 @@ function renderPropSuggest(){
   var list=propSuggestionNames();
   if(!list.length){closePropSuggest();return;}
   propSuggestEl.innerHTML=list.map(function(s,i){
-    return '<button type="button" role="option" data-sug="'+esc(s.name)+'" aria-selected="'+(i===sugIndex?"true":"false")+'">'+esc(s.name)+'<span class="sug-meta">'+esc(s.team)+' &middot; '+esc(s.sport)+'</span></button>';
+    return '<button type="button" role="option" data-sug="'+esc(s.name)+'" aria-selected="'+(i===sugIndex?"true":"false")+'">'+esc(s.name)+'<span class="sug-meta">'+esc(s.team)+' &middot; '+esc(sportDisplayName(s.sport))+'</span></button>';
   }).join("");
   propSuggestEl.hidden=false;
   propSearchEl.setAttribute("aria-expanded","true");
@@ -5689,7 +5683,7 @@ function betListRowHtml(b,isVoid){
   var prob=typeof b.model_prob==="number"?Math.max(0,Math.min(1,b.model_prob)):null;
   var match=betMatch(b);
   var badges=pickBadgesPlainHtml(b);
-  return '<div class="prop-list-row"><span class="pl-player">'+esc(betName(b))+'<span class="pl-team">'+esc(b.sport||"")+'</span></span>'
+  return '<div class="prop-list-row"><span class="pl-player">'+esc(betName(b))+'<span class="pl-team">'+esc(sportDisplayName(b.sport))+'</span></span>'
     +'<span class="pl-prop">'+esc(pickText(b))+(match?'<span class="pl-meta">'+esc(match)+'</span>':"")+'</span>'
     +'<span class="pl-line">'+(b.line_odds!=null?esc(fmtOdds(b.line_odds)):"&mdash;")+'</span>'
     +'<span class="pl-guess">'+(prob!=null?pct(prob):"&mdash;")+'</span>'
@@ -5705,7 +5699,7 @@ function betCardHtml(b,isVoid){
   if(typeof b.market_prob==="number") foot.push("Book chance: <b>"+pct(b.market_prob)+"</b>");
   if(b.book) foot.push("Book: <b>"+esc(b.book)+"</b>");
   var match=betMatch(b);
-  return '<article class="bet-card"><div class="bet-top"><span style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="bet-sport"><span class="bet-emoji">'+sportEmoji(b.sport)+'</span>'+esc(b.sport||"")+'</span>'+pickBadgesHtml(b)+(isVoid?'<span class="rec-outcome push">Void</span>':"")+'</span>'+betValue(b)+'</div>'
+  return '<article class="bet-card"><div class="bet-top"><span style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="bet-sport"><span class="bet-emoji">'+sportEmoji(b.sport)+'</span>'+esc(sportDisplayName(b.sport))+'</span>'+pickBadgesHtml(b)+(isVoid?'<span class="rec-outcome push">Void</span>':"")+'</span>'+betValue(b)+'</div>'
     +'<h3 class="bet-name">'+esc(betName(b))+'</h3>'
     +(match?'<p class="bet-match">'+esc(match)+'</p>':"")
     +'<p class="bet-pick">'+esc(pickText(b))+'</p>'
@@ -5982,23 +5976,6 @@ function renderBestPlays(){
   if(meta) meta.textContent=BEST_PLAYS&&BEST_PLAYS.generated_pt?("Updated "+BEST_PLAYS.generated_pt+"."):"";
   if(dateEl&&BEST_PLAYS&&BEST_PLAYS.date){dateEl.textContent=fmtDateLong(BEST_PLAYS.date);dateEl.hidden=false;}
 }
-function loadBestPlays(){
-  try{
-    if(typeof fetch!=="function") return;
-    fetch("best_plays.json?v=" + Date.now()).then(function(res){
-      if(!res||!res.ok) return null;
-      return res.json();
-    }).then(function(data){
-      if(!data) return;
-      BEST_PLAYS=data;
-      try{renderBestPlays();}catch(e){}
-      /* Home "strongest picks" reads this feed now — re-render it once
-         the picks arrive (its first render, before the fetch, shows the
-         honest "no picks yet" note). */
-      try{renderHomePicks();}catch(e){}
-    }).catch(function(){});
-  }catch(e){}
-}
 /* Fixed filter tabs (Nov 11): every sport the site covers, every day —
    a tab is never missing just because that sport has no picks today.
    Any sport present in the feed but not in this list is appended after
@@ -6077,10 +6054,11 @@ function loadMorePlays(){
    picked from a dropdown — each option carries its running record,
    so the six can be compared without scrolling. Today's picks and
    records come from one feed, "experiment_board.json". The same feed
-   drives the six rows on Our Record; the shelved records ride
-   in the feed's "shelved" list, not the approaches. The NBA Assists / More Plays
-   loaders still run (the feeds still publish) but no panel reads them
-   anymore — Home dropped its picks and record lines the same day.
+   drives the six rows on Our Record; the shelved cards ride
+   in the feed's "shelved" list and render below them (Nov 20).
+   The More Plays loader still runs (the feed still publishes) but no
+   panel reads it anymore — Home dropped its picks and record lines
+   the same day. The Best Plays loader was removed Nov 20 (dead fetch).
    Any failure leaves the honest loading note: no banner, no stale
    picks, nothing here throws. */
 var EXPERIMENT_BOARD=null;
@@ -6175,6 +6153,30 @@ function renderExperimentRecord(){
     var small="ROI "+vrRoi(r.roi_pct)+" \u00B7 "+(r.n||0)+" settled";
     return '<div class="trow" style="grid-template-columns:minmax(0,1fr) auto">'
       +'<div class="who"><b>'+esc(a.name)+'</b></div>'
+      +'<div style="text-align:right"><div class="num" style="font-size:20px">'+esc(big)+'</div>'
+      +'<div style="font-size:12px;color:var(--muted)">'+esc(small)+'</div></div></div>';
+  }).join("");
+  try{renderExperimentShelved();}catch(e){}
+}
+/* Shelved cards (Nov 20 panel): the board feed's "shelved" list rides
+   alongside the live approaches — same record shape, plus a shelved
+   date. Rendered here on Our Record so the live numbers are visible;
+   the shelved_reason text is NOT shown (it can carry a stale "final"
+   record from the day the card was shelved). Hidden until the feed
+   lands with a non-empty shelved list. */
+function renderExperimentShelved(){
+  var sec=$("experimentShelvedSection"), host=$("experimentShelvedRows");
+  if(!sec||!host) return;
+  var shel=(EXPERIMENT_BOARD&&Array.isArray(EXPERIMENT_BOARD.shelved))?EXPERIMENT_BOARD.shelved:null;
+  if(!shel||!shel.length){ sec.hidden=true; return; }
+  sec.hidden=false;
+  host.innerHTML=shel.map(function(a){
+    var r=a.record||{};
+    var big=(r.wins||0)+"\u2013"+(r.losses||0)+" \u00B7 "+vrMoney(r.profit);
+    var small="ROI "+vrRoi(r.roi_pct)+" \u00B7 "+(r.n||0)+" settled \u00B7 still grading";
+    var when=a.shelved_date?("Off the board "+fmtDateLong(a.shelved_date)):"Off the board";
+    return '<div class="trow" style="grid-template-columns:minmax(0,1fr) auto">'
+      +'<div class="who"><b>'+esc(a.name)+'</b><span>'+esc(when)+'</span></div>'
       +'<div style="text-align:right"><div class="num" style="font-size:20px">'+esc(big)+'</div>'
       +'<div style="font-size:12px;color:var(--muted)">'+esc(small)+'</div></div></div>';
   }).join("");
@@ -6332,11 +6334,12 @@ function syncBankrollRecordLine(){
     }
   }
   var dateTxt=latest?fmtDateLong(latest):"Nov 6, 2026";
-  if(n>=30){
-    el.innerHTML="<b>Our picks, run this way:</b> "+n+" graded picks so far ("+dateTxt+"). Enough to run on our own record — see the numbers above.";
-  }else{
-    el.innerHTML="<b>Our picks, run this way:</b> "+n+" graded picks so far ("+dateTxt+"). We need 30 graded picks before this runs on our own record. Check back as the record grows.";
-  }
+  /* Honest wording (Nov 20 panel): the numbers above are a teaching
+     example — the sim on our own record was never built, so no count
+     makes it "enough". The date is the era start (Nov 12) when the
+     archive loaded, else the latest graded date — phrased each way. */
+  var dateNote=(ERA_BP&&ERA_BP.straights)?(" since "+dateTxt):(" (latest graded "+dateTxt+")");
+  el.innerHTML="<b>Our picks, run this way:</b> "+n+" graded picks so far"+dateNote+". The numbers above are a teaching example, not our own record — we have not run this on our own record yet.";
 }
 try{syncBankrollRecordLine();}catch(e){}
 /* Recap on Home: the most recent settled day in TRACK_RECORD whose
@@ -6562,7 +6565,7 @@ function renderRecord(){
         var profit=dayRows.reduce(function(a,r){return a+(typeof r.profit==="number"?r.profit:0);},0);
         var summary=wlText({wins:wins,losses:losses,pushes:pushes})+" \u00b7 "+fmtProfit(profit);
         var body=dayRows.map(function(r){
-          return recordRowHtml(r,(r.sport||"")+(r.type?" \u00b7 "+r.type:""));
+          return recordRowHtml(r,sportDisplayName(r.sport)+(r.type?" \u00b7 "+r.type:""));
         }).join("");
         var dayD=parseRowDate(date); var dayLbl=dayD?fmtDateLong(dayD,true):fmtDateLong(date,true);
         return '<section class="record-day"><h2>'+esc(dayLbl)+'</h2><p class="sub">'+esc(summary)+'</p><div class="rows" role="table" aria-label="Settled bets for '+esc(dayLbl)+'">'+body+'</div></section>';
@@ -8019,37 +8022,7 @@ function seasonPct(v,oneDecimal){
   if(v<1) return "<1%";
   return (oneDecimal?(Math.round(v*10)/10):Math.round(v))+"%";
 }
-function renderSeason(){
-  var host=document.getElementById("seasonTables"); if(!host) return;
-  var d=(typeof SEASON_NFL!=="undefined")?SEASON_NFL:null;
-  if(!d||!d.teams||!d.teams.length){
-    host.innerHTML='<p class="empty-note">No season numbers yet &mdash; check back after the morning update.</p>';
-    return;
-  }
-  var html="";
-  ["AFC","NFC"].forEach(function(conf){
-    var rows=d.teams.filter(function(t){return t.conf===conf;})
-      .sort(function(a,b){return (b.med-a.med)||(b.po-a.po);});
-    html+='<h2>'+conf+'</h2><table class="mini" aria-label="'+conf+' season outlook"><thead><tr><th>Team</th><th>Now</th><th>Wins</th><th>Usually between</th><th>Playoffs</th><th>Division</th><th>Win it all</th></tr></thead><tbody>';
-    rows.forEach(function(t){
-      var rec=t.w+"-"+t.l+(t.ties?"-"+t.ties:"");
-      var book=t.mkt!=null?("book "+seasonWins(t.mkt)):"";
-      var gapTxt="";
-      if(t.gap!=null&&Math.abs(t.gap)>=1.5){
-        gapTxt='<br><span class="sub">'+Math.abs(t.gap)+' '+(t.gap>0?"above":"below")+' book</span>';
-      }
-      html+='<tr><td>'+t.name+'</td><td data-label="Now">'+rec+'</td><td data-label="Wins"><b>'+seasonWins(t.med)+'</b>'+(book?'<br><span class="sub">'+book+'</span>':"")+gapTxt+'</td><td data-label="Usually between">'+seasonWins(t.p10)+'&ndash;'+seasonWins(t.p90)+'</td><td data-label="Playoffs">'+seasonPct(t.po)+'</td><td data-label="Division">'+seasonPct(t.dv)+'</td><td data-label="Win it all">'+seasonPct(t.ti,true)+'</td></tr>';
-    });
-    html+="</tbody></table>";
-  });
-  host.innerHTML=html;
-  var meta=document.getElementById("seasonMeta");
-  if(meta) meta.textContent="Numbers from "+fmtDateLong(d.generated)+" · we played out the rest of the season "+(d.n_sims||10000).toLocaleString()+" times · our game guesses from "+fmtDateLong(d.model_as_of)+" · book numbers: "+d.market_source+" ("+fmtDateLong(d.market_date)+").";
-}
-
-try{renderSeason();}catch(e){}
 try{renderBets();}catch(e){}
-try{loadBestPlays();}catch(e){}
 try{loadMorePlays();}catch(e){}
 try{loadExperimentBoard();}catch(e){}
 try{loadRecordEras();}catch(e){}
