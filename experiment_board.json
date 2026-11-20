@@ -3,7 +3,7 @@
     {
       "description": "Our five best findings in one card: CFB totals unders, CFB passing unders, CFB rushing yards, next-man-up starter overs, and NBA underdog fades. The card we post to X each day.",
       "id": "best",
-      "name": "Best Findings Card",
+      "name": "What We Found",
       "picks": [
         {
           "away": "ISU",
@@ -449,7 +449,7 @@
     {
       "description": "Picks with a moderate edge over the book \u2014 no more than 20% \u2014 ranked by how likely they are to hit. Up to 5 a day.",
       "id": "m",
-      "name": "Moderate EV Card",
+      "name": "Likely Hits",
       "picks": [
         {
           "consensus_flag": null,
@@ -644,7 +644,7 @@
     {
       "description": "Five picks drawn at random from the board each day, as a check \u2014 if random beats a method, the method is not doing anything.",
       "id": "r",
-      "name": "Random Card",
+      "name": "Random Check",
       "picks": [
         {
           "consensus_flag": null,
@@ -839,7 +839,7 @@
     {
       "description": "Only our two best-tested pick types: college basketball moneylines and NBA assists, where our number and the book's number are close. Up to 5 a day.",
       "id": "bf",
-      "name": "Best Record Card",
+      "name": "What Tested Best",
       "picks": [
         {
           "consensus_flag": null,
@@ -926,102 +926,9 @@
       }
     },
     {
-      "description": "Model A's best disagreements with the market: NBA favorites, NBA underdog fades, and WTA tennis, where its number beats the market by 3 cents or more. NHL gold was dropped from the card Nov 19, 2026 after going 2-9 live.",
-      "id": "gold",
-      "name": "Biggest Edge Card",
-      "picks": [
-        {
-          "consensus_flag": null,
-          "date": "2026-11-20",
-          "description": "PHX to win vs UTA",
-          "edge_c": 3.5,
-          "fade": false,
-          "faded_side": null,
-          "family": "ML:NBA",
-          "game_date": "2026-11-20",
-          "kind": "straight",
-          "line": null,
-          "line_odds": "-184",
-          "market": "moneyline",
-          "market_prob": 0.6479,
-          "markets": {
-            "kalshi": "https://kalshi.com/markets/kxnbagame/nba-game/kxnbagame-26nov20phxuta",
-            "novig": "https://novig.com/event-markets/01a1ec8c-5ad2-7ff0-936a-9e678282baec",
-            "polymarket": null
-          },
-          "model_prob": 0.658,
-          "opponent": "UTA",
-          "outcome": null,
-          "paper": true,
-          "pick_id": "20261120-G01",
-          "player": null,
-          "profit": null,
-          "rlm_flag": false,
-          "selected_at_pt": "2026-11-20 11:04:51 PST",
-          "side": "away",
-          "sport": "NBA",
-          "start_time_pt": "18:30",
-          "team": "PHX",
-          "tier": "lean",
-          "top_tier": false,
-          "type": "moneyline",
-          "value_pct": 1.56,
-          "variant": "GOLD",
-          "would_veto": null
-        },
-        {
-          "consensus_flag": null,
-          "date": "2026-11-20",
-          "description": "DEN to win vs HOU (fade)",
-          "edge_c": 3.2,
-          "fade": true,
-          "faded_side": "HOU",
-          "family": "ML:NBA",
-          "game_date": "2026-11-20",
-          "kind": "straight",
-          "line": null,
-          "line_odds": "-125",
-          "market": "moneyline",
-          "market_prob": 0.5556,
-          "markets": {
-            "kalshi": null,
-            "novig": "https://novig.com/event-markets/01a1eca7-86f3-7103-a93d-da3ab84dcb92",
-            "polymarket": null
-          },
-          "model_prob": 0.492,
-          "opponent": "HOU",
-          "outcome": null,
-          "paper": true,
-          "pick_id": "20261120-G02",
-          "player": null,
-          "profit": null,
-          "rlm_flag": false,
-          "selected_at_pt": "2026-11-20 11:04:51 PST",
-          "side": "home",
-          "sport": "NBA",
-          "start_time_pt": "19:00",
-          "team": "DEN",
-          "tier": "lean",
-          "top_tier": false,
-          "type": "moneyline",
-          "value_pct": -11.44,
-          "variant": "GOLD",
-          "would_veto": null
-        }
-      ],
-      "record": {
-        "losses": 14,
-        "n": 25,
-        "profit": -820.8,
-        "pushes": 0,
-        "roi_pct": -32.8,
-        "wins": 11
-      }
-    },
-    {
       "description": "Under bets on college football passing yards, chosen where our model leans furthest over the book's number. Up to 5 a day, one pick per game.",
       "id": "tc8",
-      "name": "CFB Passing Card",
+      "name": "College Football Passing Unders",
       "picks": [
         {
           "consensus_flag": null,
@@ -1230,12 +1137,12 @@
     }
   ],
   "date": "2026-11-20",
-  "generated_pt": "2026-11-20 11:05:07 PST",
-  "name": "Experiment board \u2014 six ways of picking",
+  "generated_pt": "2026-11-20 11:17:29 PST",
+  "name": "Experiment board \u2014 five ways of picking",
   "notes": [
-    "Six ways of picking bets, each tracked on its own at $100 flat. None is proven. The record decides.",
-    "Records are cumulative from Nov 12, 2026. Phase 1 (Nov 12-18) is archived in How It Works \u2014 nothing is erased. Nov 19 brought rule changes (value floors, NHL dropped from Biggest Edge, two cards shelved), not a reset.",
-    "More Plays (shelved Nov 18), NBA Assists and Assists + Rebounds (shelved Nov 19) keep grading silently; their records are in the shelved list."
+    "Five ways of picking bets, each tracked on its own at $100 flat. None is proven. The record decides.",
+    "Records are cumulative from Nov 12, 2026. Phase 1 (Nov 12-18) is archived in How It Works \u2014 nothing is erased. Nov 19 brought rule changes (value floors, NHL dropped from Biggest Edge, two cards shelved), not a reset. Nov 20 shelved Biggest Edge (now Biggest Disagreement) and renamed the cards in plain language.",
+    "More Plays (shelved Nov 18), NBA Assists and Assists + Rebounds (shelved Nov 19), and Biggest Disagreement (shelved Nov 20) keep grading silently; their records are in the shelved list."
   ],
   "shelved": [
     {
@@ -1282,6 +1189,21 @@
       },
       "shelved_date": "2026-11-19",
       "shelved_reason": "Shelved Nov 19 at 12-17, -$676.45 (ROI -23.3%, n=29). It keeps grading silently as the benchmark."
+    },
+    {
+      "description": "Model A's best disagreements with the market: NBA favorites, NBA underdog fades, and WTA tennis, where its number beats the market by 3 cents or more. NHL gold was dropped from the card Nov 19, 2026 after going 2-9 live.",
+      "id": "gold",
+      "name": "Biggest Disagreement",
+      "record": {
+        "losses": 14,
+        "n": 25,
+        "profit": -820.8,
+        "pushes": 0,
+        "roi_pct": -32.8,
+        "wins": 11
+      },
+      "shelved_date": "2026-11-20",
+      "shelved_reason": "Shelved Nov 20 at 11-14, -$820.80 (ROI -32.8%, n=25) \u2014 the only live card whose ROI confidence interval excluded zero. Tightening did not rescue it (the 5-cent-plus bucket was worse, -46.0%). It keeps grading silently as the benchmark. Gold fades continue as a Best Findings and bot component \u2014 a different bet, still testing."
     }
   ]
 }
