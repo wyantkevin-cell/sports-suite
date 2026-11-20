@@ -78,10 +78,10 @@
         "roi_pct": -37.1,
         "wins": 12
       },
-      "dates": "2026-11-12 to now",
+      "dates": "2026-11-12 to 2026-11-19 (shelved; still grading)",
       "id": "live_bp",
       "name": "NBA Assists Card era",
-      "note": "Starts Nov 12, 2026 \u2014 the first full day of NBA-assists-only recommendations. Nov 11 Best Plays (5 assists, pick_ids 20261111-BP01..BP05) are a transition-day preview: they are logged in best_plays_log.jsonl with era 'transition' and will be graded, but they do NOT count in this era's tally. The era tally counts BP rows dated 2026-11-12 onward.",
+      "note": "Starts Nov 12, 2026 \u2014 the first full day of NBA-assists-only recommendations. Nov 11 Best Plays (5 assists, pick_ids 20261111-BP01..BP05) are a transition-day preview: they are logged in best_plays_log.jsonl with era 'transition' and will be graded, but they do NOT count in this era's tally. The era tally counts BP rows dated 2026-11-12 onward. Shelved Nov 19, 2026 at 12-21, -$973.31 (ROI -29.5%, n=33) after the edge-filtered backtest did not reproduce live. It keeps grading silently; the tally above keeps growing as pending picks settle. There is no single live record any more \u2014 the Our Bets board tracks five ways of picking, each on its own record.",
       "parlays": {
         "losses": 0,
         "n_graded": 0,
@@ -92,7 +92,7 @@
         "wins": 0
       },
       "rule": "NBA Assists Card (variant BP): NBA assists only, model edge (model_prob - market_prob) > 2pp, odds >= -300, 15pp market-cap re-check, news-flag and not-started guards, ranked by edge, top 5, never padded. More Plays (variant MP) is a second tier, one best agreement pick per sport; it is paper-only measurement and never part of this record. No parlay.",
-      "status": "current",
+      "status": "shelved",
       "straights": {
         "losses": 25,
         "n_graded": 37,
@@ -104,29 +104,29 @@
       }
     }
   ],
-  "generated_pt": "2026-11-20 07:27:08 PST",
+  "generated_pt": "2026-11-20 11:18:53 PST",
   "name": "Record eras \u2014 archived, not deleted, never blended",
   "note": "Switching rules and starting a new record is not dishonest as long as the old way is shelved and kept visible, not deleted or hidden (Kevin, Nov 10). Every era below stays visible on the site. Numbers come from track_record_ledger.jsonl and variant_records.json \u2014 the ledger is the source of truth; variant_records.json agrees exactly (D straights profit_exact -90.86, parlays -500.0, combined -590.86). Each bet is $100 flat. ROI is profit divided by graded bets.",
   "paper_tests_not_in_live_record": [
     {
       "id": "paper_m",
       "name": "Paper test \u2014 moderate edge (M)",
-      "note": "Off Our Bets from Nov 11, but the log keeps grading as measurement. paper_card_m.json stays published (legacy file, still read by tooling/health check). Latest tally lives in variant_records.json."
+      "note": "On Our Bets as a live card (Likely Hits) since Nov 12; the log keeps grading as measurement. paper_card_m.json stays published (still read by tooling/health check). Latest tally lives in variant_records.json."
     },
     {
       "id": "paper_r",
       "name": "Paper test \u2014 random (R)",
-      "note": "Off Our Bets from Nov 11, but the log keeps grading as measurement. paper_card_r.json stays published (legacy file, still read by tooling/health check). Latest tally lives in variant_records.json."
+      "note": "On Our Bets as a live card (Random Check) since Nov 12; the log keeps grading as measurement. paper_card_r.json stays published (still read by tooling/health check). Latest tally lives in variant_records.json."
     },
     {
       "id": "paper_bf",
       "name": "Best Families tracker (BF)",
-      "note": "Paper-only measurement (CBB moneyline + NBA assists, agreement rule), started Nov 11. Unchanged by this change: best_families_select.py and best_families_log.jsonl are untouched. NBA Assists is the live recommendation; BF stays paper-only. Different pick_ids, different feed, different log."
+      "note": "Best Families tracker (CBB moneyline + NBA assists, agreement rule), started Nov 11. Its record is on the experiment board (What Tested Best). Different pick_ids, different feed, different log from the NBA Assists Card, which was shelved Nov 19, 2026."
     },
     {
       "id": "paper_mp",
       "name": "More Plays (MP)",
-      "note": "Second tier on Our Bets, paper-only measurement. Logged in best_plays_log.jsonl with variant MP, era 'paper'. Never part of the live record."
+      "note": "Shelved Nov 18, 2026; paper-only measurement that keeps grading silently. Logged in best_plays_log.jsonl with variant MP, era 'paper'. Never part of the live record."
     }
   ]
 }
