@@ -662,7 +662,7 @@ html[data-theme="minimal"] .tabbar [role="tab"][aria-selected="true"]{background
 .bets-tier .sub{margin-top:8px}
 .bets-tier .bets-grid{margin-top:14px}
 .bets-tier .filters{margin:14px 0 0}
-/* Experiment board (Nov 14; More Plays shelved Nov 18, NBA Assists + Assists/Rebounds shelved Nov 19): six approaches, each a .bets-tier with
+/* Experiment board (Nov 14; More Plays shelved Nov 18, NBA Assists + Assists/Rebounds shelved Nov 19, Biggest Disagreement shelved Nov 20): five approaches, each a .bets-tier with
    its record in the header. Name left, record right. */
 .approach-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
 .approach-head h2{margin:0}
@@ -1497,8 +1497,8 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <p>Covered in Enhancements above. When Model B disagrees with the book by more than 15 points, we pull it back to within 15 points. It is a guardrail, not a model.</p>
 
     <h3 id="doc-record">Our record</h3>
-    <p><a href="#bets" data-goto="bets">Our Bets</a> shows six ways of picking bets, each tracked on its own at $100 flat. Today&rsquo;s picks stay there until their games finish. Two more cards came off the board and keep grading in the background &mdash; they are marked shelved below.</p>
-    <p><a href="#record" data-goto="record">Our Record</a> shows each way&rsquo;s record &mdash; wins, losses, and profit. None of the six is proven. The record decides which, if any, is worth following.</p>
+    <p><a href="#bets" data-goto="bets">Our Bets</a> shows five ways of picking bets, each tracked on its own at $100 flat. Today&rsquo;s picks stay there until their games finish. Three more cards came off the board and keep grading in the background &mdash; they are marked shelved below.</p>
+    <p><a href="#record" data-goto="record">Our Record</a> shows each way&rsquo;s record &mdash; wins, losses, and profit. None of the five is proven. The record decides which, if any, is worth following.</p>
     <h4>How the picks are chosen</h4>
     <ul>
       <li><b>What We Found Card:</b> our five best findings in one card &mdash; college football totals unders, college football passing unders, college football rushing yards, next-man-up starter overs, and NBA underdog fades. The card we post to X each day.</li>
@@ -1507,7 +1507,7 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <li><b>Random Check Card:</b> picks chosen at random from the board, as a check &mdash; if random beats a method, the method is not doing anything.</li>
       <li><b>What Tested Best Card:</b> only the two pick types with the best backtested record &mdash; college basketball moneylines and NBA assists &mdash; where our number and the book&rsquo;s number are close. NBA assists was shelved as its own card on November 19; it stays on this card for now because our check showed it was not the losing half, and that decision is under review.</li>
       <li><b>Assists + Rebounds Card (shelved November 19 &mdash; still grading):</b> under bets on NBA assists and rebounds, ranked by edge, only from the two pick types that passed our gate. It came off the board with the NBA Assists card; it keeps grading in the background and its live record is on Our Record.</li>
-      <li><b>Biggest Disagreement Card:</b> Model A&rsquo;s best disagreements with the market &mdash; NBA favorites, NBA underdog fades, and WTA tennis &mdash; where its number beats the market by 3 cents or more.</li>
+      <li><b>Biggest Disagreement Card (shelved November 20 &mdash; still grading):</b> Model A&rsquo;s best disagreements with the market &mdash; NBA favorites, NBA underdog fades, and WTA tennis &mdash; where its number beats the market by 3 cents or more. It came off the board after 25 picks showed a clear losing record; it keeps grading in the background and its live record is on Our Record.</li>
       <li><b>College Football Passing Unders Card:</b> under bets on college football passing yards, chosen where our model leans furthest over the book&rsquo;s number, up to 5 a day, one pick per game.</li>
     </ul>
     <p>A pick is dropped if its game has already started. Every pick is graded at $100 flat. A pick that lands exactly on the line is a push.</p>
@@ -6052,9 +6052,9 @@ function loadMorePlays(){
 }
 /* Experiment board (Nov 14; renamed Nov 18, More Plays shelved, NBA Assists + Assists/Rebounds shelved Nov 19; Phase 2 reset undone Nov 19 — records cumulative from Nov 12): Our Bets shows one approach at a time,
    picked from a dropdown — each option carries its running record,
-   so the six can be compared without scrolling. Today's picks and
+   so the five can be compared without scrolling. Today's picks and
    records come from one feed, "experiment_board.json". The same feed
-   drives the six rows on Our Record; the shelved cards ride
+   drives the five rows on Our Record; the shelved cards ride
    in the feed's "shelved" list and render below them (Nov 20).
    The More Plays loader still runs (the feed still publishes) but no
    panel reads it anymore — Home dropped its picks and record lines
