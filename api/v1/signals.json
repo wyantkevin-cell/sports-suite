@@ -10,40 +10,46 @@
       "name": "NBA B2B fade \u2014 gated (desk signal)"
     },
     {
+      "description": "Our five best findings in one card: CFB totals unders, CFB passing unders, CFB rushing yards, next-man-up starter overs, and NBA underdog fades. The card we post to X each day.",
+      "id": "best",
+      "n_signals": 15,
+      "name": "What We Found"
+    },
+    {
       "description": "The bot-facing view of the tradeable Best Findings: NMU starter overs at plus money, CFB totals UNDER fades, NBA dog fades, and gated NBA B2B fades. Each row is a copy of its source-card row (same pick_id, same price fields) with a source_component field \u2014 trade each pick_id once. CFB passing + rushing are Best Findings components but are not Kalshi-tradeable and are excluded.",
       "id": "best_findings",
-      "n_signals": 4,
+      "n_signals": 15,
       "name": "Best Findings (bot card)"
     },
     {
       "description": "Only our two best-tested pick types: college basketball moneylines and NBA assists, where our number and the book's number are close. Up to 5 a day.",
       "id": "bf",
       "n_signals": 2,
-      "name": "Best Record Card"
+      "name": "What Tested Best"
     },
     {
       "description": "Fade the model's CFB totals over-leans: when FULL_SLATE leans OVER a CFB total, the desk signal is UNDER. The edge is empirical, not the model's number \u2014 the Nov 5-14 audit found model over-leans went 15-31 as picks while the UNDER fade went 31-15 (+29.0% at book odds). Kalshi reprice (Nov 18): 28-12 on the 40 games with an exact Kalshi line, ~+33% after fees, maker fills ~half. In-sample \u2014 unproven live. Paper desk only. Game-day games only; book_under_chance is the no-vig UNDER chance from the book's two-way total odds and is the maker-bid ceiling reference.",
       "id": "cfb_totals_fade",
-      "n_signals": 4,
+      "n_signals": 5,
       "name": "CFB totals UNDER fade (desk signal)"
     },
     {
       "description": "Picks with a moderate edge over the book \u2014 no more than 20% \u2014 ranked by how likely they are to hit. Up to 5 a day.",
       "id": "m",
       "n_signals": 5,
-      "name": "Moderate EV Card"
+      "name": "Likely Hits"
     },
     {
       "description": "Five picks drawn at random from the board each day, as a check \u2014 if random beats a method, the method is not doing anything.",
       "id": "r",
       "n_signals": 5,
-      "name": "Random Card"
+      "name": "Random Check"
     },
     {
       "description": "Under bets on college football passing yards, chosen where our model leans furthest over the book's number. Up to 5 a day, one pick per game.",
       "id": "tc8",
       "n_signals": 5,
-      "name": "CFB Passing Card"
+      "name": "College Football Passing Unders"
     },
     {
       "description": "NBA starter overs at plus money when a high-usage teammate is out. Backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp \u2014 the edge is the role change, not the model number. 1-contract live test from Nov 19.",
@@ -53,7 +59,7 @@
     }
   ],
   "date": "2026-11-20",
-  "generated_at_pt": "2026-11-20 07:45:17 PST",
+  "generated_at_pt": "2026-11-20 11:59:58 PST",
   "holds": {
     "b2b_fade": {
       "held": true,
@@ -68,8 +74,563 @@
     {
       "bot_tradeable": false,
       "card": {
+        "id": "best",
+        "name": "What We Found"
+      },
+      "date": "2026-11-20",
+      "description": "Under 48.5 total points \u2014 fade the model's over lean",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:41:07 PST",
+      "edge_pp": -1.28,
+      "family": "TOT:CFB",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NCAAF-UCF-ISU",
+      "line": 48.5,
+      "line_odds": "-115",
+      "market": "total",
+      "market_prob": 0.5108,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.498,
+      "model_version": "FULL_SLATE v2",
+      "opponent": "UCF",
+      "pick_id": "2026-11-20-CTF01",
+      "player": null,
+      "selected_at_pt": "2026-11-20 07:41:07 PST",
+      "side": "under",
+      "sport": "CFB",
+      "start_time_pt": "2026-11-20 15:00 PT",
+      "status": "pregame",
+      "team": "ISU",
+      "type": "total",
+      "value_pct": null
+    },
+    {
+      "bot_tradeable": false,
+      "card": {
+        "id": "best",
+        "name": "What We Found"
+      },
+      "date": "2026-11-20",
+      "description": "Under 45.5 total points \u2014 fade the model's over lean",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:41:07 PST",
+      "edge_pp": 1.13,
+      "family": "TOT:CFB",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NCAAF-TOL-BGSU",
+      "line": 45.5,
+      "line_odds": "-108",
+      "market": "total",
+      "market_prob": 0.4957,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.507,
+      "model_version": "FULL_SLATE v2",
+      "opponent": "TOL",
+      "pick_id": "2026-11-20-CTF02",
+      "player": null,
+      "selected_at_pt": "2026-11-20 07:41:07 PST",
+      "side": "under",
+      "sport": "CFB",
+      "start_time_pt": "2026-11-20 16:30 PT",
+      "status": "pregame",
+      "team": "BGSU",
+      "type": "total",
+      "value_pct": null
+    },
+    {
+      "bot_tradeable": false,
+      "card": {
+        "id": "best",
+        "name": "What We Found"
+      },
+      "date": "2026-11-20",
+      "description": "Under 41.5 total points \u2014 fade the model's over lean",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:41:07 PST",
+      "edge_pp": -0.68,
+      "family": "TOT:CFB",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NCAAF-DUKE-CLEM",
+      "line": 41.5,
+      "line_odds": "-115",
+      "market": "total",
+      "market_prob": 0.5108,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.504,
+      "model_version": "FULL_SLATE v2",
+      "opponent": "DUKE",
+      "pick_id": "2026-11-20-CTF03",
+      "player": null,
+      "selected_at_pt": "2026-11-20 07:41:07 PST",
+      "side": "under",
+      "sport": "CFB",
+      "start_time_pt": "2026-11-20 16:30 PT",
+      "status": "pregame",
+      "team": "CLEM",
+      "type": "total",
+      "value_pct": null
+    },
+    {
+      "bot_tradeable": false,
+      "card": {
+        "id": "best",
+        "name": "What We Found"
+      },
+      "date": "2026-11-20",
+      "description": "Under 37.5 total points \u2014 fade the model's over lean",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:41:07 PST",
+      "edge_pp": -1.5,
+      "family": "TOT:CFB",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NCAAF-WYO-UNM",
+      "line": 37.5,
+      "line_odds": "-110",
+      "market": "total",
+      "market_prob": 0.5,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.485,
+      "model_version": "FULL_SLATE v2",
+      "opponent": "WYO",
+      "pick_id": "2026-11-20-CTF04",
+      "player": null,
+      "selected_at_pt": "2026-11-20 07:41:07 PST",
+      "side": "under",
+      "sport": "CFB",
+      "start_time_pt": "2026-11-20 18:00 PT",
+      "status": "pregame",
+      "team": "UNM",
+      "type": "total",
+      "value_pct": null
+    },
+    {
+      "bot_tradeable": false,
+      "card": {
+        "id": "best",
+        "name": "What We Found"
+      },
+      "date": "2026-11-20",
+      "description": "Walker Eget (DUKE) under 204.5 passing yards",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:41:07 PST",
+      "edge_pp": null,
+      "family": "CFB:PASS",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NCAAF-DUKE-CLEM",
+      "line": 204.5,
+      "line_odds": "-114",
+      "market": "passing yards",
+      "market_prob": 0.5327,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": null,
+      "model_version": "FULL_SLATE v2",
+      "opponent": "CLEM",
+      "pick_id": "20261120-TC801",
+      "player": "Walker Eget",
+      "selected_at_pt": "2026-11-20 07:41:07 PST",
+      "side": "under",
+      "sport": "CFB",
+      "start_time_pt": "2026-11-20 16:30 PT",
+      "status": "pregame",
+      "team": "DUKE",
+      "type": "prop",
+      "value_pct": null
+    },
+    {
+      "bot_tradeable": false,
+      "card": {
+        "id": "best",
+        "name": "What We Found"
+      },
+      "date": "2026-11-20",
+      "description": "Toa Faavae (UNM) under 107.5 passing yards",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:41:07 PST",
+      "edge_pp": null,
+      "family": "CFB:PASS",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NCAAF-WYO-UNM",
+      "line": 107.5,
+      "line_odds": "-114",
+      "market": "passing yards",
+      "market_prob": 0.5327,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": null,
+      "model_version": "FULL_SLATE v2",
+      "opponent": "WYO",
+      "pick_id": "20261120-TC802",
+      "player": "Toa Faavae",
+      "selected_at_pt": "2026-11-20 07:41:07 PST",
+      "side": "under",
+      "sport": "CFB",
+      "start_time_pt": "2026-11-20 18:00 PT",
+      "status": "pregame",
+      "team": "UNM",
+      "type": "prop",
+      "value_pct": null
+    },
+    {
+      "bot_tradeable": false,
+      "card": {
+        "id": "best",
+        "name": "What We Found"
+      },
+      "date": "2026-11-20",
+      "description": "Jay Kastantin (BGSU) under 186.5 passing yards",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:41:07 PST",
+      "edge_pp": null,
+      "family": "CFB:PASS",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NCAAF-TOL-BGSU",
+      "line": 186.5,
+      "line_odds": "-114",
+      "market": "passing yards",
+      "market_prob": 0.5327,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": null,
+      "model_version": "FULL_SLATE v2",
+      "opponent": "TOL",
+      "pick_id": "20261120-TC803",
+      "player": "Jay Kastantin",
+      "selected_at_pt": "2026-11-20 07:41:07 PST",
+      "side": "under",
+      "sport": "CFB",
+      "start_time_pt": "2026-11-20 16:30 PT",
+      "status": "pregame",
+      "team": "BGSU",
+      "type": "prop",
+      "value_pct": null
+    },
+    {
+      "bot_tradeable": false,
+      "card": {
+        "id": "best",
+        "name": "What We Found"
+      },
+      "date": "2026-11-20",
+      "description": "Jaylen Raynor (ISU) under 178.5 passing yards",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:41:07 PST",
+      "edge_pp": null,
+      "family": "CFB:PASS",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NCAAF-UCF-ISU",
+      "line": 178.5,
+      "line_odds": "-114",
+      "market": "passing yards",
+      "market_prob": 0.5327,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": null,
+      "model_version": "FULL_SLATE v2",
+      "opponent": "UCF",
+      "pick_id": "20261120-TC804",
+      "player": "Jaylen Raynor",
+      "selected_at_pt": "2026-11-20 07:41:07 PST",
+      "side": "under",
+      "sport": "CFB",
+      "start_time_pt": "2026-11-20 15:00 PT",
+      "status": "pregame",
+      "team": "ISU",
+      "type": "prop",
+      "value_pct": null
+    },
+    {
+      "bot_tradeable": false,
+      "card": {
+        "id": "best",
+        "name": "What We Found"
+      },
+      "date": "2026-11-20",
+      "description": "Dylan Raiola (ORE) under 264.5 passing yards",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:41:07 PST",
+      "edge_pp": null,
+      "family": "CFB:PASS",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NCAAF-MSU-ORE",
+      "line": 264.5,
+      "line_odds": "-114",
+      "market": "passing yards",
+      "market_prob": 0.5327,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": null,
+      "model_version": "FULL_SLATE v2",
+      "opponent": "MSU",
+      "pick_id": "20261120-TC805",
+      "player": "Dylan Raiola",
+      "selected_at_pt": "2026-11-20 07:41:07 PST",
+      "side": "under",
+      "sport": "CFB",
+      "start_time_pt": "2026-11-20 17:00 PT",
+      "status": "pregame",
+      "team": "ORE",
+      "type": "prop",
+      "value_pct": null
+    },
+    {
+      "bot_tradeable": false,
+      "card": {
+        "id": "best",
+        "name": "What We Found"
+      },
+      "date": "2026-11-20",
+      "description": "Duke Watson (UCF) under 50.5 rushing yards",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:41:07 PST",
+      "edge_pp": -2.73,
+      "family": "CFB:rushing yards",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NCAAF-UCF-ISU",
+      "line": 50.5,
+      "line_odds": "-114",
+      "market": "rushing yards",
+      "market_prob": 0.5327,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.5054,
+      "model_version": "FULL_SLATE v2",
+      "opponent": "ISU",
+      "pick_id": "prop|2026-11-20|CFB|duke watson|UCF|rushing yards|50.5|under",
+      "player": "Duke Watson",
+      "selected_at_pt": "2026-11-20 07:41:07 PST",
+      "side": "under",
+      "sport": "CFB",
+      "start_time_pt": "2026-11-20 15:00 PT",
+      "status": "pregame",
+      "team": "UCF",
+      "type": "prop",
+      "value_pct": null
+    },
+    {
+      "bot_tradeable": false,
+      "card": {
+        "id": "best",
+        "name": "What We Found"
+      },
+      "date": "2026-11-20",
+      "description": "Cj Miller (TOL) under 94.5 rushing yards",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:41:07 PST",
+      "edge_pp": -2.6,
+      "family": "CFB:rushing yards",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NCAAF-TOL-BGSU",
+      "line": 94.5,
+      "line_odds": "-114",
+      "market": "rushing yards",
+      "market_prob": 0.5327,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.5067,
+      "model_version": "FULL_SLATE v2",
+      "opponent": "BGSU",
+      "pick_id": "prop|2026-11-20|CFB|cj miller|TOL|rushing yards|94.5|under",
+      "player": "Cj Miller",
+      "selected_at_pt": "2026-11-20 07:41:07 PST",
+      "side": "under",
+      "sport": "CFB",
+      "start_time_pt": "2026-11-20 16:30 PT",
+      "status": "pregame",
+      "team": "TOL",
+      "type": "prop",
+      "value_pct": null
+    },
+    {
+      "bot_tradeable": false,
+      "card": {
+        "id": "best",
+        "name": "What We Found"
+      },
+      "date": "2026-11-20",
+      "description": "Toa Faavae (UNM) over 29.5 rushing yards",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:41:07 PST",
+      "edge_pp": -2.27,
+      "family": "CFB:rushing yards",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NCAAF-WYO-UNM",
+      "line": 29.5,
+      "line_odds": "-114",
+      "market": "rushing yards",
+      "market_prob": 0.5327,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.51,
+      "model_version": "FULL_SLATE v2",
+      "opponent": "WYO",
+      "pick_id": "prop|2026-11-20|CFB|toa faavae|UNM|rushing yards|29.5|over",
+      "player": "Toa Faavae",
+      "selected_at_pt": "2026-11-20 07:41:07 PST",
+      "side": "over",
+      "sport": "CFB",
+      "start_time_pt": "2026-11-20 18:00 PT",
+      "status": "pregame",
+      "team": "UNM",
+      "type": "prop",
+      "value_pct": null
+    },
+    {
+      "bot_tradeable": false,
+      "card": {
+        "id": "best",
+        "name": "What We Found"
+      },
+      "date": "2026-11-20",
+      "description": "Scottie Barnes (TOR) over 1.5 3-pointers",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:46:24 PST",
+      "edge_pp": 2.31,
+      "family": "NBA:3-pointers",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-DET-TOR",
+      "line": 1.5,
+      "line_odds": "230",
+      "market": "3-pointers",
+      "market_prob": 0.303,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.3261,
+      "model_version": "FULL_SLATE v2",
+      "opponent": "DET",
+      "pick_id": "20261120-NMU-TOR-scottie-barnes-3-pointers",
+      "player": "Scottie Barnes",
+      "selected_at_pt": "2026-11-20 07:46:24 PST",
+      "side": "over",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 16:30 PT",
+      "status": "pregame",
+      "team": "TOR",
+      "type": "prop",
+      "value_pct": null
+    },
+    {
+      "bot_tradeable": false,
+      "card": {
+        "id": "best",
+        "name": "What We Found"
+      },
+      "date": "2026-11-20",
+      "description": "Scottie Barnes (TOR) over 7.5 rebounds",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:46:24 PST",
+      "edge_pp": -7.24,
+      "family": "NBA:rebounds",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-DET-TOR",
+      "line": 7.5,
+      "line_odds": "102",
+      "market": "rebounds",
+      "market_prob": 0.495,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.4226,
+      "model_version": "FULL_SLATE v2",
+      "opponent": "DET",
+      "pick_id": "20261120-NMU-TOR-scottie-barnes-rebounds",
+      "player": "Scottie Barnes",
+      "selected_at_pt": "2026-11-20 07:46:24 PST",
+      "side": "over",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 16:30 PT",
+      "status": "pregame",
+      "team": "TOR",
+      "type": "prop",
+      "value_pct": null
+    },
+    {
+      "bot_tradeable": false,
+      "card": {
+        "id": "best",
+        "name": "What We Found"
+      },
+      "date": "2026-11-20",
+      "description": "John Collins (DET) over 1.5 3-pointers",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:46:24 PST",
+      "edge_pp": -2.59,
+      "family": "NBA:3-pointers",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-DET-TOR",
+      "line": 1.5,
+      "line_odds": "124",
+      "market": "3-pointers",
+      "market_prob": 0.4464,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.4205,
+      "model_version": "FULL_SLATE v2",
+      "opponent": "TOR",
+      "pick_id": "20261120-NMU-DET-john-collins-3-pointers",
+      "player": "John Collins",
+      "selected_at_pt": "2026-11-20 07:46:24 PST",
+      "side": "over",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 16:30 PT",
+      "status": "pregame",
+      "team": "DET",
+      "type": "prop",
+      "value_pct": null
+    },
+    {
+      "bot_tradeable": false,
+      "card": {
         "id": "m",
-        "name": "Moderate EV Card"
+        "name": "Likely Hits"
       },
       "date": "2026-11-20",
       "description": "Nolan Traore (BKN) under 3.5 rebounds",
@@ -106,7 +667,7 @@
       "bot_tradeable": false,
       "card": {
         "id": "m",
-        "name": "Moderate EV Card"
+        "name": "Likely Hits"
       },
       "date": "2026-11-20",
       "description": "Mikel Brown Jr (BKN) under 3.5 rebounds",
@@ -143,7 +704,7 @@
       "bot_tradeable": false,
       "card": {
         "id": "m",
-        "name": "Moderate EV Card"
+        "name": "Likely Hits"
       },
       "date": "2026-11-20",
       "description": "PHX to win vs UTA",
@@ -180,7 +741,7 @@
       "bot_tradeable": false,
       "card": {
         "id": "m",
-        "name": "Moderate EV Card"
+        "name": "Likely Hits"
       },
       "date": "2026-11-20",
       "description": "Jamal Shead (TOR) over 4.5 assists",
@@ -217,7 +778,7 @@
       "bot_tradeable": false,
       "card": {
         "id": "m",
-        "name": "Moderate EV Card"
+        "name": "Likely Hits"
       },
       "date": "2026-11-20",
       "description": "ATL to win vs CHA",
@@ -254,7 +815,7 @@
       "bot_tradeable": false,
       "card": {
         "id": "r",
-        "name": "Random Card"
+        "name": "Random Check"
       },
       "date": "2026-11-20",
       "description": "Sandro Mamukelashvili (LAL) under 4.5 rebounds",
@@ -291,7 +852,7 @@
       "bot_tradeable": false,
       "card": {
         "id": "r",
-        "name": "Random Card"
+        "name": "Random Check"
       },
       "date": "2026-11-20",
       "description": "Kelly Oubre Jr (IND) under 3.5 rebounds",
@@ -328,7 +889,7 @@
       "bot_tradeable": false,
       "card": {
         "id": "r",
-        "name": "Random Card"
+        "name": "Random Check"
       },
       "date": "2026-11-20",
       "description": "Nolan Traore (BKN) under 3.5 rebounds",
@@ -365,7 +926,7 @@
       "bot_tradeable": false,
       "card": {
         "id": "r",
-        "name": "Random Card"
+        "name": "Random Check"
       },
       "date": "2026-11-20",
       "description": "Josh Giddey (CHI) under 6.5 rebounds",
@@ -402,7 +963,7 @@
       "bot_tradeable": false,
       "card": {
         "id": "r",
-        "name": "Random Card"
+        "name": "Random Check"
       },
       "date": "2026-11-20",
       "description": "Jarrett Allen (CLE) under 9.5 rebounds",
@@ -439,7 +1000,7 @@
       "bot_tradeable": false,
       "card": {
         "id": "bf",
-        "name": "Best Record Card"
+        "name": "What Tested Best"
       },
       "date": "2026-11-20",
       "description": "Jamal Shead (TOR) over 4.5 assists",
@@ -476,7 +1037,7 @@
       "bot_tradeable": false,
       "card": {
         "id": "bf",
-        "name": "Best Record Card"
+        "name": "What Tested Best"
       },
       "date": "2026-11-20",
       "description": "Trae Young (WAS) under 10.5 assists",
@@ -513,7 +1074,7 @@
       "bot_tradeable": false,
       "card": {
         "id": "tc8",
-        "name": "CFB Passing Card"
+        "name": "College Football Passing Unders"
       },
       "date": "2026-11-20",
       "description": "Walker Eget (DUKE) under 204.5 passing yards",
@@ -550,7 +1111,7 @@
       "bot_tradeable": false,
       "card": {
         "id": "tc8",
-        "name": "CFB Passing Card"
+        "name": "College Football Passing Unders"
       },
       "date": "2026-11-20",
       "description": "Toa Faavae (UNM) under 107.5 passing yards",
@@ -587,7 +1148,7 @@
       "bot_tradeable": false,
       "card": {
         "id": "tc8",
-        "name": "CFB Passing Card"
+        "name": "College Football Passing Unders"
       },
       "date": "2026-11-20",
       "description": "Jay Kastantin (BGSU) under 186.5 passing yards",
@@ -624,7 +1185,7 @@
       "bot_tradeable": false,
       "card": {
         "id": "tc8",
-        "name": "CFB Passing Card"
+        "name": "College Football Passing Unders"
       },
       "date": "2026-11-20",
       "description": "Jaylen Raynor (ISU) under 178.5 passing yards",
@@ -661,7 +1222,7 @@
       "bot_tradeable": false,
       "card": {
         "id": "tc8",
-        "name": "CFB Passing Card"
+        "name": "College Football Passing Unders"
       },
       "date": "2026-11-20",
       "description": "Dylan Raiola (ORE) under 264.5 passing yards",
@@ -704,17 +1265,17 @@
         "name": "CFB totals UNDER fade (desk signal)"
       },
       "date": "2026-11-20",
-      "description": "Under 48.5 total points \u2014 fade the model's over lean",
+      "description": "Under 49.5 total points \u2014 fade the model's over lean",
       "early_flag": true,
       "early_logged_at_pt": "2026-11-20 06:26:12 PST",
-      "edge_pp": -1.28,
+      "edge_pp": null,
       "fade": true,
       "fade_basis": "Empirical: model CFB over-leans went 15-31 as picks (Nov 5-14 audit); the UNDER fade was 31-15, +29.0% at book odds. Kalshi reprice (Nov 18): 28-12 on 40 exact-line games, ~+33% after fees. In-sample \u2014 unproven live.",
       "faded_side": "over",
       "family": "TOT:CFB",
       "game_date": "2026-11-20",
       "game_id": "2026-11-20-NCAAF-UCF-ISU",
-      "line": 48.5,
+      "line": 49.5,
       "line_odds": "-115",
       "market": "total",
       "market_prob": 0.5108,
@@ -723,7 +1284,7 @@
         "novig": null,
         "polymarket": null
       },
-      "model_prob": 0.498,
+      "model_prob": null,
       "model_version": "FULL_SLATE v2",
       "opponent": "UCF",
       "pick_id": "2026-11-20-CTF01",
@@ -824,6 +1385,49 @@
       "value_pct": null
     },
     {
+      "book_over_odds": "-118",
+      "book_under_chance": 48.3,
+      "book_under_odds": "-102",
+      "bot_tradeable": true,
+      "card": {
+        "id": "cfb_totals_fade",
+        "name": "CFB totals UNDER fade (desk signal)"
+      },
+      "date": "2026-11-20",
+      "description": "Under 43.5 total points \u2014 fade the model's over lean",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 06:26:12 PST",
+      "edge_pp": null,
+      "fade": true,
+      "fade_basis": "Empirical: model CFB over-leans went 15-31 as picks (Nov 5-14 audit); the UNDER fade was 31-15, +29.0% at book odds. Kalshi reprice (Nov 18): 28-12 on 40 exact-line games, ~+33% after fees. In-sample \u2014 unproven live.",
+      "faded_side": "over",
+      "family": "TOT:CFB",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NCAAF-MSU-ORE",
+      "line": 43.5,
+      "line_odds": "-102",
+      "market": "total",
+      "market_prob": 0.4826,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": null,
+      "model_version": "FULL_SLATE v2",
+      "opponent": "MSU",
+      "pick_id": "2026-11-20-CTF04",
+      "player": null,
+      "selected_at_pt": "2026-11-20 06:26:12 PST",
+      "side": "under",
+      "sport": "CFB",
+      "start_time_pt": "2026-11-20 17:00 PT",
+      "status": "pregame",
+      "team": "ORE",
+      "type": "total",
+      "value_pct": null
+    },
+    {
       "book_over_odds": "-110",
       "book_under_chance": 50.0,
       "book_under_odds": "-110",
@@ -855,7 +1459,7 @@
       "model_prob": 0.485,
       "model_version": "FULL_SLATE v2",
       "opponent": "WYO",
-      "pick_id": "2026-11-20-CTF04",
+      "pick_id": "2026-11-20-CTF05",
       "player": null,
       "selected_at_pt": "2026-11-20 06:26:12 PST",
       "side": "under",
@@ -876,17 +1480,17 @@
         "name": "Best Findings (bot card)"
       },
       "date": "2026-11-20",
-      "description": "Under 48.5 total points \u2014 fade the model's over lean",
+      "description": "Under 49.5 total points \u2014 fade the model's over lean",
       "early_flag": true,
       "early_logged_at_pt": "2026-11-20 06:26:12 PST",
-      "edge_pp": -1.28,
+      "edge_pp": null,
       "fade": true,
       "fade_basis": "Empirical: model CFB over-leans went 15-31 as picks (Nov 5-14 audit); the UNDER fade was 31-15, +29.0% at book odds. Kalshi reprice (Nov 18): 28-12 on 40 exact-line games, ~+33% after fees. In-sample \u2014 unproven live.",
       "faded_side": "over",
       "family": "TOT:CFB",
       "game_date": "2026-11-20",
       "game_id": "2026-11-20-NCAAF-UCF-ISU",
-      "line": 48.5,
+      "line": 49.5,
       "line_odds": "-115",
       "market": "total",
       "market_prob": 0.5108,
@@ -895,7 +1499,7 @@
         "novig": null,
         "polymarket": null
       },
-      "model_prob": 0.498,
+      "model_prob": null,
       "model_version": "FULL_SLATE v2",
       "opponent": "UCF",
       "pick_id": "2026-11-20-CTF01",
@@ -999,6 +1603,50 @@
       "value_pct": null
     },
     {
+      "book_over_odds": "-118",
+      "book_under_chance": 48.3,
+      "book_under_odds": "-102",
+      "bot_tradeable": true,
+      "card": {
+        "id": "best_findings",
+        "name": "Best Findings (bot card)"
+      },
+      "date": "2026-11-20",
+      "description": "Under 43.5 total points \u2014 fade the model's over lean",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 06:26:12 PST",
+      "edge_pp": null,
+      "fade": true,
+      "fade_basis": "Empirical: model CFB over-leans went 15-31 as picks (Nov 5-14 audit); the UNDER fade was 31-15, +29.0% at book odds. Kalshi reprice (Nov 18): 28-12 on 40 exact-line games, ~+33% after fees. In-sample \u2014 unproven live.",
+      "faded_side": "over",
+      "family": "TOT:CFB",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NCAAF-MSU-ORE",
+      "line": 43.5,
+      "line_odds": "-102",
+      "market": "total",
+      "market_prob": 0.4826,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": null,
+      "model_version": "FULL_SLATE v2",
+      "opponent": "MSU",
+      "pick_id": "2026-11-20-CTF04",
+      "player": null,
+      "selected_at_pt": "2026-11-20 06:26:12 PST",
+      "side": "under",
+      "source_component": "cfb_totals_fade",
+      "sport": "CFB",
+      "start_time_pt": "2026-11-20 17:00 PT",
+      "status": "pregame",
+      "team": "ORE",
+      "type": "total",
+      "value_pct": null
+    },
+    {
       "book_over_odds": "-110",
       "book_under_chance": 50.0,
       "book_under_odds": "-110",
@@ -1030,7 +1678,7 @@
       "model_prob": 0.485,
       "model_version": "FULL_SLATE v2",
       "opponent": "WYO",
-      "pick_id": "2026-11-20-CTF04",
+      "pick_id": "2026-11-20-CTF05",
       "player": null,
       "selected_at_pt": "2026-11-20 06:26:12 PST",
       "side": "under",
@@ -1041,6 +1689,456 @@
       "team": "UNM",
       "type": "total",
       "value_pct": null
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "best_findings",
+        "name": "Best Findings (bot card)"
+      },
+      "date": "2026-11-20",
+      "description": "Scottie Barnes (TOR) over 1.5 3-pointers \u2014 next man up (RJ Barrett out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:44:24 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": 2.31,
+      "family": "NBA:3-pointers",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-DET-TOR",
+      "line": 1.5,
+      "line_odds": "230",
+      "market": "3-pointers",
+      "market_prob": 0.303,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.3261,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 2,
+          "player": "RJ Barrett"
+        }
+      ],
+      "opponent": "DET",
+      "pick_id": "20261120-NMU-TOR-scottie-barnes-3-pointers",
+      "player": "Scottie Barnes",
+      "selected_at_pt": "2026-11-20 07:44:24 PST",
+      "side": "over",
+      "source_component": "nmu",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 16:30 PT",
+      "status": "pregame",
+      "team": "TOR",
+      "type": "prop",
+      "value_pct": 7.62
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "best_findings",
+        "name": "Best Findings (bot card)"
+      },
+      "date": "2026-11-20",
+      "description": "James Harden (CLE) over 2.5 3-pointers \u2014 next man up (Evan Mobley out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:44:24 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -2.4,
+      "family": "NBA:3-pointers",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-CLE-IND",
+      "line": 2.5,
+      "line_odds": "104",
+      "market": "3-pointers",
+      "market_prob": 0.4902,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.4662,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 5,
+          "player": "Evan Mobley"
+        }
+      ],
+      "opponent": "IND",
+      "pick_id": "20261120-NMU-CLE-james-harden-3-pointers",
+      "player": "James Harden",
+      "selected_at_pt": "2026-11-20 07:44:24 PST",
+      "side": "over",
+      "source_component": "nmu",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 16:30 PT",
+      "status": "pregame",
+      "team": "CLE",
+      "type": "prop",
+      "value_pct": -4.9
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "best_findings",
+        "name": "Best Findings (bot card)"
+      },
+      "date": "2026-11-20",
+      "description": "John Collins (DET) over 1.5 3-pointers \u2014 next man up (Duncan Robinson out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:44:24 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -2.59,
+      "family": "NBA:3-pointers",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-DET-TOR",
+      "line": 1.5,
+      "line_odds": "124",
+      "market": "3-pointers",
+      "market_prob": 0.4464,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.4205,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 3,
+          "player": "Duncan Robinson"
+        }
+      ],
+      "opponent": "TOR",
+      "pick_id": "20261120-NMU-DET-john-collins-3-pointers",
+      "player": "John Collins",
+      "selected_at_pt": "2026-11-20 07:44:24 PST",
+      "side": "over",
+      "source_component": "nmu",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 16:30 PT",
+      "status": "pregame",
+      "team": "DET",
+      "type": "prop",
+      "value_pct": -5.8
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "best_findings",
+        "name": "Best Findings (bot card)"
+      },
+      "date": "2026-11-20",
+      "description": "Matisse Thybulle (LAL) over 1.5 3-pointers \u2014 next man up (Austin Reaves out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:44:24 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -4.11,
+      "family": "NBA:3-pointers",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-LAL-SAC",
+      "line": 1.5,
+      "line_odds": "102",
+      "market": "3-pointers",
+      "market_prob": 0.495,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.4539,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 4,
+          "player": "Austin Reaves"
+        }
+      ],
+      "opponent": "SAC",
+      "pick_id": "20261120-NMU-LAL-matisse-thybulle-3-pointers",
+      "player": "Matisse Thybulle",
+      "selected_at_pt": "2026-11-20 07:44:24 PST",
+      "side": "over",
+      "source_component": "nmu",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 19:00 PT",
+      "status": "pregame",
+      "team": "LAL",
+      "type": "prop",
+      "value_pct": -8.3
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "best_findings",
+        "name": "Best Findings (bot card)"
+      },
+      "date": "2026-11-20",
+      "description": "Matisse Thybulle (LAL) over 2.5 rebounds \u2014 next man up (Austin Reaves out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:44:24 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -6.56,
+      "family": "NBA:rebounds",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-LAL-SAC",
+      "line": 2.5,
+      "line_odds": "108",
+      "market": "rebounds",
+      "market_prob": 0.4808,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.4152,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 4,
+          "player": "Austin Reaves"
+        }
+      ],
+      "opponent": "SAC",
+      "pick_id": "20261120-NMU-LAL-matisse-thybulle-rebounds",
+      "player": "Matisse Thybulle",
+      "selected_at_pt": "2026-11-20 07:44:24 PST",
+      "side": "over",
+      "source_component": "nmu",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 19:00 PT",
+      "status": "pregame",
+      "team": "LAL",
+      "type": "prop",
+      "value_pct": -13.64
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "best_findings",
+        "name": "Best Findings (bot card)"
+      },
+      "date": "2026-11-20",
+      "description": "Ausar Thompson (DET) over 11.5 points \u2014 next man up (Duncan Robinson out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:44:24 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -6.77,
+      "family": "NBA:points",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-DET-TOR",
+      "line": 11.5,
+      "line_odds": "102",
+      "market": "points",
+      "market_prob": 0.495,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.4273,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 3,
+          "player": "Duncan Robinson"
+        }
+      ],
+      "opponent": "TOR",
+      "pick_id": "20261120-NMU-DET-ausar-thompson-points",
+      "player": "Ausar Thompson",
+      "selected_at_pt": "2026-11-20 07:44:24 PST",
+      "side": "over",
+      "source_component": "nmu",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 16:30 PT",
+      "status": "pregame",
+      "team": "DET",
+      "type": "prop",
+      "value_pct": -13.68
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "best_findings",
+        "name": "Best Findings (bot card)"
+      },
+      "date": "2026-11-20",
+      "description": "Scottie Barnes (TOR) over 7.5 rebounds \u2014 next man up (RJ Barrett out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:44:24 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -7.24,
+      "family": "NBA:rebounds",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-DET-TOR",
+      "line": 7.5,
+      "line_odds": "102",
+      "market": "rebounds",
+      "market_prob": 0.495,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.4226,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 2,
+          "player": "RJ Barrett"
+        }
+      ],
+      "opponent": "DET",
+      "pick_id": "20261120-NMU-TOR-scottie-barnes-rebounds",
+      "player": "Scottie Barnes",
+      "selected_at_pt": "2026-11-20 07:44:24 PST",
+      "side": "over",
+      "source_component": "nmu",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 16:30 PT",
+      "status": "pregame",
+      "team": "TOR",
+      "type": "prop",
+      "value_pct": -14.63
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "best_findings",
+        "name": "Best Findings (bot card)"
+      },
+      "date": "2026-11-20",
+      "description": "James Harden (CLE) over 5.5 rebounds \u2014 next man up (Evan Mobley out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:44:24 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -8.65,
+      "family": "NBA:rebounds",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-CLE-IND",
+      "line": 5.5,
+      "line_odds": "118",
+      "market": "rebounds",
+      "market_prob": 0.4587,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.3722,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 5,
+          "player": "Evan Mobley"
+        }
+      ],
+      "opponent": "IND",
+      "pick_id": "20261120-NMU-CLE-james-harden-rebounds",
+      "player": "James Harden",
+      "selected_at_pt": "2026-11-20 07:44:24 PST",
+      "side": "over",
+      "source_component": "nmu",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 16:30 PT",
+      "status": "pregame",
+      "team": "CLE",
+      "type": "prop",
+      "value_pct": -18.86
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "best_findings",
+        "name": "Best Findings (bot card)"
+      },
+      "date": "2026-11-20",
+      "description": "Ziaire Williams (LAL) over 2.5 rebounds \u2014 next man up (Austin Reaves out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:44:24 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -9.23,
+      "family": "NBA:rebounds",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-LAL-SAC",
+      "line": 2.5,
+      "line_odds": "108",
+      "market": "rebounds",
+      "market_prob": 0.4808,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.3885,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 4,
+          "player": "Austin Reaves"
+        }
+      ],
+      "opponent": "SAC",
+      "pick_id": "20261120-NMU-LAL-ziaire-williams-rebounds",
+      "player": "Ziaire Williams",
+      "selected_at_pt": "2026-11-20 07:44:24 PST",
+      "side": "over",
+      "source_component": "nmu",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 19:00 PT",
+      "status": "pregame",
+      "team": "LAL",
+      "type": "prop",
+      "value_pct": -19.2
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "best_findings",
+        "name": "Best Findings (bot card)"
+      },
+      "date": "2026-11-20",
+      "description": "Luka Doncic (LAL) over 8.5 assists \u2014 next man up (Austin Reaves out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-20 07:44:24 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -13.25,
+      "family": "NBA:assists",
+      "game_date": "2026-11-20",
+      "game_id": "2026-11-20-NBA-LAL-SAC",
+      "line": 8.5,
+      "line_odds": "110",
+      "market": "assists",
+      "market_prob": 0.4762,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.3437,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 4,
+          "player": "Austin Reaves"
+        }
+      ],
+      "opponent": "SAC",
+      "pick_id": "20261120-NMU-LAL-luka-doncic-assists",
+      "player": "Luka Doncic",
+      "selected_at_pt": "2026-11-20 07:44:24 PST",
+      "side": "over",
+      "source_component": "nmu",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-20 19:00 PT",
+      "status": "pregame",
+      "team": "LAL",
+      "type": "prop",
+      "value_pct": -27.82
     },
     {
       "bot_tradeable": true,
