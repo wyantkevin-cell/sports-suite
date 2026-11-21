@@ -50,10 +50,16 @@
       "id": "tc8",
       "n_signals": 5,
       "name": "College Football Passing Unders"
+    },
+    {
+      "description": "NBA starter overs at plus money when a high-usage teammate is out. Backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp \u2014 the edge is the role change, not the model number. 1-contract live test from Nov 19.",
+      "id": "nmu",
+      "n_signals": 7,
+      "name": "Next-man-up starter overs"
     }
   ],
   "date": "2026-11-21",
-  "generated_at_pt": "2026-11-21 07:41:45 PST",
+  "generated_at_pt": "2026-11-21 07:45:38 PST",
   "holds": {
     "b2b_fade": {
       "held": true,
@@ -2886,6 +2892,318 @@
       "team": "USU",
       "type": "total",
       "value_pct": null
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "nmu",
+        "name": "Next-man-up starter overs"
+      },
+      "date": "2026-11-21",
+      "description": "Jaylen Wells (MEM) over 3.5 rebounds \u2014 next man up (Ty Jerome, Cameron Boozer out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-21 07:44:38 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -4.07,
+      "family": "NBA:rebounds",
+      "game_date": "2026-11-21",
+      "game_id": "2026-11-21-NBA-MIN-MEM",
+      "line": 3.5,
+      "line_odds": "130",
+      "market": "rebounds",
+      "market_prob": 0.4348,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.3941,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 5,
+          "player": "Ty Jerome"
+        },
+        {
+          "absence_no": 1,
+          "player": "Cameron Boozer"
+        }
+      ],
+      "opponent": "MIN",
+      "pick_id": "20261121-NMU-MEM-jaylen-wells-rebounds",
+      "player": "Jaylen Wells",
+      "selected_at_pt": "2026-11-21 07:44:38 PST",
+      "side": "over",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-21 17:00 PT",
+      "status": "pregame",
+      "team": "MEM",
+      "type": "prop",
+      "value_pct": -9.36
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "nmu",
+        "name": "Next-man-up starter overs"
+      },
+      "date": "2026-11-21",
+      "description": "Victor Wembanyama (SAS) over 3.5 assists \u2014 next man up (Dylan Harper out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-21 07:44:38 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -4.93,
+      "family": "NBA:assists",
+      "game_date": "2026-11-21",
+      "game_id": "2026-11-21-NBA-SAS-NOP",
+      "line": 3.5,
+      "line_odds": "108",
+      "market": "assists",
+      "market_prob": 0.4808,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.4315,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 2,
+          "player": "Dylan Harper"
+        }
+      ],
+      "opponent": "NOP",
+      "pick_id": "20261121-NMU-SAS-victor-wembanyama-assists",
+      "player": "Victor Wembanyama",
+      "selected_at_pt": "2026-11-21 07:44:38 PST",
+      "side": "over",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-21 17:00 PT",
+      "status": "pregame",
+      "team": "SAS",
+      "type": "prop",
+      "value_pct": -10.25
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "nmu",
+        "name": "Next-man-up starter overs"
+      },
+      "date": "2026-11-21",
+      "description": "Lebron James (PHI) over 7.5 assists \u2014 next man up (Jaylen Brown out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-21 07:44:38 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -4.9,
+      "family": "NBA:assists",
+      "game_date": "2026-11-21",
+      "game_id": "2026-11-21-NBA-PHI-MIL",
+      "line": 7.5,
+      "line_odds": "122",
+      "market": "assists",
+      "market_prob": 0.4505,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.4015,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 2,
+          "player": "Jaylen Brown"
+        }
+      ],
+      "opponent": "MIL",
+      "pick_id": "20261121-NMU-PHI-lebron-james-assists",
+      "player": "Lebron James",
+      "selected_at_pt": "2026-11-21 07:44:38 PST",
+      "side": "over",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-21 10:00 PT",
+      "status": "pregame",
+      "team": "PHI",
+      "type": "prop",
+      "value_pct": -10.88
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "nmu",
+        "name": "Next-man-up starter overs"
+      },
+      "date": "2026-11-21",
+      "description": "Stephon Castle (SAS) over 5.5 rebounds \u2014 next man up (Dylan Harper out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-21 07:44:38 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -6.33,
+      "family": "NBA:rebounds",
+      "game_date": "2026-11-21",
+      "game_id": "2026-11-21-NBA-SAS-NOP",
+      "line": 5.5,
+      "line_odds": "116",
+      "market": "rebounds",
+      "market_prob": 0.463,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.3997,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 2,
+          "player": "Dylan Harper"
+        }
+      ],
+      "opponent": "NOP",
+      "pick_id": "20261121-NMU-SAS-stephon-castle-rebounds",
+      "player": "Stephon Castle",
+      "selected_at_pt": "2026-11-21 07:44:38 PST",
+      "side": "over",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-21 17:00 PT",
+      "status": "pregame",
+      "team": "SAS",
+      "type": "prop",
+      "value_pct": -13.67
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "nmu",
+        "name": "Next-man-up starter overs"
+      },
+      "date": "2026-11-21",
+      "description": "Vj Edgecombe (PHI) over 6.5 rebounds \u2014 next man up (Jaylen Brown out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-21 07:44:38 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -7.86,
+      "family": "NBA:rebounds",
+      "game_date": "2026-11-21",
+      "game_id": "2026-11-21-NBA-PHI-MIL",
+      "line": 6.5,
+      "line_odds": "108",
+      "market": "rebounds",
+      "market_prob": 0.4808,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.4022,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 2,
+          "player": "Jaylen Brown"
+        }
+      ],
+      "opponent": "MIL",
+      "pick_id": "20261121-NMU-PHI-vj-edgecombe-rebounds",
+      "player": "Vj Edgecombe",
+      "selected_at_pt": "2026-11-21 07:44:38 PST",
+      "side": "over",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-21 10:00 PT",
+      "status": "pregame",
+      "team": "PHI",
+      "type": "prop",
+      "value_pct": -16.35
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "nmu",
+        "name": "Next-man-up starter overs"
+      },
+      "date": "2026-11-21",
+      "description": "Joel Embiid (PHI) over 8.5 rebounds \u2014 next man up (Jaylen Brown out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-21 07:44:38 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -8.31,
+      "family": "NBA:rebounds",
+      "game_date": "2026-11-21",
+      "game_id": "2026-11-21-NBA-PHI-MIL",
+      "line": 8.5,
+      "line_odds": "102",
+      "market": "rebounds",
+      "market_prob": 0.495,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.4119,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 2,
+          "player": "Jaylen Brown"
+        }
+      ],
+      "opponent": "MIL",
+      "pick_id": "20261121-NMU-PHI-joel-embiid-rebounds",
+      "player": "Joel Embiid",
+      "selected_at_pt": "2026-11-21 07:44:38 PST",
+      "side": "over",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-21 10:00 PT",
+      "status": "pregame",
+      "team": "PHI",
+      "type": "prop",
+      "value_pct": -16.79
+    },
+    {
+      "bot_tradeable": true,
+      "card": {
+        "id": "nmu",
+        "name": "Next-man-up starter overs"
+      },
+      "date": "2026-11-21",
+      "description": "Joel Embiid (PHI) over 4.5 assists \u2014 next man up (Jaylen Brown out)",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-21 07:44:38 PST",
+      "edge_basis": "Empirical: NBA starter overs at plus money when a high-usage teammate is out \u2014 backtest n=160, +28.4% ROI, 57.5% hit (Nov 6-17). The model under-projects these by ~15pp; the edge is the role change, not the model number (value_pct is negative by design).",
+      "edge_pp": -10.57,
+      "family": "NBA:assists",
+      "game_date": "2026-11-21",
+      "game_id": "2026-11-21-NBA-PHI-MIL",
+      "line": 4.5,
+      "line_odds": "134",
+      "market": "assists",
+      "market_prob": 0.4274,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.3217,
+      "model_version": "FULL_SLATE v2",
+      "nmu_out_players": [
+        {
+          "absence_no": 2,
+          "player": "Jaylen Brown"
+        }
+      ],
+      "opponent": "MIL",
+      "pick_id": "20261121-NMU-PHI-joel-embiid-assists",
+      "player": "Joel Embiid",
+      "selected_at_pt": "2026-11-21 07:44:38 PST",
+      "side": "over",
+      "sport": "NBA",
+      "start_time_pt": "2026-11-21 10:00 PT",
+      "status": "pregame",
+      "team": "PHI",
+      "type": "prop",
+      "value_pct": -24.73
     }
   ],
   "version": "1.4"
