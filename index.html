@@ -331,6 +331,14 @@ table.mini th:first-child,table.mini td:first-child{text-align:left}
 table.mini th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
 table.mini td{font-family:var(--mono)}
 table.mini td:first-child{font-family:var(--sans);font-weight:600}
+/* Per-game betting-splits table inside each forecast tile: three rows
+   (spread / moneyline / total) with bets % and money % per side.
+   Compact: smaller type and padding than the default mini table, and
+   the money-majority side is bolded. */
+table.mini.splits-table{margin-top:10px;font-size:13px}
+table.mini.splits-table caption{text-align:left;font-size:12px;font-weight:700;color:var(--muted);padding-bottom:2px}
+table.mini.splits-table th,table.mini.splits-table td{padding:5px 6px}
+table.mini.splits-table td b{color:var(--accent)}
 /* Season table on phones: 7 columns cannot fit 390px, so each row
    becomes a card — the team name is the title, every other cell
    stacks under a small label (data-label on the td). Desktop keeps
@@ -3671,11 +3679,13 @@ function headlinePickFor(f, league){
   }
   return {pick:pick,pct:pct,split:!!(a&&a.pick!==f.pick),close:pct<=56,modelA:a,shelved:mlPickShelved(league, pick, f, a)};
 }
-/* Betting splits (Playbook morning snapshot): one placeholder div
-   per forecast row, filled in by fillSplitsLines() once
-   splits_feed.json loads. Empty until then — an empty div has no
-   height, so a missing or late feed changes nothing visually. The
-   key matches the feed's site codes and "Nov 19" date form. */
+/* Betting splits (Playbook afternoon snapshot, fetched 3pm PT): one
+   placeholder div per forecast row, filled in by fillSplitsLines() once
+   splits_feed.json loads. The fill renders a small per-game table
+   (spread / moneyline / total, bets % and money % per side) inside the
+   same tile. Empty until then — an empty div has no height, so a
+   missing or late feed changes nothing visually. The key matches the
+   feed's site codes and "Nov 20" date form. */
 var SPLITS_LEAGUE={"nfl":"NFL","nba":"NBA","nhl":"NHL","cfb":"NCAAF","cbb":"NCAAB"};
 function splitsPlaceholderHtml(f,league){
   var lg=SPLITS_LEAGUE[String(league||"").toLowerCase()];
@@ -4076,14 +4086,7 @@ function renderGames(){
    The feed is optional: when it fails to load, the placeholder
    divs stay empty and the rows render exactly as before. */
 var splitsFeedMap=null, splitsFeedStamp="";
-function splitsLineHtml(g, league){
-  var m=(league==="NHL")?g.moneyline:g.spread;
-  if(!m) return "";
-  var label=(league==="NHL")?"moneyline":"spread";
-  var betsSide=m.betsHome>=m.betsAway?g.home:g.away;
-  var betsPct=Math.max(m.betsHome,m.betsAway);
-  var moneySide=m.moneyHome>=m.moneyAway?g.home:g.away;
-  var moneyPct=Math.max(m.moneyHome,m.moneyAway);
+function splitsTableHtml(g, league){
   var stampTxt="";
   if(splitsFeedStamp){
     var parts=splitsFeedStamp.split(" ");
@@ -4092,11 +4095,28 @@ function splitsLineHtml(g, league){
     if(!isNaN(h)){
       var ap=h>=12?"pm":"am";
       h=h%12; if(h===0) h=12;
-      stampTxt=", as of "+h+":"+(hm[1]||"00")+ap;
+      stampTxt="as of "+h+":"+(hm[1]||"00")+ap;
     }
   }
-  var tip="Where the public\u2019s bets and money sit on the "+label+", from the latest snapshot"+(splitsFeedStamp?" ("+splitsFeedStamp+")":"")+". When most bets are on one side but most money is on the other, the big bets disagree with the crowd.";
-  return '<span class="n">Public ('+label+stampTxt+'): '+betsPct+'% of bets on '+esc(betsSide)+', '+moneyPct+'% of money on '+esc(moneySide)+'</span><span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="About the public splits">i</button><span class="tip">'+tip+'</span></span>';
+  function cell(pctBets, pctMoney){
+    var m=pctMoney>=60?"<b>"+pctMoney+"%</b>":pctMoney+"%";
+    return pctBets+"% bets \u00b7 "+m+" money";
+  }
+  function row(label, aBets, aMoney, bBets, bMoney){
+    return "<tr><td>"+label+"</td><td>"+cell(aBets,aMoney)+"</td><td>"+cell(bBets,bMoney)+"</td></tr>";
+  }
+  var rows="";
+  if(league==="NHL"){
+    if(g.moneyline) rows+=row("Moneyline", g.moneyline.betsAway, g.moneyline.moneyAway, g.moneyline.betsHome, g.moneyline.moneyHome);
+    if(g.spread) rows+=row("Spread", g.spread.betsAway, g.spread.moneyAway, g.spread.betsHome, g.spread.moneyHome);
+  } else {
+    if(g.spread) rows+=row("Spread", g.spread.betsAway, g.spread.moneyAway, g.spread.betsHome, g.spread.moneyHome);
+    if(g.moneyline) rows+=row("Moneyline", g.moneyline.betsAway, g.moneyline.moneyAway, g.moneyline.betsHome, g.moneyline.moneyHome);
+  }
+  if(g.total) rows+="<tr><td>Total</td><td>Over "+cell(g.total.betsOver,g.total.moneyOver)+"</td><td>Under "+cell(g.total.betsUnder,g.total.moneyUnder)+"</td></tr>";
+  if(!rows) return "";
+  var tip="Where the public\u2019s bets and money sit, from the latest snapshot"+(splitsFeedStamp?" ("+splitsFeedStamp+")":"")+". When most bets are on one side but most money is on the other, the big bets disagree with the crowd.";
+  return '<table class="mini splits-table"><caption>Public splits'+(stampTxt?" \u00b7 "+stampTxt:"")+'<span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="About the public splits">i</button><span class="tip">'+tip+'</span></span></caption><thead><tr><th></th><th>'+esc(g.away)+'</th><th>'+esc(g.home)+'</th></tr></thead><tbody>'+rows+'</tbody></table>';
 }
 function fillSplitsLines(){
   if(!splitsFeedMap) return;
@@ -4107,7 +4127,7 @@ function fillSplitsLines(){
     var g=splitsFeedMap[el.getAttribute("data-splits")];
     if(!g) continue;
     var lg=el.getAttribute("data-splits").split("|")[0];
-    var html=splitsLineHtml(g, lg);
+    var html=splitsTableHtml(g, lg);
     if(!html) continue;
     el.innerHTML=html;
     el.setAttribute("data-splits-filled","1");
