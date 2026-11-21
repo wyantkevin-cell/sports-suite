@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-20",
-  "generated_at_pt": "2026-11-20 14:42:57 PST",
+  "date": "2026-11-21",
+  "generated_at_pt": "2026-11-21 07:36:02 PST",
   "name": "Sim Says bot API \u2014 per-card records",
   "note": "Live-graded straights only, $100 flat per bet. Voids are excluded from W-L and P&L. No backtest is blended in. None of these cards is proven \u2014 the record decides.",
   "records": [
@@ -10,15 +10,15 @@
         "name": "What We Found"
       },
       "description": "Our five best findings in one card: CFB totals unders, CFB passing unders, CFB rushing yards, next-man-up starter overs, and NBA underdog fades. The card we post to X each day.",
-      "losses": 4,
-      "n": 6,
-      "profit": -182.28,
+      "losses": 7,
+      "n": 15,
+      "profit": 48.15,
       "pushes": 0,
       "record_start": null,
-      "roi_pct": -30.4,
+      "roi_pct": 3.2,
       "stake_per_bet_usd": 100,
       "voids": null,
-      "wins": 2
+      "wins": 8
     },
     {
       "card": {
@@ -26,15 +26,15 @@
         "name": "Likely Hits"
       },
       "description": "Picks with a moderate edge over the book \u2014 no more than 20% \u2014 ranked by how likely they are to hit. Up to 5 a day.",
-      "losses": 12,
-      "n": 39,
-      "profit": 14.81,
+      "losses": 14,
+      "n": 44,
+      "profit": -30.59,
       "pushes": 0,
       "record_start": "2026-11-09",
-      "roi_pct": 0.4,
+      "roi_pct": -0.7,
       "stake_per_bet_usd": 100,
       "voids": 1,
-      "wins": 27
+      "wins": 30
     },
     {
       "card": {
@@ -42,15 +42,15 @@
         "name": "Random Check"
       },
       "description": "Five picks drawn at random from the board each day, as a check \u2014 if random beats a method, the method is not doing anything.",
-      "losses": 14,
-      "n": 36,
-      "profit": 167.26,
+      "losses": 16,
+      "n": 41,
+      "profit": 230.82,
       "pushes": 0,
       "record_start": "2026-11-09",
-      "roi_pct": 4.6,
+      "roi_pct": 5.6,
       "stake_per_bet_usd": 100,
       "voids": 2,
-      "wins": 22
+      "wins": 25
     },
     {
       "card": {
@@ -58,15 +58,15 @@
         "name": "What Tested Best"
       },
       "description": "Only our two best-tested pick types: college basketball moneylines and NBA assists, where our number and the book's number are close. Up to 5 a day.",
-      "losses": 13,
-      "n": 32,
-      "profit": -433.87,
+      "losses": 14,
+      "n": 34,
+      "profit": -468.93,
       "pushes": 0,
       "record_start": "2026-11-11",
-      "roi_pct": -13.6,
+      "roi_pct": -13.8,
       "stake_per_bet_usd": 100,
       "voids": 1,
-      "wins": 19
+      "wins": 20
     },
     {
       "card": {
@@ -75,31 +75,14 @@
       },
       "description": "Under bets on college football passing yards, chosen where our model leans furthest over the book's number. Up to 5 a day, one pick per game.",
       "losses": 1,
-      "n": 2,
-      "profit": -12.28,
+      "n": 5,
+      "profit": 250.88,
       "pushes": 0,
       "record_start": null,
-      "roi_pct": -6.1,
+      "roi_pct": 50.2,
       "stake_per_bet_usd": 100,
       "voids": null,
-      "wins": 1
-    },
-    {
-      "card": {
-        "id": "gold_fades",
-        "name": "Test Card 7 \u2014 NBA dog fades"
-      },
-      "description": "Fade the NBA underdog golds: when Model A's >=3c side is the underdog, the favorite is the pick. NBA underdog golds are 3-19 \u2014 the edge is that record, not the model's number.",
-      "losses": 14,
-      "n": 25,
-      "note": "Fades grade inside Test Card 7 \u2014 this is the shared Test Card 7 record, not a fade-only tally.",
-      "profit": -820.8,
-      "pushes": 0,
-      "record_start": "2026-11-15",
-      "roi_pct": -32.8,
-      "stake_per_bet_usd": 100,
-      "voids": 0,
-      "wins": 11
+      "wins": 4
     }
   ],
   "version": "1.4"
