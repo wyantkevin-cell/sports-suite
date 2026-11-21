@@ -4065,14 +4065,16 @@ function renderGames(){
   }).join("");
   try{fillSplitsLines();}catch(e){}
 }
-/* Betting splits display (Playbook free tier, morning snapshot).
+/* Betting splits display (Playbook free tier, snapshot).
    splits_feed.json carries one row per game: spread / moneyline /
    total bet % and money %. Each forecast row shows the spread
    splits, except hockey, which shows the moneyline splits (the
-   puck-line market is thin). Plain language only — no "RLM",
-   "ATS", or "sharp" wording. The feed is optional: when it fails
-   to load, the placeholder divs stay empty and the rows render
-   exactly as before. */
+   puck-line market is thin). The visible line names the market
+   ("Public (spread)" / "Public (moneyline)") and the snapshot
+   time, so the market and the freshness are never ambiguous.
+   Plain language only — no "RLM", "ATS", or "sharp" wording.
+   The feed is optional: when it fails to load, the placeholder
+   divs stay empty and the rows render exactly as before. */
 var splitsFeedMap=null, splitsFeedStamp="";
 function splitsLineHtml(g, league){
   var m=(league==="NHL")?g.moneyline:g.spread;
@@ -4082,8 +4084,19 @@ function splitsLineHtml(g, league){
   var betsPct=Math.max(m.betsHome,m.betsAway);
   var moneySide=m.moneyHome>=m.moneyAway?g.home:g.away;
   var moneyPct=Math.max(m.moneyHome,m.moneyAway);
-  var tip="Where the public\u2019s bets and money sit on the "+label+", from this morning\u2019s snapshot"+(splitsFeedStamp?" ("+splitsFeedStamp+")":"")+". When most bets are on one side but most money is on the other, the big bets disagree with the crowd.";
-  return '<span class="n">Public: '+betsPct+'% of bets on '+esc(betsSide)+', '+moneyPct+'% of money on '+esc(moneySide)+'</span><span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="About the public splits">i</button><span class="tip">'+tip+'</span></span>';
+  var stampTxt="";
+  if(splitsFeedStamp){
+    var parts=splitsFeedStamp.split(" ");
+    var hm=(parts[1]||"").split(":");
+    var h=parseInt(hm[0],10);
+    if(!isNaN(h)){
+      var ap=h>=12?"pm":"am";
+      h=h%12; if(h===0) h=12;
+      stampTxt=", as of "+h+":"+(hm[1]||"00")+ap;
+    }
+  }
+  var tip="Where the public\u2019s bets and money sit on the "+label+", from the latest snapshot"+(splitsFeedStamp?" ("+splitsFeedStamp+")":"")+". When most bets are on one side but most money is on the other, the big bets disagree with the crowd.";
+  return '<span class="n">Public ('+label+stampTxt+'): '+betsPct+'% of bets on '+esc(betsSide)+', '+moneyPct+'% of money on '+esc(moneySide)+'</span><span class="info"><button type="button" class="info-btn" aria-expanded="false" aria-label="About the public splits">i</button><span class="tip">'+tip+'</span></span>';
 }
 function fillSplitsLines(){
   if(!splitsFeedMap) return;
