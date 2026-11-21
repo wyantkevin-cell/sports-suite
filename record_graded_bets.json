@@ -14,7 +14,8 @@
     "20261116",
     "20261117",
     "20261118",
-    "20261119"
+    "20261119",
+    "20261120"
   ],
   "game_dates": [
     "2026-11-05",
@@ -31,9 +32,10 @@
     "2026-11-16",
     "2026-11-17",
     "2026-11-18",
-    "2026-11-19"
+    "2026-11-19",
+    "2026-11-20"
   ],
-  "generated_pt": "2026-11-20 07:25:32 PST",
+  "generated_pt": "2026-11-21 07:02:51 PST",
   "name": "Forecast record \u2014 graded bets",
   "notes": [
     "Every graded forecast on the board, grouped by sport then bet type. No dollars, no ROI \u2014 the dollar record stays only on Our Bets.",
@@ -45,6 +47,87 @@
       "groups": [
         {
           "bets": [
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "Atlanta Hawks to win",
+              "line": null,
+              "model_prob": 0.6458,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "Chicago Bulls to win",
+              "line": null,
+              "model_prob": 0.5604,
+              "result": "lost",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "Cleveland Cavaliers to win",
+              "line": null,
+              "model_prob": 0.7154,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "Denver Nuggets to win",
+              "line": null,
+              "model_prob": 0.5765,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "Detroit Pistons to win",
+              "line": null,
+              "model_prob": 0.5246,
+              "result": "lost",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "Los Angeles Lakers to win",
+              "line": null,
+              "model_prob": 0.9077,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "Oklahoma City Thunder to win",
+              "line": null,
+              "model_prob": 0.8449,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "Orlando Magic to win",
+              "line": null,
+              "model_prob": 0.5941,
+              "result": "won",
+              "side": "away"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "Phoenix Suns to win",
+              "line": null,
+              "model_prob": 0.6752,
+              "result": "won",
+              "side": "away"
+            },
             {
               "actual": null,
               "date": "2026-11-19",
@@ -993,13 +1076,85 @@
           ],
           "key": "moneyline",
           "label": "Moneylines",
-          "losses": 34,
-          "n_graded": 105,
+          "losses": 36,
+          "n_graded": 114,
           "pushes": 0,
-          "wins": 71
+          "wins": 78
         },
         {
           "bets": [
+            {
+              "actual": "208",
+              "date": "2026-11-20",
+              "label": "Charlotte Hornets at Atlanta Hawks, total over 218.5",
+              "line": 218.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "257",
+              "date": "2026-11-20",
+              "label": "Houston Rockets at Denver Nuggets, total over 227.5",
+              "line": 227.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "247",
+              "date": "2026-11-20",
+              "label": "Indiana Pacers at Cleveland Cavaliers, total under 234.5",
+              "line": 234.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "246",
+              "date": "2026-11-20",
+              "label": "New Orleans Pelicans at Oklahoma City Thunder, total over 228.5",
+              "line": 228.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "212",
+              "date": "2026-11-20",
+              "label": "Phoenix Suns at Utah Jazz, total over 225.5",
+              "line": 225.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "210",
+              "date": "2026-11-20",
+              "label": "Sacramento Kings at Los Angeles Lakers, total over 228.5",
+              "line": 228.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "207",
+              "date": "2026-11-20",
+              "label": "Toronto Raptors at Detroit Pistons, total over 215.5",
+              "line": 215.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "192",
+              "date": "2026-11-20",
+              "label": "WSH at Chicago Bulls, total over 237.5",
+              "line": 237.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "over"
+            },
             {
               "actual": "224",
               "date": "2026-11-19",
@@ -1813,13 +1968,1048 @@
           ],
           "key": "totals",
           "label": "Totals",
-          "losses": 46,
-          "n_graded": 90,
+          "losses": 52,
+          "n_graded": 98,
           "pushes": 0,
-          "wins": 44
+          "wins": 46
         },
         {
           "bets": [
+            {
+              "actual": "18",
+              "date": "2026-11-20",
+              "label": "Aaron Gordon under 11.5 points",
+              "line": 11.5,
+              "model_prob": 0.5561,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Aaron Nesmith under 13.5 points",
+              "line": 13.5,
+              "model_prob": 0.5952,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "19",
+              "date": "2026-11-20",
+              "label": "Aaron Wiggins over 12.5 points",
+              "line": 12.5,
+              "model_prob": 0.523,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Ace Bailey under 14.5 points",
+              "line": 14.5,
+              "model_prob": 0.5928,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "22",
+              "date": "2026-11-20",
+              "label": "Aday Mara over 10.5 points",
+              "line": 10.5,
+              "model_prob": 0.5307,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "20",
+              "date": "2026-11-20",
+              "label": "Aj Dybantsa under 18.5 points",
+              "line": 18.5,
+              "model_prob": 0.6053,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "8",
+              "date": "2026-11-20",
+              "label": "Ajay Mitchell under 18.5 points",
+              "line": 18.5,
+              "model_prob": 0.5216,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Alex Sarr under 11.5 points",
+              "line": 11.5,
+              "model_prob": 0.5017,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "28",
+              "date": "2026-11-20",
+              "label": "Alperen Sengun under 19.5 points",
+              "line": 19.5,
+              "model_prob": 0.501,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "22",
+              "date": "2026-11-20",
+              "label": "Amen Thompson under 15.5 points",
+              "line": 15.5,
+              "model_prob": 0.56,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "12",
+              "date": "2026-11-20",
+              "label": "Andrew Nembhard under 15.5 points",
+              "line": 15.5,
+              "model_prob": 0.5003,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "13",
+              "date": "2026-11-20",
+              "label": "Anthony Black under 15.5 points",
+              "line": 15.5,
+              "model_prob": 0.51,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "36",
+              "date": "2026-11-20",
+              "label": "Anthony Davis under 24.5 points",
+              "line": 24.5,
+              "model_prob": 0.5357,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "13",
+              "date": "2026-11-20",
+              "label": "Ausar Thompson under 11.5 points",
+              "line": 11.5,
+              "model_prob": 0.5727,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Bilal Coulibaly under 7.5 points",
+              "line": 7.5,
+              "model_prob": 0.6304,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "19",
+              "date": "2026-11-20",
+              "label": "Brandon Miller under 20.5 points",
+              "line": 20.5,
+              "model_prob": 0.5223,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "18",
+              "date": "2026-11-20",
+              "label": "Brice Sensabaugh under 11.5 points",
+              "line": 11.5,
+              "model_prob": 0.5625,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "23",
+              "date": "2026-11-20",
+              "label": "Cade Cunningham under 26.5 points",
+              "line": 26.5,
+              "model_prob": 0.5398,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "19",
+              "date": "2026-11-20",
+              "label": "Cameron Johnson over 10.5 points",
+              "line": 10.5,
+              "model_prob": 0.5101,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "19",
+              "date": "2026-11-20",
+              "label": "Christian Braun over 11.5 points",
+              "line": 11.5,
+              "model_prob": 0.5067,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "11",
+              "date": "2026-11-20",
+              "label": "Coby White under 16.5 points",
+              "line": 16.5,
+              "model_prob": 0.6036,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "16",
+              "date": "2026-11-20",
+              "label": "Collin Gillespie under 10.5 points",
+              "line": 10.5,
+              "model_prob": 0.585,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "10",
+              "date": "2026-11-20",
+              "label": "Collin Sexton under 13.5 points",
+              "line": 13.5,
+              "model_prob": 0.6064,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "14",
+              "date": "2026-11-20",
+              "label": "Daniss Jenkins under 15.5 points",
+              "line": 15.5,
+              "model_prob": 0.559,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "18",
+              "date": "2026-11-20",
+              "label": "Darius Acuff Jr over 23.5 points",
+              "line": 23.5,
+              "model_prob": 0.6435,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "18",
+              "date": "2026-11-20",
+              "label": "Darius Acuff Jr over 24.5 points",
+              "line": 24.5,
+              "model_prob": 0.5665,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "20",
+              "date": "2026-11-20",
+              "label": "Darryn Peterson under 18.5 points",
+              "line": 18.5,
+              "model_prob": 0.5551,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "17",
+              "date": "2026-11-20",
+              "label": "Dayron Sharpe under 8.5 points",
+              "line": 8.5,
+              "model_prob": 0.5387,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "30",
+              "date": "2026-11-20",
+              "label": "Deandre Hunter over 13.5 points",
+              "line": 13.5,
+              "model_prob": 0.5255,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "15",
+              "date": "2026-11-20",
+              "label": "Demar Derozan under 9.5 points",
+              "line": 9.5,
+              "model_prob": 0.5402,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "21",
+              "date": "2026-11-20",
+              "label": "Desmond Bane under 19.5 points",
+              "line": 19.5,
+              "model_prob": 0.5471,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "23",
+              "date": "2026-11-20",
+              "label": "Devin Booker under 26.5 points",
+              "line": 26.5,
+              "model_prob": 0.5604,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "18",
+              "date": "2026-11-20",
+              "label": "Dillon Brooks under 14.5 points",
+              "line": 14.5,
+              "model_prob": 0.5425,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "19",
+              "date": "2026-11-20",
+              "label": "Domantas Sabonis under 12.5 points",
+              "line": 12.5,
+              "model_prob": 0.5402,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "20",
+              "date": "2026-11-20",
+              "label": "Donovan Mitchell under 26.5 points",
+              "line": 26.5,
+              "model_prob": 0.579,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "11",
+              "date": "2026-11-20",
+              "label": "Dyson Daniels under 10.5 points",
+              "line": 10.5,
+              "model_prob": 0.6697,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Egor Demin under 11.5 points",
+              "line": 11.5,
+              "model_prob": 0.5404,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "35",
+              "date": "2026-11-20",
+              "label": "Franz Wagner over 24.5 points",
+              "line": 24.5,
+              "model_prob": 0.518,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "25",
+              "date": "2026-11-20",
+              "label": "Fred Vanvleet over 12.5 points",
+              "line": 12.5,
+              "model_prob": 0.6112,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "14",
+              "date": "2026-11-20",
+              "label": "Herbert Jones under 8.5 points",
+              "line": 8.5,
+              "model_prob": 0.6501,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "18",
+              "date": "2026-11-20",
+              "label": "Immanuel Quickley under 18.5 points",
+              "line": 18.5,
+              "model_prob": 0.5099,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "9",
+              "date": "2026-11-20",
+              "label": "Isaac Okoro under 10.5 points",
+              "line": 10.5,
+              "model_prob": 0.6036,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Isaiah Hartenstein under 9.5 points",
+              "line": 9.5,
+              "model_prob": 0.5912,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "21",
+              "date": "2026-11-20",
+              "label": "Ivica Zubac under 11.5 points",
+              "line": 11.5,
+              "model_prob": 0.5864,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "21",
+              "date": "2026-11-20",
+              "label": "Jabari Smith under 14.5 points",
+              "line": 14.5,
+              "model_prob": 0.5402,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Jake Laravia under 6.5 points",
+              "line": 6.5,
+              "model_prob": 0.5278,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "10",
+              "date": "2026-11-20",
+              "label": "Jakob Poeltl under 11.5 points",
+              "line": 11.5,
+              "model_prob": 0.6009,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "8",
+              "date": "2026-11-20",
+              "label": "Jakobe Walter under 12.5 points",
+              "line": 12.5,
+              "model_prob": 0.5023,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "14",
+              "date": "2026-11-20",
+              "label": "Jalen Green under 15.5 points",
+              "line": 15.5,
+              "model_prob": 0.6448,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "26",
+              "date": "2026-11-20",
+              "label": "Jalen Johnson under 20.5 points",
+              "line": 20.5,
+              "model_prob": 0.5811,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "21",
+              "date": "2026-11-20",
+              "label": "Jalen Smith under 14.5 points",
+              "line": 14.5,
+              "model_prob": 0.568,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "21",
+              "date": "2026-11-20",
+              "label": "Jalen Smith under 15.5 points",
+              "line": 15.5,
+              "model_prob": 0.6184,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "8",
+              "date": "2026-11-20",
+              "label": "Jalen Suggs under 11.5 points",
+              "line": 11.5,
+              "model_prob": 0.5675,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "8",
+              "date": "2026-11-20",
+              "label": "Jalen Suggs under 12.5 points",
+              "line": 12.5,
+              "model_prob": 0.6208,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "14",
+              "date": "2026-11-20",
+              "label": "Jamal Murray over 22.5 points",
+              "line": 22.5,
+              "model_prob": 0.5831,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Jamal Shead over 7.5 points",
+              "line": 7.5,
+              "model_prob": 0.5395,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "51",
+              "date": "2026-11-20",
+              "label": "James Harden under 17.5 points",
+              "line": 17.5,
+              "model_prob": 0.5789,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "10",
+              "date": "2026-11-20",
+              "label": "Jamison Battle under 10.5 points",
+              "line": 10.5,
+              "model_prob": 0.5267,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "18",
+              "date": "2026-11-20",
+              "label": "Jared Mccain under 15.5 points",
+              "line": 15.5,
+              "model_prob": 0.5429,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Jarrett Allen under 14.5 points",
+              "line": 14.5,
+              "model_prob": 0.5804,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "12",
+              "date": "2026-11-20",
+              "label": "Javonte Green over 6.5 points",
+              "line": 6.5,
+              "model_prob": 0.5091,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "18",
+              "date": "2026-11-20",
+              "label": "Jaxson Hayes under 8.5 points",
+              "line": 8.5,
+              "model_prob": 0.5402,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Jaylin Williams under 5.5 points",
+              "line": 5.5,
+              "model_prob": 0.6783,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "22",
+              "date": "2026-11-20",
+              "label": "Jeremiah Fears under 16.5 points",
+              "line": 16.5,
+              "model_prob": 0.5233,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "John Collins under 11.5 points",
+              "line": 11.5,
+              "model_prob": 0.5597,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Josh Giddey under 13.5 points",
+              "line": 13.5,
+              "model_prob": 0.6018,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "8",
+              "date": "2026-11-20",
+              "label": "Josh Green under 5.5 points",
+              "line": 5.5,
+              "model_prob": 0.5322,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "27",
+              "date": "2026-11-20",
+              "label": "Julius Randle under 19.5 points",
+              "line": 19.5,
+              "model_prob": 0.5175,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "13",
+              "date": "2026-11-20",
+              "label": "Keegan Murray under 11.5 points",
+              "line": 11.5,
+              "model_prob": 0.5926,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "17",
+              "date": "2026-11-20",
+              "label": "Kelly Oubre Jr under 12.5 points",
+              "line": 12.5,
+              "model_prob": 0.5351,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Kenrich Williams over 8.5 points",
+              "line": 8.5,
+              "model_prob": 0.5414,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "16",
+              "date": "2026-11-20",
+              "label": "Kevin Durant under 21.5 points",
+              "line": 21.5,
+              "model_prob": 0.6047,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "20",
+              "date": "2026-11-20",
+              "label": "Kevin Huerter under 12.5 points",
+              "line": 12.5,
+              "model_prob": 0.5785,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "14",
+              "date": "2026-11-20",
+              "label": "Keyonte George under 23.5 points",
+              "line": 23.5,
+              "model_prob": 0.6003,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Khris Middleton under 6.5 points",
+              "line": 6.5,
+              "model_prob": 0.5951,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Khris Middleton under 7.5 points",
+              "line": 7.5,
+              "model_prob": 0.6745,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "11",
+              "date": "2026-11-20",
+              "label": "Kyshawn George over 16.5 points",
+              "line": 16.5,
+              "model_prob": 0.5424,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Luguentz Dort over 7.5 points",
+              "line": 7.5,
+              "model_prob": 0.5435,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "25",
+              "date": "2026-11-20",
+              "label": "Luka Doncic over 36.5 points",
+              "line": 36.5,
+              "model_prob": 0.5274,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Malik Monk under 11.5 points",
+              "line": 11.5,
+              "model_prob": 0.6077,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Marcus Smart over 5.5 points",
+              "line": 5.5,
+              "model_prob": 0.5836,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "9",
+              "date": "2026-11-20",
+              "label": "Matas Buzelis under 17.5 points",
+              "line": 17.5,
+              "model_prob": 0.6134,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "14",
+              "date": "2026-11-20",
+              "label": "Matisse Thybulle under 6.5 points",
+              "line": 6.5,
+              "model_prob": 0.5573,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "16",
+              "date": "2026-11-20",
+              "label": "Michael Porter Jr under 20.5 points",
+              "line": 20.5,
+              "model_prob": 0.5575,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "16",
+              "date": "2026-11-20",
+              "label": "Mikel Brown Jr over 10.5 points",
+              "line": 10.5,
+              "model_prob": 0.5321,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "18",
+              "date": "2026-11-20",
+              "label": "Miles Bridges under 14.5 points",
+              "line": 14.5,
+              "model_prob": 0.5742,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Moritz Wagner over 7.5 points",
+              "line": 7.5,
+              "model_prob": 0.642,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "21",
+              "date": "2026-11-20",
+              "label": "Moussa Diabate under 9.5 points",
+              "line": 9.5,
+              "model_prob": 0.6174,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "12",
+              "date": "2026-11-20",
+              "label": "Naz Reid under 18.5 points",
+              "line": 18.5,
+              "model_prob": 0.5827,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "26",
+              "date": "2026-11-20",
+              "label": "Nikola Jokic under 25.5 points",
+              "line": 25.5,
+              "model_prob": 0.5694,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Nolan Traore over 11.5 points",
+              "line": 11.5,
+              "model_prob": 0.6461,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "16",
+              "date": "2026-11-20",
+              "label": "Norman Powell under 23.5 points",
+              "line": 23.5,
+              "model_prob": 0.5862,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "16",
+              "date": "2026-11-20",
+              "label": "Onyeka Okongwu over 14.5 points",
+              "line": 14.5,
+              "model_prob": 0.5989,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Oso Ighodaro under 6.5 points",
+              "line": 6.5,
+              "model_prob": 0.5339,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "21",
+              "date": "2026-11-20",
+              "label": "Pascal Siakam under 23.5 points",
+              "line": 23.5,
+              "model_prob": 0.558,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "8",
+              "date": "2026-11-20",
+              "label": "Paul Reed under 11.5 points",
+              "line": 11.5,
+              "model_prob": 0.5669,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "15",
+              "date": "2026-11-20",
+              "label": "Peyton Watson under 12.5 points",
+              "line": 12.5,
+              "model_prob": 0.569,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "13",
+              "date": "2026-11-20",
+              "label": "Quentin Grimes under 16.5 points",
+              "line": 16.5,
+              "model_prob": 0.5573,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "13",
+              "date": "2026-11-20",
+              "label": "Quentin Grimes under 17.5 points",
+              "line": 17.5,
+              "model_prob": 0.5934,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "21",
+              "date": "2026-11-20",
+              "label": "Saddiq Bey under 16.5 points",
+              "line": 16.5,
+              "model_prob": 0.5028,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "9",
+              "date": "2026-11-20",
+              "label": "Sandro Mamukelashvili under 9.5 points",
+              "line": 9.5,
+              "model_prob": 0.5288,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "29",
+              "date": "2026-11-20",
+              "label": "Scottie Barnes under 23.5 points",
+              "line": 23.5,
+              "model_prob": 0.5007,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "9",
+              "date": "2026-11-20",
+              "label": "Sion James over 6.5 points",
+              "line": 6.5,
+              "model_prob": 0.5038,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Tari Eason under 9.5 points",
+              "line": 9.5,
+              "model_prob": 0.5129,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "16",
+              "date": "2026-11-20",
+              "label": "Trae Young under 18.5 points",
+              "line": 18.5,
+              "model_prob": 0.6013,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "12",
+              "date": "2026-11-20",
+              "label": "Tre Jones under 11.5 points",
+              "line": 11.5,
+              "model_prob": 0.5552,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "17",
+              "date": "2026-11-20",
+              "label": "Trey Murphy Iii over 12.5 points",
+              "line": 12.5,
+              "model_prob": 0.5854,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Tristan Da Silva over 11.5 points",
+              "line": 11.5,
+              "model_prob": 0.6467,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Tyrese Proctor under 11.5 points",
+              "line": 11.5,
+              "model_prob": 0.5376,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "15",
+              "date": "2026-11-20",
+              "label": "Walker Kessler over 13.5 points",
+              "line": 13.5,
+              "model_prob": 0.5363,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "8",
+              "date": "2026-11-20",
+              "label": "Wendell Carter Jr under 12.5 points",
+              "line": 12.5,
+              "model_prob": 0.5319,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Yves Missi under 6.5 points",
+              "line": 6.5,
+              "model_prob": 0.5597,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "19",
+              "date": "2026-11-20",
+              "label": "Zach Lavine under 18.5 points",
+              "line": 18.5,
+              "model_prob": 0.5289,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Ziaire Williams over 7.5 points",
+              "line": 7.5,
+              "model_prob": 0.5571,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "22",
+              "date": "2026-11-20",
+              "label": "Zion Williamson over 19.5 points",
+              "line": 19.5,
+              "model_prob": 0.5967,
+              "result": "won",
+              "side": "over"
+            },
             {
               "actual": "6",
               "date": "2026-11-19",
@@ -11246,13 +12436,940 @@
           ],
           "key": "NBA:points",
           "label": "Points",
-          "losses": 509,
-          "n_graded": 1047,
+          "losses": 561,
+          "n_graded": 1162,
           "pushes": 0,
-          "wins": 538
+          "wins": 601
         },
         {
           "bets": [
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Aaron Gordon under 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.5673,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "10",
+              "date": "2026-11-20",
+              "label": "Aaron Nesmith under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.5791,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Aaron Wiggins under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.5704,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Ace Bailey under 5.5 rebounds",
+              "line": 5.5,
+              "model_prob": 0.5943,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "16",
+              "date": "2026-11-20",
+              "label": "Aday Mara under 7.5 rebounds",
+              "line": 7.5,
+              "model_prob": 0.5856,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "10",
+              "date": "2026-11-20",
+              "label": "Aj Dybantsa under 6.5 rebounds",
+              "line": 6.5,
+              "model_prob": 0.5688,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Ajay Mitchell under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.5677,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Alex Sarr over 6.5 rebounds",
+              "line": 6.5,
+              "model_prob": 0.562,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "11",
+              "date": "2026-11-20",
+              "label": "Alperen Sengun under 9.5 rebounds",
+              "line": 9.5,
+              "model_prob": 0.6002,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Amen Thompson under 7.5 rebounds",
+              "line": 7.5,
+              "model_prob": 0.6257,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Andrew Nembhard under 2.5 rebounds",
+              "line": 2.5,
+              "model_prob": 0.5939,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Anthony Black under 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.5726,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "11",
+              "date": "2026-11-20",
+              "label": "Anthony Davis under 10.5 rebounds",
+              "line": 10.5,
+              "model_prob": 0.5857,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Ausar Thompson over 7.5 rebounds",
+              "line": 7.5,
+              "model_prob": 0.5488,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Bilal Coulibaly under 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.6011,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "8",
+              "date": "2026-11-20",
+              "label": "Brandon Miller under 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.5813,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Brice Sensabaugh over 2.5 rebounds",
+              "line": 2.5,
+              "model_prob": 0.6322,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Cade Cunningham under 5.5 rebounds",
+              "line": 5.5,
+              "model_prob": 0.6112,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Cameron Johnson under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.5889,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Christian Braun under 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.6297,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Coby White under 2.5 rebounds",
+              "line": 2.5,
+              "model_prob": 0.5848,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Collin Gillespie under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.6548,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Daniss Jenkins under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.564,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Darius Acuff Jr under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.5664,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "10",
+              "date": "2026-11-20",
+              "label": "Darryn Peterson under 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.6069,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "11",
+              "date": "2026-11-20",
+              "label": "Dayron Sharpe under 7.5 rebounds",
+              "line": 7.5,
+              "model_prob": 0.5684,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Deandre Hunter over 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.5134,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Desmond Bane under 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.5895,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Devin Booker under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.6386,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Dillon Brooks under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.5353,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "16",
+              "date": "2026-11-20",
+              "label": "Domantas Sabonis under 11.5 rebounds",
+              "line": 11.5,
+              "model_prob": 0.5621,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Donovan Mitchell under 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.5649,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "8",
+              "date": "2026-11-20",
+              "label": "Dyson Daniels under 7.5 rebounds",
+              "line": 7.5,
+              "model_prob": 0.5358,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Egor Demin under 2.5 rebounds",
+              "line": 2.5,
+              "model_prob": 0.5645,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Franz Wagner under 6.5 rebounds",
+              "line": 6.5,
+              "model_prob": 0.5656,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Fred Vanvleet under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.6252,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Herbert Jones under 2.5 rebounds",
+              "line": 2.5,
+              "model_prob": 0.5434,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Immanuel Quickley over 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.508,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Isaac Okoro over 2.5 rebounds",
+              "line": 2.5,
+              "model_prob": 0.5093,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "8",
+              "date": "2026-11-20",
+              "label": "Isaiah Hartenstein under 11.5 rebounds",
+              "line": 11.5,
+              "model_prob": 0.5883,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "10",
+              "date": "2026-11-20",
+              "label": "Ivica Zubac under 9.5 rebounds",
+              "line": 9.5,
+              "model_prob": 0.6103,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Jabari Smith under 6.5 rebounds",
+              "line": 6.5,
+              "model_prob": 0.5661,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Jake Laravia under 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.6069,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "9",
+              "date": "2026-11-20",
+              "label": "Jakob Poeltl under 8.5 rebounds",
+              "line": 8.5,
+              "model_prob": 0.6426,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Jakobe Walter under 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.6028,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Jalen Green over 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.5189,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Jalen Johnson under 9.5 rebounds",
+              "line": 9.5,
+              "model_prob": 0.6205,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Jalen Smith under 8.5 rebounds",
+              "line": 8.5,
+              "model_prob": 0.5858,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Jalen Suggs under 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.5751,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Jamal Murray under 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.5796,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "James Harden under 5.5 rebounds",
+              "line": 5.5,
+              "model_prob": 0.6278,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Jamison Battle under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.6365,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Jared Mccain under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.5767,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "8",
+              "date": "2026-11-20",
+              "label": "Jarrett Allen under 9.5 rebounds",
+              "line": 9.5,
+              "model_prob": 0.5842,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Javonte Green under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.6271,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "14",
+              "date": "2026-11-20",
+              "label": "Jaxson Hayes over 5.5 rebounds",
+              "line": 5.5,
+              "model_prob": 0.5283,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Jaylin Williams under 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.6145,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Jeremiah Fears over 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.5167,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "John Collins under 5.5 rebounds",
+              "line": 5.5,
+              "model_prob": 0.5926,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Josh Giddey under 6.5 rebounds",
+              "line": 6.5,
+              "model_prob": 0.5734,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "9",
+              "date": "2026-11-20",
+              "label": "Julius Randle under 6.5 rebounds",
+              "line": 6.5,
+              "model_prob": 0.6316,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Keegan Murray under 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.5955,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Kelly Oubre Jr under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.5726,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Kenrich Williams under 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.5968,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Kevin Durant under 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.5202,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Kevin Huerter under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.6049,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Keyonte George under 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.6196,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Kyshawn George under 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.5915,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Luguentz Dort over 2.5 rebounds",
+              "line": 2.5,
+              "model_prob": 0.5429,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Luka Doncic under 6.5 rebounds",
+              "line": 6.5,
+              "model_prob": 0.5238,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Matas Buzelis under 5.5 rebounds",
+              "line": 5.5,
+              "model_prob": 0.615,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Matisse Thybulle under 2.5 rebounds",
+              "line": 2.5,
+              "model_prob": 0.5848,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Michael Porter Jr under 7.5 rebounds",
+              "line": 7.5,
+              "model_prob": 0.5942,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Mikel Brown Jr under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.7267,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "9",
+              "date": "2026-11-20",
+              "label": "Miles Bridges under 6.5 rebounds",
+              "line": 6.5,
+              "model_prob": 0.5869,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Moritz Wagner under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.572,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "15",
+              "date": "2026-11-20",
+              "label": "Moussa Diabate under 10.5 rebounds",
+              "line": 10.5,
+              "model_prob": 0.5773,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "10",
+              "date": "2026-11-20",
+              "label": "Naz Reid under 7.5 rebounds",
+              "line": 7.5,
+              "model_prob": 0.5488,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Nikola Jokic under 11.5 rebounds",
+              "line": 11.5,
+              "model_prob": 0.6019,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Nolan Traore under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.7298,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Norman Powell under 2.5 rebounds",
+              "line": 2.5,
+              "model_prob": 0.5653,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Onyeka Okongwu over 7.5 rebounds",
+              "line": 7.5,
+              "model_prob": 0.5699,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Oso Ighodaro under 5.5 rebounds",
+              "line": 5.5,
+              "model_prob": 0.5746,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Pascal Siakam under 6.5 rebounds",
+              "line": 6.5,
+              "model_prob": 0.6243,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Paul Reed under 7.5 rebounds",
+              "line": 7.5,
+              "model_prob": 0.6042,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Peyton Watson under 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.5718,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Quentin Grimes under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.5802,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Saddiq Bey under 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.5096,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "9",
+              "date": "2026-11-20",
+              "label": "Sandro Mamukelashvili under 4.5 rebounds",
+              "line": 4.5,
+              "model_prob": 0.6257,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Scottie Barnes under 7.5 rebounds",
+              "line": 7.5,
+              "model_prob": 0.5774,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Sion James over 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.5864,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Tari Eason under 5.5 rebounds",
+              "line": 5.5,
+              "model_prob": 0.5754,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Trae Young under 2.5 rebounds",
+              "line": 2.5,
+              "model_prob": 0.5943,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Tre Jones under 2.5 rebounds",
+              "line": 2.5,
+              "model_prob": 0.6126,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Trey Murphy Iii over 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.5676,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Tristan Da Silva under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.5079,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Tyrese Proctor under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.5667,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Walker Kessler over 10.5 rebounds",
+              "line": 10.5,
+              "model_prob": 0.5977,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "8",
+              "date": "2026-11-20",
+              "label": "Wendell Carter Jr over 7.5 rebounds",
+              "line": 7.5,
+              "model_prob": 0.544,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Yves Missi under 7.5 rebounds",
+              "line": 7.5,
+              "model_prob": 0.5793,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Zach Lavine under 3.5 rebounds",
+              "line": 3.5,
+              "model_prob": 0.6131,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Ziaire Williams under 2.5 rebounds",
+              "line": 2.5,
+              "model_prob": 0.6115,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Zion Williamson under 5.5 rebounds",
+              "line": 5.5,
+              "model_prob": 0.5005,
+              "result": "lost",
+              "side": "under"
+            },
             {
               "actual": "4",
               "date": "2026-11-19",
@@ -19716,13 +21833,832 @@
           ],
           "key": "NBA:rebounds",
           "label": "Rebounds",
-          "losses": 423,
-          "n_graded": 940,
+          "losses": 473,
+          "n_graded": 1043,
           "pushes": 0,
-          "wins": 517
+          "wins": 570
         },
         {
           "bets": [
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Aaron Gordon under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.6264,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Aaron Nesmith under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.676,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Aaron Wiggins under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.5103,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Ace Bailey over 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5772,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Aj Dybantsa under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.6481,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Ajay Mitchell under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.6547,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Alex Sarr under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5508,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Alperen Sengun over 0.5 3-pointers",
+              "line": 0.5,
+              "model_prob": 0.5698,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Amen Thompson under 0.5 3-pointers",
+              "line": 0.5,
+              "model_prob": 0.6011,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Andrew Nembhard over 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.6267,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Anthony Black over 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5555,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Anthony Davis over 0.5 3-pointers",
+              "line": 0.5,
+              "model_prob": 0.5751,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Bilal Coulibaly over 0.5 3-pointers",
+              "line": 0.5,
+              "model_prob": 0.5122,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Brandon Miller over 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.5235,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Brice Sensabaugh over 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5417,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Cade Cunningham under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.6355,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Cameron Johnson over 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5438,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Christian Braun under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5248,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Coby White under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.6673,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Collin Gillespie under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.57,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Collin Sexton under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5964,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Daniss Jenkins over 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.6717,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Darius Acuff Jr over 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.6063,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Darryn Peterson under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.544,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Deandre Hunter over 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.6164,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Desmond Bane under 3.5 3-pointers",
+              "line": 3.5,
+              "model_prob": 0.5391,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Devin Booker over 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.6481,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Dillon Brooks over 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.6074,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Donovan Mitchell over 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.5298,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Egor Demin under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.5952,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Franz Wagner under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5183,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Fred Vanvleet over 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.5246,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Herbert Jones under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5985,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Immanuel Quickley under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.5079,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Isaac Okoro under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5787,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Jabari Smith under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.5744,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Jake Laravia over 0.5 3-pointers",
+              "line": 0.5,
+              "model_prob": 0.6176,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Jakobe Walter under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.5392,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Jalen Green under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5277,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Jalen Johnson under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.6047,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Jalen Smith over 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.6145,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Jalen Suggs over 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5185,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Jamal Murray over 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.515,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Jamal Shead under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.6153,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "James Harden under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.5338,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Jamison Battle under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.5686,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Jared Mccain under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.5392,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Javonte Green under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.6279,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Jaylin Williams under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.6712,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Jeremiah Fears under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5746,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "John Collins under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5795,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Josh Giddey under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5385,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Julius Randle under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5148,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Keegan Murray under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5974,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Kelly Oubre Jr under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.6064,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Kenrich Williams under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5689,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Kevin Durant over 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5307,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Kevin Huerter over 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5797,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Keyonte George under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.5813,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Khris Middleton under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.6734,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Kyshawn George under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.5366,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Luguentz Dort over 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5483,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Luka Doncic over 4.5 3-pointers",
+              "line": 4.5,
+              "model_prob": 0.5046,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Malik Monk under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5302,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Marcus Smart under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5385,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Matas Buzelis under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.5749,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Matisse Thybulle under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5461,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Michael Porter Jr over 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.5613,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Mikel Brown Jr over 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5483,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Miles Bridges over 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5444,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Moritz Wagner over 0.5 3-pointers",
+              "line": 0.5,
+              "model_prob": 0.6171,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Naz Reid under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.5814,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Nikola Jokic under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5826,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Nolan Traore under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5098,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Norman Powell under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.5139,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Onyeka Okongwu under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.6069,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Pascal Siakam over 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5153,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Peyton Watson under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5991,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Quentin Grimes under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.5392,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Saddiq Bey under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.5596,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Sandro Mamukelashvili under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5409,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Scottie Barnes under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.6739,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Sion James under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5703,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Tari Eason under 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.5664,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Trae Young under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.6441,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Trey Murphy Iii over 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.6074,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Tristan Da Silva over 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.5141,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Tyrese Proctor over 1.5 3-pointers",
+              "line": 1.5,
+              "model_prob": 0.618,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Wendell Carter Jr over 0.5 3-pointers",
+              "line": 0.5,
+              "model_prob": 0.6668,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Zach Lavine under 2.5 3-pointers",
+              "line": 2.5,
+              "model_prob": 0.5338,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Ziaire Williams over 0.5 3-pointers",
+              "line": 0.5,
+              "model_prob": 0.7502,
+              "result": "won",
+              "side": "over"
+            },
             {
               "actual": "2",
               "date": "2026-11-19",
@@ -26395,13 +29331,805 @@
           ],
           "key": "NBA:3-pointers",
           "label": "3-pointers",
-          "losses": 348,
-          "n_graded": 741,
+          "losses": 383,
+          "n_graded": 832,
           "pushes": 0,
-          "wins": 393
+          "wins": 449
         },
         {
           "bets": [
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Aaron Gordon under 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.6033,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Aaron Nesmith over 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.5589,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Aaron Wiggins under 2.5 assists",
+              "line": 2.5,
+              "model_prob": 0.5691,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Ace Bailey under 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.5571,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Aday Mara over 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.5754,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Aj Dybantsa under 2.5 assists",
+              "line": 2.5,
+              "model_prob": 0.5924,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Ajay Mitchell under 3.5 assists",
+              "line": 3.5,
+              "model_prob": 0.5077,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "10",
+              "date": "2026-11-20",
+              "label": "Alperen Sengun under 6.5 assists",
+              "line": 6.5,
+              "model_prob": 0.5712,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Amen Thompson under 3.5 assists",
+              "line": 3.5,
+              "model_prob": 0.6092,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "8",
+              "date": "2026-11-20",
+              "label": "Andrew Nembhard over 6.5 assists",
+              "line": 6.5,
+              "model_prob": 0.5027,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Anthony Black over 4.5 assists",
+              "line": 4.5,
+              "model_prob": 0.5289,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Anthony Davis under 2.5 assists",
+              "line": 2.5,
+              "model_prob": 0.6358,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Ausar Thompson over 4.5 assists",
+              "line": 4.5,
+              "model_prob": 0.507,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Brandon Miller under 3.5 assists",
+              "line": 3.5,
+              "model_prob": 0.6528,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "9",
+              "date": "2026-11-20",
+              "label": "Cade Cunningham under 8.5 assists",
+              "line": 8.5,
+              "model_prob": 0.6532,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Cameron Johnson under 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.5681,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Christian Braun under 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.5391,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "9",
+              "date": "2026-11-20",
+              "label": "Coby White under 4.5 assists",
+              "line": 4.5,
+              "model_prob": 0.6566,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Collin Gillespie under 3.5 assists",
+              "line": 3.5,
+              "model_prob": 0.6092,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Collin Sexton under 2.5 assists",
+              "line": 2.5,
+              "model_prob": 0.5283,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Daniss Jenkins over 4.5 assists",
+              "line": 4.5,
+              "model_prob": 0.5204,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "12",
+              "date": "2026-11-20",
+              "label": "Darius Acuff Jr under 6.5 assists",
+              "line": 6.5,
+              "model_prob": 0.5087,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "8",
+              "date": "2026-11-20",
+              "label": "Darryn Peterson under 4.5 assists",
+              "line": 4.5,
+              "model_prob": 0.6282,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Dayron Sharpe over 3.5 assists",
+              "line": 3.5,
+              "model_prob": 0.5032,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Desmond Bane over 2.5 assists",
+              "line": 2.5,
+              "model_prob": 0.5388,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Devin Booker under 5.5 assists",
+              "line": 5.5,
+              "model_prob": 0.577,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Dillon Brooks over 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.5049,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Domantas Sabonis under 5.5 assists",
+              "line": 5.5,
+              "model_prob": 0.6133,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Donovan Mitchell over 4.5 assists",
+              "line": 4.5,
+              "model_prob": 0.5405,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "10",
+              "date": "2026-11-20",
+              "label": "Dyson Daniels under 5.5 assists",
+              "line": 5.5,
+              "model_prob": 0.547,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Egor Demin under 2.5 assists",
+              "line": 2.5,
+              "model_prob": 0.5531,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Franz Wagner under 7.5 assists",
+              "line": 7.5,
+              "model_prob": 0.5005,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "9",
+              "date": "2026-11-20",
+              "label": "Fred Vanvleet over 4.5 assists",
+              "line": 4.5,
+              "model_prob": 0.5235,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "10",
+              "date": "2026-11-20",
+              "label": "Immanuel Quickley over 5.5 assists",
+              "line": 5.5,
+              "model_prob": 0.5135,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Isaac Okoro over 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.547,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Isaiah Hartenstein over 3.5 assists",
+              "line": 3.5,
+              "model_prob": 0.6045,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Ivica Zubac under 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.5185,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Jabari Smith under 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.5101,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Jakob Poeltl under 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.587,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Jakobe Walter over 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.5406,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Jalen Green over 2.5 assists",
+              "line": 2.5,
+              "model_prob": 0.5777,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Jalen Johnson under 7.5 assists",
+              "line": 7.5,
+              "model_prob": 0.5695,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Jalen Smith under 2.5 assists",
+              "line": 2.5,
+              "model_prob": 0.6139,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Jalen Suggs under 4.5 assists",
+              "line": 4.5,
+              "model_prob": 0.5801,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Jamal Murray under 5.5 assists",
+              "line": 5.5,
+              "model_prob": 0.5625,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Jamal Shead over 4.5 assists",
+              "line": 4.5,
+              "model_prob": 0.7067,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "James Harden under 6.5 assists",
+              "line": 6.5,
+              "model_prob": 0.5602,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Jared Mccain over 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.5166,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Jarrett Allen under 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.5256,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "0",
+              "date": "2026-11-20",
+              "label": "Jaxson Hayes under 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.6005,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Jaylin Williams under 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.5695,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Jeremiah Fears under 5.5 assists",
+              "line": 5.5,
+              "model_prob": 0.5087,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Josh Giddey under 8.5 assists",
+              "line": 8.5,
+              "model_prob": 0.5235,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Julius Randle under 4.5 assists",
+              "line": 4.5,
+              "model_prob": 0.6022,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Kenrich Williams under 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.5256,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Kevin Durant under 4.5 assists",
+              "line": 4.5,
+              "model_prob": 0.63,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Kevin Huerter under 3.5 assists",
+              "line": 3.5,
+              "model_prob": 0.605,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Keyonte George under 7.5 assists",
+              "line": 7.5,
+              "model_prob": 0.6053,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Kyshawn George under 4.5 assists",
+              "line": 4.5,
+              "model_prob": 0.5699,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "8",
+              "date": "2026-11-20",
+              "label": "Luka Doncic under 8.5 assists",
+              "line": 8.5,
+              "model_prob": 0.6563,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Malik Monk under 4.5 assists",
+              "line": 4.5,
+              "model_prob": 0.6304,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Marcus Smart over 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.5593,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Matas Buzelis under 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.5683,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Michael Porter Jr under 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.5488,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Mikel Brown Jr under 3.5 assists",
+              "line": 3.5,
+              "model_prob": 0.5669,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Miles Bridges over 2.5 assists",
+              "line": 2.5,
+              "model_prob": 0.5759,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Moussa Diabate under 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.5784,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Naz Reid under 2.5 assists",
+              "line": 2.5,
+              "model_prob": 0.558,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "11",
+              "date": "2026-11-20",
+              "label": "Nikola Jokic under 8.5 assists",
+              "line": 8.5,
+              "model_prob": 0.5065,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Nolan Traore under 3.5 assists",
+              "line": 3.5,
+              "model_prob": 0.6212,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Norman Powell under 2.5 assists",
+              "line": 2.5,
+              "model_prob": 0.5578,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Onyeka Okongwu under 2.5 assists",
+              "line": 2.5,
+              "model_prob": 0.5805,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Oso Ighodaro over 2.5 assists",
+              "line": 2.5,
+              "model_prob": 0.5269,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Pascal Siakam under 3.5 assists",
+              "line": 3.5,
+              "model_prob": 0.5161,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Paul Reed over 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.5351,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Quentin Grimes under 3.5 assists",
+              "line": 3.5,
+              "model_prob": 0.6675,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Saddiq Bey under 2.5 assists",
+              "line": 2.5,
+              "model_prob": 0.5781,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Scottie Barnes over 4.5 assists",
+              "line": 4.5,
+              "model_prob": 0.5359,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Sion James under 3.5 assists",
+              "line": 3.5,
+              "model_prob": 0.6306,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "1",
+              "date": "2026-11-20",
+              "label": "Tari Eason under 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.5902,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Trae Young under 10.5 assists",
+              "line": 10.5,
+              "model_prob": 0.6993,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Trae Young under 9.5 assists",
+              "line": 9.5,
+              "model_prob": 0.6143,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Tre Jones under 4.5 assists",
+              "line": 4.5,
+              "model_prob": 0.6644,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Tristan Da Silva under 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.5769,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Tyrese Proctor under 3.5 assists",
+              "line": 3.5,
+              "model_prob": 0.6324,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "2",
+              "date": "2026-11-20",
+              "label": "Wendell Carter Jr under 1.5 assists",
+              "line": 1.5,
+              "model_prob": 0.5976,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "4",
+              "date": "2026-11-20",
+              "label": "Zach Lavine under 2.5 assists",
+              "line": 2.5,
+              "model_prob": 0.5639,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Zion Williamson under 2.5 assists",
+              "line": 2.5,
+              "model_prob": 0.5315,
+              "result": "lost",
+              "side": "under"
+            },
             {
               "actual": "4",
               "date": "2026-11-19",
@@ -32948,23 +36676,527 @@
           ],
           "key": "NBA:assists",
           "label": "Assists",
-          "losses": 323,
-          "n_graded": 727,
+          "losses": 366,
+          "n_graded": 815,
           "pushes": 0,
-          "wins": 404
+          "wins": 449
         }
       ],
       "key": "NBA",
       "label": "NBA",
-      "losses": 1683,
-      "n_graded": 3650,
+      "losses": 1871,
+      "n_graded": 4064,
       "pushes": 0,
-      "wins": 1967
+      "wins": 2193
     },
     {
       "groups": [
         {
           "bets": [
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "AKR to win",
+              "line": null,
+              "model_prob": 0.9936,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "APP to win",
+              "line": null,
+              "model_prob": 0.5826,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "ARK to win",
+              "line": null,
+              "model_prob": 0.9945,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "BFC to win",
+              "line": null,
+              "model_prob": 0.6665,
+              "result": "lost",
+              "side": "away"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "BOIS to win",
+              "line": null,
+              "model_prob": 0.8053,
+              "result": "lost",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "BRY to win",
+              "line": null,
+              "model_prob": 0.9683,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "CIT to win",
+              "line": null,
+              "model_prob": 0.6066,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "CSUN to win",
+              "line": null,
+              "model_prob": 0.6207,
+              "result": "lost",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "EKU to win",
+              "line": null,
+              "model_prob": 0.6169,
+              "result": "lost",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "FRES to win",
+              "line": null,
+              "model_prob": 0.9174,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "FSU to win",
+              "line": null,
+              "model_prob": 0.9135,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "HARV to win",
+              "line": null,
+              "model_prob": 0.767,
+              "result": "won",
+              "side": "away"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "IDHO to win",
+              "line": null,
+              "model_prob": 0.7778,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "ILL to win",
+              "line": null,
+              "model_prob": 0.9772,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "IONA to win",
+              "line": null,
+              "model_prob": 0.8296,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "IOWA to win",
+              "line": null,
+              "model_prob": 0.5207,
+              "result": "won",
+              "side": "away"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "IU to win",
+              "line": null,
+              "model_prob": 0.5019,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "JOES to win",
+              "line": null,
+              "model_prob": 0.5681,
+              "result": "lost",
+              "side": "away"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "JXST to win",
+              "line": null,
+              "model_prob": 0.7446,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "KENN to win",
+              "line": null,
+              "model_prob": 0.7826,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "KSU to win",
+              "line": null,
+              "model_prob": 0.8138,
+              "result": "lost",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "LEH to win",
+              "line": null,
+              "model_prob": 0.9355,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "LIB to win",
+              "line": null,
+              "model_prob": 0.6579,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "LIP to win",
+              "line": null,
+              "model_prob": 0.6293,
+              "result": "lost",
+              "side": "away"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "MD to win",
+              "line": null,
+              "model_prob": 0.9114,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "MERC to win",
+              "line": null,
+              "model_prob": 0.5012,
+              "result": "lost",
+              "side": "away"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "MIA to win",
+              "line": null,
+              "model_prob": 0.9606,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "MINN to win",
+              "line": null,
+              "model_prob": 0.5874,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "MIZ to win",
+              "line": null,
+              "model_prob": 0.923,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "MSM to win",
+              "line": null,
+              "model_prob": 0.6886,
+              "result": "lost",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "MSST to win",
+              "line": null,
+              "model_prob": 0.5779,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "MTSU to win",
+              "line": null,
+              "model_prob": 0.6043,
+              "result": "lost",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "NIA to win",
+              "line": null,
+              "model_prob": 0.5252,
+              "result": "won",
+              "side": "away"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "PEPP to win",
+              "line": null,
+              "model_prob": 0.9973,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "PITT to win",
+              "line": null,
+              "model_prob": 0.8397,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "PRIN to win",
+              "line": null,
+              "model_prob": 0.6646,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "PUR to win",
+              "line": null,
+              "model_prob": 0.9643,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "SDST to win",
+              "line": null,
+              "model_prob": 0.5972,
+              "result": "lost",
+              "side": "away"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "SFA to win",
+              "line": null,
+              "model_prob": 0.7607,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "SIU to win",
+              "line": null,
+              "model_prob": 0.8033,
+              "result": "lost",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "SMC to win",
+              "line": null,
+              "model_prob": 0.7625,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "SMU to win",
+              "line": null,
+              "model_prob": 0.8728,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "TENN to win",
+              "line": null,
+              "model_prob": 0.969,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "UAB to win",
+              "line": null,
+              "model_prob": 0.6656,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "UALB to win",
+              "line": null,
+              "model_prob": 0.8183,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "UGA to win",
+              "line": null,
+              "model_prob": 0.5635,
+              "result": "won",
+              "side": "away"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "UIW to win",
+              "line": null,
+              "model_prob": 0.8214,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "UNC to win",
+              "line": null,
+              "model_prob": 0.9128,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "UTA to win",
+              "line": null,
+              "model_prob": 0.7509,
+              "result": "won",
+              "side": "away"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "UVA to win",
+              "line": null,
+              "model_prob": 0.98,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "UVU to win",
+              "line": null,
+              "model_prob": 0.6281,
+              "result": "won",
+              "side": "away"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "VAN to win",
+              "line": null,
+              "model_prob": 0.7579,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "VT to win",
+              "line": null,
+              "model_prob": 0.6412,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "W&M to win",
+              "line": null,
+              "model_prob": 0.9935,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "WGA to win",
+              "line": null,
+              "model_prob": 0.9648,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "WKU to win",
+              "line": null,
+              "model_prob": 0.6688,
+              "result": "won",
+              "side": "home"
+            },
             {
               "actual": null,
               "date": "2026-11-19",
@@ -40312,13 +44544,319 @@
           ],
           "key": "moneyline",
           "label": "Moneylines",
-          "losses": 159,
-          "n_graded": 816,
+          "losses": 171,
+          "n_graded": 872,
           "pushes": 0,
-          "wins": 657
+          "wins": 701
         },
         {
           "bets": [
+            {
+              "actual": "148",
+              "date": "2026-11-20",
+              "label": "ALST at FRES, total over 146.5",
+              "line": 146.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "155",
+              "date": "2026-11-20",
+              "label": "BELL at EKU, total over 144.5",
+              "line": 144.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "186",
+              "date": "2026-11-20",
+              "label": "CMU at PITT, total over 144.5",
+              "line": 144.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "189",
+              "date": "2026-11-20",
+              "label": "DEL at CSUN, total over 151.5",
+              "line": 151.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "166",
+              "date": "2026-11-20",
+              "label": "EIU at ILL, total under 165.5",
+              "line": 165.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "159",
+              "date": "2026-11-20",
+              "label": "GAST at JXST, total over 137.5",
+              "line": 137.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "148",
+              "date": "2026-11-20",
+              "label": "IOWA at XAV, total over 145.5",
+              "line": 145.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "123",
+              "date": "2026-11-20",
+              "label": "KC at IONA, total over 140.5",
+              "line": 140.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "155",
+              "date": "2026-11-20",
+              "label": "LEM at MIZ, total under 154.5",
+              "line": 154.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "160",
+              "date": "2026-11-20",
+              "label": "MAN at MIA, total under 150.5",
+              "line": 150.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "119",
+              "date": "2026-11-20",
+              "label": "MERC at CAN, total over 135.5",
+              "line": 135.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "160",
+              "date": "2026-11-20",
+              "label": "MRSH at UNC, total over 157.5",
+              "line": 157.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "140",
+              "date": "2026-11-20",
+              "label": "MVSU at ARK, total over 152.5",
+              "line": 152.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "204",
+              "date": "2026-11-20",
+              "label": "NIA at DSU, total under 134.5",
+              "line": 134.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "157",
+              "date": "2026-11-20",
+              "label": "NU at VT, total over 142.5",
+              "line": 142.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "144",
+              "date": "2026-11-20",
+              "label": "OAK at PUR, total over 146.5",
+              "line": 146.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "155",
+              "date": "2026-11-20",
+              "label": "OKST at MINN, total over 146.5",
+              "line": 146.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "150",
+              "date": "2026-11-20",
+              "label": "RICH at WKU, total over 149.5",
+              "line": 149.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "142",
+              "date": "2026-11-20",
+              "label": "SCST at CIT, total over 142.5",
+              "line": 142.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "157",
+              "date": "2026-11-20",
+              "label": "SDST at IDST, total over 142.5",
+              "line": 142.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "155",
+              "date": "2026-11-20",
+              "label": "SELA at KENN, total under 154.5",
+              "line": 154.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "152",
+              "date": "2026-11-20",
+              "label": "SHSU at BOIS, total under 169.5",
+              "line": 169.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "173",
+              "date": "2026-11-20",
+              "label": "SLU at SMC, total under 162.5",
+              "line": 162.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "133",
+              "date": "2026-11-20",
+              "label": "TLSA at MSST, total over 152.5",
+              "line": 152.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "156",
+              "date": "2026-11-20",
+              "label": "UCF at VAN, total over 156.5",
+              "line": 156.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "170",
+              "date": "2026-11-20",
+              "label": "UGA at GT, total under 166.5",
+              "line": 166.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "166",
+              "date": "2026-11-20",
+              "label": "UK at IU, total under 153.5",
+              "line": 153.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "156",
+              "date": "2026-11-20",
+              "label": "UNT at APP, total over 132.5",
+              "line": 132.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "156",
+              "date": "2026-11-20",
+              "label": "USA at SMU, total over 145.5",
+              "line": 145.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "131",
+              "date": "2026-11-20",
+              "label": "UTA at NWST, total under 145.5",
+              "line": 145.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "149",
+              "date": "2026-11-20",
+              "label": "UTM at SIU, total under 148.5",
+              "line": 148.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "169",
+              "date": "2026-11-20",
+              "label": "UVU at ECU, total over 149.5",
+              "line": 149.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "107",
+              "date": "2026-11-20",
+              "label": "WAG at MD, total under 147.5",
+              "line": 147.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "125",
+              "date": "2026-11-20",
+              "label": "WIU at UALB, total over 138.5",
+              "line": 138.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "over"
+            },
             {
               "actual": "147",
               "date": "2026-11-19",
@@ -44867,13 +49405,319 @@
           ],
           "key": "totals",
           "label": "Totals",
-          "losses": 243,
-          "n_graded": 505,
+          "losses": 260,
+          "n_graded": 539,
           "pushes": 0,
-          "wins": 262
+          "wins": 279
         },
         {
           "bets": [
+            {
+              "actual": "APP won by 6",
+              "date": "2026-11-20",
+              "label": "APP +2.5 vs UNT",
+              "line": 2.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": "ARK won by 44",
+              "date": "2026-11-20",
+              "label": "ARK -37.5 vs MVSU",
+              "line": -37.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": "BELL won by 3",
+              "date": "2026-11-20",
+              "label": "BELL +8.5 vs EKU",
+              "line": 8.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "away"
+            },
+            {
+              "actual": "CAN won by 7",
+              "date": "2026-11-20",
+              "label": "CAN +3.5 vs MERC",
+              "line": 3.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": "PITT won by 22",
+              "date": "2026-11-20",
+              "label": "CMU +21.5 vs PITT",
+              "line": 21.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "away"
+            },
+            {
+              "actual": "ILL won by 62",
+              "date": "2026-11-20",
+              "label": "EIU +47.5 vs ILL",
+              "line": 47.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "away"
+            },
+            {
+              "actual": "FRES won by 12",
+              "date": "2026-11-20",
+              "label": "FRES -10.5 vs ALST",
+              "line": -10.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": "UGA won by 6",
+              "date": "2026-11-20",
+              "label": "GT +8.5 vs UGA",
+              "line": 8.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": "IDHO won by 3",
+              "date": "2026-11-20",
+              "label": "IDHO -1.5 vs CSUB",
+              "line": -1.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": "IONA won by 1",
+              "date": "2026-11-20",
+              "label": "IONA -4.5 vs KC",
+              "line": -4.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "home"
+            },
+            {
+              "actual": "IOWA won by 18",
+              "date": "2026-11-20",
+              "label": "IOWA +3.5 vs XAV",
+              "line": 3.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "away"
+            },
+            {
+              "actual": "JXST won by 5",
+              "date": "2026-11-20",
+              "label": "JXST -1.5 vs GAST",
+              "line": -1.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": "UVA won by 42",
+              "date": "2026-11-20",
+              "label": "L-MD +42.5 vs UVA",
+              "line": 42.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "away"
+            },
+            {
+              "actual": "MIZ won by 27",
+              "date": "2026-11-20",
+              "label": "LEM +34.5 vs MIZ",
+              "line": 34.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "away"
+            },
+            {
+              "actual": "LIB won by 3",
+              "date": "2026-11-20",
+              "label": "LIB -1.5 vs URI",
+              "line": -1.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": "MIA won by 52",
+              "date": "2026-11-20",
+              "label": "MAN +36.5 vs MIA",
+              "line": 36.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "away"
+            },
+            {
+              "actual": "MINN won by 15",
+              "date": "2026-11-20",
+              "label": "MINN +1.5 vs OKST",
+              "line": 1.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": "WMU won by 6",
+              "date": "2026-11-20",
+              "label": "MSM +7.5 vs WMU",
+              "line": 7.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": "TEM won by 9",
+              "date": "2026-11-20",
+              "label": "MTSU +3.5 vs TEM",
+              "line": 3.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "home"
+            },
+            {
+              "actual": "VT won by 17",
+              "date": "2026-11-20",
+              "label": "NU +11.5 vs VT",
+              "line": 11.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "away"
+            },
+            {
+              "actual": "PUR won by 46",
+              "date": "2026-11-20",
+              "label": "PUR -21.5 vs OAK",
+              "line": -21.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": "SFA won by 10",
+              "date": "2026-11-20",
+              "label": "SFA -4.5 vs INST",
+              "line": -4.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": "UTM won by 3",
+              "date": "2026-11-20",
+              "label": "SIU -2.5 vs UTM",
+              "line": -2.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "home"
+            },
+            {
+              "actual": "SMC won by 17",
+              "date": "2026-11-20",
+              "label": "SMC -1.5 vs SLU",
+              "line": -1.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": "SMU won by 46",
+              "date": "2026-11-20",
+              "label": "SMU -15.5 vs USA",
+              "line": -15.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": "TENN won by 27",
+              "date": "2026-11-20",
+              "label": "TENN -25.5 vs CCU",
+              "line": -25.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": "MSST won by 11",
+              "date": "2026-11-20",
+              "label": "TLSA +6.5 vs MSST",
+              "line": 6.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "away"
+            },
+            {
+              "actual": "UALB won by 5",
+              "date": "2026-11-20",
+              "label": "UALB -6.5 vs WIU",
+              "line": -6.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "home"
+            },
+            {
+              "actual": "VAN won by 8",
+              "date": "2026-11-20",
+              "label": "UCF +16.5 vs VAN",
+              "line": 16.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "away"
+            },
+            {
+              "actual": "IU won by 14",
+              "date": "2026-11-20",
+              "label": "UK +3.5 vs IU",
+              "line": 3.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "away"
+            },
+            {
+              "actual": "UNC won by 16",
+              "date": "2026-11-20",
+              "label": "UNC -18.5 vs MRSH",
+              "line": -18.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "home"
+            },
+            {
+              "actual": "UTA won by 7",
+              "date": "2026-11-20",
+              "label": "UTA -3.5 vs NWST",
+              "line": -3.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "away"
+            },
+            {
+              "actual": "MD won by 17",
+              "date": "2026-11-20",
+              "label": "WAG +33.5 vs MD",
+              "line": 33.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "away"
+            },
+            {
+              "actual": "WKU won by 14",
+              "date": "2026-11-20",
+              "label": "WKU +1.5 vs RICH",
+              "line": 1.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "home"
+            },
             {
               "actual": "BTLR won by 7",
               "date": "2026-11-19",
@@ -49674,10 +54518,10 @@
           ],
           "key": "spreads",
           "label": "Spreads",
-          "losses": 301,
-          "n_graded": 533,
+          "losses": 312,
+          "n_graded": 567,
           "pushes": 0,
-          "wins": 232
+          "wins": 255
         },
         {
           "bets": [
@@ -55688,10 +60532,10 @@
       ],
       "key": "CBB",
       "label": "College basketball",
-      "losses": 1016,
-      "n_graded": 2518,
+      "losses": 1056,
+      "n_graded": 2642,
       "pushes": 0,
-      "wins": 1502
+      "wins": 1586
     },
     {
       "groups": [
@@ -78562,6 +83406,60 @@
           "bets": [
             {
               "actual": null,
+              "date": "2026-11-20",
+              "label": "AFA to win",
+              "line": null,
+              "model_prob": 0.9481,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "DUKE to win",
+              "line": null,
+              "model_prob": 0.8173,
+              "result": "lost",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "ORE to win",
+              "line": null,
+              "model_prob": 0.7637,
+              "result": "won",
+              "side": "away"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "TOL to win",
+              "line": null,
+              "model_prob": 0.8589,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "UCF to win",
+              "line": null,
+              "model_prob": 0.5458,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": null,
+              "date": "2026-11-20",
+              "label": "UNM to win",
+              "line": null,
+              "model_prob": 0.6136,
+              "result": "won",
+              "side": "away"
+            },
+            {
+              "actual": null,
               "date": "2026-11-19",
               "label": "TEM to win",
               "line": null,
@@ -79733,13 +84631,67 @@
           ],
           "key": "moneyline",
           "label": "Moneylines",
-          "losses": 50,
-          "n_graded": 130,
+          "losses": 51,
+          "n_graded": 136,
           "pushes": 0,
-          "wins": 80
+          "wins": 85
         },
         {
           "bets": [
+            {
+              "actual": "19",
+              "date": "2026-11-20",
+              "label": "BGSU at TOL, total over 45.5",
+              "line": 45.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "30",
+              "date": "2026-11-20",
+              "label": "CLEM at DUKE, total over 41.5",
+              "line": 41.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "65",
+              "date": "2026-11-20",
+              "label": "ISU at UCF, total over 47.5",
+              "line": 47.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "52",
+              "date": "2026-11-20",
+              "label": "ORE at MSU, total over 42.5",
+              "line": 42.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "41",
+              "date": "2026-11-20",
+              "label": "UNM at WYO, total over 37.5",
+              "line": 37.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "over"
+            },
+            {
+              "actual": "55",
+              "date": "2026-11-20",
+              "label": "UTEP at AFA, total over 47.5",
+              "line": 47.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "over"
+            },
             {
               "actual": "58",
               "date": "2026-11-19",
@@ -80535,13 +85487,58 @@
           ],
           "key": "totals",
           "label": "Totals",
-          "losses": 53,
-          "n_graded": 88,
+          "losses": 55,
+          "n_graded": 94,
           "pushes": 0,
-          "wins": 35
+          "wins": 39
         },
         {
           "bets": [
+            {
+              "actual": "AFA won by 49",
+              "date": "2026-11-20",
+              "label": "AFA -21.5 vs UTEP",
+              "line": -21.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": "CLEM won by 10",
+              "date": "2026-11-20",
+              "label": "DUKE -11.5 vs CLEM",
+              "line": -11.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "home"
+            },
+            {
+              "actual": "ORE won by 38",
+              "date": "2026-11-20",
+              "label": "MSU +17.5 vs ORE",
+              "line": 17.5,
+              "model_prob": null,
+              "result": "lost",
+              "side": "home"
+            },
+            {
+              "actual": "TOL won by 19",
+              "date": "2026-11-20",
+              "label": "TOL -15.5 vs BGSU",
+              "line": -15.5,
+              "model_prob": null,
+              "result": "won",
+              "side": "home"
+            },
+            {
+              "actual": "UNM won by 7",
+              "date": "2026-11-20",
+              "label": "WYO +10 vs UNM",
+              "line": 10.0,
+              "model_prob": null,
+              "result": "won",
+              "side": "home"
+            },
             {
               "actual": "RICE won by 4",
               "date": "2026-11-19",
@@ -81364,13 +86361,283 @@
           ],
           "key": "spreads",
           "label": "Spreads",
-          "losses": 51,
-          "n_graded": 90,
+          "losses": 53,
+          "n_graded": 95,
           "pushes": 1,
-          "wins": 39
+          "wins": 42
         },
         {
           "bets": [
+            {
+              "actual": "37",
+              "date": "2026-11-20",
+              "label": "Adjatay Dabbs under 58.5 receiving yards",
+              "line": 58.5,
+              "model_prob": 0.549,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "37",
+              "date": "2026-11-20",
+              "label": "Adjatay Dabbs under 64.5 receiving yards",
+              "line": 64.5,
+              "model_prob": 0.5755,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Aiden Flora under 10.5 receiving yards",
+              "line": 10.5,
+              "model_prob": 0.6038,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "5",
+              "date": "2026-11-20",
+              "label": "Aiden Flora under 12.5 receiving yards",
+              "line": 12.5,
+              "model_prob": 0.6215,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "12",
+              "date": "2026-11-20",
+              "label": "Bryant Wesco Jr under 45.5 receiving yards",
+              "line": 45.5,
+              "model_prob": 0.598,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "15",
+              "date": "2026-11-20",
+              "label": "Bryson Hammer under 39.5 receiving yards",
+              "line": 39.5,
+              "model_prob": 0.6227,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "42",
+              "date": "2026-11-20",
+              "label": "Cade Keith under 33.5 receiving yards",
+              "line": 33.5,
+              "model_prob": 0.5794,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "17",
+              "date": "2026-11-20",
+              "label": "Caden Piening under 24.5 receiving yards",
+              "line": 24.5,
+              "model_prob": 0.5704,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "17",
+              "date": "2026-11-20",
+              "label": "Caden Piening under 25.5 receiving yards",
+              "line": 25.5,
+              "model_prob": 0.5784,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "23",
+              "date": "2026-11-20",
+              "label": "Chrishon Mccray under 37.5 receiving yards",
+              "line": 37.5,
+              "model_prob": 0.5868,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "55",
+              "date": "2026-11-20",
+              "label": "Dakorien Moore under 74.5 receiving yards",
+              "line": 74.5,
+              "model_prob": 0.6558,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "55",
+              "date": "2026-11-20",
+              "label": "Dakorien Moore under 76.5 receiving yards",
+              "line": 76.5,
+              "model_prob": 0.6623,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "31",
+              "date": "2026-11-20",
+              "label": "Fredrick Moore under 28.5 receiving yards",
+              "line": 28.5,
+              "model_prob": 0.5841,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "28",
+              "date": "2026-11-20",
+              "label": "Jamal Polite Jr under 40.5 receiving yards",
+              "line": 40.5,
+              "model_prob": 0.6123,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "39",
+              "date": "2026-11-20",
+              "label": "Jamari Johnson under 35.5 receiving yards",
+              "line": 35.5,
+              "model_prob": 0.5511,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "39",
+              "date": "2026-11-20",
+              "label": "Jamari Johnson under 37.5 receiving yards",
+              "line": 37.5,
+              "model_prob": 0.558,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "55",
+              "date": "2026-11-20",
+              "label": "Jeremiah Hasley under 27.5 receiving yards",
+              "line": 27.5,
+              "model_prob": 0.5406,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "55",
+              "date": "2026-11-20",
+              "label": "Jeremiah Hasley under 30.5 receiving yards",
+              "line": 30.5,
+              "model_prob": 0.5546,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "25",
+              "date": "2026-11-20",
+              "label": "Jeremiah Scoby under 29.5 receiving yards",
+              "line": 29.5,
+              "model_prob": 0.6144,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "9",
+              "date": "2026-11-20",
+              "label": "Jonah Burton under 30.5 receiving yards",
+              "line": 30.5,
+              "model_prob": 0.5793,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "125",
+              "date": "2026-11-20",
+              "label": "Josh Derry under 82.5 receiving yards",
+              "line": 82.5,
+              "model_prob": 0.7325,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "125",
+              "date": "2026-11-20",
+              "label": "Josh Derry under 85.5 receiving yards",
+              "line": 85.5,
+              "model_prob": 0.7402,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "69",
+              "date": "2026-11-20",
+              "label": "Kyle Frendt under 31.5 receiving yards",
+              "line": 31.5,
+              "model_prob": 0.5669,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "3",
+              "date": "2026-11-20",
+              "label": "Nate Sheppard under 29.5 receiving yards",
+              "line": 29.5,
+              "model_prob": 0.5549,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "29",
+              "date": "2026-11-20",
+              "label": "Omari Hayes under 23.5 receiving yards",
+              "line": 23.5,
+              "model_prob": 0.5709,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "68",
+              "date": "2026-11-20",
+              "label": "Tj Moore under 33.5 receiving yards",
+              "line": 33.5,
+              "model_prob": 0.74,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "80",
+              "date": "2026-11-20",
+              "label": "Tyren Hornes under 38.5 receiving yards",
+              "line": 38.5,
+              "model_prob": 0.5858,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "80",
+              "date": "2026-11-20",
+              "label": "Tyren Hornes under 40.5 receiving yards",
+              "line": 40.5,
+              "model_prob": 0.5938,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Vince Benetti under 18.5 receiving yards",
+              "line": 18.5,
+              "model_prob": 0.6632,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "6",
+              "date": "2026-11-20",
+              "label": "Vince Benetti under 20.5 receiving yards",
+              "line": 20.5,
+              "model_prob": 0.6877,
+              "result": "won",
+              "side": "under"
+            },
             {
               "actual": "15",
               "date": "2026-11-18",
@@ -84578,13 +89845,175 @@
           ],
           "key": "CFB:receiving yards",
           "label": "Receiving yards",
-          "losses": 158,
-          "n_graded": 356,
+          "losses": 171,
+          "n_graded": 386,
           "pushes": 0,
-          "wins": 198
+          "wins": 215
         },
         {
           "bets": [
+            {
+              "actual": "171",
+              "date": "2026-11-20",
+              "label": "Aiden Flora under 132.5 rushing yards",
+              "line": 132.5,
+              "model_prob": 0.5243,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "25",
+              "date": "2026-11-20",
+              "label": "Brandon Tullis under 67.5 rushing yards",
+              "line": 67.5,
+              "model_prob": 0.5964,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "25",
+              "date": "2026-11-20",
+              "label": "Brandon Tullis under 70.5 rushing yards",
+              "line": 70.5,
+              "model_prob": 0.5964,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "35",
+              "date": "2026-11-20",
+              "label": "Cj Miller under 94.5 rushing yards",
+              "line": 94.5,
+              "model_prob": 0.5067,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "17",
+              "date": "2026-11-20",
+              "label": "Dierre Hill Jr under 82.5 rushing yards",
+              "line": 82.5,
+              "model_prob": 0.575,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "17",
+              "date": "2026-11-20",
+              "label": "Dierre Hill Jr under 84.5 rushing yards",
+              "line": 84.5,
+              "model_prob": 0.5801,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "17",
+              "date": "2026-11-20",
+              "label": "Dierre Hill Jr under 89.5 rushing yards",
+              "line": 89.5,
+              "model_prob": 0.5961,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "113",
+              "date": "2026-11-20",
+              "label": "Duke Watson under 50.5 rushing yards",
+              "line": 50.5,
+              "model_prob": 0.5054,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "16",
+              "date": "2026-11-20",
+              "label": "Gideon Davidson over 38.5 rushing yards",
+              "line": 38.5,
+              "model_prob": 0.5204,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "17",
+              "date": "2026-11-20",
+              "label": "Jaylen Raynor under 18.5 rushing yards",
+              "line": 18.5,
+              "model_prob": 0.5233,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "79",
+              "date": "2026-11-20",
+              "label": "Kiefer Sibley under 72.5 rushing yards",
+              "line": 72.5,
+              "model_prob": 0.5231,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "79",
+              "date": "2026-11-20",
+              "label": "Kiefer Sibley under 75.5 rushing yards",
+              "line": 75.5,
+              "model_prob": 0.5251,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "7",
+              "date": "2026-11-20",
+              "label": "Landen Chambers under 30.5 rushing yards",
+              "line": 30.5,
+              "model_prob": 0.6085,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "25",
+              "date": "2026-11-20",
+              "label": "Markell Holman over 39.5 rushing yards",
+              "line": 39.5,
+              "model_prob": 0.5456,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "57",
+              "date": "2026-11-20",
+              "label": "Nakai Amachree under 48.5 rushing yards",
+              "line": 48.5,
+              "model_prob": 0.5648,
+              "result": "lost",
+              "side": "under"
+            },
+            {
+              "actual": "116",
+              "date": "2026-11-20",
+              "label": "Nate Sheppard under 116.5 rushing yards",
+              "line": 116.5,
+              "model_prob": 0.5835,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "36",
+              "date": "2026-11-20",
+              "label": "Samuel Harris under 39.5 rushing yards",
+              "line": 39.5,
+              "model_prob": 0.5193,
+              "result": "won",
+              "side": "under"
+            },
+            {
+              "actual": "26",
+              "date": "2026-11-20",
+              "label": "Scottre Humphrey under 89.5 rushing yards",
+              "line": 89.5,
+              "model_prob": 0.5327,
+              "result": "won",
+              "side": "under"
+            },
             {
               "actual": "25",
               "date": "2026-11-18",
@@ -86343,13 +91772,76 @@
           ],
           "key": "CFB:rushing yards",
           "label": "Rushing yards",
-          "losses": 76,
-          "n_graded": 195,
+          "losses": 83,
+          "n_graded": 213,
           "pushes": 0,
-          "wins": 119
+          "wins": 130
         },
         {
           "bets": [
+            {
+              "actual": "234",
+              "date": "2026-11-20",
+              "label": "Dylan Raiola over 264.5 passing yards",
+              "line": 264.5,
+              "model_prob": 0.5047,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "234",
+              "date": "2026-11-20",
+              "label": "Dylan Raiola over 267.5 passing yards",
+              "line": 267.5,
+              "model_prob": 0.5026,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "109",
+              "date": "2026-11-20",
+              "label": "Jaylen Raynor over 178.5 passing yards",
+              "line": 178.5,
+              "model_prob": 0.5766,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "191",
+              "date": "2026-11-20",
+              "label": "John Alan Richter over 219.5 passing yards",
+              "line": 219.5,
+              "model_prob": 0.5645,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "191",
+              "date": "2026-11-20",
+              "label": "John Alan Richter over 224.5 passing yards",
+              "line": 224.5,
+              "model_prob": 0.5602,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "149",
+              "date": "2026-11-20",
+              "label": "Walker Eget over 204.5 passing yards",
+              "line": 204.5,
+              "model_prob": 0.6156,
+              "result": "lost",
+              "side": "over"
+            },
+            {
+              "actual": "149",
+              "date": "2026-11-20",
+              "label": "Walker Eget over 214.5 passing yards",
+              "line": 214.5,
+              "model_prob": 0.5756,
+              "result": "lost",
+              "side": "over"
+            },
             {
               "actual": "165",
               "date": "2026-11-18",
@@ -87298,23 +92790,50 @@
           ],
           "key": "CFB:passing yards",
           "label": "Passing yards",
-          "losses": 64,
-          "n_graded": 105,
+          "losses": 71,
+          "n_graded": 112,
           "pushes": 0,
           "wins": 41
         }
       ],
       "key": "CFB",
       "label": "College football",
-      "losses": 452,
-      "n_graded": 964,
+      "losses": 484,
+      "n_graded": 1036,
       "pushes": 1,
-      "wins": 512
+      "wins": 552
     },
     {
       "groups": [
         {
           "bets": [
+            {
+              "actual": "Final: Ath Bilbao 0, Espanol 1",
+              "date": "2026-11-20",
+              "label": "Ath Bilbao to win",
+              "line": null,
+              "model_prob": 0.5947,
+              "result": "lost",
+              "side": "home"
+            },
+            {
+              "actual": "Final: Bayern Munich 1, Cologne 1",
+              "date": "2026-11-20",
+              "label": "Bayern Munich to win",
+              "line": null,
+              "model_prob": 0.7823,
+              "result": "lost",
+              "side": "home"
+            },
+            {
+              "actual": "Final: Troyes 3, Le Havre 1",
+              "date": "2026-11-20",
+              "label": "Troyes to win",
+              "line": null,
+              "model_prob": 0.488,
+              "result": "won",
+              "side": "home"
+            },
             {
               "actual": "Final: Monza 0, Atalanta 1",
               "date": "2026-11-08",
@@ -87579,20 +93098,20 @@
           ],
           "key": "moneyline",
           "label": "Moneylines",
-          "losses": 12,
-          "n_graded": 29,
+          "losses": 14,
+          "n_graded": 32,
           "pushes": 0,
-          "wins": 17
+          "wins": 18
         }
       ],
       "key": "SOCCER",
       "label": "Soccer",
-      "losses": 12,
-      "n_graded": 29,
+      "losses": 14,
+      "n_graded": 32,
       "pushes": 0,
-      "wins": 17
+      "wins": 18
     }
   ],
-  "total_graded": 9688,
+  "total_graded": 10301,
   "total_pushes": 1
 }
