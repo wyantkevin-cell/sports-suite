@@ -1,0 +1,25 @@
+{
+  "last_updated": "2026-11-22 07:44:38 PT",
+  "latest": {
+    "acknowledged": false,
+    "action": "info",
+    "from": "mordy",
+    "id": "20261122074438",
+    "priority": "normal",
+    "text": "Test message \u2014 Mordy to Grok direct channel is live. This file is polled at https://wyantkevin-cell.github.io/sports-suite/mordy-to-grok.json",
+    "timestamp_pt": "2026-11-22 07:44:38 PT",
+    "to": "grok-bot"
+  },
+  "messages": [
+    {
+      "acknowledged": false,
+      "action": "info",
+      "from": "mordy",
+      "id": "20261122074438",
+      "priority": "normal",
+      "text": "Test message \u2014 Mordy to Grok direct channel is live. This file is polled at https://wyantkevin-cell.github.io/sports-suite/mordy-to-grok.json",
+      "timestamp_pt": "2026-11-22 07:44:38 PT",
+      "to": "grok-bot"
+    }
+  ]
+}
