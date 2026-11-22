@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-21",
-  "generated_at_pt": "2026-11-21 11:59:54 PST",
+  "date": "2026-11-22",
+  "generated_at_pt": "2026-11-22 07:10:41 PST",
   "name": "Sim Says bot API \u2014 per-card records",
   "note": "Live-graded straights only, $100 flat per bet. Voids are excluded from W-L and P&L. No backtest is blended in. None of these cards is proven \u2014 the record decides.",
   "records": [
@@ -10,15 +10,15 @@
         "name": "What We Found"
       },
       "description": "Our five best findings in one card: CFB totals unders, CFB passing unders, CFB rushing yards, next-man-up starter overs, and NBA underdog fades. The card we post to X each day.",
-      "losses": 7,
-      "n": 15,
-      "profit": 48.15,
+      "losses": 24,
+      "n": 41,
+      "profit": -830.09,
       "pushes": 0,
       "record_start": null,
-      "roi_pct": 3.2,
+      "roi_pct": -20.2,
       "stake_per_bet_usd": 100,
       "voids": null,
-      "wins": 8
+      "wins": 17
     },
     {
       "card": {
@@ -27,14 +27,14 @@
       },
       "description": "Picks with a moderate edge over the book \u2014 no more than 20% \u2014 ranked by how likely they are to hit. Up to 5 a day.",
       "losses": 14,
-      "n": 44,
-      "profit": -30.59,
+      "n": 49,
+      "profit": 175.59,
       "pushes": 0,
       "record_start": "2026-11-09",
-      "roi_pct": -0.7,
+      "roi_pct": 3.6,
       "stake_per_bet_usd": 100,
       "voids": 1,
-      "wins": 30
+      "wins": 35
     },
     {
       "card": {
@@ -42,15 +42,15 @@
         "name": "Random Check"
       },
       "description": "Five picks drawn at random from the board each day, as a check \u2014 if random beats a method, the method is not doing anything.",
-      "losses": 16,
-      "n": 41,
-      "profit": 230.82,
+      "losses": 18,
+      "n": 45,
+      "profit": 110.82,
       "pushes": 0,
       "record_start": "2026-11-09",
-      "roi_pct": 5.6,
+      "roi_pct": 2.5,
       "stake_per_bet_usd": 100,
       "voids": 2,
-      "wins": 25
+      "wins": 27
     },
     {
       "card": {
@@ -59,14 +59,14 @@
       },
       "description": "Only our two best-tested pick types: college basketball moneylines and NBA assists, where our number and the book's number are close. Up to 5 a day.",
       "losses": 14,
-      "n": 34,
-      "profit": -468.93,
+      "n": 37,
+      "profit": -351.07,
       "pushes": 0,
       "record_start": "2026-11-11",
-      "roi_pct": -13.8,
+      "roi_pct": -9.5,
       "stake_per_bet_usd": 100,
       "voids": 1,
-      "wins": 20
+      "wins": 23
     },
     {
       "card": {
@@ -74,15 +74,15 @@
         "name": "College Football Passing Unders"
       },
       "description": "Under bets on college football passing yards, chosen where our model leans furthest over the book's number. Up to 5 a day, one pick per game.",
-      "losses": 1,
-      "n": 5,
-      "profit": 250.88,
+      "losses": 3,
+      "n": 10,
+      "profit": 314.04,
       "pushes": 0,
       "record_start": null,
-      "roi_pct": 50.2,
+      "roi_pct": 31.4,
       "stake_per_bet_usd": 100,
       "voids": null,
-      "wins": 4
+      "wins": 7
     }
   ],
   "version": "1.4"
