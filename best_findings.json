@@ -106,25 +106,44 @@
       "record": {
         "losses": 7,
         "n": 9,
-        "pending": 0,
+        "pending": 1,
         "profit": -436.0,
         "pushes": 0,
         "roi_pct": -48.4,
         "wins": 2
       },
       "source_card": "NMU paper tracker",
-      "today": []
+      "today": [
+        {
+          "component": "nmu",
+          "description": "Zach Edey (MEM) over 9.5 points",
+          "game_date": "2026-11-23",
+          "line": 9.5,
+          "line_odds": "104",
+          "market": "points",
+          "opponent": "CHA",
+          "outcome": null,
+          "pick_id": "20261123-NMU-MEM-zach-edey-points",
+          "player": "Zach Edey",
+          "profit": null,
+          "side": "over",
+          "source_card": "NMU paper tracker",
+          "sport": "NBA",
+          "start_time_pt": "16:00",
+          "team": "MEM"
+        }
+      ]
     }
   },
   "date": "2026-11-23",
-  "generated_at_pt": "2026-11-23 06:59:33 PST",
+  "generated_at_pt": "2026-11-23 07:46:11 PST",
   "name": "Best Findings Card",
   "note": "One composite card from our five best findings. Live record is cumulative from Nov 18, 2026 (first day: 1-2, -$112.28). Nov 19 brought rule changes (NHL gold dropped from the composite, next-man-up starter overs added), not a reset. Backtest numbers are evidence, not the record.",
   "paper": true,
   "record": {
     "losses": 26,
     "n": 44,
-    "pending": 1,
+    "pending": 2,
     "profit": -896.09,
     "pushes": 0,
     "roi_pct": -20.4,
@@ -132,16 +151,54 @@
   },
   "record_start": "2026-11-12",
   "stake": 100,
-  "straights": [],
+  "straights": [
+    {
+      "component": "nmu",
+      "description": "Zach Edey (MEM) over 9.5 points",
+      "game_date": "2026-11-23",
+      "line": 9.5,
+      "line_odds": "104",
+      "market": "points",
+      "opponent": "CHA",
+      "outcome": null,
+      "pick_id": "20261123-NMU-MEM-zach-edey-points",
+      "player": "Zach Edey",
+      "profit": null,
+      "side": "over",
+      "source_card": "NMU paper tracker",
+      "sport": "NBA",
+      "start_time_pt": "16:00",
+      "team": "MEM"
+    }
+  ],
   "today": {
     "by_component": {
       "cfb_passing": [],
       "cfb_rushing": [],
       "cfb_totals": [],
       "nba_dog_fade": [],
-      "nmu": []
+      "nmu": [
+        {
+          "component": "nmu",
+          "description": "Zach Edey (MEM) over 9.5 points",
+          "game_date": "2026-11-23",
+          "line": 9.5,
+          "line_odds": "104",
+          "market": "points",
+          "opponent": "CHA",
+          "outcome": null,
+          "pick_id": "20261123-NMU-MEM-zach-edey-points",
+          "player": "Zach Edey",
+          "profit": null,
+          "side": "over",
+          "source_card": "NMU paper tracker",
+          "sport": "NBA",
+          "start_time_pt": "16:00",
+          "team": "MEM"
+        }
+      ]
     },
     "date": "2026-11-23",
-    "n": 0
+    "n": 1
   }
 }
