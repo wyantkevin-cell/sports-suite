@@ -286,6 +286,8 @@ section.block{margin-top:24px}
 .slate-row .g{font-weight:700}
 .slate-row .n{color:var(--muted);font-size:13.5px}
 .slate-row button{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:10px 14px;font-weight:700;font-size:13.5px;min-height:44px}
+/* Player Picks tab removed Nov 24, 2026 — hide the "Player picks for this game" buttons */
+button[data-slate-game]{display:none!important}
 .segmented{display:inline-flex;background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:3px;gap:3px}
 .segmented button{border:0;background:transparent;padding:8px 16px;border-radius:999px;font-weight:700;font-size:14px;color:var(--muted)}
 .segmented button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
@@ -987,7 +989,6 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <button type="button" class="tabbar-arrow" id="tabScrollLeft" aria-label="Scroll tabs left">&#8249;</button>
     <div class="tabbar" role="tablist" aria-label="Sports tools">
     <button type="button" role="tab" id="tab-overview" aria-selected="true" aria-controls="panel-overview" data-tab="overview">Home</button>
-    <button type="button" role="tab" id="tab-props" aria-selected="false" aria-controls="panel-props" data-tab="props" tabindex="-1">Player picks</button>
     <button type="button" role="tab" id="tab-gameforecasts" aria-selected="false" aria-controls="panel-gameforecasts" data-tab="gameforecasts" tabindex="-1">Game forecasts</button>
     <button type="button" role="tab" id="tab-scores" aria-selected="false" aria-controls="panel-scores" data-tab="scores" tabindex="-1">Scores</button>
     <button type="button" role="tab" id="tab-bets" aria-selected="false" aria-controls="panel-bets" data-tab="bets" tabindex="-1">Our Bets</button>
@@ -1001,30 +1002,29 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
   <!-- ============ HOME ============ -->
   <section class="panel active" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview" tabindex="0">
     <div class="welcome-banner" id="welcomeBanner" role="region" aria-label="Welcome" hidden>
-      <p class="onboard-mission">A dude and his agents trying to beat the market.</p>
-      <p>Every pick public. Every result graded. We show our number next to the book&rsquo;s number, for every game and prop.</p>
+      <p class="onboard-mission">A dude and his agents testing what actually beats the market.</p>
+      <p>Every experiment public. Every result graded. We show what works and what doesn&rsquo;t.</p>
       <p><a href="#docs" data-goto="docs">How it works</a></p>
       <button type="button" class="btn" id="welcomeGotIt">Got it</button>
     </div>
-    <h1>Check the chances <em>before you bet.</em></h1>
-    <p class="lede">Our number next to the book&rsquo;s number, for every game and prop.</p>
+    <h1>Testing whether <em>we can beat the market.</em></h1>
+    <p class="lede">Every experiment public. Every result graded. We show what works and what doesn&rsquo;t.</p>
     <div class="freshness"></div>
 
     <section class="block" aria-label="All tools">
       <h2>Everything else</h2>
       <div class="toollist">
         <button type="button" data-goto="gameforecasts" data-gf-section="gf-moneyline">Who wins? <span>Who we think wins each game &rarr;</span></button>
-        <button type="button" data-goto="props">Player picks <span>Points, shots, touchdowns, all of it &rarr;</span></button>
         <button type="button" data-goto="gameforecasts" data-gf-section="gf-totals">Totals <span>Our total next to the book&rsquo;s &rarr;</span></button>
-        <button type="button" data-goto="bets">Our Bets <span>Today&rsquo;s picks &rarr;</span></button>
+        <button type="button" data-goto="bets">Our Bets <span>Today&rsquo;s experiments &rarr;</span></button>
         <button type="button" data-goto="record">Our record <span>Finished bets. Wins and losses. &rarr;</span></button>
       </div>
     </section>
 
     <section class="block">
       <div class="honest">
-        <h2>Be careful with every number here</h2>
-        <p>Our guesses are early and unproven. Check <a href="#record" data-goto="record">Our record</a> before you trust any of them.</p>
+        <h2>What we learned</h2>
+        <p>Our model picks lost money. The probabilities looked good but didn&rsquo;t beat the market. So we stopped posting them as picks. What&rsquo;s left is the experiments that might actually work — market edges, not model predictions. Check <a href="#record" data-goto="record">Our record</a> to see what&rsquo;s real.</p>
       </div>
     </section>
 
@@ -1379,7 +1379,6 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
       <div class="drawer-head"><b>Sections</b><button type="button" class="drawer-close" data-close-drawer aria-label="Close menu">&times;</button></div>
       <ul class="drawer-list">
         <li><a href="#doc-games">Game forecasts</a></li>
-        <li><a href="#doc-props">Player picks</a></li>
         <li><a href="#doc-sims">Simulations</a></li>
         <li><a href="#doc-calibration">Calibration</a></li>
         <li><a href="#doc-enhancements">Enhancements</a></li>
@@ -1402,9 +1401,9 @@ html[data-theme="terminal"] :focus-visible{outline:2px solid var(--accent);outli
     <p>News that comes after the numbers are made &mdash; injuries, late lineup changes &mdash; isn&rsquo;t in them. So check the news before you use a pick. Every number carries its date.</p>
     <p>One guardrail applies to Model B. If Model B&rsquo;s chance is more than 15 points away from the book&rsquo;s chance, we pull it back to within 15 points. See Enhancements below for why.</p>
 
-    <h3 id="doc-props">Player picks</h3>
-    <p>Player picks give a chance a player goes over or under a line. Points, catches and yards, and more. The chance comes from recent games &mdash; the most recent ones count most. It also looks at how good the other team&rsquo;s defense is against that kind of player. Warnings flag injuries and other reasons to be careful.</p>
-    <p>Every player-pick chance goes through calibration before it is shown. That means we checked it against past seasons and adjusted it so the quoted chance matches how often it actually hit. See Calibration below.</p>
+    <h3 id="doc-props">Player picks (removed Nov 24, 2026)</h3>
+    <p>Player picks used to show a chance a player goes over or under a line. We removed them because the model&rsquo;s probabilities didn&rsquo;t beat the market — the picks lost money over hundreds of graded bets. The data still runs in the background for research, but we no longer present model picks as recommendations.</p>
+    <p>What we test now: market-structure edges (like fading our own model&rsquo;s known errors, or buying panic-sold injury markets) rather than trying to predict better than the market. Those experiments live on Our Bets, with their records on Our Record.</p>
     <p>Touchdown picks work the same way. How often a player gets the ball near the goal line. Plus the weather and how the game should play out. The chance shown is our guess, not a book&rsquo;s price. Hold it next to a real payout and see if the payout is worth it.</p>
     <p>Touchdown picks only cover quarterbacks, running backs, receivers, and tight ends.</p>
     <p>And if the gap between our chance and the book&rsquo;s price is more than double, the pick stays on the board with a &ldquo;Longshot&rdquo; tag next to it. That kind of gap usually means our number is wrong, not that we found a bargain &mdash; the tag is just a label, and it does not change the chance shown.</p>
