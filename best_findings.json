@@ -61,14 +61,33 @@
       "record": {
         "losses": 11,
         "n": 19,
-        "pending": 0,
+        "pending": 1,
         "profit": -361.85,
         "pushes": 0,
         "roi_pct": -19.0,
         "wins": 8
       },
       "source_card": "CFB totals fade (desk signal)",
-      "today": []
+      "today": [
+        {
+          "component": "cfb_totals",
+          "description": "Under 45.5 total points \u2014 fade the model's over lean",
+          "game_date": "2026-11-24",
+          "line": 45.5,
+          "line_odds": "-108",
+          "market": "total",
+          "opponent": "WMU",
+          "outcome": null,
+          "pick_id": "2026-11-24-CTF01",
+          "player": null,
+          "profit": null,
+          "side": "under",
+          "source_card": "CFB totals fade (desk signal)",
+          "sport": "CFB",
+          "start_time_pt": "2026-11-24 16:00 PT",
+          "team": "M-OH"
+        }
+      ]
     },
     "nba_dog_fade": {
       "backtest": {
@@ -117,14 +136,14 @@
     }
   },
   "date": "2026-11-24",
-  "generated_at_pt": "2026-11-24 06:59:26 PST",
+  "generated_at_pt": "2026-11-24 07:12:17 PST",
   "name": "Best Findings Card",
   "note": "One composite card from our five best findings. Live record is cumulative from Nov 18, 2026 (first day: 1-2, -$112.28). Nov 19 brought rule changes (NHL gold dropped from the composite, next-man-up starter overs added), not a reset. Backtest numbers are evidence, not the record.",
   "paper": true,
   "record": {
     "losses": 26,
     "n": 44,
-    "pending": 2,
+    "pending": 3,
     "profit": -896.09,
     "pushes": 0,
     "roi_pct": -20.4,
@@ -132,16 +151,54 @@
   },
   "record_start": "2026-11-12",
   "stake": 100,
-  "straights": [],
+  "straights": [
+    {
+      "component": "cfb_totals",
+      "description": "Under 45.5 total points \u2014 fade the model's over lean",
+      "game_date": "2026-11-24",
+      "line": 45.5,
+      "line_odds": "-108",
+      "market": "total",
+      "opponent": "WMU",
+      "outcome": null,
+      "pick_id": "2026-11-24-CTF01",
+      "player": null,
+      "profit": null,
+      "side": "under",
+      "source_card": "CFB totals fade (desk signal)",
+      "sport": "CFB",
+      "start_time_pt": "2026-11-24 16:00 PT",
+      "team": "M-OH"
+    }
+  ],
   "today": {
     "by_component": {
       "cfb_passing": [],
       "cfb_rushing": [],
-      "cfb_totals": [],
+      "cfb_totals": [
+        {
+          "component": "cfb_totals",
+          "description": "Under 45.5 total points \u2014 fade the model's over lean",
+          "game_date": "2026-11-24",
+          "line": 45.5,
+          "line_odds": "-108",
+          "market": "total",
+          "opponent": "WMU",
+          "outcome": null,
+          "pick_id": "2026-11-24-CTF01",
+          "player": null,
+          "profit": null,
+          "side": "under",
+          "source_card": "CFB totals fade (desk signal)",
+          "sport": "CFB",
+          "start_time_pt": "2026-11-24 16:00 PT",
+          "team": "M-OH"
+        }
+      ],
       "nba_dog_fade": [],
       "nmu": []
     },
     "date": "2026-11-24",
-    "n": 0
+    "n": 1
   }
 }
