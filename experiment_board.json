@@ -4,7 +4,38 @@
       "description": "Our five best findings in one card: CFB totals unders, CFB passing unders, CFB rushing yards, next-man-up starter overs, and NBA underdog fades. The card we post to X each day.",
       "id": "best",
       "name": "What We Found",
-      "picks": [],
+      "picks": [
+        {
+          "away": "M-OH",
+          "component": "cfb_totals",
+          "date": "2026-11-24",
+          "description": "Under 45.5 total points \u2014 fade the model's over lean",
+          "family": "TOT:CFB",
+          "game_date": "2026-11-24",
+          "home": "WMU",
+          "kind": "straight",
+          "line": 45.5,
+          "line_odds": "-108",
+          "market": "total",
+          "market_prob": 0.4957,
+          "model_prob": 0.494,
+          "opponent": "WMU",
+          "outcome": null,
+          "paper": true,
+          "pick_id": "2026-11-24-CTF01",
+          "player": null,
+          "profit": null,
+          "selected_at_pt": "2026-11-24 07:12:17 PST",
+          "side": "under",
+          "source_card": "CFB totals fade (desk signal)",
+          "sport": "CFB",
+          "stake": 100.0,
+          "start_time_pt": "2026-11-24 16:00 PT",
+          "team": "M-OH",
+          "type": "total",
+          "variant": "BEST_FINDINGS"
+        }
+      ],
       "record": {
         "losses": 26,
         "n": 44,
@@ -546,7 +577,7 @@
     }
   ],
   "date": "2026-11-24",
-  "generated_pt": "2026-11-24 07:08:40 PST",
+  "generated_pt": "2026-11-24 07:12:35 PST",
   "name": "Experiment board \u2014 five ways of picking",
   "notes": [
     "Five ways of picking bets, each tracked on its own at $100 flat. None is proven. The record decides.",
