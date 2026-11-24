@@ -47,7 +47,7 @@
     }
   ],
   "date": "2026-11-24",
-  "generated_at_pt": "2026-11-24 07:12:48 PST",
+  "generated_at_pt": "2026-11-24 11:59:54 PST",
   "holds": {
     "b2b_fade": {
       "held": true,
@@ -578,9 +578,9 @@
       "value_pct": 1.14
     },
     {
-      "book_over_odds": "-112",
-      "book_under_chance": 49.6,
-      "book_under_odds": "-108",
+      "book_over_odds": "-108",
+      "book_under_chance": 50.4,
+      "book_under_odds": "-112",
       "bot_tradeable": true,
       "card": {
         "id": "cfb_totals_fade",
@@ -590,7 +590,7 @@
       "description": "Under 45.5 total points \u2014 fade the model's over lean",
       "early_flag": true,
       "early_logged_at_pt": "2026-11-24 06:26:09 PST",
-      "edge_pp": -0.17,
+      "edge_pp": -1.03,
       "fade": true,
       "fade_basis": "Empirical: model CFB over-leans went 15-31 as picks (Nov 5-14 audit); the UNDER fade was 31-15, +29.0% at book odds. Kalshi reprice (Nov 18): 28-12 on 40 exact-line games, ~+33% after fees. In-sample \u2014 unproven live.",
       "faded_side": "over",
@@ -598,9 +598,9 @@
       "game_date": "2026-11-24",
       "game_id": "2026-11-24-NCAAF-WMU-M-OH",
       "line": 45.5,
-      "line_odds": "-108",
+      "line_odds": "-112",
       "market": "total",
-      "market_prob": 0.4957,
+      "market_prob": 0.5043,
       "markets": {
         "kalshi": null,
         "novig": null,
@@ -621,9 +621,9 @@
       "value_pct": null
     },
     {
-      "book_over_odds": "-112",
-      "book_under_chance": 49.6,
-      "book_under_odds": "-108",
+      "book_over_odds": "-108",
+      "book_under_chance": 50.4,
+      "book_under_odds": "-112",
       "bot_tradeable": true,
       "card": {
         "id": "best_findings",
@@ -633,7 +633,7 @@
       "description": "Under 45.5 total points \u2014 fade the model's over lean",
       "early_flag": true,
       "early_logged_at_pt": "2026-11-24 06:26:09 PST",
-      "edge_pp": -0.17,
+      "edge_pp": -1.03,
       "fade": true,
       "fade_basis": "Empirical: model CFB over-leans went 15-31 as picks (Nov 5-14 audit); the UNDER fade was 31-15, +29.0% at book odds. Kalshi reprice (Nov 18): 28-12 on 40 exact-line games, ~+33% after fees. In-sample \u2014 unproven live.",
       "faded_side": "over",
@@ -641,9 +641,9 @@
       "game_date": "2026-11-24",
       "game_id": "2026-11-24-NCAAF-WMU-M-OH",
       "line": 45.5,
-      "line_odds": "-108",
+      "line_odds": "-112",
       "market": "total",
-      "market_prob": 0.4957,
+      "market_prob": 0.5043,
       "markets": {
         "kalshi": null,
         "novig": null,
