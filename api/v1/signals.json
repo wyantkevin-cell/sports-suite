@@ -10,6 +10,12 @@
       "name": "NBA B2B fade \u2014 gated (desk signal)"
     },
     {
+      "description": "Our five best findings in one card: CFB totals unders, CFB passing unders, CFB rushing yards, next-man-up starter overs, and NBA underdog fades. The card we post to X each day.",
+      "id": "best",
+      "n_signals": 1,
+      "name": "What We Found"
+    },
+    {
       "description": "The bot-facing view of the tradeable Best Findings: NMU starter overs at plus money, CFB totals UNDER fades, NBA dog fades, and gated NBA B2B fades. Each row is a copy of its source-card row (same pick_id, same price fields) with a source_component field \u2014 trade each pick_id once. CFB passing + rushing are Best Findings components but are not Kalshi-tradeable and are excluded.",
       "id": "best_findings",
       "n_signals": 1,
@@ -41,7 +47,7 @@
     }
   ],
   "date": "2026-11-24",
-  "generated_at_pt": "2026-11-24 07:10:54 PST",
+  "generated_at_pt": "2026-11-24 07:12:48 PST",
   "holds": {
     "b2b_fade": {
       "held": true,
@@ -53,6 +59,43 @@
   "name": "Sim Says bot API \u2014 today's signals",
   "note": "Paper signals from the Sim Says experiment board. These are our numbers vs the book's numbers \u2014 not promises, not proven winners. Check `date` before trading: an old date means a stale file. Empty `signals` means no signals today \u2014 never trade yesterday's.",
   "signals": [
+    {
+      "bot_tradeable": false,
+      "card": {
+        "id": "best",
+        "name": "What We Found"
+      },
+      "date": "2026-11-24",
+      "description": "Under 45.5 total points \u2014 fade the model's over lean",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-24 07:12:17 PST",
+      "edge_pp": -0.17,
+      "family": "TOT:CFB",
+      "game_date": "2026-11-24",
+      "game_id": "2026-11-24-NCAAF-WMU-M-OH",
+      "line": 45.5,
+      "line_odds": "-108",
+      "market": "total",
+      "market_prob": 0.4957,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.494,
+      "model_version": "FULL_SLATE v2",
+      "opponent": "WMU",
+      "pick_id": "2026-11-24-CTF01",
+      "player": null,
+      "selected_at_pt": "2026-11-24 07:12:17 PST",
+      "side": "under",
+      "sport": "CFB",
+      "start_time_pt": "2026-11-24 16:00 PT",
+      "status": "pregame",
+      "team": "M-OH",
+      "type": "total",
+      "value_pct": null
+    },
     {
       "bot_tradeable": false,
       "card": {
