@@ -1,6 +1,6 @@
 {
   "date": "2026-11-25",
-  "generated_at_pt": "2026-11-25 07:19:40 PST",
+  "generated_at_pt": "2026-11-25 11:59:57 PST",
   "name": "Sim Says bot API \u2014 per-card records",
   "note": "Live-graded straights only, $100 flat per bet. Voids are excluded from W-L and P&L. No backtest is blended in. None of these cards is proven \u2014 the record decides.",
   "records": [
@@ -10,12 +10,12 @@
         "name": "What We Found"
       },
       "description": "Our five best findings in one card: CFB totals unders, CFB passing unders, CFB rushing yards, next-man-up starter overs, and NBA underdog fades. The card we post to X each day.",
-      "losses": 28,
-      "n": 46,
-      "profit": -1096.09,
+      "losses": 30,
+      "n": 48,
+      "profit": -1296.09,
       "pushes": 0,
       "record_start": null,
-      "roi_pct": -23.8,
+      "roi_pct": -27.0,
       "stake_per_bet_usd": 100,
       "voids": null,
       "wins": 18
