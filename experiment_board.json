@@ -6,11 +6,11 @@
       "name": "What We Found",
       "picks": [],
       "record": {
-        "losses": 28,
-        "n": 46,
-        "profit": -1096.09,
+        "losses": 30,
+        "n": 48,
+        "profit": -1296.09,
         "pushes": 0,
-        "roi_pct": -23.8,
+        "roi_pct": -27.0,
         "wins": 18
       }
     },
@@ -546,7 +546,7 @@
     }
   ],
   "date": "2026-11-25",
-  "generated_pt": "2026-11-25 07:46:48 PST",
+  "generated_pt": "2026-11-25 11:07:59 PST",
   "name": "Experiment board \u2014 five ways of picking",
   "notes": [
     "Five ways of picking bets, each tracked on its own at $100 flat. None is proven. The record decides.",
