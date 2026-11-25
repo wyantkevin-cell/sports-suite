@@ -3212,6 +3212,10 @@ var TT_TALLY={wins:0,losses:0,pushes:0,n_graded:0,win_rate:0,profit:0,profit_par
 /* ================= TABS ================= */
 var tabs=Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
 function switchTab(name,focusTab){
+  /* Guard (Nov 25, 2026): an unmatched tab name used to hide every
+     panel and leave a blank page (#td routed to the removed props tab).
+     Bail out instead — the current tab stays visible. */
+  if(!tabs.some(function(t){return t.getAttribute("data-tab")===name;})) return;
   /* F44: leaving Scores stops its refresh timer; returning restarts it
      once through the panel observer / tab handler below. */
   if(name!=="scores"&&typeof stopScoresTimer==="function") stopScoresTimer();
@@ -3302,13 +3306,11 @@ document.addEventListener("click",function(e){
   var g=e.target.closest("[data-goto]");
   if(!g) return;
   if(g.hasAttribute("data-td-link")){
-    /* Touchdowns links land on Player Picks with NFL + Touchdowns
-       (Anytime TD) preselected, scrolled to the touchdown board. */
-    switchTab("props",false);
-    selectTouchdownsView();
-    var tdSec=$("tdBoardSection");
-    if(tdSec) tdSec.scrollIntoView({block:"start"});
-    else window.scrollTo({top:0,behavior:"auto"});
+    /* Touchdowns links used to land on Player Picks (removed Nov 24,
+       2026). They now land on Our Bets, where anytime-TD picks are
+       part of the board. */
+    switchTab("bets",false);
+    window.scrollTo({top:0,behavior:"auto"});
     return;
   }
   var gotoName=g.getAttribute("data-goto");
@@ -3319,17 +3321,15 @@ document.addEventListener("click",function(e){
 });
 var initialHash=(location.hash||"").replace("#","");
 /* Touchdowns used to be its own tab, reached as #td (and linked as
-   #touchdowns). It now lives under Player Picks (NFL, Touchdowns), so
-   old links redirect there: open Player Picks now, and flag it so the
-   props code below applies the NFL + Touchdowns filters once they
-   exist. switchTab rewrites the hash to #props. */
+   #touchdowns). Player Picks was removed Nov 24, 2026, so old links
+   now land on the overview tab instead of a blank page. */
 var tdDeepLink=(initialHash==="td"||initialHash==="touchdowns");
 /* Same fold, other direction: #moneyline / #totals / #spreads /
    #season used to be tabs of their own. They now open Game forecasts;
    the scroll to the right section happens further down this script,
    once the sections have their content. */
 var gfDeepLink=GF_SECTIONS[initialHash]||null;
-if(tdDeepLink) switchTab("props",false);
+if(tdDeepLink) switchTab("overview",false);
 else if(gfDeepLink) switchTab("gameforecasts",false);
 else if(tabs.some(function(t){return t.getAttribute("data-tab")===initialHash;})) switchTab(initialHash,false);
 
@@ -5847,13 +5847,13 @@ try{buildPropTypeOptions();}catch(e){}
 try{buildGameOptions();}catch(e){}
 try{renderMovers();}catch(e){}
 try{renderProps();}catch(e){}
-/* Old Touchdowns links (#td / #touchdowns) flagged at the top of this
-   script: now that the props filters exist, land on NFL + Touchdowns. */
-if(tdDeepLink){try{selectTouchdownsView();}catch(e){}}
+/* Old Touchdowns links (#td / #touchdowns) were already redirected to
+   the overview tab at load; nothing more to do here. (Player Picks was
+   removed Nov 24, 2026, so selectTouchdownsView no longer runs.) */
 if(gfDeepLink){try{showGfSection(gfDeepLink);}catch(e){} var gfEl=$(gfDeepLink);if(gfEl)gfEl.scrollIntoView({block:"start"});}
 window.addEventListener("hashchange",function(){
   var h=(location.hash||"").replace("#","");
-  if(h==="td"||h==="touchdowns"){switchTab("props",false);selectTouchdownsView();}
+  if(h==="td"||h==="touchdowns"){switchTab("overview",false);}
   else if(GF_SECTIONS[h]) gotoGameForecasts(GF_SECTIONS[h]);
 });
 
