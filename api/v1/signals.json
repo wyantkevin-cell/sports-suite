@@ -10,6 +10,12 @@
       "name": "NBA B2B fade \u2014 gated (desk signal)"
     },
     {
+      "description": "Our five best findings in one card: CFB totals unders, CFB passing unders, CFB rushing yards, next-man-up starter overs, and NBA underdog fades. The card we post to X each day.",
+      "id": "best",
+      "n_signals": 3,
+      "name": "What We Found"
+    },
+    {
       "description": "The bot-facing view of the tradeable Best Findings: NMU starter overs at plus money, CFB totals UNDER fades, NBA dog fades, and gated NBA B2B fades. Each row is a copy of its source-card row (same pick_id, same price fields) with a source_component field \u2014 trade each pick_id once. CFB passing + rushing are Best Findings components but are not Kalshi-tradeable and are excluded.",
       "id": "best_findings",
       "n_signals": 1,
@@ -29,7 +35,7 @@
     }
   ],
   "date": "2026-11-26",
-  "generated_at_pt": "2026-11-26 07:22:50 PST",
+  "generated_at_pt": "2026-11-26 07:24:52 PST",
   "halt_reason": "Kevin ordered all live Kalshi trading halted 2026-11-24 10:40 PT; Grok confirmed execution 2026-11-25. Paper-only until Kevin explicitly resumes live trading. Kalshi account is $0.",
   "halt_since": "2026-11-24",
   "holds": {
@@ -43,6 +49,117 @@
   "name": "Sim Says bot API \u2014 today's signals",
   "note": "Paper signals from the Sim Says experiment board. These are our numbers vs the book's numbers \u2014 not promises, not proven winners. Check `date` before trading: an old date means a stale file. Empty `signals` means no signals today \u2014 never trade yesterday's.",
   "signals": [
+    {
+      "bot_tradeable": false,
+      "card": {
+        "id": "best",
+        "name": "What We Found"
+      },
+      "date": "2026-11-26",
+      "description": "Under 46.5 total points \u2014 fade the model's over lean",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-26 07:24:32 PST",
+      "edge_pp": 0.98,
+      "family": "TOT:CFB",
+      "game_date": "2026-11-26",
+      "game_id": "2026-11-26-NCAAF-TTU-TCU",
+      "line": 46.5,
+      "line_odds": "-105",
+      "market": "total",
+      "market_prob": 0.4892,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.499,
+      "model_version": "FULL_SLATE v2",
+      "opponent": "TTU",
+      "pick_id": "2026-11-26-CTF01",
+      "player": null,
+      "selected_at_pt": "2026-11-26 07:24:32 PST",
+      "side": "under",
+      "sport": "CFB",
+      "start_time_pt": "2026-11-26 17:00 PT",
+      "status": "pregame",
+      "team": "TCU",
+      "type": "total",
+      "value_pct": null
+    },
+    {
+      "bot_tradeable": false,
+      "card": {
+        "id": "best",
+        "name": "What We Found"
+      },
+      "date": "2026-11-26",
+      "description": "Thomas Castellanos (TTU) under 208.5 passing yards",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-26 07:24:32 PST",
+      "edge_pp": null,
+      "family": "CFB:PASS",
+      "game_date": "2026-11-26",
+      "game_id": "2026-11-26-NCAAF-TTU-TCU",
+      "line": 208.5,
+      "line_odds": "-114",
+      "market": "passing yards",
+      "market_prob": 0.5327,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": null,
+      "model_version": "FULL_SLATE v2",
+      "opponent": "TCU",
+      "pick_id": "20261126-TC801",
+      "player": "Thomas Castellanos",
+      "selected_at_pt": "2026-11-26 07:24:32 PST",
+      "side": "under",
+      "sport": "CFB",
+      "start_time_pt": "2026-11-26 17:00 PT",
+      "status": "pregame",
+      "team": "TTU",
+      "type": "prop",
+      "value_pct": null
+    },
+    {
+      "bot_tradeable": false,
+      "card": {
+        "id": "best",
+        "name": "What We Found"
+      },
+      "date": "2026-11-26",
+      "description": "Thomas Castellanos (TTU) over 54.5 rushing yards",
+      "early_flag": true,
+      "early_logged_at_pt": "2026-11-26 07:24:32 PST",
+      "edge_pp": -2.55,
+      "family": "CFB:rushing yards",
+      "game_date": "2026-11-26",
+      "game_id": "2026-11-26-NCAAF-TTU-TCU",
+      "line": 54.5,
+      "line_odds": "-114",
+      "market": "rushing yards",
+      "market_prob": 0.5327,
+      "markets": {
+        "kalshi": null,
+        "novig": null,
+        "polymarket": null
+      },
+      "model_prob": 0.5072,
+      "model_version": "FULL_SLATE v2",
+      "opponent": "TCU",
+      "pick_id": "prop|2026-11-26|CFB|thomas castellanos|TTU|rushing yards|54.5|over",
+      "player": "Thomas Castellanos",
+      "selected_at_pt": "2026-11-26 07:24:32 PST",
+      "side": "over",
+      "sport": "CFB",
+      "start_time_pt": "2026-11-26 17:00 PT",
+      "status": "pregame",
+      "team": "TTU",
+      "type": "prop",
+      "value_pct": null
+    },
     {
       "bot_tradeable": false,
       "card": {
