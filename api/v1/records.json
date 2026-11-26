@@ -1,6 +1,6 @@
 {
   "date": "2026-11-26",
-  "generated_at_pt": "2026-11-26 07:22:50 PST",
+  "generated_at_pt": "2026-11-26 07:24:52 PST",
   "name": "Sim Says bot API \u2014 per-card records",
   "note": "Live-graded straights only, $100 flat per bet. Voids are excluded from W-L and P&L. No backtest is blended in. None of these cards is proven \u2014 the record decides.",
   "records": [
@@ -42,15 +42,15 @@
         "name": "Random Check"
       },
       "description": "Five picks drawn at random from the board each day, as a check \u2014 if random beats a method, the method is not doing anything.",
-      "losses": 30,
-      "n": 63,
-      "profit": -669.54,
+      "losses": 31,
+      "n": 65,
+      "profit": -687.57,
       "pushes": 0,
       "record_start": "2026-11-09",
       "roi_pct": -10.6,
       "stake_per_bet_usd": 100,
       "voids": 2,
-      "wins": 33
+      "wins": 34
     },
     {
       "card": {
