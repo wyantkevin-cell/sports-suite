@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-26",
-  "fetched_pt": "2026-11-26 14:57 PT",
+  "date": "2026-11-27",
+  "fetched_pt": "2026-11-27 14:57 PT",
   "games": [
     {
       "away": "MIA",
@@ -8,20 +8,20 @@
       "home": "NYK",
       "league": "NBA",
       "moneyline": {
-        "betsAway": 40,
-        "betsHome": 60,
-        "moneyAway": 35,
-        "moneyHome": 65
+        "betsAway": 39,
+        "betsHome": 61,
+        "moneyAway": 40,
+        "moneyHome": 60
       },
       "spread": {
-        "betsAway": 52,
-        "betsHome": 48,
-        "moneyAway": 58,
-        "moneyHome": 42
+        "betsAway": 46,
+        "betsHome": 54,
+        "moneyAway": 45,
+        "moneyHome": 55
       },
       "total": {
-        "betsOver": 59,
-        "betsUnder": 41,
+        "betsOver": 58,
+        "betsUnder": 42,
         "moneyOver": 55,
         "moneyUnder": 45
       }
@@ -32,22 +32,22 @@
       "home": "TOR",
       "league": "NBA",
       "moneyline": {
-        "betsAway": 28,
-        "betsHome": 72,
-        "moneyAway": 32,
-        "moneyHome": 68
+        "betsAway": 15,
+        "betsHome": 85,
+        "moneyAway": 16,
+        "moneyHome": 84
       },
       "spread": {
-        "betsAway": 42,
-        "betsHome": 58,
-        "moneyAway": 37,
-        "moneyHome": 63
+        "betsAway": 60,
+        "betsHome": 40,
+        "moneyAway": 61,
+        "moneyHome": 39
       },
       "total": {
-        "betsOver": 54,
-        "betsUnder": 46,
-        "moneyOver": 49,
-        "moneyUnder": 51
+        "betsOver": 24,
+        "betsUnder": 76,
+        "moneyOver": 27,
+        "moneyUnder": 73
       }
     },
     {
@@ -56,22 +56,22 @@
       "home": "DET",
       "league": "NBA",
       "moneyline": {
-        "betsAway": 32,
-        "betsHome": 68,
-        "moneyAway": 27,
-        "moneyHome": 73
+        "betsAway": 19,
+        "betsHome": 81,
+        "moneyAway": 17,
+        "moneyHome": 83
       },
       "spread": {
-        "betsAway": 43,
-        "betsHome": 57,
-        "moneyAway": 38,
-        "moneyHome": 62
+        "betsAway": 55,
+        "betsHome": 45,
+        "moneyAway": 52,
+        "moneyHome": 48
       },
       "total": {
-        "betsOver": 52,
-        "betsUnder": 48,
-        "moneyOver": 50,
-        "moneyUnder": 50
+        "betsOver": 62,
+        "betsUnder": 38,
+        "moneyOver": 60,
+        "moneyUnder": 40
       }
     },
     {
@@ -80,22 +80,22 @@
       "home": "IND",
       "league": "NBA",
       "moneyline": {
-        "betsAway": 62,
-        "betsHome": 38,
-        "moneyAway": 67,
-        "moneyHome": 33
+        "betsAway": 79,
+        "betsHome": 21,
+        "moneyAway": 75,
+        "moneyHome": 25
       },
       "spread": {
-        "betsAway": 54,
-        "betsHome": 46,
-        "moneyAway": 59,
-        "moneyHome": 41
+        "betsAway": 66,
+        "betsHome": 34,
+        "moneyAway": 60,
+        "moneyHome": 40
       },
       "total": {
-        "betsOver": 58,
-        "betsUnder": 42,
-        "moneyOver": 63,
-        "moneyUnder": 37
+        "betsOver": 34,
+        "betsUnder": 66,
+        "moneyOver": 33,
+        "moneyUnder": 67
       }
     },
     {
@@ -104,22 +104,22 @@
       "home": "BOS",
       "league": "NBA",
       "moneyline": {
-        "betsAway": 25,
-        "betsHome": 75,
-        "moneyAway": 30,
-        "moneyHome": 70
+        "betsAway": 28,
+        "betsHome": 72,
+        "moneyAway": 22,
+        "moneyHome": 78
       },
       "spread": {
-        "betsAway": 40,
-        "betsHome": 60,
-        "moneyAway": 35,
-        "moneyHome": 65
+        "betsAway": 63,
+        "betsHome": 37,
+        "moneyAway": 58,
+        "moneyHome": 42
       },
       "total": {
-        "betsOver": 47,
-        "betsUnder": 53,
-        "moneyOver": 41,
-        "moneyUnder": 59
+        "betsOver": 80,
+        "betsUnder": 20,
+        "moneyOver": 80,
+        "moneyUnder": 20
       }
     },
     {
@@ -128,22 +128,22 @@
       "home": "MIN",
       "league": "NBA",
       "moneyline": {
-        "betsAway": 39,
-        "betsHome": 61,
-        "moneyAway": 35,
-        "moneyHome": 65
+        "betsAway": 25,
+        "betsHome": 75,
+        "moneyAway": 36,
+        "moneyHome": 64
       },
       "spread": {
-        "betsAway": 50,
-        "betsHome": 50,
-        "moneyAway": 47,
-        "moneyHome": 53
+        "betsAway": 43,
+        "betsHome": 57,
+        "moneyAway": 52,
+        "moneyHome": 48
       },
       "total": {
-        "betsOver": 52,
-        "betsUnder": 48,
-        "moneyOver": 44,
-        "moneyUnder": 56
+        "betsOver": 48,
+        "betsUnder": 52,
+        "moneyOver": 47,
+        "moneyUnder": 53
       }
     },
     {
@@ -152,22 +152,22 @@
       "home": "PHX",
       "league": "NBA",
       "moneyline": {
-        "betsAway": 47,
-        "betsHome": 53,
-        "moneyAway": 42,
-        "moneyHome": 58
+        "betsAway": 63,
+        "betsHome": 37,
+        "moneyAway": 53,
+        "moneyHome": 47
       },
       "spread": {
-        "betsAway": 48,
-        "betsHome": 52,
-        "moneyAway": 46,
-        "moneyHome": 54
+        "betsAway": 59,
+        "betsHome": 41,
+        "moneyAway": 71,
+        "moneyHome": 29
       },
       "total": {
-        "betsOver": 59,
-        "betsUnder": 41,
-        "moneyOver": 56,
-        "moneyUnder": 44
+        "betsOver": 85,
+        "betsUnder": 15,
+        "moneyOver": 88,
+        "moneyUnder": 12
       }
     },
     {
@@ -176,64 +176,16 @@
       "home": "UTA",
       "league": "NBA",
       "moneyline": {
-        "betsAway": 74,
-        "betsHome": 26,
-        "moneyAway": 69,
-        "moneyHome": 31
+        "betsAway": 78,
+        "betsHome": 22,
+        "moneyAway": 83,
+        "moneyHome": 17
       },
       "spread": {
-        "betsAway": 62,
-        "betsHome": 38,
-        "moneyAway": 67,
-        "moneyHome": 33
-      },
-      "total": {
-        "betsOver": 54,
-        "betsUnder": 46,
-        "moneyOver": 51,
-        "moneyUnder": 49
-      }
-    },
-    {
-      "away": "GSW",
-      "date": "Nov 27",
-      "home": "POR",
-      "league": "NBA",
-      "moneyline": {
-        "betsAway": 29,
-        "betsHome": 71,
-        "moneyAway": 25,
-        "moneyHome": 75
-      },
-      "spread": {
-        "betsAway": 44,
-        "betsHome": 56,
-        "moneyAway": 39,
-        "moneyHome": 61
-      },
-      "total": {
-        "betsOver": 55,
-        "betsUnder": 45,
-        "moneyOver": 50,
-        "moneyUnder": 50
-      }
-    },
-    {
-      "away": "NOP",
-      "date": "Nov 27",
-      "home": "LAC",
-      "league": "NBA",
-      "moneyline": {
-        "betsAway": 36,
-        "betsHome": 64,
-        "moneyAway": 31,
-        "moneyHome": 69
-      },
-      "spread": {
-        "betsAway": 47,
-        "betsHome": 53,
-        "moneyAway": 42,
-        "moneyHome": 58
+        "betsAway": 46,
+        "betsHome": 54,
+        "moneyAway": 48,
+        "moneyHome": 52
       },
       "total": {
         "betsOver": 62,
@@ -243,141 +195,357 @@
       }
     },
     {
+      "away": "GSW",
+      "date": "Nov 27",
+      "home": "POR",
+      "league": "NBA",
+      "moneyline": {
+        "betsAway": 13,
+        "betsHome": 87,
+        "moneyAway": 18,
+        "moneyHome": 82
+      },
+      "spread": {
+        "betsAway": 21,
+        "betsHome": 79,
+        "moneyAway": 25,
+        "moneyHome": 75
+      },
+      "total": {
+        "betsOver": 68,
+        "betsUnder": 32,
+        "moneyOver": 62,
+        "moneyUnder": 38
+      }
+    },
+    {
+      "away": "NOP",
+      "date": "Nov 27",
+      "home": "LAC",
+      "league": "NBA",
+      "moneyline": {
+        "betsAway": 63,
+        "betsHome": 37,
+        "moneyAway": 55,
+        "moneyHome": 45
+      },
+      "spread": {
+        "betsAway": 66,
+        "betsHome": 34,
+        "moneyAway": 64,
+        "moneyHome": 36
+      },
+      "total": {
+        "betsOver": 48,
+        "betsUnder": 52,
+        "moneyOver": 48,
+        "moneyUnder": 52
+      }
+    },
+    {
       "away": "LAL",
       "date": "Nov 27",
       "home": "SAS",
       "league": "NBA",
       "moneyline": {
-        "betsAway": 40,
-        "betsHome": 60,
-        "moneyAway": 35,
-        "moneyHome": 65
+        "betsAway": 36,
+        "betsHome": 64,
+        "moneyAway": 27,
+        "moneyHome": 73
       },
       "spread": {
-        "betsAway": 52,
-        "betsHome": 48,
-        "moneyAway": 58,
-        "moneyHome": 42
+        "betsAway": 55,
+        "betsHome": 45,
+        "moneyAway": 57,
+        "moneyHome": 43
       },
       "total": {
-        "betsOver": 47,
-        "betsUnder": 53,
-        "moneyOver": 39,
-        "moneyUnder": 61
+        "betsOver": 62,
+        "betsUnder": 38,
+        "moneyOver": 41,
+        "moneyUnder": 59
       }
     },
     {
-      "away": "PHI",
-      "date": "Nov 26",
-      "home": "DAL",
-      "league": "NFL",
+      "away": "FLA",
+      "date": "Nov 27",
+      "home": "WSH",
+      "league": "NHL",
       "moneyline": {
-        "betsAway": 18,
-        "betsHome": 82,
-        "moneyAway": 19,
-        "moneyHome": 81
+        "betsAway": 66,
+        "betsHome": 34,
+        "moneyAway": 63,
+        "moneyHome": 37
       },
       "spread": {
-        "betsAway": 39,
-        "betsHome": 61,
+        "betsAway": 41,
+        "betsHome": 59,
+        "moneyAway": 29,
+        "moneyHome": 71
+      },
+      "total": {
+        "betsOver": 82,
+        "betsUnder": 18,
+        "moneyOver": 87,
+        "moneyUnder": 13
+      }
+    },
+    {
+      "away": "LA",
+      "date": "Nov 27",
+      "home": "ANA",
+      "league": "NHL",
+      "moneyline": {
+        "betsAway": 43,
+        "betsHome": 57,
+        "moneyAway": 56,
+        "moneyHome": 44
+      },
+      "spread": {
+        "betsAway": 34,
+        "betsHome": 66,
         "moneyAway": 32,
         "moneyHome": 68
       },
       "total": {
-        "betsOver": 69,
-        "betsUnder": 31,
-        "moneyOver": 59,
-        "moneyUnder": 41
+        "betsOver": 33,
+        "betsUnder": 67,
+        "moneyOver": 21,
+        "moneyUnder": 79
       }
     },
     {
-      "away": "KC",
-      "date": "Nov 26",
-      "home": "BUF",
-      "league": "NFL",
+      "away": "COL",
+      "date": "Nov 27",
+      "home": "MIN",
+      "league": "NHL",
       "moneyline": {
-        "betsAway": 41,
-        "betsHome": 59,
-        "moneyAway": 37,
-        "moneyHome": 63
+        "betsAway": 39,
+        "betsHome": 61,
+        "moneyAway": 53,
+        "moneyHome": 47
       },
       "spread": {
-        "betsAway": 60,
-        "betsHome": 40,
-        "moneyAway": 63,
-        "moneyHome": 37
+        "betsAway": 58,
+        "betsHome": 42,
+        "moneyAway": 60,
+        "moneyHome": 40
       },
       "total": {
-        "betsOver": 44,
-        "betsUnder": 56,
-        "moneyOver": 39,
-        "moneyUnder": 61
+        "betsOver": 57,
+        "betsUnder": 43,
+        "moneyOver": 63,
+        "moneyUnder": 37
       }
     },
     {
-      "away": "DEN",
+      "away": "VGK",
       "date": "Nov 27",
-      "home": "PIT",
-      "league": "NFL",
+      "home": "SJ",
+      "league": "NHL",
       "moneyline": {
-        "betsAway": 67,
-        "betsHome": 33,
-        "moneyAway": 72,
-        "moneyHome": 28
+        "betsAway": 84,
+        "betsHome": 16,
+        "moneyAway": 82,
+        "moneyHome": 18
       },
       "spread": {
-        "betsAway": 51,
-        "betsHome": 49,
+        "betsAway": 57,
+        "betsHome": 43,
         "moneyAway": 59,
         "moneyHome": 41
       },
       "total": {
-        "betsOver": 37,
-        "betsUnder": 63,
-        "moneyOver": 29,
-        "moneyUnder": 71
+        "betsOver": 74,
+        "betsUnder": 26,
+        "moneyOver": 69,
+        "moneyUnder": 31
       }
     },
     {
-      "away": "ATL",
-      "date": "Nov 29",
-      "home": "MIN",
-      "league": "NFL",
+      "away": "NYR",
+      "date": "Nov 27",
+      "home": "CHI",
+      "league": "NHL",
       "moneyline": {
-        "betsAway": 28,
-        "betsHome": 72,
-        "moneyAway": 33,
-        "moneyHome": 67
+        "betsAway": 67,
+        "betsHome": 33,
+        "moneyAway": 65,
+        "moneyHome": 35
       },
       "spread": {
-        "betsAway": 47,
-        "betsHome": 53,
-        "moneyAway": 42,
-        "moneyHome": 58
+        "betsAway": 61,
+        "betsHome": 39,
+        "moneyAway": 65,
+        "moneyHome": 35
       },
       "total": {
-        "betsOver": 52,
-        "betsUnder": 48,
-        "moneyOver": 50,
-        "moneyUnder": 50
+        "betsOver": 31,
+        "betsUnder": 69,
+        "moneyOver": 15,
+        "moneyUnder": 85
       }
     },
     {
-      "away": "BAL",
-      "date": "Nov 29",
-      "home": "HOU",
-      "league": "NFL",
+      "away": "WPG",
+      "date": "Nov 27",
+      "home": "NYI",
+      "league": "NHL",
       "moneyline": {
-        "betsAway": 31,
-        "betsHome": 69,
-        "moneyAway": 26,
-        "moneyHome": 74
+        "betsAway": 52,
+        "betsHome": 48,
+        "moneyAway": 66,
+        "moneyHome": 34
+      },
+      "spread": {
+        "betsAway": 52,
+        "betsHome": 48,
+        "moneyAway": 29,
+        "moneyHome": 71
+      },
+      "total": {
+        "betsOver": 56,
+        "betsUnder": 44,
+        "moneyOver": 42,
+        "moneyUnder": 58
+      }
+    },
+    {
+      "away": "PIT",
+      "date": "Nov 27",
+      "home": "BUF",
+      "league": "NHL",
+      "moneyline": {
+        "betsAway": 46,
+        "betsHome": 54,
+        "moneyAway": 44,
+        "moneyHome": 56
+      },
+      "spread": {
+        "betsAway": 38,
+        "betsHome": 62,
+        "moneyAway": 43,
+        "moneyHome": 57
+      },
+      "total": {
+        "betsOver": 81,
+        "betsUnder": 19,
+        "moneyOver": 81,
+        "moneyUnder": 19
+      }
+    },
+    {
+      "away": "SEA",
+      "date": "Nov 27",
+      "home": "EDM",
+      "league": "NHL",
+      "moneyline": {
+        "betsAway": 21,
+        "betsHome": 79,
+        "moneyAway": 30,
+        "moneyHome": 70
       },
       "spread": {
         "betsAway": 46,
         "betsHome": 54,
-        "moneyAway": 41,
-        "moneyHome": 59
+        "moneyAway": 69,
+        "moneyHome": 31
+      },
+      "total": {
+        "betsOver": 57,
+        "betsUnder": 43,
+        "moneyOver": 52,
+        "moneyUnder": 48
+      }
+    },
+    {
+      "away": "MTL",
+      "date": "Nov 28",
+      "home": "VGK",
+      "league": "NHL",
+      "moneyline": {
+        "betsAway": 40,
+        "betsHome": 60,
+        "moneyAway": 36,
+        "moneyHome": 64
+      },
+      "spread": {
+        "betsAway": 45,
+        "betsHome": 55,
+        "moneyAway": 40,
+        "moneyHome": 60
+      },
+      "total": {
+        "betsOver": 49,
+        "betsUnder": 51,
+        "moneyOver": 48,
+        "moneyUnder": 52
+      }
+    },
+    {
+      "away": "TB",
+      "date": "Nov 28",
+      "home": "FLA",
+      "league": "NHL",
+      "moneyline": {
+        "betsAway": 54,
+        "betsHome": 46,
+        "moneyAway": 58,
+        "moneyHome": 42
+      },
+      "spread": {
+        "betsAway": 51,
+        "betsHome": 49,
+        "moneyAway": 54,
+        "moneyHome": 46
+      },
+      "total": {
+        "betsOver": 55,
+        "betsUnder": 45,
+        "moneyOver": 52,
+        "moneyUnder": 48
+      }
+    },
+    {
+      "away": "CGY",
+      "date": "Nov 28",
+      "home": "NYR",
+      "league": "NHL",
+      "moneyline": {
+        "betsAway": 35,
+        "betsHome": 65,
+        "moneyAway": 31,
+        "moneyHome": 69
+      },
+      "spread": {
+        "betsAway": 48,
+        "betsHome": 52,
+        "moneyAway": 46,
+        "moneyHome": 54
+      },
+      "total": {
+        "betsOver": 48,
+        "betsUnder": 52,
+        "moneyOver": 47,
+        "moneyUnder": 53
+      }
+    },
+    {
+      "away": "OTT",
+      "date": "Nov 28",
+      "home": "CAR",
+      "league": "NHL",
+      "moneyline": {
+        "betsAway": 32,
+        "betsHome": 68,
+        "moneyAway": 28,
+        "moneyHome": 72
+      },
+      "spread": {
+        "betsAway": 48,
+        "betsHome": 52,
+        "moneyAway": 46,
+        "moneyHome": 54
       },
       "total": {
         "betsOver": 58,
@@ -387,39 +555,63 @@
       }
     },
     {
-      "away": "NO",
-      "date": "Nov 29",
-      "home": "CIN",
-      "league": "NFL",
+      "away": "NSH",
+      "date": "Nov 28",
+      "home": "DET",
+      "league": "NHL",
       "moneyline": {
-        "betsAway": 25,
-        "betsHome": 75,
-        "moneyAway": 30,
-        "moneyHome": 70
+        "betsAway": 44,
+        "betsHome": 56,
+        "moneyAway": 40,
+        "moneyHome": 60
       },
       "spread": {
-        "betsAway": 41,
-        "betsHome": 59,
-        "moneyAway": 36,
-        "moneyHome": 64
+        "betsAway": 48,
+        "betsHome": 52,
+        "moneyAway": 46,
+        "moneyHome": 54
       },
       "total": {
-        "betsOver": 54,
-        "betsUnder": 46,
+        "betsOver": 46,
+        "betsUnder": 54,
+        "moneyOver": 49,
+        "moneyUnder": 51
+      }
+    },
+    {
+      "away": "WPG",
+      "date": "Nov 28",
+      "home": "NJ",
+      "league": "NHL",
+      "moneyline": {
+        "betsAway": 35,
+        "betsHome": 65,
+        "moneyAway": 31,
+        "moneyHome": 69
+      },
+      "spread": {
+        "betsAway": 48,
+        "betsHome": 52,
+        "moneyAway": 46,
+        "moneyHome": 54
+      },
+      "total": {
+        "betsOver": 55,
+        "betsUnder": 45,
         "moneyOver": 58,
         "moneyUnder": 42
       }
     },
     {
-      "away": "NYG",
-      "date": "Nov 29",
-      "home": "IND",
-      "league": "NFL",
+      "away": "TOR",
+      "date": "Nov 28",
+      "home": "PIT",
+      "league": "NHL",
       "moneyline": {
-        "betsAway": 70,
-        "betsHome": 30,
-        "moneyAway": 75,
-        "moneyHome": 25
+        "betsAway": 47,
+        "betsHome": 53,
+        "moneyAway": 43,
+        "moneyHome": 57
       },
       "spread": {
         "betsAway": 53,
@@ -428,94 +620,142 @@
         "moneyHome": 42
       },
       "total": {
-        "betsOver": 50,
-        "betsUnder": 50,
-        "moneyOver": 51,
-        "moneyUnder": 49
+        "betsOver": 57,
+        "betsUnder": 43,
+        "moneyOver": 60,
+        "moneyUnder": 40
       }
     },
     {
-      "away": "TEN",
-      "date": "Nov 29",
-      "home": "JAX",
-      "league": "NFL",
+      "away": "WSH",
+      "date": "Nov 28",
+      "home": "STL",
+      "league": "NHL",
       "moneyline": {
-        "betsAway": 25,
-        "betsHome": 75,
-        "moneyAway": 30,
-        "moneyHome": 70
+        "betsAway": 48,
+        "betsHome": 52,
+        "moneyAway": 45,
+        "moneyHome": 55
       },
       "spread": {
-        "betsAway": 37,
-        "betsHome": 63,
-        "moneyAway": 31,
-        "moneyHome": 69
+        "betsAway": 53,
+        "betsHome": 47,
+        "moneyAway": 58,
+        "moneyHome": 42
       },
       "total": {
-        "betsOver": 54,
-        "betsUnder": 46,
-        "moneyOver": 58,
-        "moneyUnder": 42
+        "betsOver": 47,
+        "betsUnder": 53,
+        "moneyOver": 44,
+        "moneyUnder": 56
       }
     },
     {
-      "away": "NYJ",
-      "date": "Nov 29",
-      "home": "MIA",
-      "league": "NFL",
+      "away": "NYI",
+      "date": "Nov 28",
+      "home": "PHI",
+      "league": "NHL",
       "moneyline": {
-        "betsAway": 65,
-        "betsHome": 35,
-        "moneyAway": 70,
-        "moneyHome": 30
+        "betsAway": 53,
+        "betsHome": 47,
+        "moneyAway": 58,
+        "moneyHome": 42
       },
       "spread": {
-        "betsAway": 50,
-        "betsHome": 50,
-        "moneyAway": 47,
-        "moneyHome": 53
+        "betsAway": 47,
+        "betsHome": 53,
+        "moneyAway": 42,
+        "moneyHome": 58
       },
       "total": {
-        "betsOver": 50,
-        "betsUnder": 50,
+        "betsOver": 46,
+        "betsUnder": 54,
+        "moneyOver": 50,
+        "moneyUnder": 50
+      }
+    },
+    {
+      "away": "UTA",
+      "date": "Nov 28",
+      "home": "DAL",
+      "league": "NHL",
+      "moneyline": {
+        "betsAway": 39,
+        "betsHome": 61,
+        "moneyAway": 35,
+        "moneyHome": 65
+      },
+      "spread": {
+        "betsAway": 47,
+        "betsHome": 53,
+        "moneyAway": 42,
+        "moneyHome": 58
+      },
+      "total": {
+        "betsOver": 45,
+        "betsUnder": 55,
+        "moneyOver": 42,
+        "moneyUnder": 58
+      }
+    },
+    {
+      "away": "ANA",
+      "date": "Nov 28",
+      "home": "LA",
+      "league": "NHL",
+      "moneyline": {
+        "betsAway": 39,
+        "betsHome": 61,
+        "moneyAway": 35,
+        "moneyHome": 65
+      },
+      "spread": {
+        "betsAway": 48,
+        "betsHome": 52,
+        "moneyAway": 46,
+        "moneyHome": 54
+      },
+      "total": {
+        "betsOver": 56,
+        "betsUnder": 44,
         "moneyOver": 52,
         "moneyUnder": 48
       }
     },
     {
-      "away": "NE",
-      "date": "Nov 29",
-      "home": "LAC",
-      "league": "NFL",
+      "away": "SJ",
+      "date": "Nov 28",
+      "home": "COL",
+      "league": "NHL",
       "moneyline": {
-        "betsAway": 61,
-        "betsHome": 39,
-        "moneyAway": 66,
-        "moneyHome": 34
+        "betsAway": 32,
+        "betsHome": 68,
+        "moneyAway": 28,
+        "moneyHome": 72
       },
       "spread": {
-        "betsAway": 56,
-        "betsHome": 44,
-        "moneyAway": 61,
-        "moneyHome": 39
+        "betsAway": 47,
+        "betsHome": 53,
+        "moneyAway": 42,
+        "moneyHome": 58
       },
       "total": {
-        "betsOver": 42,
-        "betsUnder": 58,
-        "moneyOver": 35,
-        "moneyUnder": 65
+        "betsOver": 59,
+        "betsUnder": 41,
+        "moneyOver": 62,
+        "moneyUnder": 38
       }
     },
     {
-      "away": "WAS",
-      "date": "Nov 29",
-      "home": "ARI",
-      "league": "NFL",
+      "away": "EDM",
+      "date": "Nov 28",
+      "home": "SEA",
+      "league": "NHL",
       "moneyline": {
-        "betsAway": 72,
-        "betsHome": 28,
-        "moneyAway": 67,
-        "moneyHome": 33
+        "betsAway": 65,
+        "betsHome": 35,
+        "moneyAway": 69,
+        "moneyHome": 31
       },
       "spread": {
         "betsAway": 54,
@@ -524,52 +764,220 @@
         "moneyHome": 41
       },
       "total": {
-        "betsOver": 40,
-        "betsUnder": 60,
-        "moneyOver": 32,
-        "moneyUnder": 68
+        "betsOver": 44,
+        "betsUnder": 56,
+        "moneyOver": 34,
+        "moneyUnder": 66
       }
     },
     {
-      "away": "SEA",
-      "date": "Nov 29",
-      "home": "SF",
-      "league": "NFL",
+      "away": "Appalachian State Mountaineers",
+      "date": "Nov 27",
+      "home": "USA",
+      "league": "NCAAF",
       "moneyline": {
-        "betsAway": 40,
-        "betsHome": 60,
-        "moneyAway": 35,
-        "moneyHome": 65
+        "betsAway": 35,
+        "betsHome": 65,
+        "moneyAway": 26,
+        "moneyHome": 74
       },
       "spread": {
-        "betsAway": 50,
-        "betsHome": 50,
-        "moneyAway": 47,
-        "moneyHome": 53
+        "betsAway": 52,
+        "betsHome": 48,
+        "moneyAway": 40,
+        "moneyHome": 60
+      },
+      "total": {
+        "betsOver": 43,
+        "betsUnder": 57,
+        "moneyOver": 48,
+        "moneyUnder": 52
+      }
+    },
+    {
+      "away": "NDSU",
+      "date": "Nov 27",
+      "home": "SJSU",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 78,
+        "betsHome": 22,
+        "moneyAway": 86,
+        "moneyHome": 14
+      },
+      "spread": {
+        "betsAway": 31,
+        "betsHome": 69,
+        "moneyAway": 43,
+        "moneyHome": 57
+      },
+      "total": {
+        "betsOver": 67,
+        "betsUnder": 33,
+        "moneyOver": 67,
+        "moneyUnder": 33
+      }
+    },
+    {
+      "away": "TEM",
+      "date": "Nov 27",
+      "home": "MEM",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 10,
+        "betsHome": 90,
+        "moneyAway": 10,
+        "moneyHome": 90
+      },
+      "spread": {
+        "betsAway": 21,
+        "betsHome": 79,
+        "moneyAway": 21,
+        "moneyHome": 79
+      },
+      "total": {
+        "betsOver": 64,
+        "betsUnder": 36,
+        "moneyOver": 79,
+        "moneyUnder": 21
+      }
+    },
+    {
+      "away": "FLA",
+      "date": "Nov 27",
+      "home": "FSU",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 83,
+        "betsHome": 17,
+        "moneyAway": 73,
+        "moneyHome": 27
+      },
+      "spread": {
+        "betsAway": 62,
+        "betsHome": 38,
+        "moneyAway": 63,
+        "moneyHome": 37
+      },
+      "total": {
+        "betsOver": 70,
+        "betsUnder": 30,
+        "moneyOver": 65,
+        "moneyUnder": 35
+      }
+    },
+    {
+      "away": "AFA",
+      "date": "Nov 27",
+      "home": "UNM",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 28,
+        "betsHome": 72,
+        "moneyAway": 23,
+        "moneyHome": 77
+      },
+      "spread": {
+        "betsAway": 52,
+        "betsHome": 48,
+        "moneyAway": 42,
+        "moneyHome": 58
+      },
+      "total": {
+        "betsOver": 61,
+        "betsUnder": 39,
+        "moneyOver": 72,
+        "moneyUnder": 28
+      }
+    },
+    {
+      "away": "MINN",
+      "date": "Nov 27",
+      "home": "WIS",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 25,
+        "betsHome": 75,
+        "moneyAway": 15,
+        "moneyHome": 85
+      },
+      "spread": {
+        "betsAway": 45,
+        "betsHome": 55,
+        "moneyAway": 32,
+        "moneyHome": 68
+      },
+      "total": {
+        "betsOver": 47,
+        "betsUnder": 53,
+        "moneyOver": 47,
+        "moneyUnder": 53
+      }
+    },
+    {
+      "away": "TEX",
+      "date": "Nov 27",
+      "home": "TAMU",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 85,
+        "betsHome": 15,
+        "moneyAway": 88,
+        "moneyHome": 12
+      },
+      "spread": {
+        "betsAway": 64,
+        "betsHome": 36,
+        "moneyAway": 70,
+        "moneyHome": 30
+      },
+      "total": {
+        "betsOver": 66,
+        "betsUnder": 34,
+        "moneyOver": 66,
+        "moneyUnder": 34
+      }
+    },
+    {
+      "away": "WVU",
+      "date": "Nov 27",
+      "home": "UTAH",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 13,
+        "betsHome": 87,
+        "moneyAway": 19,
+        "moneyHome": 81
+      },
+      "spread": {
+        "betsAway": 34,
+        "betsHome": 66,
+        "moneyAway": 30,
+        "moneyHome": 70
       },
       "total": {
         "betsOver": 57,
         "betsUnder": 43,
-        "moneyOver": 45,
-        "moneyUnder": 55
+        "moneyOver": 47,
+        "moneyUnder": 53
       }
     },
     {
-      "away": "LV",
-      "date": "Nov 29",
-      "home": "CLE",
-      "league": "NFL",
+      "away": "CMU",
+      "date": "Nov 28",
+      "home": "BALL",
+      "league": "NCAAF",
       "moneyline": {
-        "betsAway": 35,
-        "betsHome": 65,
-        "moneyAway": 30,
-        "moneyHome": 70
+        "betsAway": 62,
+        "betsHome": 38,
+        "moneyAway": 67,
+        "moneyHome": 33
       },
       "spread": {
-        "betsAway": 50,
-        "betsHome": 50,
-        "moneyAway": 47,
-        "moneyHome": 53
+        "betsAway": 46,
+        "betsHome": 54,
+        "moneyAway": 38,
+        "moneyHome": 62
       },
       "total": {
         "betsOver": 53,
@@ -579,69 +987,69 @@
       }
     },
     {
-      "away": "CAR",
-      "date": "Nov 30",
-      "home": "TB",
-      "league": "NFL",
+      "away": "BC",
+      "date": "Nov 28",
+      "home": "MIA",
+      "league": "NCAAF",
       "moneyline": {
-        "betsAway": 41,
-        "betsHome": 59,
-        "moneyAway": 36,
-        "moneyHome": 64
+        "betsAway": 25,
+        "betsHome": 75,
+        "moneyAway": 30,
+        "moneyHome": 70
       },
       "spread": {
-        "betsAway": 51,
-        "betsHome": 49,
-        "moneyAway": 57,
-        "moneyHome": 43
+        "betsAway": 36,
+        "betsHome": 64,
+        "moneyAway": 31,
+        "moneyHome": 69
       },
       "total": {
-        "betsOver": 46,
-        "betsUnder": 54,
-        "moneyOver": 41,
-        "moneyUnder": 59
+        "betsOver": 54,
+        "betsUnder": 46,
+        "moneyOver": 57,
+        "moneyUnder": 43
       }
     },
     {
-      "away": "KC",
-      "date": "Dec 3",
-      "home": "LAR",
-      "league": "NFL",
+      "away": "NAVY",
+      "date": "Nov 28",
+      "home": "CLT",
+      "league": "NCAAF",
       "moneyline": {
-        "betsAway": 59,
-        "betsHome": 41,
-        "moneyAway": 63,
-        "moneyHome": 37
+        "betsAway": 74,
+        "betsHome": 26,
+        "moneyAway": 69,
+        "moneyHome": 31
       },
       "spread": {
-        "betsAway": 56,
-        "betsHome": 44,
-        "moneyAway": 61,
-        "moneyHome": 39
+        "betsAway": 64,
+        "betsHome": 36,
+        "moneyAway": 69,
+        "moneyHome": 31
       },
       "total": {
-        "betsOver": 57,
-        "betsUnder": 43,
-        "moneyOver": 53,
-        "moneyUnder": 47
+        "betsOver": 45,
+        "betsUnder": 55,
+        "moneyOver": 36,
+        "moneyUnder": 64
       }
     },
     {
-      "away": "CIN",
-      "date": "Dec 6",
-      "home": "CLE",
-      "league": "NFL",
+      "away": "LT",
+      "date": "Nov 28",
+      "home": "GASO",
+      "league": "NCAAF",
       "moneyline": {
-        "betsAway": 67,
-        "betsHome": 33,
-        "moneyAway": 71,
-        "moneyHome": 29
+        "betsAway": 42,
+        "betsHome": 58,
+        "moneyAway": 37,
+        "moneyHome": 63
       },
       "spread": {
-        "betsAway": 51,
-        "betsHome": 49,
-        "moneyAway": 54,
-        "moneyHome": 46
+        "betsAway": 48,
+        "betsHome": 52,
+        "moneyAway": 46,
+        "moneyHome": 54
       },
       "total": {
         "betsOver": 56,
@@ -651,111 +1059,15 @@
       }
     },
     {
-      "away": "MIA",
-      "date": "Dec 6",
-      "home": "DEN",
-      "league": "NFL",
+      "away": "LOU",
+      "date": "Nov 28",
+      "home": "UK",
+      "league": "NCAAF",
       "moneyline": {
-        "betsAway": 29,
-        "betsHome": 71,
-        "moneyAway": 33,
-        "moneyHome": 67
-      },
-      "spread": {
-        "betsAway": 37,
-        "betsHome": 63,
-        "moneyAway": 31,
-        "moneyHome": 69
-      },
-      "total": {
-        "betsOver": 42,
-        "betsUnder": 58,
-        "moneyOver": 55,
-        "moneyUnder": 45
-      }
-    },
-    {
-      "away": "GB",
-      "date": "Dec 6",
-      "home": "NO",
-      "league": "NFL",
-      "moneyline": {
-        "betsAway": 66,
-        "betsHome": 34,
+        "betsAway": 58,
+        "betsHome": 42,
         "moneyAway": 63,
         "moneyHome": 37
-      },
-      "spread": {
-        "betsAway": 52,
-        "betsHome": 48,
-        "moneyAway": 54,
-        "moneyHome": 46
-      },
-      "total": {
-        "betsOver": 52,
-        "betsUnder": 48,
-        "moneyOver": 44,
-        "moneyUnder": 56
-      }
-    },
-    {
-      "away": "LAC",
-      "date": "Dec 6",
-      "home": "TB",
-      "league": "NFL",
-      "moneyline": {
-        "betsAway": 32,
-        "betsHome": 68,
-        "moneyAway": 28,
-        "moneyHome": 72
-      },
-      "spread": {
-        "betsAway": 46,
-        "betsHome": 54,
-        "moneyAway": 41,
-        "moneyHome": 59
-      },
-      "total": {
-        "betsOver": 50,
-        "betsUnder": 50,
-        "moneyOver": 49,
-        "moneyUnder": 51
-      }
-    },
-    {
-      "away": "SF",
-      "date": "Dec 6",
-      "home": "NYG",
-      "league": "NFL",
-      "moneyline": {
-        "betsAway": 69,
-        "betsHome": 31,
-        "moneyAway": 73,
-        "moneyHome": 27
-      },
-      "spread": {
-        "betsAway": 54,
-        "betsHome": 46,
-        "moneyAway": 60,
-        "moneyHome": 40
-      },
-      "total": {
-        "betsOver": 55,
-        "betsUnder": 45,
-        "moneyOver": 60,
-        "moneyUnder": 40
-      }
-    },
-    {
-      "away": "WAS",
-      "date": "Dec 6",
-      "home": "TEN",
-      "league": "NFL",
-      "moneyline": {
-        "betsAway": 65,
-        "betsHome": 35,
-        "moneyAway": 69,
-        "moneyHome": 31
       },
       "spread": {
         "betsAway": 51,
@@ -764,122 +1076,50 @@
         "moneyHome": 46
       },
       "total": {
-        "betsOver": 53,
-        "betsUnder": 47,
-        "moneyOver": 56,
-        "moneyUnder": 44
+        "betsOver": 46,
+        "betsUnder": 54,
+        "moneyOver": 38,
+        "moneyUnder": 62
       }
     },
     {
-      "away": "BUF",
-      "date": "Dec 6",
-      "home": "NE",
-      "league": "NFL",
+      "away": "MICH",
+      "date": "Nov 28",
+      "home": "OSU",
+      "league": "NCAAF",
       "moneyline": {
-        "betsAway": 71,
-        "betsHome": 29,
-        "moneyAway": 67,
-        "moneyHome": 33
+        "betsAway": 29,
+        "betsHome": 71,
+        "moneyAway": 24,
+        "moneyHome": 76
       },
       "spread": {
-        "betsAway": 62,
-        "betsHome": 38,
-        "moneyAway": 68,
-        "moneyHome": 32
-      },
-      "total": {
-        "betsOver": 44,
-        "betsUnder": 56,
-        "moneyOver": 39,
-        "moneyUnder": 61
-      }
-    },
-    {
-      "away": "CAR",
-      "date": "Dec 6",
-      "home": "MIN",
-      "league": "NFL",
-      "moneyline": {
-        "betsAway": 34,
-        "betsHome": 66,
-        "moneyAway": 30,
-        "moneyHome": 70
-      },
-      "spread": {
-        "betsAway": 49,
-        "betsHome": 51,
-        "moneyAway": 46,
-        "moneyHome": 54
-      },
-      "total": {
-        "betsOver": 51,
-        "betsUnder": 49,
-        "moneyOver": 49,
-        "moneyUnder": 51
-      }
-    },
-    {
-      "away": "HOU",
-      "date": "Dec 6",
-      "home": "PIT",
-      "league": "NFL",
-      "moneyline": {
-        "betsAway": 64,
-        "betsHome": 36,
-        "moneyAway": 68,
-        "moneyHome": 32
-      },
-      "spread": {
-        "betsAway": 53,
-        "betsHome": 47,
-        "moneyAway": 60,
-        "moneyHome": 40
-      },
-      "total": {
-        "betsOver": 55,
-        "betsUnder": 45,
-        "moneyOver": 61,
-        "moneyUnder": 39
-      }
-    },
-    {
-      "away": "TOR",
-      "date": "Nov 27",
-      "home": "BOS",
-      "league": "NHL",
-      "moneyline": {
-        "betsAway": 40,
-        "betsHome": 60,
+        "betsAway": 42,
+        "betsHome": 58,
         "moneyAway": 36,
         "moneyHome": 64
       },
-      "spread": {
-        "betsAway": 53,
-        "betsHome": 47,
-        "moneyAway": 58,
-        "moneyHome": 42
-      },
       "total": {
-        "betsOver": 58,
-        "betsUnder": 42,
-        "moneyOver": 55,
-        "moneyUnder": 45
+        "betsOver": 39,
+        "betsUnder": 61,
+        "moneyOver": 30,
+        "moneyUnder": 70
       }
     },
     {
-      "away": "CGY",
-      "date": "Nov 27",
-      "home": "NJ",
-      "league": "NHL",
+      "away": "NCSU",
+      "date": "Nov 28",
+      "home": "UNC",
+      "league": "NCAAF",
       "moneyline": {
-        "betsAway": 32,
-        "betsHome": 68,
-        "moneyAway": 28,
-        "moneyHome": 72
+        "betsAway": 33,
+        "betsHome": 67,
+        "moneyAway": 29,
+        "moneyHome": 71
       },
       "spread": {
-        "betsAway": 49,
-        "betsHome": 51,
+        "betsAway": 50,
+        "betsHome": 50,
         "moneyAway": 46,
         "moneyHome": 54
       },
@@ -891,87 +1131,183 @@
       }
     },
     {
-      "away": "UTA",
-      "date": "Nov 27",
-      "home": "NSH",
-      "league": "NHL",
+      "away": "ND",
+      "date": "Nov 28",
+      "home": "SYR",
+      "league": "NCAAF",
       "moneyline": {
-        "betsAway": 52,
-        "betsHome": 48,
-        "moneyAway": 55,
-        "moneyHome": 45
+        "betsAway": 75,
+        "betsHome": 25,
+        "moneyAway": 70,
+        "moneyHome": 30
       },
       "spread": {
-        "betsAway": 47,
-        "betsHome": 53,
-        "moneyAway": 42,
-        "moneyHome": 58
+        "betsAway": 63,
+        "betsHome": 37,
+        "moneyAway": 69,
+        "moneyHome": 31
       },
       "total": {
-        "betsOver": 46,
-        "betsUnder": 54,
-        "moneyOver": 43,
-        "moneyUnder": 57
+        "betsOver": 43,
+        "betsUnder": 57,
+        "moneyOver": 37,
+        "moneyUnder": 63
       }
     },
     {
-      "away": "DAL",
-      "date": "Nov 27",
-      "home": "STL",
-      "league": "NHL",
+      "away": "CONN",
+      "date": "Nov 28",
+      "home": "WYO",
+      "league": "NCAAF",
       "moneyline": {
-        "betsAway": 59,
-        "betsHome": 41,
-        "moneyAway": 63,
-        "moneyHome": 37
+        "betsAway": 62,
+        "betsHome": 38,
+        "moneyAway": 67,
+        "moneyHome": 33
       },
       "spread": {
-        "betsAway": 47,
-        "betsHome": 53,
-        "moneyAway": 42,
-        "moneyHome": 58
+        "betsAway": 51,
+        "betsHome": 49,
+        "moneyAway": 54,
+        "moneyHome": 46
       },
       "total": {
         "betsOver": 45,
         "betsUnder": 55,
-        "moneyOver": 40,
-        "moneyUnder": 60
+        "moneyOver": 54,
+        "moneyUnder": 46
       }
     },
     {
-      "away": "DET",
-      "date": "Nov 27",
-      "home": "CBJ",
-      "league": "NHL",
+      "away": "ILL",
+      "date": "Nov 28",
+      "home": "NU",
+      "league": "NCAAF",
       "moneyline": {
-        "betsAway": 48,
-        "betsHome": 52,
+        "betsAway": 40,
+        "betsHome": 60,
+        "moneyAway": 35,
+        "moneyHome": 65
+      },
+      "spread": {
+        "betsAway": 50,
+        "betsHome": 50,
+        "moneyAway": 46,
+        "moneyHome": 54
+      },
+      "total": {
+        "betsOver": 58,
+        "betsUnder": 42,
+        "moneyOver": 54,
+        "moneyUnder": 46
+      }
+    },
+    {
+      "away": "LSU",
+      "date": "Nov 28",
+      "home": "ARK",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 74,
+        "betsHome": 26,
+        "moneyAway": 69,
+        "moneyHome": 31
+      },
+      "spread": {
+        "betsAway": 64,
+        "betsHome": 36,
+        "moneyAway": 70,
+        "moneyHome": 30
+      },
+      "total": {
+        "betsOver": 57,
+        "betsUnder": 43,
+        "moneyOver": 62,
+        "moneyUnder": 38
+      }
+    },
+    {
+      "away": "FAU",
+      "date": "Nov 28",
+      "home": "ECU",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 47,
+        "betsHome": 53,
+        "moneyAway": 42,
+        "moneyHome": 58
+      },
+      "spread": {
+        "betsAway": 49,
+        "betsHome": 51,
         "moneyAway": 45,
         "moneyHome": 55
       },
-      "spread": {
-        "betsAway": 56,
-        "betsHome": 44,
-        "moneyAway": 61,
-        "moneyHome": 39
-      },
       "total": {
-        "betsOver": 55,
-        "betsUnder": 45,
-        "moneyOver": 58,
-        "moneyUnder": 42
+        "betsOver": 63,
+        "betsUnder": 37,
+        "moneyOver": 59,
+        "moneyUnder": 41
       }
     },
     {
-      "away": "FLA",
-      "date": "Nov 27",
-      "home": "WSH",
-      "league": "NHL",
+      "away": "KENN",
+      "date": "Nov 28",
+      "home": "WKU",
+      "league": "NCAAF",
       "moneyline": {
+        "betsAway": 61,
+        "betsHome": 39,
+        "moneyAway": 66,
+        "moneyHome": 34
+      },
+      "spread": {
+        "betsAway": 51,
+        "betsHome": 49,
+        "moneyAway": 58,
+        "moneyHome": 42
+      },
+      "total": {
+        "betsOver": 52,
+        "betsUnder": 48,
+        "moneyOver": 49,
+        "moneyUnder": 51
+      }
+    },
+    {
+      "away": "MRSH",
+      "date": "Nov 28",
+      "home": "ULM",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 66,
+        "betsHome": 34,
+        "moneyAway": 71,
+        "moneyHome": 29
+      },
+      "spread": {
         "betsAway": 52,
         "betsHome": 48,
-        "moneyAway": 55,
-        "moneyHome": 45
+        "moneyAway": 54,
+        "moneyHome": 46
+      },
+      "total": {
+        "betsOver": 59,
+        "betsUnder": 41,
+        "moneyOver": 64,
+        "moneyUnder": 36
+      }
+    },
+    {
+      "away": "USM",
+      "date": "Nov 28",
+      "home": "ODU",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 33,
+        "betsHome": 67,
+        "moneyAway": 28,
+        "moneyHome": 72
       },
       "spread": {
         "betsAway": 48,
@@ -980,52 +1316,460 @@
         "moneyHome": 54
       },
       "total": {
-        "betsOver": 58,
-        "betsUnder": 42,
+        "betsOver": 51,
+        "betsUnder": 49,
+        "moneyOver": 53,
+        "moneyUnder": 47
+      }
+    },
+    {
+      "away": "ARMY",
+      "date": "Nov 28",
+      "home": "RICE",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 61,
+        "betsHome": 39,
+        "moneyAway": 66,
+        "moneyHome": 34
+      },
+      "spread": {
+        "betsAway": 47,
+        "betsHome": 53,
+        "moneyAway": 41,
+        "moneyHome": 59
+      },
+      "total": {
+        "betsOver": 51,
+        "betsUnder": 49,
+        "moneyOver": 40,
+        "moneyUnder": 60
+      }
+    },
+    {
+      "away": "CCU",
+      "date": "Nov 28",
+      "home": "JMU",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 25,
+        "betsHome": 75,
+        "moneyAway": 30,
+        "moneyHome": 70
+      },
+      "spread": {
+        "betsAway": 38,
+        "betsHome": 62,
+        "moneyAway": 33,
+        "moneyHome": 67
+      },
+      "total": {
+        "betsOver": 59,
+        "betsUnder": 41,
         "moneyOver": 63,
         "moneyUnder": 37
       }
     },
     {
-      "away": "OTT",
-      "date": "Nov 27",
-      "home": "TB",
-      "league": "NHL",
+      "away": "UCF",
+      "date": "Nov 28",
+      "home": "COLO",
+      "league": "NCAAF",
       "moneyline": {
-        "betsAway": 40,
-        "betsHome": 60,
-        "moneyAway": 36,
-        "moneyHome": 64
-      },
-      "spread": {
-        "betsAway": 46,
-        "betsHome": 54,
-        "moneyAway": 41,
-        "moneyHome": 59
-      },
-      "total": {
-        "betsOver": 46,
-        "betsUnder": 54,
-        "moneyOver": 43,
-        "moneyUnder": 57
-      }
-    },
-    {
-      "away": "VAN",
-      "date": "Nov 27",
-      "home": "PHI",
-      "league": "NHL",
-      "moneyline": {
-        "betsAway": 32,
-        "betsHome": 68,
-        "moneyAway": 28,
-        "moneyHome": 72
+        "betsAway": 43,
+        "betsHome": 57,
+        "moneyAway": 38,
+        "moneyHome": 62
       },
       "spread": {
         "betsAway": 50,
         "betsHome": 50,
         "moneyAway": 47,
         "moneyHome": 53
+      },
+      "total": {
+        "betsOver": 42,
+        "betsUnder": 58,
+        "moneyOver": 32,
+        "moneyUnder": 68
+      }
+    },
+    {
+      "away": "SHSU",
+      "date": "Nov 28",
+      "home": "FIU",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 25,
+        "betsHome": 75,
+        "moneyAway": 30,
+        "moneyHome": 70
+      },
+      "spread": {
+        "betsAway": 36,
+        "betsHome": 64,
+        "moneyAway": 30,
+        "moneyHome": 70
+      },
+      "total": {
+        "betsOver": 52,
+        "betsUnder": 48,
+        "moneyOver": 51,
+        "moneyUnder": 49
+      }
+    },
+    {
+      "away": "UL",
+      "date": "Nov 28",
+      "home": "GAST",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 65,
+        "betsHome": 35,
+        "moneyAway": 70,
+        "moneyHome": 30
+      },
+      "spread": {
+        "betsAway": 50,
+        "betsHome": 50,
+        "moneyAway": 47,
+        "moneyHome": 53
+      },
+      "total": {
+        "betsOver": 54,
+        "betsUnder": 46,
+        "moneyOver": 50,
+        "moneyUnder": 50
+      }
+    },
+    {
+      "away": "KSU",
+      "date": "Nov 28",
+      "home": "ISU",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 39,
+        "betsHome": 61,
+        "moneyAway": 34,
+        "moneyHome": 66
+      },
+      "spread": {
+        "betsAway": 53,
+        "betsHome": 47,
+        "moneyAway": 59,
+        "moneyHome": 41
+      },
+      "total": {
+        "betsOver": 51,
+        "betsUnder": 49,
+        "moneyOver": 51,
+        "moneyUnder": 49
+      }
+    },
+    {
+      "away": "LIB",
+      "date": "Nov 28",
+      "home": "MOST",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 75,
+        "betsHome": 25,
+        "moneyAway": 70,
+        "moneyHome": 30
+      },
+      "spread": {
+        "betsAway": 65,
+        "betsHome": 35,
+        "moneyAway": 71,
+        "moneyHome": 29
+      },
+      "total": {
+        "betsOver": 59,
+        "betsUnder": 41,
+        "moneyOver": 54,
+        "moneyUnder": 46
+      }
+    },
+    {
+      "away": "NMSU",
+      "date": "Nov 28",
+      "home": "MTSU",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 39,
+        "betsHome": 61,
+        "moneyAway": 35,
+        "moneyHome": 65
+      },
+      "spread": {
+        "betsAway": 49,
+        "betsHome": 51,
+        "moneyAway": 46,
+        "moneyHome": 54
+      },
+      "total": {
+        "betsOver": 56,
+        "betsUnder": 44,
+        "moneyOver": 60,
+        "moneyUnder": 40
+      }
+    },
+    {
+      "away": "TROY",
+      "date": "Nov 28",
+      "home": "ARST",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 36,
+        "betsHome": 64,
+        "moneyAway": 31,
+        "moneyHome": 69
+      },
+      "spread": {
+        "betsAway": 48,
+        "betsHome": 52,
+        "moneyAway": 46,
+        "moneyHome": 54
+      },
+      "total": {
+        "betsOver": 53,
+        "betsUnder": 47,
+        "moneyOver": 50,
+        "moneyUnder": 50
+      }
+    },
+    {
+      "away": "SC",
+      "date": "Nov 28",
+      "home": "CLEM",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 67,
+        "betsHome": 33,
+        "moneyAway": 72,
+        "moneyHome": 28
+      },
+      "spread": {
+        "betsAway": 56,
+        "betsHome": 44,
+        "moneyAway": 61,
+        "moneyHome": 39
+      },
+      "total": {
+        "betsOver": 53,
+        "betsUnder": 47,
+        "moneyOver": 57,
+        "moneyUnder": 43
+      }
+    },
+    {
+      "away": "UVA",
+      "date": "Nov 28",
+      "home": "VT",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 40,
+        "betsHome": 60,
+        "moneyAway": 35,
+        "moneyHome": 65
+      },
+      "spread": {
+        "betsAway": 48,
+        "betsHome": 52,
+        "moneyAway": 46,
+        "moneyHome": 54
+      },
+      "total": {
+        "betsOver": 48,
+        "betsUnder": 52,
+        "moneyOver": 44,
+        "moneyUnder": 56
+      }
+    },
+    {
+      "away": "CIN",
+      "date": "Nov 28",
+      "home": "BYU",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 25,
+        "betsHome": 75,
+        "moneyAway": 30,
+        "moneyHome": 70
+      },
+      "spread": {
+        "betsAway": 36,
+        "betsHome": 64,
+        "moneyAway": 31,
+        "moneyHome": 69
+      },
+      "total": {
+        "betsOver": 54,
+        "betsUnder": 46,
+        "moneyOver": 50,
+        "moneyUnder": 50
+      }
+    },
+    {
+      "away": "UMass Minutemen",
+      "date": "Nov 28",
+      "home": "BGSU",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 40,
+        "betsHome": 60,
+        "moneyAway": 35,
+        "moneyHome": 65
+      },
+      "spread": {
+        "betsAway": 47,
+        "betsHome": 53,
+        "moneyAway": 42,
+        "moneyHome": 58
+      },
+      "total": {
+        "betsOver": 44,
+        "betsUnder": 56,
+        "moneyOver": 38,
+        "moneyUnder": 62
+      }
+    },
+    {
+      "away": "JXST",
+      "date": "Nov 28",
+      "home": "DEL",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 42,
+        "betsHome": 58,
+        "moneyAway": 37,
+        "moneyHome": 63
+      },
+      "spread": {
+        "betsAway": 50,
+        "betsHome": 50,
+        "moneyAway": 47,
+        "moneyHome": 53
+      },
+      "total": {
+        "betsOver": 59,
+        "betsUnder": 41,
+        "moneyOver": 62,
+        "moneyUnder": 38
+      }
+    },
+    {
+      "away": "DUKE",
+      "date": "Nov 28",
+      "home": "WAKE",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 25,
+        "betsHome": 75,
+        "moneyAway": 30,
+        "moneyHome": 70
+      },
+      "spread": {
+        "betsAway": 37,
+        "betsHome": 63,
+        "moneyAway": 31,
+        "moneyHome": 69
+      },
+      "total": {
+        "betsOver": 59,
+        "betsUnder": 41,
+        "moneyOver": 63,
+        "moneyUnder": 37
+      }
+    },
+    {
+      "away": "GT",
+      "date": "Nov 28",
+      "home": "UGA",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 30,
+        "betsHome": 70,
+        "moneyAway": 34,
+        "moneyHome": 66
+      },
+      "spread": {
+        "betsAway": 40,
+        "betsHome": 60,
+        "moneyAway": 34,
+        "moneyHome": 66
+      },
+      "total": {
+        "betsOver": 56,
+        "betsUnder": 44,
+        "moneyOver": 53,
+        "moneyUnder": 47
+      }
+    },
+    {
+      "away": "PSU",
+      "date": "Nov 28",
+      "home": "MD",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 67,
+        "betsHome": 33,
+        "moneyAway": 72,
+        "moneyHome": 28
+      },
+      "spread": {
+        "betsAway": 54,
+        "betsHome": 46,
+        "moneyAway": 59,
+        "moneyHome": 41
+      },
+      "total": {
+        "betsOver": 53,
+        "betsUnder": 47,
+        "moneyOver": 57,
+        "moneyUnder": 43
+      }
+    },
+    {
+      "away": "UTEP",
+      "date": "Nov 28",
+      "home": "NIU",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 36,
+        "betsHome": 64,
+        "moneyAway": 32,
+        "moneyHome": 68
+      },
+      "spread": {
+        "betsAway": 51,
+        "betsHome": 49,
+        "moneyAway": 54,
+        "moneyHome": 46
+      },
+      "total": {
+        "betsOver": 55,
+        "betsUnder": 45,
+        "moneyOver": 59,
+        "moneyUnder": 41
+      }
+    },
+    {
+      "away": "SMU",
+      "date": "Nov 28",
+      "home": "STAN",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 65,
+        "betsHome": 35,
+        "moneyAway": 70,
+        "moneyHome": 30
+      },
+      "spread": {
+        "betsAway": 48,
+        "betsHome": 52,
+        "moneyAway": 41,
+        "moneyHome": 59
       },
       "total": {
         "betsOver": 53,
@@ -1035,87 +1779,15 @@
       }
     },
     {
-      "away": "LA",
-      "date": "Nov 27",
-      "home": "ANA",
-      "league": "NHL",
+      "away": "TULN",
+      "date": "Nov 28",
+      "home": "USF",
+      "league": "NCAAF",
       "moneyline": {
-        "betsAway": 57,
-        "betsHome": 43,
-        "moneyAway": 62,
-        "moneyHome": 38
-      },
-      "spread": {
-        "betsAway": 52,
-        "betsHome": 48,
-        "moneyAway": 54,
-        "moneyHome": 46
-      },
-      "total": {
-        "betsOver": 57,
-        "betsUnder": 43,
-        "moneyOver": 53,
-        "moneyUnder": 47
-      }
-    },
-    {
-      "away": "COL",
-      "date": "Nov 27",
-      "home": "MIN",
-      "league": "NHL",
-      "moneyline": {
-        "betsAway": 46,
-        "betsHome": 54,
-        "moneyAway": 42,
-        "moneyHome": 58
-      },
-      "spread": {
-        "betsAway": 55,
-        "betsHome": 45,
-        "moneyAway": 60,
-        "moneyHome": 40
-      },
-      "total": {
-        "betsOver": 57,
-        "betsUnder": 43,
-        "moneyOver": 60,
-        "moneyUnder": 40
-      }
-    },
-    {
-      "away": "VGK",
-      "date": "Nov 27",
-      "home": "SJ",
-      "league": "NHL",
-      "moneyline": {
-        "betsAway": 68,
-        "betsHome": 32,
-        "moneyAway": 72,
-        "moneyHome": 28
-      },
-      "spread": {
-        "betsAway": 53,
-        "betsHome": 47,
-        "moneyAway": 58,
-        "moneyHome": 42
-      },
-      "total": {
-        "betsOver": 43,
-        "betsUnder": 57,
-        "moneyOver": 39,
-        "moneyUnder": 61
-      }
-    },
-    {
-      "away": "NYR",
-      "date": "Nov 27",
-      "home": "CHI",
-      "league": "NHL",
-      "moneyline": {
-        "betsAway": 61,
-        "betsHome": 39,
-        "moneyAway": 65,
-        "moneyHome": 35
+        "betsAway": 36,
+        "betsHome": 64,
+        "moneyAway": 31,
+        "moneyHome": 69
       },
       "spread": {
         "betsAway": 50,
@@ -1124,26 +1796,74 @@
         "moneyHome": 53
       },
       "total": {
-        "betsOver": 46,
-        "betsUnder": 54,
-        "moneyOver": 39,
-        "moneyUnder": 61
+        "betsOver": 43,
+        "betsUnder": 57,
+        "moneyOver": 54,
+        "moneyUnder": 46
       }
     },
     {
-      "away": "WPG",
-      "date": "Nov 27",
-      "home": "NYI",
-      "league": "NHL",
+      "away": "USC",
+      "date": "Nov 28",
+      "home": "UCLA",
+      "league": "NCAAF",
       "moneyline": {
-        "betsAway": 44,
-        "betsHome": 56,
+        "betsAway": 67,
+        "betsHome": 33,
+        "moneyAway": 72,
+        "moneyHome": 28
+      },
+      "spread": {
+        "betsAway": 54,
+        "betsHome": 46,
+        "moneyAway": 62,
+        "moneyHome": 38
+      },
+      "total": {
+        "betsOver": 43,
+        "betsUnder": 57,
+        "moneyOver": 50,
+        "moneyUnder": 50
+      }
+    },
+    {
+      "away": "UAB",
+      "date": "Nov 28",
+      "home": "UNT",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 45,
+        "betsHome": 55,
         "moneyAway": 40,
         "moneyHome": 60
       },
       "spread": {
-        "betsAway": 48,
-        "betsHome": 52,
+        "betsAway": 51,
+        "betsHome": 49,
+        "moneyAway": 57,
+        "moneyHome": 43
+      },
+      "total": {
+        "betsOver": 50,
+        "betsUnder": 50,
+        "moneyOver": 47,
+        "moneyUnder": 53
+      }
+    },
+    {
+      "away": "MSU",
+      "date": "Nov 28",
+      "home": "RUTG",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 58,
+        "betsHome": 42,
+        "moneyAway": 63,
+        "moneyHome": 37
+      },
+      "spread": {
+        "betsAway": 50,
+        "betsHome": 50,
         "moneyAway": 46,
         "moneyHome": 54
       },
@@ -1155,231 +1875,543 @@
       }
     },
     {
-      "away": "PIT",
-      "date": "Nov 27",
-      "home": "BUF",
-      "league": "NHL",
+      "away": "OU",
+      "date": "Nov 28",
+      "home": "MIZ",
+      "league": "NCAAF",
       "moneyline": {
         "betsAway": 44,
         "betsHome": 56,
-        "moneyAway": 40,
-        "moneyHome": 60
-      },
-      "spread": {
-        "betsAway": 55,
-        "betsHome": 45,
-        "moneyAway": 60,
-        "moneyHome": 40
-      },
-      "total": {
-        "betsOver": 47,
-        "betsUnder": 53,
-        "moneyOver": 40,
-        "moneyUnder": 60
-      }
-    },
-    {
-      "away": "SEA",
-      "date": "Nov 27",
-      "home": "EDM",
-      "league": "NHL",
-      "moneyline": {
-        "betsAway": 33,
-        "betsHome": 67,
-        "moneyAway": 29,
-        "moneyHome": 71
-      },
-      "spread": {
-        "betsAway": 47,
-        "betsHome": 53,
-        "moneyAway": 42,
-        "moneyHome": 58
-      },
-      "total": {
-        "betsOver": 53,
-        "betsUnder": 47,
-        "moneyOver": 48,
-        "moneyUnder": 52
-      }
-    },
-    {
-      "away": "TENN",
-      "date": "Nov 26",
-      "home": "ISU",
-      "league": "NCAAB",
-      "moneyline": {
-        "betsAway": 62,
-        "betsHome": 38,
-        "moneyAway": 52,
-        "moneyHome": 48
-      },
-      "spread": {
-        "betsAway": 44,
-        "betsHome": 56,
-        "moneyAway": 43,
-        "moneyHome": 57
-      },
-      "total": {
-        "betsOver": 28,
-        "betsUnder": 72,
-        "moneyOver": 27,
-        "moneyUnder": 73
-      }
-    },
-    {
-      "away": "ARK",
-      "date": "Nov 26",
-      "home": "MSU",
-      "league": "NCAAB",
-      "moneyline": {
-        "betsAway": 19,
-        "betsHome": 81,
-        "moneyAway": 13,
-        "moneyHome": 87
-      },
-      "spread": {
-        "betsAway": 40,
-        "betsHome": 60,
-        "moneyAway": 39,
-        "moneyHome": 61
-      },
-      "total": {
-        "betsOver": 33,
-        "betsUnder": 67,
-        "moneyOver": 32,
-        "moneyUnder": 68
-      }
-    },
-    {
-      "away": "USU",
-      "date": "Nov 26",
-      "home": "USC",
-      "league": "NCAAB",
-      "moneyline": {
-        "betsAway": 33,
-        "betsHome": 67,
         "moneyAway": 39,
         "moneyHome": 61
       },
       "spread": {
-        "betsAway": 80,
-        "betsHome": 20,
-        "moneyAway": 79,
-        "moneyHome": 21
+        "betsAway": 48,
+        "betsHome": 52,
+        "moneyAway": 46,
+        "moneyHome": 54
       },
       "total": {
         "betsOver": 57,
         "betsUnder": 43,
-        "moneyOver": 34,
-        "moneyUnder": 66
+        "moneyOver": 61,
+        "moneyUnder": 39
       }
     },
     {
-      "away": "SMC",
-      "date": "Nov 26",
-      "home": "UCLA",
-      "league": "NCAAB",
+      "away": "BOIS",
+      "date": "Nov 28",
+      "home": "CSU",
+      "league": "NCAAF",
       "moneyline": {
-        "betsAway": 12,
-        "betsHome": 88,
-        "moneyAway": 12,
-        "moneyHome": 88
+        "betsAway": 75,
+        "betsHome": 25,
+        "moneyAway": 70,
+        "moneyHome": 30
       },
       "spread": {
-        "betsAway": 28,
-        "betsHome": 72,
-        "moneyAway": 39,
-        "moneyHome": 61
+        "betsAway": 64,
+        "betsHome": 36,
+        "moneyAway": 69,
+        "moneyHome": 31
       },
       "total": {
-        "betsOver": 39,
-        "betsUnder": 61,
+        "betsOver": 53,
+        "betsUnder": 47,
+        "moneyOver": 58,
+        "moneyUnder": 42
+      }
+    },
+    {
+      "away": "KU",
+      "date": "Nov 28",
+      "home": "OKST",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 34,
+        "betsHome": 66,
+        "moneyAway": 30,
+        "moneyHome": 70
+      },
+      "spread": {
+        "betsAway": 45,
+        "betsHome": 55,
+        "moneyAway": 40,
+        "moneyHome": 60
+      },
+      "total": {
+        "betsOver": 44,
+        "betsUnder": 56,
+        "moneyOver": 37,
+        "moneyUnder": 63
+      }
+    },
+    {
+      "away": "SDSU",
+      "date": "Nov 28",
+      "home": "WSU",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 40,
+        "betsHome": 60,
+        "moneyAway": 35,
+        "moneyHome": 65
+      },
+      "spread": {
+        "betsAway": 53,
+        "betsHome": 47,
+        "moneyAway": 60,
+        "moneyHome": 40
+      },
+      "total": {
+        "betsOver": 54,
+        "betsUnder": 46,
+        "moneyOver": 57,
+        "moneyUnder": 43
+      }
+    },
+    {
+      "away": "PUR",
+      "date": "Nov 28",
+      "home": "IU",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 25,
+        "betsHome": 75,
+        "moneyAway": 30,
+        "moneyHome": 70
+      },
+      "spread": {
+        "betsAway": 36,
+        "betsHome": 64,
+        "moneyAway": 30,
+        "moneyHome": 70
+      },
+      "total": {
+        "betsOver": 54,
+        "betsUnder": 46,
+        "moneyOver": 50,
+        "moneyUnder": 50
+      }
+    },
+    {
+      "away": "TENN",
+      "date": "Nov 28",
+      "home": "VAN",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 74,
+        "betsHome": 26,
+        "moneyAway": 69,
+        "moneyHome": 31
+      },
+      "spread": {
+        "betsAway": 65,
+        "betsHome": 35,
+        "moneyAway": 71,
+        "moneyHome": 29
+      },
+      "total": {
+        "betsOver": 47,
+        "betsUnder": 53,
+        "moneyOver": 43,
+        "moneyUnder": 57
+      }
+    },
+    {
+      "away": "AUB",
+      "date": "Nov 28",
+      "home": "ALA",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 25,
+        "betsHome": 75,
+        "moneyAway": 30,
+        "moneyHome": 70
+      },
+      "spread": {
+        "betsAway": 38,
+        "betsHome": 62,
+        "moneyAway": 32,
+        "moneyHome": 68
+      },
+      "total": {
+        "betsOver": 46,
+        "betsUnder": 54,
         "moneyOver": 41,
         "moneyUnder": 59
       }
     },
     {
-      "away": "TCU",
-      "date": "Nov 26",
-      "home": "CREI",
-      "league": "NCAAB",
+      "away": "PITT",
+      "date": "Nov 28",
+      "home": "CAL",
+      "league": "NCAAF",
       "moneyline": {
-        "betsAway": 43,
-        "betsHome": 57,
-        "moneyAway": 34,
-        "moneyHome": 66
+        "betsAway": 72,
+        "betsHome": 28,
+        "moneyAway": 68,
+        "moneyHome": 32
       },
       "spread": {
-        "betsAway": 46,
-        "betsHome": 54,
-        "moneyAway": 39,
-        "moneyHome": 61
+        "betsAway": 60,
+        "betsHome": 40,
+        "moneyAway": 66,
+        "moneyHome": 34
       },
       "total": {
-        "betsOver": 40,
-        "betsUnder": 60,
+        "betsOver": 46,
+        "betsUnder": 54,
         "moneyOver": 38,
         "moneyUnder": 62
       }
     },
     {
-      "away": "DEP",
-      "date": "Nov 26",
-      "home": "PITT",
-      "league": "NCAAB",
-      "moneyline": {
-        "betsAway": 46,
-        "betsHome": 54,
-        "moneyAway": 65,
-        "moneyHome": 35
-      },
-      "spread": {
-        "betsAway": 75,
-        "betsHome": 25,
-        "moneyAway": 78,
-        "moneyHome": 22
-      },
-      "total": {
-        "betsOver": 18,
-        "betsUnder": 82,
-        "moneyOver": 18,
-        "moneyUnder": 82
-      }
-    },
-    {
-      "away": "SMU",
-      "date": "Nov 26",
-      "home": "LSU",
-      "league": "NCAAB",
+      "away": "WASH",
+      "date": "Nov 28",
+      "home": "ORE",
+      "league": "NCAAF",
       "moneyline": {
         "betsAway": 26,
         "betsHome": 74,
-        "moneyAway": 20,
-        "moneyHome": 80
+        "moneyAway": 30,
+        "moneyHome": 70
       },
       "spread": {
-        "betsAway": 49,
-        "betsHome": 51,
-        "moneyAway": 39,
-        "moneyHome": 61
+        "betsAway": 39,
+        "betsHome": 61,
+        "moneyAway": 34,
+        "moneyHome": 66
       },
       "total": {
-        "betsOver": 36,
-        "betsUnder": 64,
+        "betsOver": 54,
+        "betsUnder": 46,
+        "moneyOver": 58,
+        "moneyUnder": 42
+      }
+    },
+    {
+      "away": "ASU",
+      "date": "Nov 28",
+      "home": "ARIZ",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 30,
+        "betsHome": 70,
+        "moneyAway": 25,
+        "moneyHome": 75
+      },
+      "spread": {
+        "betsAway": 43,
+        "betsHome": 57,
+        "moneyAway": 37,
+        "moneyHome": 63
+      },
+      "total": {
+        "betsOver": 60,
+        "betsUnder": 40,
+        "moneyOver": 56,
+        "moneyUnder": 44
+      }
+    },
+    {
+      "away": "NEV",
+      "date": "Nov 28",
+      "home": "UNLV",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 33,
+        "betsHome": 67,
+        "moneyAway": 28,
+        "moneyHome": 72
+      },
+      "spread": {
+        "betsAway": 48,
+        "betsHome": 52,
+        "moneyAway": 46,
+        "moneyHome": 54
+      },
+      "total": {
+        "betsOver": 52,
+        "betsUnder": 48,
+        "moneyOver": 50,
+        "moneyUnder": 50
+      }
+    },
+    {
+      "away": "BAY",
+      "date": "Nov 28",
+      "home": "HOU",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 41,
+        "betsHome": 59,
+        "moneyAway": 36,
+        "moneyHome": 64
+      },
+      "spread": {
+        "betsAway": 54,
+        "betsHome": 46,
+        "moneyAway": 62,
+        "moneyHome": 38
+      },
+      "total": {
+        "betsOver": 57,
+        "betsUnder": 43,
         "moneyOver": 60,
         "moneyUnder": 40
       }
     },
     {
-      "away": "JXST",
-      "date": "Nov 26",
-      "home": "UCD",
+      "away": "TXST",
+      "date": "Nov 28",
+      "home": "USU",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 68,
+        "betsHome": 32,
+        "moneyAway": 73,
+        "moneyHome": 27
+      },
+      "spread": {
+        "betsAway": 52,
+        "betsHome": 48,
+        "moneyAway": 55,
+        "moneyHome": 45
+      },
+      "total": {
+        "betsOver": 54,
+        "betsUnder": 46,
+        "moneyOver": 50,
+        "moneyUnder": 50
+      }
+    },
+    {
+      "away": "ORST",
+      "date": "Nov 28",
+      "home": "FRES",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 40,
+        "betsHome": 60,
+        "moneyAway": 35,
+        "moneyHome": 65
+      },
+      "spread": {
+        "betsAway": 49,
+        "betsHome": 51,
+        "moneyAway": 43,
+        "moneyHome": 57
+      },
+      "total": {
+        "betsOver": 58,
+        "betsUnder": 42,
+        "moneyOver": 54,
+        "moneyUnder": 46
+      }
+    },
+    {
+      "away": "SAC",
+      "date": "Nov 28",
+      "home": "HAW",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 25,
+        "betsHome": 75,
+        "moneyAway": 30,
+        "moneyHome": 70
+      },
+      "spread": {
+        "betsAway": 40,
+        "betsHome": 60,
+        "moneyAway": 34,
+        "moneyHome": 66
+      },
+      "total": {
+        "betsOver": 45,
+        "betsUnder": 55,
+        "moneyOver": 41,
+        "moneyUnder": 59
+      }
+    },
+    {
+      "away": "SDSU",
+      "date": "Dec 4",
+      "home": "BOIS",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 25,
+        "betsHome": 75,
+        "moneyAway": 30,
+        "moneyHome": 70
+      },
+      "spread": {
+        "betsAway": 36,
+        "betsHome": 64,
+        "moneyAway": 30,
+        "moneyHome": 70
+      },
+      "total": {
+        "betsOver": 56,
+        "betsUnder": 44,
+        "moneyOver": 59,
+        "moneyUnder": 41
+      }
+    },
+    {
+      "away": "WAKE",
+      "date": "Dec 5",
+      "home": "MIA",
+      "league": "NCAAF",
+      "moneyline": {
+        "betsAway": 43,
+        "betsHome": 57,
+        "moneyAway": 38,
+        "moneyHome": 62
+      },
+      "spread": {
+        "betsAway": 48,
+        "betsHome": 52,
+        "moneyAway": 46,
+        "moneyHome": 54
+      },
+      "total": {
+        "betsOver": 60,
+        "betsUnder": 40,
+        "moneyOver": 64,
+        "moneyUnder": 36
+      }
+    },
+    {
+      "away": "BUCK",
+      "date": "Nov 27",
+      "home": "LAS",
       "league": "NCAAB",
       "moneyline": {
-        "betsAway": 82,
-        "betsHome": 18,
-        "moneyAway": 84,
-        "moneyHome": 16
+        "betsAway": 22,
+        "betsHome": 78,
+        "moneyAway": 30,
+        "moneyHome": 70
+      },
+      "spread": {
+        "betsAway": 44,
+        "betsHome": 56,
+        "moneyAway": 58,
+        "moneyHome": 42
+      },
+      "total": {
+        "betsOver": 19,
+        "betsUnder": 81,
+        "moneyOver": 20,
+        "moneyUnder": 80
+      }
+    },
+    {
+      "away": "ORE",
+      "date": "Nov 27",
+      "home": "MD",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 65,
+        "betsHome": 35,
+        "moneyAway": 69,
+        "moneyHome": 31
+      },
+      "spread": {
+        "betsAway": 53,
+        "betsHome": 47,
+        "moneyAway": 58,
+        "moneyHome": 42
+      },
+      "total": {
+        "betsOver": 44,
+        "betsUnder": 56,
+        "moneyOver": 47,
+        "moneyUnder": 53
+      }
+    },
+    {
+      "away": "RAD",
+      "date": "Nov 27",
+      "home": "American Eagles",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 17,
+        "betsHome": 83,
+        "moneyAway": 12,
+        "moneyHome": 88
+      },
+      "spread": {
+        "betsAway": 52,
+        "betsHome": 48,
+        "moneyAway": 38,
+        "moneyHome": 62
+      },
+      "total": {
+        "betsOver": 40,
+        "betsUnder": 60,
+        "moneyOver": 31,
+        "moneyUnder": 69
+      }
+    },
+    {
+      "away": "UAPB",
+      "date": "Nov 27",
+      "home": "MIZ",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 33,
+        "betsHome": 67,
+        "moneyAway": 30,
+        "moneyHome": 70
+      },
+      "spread": {
+        "betsAway": 36,
+        "betsHome": 64,
+        "moneyAway": 30,
+        "moneyHome": 70
+      },
+      "total": {
+        "betsOver": 65,
+        "betsUnder": 35,
+        "moneyOver": 82,
+        "moneyUnder": 18
+      }
+    },
+    {
+      "away": "CIN",
+      "date": "Nov 27",
+      "home": "BC",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 69,
+        "betsHome": 31,
+        "moneyAway": 64,
+        "moneyHome": 36
+      },
+      "spread": {
+        "betsAway": 33,
+        "betsHome": 67,
+        "moneyAway": 38,
+        "moneyHome": 62
+      },
+      "total": {
+        "betsOver": 41,
+        "betsUnder": 59,
+        "moneyOver": 33,
+        "moneyUnder": 67
+      }
+    },
+    {
+      "away": "ODU",
+      "date": "Nov 27",
+      "home": "VT",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 40,
+        "betsHome": 60,
+        "moneyAway": 15,
+        "moneyHome": 85
       },
       "spread": {
         "betsAway": 77,
@@ -1388,76 +2420,340 @@
         "moneyHome": 19
       },
       "total": {
-        "betsOver": 57,
-        "betsUnder": 43,
-        "moneyOver": 45,
-        "moneyUnder": 55
+        "betsOver": 48,
+        "betsUnder": 52,
+        "moneyOver": 30,
+        "moneyUnder": 70
       }
     },
     {
-      "away": "KSU",
-      "date": "Nov 26",
-      "home": "ALA",
+      "away": "MARQ",
+      "date": "Nov 27",
+      "home": "TA&M",
       "league": "NCAAB",
       "moneyline": {
-        "betsAway": 12,
-        "betsHome": 88,
-        "moneyAway": 10,
-        "moneyHome": 90
+        "betsAway": 57,
+        "betsHome": 43,
+        "moneyAway": 59,
+        "moneyHome": 41
       },
       "spread": {
-        "betsAway": 44,
-        "betsHome": 56,
-        "moneyAway": 39,
-        "moneyHome": 61
+        "betsAway": 43,
+        "betsHome": 57,
+        "moneyAway": 38,
+        "moneyHome": 62
       },
       "total": {
-        "betsOver": 45,
-        "betsUnder": 55,
-        "moneyOver": 34,
-        "moneyUnder": 66
+        "betsOver": 43,
+        "betsUnder": 57,
+        "moneyOver": 27,
+        "moneyUnder": 73
       }
     },
     {
-      "away": "SJU",
-      "date": "Nov 26",
-      "home": "LOU",
+      "away": "NIA",
+      "date": "Nov 27",
+      "home": "LAF",
       "league": "NCAAB",
       "moneyline": {
-        "betsAway": 71,
-        "betsHome": 29,
+        "betsAway": 23,
+        "betsHome": 77,
+        "moneyAway": 26,
+        "moneyHome": 74
+      },
+      "spread": {
+        "betsAway": 23,
+        "betsHome": 77,
+        "moneyAway": 19,
+        "moneyHome": 81
+      },
+      "total": {
+        "betsOver": 29,
+        "betsUnder": 71,
+        "moneyOver": 17,
+        "moneyUnder": 83
+      }
+    },
+    {
+      "away": "VILL",
+      "date": "Nov 27",
+      "home": "KU",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 17,
+        "betsHome": 83,
+        "moneyAway": 12,
+        "moneyHome": 88
+      },
+      "spread": {
+        "betsAway": 52,
+        "betsHome": 48,
+        "moneyAway": 63,
+        "moneyHome": 37
+      },
+      "total": {
+        "betsOver": 38,
+        "betsUnder": 62,
+        "moneyOver": 47,
+        "moneyUnder": 53
+      }
+    },
+    {
+      "away": "TEX",
+      "date": "Nov 27",
+      "home": "SMC",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 83,
+        "betsHome": 17,
+        "moneyAway": 76,
+        "moneyHome": 24
+      },
+      "spread": {
+        "betsAway": 40,
+        "betsHome": 60,
+        "moneyAway": 45,
+        "moneyHome": 55
+      },
+      "total": {
+        "betsOver": 48,
+        "betsUnder": 52,
+        "moneyOver": 59,
+        "moneyUnder": 41
+      }
+    },
+    {
+      "away": "DRKE",
+      "date": "Nov 27",
+      "home": "BOIS",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 20,
+        "betsHome": 80,
+        "moneyAway": 19,
+        "moneyHome": 81
+      },
+      "spread": {
+        "betsAway": 64,
+        "betsHome": 36,
+        "moneyAway": 69,
+        "moneyHome": 31
+      },
+      "total": {
+        "betsOver": 60,
+        "betsUnder": 40,
+        "moneyOver": 81,
+        "moneyUnder": 19
+      }
+    },
+    {
+      "away": "MICH",
+      "date": "Nov 27",
+      "home": "KSU",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 75,
+        "betsHome": 25,
         "moneyAway": 70,
         "moneyHome": 30
       },
       "spread": {
-        "betsAway": 50,
-        "betsHome": 50,
-        "moneyAway": 43,
-        "moneyHome": 57
+        "betsAway": 65,
+        "betsHome": 35,
+        "moneyAway": 71,
+        "moneyHome": 29
       },
       "total": {
-        "betsOver": 58,
-        "betsUnder": 42,
-        "moneyOver": 63,
-        "moneyUnder": 37
+        "betsOver": 61,
+        "betsUnder": 39,
+        "moneyOver": 65,
+        "moneyUnder": 35
       }
     },
     {
-      "away": "OMA",
-      "date": "Nov 26",
-      "home": "PAC",
+      "away": "BGSU",
+      "date": "Nov 27",
+      "home": "IU",
       "league": "NCAAB",
       "moneyline": {
-        "betsAway": 27,
-        "betsHome": 73,
-        "moneyAway": 24,
-        "moneyHome": 76
+        "betsAway": 18,
+        "betsHome": 82,
+        "moneyAway": 11,
+        "moneyHome": 89
       },
       "spread": {
-        "betsAway": 45,
-        "betsHome": 55,
-        "moneyAway": 32,
-        "moneyHome": 68
+        "betsAway": 66,
+        "betsHome": 34,
+        "moneyAway": 68,
+        "moneyHome": 32
+      },
+      "total": {
+        "betsOver": 43,
+        "betsUnder": 57,
+        "moneyOver": 50,
+        "moneyUnder": 50
+      }
+    },
+    {
+      "away": "WKU",
+      "date": "Nov 27",
+      "home": "ILL",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 14,
+        "betsHome": 86,
+        "moneyAway": 11,
+        "moneyHome": 89
+      },
+      "spread": {
+        "betsAway": 44,
+        "betsHome": 56,
+        "moneyAway": 30,
+        "moneyHome": 70
+      },
+      "total": {
+        "betsOver": 43,
+        "betsUnder": 57,
+        "moneyOver": 35,
+        "moneyUnder": 65
+      }
+    },
+    {
+      "away": "TOW",
+      "date": "Nov 27",
+      "home": "PENN",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 40,
+        "betsHome": 60,
+        "moneyAway": 39,
+        "moneyHome": 61
+      },
+      "spread": {
+        "betsAway": 72,
+        "betsHome": 28,
+        "moneyAway": 75,
+        "moneyHome": 25
+      },
+      "total": {
+        "betsOver": 34,
+        "betsUnder": 66,
+        "moneyOver": 20,
+        "moneyUnder": 80
+      }
+    },
+    {
+      "away": "CHSO",
+      "date": "Nov 27",
+      "home": "ETSU",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 22,
+        "betsHome": 78,
+        "moneyAway": 22,
+        "moneyHome": 78
+      },
+      "spread": {
+        "betsAway": 62,
+        "betsHome": 38,
+        "moneyAway": 78,
+        "moneyHome": 22
+      },
+      "total": {
+        "betsOver": 29,
+        "betsUnder": 71,
+        "moneyOver": 23,
+        "moneyUnder": 77
+      }
+    },
+    {
+      "away": "UCF",
+      "date": "Nov 27",
+      "home": "UGA",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 13,
+        "betsHome": 87,
+        "moneyAway": 9,
+        "moneyHome": 91
+      },
+      "spread": {
+        "betsAway": 42,
+        "betsHome": 58,
+        "moneyAway": 40,
+        "moneyHome": 60
+      },
+      "total": {
+        "betsOver": 76,
+        "betsUnder": 24,
+        "moneyOver": 78,
+        "moneyUnder": 22
+      }
+    },
+    {
+      "away": "LEH",
+      "date": "Nov 27",
+      "home": "UCSB",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 39,
+        "betsHome": 61,
+        "moneyAway": 19,
+        "moneyHome": 81
+      },
+      "spread": {
+        "betsAway": 62,
+        "betsHome": 38,
+        "moneyAway": 52,
+        "moneyHome": 48
+      },
+      "total": {
+        "betsOver": 44,
+        "betsUnder": 56,
+        "moneyOver": 37,
+        "moneyUnder": 63
+      }
+    },
+    {
+      "away": "WVU",
+      "date": "Nov 27",
+      "home": "UNC",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 70,
+        "betsHome": 30,
+        "moneyAway": 81,
+        "moneyHome": 19
+      },
+      "spread": {
+        "betsAway": 36,
+        "betsHome": 64,
+        "moneyAway": 42,
+        "moneyHome": 58
+      },
+      "total": {
+        "betsOver": 48,
+        "betsUnder": 52,
+        "moneyOver": 66,
+        "moneyUnder": 34
+      }
+    },
+    {
+      "away": "OAK",
+      "date": "Nov 27",
+      "home": "HOU",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 34,
+        "betsHome": 66,
+        "moneyAway": 10,
+        "moneyHome": 90
+      },
+      "spread": {
+        "betsAway": 54,
+        "betsHome": 46,
+        "moneyAway": 55,
+        "moneyHome": 45
       },
       "total": {
         "betsOver": 46,
@@ -1467,291 +2763,51 @@
       }
     },
     {
-      "away": "BAY",
-      "date": "Nov 26",
-      "home": "GONZ",
-      "league": "NCAAB",
-      "moneyline": {
-        "betsAway": 43,
-        "betsHome": 57,
-        "moneyAway": 56,
-        "moneyHome": 44
-      },
-      "spread": {
-        "betsAway": 61,
-        "betsHome": 39,
-        "moneyAway": 68,
-        "moneyHome": 32
-      },
-      "total": {
-        "betsOver": 35,
-        "betsUnder": 65,
-        "moneyOver": 34,
-        "moneyUnder": 66
-      }
-    },
-    {
-      "away": "TTU",
-      "date": "Nov 26",
-      "home": "ORE",
-      "league": "NCAAB",
-      "moneyline": {
-        "betsAway": 89,
-        "betsHome": 11,
-        "moneyAway": 90,
-        "moneyHome": 10
-      },
-      "spread": {
-        "betsAway": 82,
-        "betsHome": 18,
-        "moneyAway": 86,
-        "moneyHome": 14
-      },
-      "total": {
-        "betsOver": 46,
-        "betsUnder": 54,
-        "moneyOver": 50,
-        "moneyUnder": 50
-      }
-    },
-    {
-      "away": "UVA",
-      "date": "Nov 27",
-      "home": "XAV",
-      "league": "NCAAB",
-      "moneyline": {
-        "betsAway": 71,
-        "betsHome": 29,
-        "moneyAway": 75,
-        "moneyHome": 25
-      },
-      "spread": {
-        "betsAway": 55,
-        "betsHome": 45,
-        "moneyAway": 60,
-        "moneyHome": 40
-      },
-      "total": {
-        "betsOver": 47,
-        "betsUnder": 53,
-        "moneyOver": 50,
-        "moneyUnder": 50
-      }
-    },
-    {
-      "away": "LIB",
-      "date": "Nov 27",
-      "home": "STMN",
-      "league": "NCAAB",
-      "moneyline": {
-        "betsAway": 55,
-        "betsHome": 45,
-        "moneyAway": 59,
-        "moneyHome": 41
-      },
-      "spread": {
-        "betsAway": 53,
-        "betsHome": 47,
-        "moneyAway": 58,
-        "moneyHome": 42
-      },
-      "total": {
-        "betsOver": 57,
-        "betsUnder": 43,
-        "moneyOver": 60,
-        "moneyUnder": 40
-      }
-    },
-    {
-      "away": "MEM",
-      "date": "Nov 27",
-      "home": "WAKE",
-      "league": "NCAAB",
-      "moneyline": {
-        "betsAway": 57,
-        "betsHome": 43,
-        "moneyAway": 61,
-        "moneyHome": 39
-      },
-      "spread": {
-        "betsAway": 49,
-        "betsHome": 51,
-        "moneyAway": 43,
-        "moneyHome": 57
-      },
-      "total": {
-        "betsOver": 51,
-        "betsUnder": 49,
-        "moneyOver": 48,
-        "moneyUnder": 52
-      }
-    },
-    {
-      "away": "VILL",
-      "date": "Nov 27",
-      "home": "KU",
-      "league": "NCAAB",
-      "moneyline": {
-        "betsAway": 29,
-        "betsHome": 71,
-        "moneyAway": 33,
-        "moneyHome": 67
-      },
-      "spread": {
-        "betsAway": 40,
-        "betsHome": 60,
-        "moneyAway": 35,
-        "moneyHome": 65
-      },
-      "total": {
-        "betsOver": 53,
-        "betsUnder": 47,
-        "moneyOver": 49,
-        "moneyUnder": 51
-      }
-    },
-    {
-      "away": "TA&M",
-      "date": "Nov 27",
-      "home": "MARQ",
-      "league": "NCAAB",
-      "moneyline": {
-        "betsAway": 58,
-        "betsHome": 42,
-        "moneyAway": 62,
-        "moneyHome": 38
-      },
-      "spread": {
-        "betsAway": 48,
-        "betsHome": 52,
-        "moneyAway": 46,
-        "moneyHome": 54
-      },
-      "total": {
-        "betsOver": 49,
-        "betsUnder": 51,
-        "moneyOver": 49,
-        "moneyUnder": 51
-      }
-    },
-    {
-      "away": "DRKE",
-      "date": "Nov 27",
-      "home": "BOIS",
-      "league": "NCAAB",
-      "moneyline": {
-        "betsAway": 31,
-        "betsHome": 69,
-        "moneyAway": 27,
-        "moneyHome": 73
-      },
-      "spread": {
-        "betsAway": 46,
-        "betsHome": 54,
-        "moneyAway": 41,
-        "moneyHome": 59
-      },
-      "total": {
-        "betsOver": 57,
-        "betsUnder": 43,
-        "moneyOver": 53,
-        "moneyUnder": 47
-      }
-    },
-    {
-      "away": "TOW",
-      "date": "Nov 27",
-      "home": "PENN",
-      "league": "NCAAB",
-      "moneyline": {
-        "betsAway": 36,
-        "betsHome": 64,
-        "moneyAway": 32,
-        "moneyHome": 68
-      },
-      "spread": {
-        "betsAway": 48,
-        "betsHome": 52,
-        "moneyAway": 46,
-        "moneyHome": 54
-      },
-      "total": {
-        "betsOver": 46,
-        "betsUnder": 54,
-        "moneyOver": 50,
-        "moneyUnder": 50
-      }
-    },
-    {
-      "away": "UCF",
-      "date": "Nov 27",
-      "home": "UGA",
-      "league": "NCAAB",
-      "moneyline": {
-        "betsAway": 34,
-        "betsHome": 66,
-        "moneyAway": 30,
-        "moneyHome": 70
-      },
-      "spread": {
-        "betsAway": 47,
-        "betsHome": 53,
-        "moneyAway": 42,
-        "moneyHome": 58
-      },
-      "total": {
-        "betsOver": 53,
-        "betsUnder": 47,
-        "moneyOver": 56,
-        "moneyUnder": 44
-      }
-    },
-    {
-      "away": "WVU",
-      "date": "Nov 27",
-      "home": "UNC",
-      "league": "NCAAB",
-      "moneyline": {
-        "betsAway": 56,
-        "betsHome": 44,
-        "moneyAway": 60,
-        "moneyHome": 40
-      },
-      "spread": {
-        "betsAway": 50,
-        "betsHome": 50,
-        "moneyAway": 44,
-        "moneyHome": 56
-      },
-      "total": {
-        "betsOver": 57,
-        "betsUnder": 43,
-        "moneyOver": 54,
-        "moneyUnder": 46
-      }
-    },
-    {
       "away": "PSU",
       "date": "Nov 27",
       "home": "MSST",
       "league": "NCAAB",
       "moneyline": {
-        "betsAway": 33,
-        "betsHome": 67,
-        "moneyAway": 29,
-        "moneyHome": 71
+        "betsAway": 23,
+        "betsHome": 77,
+        "moneyAway": 41,
+        "moneyHome": 59
       },
       "spread": {
-        "betsAway": 49,
-        "betsHome": 51,
-        "moneyAway": 45,
-        "moneyHome": 55
+        "betsAway": 55,
+        "betsHome": 45,
+        "moneyAway": 28,
+        "moneyHome": 72
       },
       "total": {
-        "betsOver": 49,
-        "betsUnder": 51,
-        "moneyOver": 53,
-        "moneyUnder": 47
+        "betsOver": 30,
+        "betsUnder": 70,
+        "moneyOver": 24,
+        "moneyUnder": 76
+      }
+    },
+    {
+      "away": "IDHO",
+      "date": "Nov 27",
+      "home": "WSU",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 38,
+        "betsHome": 62,
+        "moneyAway": 30,
+        "moneyHome": 70
+      },
+      "spread": {
+        "betsAway": 37,
+        "betsHome": 63,
+        "moneyAway": 26,
+        "moneyHome": 74
+      },
+      "total": {
+        "betsOver": 52,
+        "betsUnder": 48,
+        "moneyOver": 63,
+        "moneyUnder": 37
       }
     },
     {
@@ -1760,22 +2816,70 @@
       "home": "ORU",
       "league": "NCAAB",
       "moneyline": {
-        "betsAway": 40,
-        "betsHome": 60,
-        "moneyAway": 36,
-        "moneyHome": 64
+        "betsAway": 24,
+        "betsHome": 76,
+        "moneyAway": 26,
+        "moneyHome": 74
       },
       "spread": {
-        "betsAway": 49,
-        "betsHome": 51,
-        "moneyAway": 46,
-        "moneyHome": 54
+        "betsAway": 43,
+        "betsHome": 57,
+        "moneyAway": 24,
+        "moneyHome": 76
       },
       "total": {
-        "betsOver": 50,
-        "betsUnder": 50,
-        "moneyOver": 50,
-        "moneyUnder": 50
+        "betsOver": 42,
+        "betsUnder": 58,
+        "moneyOver": 32,
+        "moneyUnder": 68
+      }
+    },
+    {
+      "away": "UNT",
+      "date": "Nov 27",
+      "home": "NDSU",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 73,
+        "betsHome": 27,
+        "moneyAway": 67,
+        "moneyHome": 33
+      },
+      "spread": {
+        "betsAway": 35,
+        "betsHome": 65,
+        "moneyAway": 60,
+        "moneyHome": 40
+      },
+      "total": {
+        "betsOver": 36,
+        "betsUnder": 64,
+        "moneyOver": 30,
+        "moneyUnder": 70
+      }
+    },
+    {
+      "away": "NE",
+      "date": "Nov 27",
+      "home": "NU",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 12,
+        "betsHome": 88,
+        "moneyAway": 10,
+        "moneyHome": 90
+      },
+      "spread": {
+        "betsAway": 43,
+        "betsHome": 57,
+        "moneyAway": 52,
+        "moneyHome": 48
+      },
+      "total": {
+        "betsOver": 30,
+        "betsUnder": 70,
+        "moneyOver": 21,
+        "moneyUnder": 79
       }
     },
     {
@@ -1784,22 +2888,46 @@
       "home": "UCD",
       "league": "NCAAB",
       "moneyline": {
-        "betsAway": 66,
-        "betsHome": 34,
-        "moneyAway": 70,
-        "moneyHome": 30
+        "betsAway": 80,
+        "betsHome": 20,
+        "moneyAway": 84,
+        "moneyHome": 16
       },
       "spread": {
-        "betsAway": 51,
-        "betsHome": 49,
-        "moneyAway": 54,
-        "moneyHome": 46
+        "betsAway": 58,
+        "betsHome": 42,
+        "moneyAway": 60,
+        "moneyHome": 40
       },
       "total": {
-        "betsOver": 52,
-        "betsUnder": 48,
-        "moneyOver": 55,
-        "moneyUnder": 45
+        "betsOver": 48,
+        "betsUnder": 52,
+        "moneyOver": 40,
+        "moneyUnder": 60
+      }
+    },
+    {
+      "away": "MIA",
+      "date": "Nov 27",
+      "home": "ALA",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 59,
+        "betsHome": 41,
+        "moneyAway": 63,
+        "moneyHome": 37
+      },
+      "spread": {
+        "betsAway": 55,
+        "betsHome": 45,
+        "moneyAway": 60,
+        "moneyHome": 40
+      },
+      "total": {
+        "betsOver": 37,
+        "betsUnder": 63,
+        "moneyOver": 32,
+        "moneyUnder": 68
       }
     },
     {
@@ -1808,22 +2936,46 @@
       "home": "UK",
       "league": "NCAAB",
       "moneyline": {
-        "betsAway": 36,
-        "betsHome": 64,
+        "betsAway": 29,
+        "betsHome": 71,
         "moneyAway": 32,
         "moneyHome": 68
       },
       "spread": {
-        "betsAway": 49,
-        "betsHome": 51,
-        "moneyAway": 46,
-        "moneyHome": 54
+        "betsAway": 42,
+        "betsHome": 58,
+        "moneyAway": 30,
+        "moneyHome": 70
       },
       "total": {
-        "betsOver": 56,
-        "betsUnder": 44,
-        "moneyOver": 62,
-        "moneyUnder": 38
+        "betsOver": 32,
+        "betsUnder": 68,
+        "moneyOver": 26,
+        "moneyUnder": 74
+      }
+    },
+    {
+      "away": "TENN",
+      "date": "Nov 27",
+      "home": "LOU",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 34,
+        "betsHome": 66,
+        "moneyAway": 29,
+        "moneyHome": 71
+      },
+      "spread": {
+        "betsAway": 44,
+        "betsHome": 56,
+        "moneyAway": 38,
+        "moneyHome": 62
+      },
+      "total": {
+        "betsOver": 40,
+        "betsUnder": 60,
+        "moneyOver": 34,
+        "moneyUnder": 66
       }
     },
     {
@@ -1832,22 +2984,70 @@
       "home": "OMA",
       "league": "NCAAB",
       "moneyline": {
-        "betsAway": 70,
-        "betsHome": 30,
-        "moneyAway": 74,
-        "moneyHome": 26
+        "betsAway": 74,
+        "betsHome": 26,
+        "moneyAway": 70,
+        "moneyHome": 30
       },
       "spread": {
-        "betsAway": 54,
-        "betsHome": 46,
-        "moneyAway": 59,
-        "moneyHome": 41
+        "betsAway": 60,
+        "betsHome": 40,
+        "moneyAway": 55,
+        "moneyHome": 45
       },
       "total": {
-        "betsOver": 53,
-        "betsUnder": 47,
-        "moneyOver": 56,
-        "moneyUnder": 44
+        "betsOver": 35,
+        "betsUnder": 65,
+        "moneyOver": 33,
+        "moneyUnder": 67
+      }
+    },
+    {
+      "away": "CREI",
+      "date": "Nov 27",
+      "home": "GONZ",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 33,
+        "betsHome": 67,
+        "moneyAway": 29,
+        "moneyHome": 71
+      },
+      "spread": {
+        "betsAway": 43,
+        "betsHome": 57,
+        "moneyAway": 37,
+        "moneyHome": 63
+      },
+      "total": {
+        "betsOver": 55,
+        "betsUnder": 45,
+        "moneyOver": 59,
+        "moneyUnder": 41
+      }
+    },
+    {
+      "away": "SDSU",
+      "date": "Nov 27",
+      "home": "TTU",
+      "league": "NCAAB",
+      "moneyline": {
+        "betsAway": 26,
+        "betsHome": 74,
+        "moneyAway": 31,
+        "moneyHome": 69
+      },
+      "spread": {
+        "betsAway": 40,
+        "betsHome": 60,
+        "moneyAway": 34,
+        "moneyHome": 66
+      },
+      "total": {
+        "betsOver": 41,
+        "betsUnder": 59,
+        "moneyOver": 38,
+        "moneyUnder": 62
       }
     }
   ]
