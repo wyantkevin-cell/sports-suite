@@ -1,6 +1,6 @@
 {
   "date": "2026-11-27",
-  "generated_at_pt": "2026-11-27 07:22:17 PST",
+  "generated_at_pt": "2026-11-27 12:00:02 PST",
   "name": "Sim Says bot API \u2014 per-card records",
   "note": "Live-graded straights only, $100 flat per bet. Voids are excluded from W-L and P&L. No backtest is blended in. None of these cards is proven \u2014 the record decides.",
   "records": [
@@ -27,14 +27,14 @@
       },
       "description": "Picks with a moderate edge over the book \u2014 no more than 20% \u2014 ranked by how likely they are to hit. Up to 5 a day.",
       "losses": 23,
-      "n": 71,
-      "profit": -63.65,
+      "n": 74,
+      "profit": 111.03,
       "pushes": 0,
       "record_start": "2026-11-09",
-      "roi_pct": -0.9,
+      "roi_pct": 1.5,
       "stake_per_bet_usd": 100,
       "voids": 1,
-      "wins": 48
+      "wins": 51
     },
     {
       "card": {
@@ -42,15 +42,15 @@
         "name": "Random Check"
       },
       "description": "Five picks drawn at random from the board each day, as a check \u2014 if random beats a method, the method is not doing anything.",
-      "losses": 31,
-      "n": 68,
-      "profit": -490.34,
+      "losses": 32,
+      "n": 70,
+      "profit": -533.2,
       "pushes": 0,
       "record_start": "2026-11-09",
-      "roi_pct": -7.2,
+      "roi_pct": -7.6,
       "stake_per_bet_usd": 100,
       "voids": 2,
-      "wins": 37
+      "wins": 38
     },
     {
       "card": {
@@ -59,14 +59,14 @@
       },
       "description": "Only our two best-tested pick types: college basketball moneylines and NBA assists, where our number and the book's number are close. Up to 5 a day.",
       "losses": 22,
-      "n": 51,
-      "profit": -836.98,
+      "n": 52,
+      "profit": -779.84,
       "pushes": 0,
       "record_start": "2026-11-11",
-      "roi_pct": -16.4,
+      "roi_pct": -15.0,
       "stake_per_bet_usd": 100,
       "voids": 1,
-      "wins": 29
+      "wins": 30
     },
     {
       "card": {
