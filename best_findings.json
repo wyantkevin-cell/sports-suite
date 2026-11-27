@@ -18,26 +18,7 @@
         "wins": 7
       },
       "source_card": "CFB Passing Card",
-      "today": [
-        {
-          "component": "cfb_passing",
-          "description": "Thomas Castellanos (TTU) under 208.5 passing yards",
-          "game_date": "2026-11-26",
-          "line": 208.5,
-          "line_odds": "-114",
-          "market": "passing yards",
-          "opponent": "TCU",
-          "outcome": "loss",
-          "pick_id": "20261126-TC801",
-          "player": "Thomas Castellanos",
-          "profit": -100.0,
-          "side": "under",
-          "source_card": "CFB Passing Card",
-          "sport": "CFB",
-          "start_time_pt": "17:00",
-          "team": "TTU"
-        }
-      ]
+      "today": []
     },
     "cfb_rushing": {
       "backtest": {
@@ -57,35 +38,16 @@
       },
       "label": "CFB rushing yards",
       "record": {
-        "losses": 4,
-        "n": 5,
-        "pending": 2,
-        "profit": -312.28,
+        "losses": 5,
+        "n": 6,
+        "pending": 1,
+        "profit": -412.28,
         "pushes": 0,
-        "roi_pct": -62.5,
+        "roi_pct": -68.7,
         "wins": 1
       },
       "source_card": "Model B board",
-      "today": [
-        {
-          "component": "cfb_rushing",
-          "description": "Thomas Castellanos (TTU) over 54.5 rushing yards",
-          "game_date": "2026-11-26",
-          "line": 54.5,
-          "line_odds": "-114",
-          "market": "rushing yards",
-          "opponent": "TCU",
-          "outcome": null,
-          "pick_id": "prop|2026-11-26|CFB|thomas castellanos|TTU|rushing yards|54.5|over",
-          "player": "Thomas Castellanos",
-          "profit": null,
-          "side": "over",
-          "source_card": "Model B board",
-          "sport": "CFB",
-          "start_time_pt": "17:00",
-          "team": "TTU"
-        }
-      ]
+      "today": []
     },
     "cfb_totals": {
       "backtest": {
@@ -106,26 +68,7 @@
         "wins": 8
       },
       "source_card": "CFB totals fade (desk signal)",
-      "today": [
-        {
-          "component": "cfb_totals",
-          "description": "Under 46.5 total points \u2014 fade the model's over lean",
-          "game_date": "2026-11-26",
-          "line": 46.5,
-          "line_odds": "-105",
-          "market": "total",
-          "opponent": "TTU",
-          "outcome": "loss",
-          "pick_id": "2026-11-26-CTF01",
-          "player": null,
-          "profit": -100.0,
-          "side": "under",
-          "source_card": "CFB totals fade (desk signal)",
-          "sport": "CFB",
-          "start_time_pt": "2026-11-26 17:00 PT",
-          "team": "TCU"
-        }
-      ]
+      "today": []
     },
     "nba_dog_fade": {
       "backtest": {
@@ -173,144 +116,32 @@
       "today": []
     }
   },
-  "date": "2026-11-26",
-  "generated_at_pt": "2026-11-26 21:28:13 PST",
+  "date": "2026-11-27",
+  "generated_at_pt": "2026-11-27 06:59:35 PST",
   "name": "Best Findings Card",
   "note": "One composite card from our five best findings. Live record is cumulative from Nov 18, 2026 (first day: 1-2, -$112.28). Nov 19 brought rule changes (NHL gold dropped from the composite, next-man-up starter overs added), not a reset. Backtest numbers are evidence, not the record.",
   "paper": true,
   "record": {
-    "losses": 32,
-    "n": 50,
-    "pending": 2,
-    "profit": -1496.09,
+    "losses": 33,
+    "n": 51,
+    "pending": 1,
+    "profit": -1596.09,
     "pushes": 0,
-    "roi_pct": -29.9,
+    "roi_pct": -31.3,
     "wins": 18
   },
   "record_start": "2026-11-12",
   "stake": 100,
-  "straights": [
-    {
-      "component": "cfb_totals",
-      "description": "Under 46.5 total points \u2014 fade the model's over lean",
-      "game_date": "2026-11-26",
-      "line": 46.5,
-      "line_odds": "-105",
-      "market": "total",
-      "opponent": "TTU",
-      "outcome": "loss",
-      "pick_id": "2026-11-26-CTF01",
-      "player": null,
-      "profit": -100.0,
-      "side": "under",
-      "source_card": "CFB totals fade (desk signal)",
-      "sport": "CFB",
-      "start_time_pt": "2026-11-26 17:00 PT",
-      "team": "TCU"
-    },
-    {
-      "component": "cfb_passing",
-      "description": "Thomas Castellanos (TTU) under 208.5 passing yards",
-      "game_date": "2026-11-26",
-      "line": 208.5,
-      "line_odds": "-114",
-      "market": "passing yards",
-      "opponent": "TCU",
-      "outcome": "loss",
-      "pick_id": "20261126-TC801",
-      "player": "Thomas Castellanos",
-      "profit": -100.0,
-      "side": "under",
-      "source_card": "CFB Passing Card",
-      "sport": "CFB",
-      "start_time_pt": "17:00",
-      "team": "TTU"
-    },
-    {
-      "component": "cfb_rushing",
-      "description": "Thomas Castellanos (TTU) over 54.5 rushing yards",
-      "game_date": "2026-11-26",
-      "line": 54.5,
-      "line_odds": "-114",
-      "market": "rushing yards",
-      "opponent": "TCU",
-      "outcome": null,
-      "pick_id": "prop|2026-11-26|CFB|thomas castellanos|TTU|rushing yards|54.5|over",
-      "player": "Thomas Castellanos",
-      "profit": null,
-      "side": "over",
-      "source_card": "Model B board",
-      "sport": "CFB",
-      "start_time_pt": "17:00",
-      "team": "TTU"
-    }
-  ],
+  "straights": [],
   "today": {
     "by_component": {
-      "cfb_passing": [
-        {
-          "component": "cfb_passing",
-          "description": "Thomas Castellanos (TTU) under 208.5 passing yards",
-          "game_date": "2026-11-26",
-          "line": 208.5,
-          "line_odds": "-114",
-          "market": "passing yards",
-          "opponent": "TCU",
-          "outcome": "loss",
-          "pick_id": "20261126-TC801",
-          "player": "Thomas Castellanos",
-          "profit": -100.0,
-          "side": "under",
-          "source_card": "CFB Passing Card",
-          "sport": "CFB",
-          "start_time_pt": "17:00",
-          "team": "TTU"
-        }
-      ],
-      "cfb_rushing": [
-        {
-          "component": "cfb_rushing",
-          "description": "Thomas Castellanos (TTU) over 54.5 rushing yards",
-          "game_date": "2026-11-26",
-          "line": 54.5,
-          "line_odds": "-114",
-          "market": "rushing yards",
-          "opponent": "TCU",
-          "outcome": null,
-          "pick_id": "prop|2026-11-26|CFB|thomas castellanos|TTU|rushing yards|54.5|over",
-          "player": "Thomas Castellanos",
-          "profit": null,
-          "side": "over",
-          "source_card": "Model B board",
-          "sport": "CFB",
-          "start_time_pt": "17:00",
-          "team": "TTU"
-        }
-      ],
-      "cfb_totals": [
-        {
-          "component": "cfb_totals",
-          "description": "Under 46.5 total points \u2014 fade the model's over lean",
-          "game_date": "2026-11-26",
-          "line": 46.5,
-          "line_odds": "-105",
-          "market": "total",
-          "opponent": "TTU",
-          "outcome": "loss",
-          "pick_id": "2026-11-26-CTF01",
-          "player": null,
-          "profit": -100.0,
-          "side": "under",
-          "source_card": "CFB totals fade (desk signal)",
-          "sport": "CFB",
-          "start_time_pt": "2026-11-26 17:00 PT",
-          "team": "TCU"
-        }
-      ],
+      "cfb_passing": [],
+      "cfb_rushing": [],
+      "cfb_totals": [],
       "nba_dog_fade": [],
       "nmu": []
     },
-    "date": "2026-11-26",
-    "n": 3
+    "date": "2026-11-27",
+    "n": 0
   }
 }
