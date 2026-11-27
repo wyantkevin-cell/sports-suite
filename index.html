@@ -514,6 +514,11 @@ footer b{color:var(--ink)}
   .pickrow .chance span{margin-top:0}
   .toollist button{padding:12px 14px}
   .slate{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;border:0;background:transparent;overflow:visible}
+  /* Game Forecasts on phones: one full-width column, not two squeezed
+     tiles — Nov 27, the 2-col tiles clipped game lines and tags. */
+  #panel-gameforecasts .slate{grid-template-columns:minmax(0,1fr)}
+  #panel-gameforecasts .slate-row .match{min-width:0}
+  #panel-gameforecasts .slate-row .picktag{white-space:normal}
   .slate-row{flex-direction:column;align-items:stretch;gap:8px;padding:11px 12px;border:1px solid var(--line);border-radius:12px;min-width:0;overflow-wrap:break-word}
   .slate-row button{width:100%;padding:10px 14px;font-size:13px;white-space:normal;line-height:1.35;min-height:44px}
   /* Game forecasts List view (Settings -> View -> List): the two-column
@@ -3589,32 +3594,11 @@ function feedRowHtml(f){
    Game Forecasts and the Scores tab both render this — never a raw
    single-model pick (Nov 12: Scores showed Model B alone, USF 53%,
    while Forecasts showed the MEM 53.0% average for MEM @ USF). */
-/* ML:CFB home favorites are shelved (Nov 19 calibration audit F8:
-   home moneyline picks ROI -18.5%, n=90; road dogs are a different
-   cell and stay). The headline pick is suppressed on Game Forecasts
-   and Scores; both models' forecast lines still show, because the
-   win-probability model itself is well calibrated — only the pick
-   is off the board. The cell key (sport, market, side) in
-   daily_props.BOARD_SHELVED_CELLS cannot express favorite/dog, so
-   the favorite test lives here, where the book line is on hand:
-   the home spread is negative when the home team is favored.
-   f.book is the Model B pick's spread and spreads are symmetric, so
-   the home spread is f.book when Model B picked home, else its
-   negation; Model A's favorite field is the fallback when no book
-   line is posted. No line at all -> cannot confirm a favorite ->
-   fail open (show the pick). */
+/* ML:CFB home-favorite shelf REMOVED Nov 27 (Kevin: "just make a
+   pick"). The Nov 19 calibration audit F8 cell (home moneyline
+   picks ROI -18.5%, n=90) stays in the record, but the pick is no
+   longer suppressed on Game Forecasts, Scores, or the ML list. */
 function mlPickShelved(league, headlinePick, f, a){
-  if(league!=="cfb") return false;
-  var parts=String(f.g||"").split(" @ ");
-  if(parts.length!==2) return false;
-  var home=parts[1].trim();
-  if(headlinePick!==home) return false;
-  var bk=parseFloat(f.book);
-  if(isFinite(bk)){
-    var homeSpread=(f.pick===home)?bk:-bk;
-    return homeSpread<0;
-  }
-  if(a&&a.favorite) return a.favorite===home;
   return false;
 }
 function headlinePickFor(f, league){
@@ -3675,12 +3659,8 @@ function forecastRowHtml(f,league){
   var agreeTag=a?'<span class="picktag'+(a.pick===f.pick?"":" close")+'">'+(a.pick===f.pick?"Models agree":"Models split")+'</span>':"";
   var fcDetailBits=angleHtml(a?a.angle:"")+simLinesHtml(f)+marketsHtml(f.markets);
   var fcDetailsHtml=fcDetailBits?'<details class="gf-details"><summary>Details</summary><div class="gf-details-body">'+fcDetailBits+'</div></details>':"";
-  /* Shelved headline (ML:CFB home favorites, Nov 19 audit F8): no
-     pick is published, but the model lines and the book line still
-     show — the forecast is fine, only the pick is off the board. */
-  var avgHtml=h.shelved
-    ? '<div class="avgline"><b>No pick</b> <span class="picktag">Home favorites are off the board for now</span> '+lineHtml+'</div>'
-    : '<div class="avgline"><b>'+esc(headlinePick)+'</b> <span class="pickpct">'+headlinePct.toFixed(1)+'%</span>'+(a?confBadgeHtml(a.confidence_tier):"")+' '+lineHtml+'</div>';
+  /* Shelf removed Nov 27 (Kevin): the headline pick always shows now. */
+  var avgHtml='<div class="avgline"><b>'+esc(headlinePick)+'</b> <span class="pickpct">'+headlinePct.toFixed(1)+'%</span>'+(a?confBadgeHtml(a.confidence_tier):"")+' '+lineHtml+'</div>';
   return '<div class="slate-row"><div class="match"><span class="n">'+esc(f.g)+' \u00b7 '+esc(fmtDateLong(f.day,true))+' \u00b7 '+esc(f.time)+' PT</span><div class="picklines">'+avgHtml+modelLinesHtml(lines)+'</div>'+splitsPlaceholderHtml(f,league)+'<div class="tagrow">'+(f.book?"":'<span>forecast only \u2014 no book line to compare against</span>')+agreeTag+(close?'<span class="picktag close">Close call \u2014 lean only</span>':"")+(f.note?' <span class="n">'+esc(f.note)+'</span>':"")+'</div>'+fcDetailsHtml+'</div><button type="button" data-slate-game="'+esc(f.g)+'">Player picks for this game &rarr;</button></div>';
 }
 /* Monte Carlo sim lines, shown only for games whose forecast carries
@@ -7426,10 +7406,6 @@ function addPick(away,home,team,pctVal,split,close){
     if(!f||f.pHome==null||!f.home||!f.away) return;
     if(shelvedGames[pickKey(f.away,f.home)]) return;
     var homeFav=f.pHome>=0.5;
-    /* ML:CFB home-favorite shelf (Nov 19, F8) for Model-A-only
-       games: no FORECASTS row decided them, so this loop is the
-       only place their pick is published — skip it here too. */
-    if(f.sport==="NCAAF"&&homeFav&&f.favorite===f.home) return;
     addPick(f.away,f.home,homeFav?f.home:f.away,(homeFav?f.pHome:1-f.pHome)*100);
   });
 })();
